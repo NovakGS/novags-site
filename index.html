@@ -3,27 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Novak Geospatial Solutions | Aerial Mapping, Cross Plains, WI</title>
+<title>Novak Geospatial Solutions</title>
 <meta name="description" content="Novak GS provides drone-based aerial mapping and geospatial data from Cross Plains, Wisconsin.">
 <style>
-  body { margin:0; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-         background:#f4f5f6; color:#1f2a33; font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
-         text-align:center; padding:24px 16px; box-sizing:border-box; }
-  img { width:340px; max-width:85%; height:auto; }
-  .tagline { color:#2e4a62; font-size:18px; margin:18px 0 6px; }
-  .soon { color:#e8711a; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:14px; margin:0 0 24px; }
-  a { color:#4677a0; text-decoration:none; font-size:18px; }
-  .contact p { margin:4px 0; }
-  footer { color:#5b6670; font-size:13px; margin-top:32px; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: #0a0d12 url("topo-bg.jpg") center / cover no-repeat fixed;
+    color: #e6e9ec;
+    font-family: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    text-align: center;
+  }
+  .logo { width: 520px; max-width: 92%; height: auto; display: block; }
+  .tagline { font-size: 22px; line-height: 1.35; margin: 34px 0 0; color: #eef1f3; }
+  .tagline span { display: block; }
+  .soon {
+    margin: 26px 0 0;
+    font-size: 15px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: #aab3bc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .soon::before {
+    content: "";
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #e8711a;
+    box-shadow: 0 0 10px rgba(232,113,26,.6);
+  }
+  .contact { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 40px; }
+  .contact a {
+    color: #eef1f3;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(10,13,18,.75);
+    transition: border-color .2s;
+  }
+  .contact a:hover { border-color: #e8711a; }
+  footer { margin-top: 48px; font-size: 13px; color: #7d8790; }
+  @media (max-width: 480px) {
+    .tagline { font-size: 19px; }
+    .soon { font-size: 13px; letter-spacing: .26em; }
+    .contact a { font-size: 16px; padding: 13px 22px; }
+  }
 </style>
 </head>
 <body>
-  <img src="logo.png" alt="Novak GS — Geospatial Solutions" width="640" height="311">
-  <p class="tagline">Aerial mapping &amp; geospatial data · Cross Plains, Wisconsin</p>
+  <img class="logo" src="logo-dark.png" alt="Novak GS — Geospatial Solutions" width="732" height="338">
+  <p class="tagline"><span>Aerial mapping &amp; geospatial data</span><span>Cross Plains, Wisconsin</span></p>
   <p class="soon">Website coming soon</p>
   <div class="contact">
-    <p><a href="tel:+16088200224">(608) 820-0224</a></p>
-    <p><a href="mailto:gregg@novakgs.com">gregg@novakgs.com</a></p>
+    <a href="tel:+16088200224">(608) 820-0224</a>
+    <a href="mailto:gregg@novakgs.com">gregg@novakgs.com</a>
   </div>
   <footer>© 2026 Novak Geospatial Solutions™</footer>
 </body>
