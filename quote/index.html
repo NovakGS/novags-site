@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Quote | Novak Geospatial Solutions</title>
+<meta name="description" content="Request a quote for drone mapping, stockpile volumes, progress monitoring, listing imagery and crop scouting across southern and central Wisconsin.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  :root {
+    --ink: #1f2933;
+    --muted: #5e6873;
+    --line: #d4d8dd;
+    --soft: #f4f5f7;
+    --navy: #2e5677;
+    --steel: #3a6690;
+    --orange: #e8711a;
+    --orange-ink: #b65310;
+    --danger: #b42318;
+    --ok: #1f7a4d;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--soft);
+    color: var(--ink);
+    font-family: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  a { color: var(--steel); }
+  header {
+    background: #0a0d12 url("/topo-bg.jpg") center / cover no-repeat;
+    color: #eef1f3;
+    padding: 28px 16px 96px;
+    text-align: center;
+  }
+  header a.home { display: inline-block; }
+  header img { width: 260px; max-width: 70%; height: auto; display: block; }
+  header h1 { font-size: 30px; line-height: 1.2; margin: 22px 0 6px; font-weight: 600; letter-spacing: -0.01em; }
+  header p { margin: 0 auto; max-width: 560px; color: #c9d0d7; font-size: 17px; }
+  main { max-width: 760px; margin: -68px auto 0; padding: 0 16px 48px; }
+  form, .done {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(10, 13, 18, 0.12);
+    padding: 8px 28px 28px;
+  }
+  fieldset { border: 0; margin: 0; padding: 26px 0 4px; border-bottom: 1px solid var(--line); min-width: 0; }
+  fieldset:last-of-type { border-bottom: 0; }
+  legend { padding: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); display: flex; align-items: center; gap: 10px; }
+  legend .num { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: var(--orange-ink); }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; margin-top: 14px; }
+  .full { grid-column: 1 / -1; }
+  label.f { display: flex; flex-direction: column; gap: 6px; font-weight: 500; font-size: 15px; }
+  .req::after { content: " *"; color: var(--orange-ink); }
+  .hint { font-weight: 400; color: var(--muted); font-size: 14px; }
+  input[type=text], input[type=email], input[type=tel], input[type=number], input[type=date], select, textarea {
+    font: inherit; color: var(--ink); background: #fff;
+    border: 1.5px solid var(--line); border-radius: 8px;
+    padding: 11px 12px; min-height: 46px; width: 100%;
+  }
+  textarea { min-height: 110px; resize: vertical; }
+  input:focus, select:focus, textarea:focus, button:focus-visible, .chip input:focus-visible + span, .card input:focus-visible + span {
+    outline: 3px solid rgba(58, 102, 144, 0.35); outline-offset: 1px; border-color: var(--steel);
+  }
+  .q { margin: 18px 0 8px; font-weight: 500; font-size: 15px; }
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .card { position: relative; }
+  .card input, .chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .card span {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    min-height: 56px; padding: 10px; border: 1.5px solid var(--line); border-radius: 10px;
+    cursor: pointer; font-weight: 500; font-size: 15px; line-height: 1.25; background: #fff;
+  }
+  .card input:checked + span { border-color: var(--navy); background: #eef3f8; box-shadow: inset 0 0 0 1px var(--navy); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip span {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px;
+    border: 1.5px solid var(--line); border-radius: 999px; cursor: pointer; background: #fff; font-size: 15px;
+  }
+  .chip span::before { content: ""; width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #9aa4ae; flex-shrink: 0; }
+  .chip.radio span::before { border-radius: 50%; }
+  .chip input:checked + span { border-color: var(--navy); background: #eef3f8; }
+  .chip input:checked + span::before { background: var(--navy); border-color: var(--navy); box-shadow: inset 0 0 0 3px #fff; }
+  .group { margin-top: 16px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; }
+  .group.mine { border-color: var(--navy); background: #f7fafc; }
+  .group h3 { margin: 0 0 10px; font-size: 15px; display: flex; align-items: baseline; gap: 10px; }
+  .group h3 .num { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--steel); font-weight: 500; font-size: 14px; }
+  .group h3 .tag { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); }
+  .note { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+  .followup { margin-top: 14px; padding: 14px 16px; background: var(--soft); border-radius: 10px; }
+  .followup h4 { margin: 0 0 10px; font-size: 14px; color: var(--navy); }
+  [hidden] { display: none !important; }
+  #map { height: 300px; border-radius: 10px; border: 1.5px solid var(--line); margin-top: 8px; z-index: 0; }
+  .maprow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 8px; }
+  .btn {
+    font: inherit; font-weight: 600; cursor: pointer; border-radius: 8px; min-height: 44px; padding: 10px 16px;
+    border: 1.5px solid var(--navy); background: #fff; color: var(--navy);
+  }
+  .btn.primary { background: var(--orange); border-color: var(--orange); color: #1b0e03; font-size: 17px; min-height: 52px; padding: 12px 28px; }
+  .btn.primary:hover { background: #f07f2c; }
+  .btn:disabled { opacity: .6; cursor: progress; }
+  .coords { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; color: var(--muted); }
+  .files { margin: 8px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--muted); }
+  .error { color: var(--danger); font-weight: 500; margin: 16px 0 0; }
+  .submit { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 24px; }
+  .submit p { margin: 0; font-size: 14px; color: var(--muted); flex: 1 1 240px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .done { text-align: center; padding: 44px 28px; }
+  .done h2 { margin: 0 0 8px; font-size: 26px; }
+  .done p { margin: 0 auto; max-width: 480px; color: var(--muted); }
+  .done .check { width: 56px; height: 56px; margin: 0 auto 14px; border-radius: 50%; background: #e7f4ec; display: flex; align-items: center; justify-content: center; }
+  footer { text-align: center; font-size: 13px; color: var(--muted); padding: 0 16px 32px; }
+  @media (max-width: 640px) {
+    header { padding-bottom: 84px; }
+    header h1 { font-size: 26px; }
+    form, .done { padding: 4px 18px 22px; }
+    .grid { grid-template-columns: minmax(0, 1fr); }
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #map { height: 260px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="home" href="/"><img src="/logo-dark.png" alt="Novak GS — Geospatial Solutions home" width="732" height="338" style="margin: 0 auto"></a>
+  <h1>Request a quote</h1>
+  <p>Tell me about the site and what you need. I'll follow up within one business day.</p>
+</header>
+
+<main>
+<form id="quote" novalidate>
+  <input type="hidden" name="startedAt" id="startedAt">
+  <input type="hidden" name="source" id="source">
+  <input type="hidden" name="lat" id="lat">
+  <input type="hidden" name="lng" id="lng">
+  <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+  <fieldset>
+    <legend><span class="num">01</span> About you</legend>
+    <div class="grid">
+      <label class="f"><span class="req">Name</span><input type="text" name="name" autocomplete="name" required></label>
+      <label class="f"><span>Company <span class="hint">(optional)</span></span><input type="text" name="company" autocomplete="organization"></label>
+      <label class="f"><span class="req">Email</span><input type="email" name="email" autocomplete="email" required></label>
+      <label class="f"><span class="req">Phone</span><input type="tel" name="phone" autocomplete="tel" required></label>
+    </div>
+    <div class="q req" id="pc-label">Best way to reach you</div>
+    <div class="chips" role="radiogroup" aria-labelledby="pc-label">
+      <label class="chip radio"><input type="radio" name="preferredContact" value="Call" required><span>Call</span></label>
+      <label class="chip radio"><input type="radio" name="preferredContact" value="Text"><span>Text</span></label>
+      <label class="chip radio"><input type="radio" name="preferredContact" value="WhatsApp"><span>WhatsApp</span></label>
+      <label class="chip radio"><input type="radio" name="preferredContact" value="Email"><span>Email</span></label>
+    </div>
+    <div class="q req" id="ct-label">I'm a…</div>
+    <div class="cards" role="radiogroup" aria-labelledby="ct-label">
+      <label class="card"><input type="radio" name="clientType" value="Developer or builder" data-group="dev" required><span>Developer or builder</span></label>
+      <label class="card"><input type="radio" name="clientType" value="Contractor or aggregate" data-group="con"><span>Contractor or aggregate</span></label>
+      <label class="card"><input type="radio" name="clientType" value="Realtor or landowner" data-group="land"><span>Realtor or landowner</span></label>
+      <label class="card"><input type="radio" name="clientType" value="Farm or ag" data-group="farm"><span>Farm or ag</span></label>
+      <label class="card"><input type="radio" name="clientType" value="Surveyor or engineer" data-group="pro"><span>Surveyor or engineer</span></label>
+      <label class="card"><input type="radio" name="clientType" value="Other" data-group=""><span>Other</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><span class="num">02</span> The site</legend>
+    <div class="grid">
+      <label class="f full"><span class="req">Site address or nearest intersection</span><input type="text" name="siteLocation" id="siteLocation" autocomplete="street-address" required></label>
+      <label class="f"><span class="req">County</span>
+        <select name="county" required>
+          <option value="">Choose a county</option>
+          <optgroup label="Dane &amp; neighboring">
+            <option>Dane</option><option>Columbia</option><option>Dodge</option><option>Green</option>
+            <option>Iowa</option><option>Jefferson</option><option>Rock</option><option>Sauk</option>
+          </optgroup>
+          <optgroup label="Southwest"><option>Grant</option></optgroup>
+          <optgroup label="Milwaukee area"><option>Milwaukee</option><option>Waukesha</option></optgroup>
+          <optgroup label="Fox Valley"><option>Calumet</option><option>Outagamie</option><option>Winnebago</option></optgroup>
+          <optgroup label="Central"><option value="Marathon">Marathon (Wausau)</option><option value="Portage">Portage (Stevens Point)</option></optgroup>
+          <option>Other</option>
+        </select>
+      </label>
+      <label class="f"><span>Approximate size</span>
+        <select name="siteSize">
+          <option value="">Choose a size</option>
+          <option>Under 5 acres</option><option>5–20 acres</option><option>20–80 acres</option><option>80+ acres</option><option>Not sure</option>
+        </select>
+      </label>
+    </div>
+    <div class="q">Drop a pin on the site <span class="hint">(optional, but it helps me plan the flight)</span></div>
+    <div class="maprow">
+      <button type="button" class="btn" id="findAddr">Find the address on the map</button>
+      <button type="button" class="btn" id="myLoc">Use my location</button>
+      <span class="coords" id="coords" aria-live="polite">Tap the map to place a pin</span>
+    </div>
+    <div id="map" role="application" aria-label="Map: tap to mark the site location"></div>
+  </fieldset>
+
+  <fieldset>
+    <legend><span class="num">03</span> Services</legend>
+    <p class="note" style="margin-top:10px">Check everything that applies. Not sure? Pick the last option and we'll sort it out on a call.</p>
+    <div id="groups">
+      <div class="group" data-group="dev">
+        <h3><span class="num">01</span>Developers &amp; builders <span class="tag" hidden>Your line</span></h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Pre-development assessment"><span>Pre-development assessment</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Build progress monitoring"><span>Build progress monitoring</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Time-lapse &amp; marketing media"><span>Time-lapse &amp; marketing media</span></label>
+        </div>
+      </div>
+      <div class="group" data-group="con">
+        <h3><span class="num">02</span>Contractors &amp; aggregate <span class="tag" hidden>Your line</span></h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Stockpile volume reports"><span>Stockpile volume reports</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Orthomosaic site maps"><span>Orthomosaic site maps</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Progress documentation"><span>Progress documentation</span></label>
+        </div>
+      </div>
+      <div class="group" data-group="land">
+        <h3><span class="num">03</span>Realtors &amp; landowners <span class="tag" hidden>Your line</span></h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Acreage listing package"><span>Acreage listing package</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="High-resolution aerial maps"><span>High-resolution aerial maps</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Property overview imagery"><span>Property overview imagery</span></label>
+        </div>
+      </div>
+      <div class="group" data-group="farm">
+        <h3><span class="num">04</span>Farms &amp; agriculture <span class="tag" hidden>Your line</span></h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Field &amp; farmstead maps"><span>Field &amp; farmstead maps</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Grain &amp; silage pile volumes"><span>Grain &amp; silage pile volumes</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Visual crop scouting maps"><span>Visual crop scouting maps</span></label>
+        </div>
+      </div>
+      <div class="group" data-group="pro">
+        <h3><span class="num">05</span>Surveyors &amp; engineers <span class="tag" hidden>Your line</span></h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="White-label RTK data capture"><span>White-label RTK data capture</span></label>
+        </div>
+      </div>
+      <div class="group" data-group="any">
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Not sure — help me choose"><span>Not sure — help me choose</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="followup" data-when="Stockpile volume reports|Grain &amp; silage pile volumes" hidden>
+      <h4>Volumes</h4>
+      <div class="grid">
+        <label class="f"><span>Number of piles</span><input type="number" name="pileCount" min="1" inputmode="numeric"></label>
+        <label class="f"><span>Material</span><input type="text" name="material" placeholder="e.g. gravel, topsoil, corn silage"></label>
+        <label class="f full"><span>How often</span>
+          <select name="volumeFreq"><option value="">Choose</option><option>One-time</option><option>Monthly</option><option>Quarterly</option><option>Other</option></select>
+        </label>
+      </div>
+    </div>
+    <div class="followup" data-when="Build progress monitoring|Progress documentation" hidden>
+      <h4>Progress flights</h4>
+      <div class="grid">
+        <label class="f"><span>How often</span>
+          <select name="progressFreq"><option value="">Choose</option><option>Weekly</option><option>Every 2 weeks</option><option>Monthly</option><option>At milestones</option></select>
+        </label>
+        <label class="f"><span>Project length</span><input type="text" name="projectLength" placeholder="e.g. 8 months"></label>
+      </div>
+    </div>
+    <div class="followup" data-when="Acreage listing package|Property overview imagery" hidden>
+      <h4>Listing</h4>
+      <div class="grid">
+        <label class="f"><span>Target listing date</span><input type="date" name="listingDate"></label>
+      </div>
+    </div>
+    <div class="followup" data-when="Visual crop scouting maps" hidden>
+      <h4>Crop scouting</h4>
+      <div class="grid">
+        <label class="f"><span>Crop</span><input type="text" name="cropType" placeholder="e.g. corn, soybeans, alfalfa"></label>
+        <label class="f"><span>Growth stage</span><input type="text" name="growthStage" placeholder="e.g. V6, R1, first cutting"></label>
+      </div>
+    </div>
+    <div class="followup" data-when="White-label RTK data capture" hidden>
+      <h4>White-label capture</h4>
+      <div class="grid">
+        <label class="f"><span>Coordinate system &amp; datum</span><input type="text" name="coordSystem" placeholder="e.g. WISCRS Dane, US ft / NAVD88"></label>
+        <label class="f"><span>Accuracy needed</span><input type="text" name="accuracy" placeholder="e.g. 0.1 ft horizontal"></label>
+      </div>
+    </div>
+    <p class="note">Novak|GS provides aerial mapping and imagery; we don't establish property lines.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend><span class="num">04</span> Timing &amp; delivery</legend>
+    <div class="q" id="tm-label">When do you need it?</div>
+    <div class="chips" role="radiogroup" aria-labelledby="tm-label">
+      <label class="chip radio"><input type="radio" name="timing" value="ASAP"><span>ASAP</span></label>
+      <label class="chip radio"><input type="radio" name="timing" value="Within 2 weeks"><span>Within 2 weeks</span></label>
+      <label class="chip radio"><input type="radio" name="timing" value="Within a month"><span>Within a month</span></label>
+      <label class="chip radio"><input type="radio" name="timing" value="Flexible"><span>Flexible</span></label>
+      <label class="chip radio"><input type="radio" name="timing" value="By a specific date"><span>By a specific date</span></label>
+    </div>
+    <div class="grid" id="dateRow" hidden>
+      <label class="f"><span>Needed by</span><input type="date" name="targetDate"></label>
+    </div>
+    <div class="q" id="fm-label">File formats you need <span class="hint">(optional)</span></div>
+    <div class="chips" role="group" aria-labelledby="fm-label">
+      <label class="chip"><input type="checkbox" name="formats" value="PDF report"><span>PDF report</span></label>
+      <label class="chip"><input type="checkbox" name="formats" value="Images"><span>Images</span></label>
+      <label class="chip"><input type="checkbox" name="formats" value="GeoTIFF"><span>GeoTIFF</span></label>
+      <label class="chip"><input type="checkbox" name="formats" value="KMZ"><span>KMZ</span></label>
+      <label class="chip"><input type="checkbox" name="formats" value="CAD (DXF)"><span>CAD (DXF)</span></label>
+      <label class="chip"><input type="checkbox" name="formats" value="Point cloud (LAS)"><span>Point cloud (LAS)</span></label>
+      <label class="chip"><input type="checkbox" name="formats" value="Not sure"><span>Not sure</span></label>
+    </div>
+    <div class="grid">
+      <label class="f full"><span>Attachments <span class="hint">— site plan, parcel map or photos. Up to 5 files, 10 MB each.</span></span>
+        <input type="file" name="files" id="files" multiple accept=".pdf,.jpg,.jpeg,.png,.heic,.tif,.tiff,.dxf,.dwg,.kml,.kmz,.zip">
+      </label>
+    </div>
+    <ul class="files" id="fileList"></ul>
+    <div class="grid">
+      <label class="f full"><span>Anything else?</span><textarea name="notes" maxlength="4000" placeholder="Access, deadlines, what you'll use the data for…"></textarea></label>
+      <label class="f"><span>How did you hear about us?</span>
+        <select name="hearAbout" id="hearAbout">
+          <option value="">Choose</option><option>Business card</option><option>Search</option><option>Referral</option><option>Social media</option><option>Other</option>
+        </select>
+      </label>
+    </div>
+  </fieldset>
+
+  <p class="error" id="err" role="alert" hidden></p>
+  <div class="submit">
+    <button type="submit" class="btn primary" id="send">Send quote request</button>
+    <p>Prefer to talk? Call or text <a href="tel:+16088200224">608-820-0224</a>.</p>
+  </div>
+</form>
+
+<div class="done" id="done" hidden tabindex="-1">
+  <div class="check" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1f7a4d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
+  <h2>Request received</h2>
+  <p>Thanks — I'll review the site and get back to you within one business day. If it's urgent, call or text <a href="tel:+16088200224">608-820-0224</a>.</p>
+</div>
+</main>
+<footer>© 2026 Novak Geospatial Solutions™ · <a href="/">novakgs.com</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('quote');
+  document.getElementById('startedAt').value = String(Date.now());
+
+  // Arrival from the business card QR: novakgs.com/quote?src=card
+  var params = new URLSearchParams(location.search);
+  var src = (params.get('src') || '').slice(0, 40);
+  document.getElementById('source').value = src;
+  if (src === 'card') document.getElementById('hearAbout').value = 'Business card';
+
+  // Put the client's own service group first and mark it.
+  var groupsEl = document.getElementById('groups');
+  form.querySelectorAll('input[name=clientType]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      var key = r.dataset.group;
+      groupsEl.querySelectorAll('.group').forEach(function (g) {
+        var mine = key && g.dataset.group === key;
+        g.classList.toggle('mine', !!mine);
+        var tag = g.querySelector('.tag');
+        if (tag) tag.hidden = !mine;
+      });
+      var target = key && groupsEl.querySelector('.group[data-group="' + key + '"]');
+      if (target) groupsEl.insertBefore(target, groupsEl.firstElementChild);
+    });
+  });
+
+  // Follow-up questions for the services that need them.
+  function syncFollowups() {
+    var picked = Array.prototype.map.call(form.querySelectorAll('input[name=services]:checked'), function (c) { return c.value; });
+    form.querySelectorAll('.followup').forEach(function (f) {
+      var wants = f.dataset.when.split('|');
+      f.hidden = !wants.some(function (w) { return picked.indexOf(w) !== -1; });
+    });
+  }
+  form.querySelectorAll('input[name=services]').forEach(function (c) { c.addEventListener('change', syncFollowups); });
+
+  form.querySelectorAll('input[name=timing]').forEach(function (r) {
+    r.addEventListener('change', function () { document.getElementById('dateRow').hidden = r.value !== 'By a specific date' || !r.checked; });
+  });
+
+  // Map pin
+  var coordsEl = document.getElementById('coords');
+  var marker = null, map = null;
+  function setPin(lat, lng, zoom) {
+    document.getElementById('lat').value = lat.toFixed(6);
+    document.getElementById('lng').value = lng.toFixed(6);
+    coordsEl.textContent = lat.toFixed(5) + ', ' + lng.toFixed(5);
+    if (!map) return;
+    if (marker) marker.setLatLng([lat, lng]); else marker = L.marker([lat, lng], { draggable: true }).addTo(map);
+    marker.off('dragend').on('dragend', function () { var p = marker.getLatLng(); setPin(p.lat, p.lng); });
+    if (zoom) map.setView([lat, lng], zoom);
+  }
+  if (window.L) {
+    map = L.map('map', { scrollWheelZoom: false }).setView([43.35, -89.4], 7);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    map.on('click', function (e) { setPin(e.latlng.lat, e.latlng.lng); });
+  } else {
+    document.getElementById('map').hidden = true;
+    coordsEl.textContent = 'Map unavailable — the address is enough.';
+  }
+  document.getElementById('findAddr').addEventListener('click', function () {
+    var q = document.getElementById('siteLocation').value.trim();
+    if (!q) { coordsEl.textContent = 'Type the address first.'; return; }
+    coordsEl.textContent = 'Searching…';
+    fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q=' + encodeURIComponent(q + ', Wisconsin'))
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d && d[0]) setPin(parseFloat(d[0].lat), parseFloat(d[0].lon), 16);
+        else coordsEl.textContent = 'Not found — tap the map instead.';
+      })
+      .catch(function () { coordsEl.textContent = 'Search unavailable — tap the map instead.'; });
+  });
+  document.getElementById('myLoc').addEventListener('click', function () {
+    if (!navigator.geolocation) { coordsEl.textContent = 'Location unavailable — tap the map instead.'; return; }
+    coordsEl.textContent = 'Locating…';
+    navigator.geolocation.getCurrentPosition(
+      function (p) { setPin(p.coords.latitude, p.coords.longitude, 16); },
+      function () { coordsEl.textContent = 'Location blocked — tap the map instead.'; },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  });
+
+  // Attachments
+  var filesEl = document.getElementById('files');
+  var MAXF = 5, MAXB = 10 * 1024 * 1024, MAXT = 25 * 1024 * 1024;
+  function fileProblem() {
+    var fs = filesEl.files, total = 0;
+    if (fs.length > MAXF) return 'Please attach no more than 5 files.';
+    for (var i = 0; i < fs.length; i++) {
+      if (fs[i].size > MAXB) return '"' + fs[i].name + '" is over 10 MB.';
+      total += fs[i].size;
+    }
+    if (total > MAXT) return 'Attachments are over 25 MB in total.';
+    return '';
+  }
+  filesEl.addEventListener('change', function () {
+    var list = document.getElementById('fileList');
+    list.innerHTML = '';
+    Array.prototype.forEach.call(filesEl.files, function (f) {
+      var li = document.createElement('li');
+      li.textContent = f.name + ' — ' + (f.size / 1048576).toFixed(1) + ' MB';
+      list.appendChild(li);
+    });
+    var p = fileProblem();
+    if (p) showErr(p);
+  });
+
+  var errEl = document.getElementById('err');
+  function showErr(msg) { errEl.textContent = msg; errEl.hidden = !msg; if (msg) errEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+
+  function validate() {
+    var missing = [];
+    var v = function (n) { var el = form.elements[n]; return el ? String(el.value || '').trim() : ''; };
+    if (!v('name')) missing.push('your name');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) missing.push('a valid email');
+    if (v('phone').replace(/\D/g, '').length < 10) missing.push('a phone number');
+    if (!form.querySelector('input[name=preferredContact]:checked')) missing.push('how to reach you');
+    if (!form.querySelector('input[name=clientType]:checked')) missing.push('what type of client you are');
+    if (!v('siteLocation')) missing.push('the site location');
+    if (!v('county')) missing.push('the county');
+    if (!form.querySelector('input[name=services]:checked')) missing.push('at least one service');
+    return missing.length ? 'Please add ' + missing.join(', ') + '.' : fileProblem();
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var problem = validate();
+    if (problem) { showErr(problem); return; }
+    showErr('');
+    var btn = document.getElementById('send');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('/api/quote', { method: 'POST', body: new FormData(form) })
+      .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+      .then(function (d) {
+        if (d && d.ok) {
+          form.hidden = true;
+          var done = document.getElementById('done');
+          done.hidden = false; done.focus();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          showErr((d && d.error) || 'Something went wrong. Please call or text 608-820-0224.');
+        }
+      })
+      .catch(function () { showErr('Could not send — check your connection, or call or text 608-820-0224.'); })
+      .finally(function () { btn.disabled = false; btn.textContent = 'Send quote request'; });
+  });
+})();
+</script>
+</body>
+</html>
