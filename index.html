@@ -70,8 +70,8 @@
   }
   .tagline {
     margin: 0 0 22px;
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 22px;
+    font-weight: 600;
     letter-spacing: .2em;
     text-transform: uppercase;
     color: var(--orange);
@@ -203,7 +203,7 @@
 
   @media (max-width: 640px) {
     .page { padding-top: 28px; }
-    .tagline { font-size: 21px; line-height: 1.3; letter-spacing: .14em; padding-left: .14em; margin-bottom: 16px; }
+    .tagline { font-size: 19px; line-height: 1.3; letter-spacing: .14em; padding-left: .14em; margin-bottom: 16px; }
     .tagline .nw { display: block; }
     .sub { font-size: 15px; }
     .sub .sep { display: none; }
@@ -328,11 +328,31 @@
   }
   .proof li { display: flex; align-items: center; gap: 8px; }
   .proof li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+  .promises {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    text-align: left;
+  }
+  .promises li {
+    padding: 14px 18px;
+    border: 1px solid var(--edge);
+    border-top: 2px solid var(--orange);
+    border-radius: 10px;
+    background: var(--panel);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .promises strong { display: block; font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+  .promises span { font-size: 14px; line-height: 1.45; color: var(--muted); }
   .links { margin-left: auto; margin-right: auto; }
   @media (max-width: 640px) {
     .rule { margin: 28px 0 24px; }
     .section > h2 { font-size: 23px; }
-    .services { grid-template-columns: 1fr; }
+    .services, .promises { grid-template-columns: 1fr; }
     .proof { font-size: 11px; gap: 8px 16px; }
   }
 </style>
@@ -362,10 +382,23 @@
 
   <hr class="rule">
 
+  <section class="section pilot" aria-labelledby="pilot">
+    <p class="kicker">One pilot. Zero guesswork.</p>
+    <h2 id="pilot">Your project gets our full attention, start to finish</h2>
+    <p class="intro">One FAA-certified pilot handles your job from the first call to the final file. The person who quotes your site is the person who flies it, processes the data, and picks up the phone when you have a question. No hand-offs, no account managers, and no getting lost in someone else&rsquo;s queue.</p>
+    <ul class="promises">
+      <li><strong>Direct line</strong><span>Call or text your pilot, not a front desk.</span></li>
+      <li><strong>Same pilot, every visit</strong><span>Repeat flights are run the same way, by the same person.</span></li>
+      <li><strong>Quick replies</strong><span>Answers within one business day.</span></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
   <section class="section" aria-labelledby="deliver">
     <p class="kicker">What we deliver</p>
     <h2 id="deliver">Aerial data for the people who build, move, sell, and grow on Wisconsin land</h2>
-    <p class="intro">Every project is flown by an FAA-certified remote pilot, positioned with RTK correction, and quality-checked before it reaches you. Find your line below.</p>
+    <p class="intro">Every project is positioned with RTK correction and quality-checked before it reaches you. Find your line below.</p>
 
     <div class="services">
       <article class="svc">
