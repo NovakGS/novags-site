@@ -141,7 +141,7 @@
     max-width: 820px;
     margin-top: 40px;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
     text-align: left;
   }
@@ -301,7 +301,9 @@
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
   }
+  .white-label p { margin: 0; }
   .white-label strong { font-weight: 600; }
+  .white-label .proof { justify-content: flex-start; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--edge); }
   .white-label span { color: var(--muted); }
   .proof {
     display: flex;
@@ -399,14 +401,15 @@
       </article>
     </div>
 
-    <p class="white-label"><strong>Surveyors &amp; engineers:</strong> <span>white-label RTK data capture, delivered in your coordinate system and file formats.</span></p>
-
-    <ul class="proof" aria-label="Standards">
+    <div class="white-label">
+      <p><strong>Surveyors &amp; engineers:</strong> <span>white-label RTK data capture, delivered in your coordinate system and file formats.</span></p>
+      <ul class="proof" aria-label="Standards">
       <li>FAA Part 107 certified</li>
       <li>RTK-positioned</li>
       <li>QC-checked</li>
-      <li>Your format</li>
-    </ul>
+        <li>Your format</li>
+      </ul>
+    </div>
   </section>
 
   <nav class="links section" aria-label="Pages">
@@ -417,10 +420,6 @@
     <a class="tile" href="/card/">
       <h2>Digital business card</h2>
       <p>Save our contact to your phone in one tap.</p>
-    </a>
-    <a class="tile" href="/permission-terms/">
-      <h2>Flight permission terms</h2>
-      <p>For property owners granting permission for a mapping flight.</p>
     </a>
     <a class="tile" href="/privacy">
       <h2>Privacy &amp; terms</h2>
