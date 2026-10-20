@@ -78,6 +78,7 @@
     padding-left: .3em;
   }
   .tagline .dot { color: var(--orange); }
+  .nw { white-space: nowrap; }
   .sub {
     margin: 14px 0 0;
     font-size: 17px;
@@ -203,6 +204,8 @@
     .page { padding-top: 36px; }
     .tagline { font-size: 12px; letter-spacing: .22em; padding-left: .22em; }
     .sub { font-size: 15px; }
+    .sub .sep { display: none; }
+    .sub .nw { display: block; }
     .contact { width: 100%; }
     .contact a { flex: 1 1 100%; justify-content: center; font-size: 16px; }
     .links { grid-template-columns: 1fr; margin-top: 30px; }
@@ -333,7 +336,7 @@
   <header class="hero">
     <img class="logo" src="logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338">
     <p class="tagline">Elevated Data<span class="dot">.</span> Grounded Truth<span class="dot">.</span></p>
-    <p class="sub">Drone mapping &amp; geospatial data · Southern Wisconsin</p>
+    <p class="sub"><span class="nw">Drone mapping &amp; geospatial data</span> <span class="sep">·</span> <span class="nw">Southern Wisconsin</span></p>
     <p class="status">Full website coming soon</p>
 
     <div class="contact">
@@ -492,9 +495,9 @@
 
     for (k = 1; k < LEVELS; k++) {
       var iso = 0.18 + (k / LEVELS) * 0.64;
-      if (k === ACCENT) { ctx.strokeStyle = 'rgba(232,113,26,.55)'; ctx.lineWidth = 1.6; }
-      else if (k % 3 === 0) { ctx.strokeStyle = 'rgba(70,119,160,.42)'; ctx.lineWidth = 1.2; }
-      else { ctx.strokeStyle = 'rgba(170,179,188,.16)'; ctx.lineWidth = 1; }
+      if (k === ACCENT) { ctx.strokeStyle = 'rgba(232,113,26,.7)'; ctx.lineWidth = 1.6; }
+      else if (k % 3 === 0) { ctx.strokeStyle = 'rgba(70,119,160,.55)'; ctx.lineWidth = 1.2; }
+      else { ctx.strokeStyle = 'rgba(170,179,188,.22)'; ctx.lineWidth = 1; }
       ctx.beginPath();
       for (j = 0; j < rows - 1; j++) {
         for (i = 0; i < cols - 1; i++) {
