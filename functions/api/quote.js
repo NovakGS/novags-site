@@ -300,6 +300,6 @@ export async function onRequestPost({ request, env }) {
   } catch (err) {
     if (err instanceof UserError) return json({ ok: false, error: err.message }, 400);
     console.error('quote submission failed:', err && err.message ? err.message : err);
-    return json({ ok: false, error: 'Something went wrong on our end. Please call or text 608-820-0224, or email gregg@novakgs.com.' }, 500);
+    return json({ ok: false, error: 'Something went wrong on our end. Please call or text 608-820-0224, or email info@novakgs.com.' }, 500);
   }
 }
