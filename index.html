@@ -211,6 +211,118 @@
     .status::before { animation: none; }
     .contact a, .tile { transition: none; }
   }
+  .page { justify-content: flex-start; }
+  .hero {
+    min-height: 86vh;
+    min-height: 86svh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .section {
+    width: 100%;
+    max-width: 920px;
+    margin-top: 28px;
+  }
+  .kicker {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .section > h2 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: .01em;
+  }
+  .intro {
+    max-width: 640px;
+    margin: 0 auto 26px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .services {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    text-align: left;
+  }
+  .svc {
+    padding: 20px 22px 20px;
+    border: 1px solid var(--edge);
+    border-radius: 12px;
+    background: var(--panel);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .svc .num {
+    font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace;
+    font-size: 12px;
+    letter-spacing: .1em;
+    color: var(--orange);
+  }
+  .svc h3 { margin: 4px 0 6px; font-size: 19px; font-weight: 600; }
+  .svc p { margin: 0 0 12px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .svc ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--edge); }
+  .svc li {
+    position: relative;
+    padding: 9px 0 9px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    font-size: 15px;
+  }
+  .svc li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .svc li::before {
+    content: "";
+    position: absolute;
+    left: 2px; top: 16px;
+    width: 7px; height: 7px;
+    border: 1.5px solid var(--blue);
+    transform: rotate(45deg);
+  }
+  .white-label {
+    margin-top: 14px;
+    padding: 16px 22px;
+    border: 1px solid var(--edge);
+    border-left: 3px solid var(--orange);
+    border-radius: 12px;
+    background: var(--panel);
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .white-label strong { font-weight: 600; }
+  .white-label span { color: var(--muted); }
+  .proof {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 22px;
+    margin: 22px 0 0;
+    padding: 0;
+    list-style: none;
+    font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .proof li { display: flex; align-items: center; gap: 8px; }
+  .proof li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+  .links { margin-left: auto; margin-right: auto; }
+  @media (max-width: 640px) {
+    .hero { min-height: 0; padding: 12px 0 8px; }
+    .section > h2 { font-size: 23px; }
+    .services { grid-template-columns: 1fr; }
+    .proof { font-size: 11px; gap: 8px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -218,23 +330,83 @@
 <div class="vignette" aria-hidden="true"></div>
 
 <div class="page">
-  <img class="logo" src="logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338">
-  <p class="tagline">Elevated Data<span class="dot">.</span> Grounded Truth<span class="dot">.</span></p>
-  <p class="sub">Drone mapping &amp; geospatial data · Cross Plains, Wisconsin</p>
-  <p class="status">Full website coming soon</p>
+  <header class="hero">
+    <img class="logo" src="logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338">
+    <p class="tagline">Elevated Data<span class="dot">.</span> Grounded Truth<span class="dot">.</span></p>
+    <p class="sub">Drone mapping &amp; geospatial data · Southern Wisconsin</p>
+    <p class="status">Full website coming soon</p>
 
-  <div class="contact">
-    <a href="tel:+16088200224">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-      (608) 820-0224
-    </a>
-    <a href="mailto:gregg@novakgs.com">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-      gregg@novakgs.com
-    </a>
-  </div>
+    <div class="contact">
+      <a href="tel:+16088200224">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        (608) 820-0224
+      </a>
+      <a href="mailto:gregg@novakgs.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        gregg@novakgs.com
+      </a>
+    </div>
+  </header>
 
-  <nav class="links" aria-label="Pages">
+  <section class="section" aria-labelledby="deliver">
+    <p class="kicker">What we deliver</p>
+    <h2 id="deliver">Aerial data for the people who build, move, sell, and grow on Wisconsin land</h2>
+    <p class="intro">Every project is flown by an FAA-certified remote pilot, positioned with RTK correction, and quality-checked before it reaches you. Find your line below.</p>
+
+    <div class="services">
+      <article class="svc">
+        <span class="num">01</span>
+        <h3>Developers &amp; builders</h3>
+        <p>Understand a site before you break ground, then document every phase after.</p>
+        <ul>
+          <li>Pre-development assessments</li>
+          <li>Construction progress tracking</li>
+          <li>Time-lapse &amp; marketing media</li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="num">02</span>
+        <h3>Contractors &amp; aggregate</h3>
+        <p>Measured quantities and current site maps, without walking the piles.</p>
+        <ul>
+          <li>Stockpile volume reports</li>
+          <li>Orthomosaic site maps</li>
+          <li>Progress documentation</li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="num">03</span>
+        <h3>Realtors &amp; landowners</h3>
+        <p>Show buyers the whole property, from above and in detail.</p>
+        <ul>
+          <li>Acreage listing packages</li>
+          <li>High-resolution aerial maps</li>
+          <li>Property overview imagery</li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="num">04</span>
+        <h3>Farms &amp; agriculture</h3>
+        <p>Current maps and measured volumes across fields and farmsteads.</p>
+        <ul>
+          <li>Field &amp; farmstead maps</li>
+          <li>Grain &amp; silage pile volumes</li>
+          <li>Visual crop scouting maps</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="white-label"><strong>Surveyors &amp; engineers:</strong> <span>white-label RTK data capture, delivered in your coordinate system and file formats.</span></p>
+
+    <ul class="proof" aria-label="Standards">
+      <li>FAA Part 107 certified</li>
+      <li>RTK-positioned</li>
+      <li>QC-checked</li>
+      <li>Your format</li>
+    </ul>
+  </section>
+
+  <nav class="links section" aria-label="Pages">
     <div class="tile soon" aria-disabled="true">
       <h2>Request a quote <span class="badge">Coming soon</span></h2>
       <p>Online quote requests for mapping, volumes, and site data. Until then, call, text, or email.</p>
