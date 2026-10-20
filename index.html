@@ -58,7 +58,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 48px 16px calc(28px + env(safe-area-inset-bottom));
+    padding: 40px 16px calc(28px + env(safe-area-inset-bottom));
     text-align: center;
   }
   .logo {
@@ -69,18 +69,19 @@
     filter: drop-shadow(0 6px 28px rgba(0,0,0,.55));
   }
   .tagline {
-    margin: 22px 0 0;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: .3em;
+    margin: 0 0 22px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--ink);
-    padding-left: .3em;
+    color: var(--orange);
+    padding-left: .2em;
+    text-shadow: 0 2px 18px rgba(0,0,0,.6);
   }
   .tagline .dot { color: var(--orange); }
   .nw { white-space: nowrap; }
   .sub {
-    margin: 14px 0 0;
+    margin: 18px 0 0;
     font-size: 17px;
     line-height: 1.5;
     color: var(--muted);
@@ -89,7 +90,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin: 22px 0 0;
+    margin: 16px 0 0;
     padding: 7px 14px;
     border: 1px solid var(--edge);
     border-radius: 999px;
@@ -116,7 +117,7 @@
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 22px;
   }
   .contact a {
     display: inline-flex;
@@ -201,8 +202,8 @@
   footer .tm { color: var(--muted); letter-spacing: .04em; }
 
   @media (max-width: 640px) {
-    .page { padding-top: 36px; }
-    .tagline { font-size: 12px; letter-spacing: .22em; padding-left: .22em; }
+    .page { padding-top: 28px; }
+    .tagline { font-size: 17px; letter-spacing: .12em; padding-left: .12em; margin-bottom: 16px; }
     .sub { font-size: 15px; }
     .sub .sep { display: none; }
     .sub .nw { display: block; }
@@ -216,19 +217,24 @@
   }
   .page { justify-content: flex-start; }
   .hero {
-    min-height: 86vh;
-    min-height: 86svh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+  }
+  .rule {
+    width: 100%;
+    max-width: 920px;
+    height: 1px;
+    margin: 36px 0 30px;
+    border: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.18) 20%, rgba(232,113,26,.55) 50%, rgba(255,255,255,.18) 80%, transparent);
   }
   .section {
     width: 100%;
     max-width: 920px;
-    margin-top: 28px;
   }
+  .links.section { margin-top: 14px; }
   .kicker {
     margin: 0 0 6px;
     font-size: 12px;
@@ -323,7 +329,7 @@
   .proof li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
   .links { margin-left: auto; margin-right: auto; }
   @media (max-width: 640px) {
-    .hero { min-height: 0; padding: 12px 0 8px; }
+    .rule { margin: 28px 0 24px; }
     .section > h2 { font-size: 23px; }
     .services { grid-template-columns: 1fr; }
     .proof { font-size: 11px; gap: 8px 16px; }
@@ -336,8 +342,8 @@
 
 <div class="page">
   <header class="hero">
-    <img class="logo" src="logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338">
     <p class="tagline">Elevated Data<span class="dot">.</span> Grounded Truth<span class="dot">.</span></p>
+    <img class="logo" src="logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338">
     <p class="sub"><span class="nw">Drone mapping &amp; geospatial data</span> <span class="sep">·</span> <span class="nw">Southern Wisconsin</span></p>
     <p class="status">Full website coming soon</p>
 
@@ -352,6 +358,8 @@
       </a>
     </div>
   </header>
+
+  <hr class="rule">
 
   <section class="section" aria-labelledby="deliver">
     <p class="kicker">What we deliver</p>
