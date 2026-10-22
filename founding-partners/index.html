@@ -126,10 +126,19 @@
     display: flex; flex-direction: column;
     background: var(--paper);
   }
-  .tier .name { font-weight: 700; color: var(--slate); font-size: 17px; }
+  .tier .name { font-weight: 700; color: var(--slate); font-size: 17px; padding-right: 84px; }
+  .tier.std .name { padding-right: 0; }
   .tier .who { font-size: 14px; color: var(--muted); margin: 2px 0 12px; min-height: 2.8em; }
   .tier .price { font-size: 38px; font-weight: 700; color: var(--ink); line-height: 1; }
-  .tier .save { font-size: 14px; font-weight: 700; color: var(--green); margin: 6px 0 12px; min-height: 1.4em; }
+  .tier .save { font-size: 15px; font-weight: 700; color: var(--green); margin: 6px 0 12px; min-height: 1.4em; }
+  .tier .was { font-size: 15px; color: var(--muted); margin-bottom: 2px; min-height: 1.4em; }
+  .tier .was s { text-decoration-thickness: 2px; text-decoration-color: var(--orange); }
+  .off {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--green); color: #fff;
+    font-size: 15px; font-weight: 800; letter-spacing: .02em;
+    padding: 4px 10px; border-radius: 6px;
+  }
   .tier ul { list-style: none; padding: 0; margin: 0; font-size: 15px; }
   .tier ul li { padding: 6px 0; border-top: 1px solid var(--line); }
   .tier.std { background: var(--wash); }
@@ -204,6 +213,7 @@
   @media (max-width: 720px) {
     .tiers { grid-template-columns: 1fr; gap: 20px; }
     .tier .who, .tier .save { min-height: 0; }
+    .tier.std .was { display: none; }
     .tier.best { order: -1; }
   }
   @media (max-width: 600px) {
@@ -245,7 +255,7 @@
       <div class="opt">
         <span class="tag">Optional</span>
         <h3>Busy-day aerial photo package</h3>
-        <p>8&ndash;12 edited photos of your farm in action, from $250.</p>
+        <p>8&ndash;12 edited photos of your farm in action, from $195.</p>
       </div>
     </div>
   </section>
@@ -278,13 +288,14 @@
   <section class="card">
     <p class="eyebrow">Pricing</p>
     <h2>Pick the option that suits you</h2>
-    <p>Every option includes the same 8&ndash;12 edited photos. The only difference is the price and whether we can show the photos as examples of our work.</p>
+    <p>Every option includes the same 8&ndash;12 edited photos. As a founding partner you get <strong>25% off</strong>, or <strong>50% off</strong> if you let us show the photos as examples of our work.</p>
 
     <div class="tiers">
       <div class="tier std">
         <span class="name">Standard rate</span>
         <span class="who">What this package will cost once we're fully up and running.</span>
-        <span class="price">$450</span>
+        <span class="was">&nbsp;</span>
+        <span class="price">$395</span>
         <span class="save">&nbsp;</span>
         <ul>
           <li>8&ndash;12 edited photos</li>
@@ -294,8 +305,10 @@
       <div class="tier">
         <span class="name">Founding client</span>
         <span class="who">For businesses that help us get started.</span>
-        <span class="price">$350</span>
-        <span class="save">Save $100</span>
+        <span class="off">25% off</span>
+        <span class="was">Regularly <s>$395</s></span>
+        <span class="price">$295</span>
+        <span class="save">You save $100</span>
         <ul>
           <li>8&ndash;12 edited photos</li>
           <li>Use in your own marketing</li>
@@ -306,8 +319,10 @@
         <span class="badge">Best value</span>
         <span class="name">Founding + portfolio</span>
         <span class="who">Founding pricing, and we can show the photos as our work.</span>
-        <span class="price">$250</span>
-        <span class="save">Save $200</span>
+        <span class="off">50% off</span>
+        <span class="was">Regularly <s>$395</s></span>
+        <span class="price">$195</span>
+        <span class="save">You save $200</span>
         <ul>
           <li>8&ndash;12 edited photos</li>
           <li>Use in your own marketing</li>
