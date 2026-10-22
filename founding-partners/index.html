@@ -257,6 +257,18 @@
     .glance, .two { grid-template-columns: 1fr; }
     .btn { flex: 1 1 100%; }
   }
+
+  /* Centered first box */
+  .hero { text-align: center; }
+  .hero .freebar { flex-direction: column; gap: 8px; text-align: center; }
+  .hero .tier { align-items: center; text-align: center; }
+  .hero .tier .name { padding-right: 0; }
+  .hero .tier .off { position: static; align-self: center; margin-bottom: 8px; }
+  .hero .tier.best .off { margin-top: 6px; }
+  .hero .badge { left: 50%; transform: translateX(-50%); }
+  .hero .tier p.perm { align-self: stretch; }
+  .hero .own { border-left: 0; border-radius: 8px; }
+  .hero .freebar strong, .hero .pricehead { text-wrap: balance; }
 </style>
 </head>
 <body>
