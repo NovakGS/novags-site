@@ -154,6 +154,24 @@
   .tier li.perm { color: var(--ink); }
   .tier li.perm strong { color: var(--orange); }
   .own { background: var(--orange-wash); border-left: 4px solid var(--orange); padding: 12px 16px; border-radius: 0 8px 8px 0; }
+  .hero h1 { font-size: 29px; }
+  .freebar {
+    display: flex; gap: 14px; align-items: center;
+    background: #eaf5ee; border: 2px solid var(--green); border-radius: 10px;
+    padding: 14px 16px; margin: 18px 0 22px;
+  }
+  .freebar strong { display: block; color: var(--green); font-size: 18px; line-height: 1.3; }
+  .freebar span { font-size: 15px; color: var(--ink); }
+  .freetag {
+    flex: none; background: var(--green); color: #fff !important; font-weight: 800;
+    font-size: 15px !important; letter-spacing: .06em; text-transform: uppercase;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .pricehead { font-weight: 700; color: var(--slate); margin: 0 0 4px; }
+  .tier p.perm { font-size: 15px; margin: 0; padding-top: 10px; border-top: 1px solid var(--line); }
+  .tier p.perm strong { color: var(--orange); }
+  .own { font-size: 15px; background: var(--wash); border-left: 4px solid var(--slate); padding: 10px 14px; border-radius: 0 8px 8px 0; margin-top: 16px; }
+  section.card h2 { margin-bottom: 8px; }
   .fine { font-size: 14px; color: var(--muted); margin-top: 14px; }
 
   /* Portfolio explainer */
@@ -221,6 +239,8 @@
     .tier.best { order: -1; }
   }
   @media (max-width: 600px) {
+    .hero h1 { font-size: 24px; }
+    .freebar { padding: 12px; }
     .flank { gap: 10px; }
     .side { font-size: 11px; letter-spacing: .14em; padding-left: .14em; line-height: 1.5; }
     .side.l, .side.r { text-align: center; }
@@ -245,162 +265,70 @@
 
 <div class="wrap">
 
-  <section class="card">
+  <section class="card hero">
     <p class="eyebrow">Founding partner program</p>
     <p class="prepared" id="prepared" hidden>Prepared for <strong id="partner"></strong></p>
-    <h1>Partner with us from day one.</h1>
-    <p class="lead">We're a new, local drone mapping company building our portfolio. Founding partners give us a place to fly. In return, they get a free aerial map of their property and the lowest aerial photography pricing we will ever offer.</p>
-    <div class="glance">
-      <div class="opt">
-        <span class="tag">You provide</span>
-        <h3>A place to fly</h3>
-        <p>Permission for one mapping flight over your property, about an hour, at a time that suits you.</p>
-      </div>
-      <div class="free">
-        <span class="tag">You receive</span>
-        <h3>A free aerial map, plus up to 50% off</h3>
-        <p>Your map at no cost, and founding pricing on an optional aerial photo package.</p>
+    <h1>Let us fly your property. Get a free aerial map and up to 50% off photos.</h1>
+
+    <div class="freebar">
+      <span class="freetag">Free</span>
+      <div>
+        <strong>Every partner gets a free aerial map</strong>
+        <span>A sharp, map-accurate image of your whole property from the mapping flight. No purchase needed.</span>
       </div>
     </div>
-  </section>
 
-  <section class="card">
-    <p class="eyebrow">Partner benefit 1 &middot; Free</p>
-    <h2>Your free aerial map</h2>
-    <p>On the mapping flight, the drone flies a grid over your property and takes hundreds of overlapping photos. We stitch them into one seamless, map-accurate image of the whole property, called an orthomosaic. Think of it as your own current, high-resolution version of Google Earth.</p>
-    <ul class="checks">
-      <li>Sharp enough to see individual fence posts, rows and paths</li>
-      <li>Useful for planning parking, layouts, landscaping, drainage and improvements</li>
-      <li>Delivered as a download link you can keep and print</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <p class="eyebrow">Partner benefit 2 &middot; Optional</p>
-    <h2>Busy-day aerial photo package</h2>
-    <p>We come back on one of your busy days and photograph your property the way your customers experience it: a full parking lot, busy grounds, your operation in action. Shots are taken high enough that no one can be identified, so the photos are ready for your website, social media, ads and print.</p>
-    <ul class="checks">
-      <li><strong>8&ndash;12 finished photos</strong>, each one hand-edited for color, exposure, straight horizons and clean cropping</li>
-      <li>A mix of wide views of the whole property and closer views of the features that matter most to you</li>
-      <li>Full-resolution files for print, plus web-sized copies for social media</li>
-      <li>Delivered within 5 business days by download link</li>
-      <li><strong>The photos are yours</strong>, with full rights to use them however you like: website, social media, ads, print and signage</li>
-      <li>Flown by an FAA-certified remote pilot, never directly over people</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <p class="eyebrow">Pricing</p>
-    <h2>Founding partner pricing</h2>
-    <p>Every option includes the same 8&ndash;12 edited photos, and you keep full rights to them in every option. As a founding partner you get <strong>25% off</strong>. For <strong>50% off</strong>, you also give us permission to use the photos in our own marketing.</p>
-
+    <p class="pricehead">Optional: busy-day aerial photo package &middot; 8&ndash;12 edited photos</p>
     <div class="tiers">
-      <div class="tier std">
-        <span class="name">Standard rate</span>
-        <span class="who">What this package will cost once we're fully up and running.</span>
-        <span class="was">&nbsp;</span>
-        <span class="price">$395</span>
-        <span class="save">&nbsp;</span>
-        <ul>
-          <li>8&ndash;12 edited photos</li>
-          <li>Full rights to your photos</li>
-        </ul>
-      </div>
-      <div class="tier">
-        <span class="name">Founding client</span>
-        <span class="who">For businesses that help us get started.</span>
-        <span class="off">25% off</span>
-        <span class="was">Regularly <s>$395</s></span>
-        <span class="price">$295</span>
-        <span class="save">You save $100</span>
-        <ul>
-          <li>8&ndash;12 edited photos</li>
-          <li>Full rights to your photos</li>
-          <li>We do not use your photos in our marketing</li>
-        </ul>
-      </div>
       <div class="tier best">
         <span class="badge">Best value</span>
-        <span class="name">Founding + portfolio</span>
-        <span class="who">Our steepest discount, in exchange for permission to use your photos in our marketing.</span>
         <span class="off">50% off</span>
+        <span class="name">Founding + portfolio</span>
         <span class="was">Regularly <s>$395</s></span>
         <span class="price">$195</span>
         <span class="save">You save $200</span>
-        <ul>
-          <li>8&ndash;12 edited photos</li>
-          <li>Full rights to your photos</li>
-          <li class="perm"><strong>In exchange:</strong> we may use the photos in our marketing and credit your business by name</li>
-        </ul>
+        <p class="perm"><strong>In exchange:</strong> we may use the photos in our marketing.</p>
+      </div>
+      <div class="tier">
+        <span class="off">25% off</span>
+        <span class="name">Founding client</span>
+        <span class="was">Regularly <s>$395</s></span>
+        <span class="price">$295</span>
+        <span class="save">You save $100</span>
+        <p class="perm">We don't use your photos.</p>
+      </div>
+      <div class="tier std">
+        <span class="name">Standard rate</span>
+        <span class="was">After launch</span>
+        <span class="price">$395</span>
       </div>
     </div>
-    <p class="fine">Founding pricing is limited to our first few partners and applies to bookings made by June 30, 2027. Sales tax added where it applies. You pay only after your photos are delivered.</p>
+    <p class="own"><strong>You own your photos with full rights in every option.</strong> The 50% option only adds our permission to show them.</p>
   </section>
 
   <section class="card">
-    <p class="eyebrow">The portfolio option, explained</p>
-    <h2>What &ldquo;portfolio use&rdquo; means</h2>
-    <p class="own"><strong>You still own your photos and keep full rights to them.</strong> Choosing the 50% option adds one thing: permission for us to use those same photos in our marketing. Nothing is taken away from you.</p>
-    <div class="two">
-      <div>
-        <h3>We may</h3>
-        <ul>
-          <li>Show the photos on our website and social media</li>
-          <li>Use them in our brochures and proposals</li>
-          <li>Credit and tag your business by name, which is free exposure for you</li>
-        </ul>
-      </div>
-      <div>
-        <h3>We will never</h3>
-        <ul>
-          <li>Sell your photos or license them to anyone else</li>
-          <li>Use a photo where a person can be identified</li>
-          <li>Keep up a photo you ask us to take down</li>
-        </ul>
-      </div>
-    </div>
+    <h2>What's in the photo package</h2>
+    <ul class="checks">
+      <li>8&ndash;12 hand-edited photos taken on one of your busiest days</li>
+      <li>Full-resolution and web-sized files, delivered in 5 business days</li>
+      <li>Flown high and never over people, so no one is identifiable</li>
+      <li>You pay only after delivery</li>
+    </ul>
   </section>
 
   <section class="card">
-    <p class="eyebrow">Step by step</p>
-    <h2>How the partnership works</h2>
+    <h2>How it works</h2>
     <ol class="steps">
-      <li><strong>Grant permission.</strong> You give us permission to fly, and we schedule the mapping flight at a time that works for you.</li>
-      <li><strong>Get your map.</strong> We fly the property and send your free aerial map. That alone completes the partnership.</li>
-      <li><strong>Choose your option.</strong> If you'd like the photo package, tell us which pricing option you want. No pressure either way.</li>
-      <li><strong>Pick a busy day.</strong> We agree on a day together, such as a big weekend, an event or your peak season. We launch from a spot you approve, away from people, and are typically on site about an hour.</li>
-      <li><strong>Delivery, then payment.</strong> Your edited photos arrive within 5 business days. We send an invoice after delivery.</li>
+      <li><strong>Grant permission</strong> and we schedule the mapping flight.</li>
+      <li><strong>Get your free map.</strong> That's it, unless you want photos.</li>
+      <li><strong>Want photos?</strong> Pick an option and a busy day.</li>
+      <li><strong>Receive photos,</strong> then pay the invoice.</li>
     </ol>
-  </section>
-
-  <section class="card">
-    <p class="eyebrow">Questions</p>
-    <h2>Common questions</h2>
-    <details>
-      <summary>Is the aerial map really free?</summary>
-      <p>Yes. You're giving us a place to fly and refine our mapping work, and the map is our thank-you. There's no obligation to buy anything.</p>
-    </details>
-    <details>
-      <summary>Will my customers notice the drone or end up in the photos?</summary>
-      <p>We fly high and off to the side, never directly over people. People appear only as small figures that give the scene life; no one can be recognized.</p>
-    </details>
-    <details>
-      <summary>What if the weather is bad on our busy day?</summary>
-      <p>Safety comes first, so we won't fly in high wind, rain or poor visibility. We'll simply pick another busy day at no extra cost.</p>
-    </details>
-    <details>
-      <summary>Who owns the photos?</summary>
-      <p>You do. The finished photos are yours, with full rights to use, edit, publish and print them however you like. With the 50% option, we keep only a permission to use them in our own marketing. With the other options, we don't use them at all.</p>
-    </details>
-    <details>
-      <summary>Can I switch options later?</summary>
-      <p>Yes. If you choose Founding client and later decide you're happy for us to feature the photos, just tell us and we'll refund the $100 difference.</p>
-    </details>
+    <p class="fine">Founding pricing is for our first few partners, booked by June 30, 2027. Sales tax where applicable. Bad weather? We reschedule free.</p>
   </section>
 
   <section class="card cta">
-    <h2>Ready, or have a question?</h2>
-    <p>Call, text or email us and we'll get back to you within one business day.</p>
+    <h2>Questions or ready to start?</h2>
     <div class="buttons">
       <a class="btn primary" href="sms:+16088200224">Text 608-820-0224</a>
       <a class="btn ghost" id="mail" href="mailto:info@novakgs.com?subject=Founding%20partner%20program">Email us</a>
