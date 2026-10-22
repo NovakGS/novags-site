@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Founding Partner Offer | Novak Geospatial Solutions</title>
+<meta name="description" content="A free aerial map of your property, plus founding-partner pricing on a busy-day aerial photo package.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
+<link rel="apple-touch-icon" href="/favicon-128.png">
+<meta name="theme-color" content="#ffffff">
+<style>
+  :root {
+    --ink: #1f2a33;
+    --muted: #5b6670;
+    --slate: #2e4a62;
+    --blue: #4677a0;
+    --orange: #e8711a;
+    --orange-wash: #fdf1e7;
+    --green: #2f7a4f;
+    --line: #d4d7db;
+    --paper: #ffffff;
+    --wash: #f4f5f6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--wash);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); }
+  header {
+    background: var(--paper);
+    border-bottom: 4px solid var(--orange);
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .flank { display: flex; align-items: center; justify-content: center; gap: 28px; }
+  .flank a { display: block; flex: none; width: min(260px, 48vw); }
+  .flank img { width: 100%; height: auto; display: block; }
+  .side {
+    flex: 1;
+    color: var(--slate);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+  }
+  .side.l { text-align: right; }
+  .side.r { text-align: left; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+  section.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 30px 34px;
+    margin: 22px 0;
+  }
+  .eyebrow {
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  h1 { color: var(--slate); font-size: 32px; line-height: 1.2; margin: 0 0 10px; }
+  h2 { color: var(--slate); font-size: 23px; line-height: 1.25; margin: 0 0 10px; }
+  h3 { color: var(--slate); font-size: 18px; margin: 0 0 4px; }
+  p { margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  .prepared {
+    display: inline-block;
+    background: var(--wash);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  .prepared strong { color: var(--slate); }
+  .lead { font-size: 18px; }
+
+  /* At-a-glance */
+  .glance { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+  .glance div {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .glance .tag {
+    font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  }
+  .glance .free .tag { color: var(--green); }
+  .glance .opt .tag { color: var(--orange); }
+  .glance h3 { margin-top: 4px; }
+  .glance p { font-size: 15px; color: var(--muted); }
+
+  /* Lists */
+  ul.checks { list-style: none; padding: 0; margin: 6px 0 0; }
+  ul.checks li { position: relative; padding: 7px 0 7px 32px; border-top: 1px solid var(--line); }
+  ul.checks li:first-child { border-top: 0; }
+  ul.checks li::before {
+    content: "";
+    position: absolute; left: 4px; top: 13px;
+    width: 14px; height: 8px;
+    border-left: 3px solid var(--orange);
+    border-bottom: 3px solid var(--orange);
+    transform: rotate(-45deg);
+  }
+
+  /* Pricing */
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+  .tier {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px 18px 18px;
+    display: flex; flex-direction: column;
+    background: var(--paper);
+  }
+  .tier .name { font-weight: 700; color: var(--slate); font-size: 17px; }
+  .tier .who { font-size: 14px; color: var(--muted); margin: 2px 0 12px; min-height: 2.8em; }
+  .tier .price { font-size: 38px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .tier .save { font-size: 14px; font-weight: 700; color: var(--green); margin: 6px 0 12px; min-height: 1.4em; }
+  .tier ul { list-style: none; padding: 0; margin: 0; font-size: 15px; }
+  .tier ul li { padding: 6px 0; border-top: 1px solid var(--line); }
+  .tier.std { background: var(--wash); }
+  .tier.std .price { color: var(--muted); }
+  .tier.best { border: 2px solid var(--orange); background: var(--orange-wash); }
+  .badge {
+    position: absolute; top: -12px; left: 18px;
+    background: var(--orange); color: #fff;
+    font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 999px;
+  }
+  .fine { font-size: 14px; color: var(--muted); margin-top: 14px; }
+
+  /* Portfolio explainer */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  .two h3 { font-size: 16px; }
+  .two ul { padding-left: 20px; margin: 4px 0 0; font-size: 16px; }
+  .two ul li { margin: 4px 0; }
+
+  /* Steps */
+  ol.steps { list-style: none; counter-reset: step; padding: 0; margin: 8px 0 0; }
+  ol.steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 14px 0 14px 52px;
+    border-top: 1px solid var(--line);
+  }
+  ol.steps li:first-child { border-top: 0; }
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 14px;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--slate); color: #fff;
+    font-weight: 600; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps strong { color: var(--slate); }
+
+  /* FAQ */
+  details { border-top: 1px solid var(--line); padding: 12px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary {
+    cursor: pointer; font-weight: 600; color: var(--slate);
+    list-style: none; position: relative; padding-right: 28px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; position: absolute; right: 4px; top: -2px;
+    font-size: 22px; color: var(--orange); font-weight: 400;
+  }
+  details[open] summary::after { content: "\2212"; }
+  details p { margin: 8px 0 0; font-size: 16px; }
+
+  /* Contact */
+  section.card.cta { background: var(--slate); color: #fff; border: 0; text-align: center; }
+  .cta h2 { color: #fff; }
+  .cta p { color: #dbe3ea; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 16px; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 700;
+    padding: 12px 22px; border-radius: 8px; min-width: 150px;
+  }
+  .btn.primary { background: var(--orange); color: #fff; }
+  .btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.55); }
+
+  footer {
+    text-align: center; color: var(--muted); font-size: 14px;
+    padding: 6px 16px 32px;
+  }
+  footer .tag { color: var(--slate); font-weight: 600; letter-spacing: .04em; margin: 0 0 4px; }
+
+  @media (max-width: 720px) {
+    .tiers { grid-template-columns: 1fr; gap: 20px; }
+    .tier .who, .tier .save { min-height: 0; }
+    .tier.best { order: -1; }
+  }
+  @media (max-width: 600px) {
+    .flank { gap: 10px; }
+    .side { font-size: 11px; letter-spacing: .14em; padding-left: .14em; line-height: 1.5; }
+    .side.l, .side.r { text-align: center; }
+    body { font-size: 16px; }
+    section.card { padding: 22px 18px; margin: 14px 0; }
+    h1 { font-size: 26px; }
+    h2 { font-size: 21px; }
+    .lead { font-size: 17px; }
+    .glance, .two { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="flank">
+    <span class="side l">Elevated Data</span>
+    <a href="https://novakgs.com/" aria-label="Novak Geospatial Solutions home"><img src="novakgs-logo.png" alt="Novak Geospatial Solutions" width="640" height="311"></a>
+    <span class="side r">Grounded Truth</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="card">
+    <p class="eyebrow">Founding partner offer</p>
+    <p class="prepared" id="prepared" hidden>Prepared for <strong id="partner"></strong></p>
+    <h1>Thank you for letting us fly.</h1>
+    <p class="lead">You're helping a new local business get off the ground. Here's what you get for it, and an optional photo package at a price we won't offer again once we're fully up and running.</p>
+    <div class="glance">
+      <div class="free">
+        <span class="tag">Free</span>
+        <h3>Aerial map of your property</h3>
+        <p>Comes with the practice mapping flight. Nothing to buy.</p>
+      </div>
+      <div class="opt">
+        <span class="tag">Optional</span>
+        <h3>Busy-day aerial photo package</h3>
+        <p>8&ndash;12 edited photos of your farm in action, from $250.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="eyebrow">Included at no cost</p>
+    <h2>Your free aerial map</h2>
+    <p>On the mapping flight, the drone flies a grid over your property and takes hundreds of overlapping photos. We stitch them into one seamless, map-accurate image of the whole property, called an orthomosaic. Think of it as your own current, high-resolution version of Google Earth.</p>
+    <ul class="checks">
+      <li>Sharp enough to see individual fence posts, rows and paths</li>
+      <li>Useful for planning parking, maze layouts, plantings and drainage</li>
+      <li>Delivered as a download link you can keep and print</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <p class="eyebrow">Optional add-on</p>
+    <h2>Busy-day aerial photo package</h2>
+    <p>We come back on one of your busy days and photograph the farm the way your guests experience it: full parking, wagons moving, families in the maze. Shots are taken high enough that no one can be identified, so the photos are ready for your website, social media, ads and print.</p>
+    <ul class="checks">
+      <li><strong>8&ndash;12 finished photos</strong>, each one hand-edited for color, exposure, straight horizons and clean cropping</li>
+      <li>A mix of wide views of the whole farm and closer views of your main attractions</li>
+      <li>Full-resolution files for print, plus web-sized copies for social media</li>
+      <li>Delivered within 5 business days by download link</li>
+      <li>Permission to use the photos in your own marketing, with no time limit</li>
+      <li>Flown by an FAA-certified remote pilot, never directly over guests</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <p class="eyebrow">Pricing</p>
+    <h2>Pick the option that suits you</h2>
+    <p>Every option includes the same 8&ndash;12 edited photos. The only difference is the price and whether we can show the photos as examples of our work.</p>
+
+    <div class="tiers">
+      <div class="tier std">
+        <span class="name">Standard rate</span>
+        <span class="who">What this package will cost once we're fully up and running.</span>
+        <span class="price">$450</span>
+        <span class="save">&nbsp;</span>
+        <ul>
+          <li>8&ndash;12 edited photos</li>
+          <li>Use in your own marketing</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <span class="name">Founding client</span>
+        <span class="who">For businesses that help us get started.</span>
+        <span class="price">$350</span>
+        <span class="save">Save $100</span>
+        <ul>
+          <li>8&ndash;12 edited photos</li>
+          <li>Use in your own marketing</li>
+          <li>Photos stay private to you</li>
+        </ul>
+      </div>
+      <div class="tier best">
+        <span class="badge">Best value</span>
+        <span class="name">Founding + portfolio</span>
+        <span class="who">Founding pricing, and we can show the photos as our work.</span>
+        <span class="price">$250</span>
+        <span class="save">Save $200</span>
+        <ul>
+          <li>8&ndash;12 edited photos</li>
+          <li>Use in your own marketing</li>
+          <li>We may feature the photos and credit your farm by name</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Founding pricing is limited to our first few partners and applies to bookings made by June 30, 2027. Sales tax added where it applies. You pay only after your photos are delivered.</p>
+  </section>
+
+  <section class="card">
+    <p class="eyebrow">The portfolio option, explained</p>
+    <h2>What &ldquo;portfolio use&rdquo; means</h2>
+    <div class="two">
+      <div>
+        <h3>We may</h3>
+        <ul>
+          <li>Show the photos on our website and social media</li>
+          <li>Use them in our brochures and proposals</li>
+          <li>Credit and tag your farm by name, which is free exposure for you</li>
+        </ul>
+      </div>
+      <div>
+        <h3>We will never</h3>
+        <ul>
+          <li>Sell your photos or license them to anyone else</li>
+          <li>Use a photo where a person can be identified</li>
+          <li>Keep up a photo you ask us to take down</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="eyebrow">How it works</p>
+    <h2>Four simple steps</h2>
+    <ol class="steps">
+      <li><strong>Mapping flight.</strong> We fly the practice mapping flight at a time that works for you and send your free aerial map.</li>
+      <li><strong>Choose your option.</strong> If you'd like the photo package, tell us which pricing option you want. No pressure either way.</li>
+      <li><strong>Pick a busy day.</strong> We agree on a day together, such as a fall weekend or a Christmas tree weekend. We launch from a spot you approve, away from guests, and are typically on site about an hour.</li>
+      <li><strong>Delivery, then payment.</strong> Your edited photos arrive within 5 business days. We send an invoice after delivery.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <p class="eyebrow">Questions</p>
+    <h2>Common questions</h2>
+    <details>
+      <summary>Is the aerial map really free?</summary>
+      <p>Yes. You're giving us a place to practice and refine our mapping work, and the map is our thank-you. There's no obligation to buy anything.</p>
+    </details>
+    <details>
+      <summary>Will my guests notice the drone or end up in the photos?</summary>
+      <p>We fly high and off to the side, never directly over guests. People appear only as small figures that give the scene life; no one can be recognized.</p>
+    </details>
+    <details>
+      <summary>What if the weather is bad on our busy day?</summary>
+      <p>Safety comes first, so we won't fly in high wind, rain or poor visibility. We'll simply pick another busy day at no extra cost.</p>
+    </details>
+    <details>
+      <summary>Who owns the photos?</summary>
+      <p>We keep the copyright, and you get permanent permission to use them for your business: website, social media, ads, signage and print. The only thing you can't do is resell them.</p>
+    </details>
+    <details>
+      <summary>Can I switch options later?</summary>
+      <p>Yes. If you choose Founding client and later decide you're happy for us to feature the photos, just tell us and we'll refund the $100 difference.</p>
+    </details>
+  </section>
+
+  <section class="card cta">
+    <h2>Ready, or have a question?</h2>
+    <p>Call, text or email us and we'll get back to you within one business day.</p>
+    <div class="buttons">
+      <a class="btn primary" href="sms:+16088200224">Text 608-820-0224</a>
+      <a class="btn ghost" id="mail" href="mailto:info@novakgs.com?subject=Founding%20partner%20offer">Email us</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p class="tag">Elevated Data | Grounded Truth</p>
+  <p>Novak Geospatial Solutions &middot; <a href="https://novakgs.com/">novakgs.com</a> &middot; <a href="tel:+16088200224" style="white-space:nowrap">608-820-0224</a></p>
+</footer>
+
+<script>
+  // Personalize with ?for=Business+Name (e.g. ?for=Enchanted+Valley+Acres)
+  (function () {
+    try {
+      var name = new URLSearchParams(location.search).get("for");
+      if (!name) return;
+      name = name.trim().slice(0, 80);
+      if (!name) return;
+      document.getElementById("partner").textContent = name;
+      document.getElementById("prepared").hidden = false;
+      document.title = "Founding Partner Offer for " + name + " | Novak Geospatial Solutions";
+      var mail = document.getElementById("mail");
+      mail.href = "mailto:info@novakgs.com?subject=" + encodeURIComponent("Founding partner offer - " + name);
+    } catch (e) {}
+  })();
+</script>
+</body>
+</html>
