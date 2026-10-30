@@ -30,7 +30,7 @@ const SERVICES = [
   'Pre-development assessment', 'Build progress monitoring', 'Time-lapse & marketing media',
   'Stockpile volume reports', 'Orthomosaic site maps', 'Progress documentation',
   'Acreage listing package', 'High-resolution aerial maps', 'Property overview imagery',
-  'Field & farmstead maps', 'Grain & silage pile volumes', 'Visual crop scouting maps',
+  'Field & farmstead maps', 'Grain & silage pile volumes', 'Cut/fill analysis', 'Visual crop scouting maps',
   'White-label RTK data capture', '3D structure model & measurements', 'Not sure — help me choose',
 ];
 const FORMATS = ['PDF report', 'Images', 'GeoTIFF', 'KMZ', 'CAD (DXF)', 'Point cloud (LAS)', '3D model (OBJ)', '3D viewer link', 'Not sure'];
