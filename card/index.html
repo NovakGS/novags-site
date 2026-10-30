@@ -24,7 +24,7 @@
   .home { display: block; width: 300px; max-width: 80%; }
   .logo { width: 100%; height: auto; display: block; }
   h1 { font-size: 26px; font-weight: 600; margin: 28px 0 2px; letter-spacing: -0.01em; }
-  .role { margin: 0; color: #aab3bc; font-size: 16px; }
+  .role { margin: 0; color: #bec6ce; font-size: 16px; }
   .actions { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 30px; }
   .btn {
     display: flex; align-items: center; justify-content: center; gap: 12px;
@@ -44,13 +44,15 @@
   .btn svg { width: 22px; height: 22px; flex-shrink: 0; }
   .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .row .btn { flex-direction: column; gap: 6px; min-height: 76px; font-size: 15px; padding: 12px 8px; }
-  .hint { margin: 10px 0 0; font-size: 14px; color: #8d97a1; }
-  .tag { margin-top: 36px; font-size: 13px; letter-spacing: .28em; text-transform: uppercase; color: #aab3bc; }
+  .hint { margin: 10px 0 0; font-size: 14px; color: #a4adb6; }
+  .tag { margin-top: 36px; font-size: 13px; letter-spacing: .28em; text-transform: uppercase; color: #bec6ce; }
   footer { margin-top: 28px; font-size: 13px; color: #7d8790; }
-  footer a { color: #aab3bc; }
+  footer a { color: #bec6ce; }
+  main.wrap { position: relative; z-index: 1; }
 </style>
+<script src="/topo.js" defer></script>
 </head>
-<body>
+<body data-topo="page">
 <main class="wrap">
   <a class="home" href="/"><img class="logo" src="/logo-dark.png" alt="Novak GS — Geospatial Solutions home" width="732" height="338"></a>
   <h1>Novak GS</h1>

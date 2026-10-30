@@ -35,7 +35,7 @@
   }
   a { color: var(--blue); }
   header {
-    background: var(--paper);
+    background: #0a0d12 url("/topo-bg.jpg") center / cover no-repeat;
     border-bottom: 4px solid var(--orange);
     padding: 20px 16px;
     text-align: center;
@@ -45,7 +45,7 @@
   .flank img { width: 100%; height: auto; display: block; }
   .side {
     flex: 1;
-    color: var(--slate);
+    color: #c9d0d7;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: .22em;
@@ -275,12 +275,13 @@
   .nopay { background: #eaf5ee; border-left: 4px solid var(--green); padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0 14px; font-size: 16px; }
   .nopay strong { color: var(--green); }
 </style>
+<script src="/topo.js" defer></script>
 </head>
 <body>
-<header>
+<header data-topo="band">
   <div class="flank">
     <span class="side l">Elevated Data</span>
-    <a href="https://novakgs.com/" aria-label="Novak Geospatial Solutions home"><img src="novakgs-logo.png" alt="Novak Geospatial Solutions" width="640" height="311"></a>
+    <a href="https://novakgs.com/" aria-label="Novak Geospatial Solutions home"><img src="/logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338"></a>
     <span class="side r">Grounded Truth</span>
   </div>
 </header>

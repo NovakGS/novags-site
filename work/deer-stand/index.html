@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hunting Stand 3D Capture | Novak Geospatial Solutions</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Case study: an elevated hunting stand captured in full 3D from one automated DJI Matrice 4E flight.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
+<link rel="apple-touch-icon" href="/favicon-128.png">
+<meta name="theme-color" content="#0a0d12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: novakgs.com's dark topo look; full-bleed orbit video hero, then a single 960px column of capture specs, QC, views and deliverables. */
+  :root {
+    --bg: #0a0d12;
+    --ink: #eef1f3;
+    --muted: #bec6ce;
+    --faint: #a4adb6;
+    --orange: #e8711a;
+    --blue: #4677a0;
+    --panel: rgba(12, 16, 22, .78);
+    --panel-solid: #10151c;
+    --edge: rgba(255, 255, 255, .12);
+    --hair: rgba(255, 255, 255, .06);
+    --sans: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    --mono: "Roboto Mono", "SFMono-Regular", Consolas, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg) url("/topo-bg.jpg") center top / cover no-repeat fixed;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .shade {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(ellipse 70% 60% at 50% 42%, rgba(10,13,18,.15) 0%, rgba(10,13,18,.72) 70%, rgba(10,13,18,.92) 100%);
+  }
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 1000px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 18px 40px;
+    display: flex; flex-direction: column; gap: 44px;
+  }
+  a { color: var(--ink); }
+  a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+
+  /* top bar */
+  .bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+  .bar .tagline { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--orange); white-space: nowrap; text-shadow: 0 2px 18px rgba(0,0,0,.6); }
+  .bar .tagline .sep { color: var(--muted); margin: 0 .5em; font-weight: 400; }
+  .bar .back { justify-self: end; }
+  @media (max-width: 760px) {
+    .bar { grid-template-columns: 1fr auto; }
+    .bar .tagline { grid-column: 1 / -1; grid-row: 2; justify-self: center; font-size: 12px; letter-spacing: .18em; }
+  }
+  .bar img { height: 92px; width: auto; max-width: 70vw; object-fit: contain; display: block; }
+  .bar .back { font-size: 14px; color: var(--muted); text-decoration: none; padding: 9px 16px; border: 1px solid var(--edge); border-radius: 999px; background: var(--panel); }
+  .bar .back:hover { border-color: var(--orange); color: var(--ink); }
+
+  /* hero */
+  .hero { display: flex; flex-direction: column; gap: 18px; }
+  .kicker { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--orange); }
+  h1 { margin: 0; font-size: clamp(30px, 5vw, 46px); line-height: 1.08; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; }
+  .fit { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .fit-k { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; }
+  .fit ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .fit li { font-size: 13px; color: var(--ink); padding: 5px 12px; border: 1px solid rgba(70,119,160,.65); border-radius: 999px; background: rgba(70,119,160,.14); }
+  .lede { margin: 0; max-width: none; font-size: 18px; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
+  .lede-em { display: block; margin-top: 6px; font-weight: 500; color: var(--ink); }
+  .lede strong { color: var(--ink); font-weight: 600; }
+  .stage {
+    position: relative; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden;
+    background: #05070a; aspect-ratio: 16 / 9; max-width: 100%;
+  }
+  .stage video { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .stage .tag {
+    position: absolute; left: 14px; bottom: 14px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); background: rgba(5,7,10,.72); border: 1px solid var(--edge); border-radius: 999px; padding: 6px 12px;
+  }
+  .stage .tag b { color: var(--orange); font-weight: 500; }
+
+  /* spec strip */
+  .specs {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); overflow: hidden;
+  }
+  .specs li { padding: 14px 18px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair); min-width: 0; }
+  .specs li:nth-child(4n) { border-right: 0; }
+  .specs li:nth-last-child(-n+4) { border-bottom: 0; }
+  @media (max-width: 820px) and (min-width: 561px) {
+    .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .specs li:nth-child(n) { border-bottom: 1px solid var(--hair); }
+    .specs li:nth-child(2n) { border-right: 0; }
+    .specs li:nth-last-child(-n+2) { border-bottom: 0; }
+  }
+  .specs .k { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; margin-bottom: 4px; }
+  .specs .v { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .specs .v small { font-size: 13px; font-weight: 400; color: var(--muted); }
+
+  /* sections */
+  section { display: flex; flex-direction: column; gap: 16px; }
+  h2 { margin: 0; font-size: 26px; font-weight: 600; text-wrap: balance; }
+  .two { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; align-items: start; }
+  .two > * { min-width: 0; }
+  .prose p { margin: 0 0 12px; font-size: 16px; line-height: 1.65; color: var(--muted); max-width: 62ch; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .qc { border: 1px solid var(--edge); border-top: 2px solid var(--orange); border-radius: 12px; background: var(--panel); padding: 18px 20px; }
+  .qc h3 { margin: 0 0 12px; font-size: 13px; font-family: var(--mono); font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
+  .meter { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .meter .row { display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .meter .row b { color: var(--ink); font-weight: 600; }
+  .track { height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .track i { display: block; height: 100%; width: 98%; background: linear-gradient(90deg, var(--blue), var(--orange)); border-radius: 999px; }
+  .checks { list-style: none; margin: 0; padding: 0; }
+  .checks li { position: relative; padding: 9px 0 9px 22px; border-top: 1px solid var(--hair); font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .checks li::before { content: ""; position: absolute; left: 2px; top: 14px; width: 8px; height: 4px; border-left: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(-45deg); }
+  .checks li b { color: var(--ink); font-weight: 600; }
+
+  /* views */
+  .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  figure { margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a; }
+  figure img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  figure.wide img { aspect-ratio: 16 / 9; }
+  figcaption { display: flex; gap: 10px; align-items: baseline; padding: 10px 14px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 14px; color: var(--muted); }
+  figcaption span { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--orange); }
+
+  /* deliverables */
+  .deliv { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .deliv li { padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); min-width: 0; }
+  .deliv strong { display: block; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .deliv span { font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .deliv code { font-family: var(--mono); font-size: 12px; color: var(--ink); background: rgba(255,255,255,.06); border-radius: 4px; padding: 1px 5px; }
+
+  .uses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .uses li { padding: 16px 18px; border: 1px solid var(--edge); border-left: 3px solid var(--blue); border-radius: 10px; background: var(--panel); min-width: 0; }
+  .uses strong { display: block; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .uses span { font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+  .note { margin: 0; font-size: 13px; line-height: 1.55; color: var(--faint); max-width: 80ch; }
+
+  /* cta */
+  .cta { border: 1px solid var(--edge); border-radius: 14px; background: var(--panel); padding: 24px; display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; justify-content: space-between; }
+  .cta h2 { font-size: 22px; }
+  .cta p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+  .cta .contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .cta .btn { display: inline-flex; align-items: center; padding: 12px 22px; border-radius: 999px; background: var(--orange); color: #12161c; font-weight: 600; text-decoration: none; }
+  .cta .btn:hover { filter: brightness(1.08); }
+  .cta .plain { font-family: var(--mono); font-size: 14px; color: var(--ink); padding: 11px 16px; border: 1px solid var(--edge); border-radius: 999px; user-select: all; }
+
+  footer { text-align: center; font-size: 13px; line-height: 1.7; color: var(--faint); }
+
+  @media (max-width: 760px) {
+    .two { grid-template-columns: 1fr; }
+    .uses { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .wrap { gap: 34px; }
+    .bar img { height: 64px; }
+    .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .specs li { border-right: 1px solid var(--hair) !important; border-bottom: 1px solid var(--hair) !important; }
+    .specs li:nth-child(2n) { border-right: 0 !important; }
+    .specs li:nth-last-child(-n+2) { border-bottom: 0 !important; }
+    .views, .deliv { grid-template-columns: 1fr; }
+    .cta { padding: 20px; }
+  }
+</style>
+<script src="/topo.js" defer></script>
+</head>
+<body data-topo="page">
+<div class="shade" aria-hidden="true"></div>
+<main class="wrap">
+  <header class="bar">
+    <img src="/logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338">
+    <p class="tagline">Elevated Data<span class="sep">|</span>Grounded Truth</p>
+    <a class="back" href="/">novakgs.com</a>
+  </header>
+
+  <div class="hero">
+    <p class="kicker">Case study · 3D structure capture</p>
+    <h1>Measurable 3D models.<br>One automated flight.</h1>
+    <div class="fit" aria-label="Good fit for">
+      <span class="fit-k">Good fit for</span>
+      <ul>
+        <li>Insurance &amp; condition records</li>
+        <li>Visual inspection</li>
+        <li>Farm &amp; rural</li>
+        <li>Family legacy</li>
+      </ul>
+    </div>
+    <p class="lede">On a private property in Dane County, we flew a single automated orbit around an elevated hunting stand and turned 842 RTK-tagged photos into a measurable, textured 3D model. It&rsquo;s Wisconsin, after all. Deer stands are infrastructure.<span class="lede-em">Every stair, brace and leg is there, at <strong>true real-world scale</strong>.</span></p>
+    <div class="stage">
+      <video src="flythrough.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Flythrough of the textured 3D model of the hunting stand, circling from ground level to overhead"></video>
+      <span class="tag"><b>●</b> Textured 3D mesh · flythrough</span>
+    </div>
+  </div>
+
+  <ul class="specs" aria-label="Capture and quality numbers">
+    <li><span class="k">Photos</span><span class="v">842 <small>nadir + oblique</small></span></li>
+    <li><span class="k">Images aligned</span><span class="v">98% <small>825 of 842</small></span></li>
+    <li><span class="k">RTK fixed</span><span class="v">100% <small>842 of 842</small></span></li>
+    <li><span class="k">Image detail</span><span class="v">0.18 in <small>per pixel</small></span></li>
+    <li><span class="k">Georeferencing RMSE</span><span class="v">0.031 ft <small>≈ 3/8 in</small></span></li>
+    <li><span class="k">Tie points</span><span class="v">255,608</span></li>
+    <li><span class="k">Positioning</span><span class="v">Network RTK <small>WISCORS</small></span></li>
+    <li><span class="k">Heights</span><span class="v">NAVD88 <small>GEOID18, US ft</small></span></li>
+  </ul>
+
+  <section aria-labelledby="how">
+    <p class="kicker">How it was made</p>
+    <h2 id="how">One flight, every angle</h2>
+    <div class="two">
+      <div class="prose">
+        <p>Thin, open structures are hard to model. Ladder rungs, cross-bracing and railings tend to melt together or break apart. We used the Matrice 4E's <strong>Smart 3D Capture</strong> mode, which flies stacked orbits around the structure at several heights and angles, so every face is photographed from more than one direction.</p>
+        <p>Each photo is tagged with an <strong>RTK-corrected position</strong> from the Wisconsin CORS network. That puts the model at true scale and in real coordinates, so distances measured on it are real distances.</p>
+        <p>Processing was cropped to the stand and the ground around it. That keeps the model focused and the file sizes practical to share.</p>
+      </div>
+      <aside class="qc" aria-label="Quality control">
+        <h3>Quality control</h3>
+        <div class="meter">
+          <div class="row"><span>Photos aligned in aerotriangulation</span><b>98%</b></div>
+          <div class="track" role="img" aria-label="98 percent of photos aligned"><i></i></div>
+        </div>
+        <ul class="checks">
+          <li><b>One connected block</b> of 825 photos and 255,608 tie points, so no part of the model floats loose.</li>
+          <li><b>Every photo on RTK fix</b> (842 of 842), with camera positions matching the recorded RTK positions to 0.031 ft RMSE.</li>
+          <li><b>Real elevations</b>, referenced to NAVD88 (GEOID18) in US survey feet.</li>
+          <li><b>Thin members checked</b> on the finished model: stairs, legs and bracing all came through.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section aria-labelledby="views">
+    <p class="kicker">From the model</p>
+    <h2 id="views">Views a ground photo can't give you</h2>
+    <div class="views">
+      <figure><img src="view-1.jpg" alt="3D model of the stand and truck from ground level" loading="lazy"><figcaption><span>01</span>Ground level</figcaption></figure>
+      <figure><img src="view-2.jpg" alt="3D model of the stand from the stair side" loading="lazy"><figcaption><span>02</span>Stair side</figcaption></figure>
+      <figure><img src="view-3.jpg" alt="3D model of the stand seen from above" loading="lazy"><figcaption><span>03</span>Overhead</figcaption></figure>
+      <figure><img src="view-4.jpg" alt="3D model of the stand with the pilot's truck for scale" loading="lazy"><figcaption><span>04</span>Pilot's truck for scale</figcaption></figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="measured">
+    <p class="kicker">Measured from the model</p>
+    <h2 id="measured">Dimensions taken straight off the 3D data</h2>
+    <figure class="wide"><img src="measured.jpg" alt="3D model of the stand with dimension lines: blind 8 feet 0 inches by 5 feet 6 inches, deck 9 feet 7 inches above ground, 17 feet 0 inches to the top of the roof" loading="lazy" width="1920" height="1080"></figure>
+    <p class="note">Measured directly on the RTK-positioned model. Hard edges such as the blind walls repeat to within about an inch. Heights are measured to the top of the vegetation at the base, so they carry about 3 inches of uncertainty. No tape, no ladder, no climbing.</p>
+  </section>
+
+  <section aria-labelledby="detail">
+    <p class="kicker">Up close</p>
+    <h2 id="detail">Detail you can actually inspect</h2>
+    <div class="views">
+      <figure><img src="detail-1.jpg" alt="Close-up from the 3D model of the deck boards, a steel mounting bracket and the top of the stairs" loading="lazy" width="1920" height="1080"><figcaption><span>A</span>Deck boards, steel bracket and stair stringers</figcaption></figure>
+      <figure><img src="detail-2.jpg" alt="Close-up from the 3D model of the blind's ribbed metal roof and window trim" loading="lazy" width="1920" height="1080"><figcaption><span>B</span>Roof panels, seams and window trim</figcaption></figure>
+    </div>
+    <p class="note">Both views are zoomed in on the same model, not separate photos. Boards, hardware, weathering and roof seams are all readable, which is enough for a visual condition review without climbing. The original high-resolution photos come with the model for a closer look.</p>
+  </section>
+
+  <section aria-labelledby="get">
+    <p class="kicker">What you receive</p>
+    <h2 id="get">Ready to share, ready to measure</h2>
+    <ul class="deliv">
+      <li><strong>Interactive 3D viewer link</strong><span>Spin, zoom and measure in any web browser. Nothing to install.</span></li>
+      <li><strong>Orbit video</strong><span>A smooth loop for listings, social posts and presentations.</span></li>
+      <li><strong>Still renders</strong><span>Clean elevations and overhead views from any angle.</span></li>
+      <li><strong>3D data files</strong><span><code>OBJ</code> <code>OSGB</code> <code>LAS</code> for CAD, modeling and engineering software.</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="uses">
+    <p class="kicker">Who it's for</p>
+    <h2 id="uses">Where 3D structure capture earns its keep</h2>
+    <ul class="uses">
+      <li><strong>Condition records</strong><span>Document a structure before storm season, a sale or a claim.</span></li>
+      <li><strong>Visual inspection without climbing</strong><span>Check roofs, towers and elevated platforms from the ground.</span></li>
+      <li><strong>Farm &amp; rural buildings</strong><span>Barns, stands, silos and sheds, recorded before repairs or removal.</span></li>
+      <li><strong>Family legacy</strong><span>The barn, cabin or deer camp your family grew up with, preserved before it changes hands. Every relative can explore it from their phone.</span></li>
+    </ul>
+    <p class="note">3D models are produced from drone photography for visualization and measurement. They are not a land survey and do not establish property boundaries.</p>
+  </section>
+
+  <div class="cta">
+    <div>
+      <h2>Have a structure you need documented?</h2>
+      <p>Tell us what it is and where it is. We'll reply within one business day.</p>
+    </div>
+    <div class="contact">
+      <a class="btn" href="/quote">Request a quote</a>
+      <span class="plain">(608) 820-0224</span>
+      <span class="plain">info@novakgs.com</span>
+    </div>
+  </div>
+
+  <footer>© 2026 BUCK2NINETY LLC · Novak Geospatial Solutions™</footer>
+</main>
+</body>
+</html>
