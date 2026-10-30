@@ -31,9 +31,9 @@ const SERVICES = [
   'Stockpile volume reports', 'Orthomosaic site maps', 'Progress documentation',
   'Acreage listing package', 'High-resolution aerial maps', 'Property overview imagery',
   'Field & farmstead maps', 'Grain & silage pile volumes', 'Visual crop scouting maps',
-  'White-label RTK data capture', 'Not sure — help me choose',
+  'White-label RTK data capture', '3D structure model & measurements', 'Not sure — help me choose',
 ];
-const FORMATS = ['PDF report', 'Images', 'GeoTIFF', 'KMZ', 'CAD (DXF)', 'Point cloud (LAS)', 'Not sure'];
+const FORMATS = ['PDF report', 'Images', 'GeoTIFF', 'KMZ', 'CAD (DXF)', 'Point cloud (LAS)', '3D model (OBJ)', '3D viewer link', 'Not sure'];
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
@@ -181,6 +181,9 @@ function buildDetails(fd, services) {
   }
   if (has('White-label RTK data capture')) {
     lines.push(`White-label — coordinate system: ${str(fd, 'coordSystem', 160) || '?'}; accuracy: ${str(fd, 'accuracy', 120) || '?'}`);
+  }
+  if (has('3D structure model & measurements')) {
+    lines.push(`3D structure — structure: ${str(fd, 'structure', 120) || '?'}; use: ${str(fd, 'structureUse', 60) || '?'}`);
   }
   return lines.join('\n');
 }

@@ -84,11 +84,21 @@
   .chip.radio span::before { border-radius: 50%; }
   .chip input:checked + span { border-color: var(--navy); background: #eef3f8; }
   .chip input:checked + span::before { background: var(--navy); border-color: var(--navy); box-shadow: inset 0 0 0 3px #fff; }
-  .group { margin-top: 16px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; }
-  .group.mine { border-color: var(--navy); background: #f7fafc; }
-  .group h3 { margin: 0 0 10px; font-size: 15px; display: flex; align-items: baseline; gap: 10px; }
-  .group h3 .num { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--steel); font-weight: 500; font-size: 14px; }
-  .group h3 .tag { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); }
+  .svcgroup { margin-top: 18px; }
+  .svcgroup h3 { margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--steel); }
+  .opts { display: grid; gap: 8px; }
+  .opt { position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 6px 12px; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer; background: #fff; }
+  .opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .opt .box { width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #9aa4ae; grid-row: 1; }
+  .opt .nm { font-weight: 500; font-size: 15px; }
+  .opt .fit { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; }
+  .opt .fit i { font-style: normal; font-size: 12px; line-height: 1; padding: 5px 9px; border-radius: 999px; background: var(--soft); color: var(--muted); border: 1px solid var(--line); }
+  .opt .fit i.me { background: #fff4ea; color: var(--orange-ink); border-color: var(--orange); font-weight: 600; }
+  .opt.fits { border-color: var(--orange); }
+  .opt:has(input:checked) { border-color: var(--navy); background: #eef3f8; box-shadow: inset 0 0 0 1px var(--navy); }
+  .opt input:checked ~ .box { background: var(--navy); border-color: var(--navy); box-shadow: inset 0 0 0 3px #fff; }
+  .opt input:focus-visible ~ .box { outline: 3px solid rgba(58, 102, 144, 0.35); outline-offset: 2px; }
+  .svcgroup.unsure { margin-top: 14px; }
   .note { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
   .followup { margin-top: 14px; padding: 14px 16px; background: var(--soft); border-radius: 10px; }
   .followup h4 { margin: 0 0 10px; font-size: 14px; color: var(--navy); }
@@ -201,49 +211,50 @@
 
   <fieldset>
     <legend><span class="num">03</span> Services</legend>
-    <p class="note" style="margin-top:10px">Check everything that applies. Not sure? Pick the last option and we'll sort it out on a call.</p>
+    <p class="note" style="margin-top:10px">Check everything that applies. Each service shows who it usually fits; once you pick what kind of client you are, the services that fit you are highlighted. Not sure? Pick the last option and we'll sort it out on a call.</p>
     <div id="groups">
-      <div class="group" data-group="dev">
-        <h3><span class="num">01</span>Developers &amp; builders <span class="tag" hidden>Your line</span></h3>
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="services" value="Pre-development assessment"><span>Pre-development assessment</span></label>
-          <label class="chip"><input type="checkbox" name="services" value="Build progress monitoring"><span>Build progress monitoring</span></label>
-          <label class="chip"><input type="checkbox" name="services" value="Time-lapse &amp; marketing media"><span>Time-lapse &amp; marketing media</span></label>
+      <div class="svcgroup">
+        <h3>Maps &amp; imagery</h3>
+        <div class="opts">
+          <label class="opt" data-fit="dev con farm pro"><input type="checkbox" name="services" value="Orthomosaic site maps"><span class="box"></span><span class="nm">Orthomosaic site maps</span><span class="fit"><i data-k="dev">Developers &amp; builders</i><i data-k="con">Contractors</i><i data-k="farm">Farms &amp; ag</i><i data-k="pro">Surveyors &amp; engineers</i></span></label>
+          <label class="opt" data-fit="land farm dev"><input type="checkbox" name="services" value="High-resolution aerial maps"><span class="box"></span><span class="nm">High-resolution aerial maps</span><span class="fit"><i data-k="land">Realtors &amp; landowners</i><i data-k="farm">Farms &amp; ag</i><i data-k="dev">Developers &amp; builders</i></span></label>
+          <label class="opt" data-fit="farm land"><input type="checkbox" name="services" value="Field &amp; farmstead maps"><span class="box"></span><span class="nm">Field &amp; farmstead maps</span><span class="fit"><i data-k="farm">Farms &amp; ag</i><i data-k="land">Realtors &amp; landowners</i></span></label>
+          <label class="opt" data-fit="land"><input type="checkbox" name="services" value="Property overview imagery"><span class="box"></span><span class="nm">Property overview imagery</span><span class="fit"><i data-k="land">Realtors &amp; landowners</i></span></label>
+          <label class="opt" data-fit="dev land"><input type="checkbox" name="services" value="Time-lapse &amp; marketing media"><span class="box"></span><span class="nm">Time-lapse &amp; marketing media</span><span class="fit"><i data-k="dev">Developers &amp; builders</i><i data-k="land">Realtors &amp; landowners</i></span></label>
         </div>
       </div>
-      <div class="group" data-group="con">
-        <h3><span class="num">02</span>Contractors &amp; aggregate <span class="tag" hidden>Your line</span></h3>
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="services" value="Stockpile volume reports"><span>Stockpile volume reports</span></label>
-          <label class="chip"><input type="checkbox" name="services" value="Orthomosaic site maps"><span>Orthomosaic site maps</span></label>
-          <label class="chip"><input type="checkbox" name="services" value="Progress documentation"><span>Progress documentation</span></label>
+      <div class="svcgroup">
+        <h3>Measurements &amp; volumes</h3>
+        <div class="opts">
+          <label class="opt" data-fit="con farm"><input type="checkbox" name="services" value="Stockpile volume reports"><span class="box"></span><span class="nm">Stockpile volume reports</span><span class="fit"><i data-k="con">Contractors</i><i data-k="farm">Farms &amp; ag</i></span></label>
+          <label class="opt" data-fit="farm"><input type="checkbox" name="services" value="Grain &amp; silage pile volumes"><span class="box"></span><span class="nm">Grain &amp; silage pile volumes</span><span class="fit"><i data-k="farm">Farms &amp; ag</i></span></label>
         </div>
       </div>
-      <div class="group" data-group="land">
-        <h3><span class="num">03</span>Realtors &amp; landowners <span class="tag" hidden>Your line</span></h3>
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="services" value="Acreage listing package"><span>Acreage listing package</span></label>
-          <label class="chip"><input type="checkbox" name="services" value="High-resolution aerial maps"><span>High-resolution aerial maps</span></label>
-          <label class="chip"><input type="checkbox" name="services" value="Property overview imagery"><span>Property overview imagery</span></label>
+      <div class="svcgroup">
+        <h3>Planning &amp; monitoring</h3>
+        <div class="opts">
+          <label class="opt" data-fit="dev land"><input type="checkbox" name="services" value="Pre-development assessment"><span class="box"></span><span class="nm">Pre-development assessment</span><span class="fit"><i data-k="dev">Developers &amp; builders</i><i data-k="land">Realtors &amp; landowners</i></span></label>
+          <label class="opt" data-fit="dev con"><input type="checkbox" name="services" value="Build progress monitoring"><span class="box"></span><span class="nm">Build progress monitoring</span><span class="fit"><i data-k="dev">Developers &amp; builders</i><i data-k="con">Contractors</i></span></label>
+          <label class="opt" data-fit="con dev ins"><input type="checkbox" name="services" value="Progress documentation"><span class="box"></span><span class="nm">Progress documentation</span><span class="fit"><i data-k="con">Contractors</i><i data-k="dev">Developers &amp; builders</i><i data-k="ins">Insurance</i></span></label>
+          <label class="opt" data-fit="farm"><input type="checkbox" name="services" value="Visual crop scouting maps"><span class="box"></span><span class="nm">Visual crop scouting maps</span><span class="fit"><i data-k="farm">Farms &amp; ag</i></span></label>
         </div>
       </div>
-      <div class="group" data-group="farm">
-        <h3><span class="num">04</span>Farms &amp; agriculture <span class="tag" hidden>Your line</span></h3>
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="services" value="Field &amp; farmstead maps"><span>Field &amp; farmstead maps</span></label>
-          <label class="chip"><input type="checkbox" name="services" value="Grain &amp; silage pile volumes"><span>Grain &amp; silage pile volumes</span></label>
-          <label class="chip"><input type="checkbox" name="services" value="Visual crop scouting maps"><span>Visual crop scouting maps</span></label>
+      <div class="svcgroup">
+        <h3>3D structures</h3>
+        <div class="opts">
+          <label class="opt" data-fit="con ins farm land legacy"><input type="checkbox" name="services" value="3D structure model &amp; measurements"><span class="box"></span><span class="nm">3D structure model &amp; measurements</span><span class="fit"><i data-k="con">Contractors</i><i data-k="ins">Insurance</i><i data-k="farm">Farms &amp; ag</i><i data-k="land">Realtors &amp; landowners</i><i data-k="legacy">Family legacy</i></span></label>
         </div>
       </div>
-      <div class="group" data-group="pro">
-        <h3><span class="num">05</span>Surveyors &amp; engineers <span class="tag" hidden>Your line</span></h3>
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="services" value="White-label RTK data capture"><span>White-label RTK data capture</span></label>
+      <div class="svcgroup">
+        <h3>Packages &amp; partner work</h3>
+        <div class="opts">
+          <label class="opt" data-fit="land farm"><input type="checkbox" name="services" value="Acreage listing package"><span class="box"></span><span class="nm">Acreage listing package</span><span class="fit"><i data-k="land">Realtors &amp; landowners</i><i data-k="farm">Farms &amp; ag</i></span></label>
+          <label class="opt" data-fit="pro"><input type="checkbox" name="services" value="White-label RTK data capture"><span class="box"></span><span class="nm">White-label RTK data capture</span><span class="fit"><i data-k="pro">Surveyors &amp; engineers</i></span></label>
         </div>
       </div>
-      <div class="group" data-group="any">
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="services" value="Not sure — help me choose"><span>Not sure — help me choose</span></label>
+      <div class="svcgroup unsure">
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="services" value="Not sure — help me choose"><span class="box"></span><span class="nm">Not sure — help me choose</span></label>
         </div>
       </div>
     </div>
@@ -287,6 +298,15 @@
         <label class="f"><span>Accuracy needed</span><input type="text" name="accuracy" placeholder="e.g. 0.1 ft horizontal"></label>
       </div>
     </div>
+    <div class="followup" data-when="3D structure model &amp; measurements" hidden>
+      <h4>3D structure</h4>
+      <div class="grid">
+        <label class="f"><span>What's the structure?</span><input type="text" name="structure" placeholder="e.g. pole barn, silo, cabin, tower"></label>
+        <label class="f"><span>What's it for?</span>
+          <select name="structureUse"><option value="">Choose</option><option>Insurance or condition record</option><option>Repair or construction planning</option><option>Marketing or listing</option><option>Family keepsake</option><option>Other</option></select>
+        </label>
+      </div>
+    </div>
     <p class="note">Novak|GS provides aerial mapping and imagery; we don't establish property lines.</p>
   </fieldset>
 
@@ -311,6 +331,8 @@
       <label class="chip"><input type="checkbox" name="formats" value="KMZ"><span>KMZ</span></label>
       <label class="chip"><input type="checkbox" name="formats" value="CAD (DXF)"><span>CAD (DXF)</span></label>
       <label class="chip"><input type="checkbox" name="formats" value="Point cloud (LAS)"><span>Point cloud (LAS)</span></label>
+      <label class="chip"><input type="checkbox" name="formats" value="3D model (OBJ)"><span>3D model (OBJ)</span></label>
+      <label class="chip"><input type="checkbox" name="formats" value="3D viewer link"><span>3D viewer link</span></label>
       <label class="chip"><input type="checkbox" name="formats" value="Not sure"><span>Not sure</span></label>
     </div>
     <div class="grid">
@@ -355,19 +377,16 @@
   document.getElementById('source').value = src;
   if (src === 'card') document.getElementById('hearAbout').value = 'Business card';
 
-  // Put the client's own service group first and mark it.
+  // Highlight the services that fit the client type they picked.
   var groupsEl = document.getElementById('groups');
   form.querySelectorAll('input[name=clientType]').forEach(function (r) {
     r.addEventListener('change', function () {
       var key = r.dataset.group;
-      groupsEl.querySelectorAll('.group').forEach(function (g) {
-        var mine = key && g.dataset.group === key;
-        g.classList.toggle('mine', !!mine);
-        var tag = g.querySelector('.tag');
-        if (tag) tag.hidden = !mine;
+      groupsEl.querySelectorAll('.opt').forEach(function (o) {
+        var fits = (o.dataset.fit || '').split(' ');
+        o.classList.toggle('fits', !!key && fits.indexOf(key) !== -1);
+        o.querySelectorAll('.fit i').forEach(function (t) { t.classList.toggle('me', !!key && t.dataset.k === key); });
       });
-      var target = key && groupsEl.querySelector('.group[data-group="' + key + '"]');
-      if (target) groupsEl.insertBefore(target, groupsEl.firstElementChild);
     });
   });
 
