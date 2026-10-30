@@ -40,14 +40,16 @@
   header img { width: 260px; max-width: 70%; height: auto; display: block; }
   header h1 { font-size: 30px; line-height: 1.2; margin: 22px 0 6px; font-weight: 600; letter-spacing: -0.01em; }
   header p { margin: 0 auto; max-width: 560px; color: #c9d0d7; font-size: 17px; }
-  main { max-width: 760px; margin: -68px auto 0; padding: 0 16px 48px; }
+  main { position: relative; z-index: 1; max-width: 760px; margin: -68px auto 0; padding: 0 16px 48px; }
   form, .done {
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(10, 13, 18, 0.12);
     padding: 8px 28px 28px;
   }
-  fieldset { border: 0; margin: 0; padding: 26px 0 4px; border-bottom: 1px solid var(--line); min-width: 0; }
+  fieldset { border: 0; margin: 0; padding: 0 0 28px; border-bottom: 1px solid var(--line); min-width: 0; }
+  fieldset > legend { float: left; width: 100%; padding-top: 28px; margin-bottom: 16px; }
+  fieldset > legend + * { clear: both; }
   fieldset:last-of-type { border-bottom: 0; }
   legend { padding: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); display: flex; align-items: center; gap: 10px; }
   legend .num { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; color: var(--orange-ink); }
@@ -84,21 +86,19 @@
   .chip.radio span::before { border-radius: 50%; }
   .chip input:checked + span { border-color: var(--navy); background: #eef3f8; }
   .chip input:checked + span::before { background: var(--navy); border-color: var(--navy); box-shadow: inset 0 0 0 3px #fff; }
-  .svcgroup { margin-top: 18px; }
+  .svcgroup { margin-top: 20px; }
   .svcgroup h3 { margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--steel); }
-  .opts { display: grid; gap: 8px; }
-  .opt { position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 6px 12px; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer; background: #fff; }
+  .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .opt { position: relative; display: grid; grid-template-columns: 18px minmax(0, 1fr); column-gap: 10px; row-gap: 2px; align-items: start; padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer; background: #fff; }
   .opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-  .opt .box { width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #9aa4ae; grid-row: 1; }
-  .opt .nm { font-weight: 500; font-size: 15px; }
-  .opt .fit { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; }
-  .opt .fit i { font-style: normal; font-size: 12px; line-height: 1; padding: 5px 9px; border-radius: 999px; background: var(--soft); color: var(--muted); border: 1px solid var(--line); }
-  .opt .fit i.me { background: #fff4ea; color: var(--orange-ink); border-color: var(--orange); font-weight: 600; }
-  .opt.fits { border-color: var(--orange); }
+  .opt .box { width: 18px; height: 18px; margin-top: 2px; border-radius: 4px; border: 1.5px solid #9aa4ae; }
+  .opt .nm { font-weight: 500; font-size: 15px; line-height: 1.35; }
+  .opt .fit { grid-column: 2; font-size: 12.5px; line-height: 1.4; color: var(--muted); }
   .opt:has(input:checked) { border-color: var(--navy); background: #eef3f8; box-shadow: inset 0 0 0 1px var(--navy); }
   .opt input:checked ~ .box { background: var(--navy); border-color: var(--navy); box-shadow: inset 0 0 0 3px #fff; }
   .opt input:focus-visible ~ .box { outline: 3px solid rgba(58, 102, 144, 0.35); outline-offset: 2px; }
-  .svcgroup.unsure { margin-top: 14px; }
+  .svcgroup.unsure { margin-top: 16px; }
+  .svcgroup.unsure .opts { grid-template-columns: minmax(0, 1fr); }
   .note { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
   .followup { margin-top: 14px; padding: 14px 16px; background: var(--soft); border-radius: 10px; }
   .followup h4 { margin: 0 0 10px; font-size: 14px; color: var(--navy); }
@@ -129,13 +129,13 @@
     form, .done { padding: 4px 18px 22px; }
     .grid { grid-template-columns: minmax(0, 1fr); }
     .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .opts { grid-template-columns: minmax(0, 1fr); }
     #map { height: 260px; }
   }
 </style>
-<script src="/topo.js" defer></script>
 </head>
 <body>
-<header data-topo="band">
+<header>
   <a class="home" href="/"><img src="/logo-dark.png" alt="Novak GS — Geospatial Solutions home" width="732" height="338" style="margin: 0 auto"></a>
   <h1>Request a quote</h1>
   <p>Tell us about the site and what you need. We'll follow up within one business day.</p>
@@ -163,15 +163,6 @@
       <label class="chip radio"><input type="radio" name="preferredContact" value="Text"><span>Text</span></label>
       <label class="chip radio"><input type="radio" name="preferredContact" value="WhatsApp"><span>WhatsApp</span></label>
       <label class="chip radio"><input type="radio" name="preferredContact" value="Email"><span>Email</span></label>
-    </div>
-    <div class="q req" id="ct-label">I'm a…</div>
-    <div class="cards" role="radiogroup" aria-labelledby="ct-label">
-      <label class="card"><input type="radio" name="clientType" value="Developer or builder" data-group="dev" required><span>Developer or builder</span></label>
-      <label class="card"><input type="radio" name="clientType" value="Contractor or aggregate" data-group="con"><span>Contractor or aggregate</span></label>
-      <label class="card"><input type="radio" name="clientType" value="Realtor or landowner" data-group="land"><span>Realtor or landowner</span></label>
-      <label class="card"><input type="radio" name="clientType" value="Farm or ag" data-group="farm"><span>Farm or ag</span></label>
-      <label class="card"><input type="radio" name="clientType" value="Surveyor or engineer" data-group="pro"><span>Surveyor or engineer</span></label>
-      <label class="card"><input type="radio" name="clientType" value="Other" data-group=""><span>Other</span></label>
     </div>
   </fieldset>
 
@@ -211,45 +202,45 @@
 
   <fieldset>
     <legend><span class="num">03</span> Services</legend>
-    <p class="note" style="margin-top:10px">Check everything that applies. Each service shows who it usually fits; once you pick what kind of client you are, the services that fit you are highlighted. Not sure? Pick the last option and we'll sort it out on a call.</p>
+    <p class="note" style="margin-top:10px">Check everything that applies. Under each service is who it usually fits. Not sure? Pick the last option and we'll sort it out on a call.</p>
     <div id="groups">
       <div class="svcgroup">
         <h3>Maps &amp; imagery</h3>
         <div class="opts">
-          <label class="opt" data-fit="dev con farm pro"><input type="checkbox" name="services" value="Orthomosaic site maps"><span class="box"></span><span class="nm">Orthomosaic site maps</span><span class="fit"><i data-k="dev">Developers &amp; builders</i><i data-k="con">Contractors</i><i data-k="farm">Farms &amp; ag</i><i data-k="pro">Surveyors &amp; engineers</i></span></label>
-          <label class="opt" data-fit="land farm dev"><input type="checkbox" name="services" value="High-resolution aerial maps"><span class="box"></span><span class="nm">High-resolution aerial maps</span><span class="fit"><i data-k="land">Realtors &amp; landowners</i><i data-k="farm">Farms &amp; ag</i><i data-k="dev">Developers &amp; builders</i></span></label>
-          <label class="opt" data-fit="farm land"><input type="checkbox" name="services" value="Field &amp; farmstead maps"><span class="box"></span><span class="nm">Field &amp; farmstead maps</span><span class="fit"><i data-k="farm">Farms &amp; ag</i><i data-k="land">Realtors &amp; landowners</i></span></label>
-          <label class="opt" data-fit="land"><input type="checkbox" name="services" value="Property overview imagery"><span class="box"></span><span class="nm">Property overview imagery</span><span class="fit"><i data-k="land">Realtors &amp; landowners</i></span></label>
-          <label class="opt" data-fit="dev land"><input type="checkbox" name="services" value="Time-lapse &amp; marketing media"><span class="box"></span><span class="nm">Time-lapse &amp; marketing media</span><span class="fit"><i data-k="dev">Developers &amp; builders</i><i data-k="land">Realtors &amp; landowners</i></span></label>
+          <label class="opt" data-fit="dev con farm pro"><input type="checkbox" name="services" value="Orthomosaic site maps"><span class="box"></span><span class="nm">Orthomosaic site maps</span><span class="fit">Developers &amp; builders · Contractors · Farms &amp; ag · Surveyors &amp; engineers</span></label>
+          <label class="opt" data-fit="land farm dev"><input type="checkbox" name="services" value="High-resolution aerial maps"><span class="box"></span><span class="nm">High-resolution aerial maps</span><span class="fit">Realtors &amp; landowners · Farms &amp; ag · Developers &amp; builders</span></label>
+          <label class="opt" data-fit="farm land"><input type="checkbox" name="services" value="Field &amp; farmstead maps"><span class="box"></span><span class="nm">Field &amp; farmstead maps</span><span class="fit">Farms &amp; ag · Realtors &amp; landowners</span></label>
+          <label class="opt" data-fit="land"><input type="checkbox" name="services" value="Property overview imagery"><span class="box"></span><span class="nm">Property overview imagery</span><span class="fit">Realtors &amp; landowners</span></label>
+          <label class="opt" data-fit="dev land"><input type="checkbox" name="services" value="Time-lapse &amp; marketing media"><span class="box"></span><span class="nm">Time-lapse &amp; marketing media</span><span class="fit">Developers &amp; builders · Realtors &amp; landowners</span></label>
         </div>
       </div>
       <div class="svcgroup">
         <h3>Measurements &amp; volumes</h3>
         <div class="opts">
-          <label class="opt" data-fit="con farm"><input type="checkbox" name="services" value="Stockpile volume reports"><span class="box"></span><span class="nm">Stockpile volume reports</span><span class="fit"><i data-k="con">Contractors</i><i data-k="farm">Farms &amp; ag</i></span></label>
-          <label class="opt" data-fit="farm"><input type="checkbox" name="services" value="Grain &amp; silage pile volumes"><span class="box"></span><span class="nm">Grain &amp; silage pile volumes</span><span class="fit"><i data-k="farm">Farms &amp; ag</i></span></label>
+          <label class="opt" data-fit="con farm"><input type="checkbox" name="services" value="Stockpile volume reports"><span class="box"></span><span class="nm">Stockpile volume reports</span><span class="fit">Contractors · Farms &amp; ag</span></label>
+          <label class="opt" data-fit="farm"><input type="checkbox" name="services" value="Grain &amp; silage pile volumes"><span class="box"></span><span class="nm">Grain &amp; silage pile volumes</span><span class="fit">Farms &amp; ag</span></label>
         </div>
       </div>
       <div class="svcgroup">
         <h3>Planning &amp; monitoring</h3>
         <div class="opts">
-          <label class="opt" data-fit="dev land"><input type="checkbox" name="services" value="Pre-development assessment"><span class="box"></span><span class="nm">Pre-development assessment</span><span class="fit"><i data-k="dev">Developers &amp; builders</i><i data-k="land">Realtors &amp; landowners</i></span></label>
-          <label class="opt" data-fit="dev con"><input type="checkbox" name="services" value="Build progress monitoring"><span class="box"></span><span class="nm">Build progress monitoring</span><span class="fit"><i data-k="dev">Developers &amp; builders</i><i data-k="con">Contractors</i></span></label>
-          <label class="opt" data-fit="con dev ins"><input type="checkbox" name="services" value="Progress documentation"><span class="box"></span><span class="nm">Progress documentation</span><span class="fit"><i data-k="con">Contractors</i><i data-k="dev">Developers &amp; builders</i><i data-k="ins">Insurance</i></span></label>
-          <label class="opt" data-fit="farm"><input type="checkbox" name="services" value="Visual crop scouting maps"><span class="box"></span><span class="nm">Visual crop scouting maps</span><span class="fit"><i data-k="farm">Farms &amp; ag</i></span></label>
+          <label class="opt" data-fit="dev land"><input type="checkbox" name="services" value="Pre-development assessment"><span class="box"></span><span class="nm">Pre-development assessment</span><span class="fit">Developers &amp; builders · Realtors &amp; landowners</span></label>
+          <label class="opt" data-fit="dev con"><input type="checkbox" name="services" value="Build progress monitoring"><span class="box"></span><span class="nm">Build progress monitoring</span><span class="fit">Developers &amp; builders · Contractors</span></label>
+          <label class="opt" data-fit="con dev ins"><input type="checkbox" name="services" value="Progress documentation"><span class="box"></span><span class="nm">Progress documentation</span><span class="fit">Contractors · Developers &amp; builders · Insurance</span></label>
+          <label class="opt" data-fit="farm"><input type="checkbox" name="services" value="Visual crop scouting maps"><span class="box"></span><span class="nm">Visual crop scouting maps</span><span class="fit">Farms &amp; ag</span></label>
         </div>
       </div>
       <div class="svcgroup">
         <h3>3D structures</h3>
         <div class="opts">
-          <label class="opt" data-fit="con ins farm land legacy"><input type="checkbox" name="services" value="3D structure model &amp; measurements"><span class="box"></span><span class="nm">3D structure model &amp; measurements</span><span class="fit"><i data-k="con">Contractors</i><i data-k="ins">Insurance</i><i data-k="farm">Farms &amp; ag</i><i data-k="land">Realtors &amp; landowners</i><i data-k="legacy">Family legacy</i></span></label>
+          <label class="opt" data-fit="con ins farm land legacy"><input type="checkbox" name="services" value="3D structure model &amp; measurements"><span class="box"></span><span class="nm">3D structure model &amp; measurements</span><span class="fit">Contractors · Insurance · Farms &amp; ag · Realtors &amp; landowners · Family legacy</span></label>
         </div>
       </div>
       <div class="svcgroup">
         <h3>Packages &amp; partner work</h3>
         <div class="opts">
-          <label class="opt" data-fit="land farm"><input type="checkbox" name="services" value="Acreage listing package"><span class="box"></span><span class="nm">Acreage listing package</span><span class="fit"><i data-k="land">Realtors &amp; landowners</i><i data-k="farm">Farms &amp; ag</i></span></label>
-          <label class="opt" data-fit="pro"><input type="checkbox" name="services" value="White-label RTK data capture"><span class="box"></span><span class="nm">White-label RTK data capture</span><span class="fit"><i data-k="pro">Surveyors &amp; engineers</i></span></label>
+          <label class="opt" data-fit="land farm"><input type="checkbox" name="services" value="Acreage listing package"><span class="box"></span><span class="nm">Acreage listing package</span><span class="fit">Realtors &amp; landowners · Farms &amp; ag</span></label>
+          <label class="opt" data-fit="pro"><input type="checkbox" name="services" value="White-label RTK data capture"><span class="box"></span><span class="nm">White-label RTK data capture</span><span class="fit">Surveyors &amp; engineers</span></label>
         </div>
       </div>
       <div class="svcgroup unsure">
@@ -377,19 +368,6 @@
   document.getElementById('source').value = src;
   if (src === 'card') document.getElementById('hearAbout').value = 'Business card';
 
-  // Highlight the services that fit the client type they picked.
-  var groupsEl = document.getElementById('groups');
-  form.querySelectorAll('input[name=clientType]').forEach(function (r) {
-    r.addEventListener('change', function () {
-      var key = r.dataset.group;
-      groupsEl.querySelectorAll('.opt').forEach(function (o) {
-        var fits = (o.dataset.fit || '').split(' ');
-        o.classList.toggle('fits', !!key && fits.indexOf(key) !== -1);
-        o.querySelectorAll('.fit i').forEach(function (t) { t.classList.toggle('me', !!key && t.dataset.k === key); });
-      });
-    });
-  });
-
   // Follow-up questions for the services that need them.
   function syncFollowups() {
     var picked = Array.prototype.map.call(form.querySelectorAll('input[name=services]:checked'), function (c) { return c.value; });
@@ -483,7 +461,6 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) missing.push('a valid email');
     if (v('phone').replace(/\D/g, '').length < 10) missing.push('a phone number');
     if (!form.querySelector('input[name=preferredContact]:checked')) missing.push('how to reach you');
-    if (!form.querySelector('input[name=clientType]:checked')) missing.push('what type of client you are');
     if (!v('siteLocation')) missing.push('the site location');
     if (!v('county')) missing.push('the county');
     if (!form.querySelector('input[name=services]:checked')) missing.push('at least one service');

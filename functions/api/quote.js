@@ -234,7 +234,6 @@ export async function onRequestPost({ request, env }) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push('a valid email');
     if (phone.replace(/\D/g, '').length < 10) missing.push('a phone number');
     if (!preferred) missing.push('how to reach you');
-    if (!clientType) missing.push('what type of client you are');
     if (!siteLocation) missing.push('the site location');
     if (!county) missing.push('the county');
     if (!services.length) missing.push('at least one service');
@@ -275,7 +274,6 @@ export async function onRequestPost({ request, env }) {
       Email: email,
       Phone: phone,
       PreferredContact: preferred,
-      ClientType: clientType,
       SiteLocation: siteLocation,
       County: county,
       SiteSize: oneOf(str(fd, 'siteSize'), CHOICES.SiteSize) || 'Not sure',
@@ -288,6 +286,7 @@ export async function onRequestPost({ request, env }) {
       Status: 'New',
       SubmittedAt: new Date().toISOString(),
     };
+    if (clientType) fields.ClientType = clientType;
     if (timing) fields.Timing = timing;
     if (hearAbout) fields.HearAbout = hearAbout;
     if (Number.isFinite(lat) && Number.isFinite(lng) && lat !== 0 && lng !== 0) {
