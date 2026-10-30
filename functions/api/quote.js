@@ -22,7 +22,7 @@ const CHOICES = {
     'Calumet', 'Outagamie', 'Winnebago', 'Marathon', 'Portage', 'Other'],
   SiteSize: ['Under 5 acres', '5–20 acres', '20–80 acres', '80+ acres', 'Not sure'],
   Timing: ['ASAP', 'Within 2 weeks', 'Within a month', 'Flexible', 'By a specific date'],
-  HearAbout: ['Business card', 'Search', 'Referral', 'Social media', 'Other'],
+  HearAbout: ['Business card', 'Google', 'Search', 'Referral', 'LinkedIn', 'Meta (Facebook/IG)', 'Social media', 'Other'],
   Status: ['New', 'Contacted', 'Quoted', 'Won', 'Lost'],
 };
 
@@ -295,7 +295,13 @@ export async function onRequestPost({ request, env }) {
     }
     if (/^\d{4}-\d{2}-\d{2}$/.test(targetDate)) fields.TargetDate = `${targetDate}T12:00:00Z`;
 
-    const item = await graph(token, 'POST', `${site(env)}/lists/${list.id}/items`, { fields });
+    let item = await graph(token, 'POST', `${site(env)}/lists/${list.id}/items`, { fields });
+    if (!item.ok && fields.HearAbout) {
+      // The SharePoint choice column may not list a newer option yet; keep the answer in Source and save anyway.
+      fields.Source = [fields.Source, `heard: ${fields.HearAbout}`].filter(Boolean).join(' | ');
+      delete fields.HearAbout;
+      item = await graph(token, 'POST', `${site(env)}/lists/${list.id}/items`, { fields });
+    }
     if (!item.ok) throw new Error(`Item create failed (${item.status}): ${JSON.stringify(item.data)}`);
 
     return json({ ok: true });
