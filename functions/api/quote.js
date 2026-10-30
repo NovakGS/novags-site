@@ -22,7 +22,7 @@ const CHOICES = {
     'Calumet', 'Outagamie', 'Winnebago', 'Marathon', 'Portage', 'Other'],
   SiteSize: ['Under 5 acres', '5–20 acres', '20–80 acres', '80+ acres', 'Not sure'],
   Timing: ['ASAP', 'Within 2 weeks', 'Within a month', 'Flexible', 'By a specific date'],
-  HearAbout: ['Business card', 'Google', 'Search', 'Referral', 'LinkedIn', 'Meta (Facebook/IG)', 'Social media', 'Other'],
+  HearAbout: ['Business card', 'Google Business', 'Search', 'Referral', 'LinkedIn', 'Meta (Facebook/IG)', 'Social media', 'Other'],
   Status: ['New', 'Contacted', 'Quoted', 'Won', 'Lost'],
 };
 
