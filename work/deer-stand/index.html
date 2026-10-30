@@ -146,6 +146,7 @@
 
   .uses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .uses li { padding: 16px 18px; border: 1px solid var(--edge); border-left: 3px solid var(--blue); border-radius: 10px; background: var(--panel); min-width: 0; }
+  .uses li.legacy { grid-column: 1 / -1; border-left-color: var(--orange); }
   .uses strong { display: block; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
   .uses span { font-size: 14px; line-height: 1.5; color: var(--muted); }
 
@@ -194,9 +195,10 @@
     <div class="fit" aria-label="Good fit for">
       <span class="fit-k">Good fit for</span>
       <ul>
-        <li>Insurance &amp; condition records</li>
-        <li>Visual inspection</li>
-        <li>Farm &amp; rural</li>
+        <li>Insurance &amp; adjusters</li>
+        <li>Contractors</li>
+        <li>Property managers</li>
+        <li>Ag lenders &amp; appraisers</li>
         <li>Family legacy</li>
       </ul>
     </div>
@@ -286,10 +288,11 @@
     <p class="kicker">Who it's for</p>
     <h2 id="uses">Where 3D structure capture earns its keep</h2>
     <ul class="uses">
-      <li><strong>Condition records</strong><span>Document a structure before storm season, a sale or a claim.</span></li>
-      <li><strong>Visual inspection without climbing</strong><span>Check roofs, towers and elevated platforms from the ground.</span></li>
-      <li><strong>Farm &amp; rural buildings</strong><span>Barns, stands, silos and sheds, recorded before repairs or removal.</span></li>
-      <li><strong>Family legacy</strong><span>The barn, cabin or deer camp your family grew up with, preserved before it changes hands. Every relative can explore it from their phone.</span></li>
+      <li><strong>Insurance &amp; adjusters</strong><span>A storm damages a pole barn. The model records the roof and framing before cleanup starts, with measurements an adjuster can take from a desk.</span></li>
+      <li><strong>Contractors</strong><span>Before re-roofing or adding on to an outbuilding, the crew gets real dimensions and a model of what stands there now. No ladder day to scope the job.</span></li>
+      <li><strong>Property managers &amp; owners</strong><span>A yearly capture of towers, sheds and outbuildings. Comparing one year to the next shows what is changing before it becomes a repair bill.</span></li>
+      <li><strong>Ag lenders &amp; appraisers</strong><span>Farm buildings documented as they stand, measured and shareable, for valuations, insurance schedules or a farm transfer.</span></li>
+      <li class="legacy"><strong>Family legacy</strong><span>The barn, cabin or deer camp your family grew up with, preserved before it changes hands. Every relative can explore it from their phone.</span></li>
     </ul>
     <p class="note">3D models are produced from drone photography for visualization and measurement. They are not a land survey and do not establish property boundaries.</p>
   </section>
