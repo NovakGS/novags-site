@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Enchanted Valley Acres | Novak Geospatial Solutions</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
+<link rel="apple-touch-icon" href="/favicon-128.png">
+<meta name="theme-color" content="#0a0d12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #0a0d12; --ink: #eef1f3; --muted: #bec6ce; --faint: #a4adb6; --label: #c3cad1;
+    --orange: #e8711a; --blue: #4677a0;
+    --panel: rgba(12, 16, 22, .82); --panel-solid: #10151c;
+    --edge: rgba(255, 255, 255, .12); --hair: rgba(255, 255, 255, .06);
+    --sans: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    --mono: "Roboto Mono", "SFMono-Regular", Consolas, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--bg) url("/topo-bg.jpg") center top / cover no-repeat fixed;
+    color: var(--ink); font-family: var(--sans); font-size: 16px; -webkit-font-smoothing: antialiased;
+  }
+  .shade { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(10,13,18,.55) 0%, rgba(10,13,18,.9) 40%, rgba(10,13,18,.95) 100%); }
+  a { color: var(--ink); }
+  a:hover { color: var(--orange); }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+  img { max-width: 100%; }
+
+  .wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto;
+    padding: 18px max(16px, env(safe-area-inset-right, 0px)) 48px max(16px, env(safe-area-inset-left, 0px));
+    display: flex; flex-direction: column; gap: 64px; }
+
+  /* header */
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; }
+  .bar img { height: 84px; width: auto; max-width: 62vw; object-fit: contain; display: block; }
+  .tagline { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--label); }
+  .tagline span { color: var(--orange); margin: 0 .4em; }
+  .pill-link { font-size: 14px; color: var(--muted); text-decoration: none; padding: 11px 18px; border: 1px solid var(--edge); border-radius: 999px; background: var(--panel); }
+
+  /* hero */
+  .hero { display: flex; flex-direction: column; gap: 20px; }
+  .kicker { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--orange); }
+  h1 { margin: 0; font-size: clamp(32px, 5.4vw, 54px); line-height: 1.06; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; }
+  h2 { margin: 0; font-size: clamp(24px, 3.4vw, 30px); line-height: 1.15; font-weight: 600; text-wrap: balance; }
+  h3 { margin: 0; font-size: 18px; font-weight: 600; }
+  .lede { margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 70ch; text-wrap: pretty; }
+  .lede b { color: var(--ink); font-weight: 600; }
+  .prepared { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--label); }
+  .prepared b { color: var(--ink); font-weight: 500; }
+
+  .overlooks { display: grid; grid-template-columns: 1.15fr 1fr; gap: 12px; }
+  .overlooks figure:first-child img { aspect-ratio: 2000 / 1261; }
+  .overlooks figure:last-child img { aspect-ratio: 2000 / 1498; }
+  @media (max-width: 760px) { .overlooks { grid-template-columns: 1fr; } }
+
+  figure { margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a; display: flex; flex-direction: column; }
+  figure > img { display: block; width: 100%; height: 100%; object-fit: cover; flex: 1; }
+  figcaption { display: flex; gap: 10px; align-items: baseline; padding: 10px 14px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 14px; line-height: 1.45; color: var(--muted); }
+  figcaption span { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--orange); white-space: nowrap; }
+
+  /* jump nav */
+  .jump { position: sticky; top: 0; z-index: 5; margin: 0 -16px; padding: 10px 16px; background: rgba(10,13,18,.92); border-bottom: 1px solid var(--hair);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .jump ul { list-style: none; margin: 0 auto; padding: 0; max-width: 1120px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .jump ul::-webkit-scrollbar { display: none; }
+  .jump a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border: 1px solid var(--edge); border-radius: 999px; font-size: 14px; text-decoration: none; color: var(--muted); white-space: nowrap; background: var(--panel); }
+  .jump a:hover { border-color: var(--orange); color: var(--ink); }
+
+  /* stats */
+  .stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); overflow: hidden; }
+  .stats li { padding: 14px 18px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair); min-width: 0; }
+  .stats li:nth-child(4n) { border-right: 0; }
+  .stats li:nth-last-child(-n+4) { border-bottom: 0; }
+  .stats .k { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 4px; }
+  .stats .v { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stats .v small { font-size: 13px; font-weight: 400; color: var(--muted); }
+  @media (max-width: 760px) {
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stats li { border-right: 1px solid var(--hair) !important; border-bottom: 1px solid var(--hair) !important; }
+    .stats li:nth-child(2n) { border-right: 0 !important; }
+    .stats li:nth-last-child(-n+2) { border-bottom: 0 !important; }
+  }
+
+  /* sections */
+  section { display: flex; flex-direction: column; gap: 18px; }
+  .section-head { display: flex; flex-direction: column; gap: 10px; }
+  .num { font-family: var(--mono); color: var(--orange); }
+  .body { margin: 0; font-size: 16px; line-height: 1.65; color: var(--muted); max-width: 68ch; }
+  .body b { color: var(--ink); font-weight: 600; }
+  .note { margin: 0; font-size: 13px; line-height: 1.55; color: var(--faint); max-width: 90ch; }
+  .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 860px) { .three { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .two, .three { grid-template-columns: 1fr; } }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .card { padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); }
+  .card strong { display: block; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .card span { font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+  /* interactive viewers */
+  .viewer-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 18px; padding: 12px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 14px; color: var(--muted); }
+  .btn { min-height: 44px; padding: 0 18px; border-radius: 999px; font: 600 14px var(--sans); cursor: pointer; background: transparent; color: var(--ink); border: 1px solid rgba(255,255,255,.25); }
+  .btn[aria-pressed="true"] { background: var(--orange); color: #12161c; border-color: var(--orange); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stage { position: relative; width: 100%; overflow: hidden; background: #05070a; }
+  .stage img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
+  .tag { position: absolute; top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); background: rgba(5,7,10,.78); border: 1px solid var(--edge); border-radius: 999px; padding: 6px 12px; }
+  .range { -webkit-appearance: none; appearance: none; width: 100%; height: 44px; background: transparent; margin: 0; cursor: ew-resize; }
+  .range::-webkit-slider-runnable-track { height: 6px; border-radius: 999px; background: linear-gradient(90deg, var(--blue), var(--orange)); }
+  .range::-moz-range-track { height: 6px; border-radius: 999px; background: linear-gradient(90deg, var(--blue), var(--orange)); }
+  .range::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; margin-top: -10px; border-radius: 50%; background: var(--ink); border: 3px solid var(--orange); }
+  .range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--ink); border: 3px solid var(--orange); }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
+  .legend i { display: inline-block; vertical-align: middle; margin-right: 8px; }
+
+  /* size table */
+  .sizes { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .sizes th, .sizes td { padding: 9px 12px; border-top: 1px solid var(--hair); text-align: left; font-size: 15px; }
+  .sizes th { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--label); border-top: 0; }
+  .sizes td:last-child, .sizes th:last-child { text-align: right; }
+  .sizes tr.core td { color: var(--ink); font-weight: 600; }
+  .sizes td { color: var(--muted); }
+  .swatch { box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px; vertical-align: 1px; }
+  .table-box { border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); padding: 6px 6px 2px; overflow-x: auto; }
+
+  /* sheets */
+  .sheets { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .sheet { display: flex; flex-direction: column; gap: 0; padding: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: var(--panel-solid); cursor: zoom-in; color: var(--ink); font: inherit; text-align: left; }
+  .sheet:hover { border-color: var(--orange); }
+  .sheet img { display: block; width: 100%; aspect-ratio: 1000 / 1545; object-fit: cover; object-position: top; background: #fff; }
+  .sheet.letter img { object-fit: contain; object-position: top; }
+  .sheet .cap { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--edge); }
+  .sheet .cap b { font-size: 14px; font-weight: 600; }
+  .sheet .cap small { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--faint); }
+
+  dialog { padding: 0; border: 1px solid var(--edge); border-radius: 12px; background: #fff; max-width: min(96vw, 1000px); max-height: 94vh; overflow: auto; }
+  dialog::backdrop { background: rgba(5,7,10,.88); }
+  dialog img { display: block; width: 100%; height: auto; }
+  .close { position: sticky; top: 10px; float: right; margin: 10px 10px -54px 0; z-index: 2; background: #12161c; color: var(--ink); border: 1px solid var(--edge); border-radius: 999px; min-height: 44px; padding: 0 16px; font: 600 14px var(--sans); cursor: pointer; }
+
+  /* 3D */
+  .video { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a; }
+  .video video { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+  /* products */
+  .products { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .products li { padding: 18px 20px; border: 1px solid var(--edge); border-top: 2px solid var(--orange); border-radius: 12px; background: var(--panel); display: flex; flex-direction: column; gap: 8px; }
+  .products .status { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+  .products p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .products ul { margin: 2px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--muted); }
+
+  .cta { border: 1px solid var(--edge); border-radius: 14px; background: var(--panel); padding: 24px; display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; justify-content: space-between; }
+  .cta p { margin: 6px 0 0; color: var(--muted); font-size: 15px; max-width: 56ch; }
+  .contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .primary { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--orange); color: #12161c; font-weight: 600; text-decoration: none; }
+  .primary:hover { color: #12161c; filter: brightness(1.08); }
+  .plain { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--mono); font-size: 14px; padding: 0 16px; border: 1px solid var(--edge); border-radius: 999px; text-decoration: none; }
+
+  footer { text-align: center; font-size: 13px; line-height: 1.7; color: var(--faint); }
+</style>
+</head>
+<body>
+<div class="shade" aria-hidden="true"></div>
+<main class="wrap">
+
+  <header class="bar">
+    <img src="/logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338">
+    <p class="tagline">Elevated Data<span>|</span>Grounded Truth</p>
+    <a class="pill-link" href="https://novakgs.com/">novakgs.com</a>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="kicker">Private preview · Enchanted Valley Acres</p>
+    <h1>Your farm, from above.<br>Every layer of the ground.</h1>
+    <div class="overlooks">
+      <figure>
+        <img src="img/overlook-valley.jpg" alt="Aerial view of Enchanted Valley Acres in fall color: red barn, visitor area, pumpkin patch, and parking below the wooded ridge" width="2000" height="1261">
+        <figcaption><span>AERIAL</span>The valley floor in peak fall color, looking toward the wooded ridge</figcaption>
+      </figure>
+      <figure>
+        <img src="img/overlook-sunset.jpg" alt="Sunset aerial over the corn maze, parking lot, red barns, and two pumpkin-shaped jumping pillows" width="2000" height="1498">
+        <figcaption><span>AERIAL</span>Sunset over the corn maze, barns, and attractions</figcaption>
+      </figure>
+    </div>
+    <p class="lede">In late October, Novak Geospatial flew Enchanted Valley Acres twice: once on a busy fall Sunday for photographs, and once on the 27th for a full RTK mapping survey of the property. Those flights produced <b>a complete site map, an elevation model and contours, a count of every Christmas tree, a terrain map of the wooded ridge, and a measurable 3D model</b>. This page shows all of it, so you can decide what is worth having.</p>
+    <div class="prepared">
+      <span>Prepared for <b>Angela &amp; Chris Kirsch</b></span>
+      <span>Project <b>26-222</b></span>
+      <span>Captured <b>Oct 25 &amp; 27, 2026</b></span>
+    </div>
+  </div>
+
+  <nav class="jump" aria-label="On this page">
+    <ul>
+      <li><a href="#site-map">Site map</a></li>
+      <li><a href="#trees">Tree inventory</a></li>
+      <li><a href="#ridge">Ridge &amp; hunting</a></li>
+      <li><a href="#three-d">3D model</a></li>
+      <li><a href="#sheets">Map sheets</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#available">What's available</a></li>
+    </ul>
+  </nav>
+
+  <ul class="stats" aria-label="Capture summary">
+    <li><span class="k">Area mapped</span><span class="v">126 acres <small>whole property</small></span></li>
+    <li><span class="k">Photos</span><span class="v">9,578 <small>processed as one</small></span></li>
+    <li><span class="k">RTK fixed</span><span class="v">100% <small>every photo</small></span></li>
+    <li><span class="k">Image detail</span><span class="v">0.93 in <small>per pixel</small></span></li>
+    <li><span class="k">Terrain relief</span><span class="v">≈ 270 ft <small>valley to ridge</small></span></li>
+    <li><span class="k">Contours</span><span class="v">2 ft <small>10 ft labeled</small></span></li>
+    <li><span class="k">Trees counted</span><span class="v">24,099 <small>30 blocks</small></span></li>
+    <li><span class="k">Heights</span><span class="v">NAVD88 <small>US survey ft</small></span></li>
+  </ul>
+
+  <!-- 01 SITE MAP -->
+  <section id="site-map" aria-labelledby="h-site">
+    <div class="section-head">
+      <p class="kicker"><span class="num">01</span> · Site map package</p>
+      <h2 id="h-site">126 acres, one seamless map</h2>
+      <p class="body">The whole property as a single measurable photo map, plus a <b>bare-earth elevation model</b> with the trees and buildings stripped away and <b>2-foot contours</b> on top. Drag the slider to compare the photo map with the ground beneath it.</p>
+    </div>
+
+    <figure>
+      <div class="stage" style="aspect-ratio: 1600 / 1407">
+        <img src="img/swipe-elevation.jpg" alt="Shaded, color-coded elevation model of the upper tree farm">
+        <img id="sw-ortho" src="img/swipe-ortho.jpg" alt="Orthomosaic of the upper tree farm in fall color" style="clip-path: inset(0 45% 0 0)">
+        <img id="sw-contours" src="img/swipe-contours.png" alt="Two-foot contour lines, labeled every 10 feet, over the upper tree farm" style="pointer-events: none">
+        <div id="sw-line" aria-hidden="true" style="position: absolute; top: 0; bottom: 0; left: 55%; width: 2px; margin-left: -1px; background: var(--ink); box-shadow: 0 0 0 1px rgba(0,0,0,.35)"></div>
+        <span class="tag" style="left: 14px">Photo map</span>
+        <span class="tag" style="right: 14px">Elevation</span>
+      </div>
+      <div class="viewer-bar" style="flex-direction: column; align-items: stretch; gap: 4px">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+          <label for="sw-range" style="font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--label)">Drag to compare · upper tree farm</label>
+          <button type="button" class="btn" id="sw-btn" aria-pressed="true">2-ft contours: On</button>
+        </div>
+        <input id="sw-range" class="range" type="range" min="0" max="100" step="1" value="55">
+      </div>
+    </figure>
+
+    <div class="two">
+      <figure>
+        <img src="img/ortho-full.jpg" alt="Full orthomosaic of Enchanted Valley Acres in fall color: corn maze, visitor area, and parking in the valley, a wooded ridge, and the Christmas tree blocks across the top" loading="lazy" style="aspect-ratio: 1894 / 1681">
+        <figcaption><span>PHOTO MAP</span>The whole property, under an inch per pixel</figcaption>
+      </figure>
+      <figure>
+        <img src="img/elevation-full.jpg" alt="Shaded elevation model of the entire property, low valley in blue-green rising to the orange ridge-top tree farm" loading="lazy" style="aspect-ratio: 1775 / 1612">
+        <figcaption><span>ELEVATION</span>The bare ground, valley floor to ridge top</figcaption>
+      </figure>
+    </div>
+    <figure>
+      <img src="img/contours-ridge.jpg" alt="Two-foot contour lines with 10-foot labels over the wooded ridge and its trail" loading="lazy" style="aspect-ratio: 16 / 9">
+      <figcaption><span>CONTOURS</span>Where the lines crowd together the ground is steep. The farm trail climbs straight up the draw, which is where runoff concentrates.</figcaption>
+    </figure>
+    <div class="cards">
+      <div class="card"><strong>Plan next season</strong><span>Measure blocks, parking, and visitor areas from a current map instead of pacing them off.</span></div>
+      <div class="card"><strong>Drainage &amp; trails</strong><span>See where water collects and runs before it washes out a trail or a lot.</span></div>
+      <div class="card"><strong>Hand it to a contractor</strong><span>Engineers and excavators can drop the data straight into their own software.</span></div>
+      <div class="card"><strong>A record of the farm</strong><span>The property exactly as it stood this fall, kept for the next generation.</span></div>
+    </div>
+  </section>
+
+  <!-- 02 TREES -->
+  <section id="trees" aria-labelledby="h-trees">
+    <div class="section-head">
+      <p class="kicker"><span class="num">02</span> · Tree inventory</p>
+      <h2 id="h-trees">24,099 Christmas trees, each one located and sized</h2>
+      <p class="body">From the same mapping flights, every tree in <b>30 blocks across 37 acres</b> was found and measured. Nobody walked a row with a tally counter. The result is an inventory by retail size class, block by block.</p>
+    </div>
+
+    <figure>
+      <div class="stage" style="aspect-ratio: 1280 / 1640; max-height: 760px">
+        <img id="tv-img" src="img/trees-found.jpg" alt="Each detected tree marked with a dot colored by height class over the photo map">
+        <span class="tag" id="tv-tag" style="left: 14px">Trees found · colored by height</span>
+      </div>
+      <div class="viewer-bar">
+        <span>Sample area · south blocks · about 4.6 acres</span>
+        <div class="btn-row" role="group" aria-label="Map view">
+          <button type="button" class="btn" data-view="photo" aria-pressed="false">Photo</button>
+          <button type="button" class="btn" data-view="chm" aria-pressed="false">Canopy height</button>
+          <button type="button" class="btn" data-view="det" aria-pressed="true">Trees found</button>
+        </div>
+      </div>
+    </figure>
+
+    <div class="two" style="align-items: start">
+      <div class="table-box">
+        <table class="sizes">
+          <caption class="kicker" style="text-align: left; padding: 10px 12px 6px">Trees by retail size class</caption>
+          <thead><tr><th scope="col">Height</th><th scope="col">Trees</th></tr></thead>
+          <tbody>
+            <tr class="core"><td><i class="swatch" style="background:#45105e"></i>10 ft +</td><td>782</td></tr>
+            <tr class="core"><td><i class="swatch" style="background:#7c1653"></i>9–10 ft</td><td>237</td></tr>
+            <tr class="core"><td><i class="swatch" style="background:#ad1f3d"></i>8–9 ft</td><td>631</td></tr>
+            <tr class="core"><td><i class="swatch" style="background:#d63b2a"></i>7–8 ft</td><td>1,626</td></tr>
+            <tr class="core"><td><i class="swatch" style="background:#f2652f"></i>6–7 ft</td><td>2,633</td></tr>
+            <tr><td><i class="swatch" style="background:#ff9a3c"></i>5–6 ft</td><td>2,951</td></tr>
+            <tr><td><i class="swatch" style="background:#ffc24d"></i>4–5 ft</td><td>3,429</td></tr>
+            <tr><td><i class="swatch" style="background:#ffe680"></i>2–4 ft</td><td>7,664</td></tr>
+            <tr><td><i class="swatch" style="background:#cfd3d6"></i>Under 2 ft</td><td>4,146</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <p class="body"><b>About 5,100 trees are in the 6 to 10 ft range</b> this season, and five blocks (S11, S7, S4, M5, and M6) hold about two-thirds of the 6 to 8 footers.</p>
+        <p class="body">The biggest group is the <b>7,664 trees at 2 to 4 ft</b>, the stock that carries the next several seasons. The blocks near the visitor area show scattered large trees with open ground between them, the pattern of blocks that have been cut through.</p>
+        <p class="note">Heights come from the drone surface model, which tends to read conifer tips low, so class counts are estimates until a 30-tree field check with a tape is done. Young seedlings, especially in the east field, are undercounted.</p>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/trees-map.jpg" alt="Map of the tree farm with every detected tree colored by height class and each block labeled with its tree count" loading="lazy" style="aspect-ratio: 1717 / 1632">
+      <figcaption><span>INVENTORY</span>All 30 blocks labeled with their counts. Reds are this season's sale sizes; orange and yellow are the next waves.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 03 RIDGE -->
+  <section id="ridge" aria-labelledby="h-ridge">
+    <div class="section-head">
+      <p class="kicker"><span class="num">03</span> · Ridge &amp; hunting ground</p>
+      <h2 id="h-ridge">Read the wooded ridge the way deer use it</h2>
+      <p class="body">The bare-earth model sees under the full canopy. From it, the terrain features hunters usually spend seasons learning on foot were mapped: where water and cool air flow, the flat resting shelves on steep slopes, and the draws that connect the timber to the fields.</p>
+    </div>
+    <figure>
+      <div class="stage" style="aspect-ratio: 1600 / 1407">
+        <img id="hl-img" src="img/hunt-features.jpg" alt="Upper tree farm and wooded ridge with drainage paths in blue, benches in violet, and arrows for morning and evening thermals">
+      </div>
+      <div class="viewer-bar">
+        <div class="legend">
+          <span><i style="width: 22px; height: 4px; border-radius: 2px; background: #5cbef0"></i>Drainage paths</span>
+          <span><i style="width: 12px; height: 12px; border-radius: 2px; background: #c4a0ff"></i>Benches</span>
+          <span><b aria-hidden="true" style="color: #96d7ff; margin-right: 6px">↓</b>Morning thermals</span>
+          <span><b aria-hidden="true" style="color: #f4a261; margin-right: 6px">↑</b>Evening thermals</span>
+        </div>
+        <button type="button" class="btn" id="hl-btn" aria-pressed="true">Terrain features: On</button>
+      </div>
+    </figure>
+    <div class="cards">
+      <div class="card"><strong>Thermals</strong><span>Cool air sinks down the draws in the morning and rises in the evening. That tells you where your scent goes and which stand to hunt when.</span></div>
+      <div class="card"><strong>Drainages &amp; draws</strong><span>The travel routes between ridge and field, and where seasonal water and wet ground will be.</span></div>
+      <div class="card"><strong>Benches</strong><span>Flat shelves on steep slopes where deer bed and travel, easy to miss on foot under full canopy.</span></div>
+      <div class="card"><strong>Stands &amp; access</strong><span>Plan stand sites and quiet entry routes from a measured map, with files that load into Google Earth and most hunting apps.</span></div>
+    </div>
+  </section>
+
+  <!-- 04 3D -->
+  <section id="three-d" aria-labelledby="h-3d">
+    <div class="section-head">
+      <p class="kicker"><span class="num">04</span> · 3D structures</p>
+      <h2 id="h-3d">The ridge-top stand, measured in 3D</h2>
+      <p class="body">One automated orbit around the elevated stand on the ridge turned 842 positioned photos into a textured 3D model at true real-world scale. Every stair, brace, and leg can be measured, with no tape, ladder, or climbing. The same flight works for barns, sheds, and any other building on the property.</p>
+    </div>
+    <div class="video">
+      <video src="/work/deer-stand/flythrough.mp4" poster="/work/deer-stand/poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Flythrough of the textured 3D model of the hunting stand"></video>
+    </div>
+    <div class="two">
+      <figure>
+        <img src="/work/deer-stand/measured.jpg" alt="3D model of the stand with dimension lines: blind 8 ft 0 in by 5 ft 6 in, deck 9 ft 7 in above ground, 17 ft 0 in to the top of the roof" loading="lazy" style="aspect-ratio: 16 / 9">
+        <figcaption><span>MEASURED</span>Dimensions taken straight off the model</figcaption>
+      </figure>
+      <figure>
+        <img src="/work/deer-stand/detail-2.jpg" alt="Close-up from the 3D model of the blind's ribbed metal roof and window trim" loading="lazy" style="aspect-ratio: 16 / 9">
+        <figcaption><span>DETAIL</span>Roof panels, seams, and trim, readable enough for a condition check</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 05 SHEETS -->
+  <section id="sheets" aria-labelledby="h-sheets">
+    <div class="section-head">
+      <p class="kicker"><span class="num">05</span> · Map sheets &amp; read-me</p>
+      <h2 id="h-sheets">What lands in your inbox</h2>
+      <p class="body">These are the actual 11×17 map sheets made for Enchanted Valley, shown here as watermarked previews. The delivered versions are <b>Geospatial PDFs</b>: print them for the office wall, or open them in the free Avenza Maps app to see your location on the farm and measure distances right on your phone. Tap a sheet to enlarge it.</p>
+    </div>
+    <div class="sheets">
+      <button type="button" class="sheet letter" data-full="img/sheet-readme.jpg" aria-label="Enlarge the read-me preview"><img src="img/sheet-readme.jpg" alt="Read-me preview: delivery notes listing every file in the package, the coordinate systems, and the data quality checks" loading="lazy"><span class="cap"><b>Start here: read-me</b><small>Letter · what's in the package</small></span></button>
+      <button type="button" class="sheet" data-full="img/sheet-ortho.jpg" aria-label="Enlarge the site photo map sheet preview"><img src="img/sheet-ortho.jpg" alt="Site orthomosaic map sheet preview" loading="lazy"><span class="cap"><b>Site photo map</b><small>11×17 · ORTHO-01</small></span></button>
+      <button type="button" class="sheet" data-full="img/sheet-contours.jpg" aria-label="Enlarge the contours sheet preview"><img src="img/sheet-contours.jpg" alt="Site contours map sheet preview" loading="lazy"><span class="cap"><b>Site contours (2 ft)</b><small>11×17 · CONT-01</small></span></button>
+      <button type="button" class="sheet" data-full="img/sheet-elev.jpg" aria-label="Enlarge the elevation sheet preview"><img src="img/sheet-elev.jpg" alt="Site elevation map sheet preview" loading="lazy"><span class="cap"><b>Site elevation</b><small>11×17 · bare earth</small></span></button>
+      <button type="button" class="sheet" data-full="img/sheet-trees.jpg" aria-label="Enlarge the tree inventory sheet preview"><img src="img/sheet-trees.jpg" alt="Tree inventory map sheet preview with a height-class map, headline counts, and a size class table" loading="lazy"><span class="cap"><b>Tree inventory</b><small>11×17 · sizes by block</small></span></button>
+    </div>
+    <p class="note">Beyond the sheets, the package includes Google Earth files of the photo map and contours, plus full-resolution GIS and CAD data for anyone who works in that software.</p>
+  </section>
+
+  <!-- 06 PHOTOS -->
+  <section id="photos" aria-labelledby="h-photos">
+    <div class="section-head">
+      <p class="kicker"><span class="num">06</span> · On site</p>
+      <h2 id="h-photos">From the air, and from the field</h2>
+      <p class="body">Photographs from the fall weekend shoot and the mapping day. The full set, at full resolution, is available for your website, social media, and print.</p>
+    </div>
+    <div class="three">
+      <figure>
+        <img src="img/field-tailgate.jpg" alt="Drone controller, case, and battery charger on a pickup tailgate beside an elevated hunting stand" loading="lazy" style="aspect-ratio: 4 / 3">
+        <figcaption>Field base on the ridge. Batteries charge off the truck between flights.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/field-controller.jpg" alt="Controller screen showing an automated mapping route in progress over the property" loading="lazy" style="aspect-ratio: 4 / 3; object-position: 50% 40%">
+        <figcaption>The automated mapping route mid-flight, on RTK fix.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/field-launch.jpg" alt="Overhead view of the pilot in the truck bed, the landing pad, and the hunting stand" loading="lazy" style="aspect-ratio: 4 / 3">
+        <figcaption>Launch site from above, with the pilot's eyes on the aircraft.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 07 AVAILABLE -->
+  <section id="available" aria-labelledby="h-avail">
+    <div class="section-head">
+      <p class="kicker"><span class="num">07</span> · What's available</p>
+      <h2 id="h-avail">Already flown. Ready to deliver.</h2>
+      <p class="body">The data on this page is processed and on file. Pick what is useful to the farm, and it can be delivered within days.</p>
+    </div>
+    <ul class="products">
+      <li>
+        <span class="status">Ready to deliver</span>
+        <h3>Site map package</h3>
+        <ul>
+          <li>Photo map, contour, and elevation sheets (11×17 Geospatial PDF)</li>
+          <li>Google Earth files of the photo map and contours</li>
+          <li>Full-resolution GIS &amp; CAD data</li>
+          <li>Read-me and quality report</li>
+        </ul>
+      </li>
+      <li>
+        <span class="status">Ready to deliver</span>
+        <h3>Christmas tree inventory</h3>
+        <ul>
+          <li>Inventory map sheet with counts by block and size class</li>
+          <li>Block summary spreadsheet: acres, trees per acre, spacing, counts</li>
+          <li>Replant estimate by block for the seedling order</li>
+          <li>Tree list with location and height for every tree</li>
+        </ul>
+      </li>
+      <li>
+        <span class="status">Ready to deliver</span>
+        <h3>Ridge &amp; hunting map</h3>
+        <ul>
+          <li>Terrain features map: drainages, benches, thermals</li>
+          <li>Google Earth and hunting app files</li>
+          <li>2-ft contours of the wooded ridge</li>
+        </ul>
+      </li>
+      <li>
+        <span class="status">Ready to deliver</span>
+        <h3>Aerial photo set</h3>
+        <ul>
+          <li>Full-resolution photos from the fall weekend shoot</li>
+          <li>Cleared for the farm's website, social media, and print</li>
+        </ul>
+      </li>
+      <li>
+        <span class="status">Available on request</span>
+        <h3>3D models of structures</h3>
+        <ul>
+          <li>Barns, sheds, or stands captured as measurable 3D models</li>
+          <li>Browser viewer link, orbit video, and still renders</li>
+        </ul>
+      </li>
+      <li>
+        <span class="status">Available on request</span>
+        <h3>Next fall, reflown</h3>
+        <ul>
+          <li>The same flights repeated each year</li>
+          <li>Year-over-year growth, losses, and what moves into sale sizes</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="note">Maps, elevations, and counts are produced from drone photography for planning and visualization. They are not a land survey and do not establish property boundaries. Positional accuracy has not yet been independently verified with ground checkpoints.</p>
+  </section>
+
+  <div class="cta">
+    <div>
+      <h2 style="font-size: 22px">Interested in any of it?</h2>
+      <p>Call or text to talk through what would be useful for the farm, or to ask about anything on this page.</p>
+    </div>
+    <div class="contact">
+      <a class="primary" href="tel:+16088200224">Call (608) 820-0224</a>
+      <a class="plain" href="sms:+16088200224">Text</a>
+      <a class="plain" href="mailto:info@novakgs.com?subject=Enchanted%20Valley%20Acres%20(26-222)">info@novakgs.com</a>
+    </div>
+  </div>
+
+  <footer>Prepared privately for Enchanted Valley Acres. Please don't share this link.<br>© 2026 BUCK2NINETY LLC · Novak Geospatial Solutions™</footer>
+</main>
+
+<dialog id="viewer" aria-label="Map sheet preview">
+  <button type="button" class="close" id="viewer-close">Close</button>
+  <img id="viewer-img" alt="">
+</dialog>
+
+<script>
+(function () {
+  // site map compare
+  var range = document.getElementById('sw-range'), ortho = document.getElementById('sw-ortho'),
+      line = document.getElementById('sw-line'), cont = document.getElementById('sw-contours'), cbtn = document.getElementById('sw-btn');
+  range.addEventListener('input', function () {
+    var p = Number(range.value);
+    ortho.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
+    line.style.left = p + '%';
+  });
+  cbtn.addEventListener('click', function () {
+    var on = cbtn.getAttribute('aria-pressed') !== 'true';
+    cbtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    cbtn.textContent = '2-ft contours: ' + (on ? 'On' : 'Off');
+    cont.style.display = on ? 'block' : 'none';
+  });
+
+  // tree views
+  var views = {
+    photo: ['img/trees-photo.jpg', 'Photo map', 'Photo map of several Christmas tree blocks separated by mowed lanes'],
+    chm: ['img/trees-canopy.jpg', 'Canopy height', 'Canopy height model of the same blocks, each tree a bright dot, taller trees brighter'],
+    det: ['img/trees-found.jpg', 'Trees found · colored by height', 'Each detected tree marked with a dot colored by height class over the photo map']
+  };
+  var timg = document.getElementById('tv-img'), ttag = document.getElementById('tv-tag');
+  var tbtns = document.querySelectorAll('button[data-view]');
+  tbtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = views[b.getAttribute('data-view')];
+      timg.src = v[0]; ttag.textContent = v[1]; timg.alt = v[2];
+      tbtns.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+    });
+  });
+
+  // ridge features
+  var himg = document.getElementById('hl-img'), hbtn = document.getElementById('hl-btn');
+  hbtn.addEventListener('click', function () {
+    var on = hbtn.getAttribute('aria-pressed') !== 'true';
+    hbtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    hbtn.textContent = 'Terrain features: ' + (on ? 'On' : 'Off');
+    himg.src = on ? 'img/hunt-features.jpg' : 'img/swipe-ortho.jpg';
+    himg.alt = on ? 'Upper tree farm and wooded ridge with drainage paths in blue, benches in violet, and arrows for morning and evening thermals'
+                  : 'Photo map of the upper tree farm and wooded ridge in fall color';
+  });
+
+  // sheet viewer
+  var dlg = document.getElementById('viewer'), dimg = document.getElementById('viewer-img');
+  document.querySelectorAll('.sheet').forEach(function (s) {
+    s.addEventListener('click', function () {
+      dimg.src = s.getAttribute('data-full');
+      dimg.alt = s.querySelector('img').alt;
+      if (dlg.showModal) dlg.showModal(); else window.open(dimg.src, '_blank');
+    });
+  });
+  document.getElementById('viewer-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+  // warm the swap images
+  ['img/trees-photo.jpg', 'img/trees-canopy.jpg', 'img/swipe-ortho.jpg'].forEach(function (u) { new Image().src = u; });
+})();
+</script>
+</body>
+</html>
