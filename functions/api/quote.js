@@ -28,7 +28,7 @@ const CHOICES = {
 
 const SERVICES = [
   'Pre-development assessment', 'Build progress monitoring', 'Time-lapse & marketing media',
-  'Stockpile volume reports', 'Orthomosaic site maps', 'Progress documentation',
+  'Stockpile volume reports', 'Cut/fill analysis', 'Orthomosaic site maps', 'Progress documentation',
   'Acreage listing package', 'High-resolution aerial maps', 'Property overview imagery',
   'Field & farmstead maps', 'Grain & silage pile volumes', 'Visual crop scouting maps',
   'White-label RTK data capture', 'Not sure — help me choose',
@@ -169,6 +169,9 @@ function buildDetails(fd, services) {
   const has = (...names) => names.some((n) => services.includes(n));
   if (has('Stockpile volume reports', 'Grain & silage pile volumes')) {
     lines.push(`Volumes — piles: ${str(fd, 'pileCount', 20) || '?'}; material: ${str(fd, 'material', 120) || '?'}; frequency: ${str(fd, 'volumeFreq', 40) || '?'}`);
+  }
+  if (has('Cut/fill analysis')) {
+    lines.push(`Cut/fill — compare against: ${str(fd, 'cutfillBase', 80) || '?'}; design files: ${str(fd, 'designFiles', 80) || '?'}`);
   }
   if (has('Build progress monitoring', 'Progress documentation')) {
     lines.push(`Progress — frequency: ${str(fd, 'progressFreq', 40) || '?'}; project length: ${str(fd, 'projectLength', 80) || '?'}`);
