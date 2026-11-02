@@ -44,15 +44,16 @@ function loginPage(status, error) {
 <meta name="robots" content="noindex, nofollow">
 <title>Enchanted Valley Acres | Novak Geospatial Solutions</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
+<script src="/topo-fine.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
   body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px;
-    background: #0a0d12 url("/topo-bg.jpg") center / cover no-repeat fixed; color: #eef1f3;
+    background: #0a0d12; color: #eef1f3;
     font-family: Roboto, "Segoe UI", system-ui, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-  .card { width: 100%; max-width: 420px; background: rgba(12,16,22,.9); border: 1px solid rgba(255,255,255,.12);
+  .card { position: relative; z-index: 1; width: 100%; max-width: 420px; background: rgba(12,16,22,.9); border: 1px solid rgba(255,255,255,.12);
     border-top: 2px solid #e8711a; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
   img { height: 72px; width: auto; align-self: flex-start; }
   .kicker { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #e8711a; }
@@ -69,6 +70,7 @@ function loginPage(status, error) {
 </style>
 </head>
 <body>
+<div data-topo-fine aria-hidden="true"></div>
 <main class="card">
   <img src="/logo-dark.png" alt="Novak Geospatial Solutions">
   <p class="kicker">Private preview</p>

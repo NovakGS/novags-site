@@ -9,6 +9,7 @@
 <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
 <link rel="apple-touch-icon" href="/favicon-128.png">
 <meta name="theme-color" content="#0a0d12">
+<script src="/topo-fine.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
 <style>
@@ -25,11 +26,11 @@
   html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
-    margin: 0; background: var(--bg) url("/topo-bg.jpg") center top / cover no-repeat fixed;
+    margin: 0; background: var(--bg);
     color: var(--ink); font-family: var(--sans); font-size: 16px; -webkit-font-smoothing: antialiased;
   }
   .shade { position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background: linear-gradient(180deg, rgba(10,13,18,.55) 0%, rgba(10,13,18,.9) 40%, rgba(10,13,18,.95) 100%); }
+    background: radial-gradient(ellipse 80% 70% at 50% 40%, rgba(10,13,18,.35) 0%, rgba(10,13,18,.7) 100%); }
   a { color: var(--ink); }
   a:hover { color: var(--orange); }
   a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
@@ -170,6 +171,7 @@
 </style>
 </head>
 <body>
+<div data-topo-fine aria-hidden="true"></div>
 <div class="shade" aria-hidden="true"></div>
 <main class="wrap">
 
