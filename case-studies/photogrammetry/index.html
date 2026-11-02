@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
 <style>
-body{margin:0;background:#0a0d12;}
-.ev-root{background:#0a0d12 url("/case-studies/photogrammetry/img/b03e00a52cd45f13e3ca05b3ee23e3d0.jpg") center top / cover no-repeat;}
+body{margin:0;background:#0a0d12 url("/topo-bg.jpg") center top / cover no-repeat fixed;}
+.ev-root{position:relative;z-index:1;background:transparent;}
 a{color:#eef1f3;}a:hover{color:#e8711a;}
 .ev-range{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:0;cursor:ew-resize;}
 .ev-range::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:linear-gradient(90deg,#4677a0,#e8711a);}
@@ -20,10 +20,11 @@ a{color:#eef1f3;}a:hover{color:#e8711a;}
 .ev-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#eef1f3;border:3px solid #e8711a;}
 .ev-range:focus-visible{outline:2px solid #e8711a;outline-offset:4px;border-radius:8px;}
 </style>
+<script src="/topo.js?v=3" defer></script>
 </head>
-<body>
-<div class="ev-root" style="min-height: 100vh; color: #eef1f3; font-family: Roboto, 'Segoe UI', system-ui, Arial, sans-serif; font-size: 16px; -webkit-font-smoothing: antialiased; background-color: #0a0d12">
-<div style="background: linear-gradient(180deg, rgba(10,13,18,.35) 0%, rgba(10,13,18,.82) 30%, rgba(10,13,18,.93) 100%)">
+<body data-topo="page" data-topo-style="fine">
+<div class="ev-root" style="min-height: 100vh; color: #eef1f3; font-family: Roboto, 'Segoe UI', system-ui, Arial, sans-serif; font-size: 16px; -webkit-font-smoothing: antialiased; background-color: transparent">
+<div style="background: transparent">
 <main style="max-width: 1040px; margin: 0 auto; padding: 18px 16px 48px; display: flex; flex-direction: column; gap: 52px">
 
 <header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px">
