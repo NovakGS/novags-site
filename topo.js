@@ -38,7 +38,7 @@
     bold: { levels: 14, accent: 7, scale: 380, scaleSm: 260, cell: 14, cellSm: 12, index: 3,
             line: 'rgba(170,179,188,.22)', lineW: 1, idx: 'rgba(70,119,160,.55)', idxW: 1.2, glow: true },
     fine: { levels: 34, accent: 17, scale: 170, scaleSm: 130, cell: 9, cellSm: 8, index: 5,
-            line: 'rgba(170,179,188,.085)', lineW: 0.8, idx: 'rgba(70,119,160,.26)', idxW: 1, glow: false }
+            line: 'rgba(170,179,188,.085)', lineW: 0.8, idx: 'rgba(70,119,160,.26)', idxW: 1, glow: false, vignette: true }
   };
 
   function Topo(host, mode) {
@@ -127,6 +127,15 @@
         } else {
           ctx.strokeStyle = S.line; ctx.lineWidth = S.lineW; ctx.stroke();
         }
+      }
+      if (S.vignette) {
+        // the homepage's soft edge darkening, built in so every page matches
+        var cx = W / 2, cy = H * 0.42, rx = W * 0.7, ry = H * 0.6;
+        ctx.save(); ctx.translate(cx, cy); ctx.scale(rx, ry);
+        var g = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+        g.addColorStop(0, 'rgba(10,13,18,.15)'); g.addColorStop(0.7, 'rgba(10,13,18,.72)'); g.addColorStop(1, 'rgba(10,13,18,.92)');
+        ctx.fillStyle = g; ctx.fillRect(-cx / rx - 1, -cy / ry - 1, W / rx + 2, H / ry + 2);
+        ctx.restore();
       }
     }
     this.size = size; this.draw = draw;

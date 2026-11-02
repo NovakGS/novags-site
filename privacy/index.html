@@ -124,11 +124,31 @@
   main strong { color: var(--slate); }
   footer nav { margin-top: 6px; }
   footer nav a { margin: 0 8px; }
+  /* Compact legal type: 9pt, single-spaced */
+  main { font-size: 12px; line-height: 1.2; padding: 24px 28px 26px; }
+  main .eyebrow { font-size: 10px; margin: 0 0 4px; }
+  main h1 { font-size: 20px; line-height: 1.15; margin: 0 0 4px; }
+  main .updated { font-size: 11px; margin: 0 0 12px; }
+  main .lead { margin: 0 0 12px; }
+  main h2 { font-size: 13px; line-height: 1.2; margin: 14px 0 4px; padding-top: 10px; }
+  main h2:first-of-type { margin-top: 4px; }
+  main p, main ul { margin: 0 0 6px; }
+  main ul { padding-left: 16px; }
+  main li { margin: 0 0 2px; }
+  main ol.terms li { padding: 7px 0 7px 30px; }
+  main ol.terms li::before { top: 7px; width: 20px; height: 20px; font-size: 11px; }
+  main .contact { margin-top: 14px; padding: 10px 14px; }
+  main .contact h2 { font-size: 13px; margin: 0 0 3px; padding-top: 0; border-top: 0; }
+  @media (max-width: 640px) {
+    main { font-size: 12px; padding: 18px 16px 20px; }
+    main h1 { font-size: 19px; }
+    main ol.terms li { padding-left: 30px; }
+  }
 </style>
-<script src="/topo.js?v=2" defer></script>
+<script src="/topo.js?v=3" defer></script>
 </head>
 <body>
-<header data-topo="band">
+<header data-topo="band" data-topo-style="fine">
   <div class="flank">
     <span class="side l">Elevated Data</span>
     <a href="https://novakgs.com/" aria-label="Novak Geospatial Solutions home"><picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
