@@ -537,6 +537,10 @@
     r.addEventListener('change', function () { if (r.checked) setPath(r.value); });
   });
   pinBox.addEventListener('toggle', function () { if (pinBox.open) initMap(); });
+  // Arriving from a homepage card: /quote/?path=volumes
+  var startPath = (params.get('path') || '').replace(/[^a-z]/g, '');
+  var startRadio = startPath && form.querySelector('input[name=path][value="' + startPath + '"]');
+  if (startRadio) { startRadio.checked = true; setTimeout(function () { setPath(startPath); }, 0); }
 
   // Put the client's own service group first and mark it.
   var groupsEl = document.getElementById('groups');

@@ -402,6 +402,80 @@
     .services, .promises { grid-template-columns: 1fr; }
     .proof { font-size: 11px; gap: 8px 16px; }
   }
+  /* v2 layout */
+  .page { padding-top: 56px; }
+  .hero { padding-bottom: 8px; }
+  .hero .logo { width: 520px; }
+  .tagline.under { margin: 14px 0 0; font-size: 18px; }
+  .lede { max-width: 620px; margin: 22px auto 0; font-size: 19px; line-height: 1.55; color: var(--ink); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: stretch; margin-top: 28px; }
+  .cta-row .contact { margin-top: 0; }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 52px; padding: 13px 28px; border-radius: 999px;
+    background: var(--orange); color: #160b02; font-size: 17px; font-weight: 600; text-decoration: none;
+    box-shadow: 0 8px 26px rgba(232,113,26,.28); transition: background .2s, transform .2s;
+  }
+  .btn-primary:hover { background: #f07f2c; transform: translateY(-1px); }
+  .btn-primary svg { width: 18px; height: 18px; }
+  .mail { margin: 14px 0 0; font-size: 15px; }
+  .mail a { color: var(--muted); }
+  .section { margin-top: 84px; }
+  .section > .kicker, .section > h2 { text-align: center; }
+  .shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+  .shots figure { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--edge); background: var(--panel); text-align: left; }
+  .shots a { display: block; color: inherit; text-decoration: none; }
+  .shots img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+  .shots figcaption { padding: 10px 14px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace; }
+  .shots a:hover figcaption { color: var(--orange); }
+  .needs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 22px; text-align: left; }
+  .need-card {
+    display: flex; flex-direction: column; gap: 6px; padding: 20px 18px 18px;
+    border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); color: var(--ink); text-decoration: none;
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: border-color .2s, transform .2s;
+  }
+  .need-card svg { width: 28px; height: 28px; color: var(--orange); margin-bottom: 6px; }
+  .need-card strong { font-size: 17px; font-weight: 600; line-height: 1.25; }
+  .need-card span { font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .need-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+  .aside { margin: 16px 0 0; text-align: center; font-size: 15px; color: var(--muted); }
+  .aside a { color: var(--ink); }
+  .lines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 22px; text-align: left; }
+  .line { padding: 16px 18px; border-top: 2px solid var(--blue); background: var(--panel); border-radius: 0 0 10px 10px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .line h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
+  .line p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .who .white-label { margin-top: 12px; }
+  .verify { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: center; text-align: left;
+    padding: 30px; border: 1px solid var(--edge); border-radius: 14px; background: var(--panel); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .verify .kicker, .verify h2 { text-align: left; }
+  .verify h2 { margin: 0 0 10px; font-size: 28px; font-weight: 600; }
+  .verify-copy p:last-child { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .steps li { display: grid; grid-template-columns: 34px 1fr; column-gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--edge); }
+  .steps li:last-child { border-bottom: 0; }
+  .steps .n { grid-row: span 2; font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace; font-size: 13px; color: var(--orange); padding-top: 2px; }
+  .steps strong { font-size: 16px; font-weight: 600; }
+  .steps span:last-child { font-size: 14px; color: var(--muted); }
+  .closing { text-align: center; padding: 36px 24px; border-top: 1px solid var(--edge); }
+  .closing h2 { margin: 0 0 8px; font-size: 30px; font-weight: 600; }
+  .closing > p { margin: 0 0 22px; color: var(--muted); font-size: 16px; }
+  footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; margin-bottom: 10px; }
+  footer nav a { color: var(--muted); }
+  @media (max-width: 900px) {
+    .shots, .needs, .lines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .verify { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .page { padding-top: 32px; }
+    .tagline.under { font-size: 15px; }
+    .lede { font-size: 17px; }
+    .cta-row { width: 100%; }
+    .cta-row .btn-primary, .cta-row .contact { flex: 1 1 100%; }
+    .section { margin-top: 60px; }
+    .needs, .lines { grid-template-columns: 1fr; }
+    .verify { padding: 22px 18px; }
+    .verify h2, .closing h2 { font-size: 24px; }
+  }
 </style>
 <script src="/topo.js?v=2" defer></script>
 </head>
@@ -410,121 +484,120 @@
 
 <div class="page">
   <header class="hero">
-    <p class="tagline"><span class="nw">Elevated Data.</span> <span class="nw">Grounded Truth.</span></p>
     <img class="logo" src="logo-dark.png" alt="Novak Geospatial Solutions" width="732" height="338">
-    <p class="sub"><span class="nw">Drone mapping &amp; geospatial data</span> <span class="sep">·</span> <span class="nw">Southern Wisconsin</span></p>
-    <p class="status">Full website coming soon</p>
+    <p class="tagline under"><span class="nw">Elevated Data.</span> <span class="nw">Grounded Truth.</span></p>
+    <p class="lede">Aerial photos, property maps and measured site data across southern Wisconsin, from one FAA-certified pilot.</p>
 
-    <div class="contact">
-      <div class="split">
-        <a class="main" href="tel:+16088200224">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-          (608) 820-0224
-        </a>
-        <a class="sms-link" href="sms:+16088200224" aria-label="Send us a text message" title="Send a text"><span class="sms">SMS</span></a>
-        <a class="wa-link" href="https://wa.me/16088200224" rel="noopener" aria-label="Message us on WhatsApp" title="Message on WhatsApp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="#25D366"/><path d="M16.9 14.2c-.3-.1-1.6-.8-1.8-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.5-1.8-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z" fill="#fff"/></svg></a>
-      </div>
-      <a href="mailto:info@novakgs.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-        info@novakgs.com
+    <div class="cta-row">
+      <a class="btn-primary" href="/quote/">Request a quote
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
+      <div class="contact">
+        <div class="split">
+          <a class="main" href="tel:+16088200224">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            (608) 820-0224
+          </a>
+          <a class="sms-link" href="sms:+16088200224" aria-label="Send a text message" title="Send a text"><span class="sms">SMS</span></a>
+          <a class="wa-link" href="https://wa.me/16088200224" rel="noopener" aria-label="Message on WhatsApp" title="Message on WhatsApp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="#25D366"/><path d="M16.9 14.2c-.3-.1-1.6-.8-1.8-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.5-1.8-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z" fill="#fff"/></svg></a>
+        </div>
+      </div>
     </div>
+    <p class="mail"><a href="mailto:info@novakgs.com">info@novakgs.com</a></p>
   </header>
 
-  <hr class="rule">
+  <section class="section work" aria-labelledby="work">
+    <p class="kicker">Recent work</p>
+    <h2 id="work">From one flight: photos, maps, terrain and 3D</h2>
+    <div class="shots">
+      <figure><img src="/img/work/aerial-photo.jpg" alt="Oblique aerial photo of a farm and orchard in fall color" width="960" height="720" loading="lazy"><figcaption>Aerial photo</figcaption></figure>
+      <figure><img src="/img/work/property-map.jpg" alt="Straight-down orthomosaic map of a farm property" width="960" height="720" loading="lazy"><figcaption>Property map</figcaption></figure>
+      <figure><img src="/img/work/contours.jpg" alt="Wooded ridge with two-foot contour lines over the aerial map" width="960" height="720" loading="lazy"><figcaption>Elevation &amp; contours</figcaption></figure>
+      <figure><a href="/work/deer-stand/"><img src="/img/work/3d-model.jpg" alt="3D model of a hunting stand with measured dimensions" width="960" height="720" loading="lazy"><figcaption>Measured 3D model <span aria-hidden="true">&rarr;</span></figcaption></a></figure>
+    </div>
+  </section>
+
+  <section class="section need" aria-labelledby="need">
+    <p class="kicker">Start here</p>
+    <h2 id="need">What do you need?</h2>
+    <div class="needs">
+      <a class="need-card" href="/quote/?path=photos">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        <strong>Aerial photos or video</strong>
+        <span>A home, farm, land, listing or event, shot from above.</span>
+      </a>
+      <a class="need-card" href="/quote/?path=map">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>
+        <strong>A map of my property</strong>
+        <span>One sharp, straight-down image of the whole property.</span>
+      </a>
+      <a class="need-card" href="/quote/?path=volumes">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19l5-8 3 4 3-6 9 10z"/><path d="M2 19h20"/><path d="M15 5h5M17.5 2.5v5"/></svg>
+        <strong>Volumes &amp; cut/fill</strong>
+        <span>Stockpile inventory, grain and silage piles, earthwork quantities.</span>
+      </a>
+      <a class="need-card" href="/quote/?path=tech">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-9 4 5 3-4 5 8z"/><path d="M3 20h18"/></svg>
+        <strong>Other mapping &amp; data</strong>
+        <span>Progress tracking, field and drainage maps, RTK data, CAD or GIS files.</span>
+      </a>
+    </div>
+    <p class="aside">Not sure what fits? <a href="/quote/?path=unsure">Describe the project</a> and the right option will be recommended.</p>
+  </section>
+
+  <section class="section who" aria-labelledby="who">
+    <p class="kicker">Who it's for</p>
+    <h2 id="who">Built for the people who build, move, sell and grow on Wisconsin land</h2>
+    <div class="lines">
+      <div class="line"><h3>Developers &amp; builders</h3><p>Pre-development assessments, construction progress tracking, time-lapse and marketing media.</p></div>
+      <div class="line"><h3>Contractors &amp; aggregate</h3><p>Stockpile volume reports, cut/fill, orthomosaic site maps and progress documentation.</p></div>
+      <div class="line"><h3>Realtors &amp; landowners</h3><p>Acreage listing packages, high-resolution aerial maps and property overview imagery.</p></div>
+      <div class="line"><h3>Farms &amp; agriculture</h3><p>Field and farmstead maps, drainage maps, grain and silage volumes, crop scouting.</p></div>
+    </div>
+    <p class="white-label"><strong>Surveyors &amp; engineers:</strong> <span>white-label RTK data capture, delivered in your coordinate system and file formats.</span></p>
+  </section>
+
+  <section class="section verify" aria-labelledby="verify">
+    <div class="verify-copy">
+      <p class="kicker">Measured, then verified</p>
+      <h2 id="verify">Numbers that hold up</h2>
+      <p>Volumes, surfaces and elevations drive billing, design and inventory decisions. Every measurement deliverable is checked against independent ground checkpoints, and the results come with the data.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="n">01</span><strong>RTK-positioned flights</strong><span>Every image is tied to corrected GPS positions.</span></li>
+      <li><span class="n">02</span><strong>Ground control on measurement jobs</strong><span>Targets set and measured on site before processing.</span></li>
+      <li><span class="n">03</span><strong>Checkpoint report delivered</strong><span>Horizontal and vertical accuracy stated, not assumed.</span></li>
+    </ol>
+  </section>
 
   <section class="section pilot" aria-labelledby="pilot">
     <p class="kicker">One pilot. Zero guesswork.</p>
-    <h2 id="pilot">Your project gets our full attention, start to finish</h2>
-    <p class="intro">One FAA-certified pilot handles your job from the first call to the final file. The person who quotes your site is the person who flies it, processes the data, and picks up the phone when you have a question. No hand-offs, no account managers, and no getting lost in someone else&rsquo;s queue.</p>
+    <h2 id="pilot">One pilot, first call to final file</h2>
+    <p class="intro">The person who quotes the site is the person who flies it, processes the data and answers the phone. No hand-offs, no account managers, no getting lost in someone else&rsquo;s queue.</p>
     <ul class="promises">
-      <li><strong>Direct line</strong><span>Call or text your pilot, not a front desk.</span></li>
+      <li><strong>Direct line</strong><span>Call or text the pilot, not a front desk.</span></li>
       <li><strong>Same pilot, every visit</strong><span>Repeat flights are run the same way, by the same person.</span></li>
       <li><strong>Quick replies</strong><span>Answers within one business day.</span></li>
     </ul>
   </section>
 
-  <hr class="rule">
-
-  <section class="section" aria-labelledby="deliver">
-    <p class="kicker">What we deliver</p>
-    <h2 id="deliver">Aerial data for the people who build, move, sell, and grow on Wisconsin land</h2>
-    <p class="intro">Every project is positioned with RTK correction and quality-checked before it reaches you. Find your line below.</p>
-
-    <div class="services">
-      <article class="svc">
-        <span class="num">01</span>
-        <h3>Developers &amp; builders</h3>
-        <p>Understand a site before you break ground, then document every phase after.</p>
-        <ul>
-          <li>Pre-development assessments</li>
-          <li>Construction progress tracking</li>
-          <li>Time-lapse &amp; marketing media</li>
-        </ul>
-      </article>
-      <article class="svc">
-        <span class="num">02</span>
-        <h3>Contractors &amp; aggregate</h3>
-        <p>Measured quantities and current site maps, without walking the piles.</p>
-        <ul>
-          <li>Stockpile volume reports</li>
-          <li>Orthomosaic site maps</li>
-          <li>Progress documentation</li>
-        </ul>
-      </article>
-      <article class="svc">
-        <span class="num">03</span>
-        <h3>Realtors &amp; landowners</h3>
-        <p>Show buyers the whole property, from above and in detail.</p>
-        <ul>
-          <li>Acreage listing packages</li>
-          <li>High-resolution aerial maps</li>
-          <li>Property overview imagery</li>
-        </ul>
-      </article>
-      <article class="svc">
-        <span class="num">04</span>
-        <h3>Farms &amp; agriculture</h3>
-        <p>Current maps and measured volumes across fields and farmsteads.</p>
-        <ul>
-          <li>Field &amp; farmstead maps</li>
-          <li>Grain &amp; silage pile volumes</li>
-          <li>Visual crop scouting maps</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="white-label">
-      <p><strong>Surveyors &amp; engineers:</strong> <span>white-label RTK data capture, delivered in your coordinate system and file formats.</span></p>
-      <ul class="proof" aria-label="Standards">
+  <section class="section closing" aria-labelledby="closing">
+    <h2 id="closing">Get a quote in about a minute</h2>
+    <p>Tell Novak|GS what you need and where. A reply comes within one business day.</p>
+    <a class="btn-primary" href="/quote/">Request a quote
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <ul class="proof">
       <li>FAA Part 107 certified</li>
       <li>RTK-positioned</li>
-      <li>QC-checked</li>
-        <li>Your format</li>
-      </ul>
-    </div>
+      <li>Accuracy-verified</li>
+    </ul>
   </section>
 
-  <nav class="links section" aria-label="Pages">
-    <a class="tile" href="/quote/">
-      <h2>Request a quote</h2>
-      <p>Aerial photos, property maps, volumes, and site data. Simple requests take about a minute.</p>
-    </a>
-    <a class="tile" href="/card/">
-      <h2>Digital business card</h2>
-      <p>Save our contact to your phone in one tap.</p>
-    </a>
-    <a class="tile" href="/privacy">
-      <h2>Privacy &amp; terms</h2>
-      <p>How we handle your information and the terms for using this site.</p>
-    </a>
-  </nav>
-
   <footer>
-    <div class="tm">© 2026 BUCK2NINETY LLC · Novak Geospatial Solutions™</div>
-    <div><a href="/privacy">Privacy</a> · <a href="/tos">Terms of Service</a></div>
+    <nav aria-label="Footer"><a href="/card/">Digital business card</a><a href="/privacy">Privacy</a><a href="/tos">Terms of Service</a></nav>
+    <p><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin</p>
   </footer>
 </div>
-
 </body>
 </html>
