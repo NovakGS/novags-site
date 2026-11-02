@@ -33,9 +33,17 @@
     return noise(x, y, t) * 0.65 + noise(x * 2.1 + 17, y * 2.1 + 9, t * 1.3) * 0.35;
   }
 
-  var LEVELS = 14, ACCENT = 7;
+  // Two looks: the default bold style, and data-topo-style="fine" for a denser, quieter map.
+  var STYLES = {
+    bold: { levels: 14, accent: 7, scale: 380, scaleSm: 260, cell: 14, cellSm: 12, index: 3,
+            line: 'rgba(170,179,188,.22)', lineW: 1, idx: 'rgba(70,119,160,.55)', idxW: 1.2, glow: true },
+    fine: { levels: 34, accent: 17, scale: 170, scaleSm: 130, cell: 9, cellSm: 8, index: 5,
+            line: 'rgba(170,179,188,.085)', lineW: 0.8, idx: 'rgba(70,119,160,.26)', idxW: 1, glow: false }
+  };
 
   function Topo(host, mode) {
+    var S = STYLES[host.getAttribute('data-topo-style')] || STYLES.bold;
+    var LEVELS = S.levels, ACCENT = S.accent;
     var canvas = document.createElement('canvas');
     canvas.setAttribute('aria-hidden', 'true');
     canvas.className = 'topo-canvas';
@@ -63,7 +71,7 @@
       else { var r = host.getBoundingClientRect(); W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height)); }
       canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      cell = W < 640 ? 12 : 14;
+      cell = W < 640 ? S.cellSm : S.cell;
       cols = Math.ceil(W / cell) + 1; rows = Math.ceil(H / cell) + 1;
       grid = new Float32Array(cols * rows);
     }
@@ -95,7 +103,7 @@
       }
     }
     function draw(t) {
-      var scale = 1 / (W < 640 ? 260 : 380), i, j, k;
+      var scale = 1 / (W < 640 ? S.scaleSm : S.scale), i, j, k;
       for (j = 0; j < rows; j++)
         for (i = 0; i < cols; i++)
           grid[j * cols + i] = field(i * cell * scale, j * cell * scale, t);
@@ -106,14 +114,18 @@
         var iso = 0.18 + (k / LEVELS) * 0.64;
         trace(iso);
         if (k === ACCENT) {
-          // the orange line: a soft glow under a bright, crisp stroke
-          ctx.strokeStyle = 'rgba(255,138,40,.16)'; ctx.lineWidth = 8; ctx.stroke();
-          ctx.strokeStyle = 'rgba(255,138,40,.28)'; ctx.lineWidth = 4; ctx.stroke();
-          ctx.strokeStyle = 'rgba(255,150,58,.98)'; ctx.lineWidth = 2; ctx.stroke();
-        } else if (k % 3 === 0) {
-          ctx.strokeStyle = 'rgba(70,119,160,.55)'; ctx.lineWidth = 1.2; ctx.stroke();
+          if (S.glow) {
+            // the orange line: a soft glow under a bright, crisp stroke
+            ctx.strokeStyle = 'rgba(255,138,40,.16)'; ctx.lineWidth = 8; ctx.stroke();
+            ctx.strokeStyle = 'rgba(255,138,40,.28)'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.strokeStyle = 'rgba(255,150,58,.98)'; ctx.lineWidth = 2; ctx.stroke();
+          } else {
+            ctx.strokeStyle = 'rgba(255,150,58,.45)'; ctx.lineWidth = 1.1; ctx.stroke();
+          }
+        } else if (k % S.index === 0) {
+          ctx.strokeStyle = S.idx; ctx.lineWidth = S.idxW; ctx.stroke();
         } else {
-          ctx.strokeStyle = 'rgba(170,179,188,.22)'; ctx.lineWidth = 1; ctx.stroke();
+          ctx.strokeStyle = S.line; ctx.lineWidth = S.lineW; ctx.stroke();
         }
       }
     }
