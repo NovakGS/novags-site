@@ -144,7 +144,7 @@
   .sheet .cap b { font-size: 14px; font-weight: 600; }
   .sheet .cap small { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--faint); }
 
-  dialog { padding: 0; border: 1px solid var(--edge); border-radius: 12px; background: #fff; width: min(92vw, 400px); max-height: 94vh; overflow: auto; }
+  dialog { position: fixed; inset: 0; margin: auto; height: fit-content; padding: 0; border: 1px solid var(--edge); border-radius: 12px; background: #fff; width: min(92vw, 400px); max-height: 94vh; max-height: 94dvh; overflow: auto; }
   dialog::backdrop { background: rgba(5,7,10,.88); }
   dialog img { display: block; width: 100%; height: auto; }
   .close { position: sticky; top: 10px; float: right; margin: 10px 10px -54px 0; z-index: 2; background: #12161c; color: var(--ink); border: 1px solid var(--edge); border-radius: 999px; min-height: 44px; padding: 0 16px; font: 600 14px var(--sans); cursor: pointer; }
@@ -552,9 +552,13 @@
   var dlg = document.getElementById('viewer'), dimg = document.getElementById('viewer-img');
   document.querySelectorAll('.sheet').forEach(function (s) {
     s.addEventListener('click', function () {
+      var thumb = s.querySelector('img');
+      dimg.alt = thumb.alt;
+      dimg.width = thumb.naturalWidth || 400; dimg.height = thumb.naturalHeight || 618;
       dimg.src = s.getAttribute('data-full');
-      dimg.alt = s.querySelector('img').alt;
-      if (dlg.showModal) dlg.showModal(); else window.open(dimg.src, '_blank');
+      var open = function () { if (dlg.showModal) dlg.showModal(); else window.open(dimg.src, '_blank'); };
+      // open only once the image is ready, so the box is centered at its final size
+      if (dimg.decode) dimg.decode().then(open, open); else open();
     });
   });
   document.getElementById('viewer-close').addEventListener('click', function () { dlg.close(); });
