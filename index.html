@@ -430,8 +430,8 @@
   .shots a:hover figcaption { color: var(--orange); }
   .needs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-top: 22px; text-align: left; }
   .needs .need-card { grid-column: span 2; }
-  .needs .need-card:nth-child(n+4) { grid-column: span 3; }
-  .needs .need-card:nth-child(n+4) .thumb { aspect-ratio: 2 / 1; }
+  .needs .need-card:nth-child(-n+2) { grid-column: span 3; }
+  .needs .need-card:nth-child(-n+2) .thumb { aspect-ratio: 2 / 1; }
   .sub-h { margin: 0; text-align: center; color: var(--muted); font-size: 15px; }
   .need-card {
     display: flex; flex-direction: column; overflow: hidden;
@@ -439,6 +439,7 @@
     -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: border-color .2s, transform .2s;
   }
   .need-card .thumb { display: block; position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: #0f141b; border-bottom: 1px solid var(--edge); }
+  .need-card .thumb picture { position: absolute; inset: 0; }
   .need-card .thumb img, .need-card .thumb video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
   .need-card:hover .thumb img, .need-card:hover .thumb video { transform: scale(1.03); }
   .need-card .thumb.placeholder { display: flex; align-items: center; justify-content: center; text-align: center;
@@ -476,8 +477,8 @@
   @media (max-width: 900px) {
     .lines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .needs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .needs .need-card, .needs .need-card:nth-child(n+4) { grid-column: span 1; }
-    .needs .need-card:nth-child(n+4) .thumb { aspect-ratio: 4 / 3; }
+    .needs .need-card, .needs .need-card:nth-child(-n+2) { grid-column: span 1; }
+    .needs .need-card:nth-child(-n+2) .thumb { aspect-ratio: 4 / 3; }
     .needs .need-card:nth-child(5) { grid-column: 1 / -1; }
     .needs .need-card:nth-child(5) .thumb { aspect-ratio: 16 / 9; }
     .verify { grid-template-columns: 1fr; }
@@ -529,7 +530,7 @@
     <p class="sub-h">Pick what you need to start a quote.</p>
     <div class="needs">
       <a class="need-card" href="/quote/?path=tech">
-        <span class="thumb"><img src="/img/work/map-reports.jpg" alt="Three map sheets fanned out: orthomosaic, bare-earth elevation and two-foot contours" width="960" height="720" loading="lazy"></span>
+        <span class="thumb"><picture><source media="(min-width: 901px)" srcset="/img/work/map-reports-wide.jpg"><img src="/img/work/map-reports.jpg" alt="Three map sheets fanned out: orthomosaic, bare-earth elevation and two-foot contours" width="960" height="720" loading="lazy"></picture></span>
         <span class="body">
           <strong>Maps, elevation &amp; contours</strong>
           <span>Orthomosaics, elevation models and contour maps of a site, farm or parcel.</span>
@@ -537,7 +538,7 @@
         </span>
       </a>
       <a class="need-card" href="/quote/?path=tech">
-        <span class="thumb placeholder" role="img" aria-label="Progress photo image placeholder"><span>Progress photo image<br>to come</span></span>
+        <span class="thumb"><picture><source media="(min-width: 901px)" srcset="/img/work/progress-wide.jpg"><img src="/img/work/progress.jpg" alt="Aerial view of a site framed by a camera viewfinder, labeled progress flight, vantage 03" width="960" height="720" loading="lazy"></picture></span>
         <span class="body">
           <strong>Construction progress photos</strong>
           <span>Repeat flights from the same vantage points to document a build, phase by phase.</span>
@@ -553,7 +554,7 @@
         </span>
       </a>
       <a class="need-card" href="/quote/?path=tech">
-        <span class="thumb placeholder" role="img" aria-label="White-label image placeholder"><span>White-label image<br>to come</span></span>
+        <span class="thumb"><img src="/img/work/white-label.jpg" alt="RTK drone controller in its case, with LAS, DXF, GeoTIFF and LandXML file formats" width="960" height="720" loading="lazy"></span>
         <span class="body">
           <strong>White-label RTK capture</strong>
           <span>For surveyors and engineers: RTK data captured in your coordinate system and file formats.</span>
