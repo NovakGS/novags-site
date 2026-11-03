@@ -78,3 +78,8 @@ figure.lead img{aspect-ratio:16/9;object-fit:cover;object-position:50% 0}
 .post-flow figure.brief{width:180px}
 .post-flow .clear{clear:both}
 @media(max-width:560px){.post-flow figure.pilot{float:none;width:100%;margin:0 0 18px}.post-flow figure.home{width:44%;margin-right:14px}.post-flow figure.brief{width:38%;margin-left:14px}.post-flow ul{font-size:16px}.post-flow pre{font-size:12.5px}}
+/* Blog index: a dated divider above each post, with image sides alternating from the oldest post. */
+.post-date{display:flex;align-items:center;gap:14px;margin:0 0 14px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+.post-date::after{content:"";flex:1;height:1px;background:var(--edge)}
+.post-list{gap:28px}
+@media(min-width:761px){.post-list>li:nth-last-child(even) .post-card{grid-template-columns:minmax(0,1fr) 300px}.post-list>li:nth-last-child(even) .post-card img{order:2}}

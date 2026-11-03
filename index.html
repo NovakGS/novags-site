@@ -469,6 +469,16 @@
   .steps .n { grid-row: span 2; font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace; font-size: 13px; color: var(--orange); padding-top: 2px; }
   .steps strong { font-size: 16px; font-weight: 600; }
   .steps span:last-child { font-size: 14px; color: var(--muted); }
+  .blog-feature { display: grid; grid-template-columns: minmax(0, 1fr) 300px; margin-top: 22px; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: rgba(12,16,22,.78); color: inherit; text-decoration: none; text-align: left; transition: border-color .2s, transform .2s; }
+  .blog-feature:hover { border-color: var(--orange); transform: translateY(-2px); }
+  .blog-feature img { order: 2; display: block; width: 100%; height: 100%; min-height: 200px; object-fit: cover; }
+  .blog-feature .body { display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; }
+  .blog-feature strong { font-size: 21px; font-weight: 600; line-height: 1.25; }
+  .blog-feature .body > span:not(.go) { font-size: 15px; line-height: 1.5; color: var(--muted); }
+  .blog-feature .go { margin-top: auto; padding-top: 8px; font-size: 14px; font-weight: 600; color: var(--orange); }
+  .blog-all { margin: 14px 0 0; text-align: center; font-size: 15px; }
+  .blog-all a { color: var(--muted); }
+  @media (max-width: 760px) { .blog-feature { grid-template-columns: 1fr; } .blog-feature img { order: 0; height: auto; aspect-ratio: 16 / 9; min-height: 0; } }
   .closing { text-align: center; padding: 36px 24px; border-top: 1px solid var(--edge); }
   .closing h2 { margin: 0 0 8px; font-size: 30px; font-weight: 600; }
   .closing > p { margin: 0 0 22px; color: var(--muted); font-size: 16px; }
@@ -522,7 +532,7 @@
         </div>
       </div>
     </div>
-    <p class="mail"><a href="mailto:info@novakgs.com">info@novakgs.com</a></p>
+    <p class="mail"><a href="mailto:info@novakgs.com">info@novakgs.com</a> &middot; <a href="/blog/">Blog</a></p>
   </header>
 
   <section class="section need" aria-labelledby="need">
@@ -607,6 +617,20 @@
       <li><strong>Same pilot, every visit</strong><span>Repeat flights are run the same way, by the same person.</span></li>
       <li><strong>Quick replies</strong><span>Answers within one business day.</span></li>
     </ul>
+  </section>
+
+  <section class="section blog-link" aria-labelledby="blog-h">
+    <p class="kicker">From the blog</p>
+    <h2 id="blog-h">Field notes</h2>
+    <a class="blog-feature" href="/blog/whos-flying-that-drone/">
+      <img src="/blog/whos-flying-that-drone/img/pilot.jpg" alt="" width="900" height="675" loading="lazy">
+      <span class="body">
+        <strong>Who's Flying That Drone? What Commercial Drone Work Really Involves</strong>
+        <span>Commercial drone work is a lot less mysterious, and a lot more regulated, than it might look from the ground.</span>
+        <span class="go">Read the post <span aria-hidden="true">&rarr;</span></span>
+      </span>
+    </a>
+    <p class="blog-all"><a href="/blog/">See all posts</a></p>
   </section>
 
   <section class="section closing" aria-labelledby="closing">
