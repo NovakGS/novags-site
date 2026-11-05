@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
+<link rel="apple-touch-icon" href="/favicon-128.png">
+<meta name="theme-color" content="#0a0d12">
+<meta property="og:site_name" content="Novak Geospatial Solutions">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/blog/blog.css?v=2">
+<script src="/topo.js?v=3" defer></script>
+<script src="/blog/lightbox.js" defer></script>
+<title>Drone Mapping Accuracy: Checking NGS Survey Marks | Novak|GS</title>
+<meta name="description" content="How we check our GPS rover against NGS survey marks in Dane County, Wisconsin, so every drone map and stockpile volume is backed by documented accuracy.">
+<link rel="canonical" href="https://novakgs.com/blog/ngs-survey-marks-drone-mapping-accuracy/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hidden in Plain Sight: Checking Drone Mapping Accuracy Against NGS Survey Marks">
+<meta property="og:description" content="How we check our GPS rover against NGS survey marks in Dane County, Wisconsin, so every drone map and stockpile volume is backed by documented accuracy.">
+<meta property="og:url" content="https://novakgs.com/blog/ngs-survey-marks-drone-mapping-accuracy/">
+<meta property="og:image" content="https://novakgs.com/blog/ngs-survey-marks-drone-mapping-accuracy/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta property="og:image:alt" content="GPS rover on a bipod over the DH5044 survey mark beside a rural road near Cross Plains, Wisconsin">
+<meta name="twitter:image" content="https://novakgs.com/blog/ngs-survey-marks-drone-mapping-accuracy/og.jpg">
+<meta property="article:published_time" content="2026-11-05">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Hidden in Plain Sight: Checking Drone Mapping Accuracy Against NGS Survey Marks", "description": "How we check our GPS rover against NGS survey marks in Dane County, Wisconsin, so every drone map and stockpile volume is backed by documented accuracy.", "datePublished": "2026-11-05", "image": "https://novakgs.com/blog/ngs-survey-marks-drone-mapping-accuracy/og.jpg", "mainEntityOfPage": "https://novakgs.com/blog/ngs-survey-marks-drone-mapping-accuracy/", "author": {"@type": "Organization", "name": "Novak Geospatial Solutions", "url": "https://novakgs.com/"}, "publisher": {"@type": "Organization", "name": "Novak Geospatial Solutions", "logo": {"@type": "ImageObject", "url": "https://novakgs.com/logo-dark-v2.png"}}, "keywords": "drone mapping accuracy, NGS survey marks, GPS accuracy check, ASPRS, Dane County, Cross Plains, Wisconsin"}
+</script>
+</head>
+<body data-topo="page" data-topo-style="fine">
+<div class="shade" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="bar">
+    <a href="/"><picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+    <p class="tagline">Elevated Data<span class="sep">|</span>Grounded Truth</p>
+    <a class=back href=/blog/>All posts</a>
+  </header>
+  <main style="display:contents">
+  <article class="post-flow prose ngs">
+    <p class="kicker">Field notes &middot; <time datetime="2026-11-05">November 5, 2026</time></p>
+    <h1><span class="accent">Hidden in Plain Sight:</span> Checking Drone Mapping Accuracy Against NGS Survey Marks</h1>
+
+    <figure class="right w-l"><button type="button" aria-label="Enlarge photo"><img src="img/rtk-rover-bipod-dh5044-cross-plains.jpg" width="900" height="1200" alt="Rover on a bipod over the DH5044 monument beside a WisDOT witness post"></button><figcaption>A bipod holds the rover plumb over DH5044.</figcaption></figure>
+    <p>What does commercial drone work have to do with geocaching?</p>
+    <p>Set into a bridge abutment, a concrete post, or a curb along a county road, there is a bronze disk stamped with a name and a year. Cars pass it all day. Almost nobody knows it is there, yet it quietly holds a position on the earth to within a fraction of an inch.</p>
+    <p>Thousands of these survey marks are scattered across Wisconsin, and much of the mapping, boundary work, and construction layout in the state traces back to them. This week, we went looking for three of them in Dane County.</p>
+
+    <h2 class="clear">What these marks are</h2>
+    <figure class="left w-m"><button type="button" aria-label="Enlarge photo"><img src="img/dh5044-ngs-survey-mark-disk.jpg" width="1188" height="1200" loading="lazy" alt="Bronze DH5044 disk stamped Cross Plains N GPS 2004"></button><figcaption>DH5044, set by WisDOT in 2004. The center punch marks the exact point.</figcaption></figure>
+    <p>Each disk is a known point kept by the <a href="https://geodesy.noaa.gov/" target="_blank" rel="noopener">National Geodetic Survey (NGS)</a>, part of the <a href="https://geodesy.noaa.gov/INFO/facts/nsrs.shtml" target="_blank" rel="noopener">national framework</a> that keeps positions across the country in agreement. Every mark has a public <a href="https://geodesy.noaa.gov/datasheets/" target="_blank" rel="noopener">datasheet</a> with its coordinates, its height, and when someone last found it. Some have not been visited in decades, and a few have quietly disappeared under new pavement.</p>
+
+    <h2 class="clear">Why a drone mapping company goes looking for them</h2>
+    <figure class="right w-s"><button type="button" aria-label="Enlarge photo"><img src="img/rover-level-bubble-over-survey-mark.jpg" width="900" height="1200" loading="lazy" alt="Pole level bubble centered over the DH5044 monument"></button><figcaption>Bubble centered: the antenna is directly over the mark.</figcaption></figure>
+    <p>A drone map is only as accurate as the ground measurements behind it. Before we measure anything on a client's site, our GPS rover has to prove it is telling the truth.</p>
+    <p>The test is simple: set the rover on a mark with a published position and compare. If the reading lands where NGS says it should, the equipment and settings are right. If something is off, we find out here, not in a client's deliverable. It is the first step in the <a href="/#verify">accuracy testing</a> we do to <a href="https://www.asprs.org/?p=27154" target="_blank" rel="noopener">ASPRS standards</a>, and every step is time-stamped and kept on file.</p>
+    <aside class="answer"><p class="q">How accurate was the check?</p><p>On the two marks we found, our GPS rover landed within 1.5 cm of the published horizontal positions. Heights read a consistent 5 to 7 cm low, an offset we documented that points to the marks' older published heights, not our equipment.</p></aside>
+
+    <h2 class="clear">Hunting survey marks near Cross Plains, Wisconsin</h2>
+    <figure class="pair right w-p"><div class="imgs"><button type="button" aria-label="Enlarge photo"><img src="img/om0450-survey-mark-rail-bridge-abutment.jpg" width="900" height="1200" loading="lazy" alt="Rover pole on the OM0450 disk at a rail bridge abutment"></button><button type="button" aria-label="Enlarge photo"><img src="img/om0450-coast-geodetic-survey-disk.jpg" width="912" height="1200" loading="lazy" alt="U.S. Coast and Geodetic Survey bench mark disk on a concrete abutment"></button></div><figcaption>OM0450 on a rail bridge abutment, and its U.S. Coast &amp; Geodetic Survey disk.</figcaption></figure>
+    <p>Finding a mark works a lot like geocaching, and it starts at a desk. Each datasheet has directions left by the last crew to visit, sometimes decades ago: paces from a fence post, the distance from the road, the corner of a barn that may not be there anymore. Those notes and the rover's stakeout get you close. The last few feet take a sharp eye and a probe.</p>
+    <p>Three marks near Cross Plains made the list: <a href="https://www.ngs.noaa.gov/cgi-bin/ds_mark.prl?PidBox=DH5044" target="_blank" rel="noopener">DH5044</a>, <a href="https://www.ngs.noaa.gov/cgi-bin/ds_mark.prl?PidBox=OM0450" target="_blank" rel="noopener">OM0450</a>, and <a href="https://www.ngs.noaa.gov/cgi-bin/ds_mark.prl?PidBox=OM0634" target="_blank" rel="noopener">OM0634</a>. At each one, the rover was leveled over the disk and averaged for a few minutes before the reading was saved.</p>
+    <figure class="pair left w-p"><div class="imgs"><button type="button" aria-label="Enlarge photo"><img src="img/om0634-survey-mark-search-cross-plains.jpg" width="900" height="1200" loading="lazy" alt="Rover standing at OM0634's published position on a roadside shoulder"></button><button type="button" aria-label="Enlarge photo"><img src="img/rover-pole-tip-probing-survey-mark.jpg" width="900" height="1200" loading="lazy" alt="Dirt-caked rover pole tip after probing"></button></div><figcaption>Where OM0634 should be, and the pole tip after probing for it.</figcaption></figure>
+    <p>OM0634 never turned up. The rover led right to its published spot, but the disk was gone, likely lost to road work since it was last seen in 1987. That happens more often than you'd think. Anyone can file a <a href="https://geodesy.noaa.gov/surveys/mark-recovery/" target="_blank" rel="noopener">mark recovery report</a> with NGS, and a &ldquo;not found&rdquo; note saves the next crew a wasted trip. Marks like these are a shared resource, so we're reporting OM0634 as not found.</p>
+
+    <h2 class="clear">GPS accuracy results</h2>
+    <p>Horizontally, the rover landed within 1.5 cm of both marks it found, well within what survey-grade GPS is expected to deliver.</p>
+    <div class="tablebox"><table>
+      <thead><tr><th>Mark</th><th>Horizontal</th><th>Vertical</th></tr></thead>
+      <tbody>
+        <tr><td>DH5044</td><td>1.3 cm</td><td class="neg">&minus;4.8 cm</td></tr>
+        <tr><td>OM0450</td><td>1.4 cm</td><td class="neg">&minus;7.4 cm</td></tr>
+        <tr><td>OM0634</td><td class="na">Not found</td><td class="na">Not found</td></tr>
+      </tbody>
+    </table></div>
+    <p>Vertically, every reading came in 5 to 7 cm low, in the same direction every time, across several visits and two different correction services. Random error bounces around. This didn't. With the equipment and settings ruled out, the likely cause is the reference itself: today's GPS network and these marks' older published heights don't line up perfectly, which is common for marks last adjusted more than a decade ago.</p>
+    <p>The offset is documented with every reading. Because every point on a site carries it equally, it doesn't affect accuracy test results, and when a client needs elevations tied to a specific benchmark, the correction is already known.</p>
+
+    <h2 class="clear">Why it matters to the people who use the data</h2>
+    <figure class="right w-m"><button type="button" aria-label="Enlarge photo"><img src="img/novak-gs-field-truck-gnss-rover.jpg" width="900" height="1200" loading="lazy" alt="Novak|GS truck with the rover pole leaning against it"></button><figcaption>Field work still gets done, even in &ldquo;<a href="/blog/whos-flying-that-drone/">no-go</a>&rdquo; conditions.</figcaption></figure>
+    <p>A stockpile volume, a cut/fill quantity, or a progress map drives decisions that cost real money. Clients rarely see the ground work behind those numbers, and they shouldn't have to. But it should exist.</p>
+    <p>The marks were there long before anyone flew a drone over this county, and they will be there long after. Most people will drive past them for the rest of their lives without knowing. We'll keep stopping.</p>
+    <p style="margin-top:1.4em;font-size:1.1em"><strong>Surveyors: The OG Geocachers.</strong> <span style="color:#a9c8e2">#TheMoreYouKnow</span></p>
+    <div class="signoff">
+      <p class="tag">Elevated Data<span>|</span>Grounded Truth</p>
+      <p>Novak|GS &middot; <a href="/">novakgs.com</a></p>
+    </div>
+  </article>
+
+  <div class="cta post-cta">
+    <div>
+      <h2>Need accuracy you can document?</h2>
+      <p>Tell us about your site. We'll reply within one business day.</p>
+    </div>
+    <a class="btn" href="/quote/">Request a quote</a>
+  </div>
+  </main>
+
+  <footer>
+    <nav aria-label="Footer"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/quote/">Request a quote</a><a href="/privacy">Privacy</a></nav>
+    &copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin
+  </footer>
+</div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Enlarged photo">
+  <button class="x" id="lbx" type="button" aria-label="Close">&times;</button>
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+</div>
+</body>
+</html>
