@@ -625,6 +625,7 @@
   .hs-ctoggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   #heroSwipe.no-contours .hs-cont { opacity: 0; }
   .hs-cont { transition: opacity .2s; }
+  .section > h2 .brk { color: var(--orange); font-weight: 400; }
   /* light theme preview */
   html[data-theme="light"] { --bg: #f3f4f6; --ink: #151b22; --muted: #46515d; --faint: #5b6773; --panel: #ffffff; --edge: rgba(21,27,34,.13); }
   html[data-theme="light"] body { background: var(--bg); }
@@ -650,7 +651,7 @@
       <a href="#need">Services</a>
       <a href="#cases-h">Case studies</a>
       <a href="#verify">Accuracy</a>
-      <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>Field notes<span class="brk" aria-hidden="true"> ]</span></a>
+      <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
       <a class="nav-quote" href="/quote/">Request a quote</a>
     </nav>
     <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Light / dark">
@@ -856,8 +857,7 @@
   </section>
 
   <section class="section blog-link" aria-labelledby="blog-h">
-    <p class="kicker">From the blog</p>
-    <h2 id="blog-h">Field notes</h2>
+    <h2 id="blog-h"><span class="brk" aria-hidden="true">[</span> field notes <span class="brk" aria-hidden="true">]</span></h2>
     <a class="blog-feature" href="/blog/ngs-survey-marks-drone-mapping-accuracy/">
       <img src="/blog/ngs-survey-marks-drone-mapping-accuracy/og.jpg" alt="" width="1200" height="628" loading="lazy">
       <span class="body">
