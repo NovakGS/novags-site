@@ -123,3 +123,5 @@ figure.lead img{aspect-ratio:16/9;object-fit:cover;object-position:50% 0}
 html[data-theme="light"]{--bg:#f3f4f6;--ink:#151b22;--muted:#46515d;--faint:#5b6773;--label:#3d4752;--panel:#ffffff;--panel-solid:#f7f8fa;--edge:rgba(21,27,34,.13);--hair:rgba(21,27,34,.08);--link:#2e5677;color-scheme:light}
 html[data-theme="light"] body{background:var(--bg)}
 html[data-theme="light"] .shade{display:none}
+
+.hero h1 .brk{color:var(--orange);font-weight:400}
