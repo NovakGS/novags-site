@@ -168,7 +168,16 @@
   .plain { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--mono); font-size: 14px; padding: 0 16px; border: 1px solid var(--edge); border-radius: 999px; text-decoration: none; }
 
   footer { text-align: center; font-size: 13px; line-height: 1.7; color: var(--faint); }
+html[data-theme="light"] .jump{background:rgba(243,244,246,.94)}
+html[data-theme="light"] .close{background:#fff}
+/* light theme */
+html[data-theme="light"]{--bg:#f3f4f6;--ink:#151b22;--muted:#46515d;--faint:#5b6773;--label:#3d4752;--panel:#ffffff;--panel-solid:#f7f8fa;--edge:rgba(21,27,34,.13);--hair:rgba(21,27,34,.08);color-scheme:light}
+html[data-theme="light"] body{background:var(--bg)}
+html[data-theme="light"] .shade{display:none}
+
 </style>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
 </head>
 <body>
 <div data-topo="page" data-topo-style="fine" aria-hidden="true"></div>
@@ -177,7 +186,7 @@
   <header class="bar">
     <picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture>
     <p class="tagline">Elevated Data<span>|</span>Grounded Truth</p>
-    <a class="pill-link" href="https://novakgs.com/">novakgs.com</a>
+    <span class="theme-slot-wrap bar-end" data-theme-slot><a class="pill-link" href="https://novakgs.com/">novakgs.com</a></span>
   </header>
 
   <!-- HERO -->

@@ -9,7 +9,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
 <link rel="apple-touch-icon" href="/favicon-128.png">
-<meta name="theme-color" content="#0a0d12">
+<meta name="theme-color" content="#f3f4f6">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Novak Geospatial Solutions">
 <meta property="og:title" content="Novak Geospatial Solutions | Aerial Mapping &amp; Geospatial Data">
@@ -539,22 +539,103 @@
     .verify { padding: 22px 18px; }
     .verify h2, .closing h2 { font-size: 24px; }
   }
+  /* v2 header */
+  .topo-canvas { opacity: .35 !important; }
+  .page { padding-top: 22px; }
+  .section { max-width: 1080px; }
+  .topnav { width: 100%; max-width: 1080px; display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-bottom: 16px; border-bottom: 1px solid var(--edge); }
+  .topnav .brand { display: block; line-height: 0; }
+  .topnav .brand img { height: 52px; width: auto; }
+  .logo-light { display: none; }
+  .topnav nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
+  .topnav nav a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 0; }
+  .topnav nav a:hover { color: var(--ink); }
+  .topnav nav a.nav-quote { background: var(--orange); color: #12161c; padding: 11px 18px; border-radius: 999px; font-weight: 600; margin-left: 4px; }
+  .hero2 { width: 100%; max-width: 1080px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: center; text-align: left; margin-top: 48px; }
+  .eyebrow { margin: 0; font-family: "Roboto Mono", Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+  .hero2 h1 { margin: 12px 0 16px; font-size: 42px; line-height: 1.12; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; }
+  .lede2 { margin: 0 0 26px; font-size: 18px; line-height: 1.55; color: var(--muted); }
+  .hero2 .cta-row { justify-content: flex-start; margin-top: 0; }
+  .hero2 .mail { text-align: left; }
+  .hero-map { position: relative; margin: 0; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: #05070a; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  .hero-map img { display: block; width: 100%; height: auto; }
+  .map-tag { position: absolute; top: 12px; font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #eef1f3; background: rgba(5,7,10,.8); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 5px 10px; }
+  .map-tag.l { left: 12px; } .map-tag.r { right: 12px; }
+  .hero-map figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px; font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; letter-spacing: .06em; color: #c3cad1; background: linear-gradient(transparent, rgba(5,7,10,.88)); }
+  .specs { width: 100%; max-width: 1080px; list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); overflow: hidden; text-align: left; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .specs li { padding: 14px 16px; border-right: 1px solid var(--edge); display: flex; flex-direction: column; gap: 4px; }
+  .specs li:last-child { border-right: 0; }
+  .specs .k { font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+  .specs .v { font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--ink); }
+  @media (max-width: 960px) {
+    .hero2 { grid-template-columns: 1fr; gap: 28px; margin-top: 32px; }
+    .specs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .specs li:nth-child(3) { border-right: 0; }
+    .specs li:nth-child(-n+3) { border-bottom: 1px solid var(--edge); }
+  }
+  @media (max-width: 640px) {
+    .topnav .brand img { height: 40px; }
+    .topnav nav { width: 100%; justify-content: space-between; gap: 0 12px; }
+    .topnav nav a { font-size: 14px; padding: 12px 0; }
+    .topnav nav a.nav-quote { display: none; }
+    .hero2 h1 { font-size: 30px; }
+    .lede2 { font-size: 16px; }
+    .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .specs li { border-right: 1px solid var(--edge); border-bottom: 1px solid var(--edge); }
+    .specs li:nth-child(2n) { border-right: 0; }
+    .specs li:nth-child(n+5) { border-bottom: 0; }
+    .map-tag { font-size: 11px; }
+  }
+  html:not([data-theme="light"]) body { background: linear-gradient(rgba(10,13,18,.62), rgba(10,13,18,.62)), var(--bg) url("topo-bg.jpg") center / cover no-repeat fixed; }
+  @media (max-width: 640px) { .hero-map .wide { display: none; } }
+  .theme-toggle { order: 3; }
+  .topnav .brand { order: 1; } .topnav nav { order: 2; margin-left: auto; }
+  @media (max-width: 640px) {
+    .theme-toggle { order: 2; margin-left: auto; }
+    .topnav nav { order: 3; margin-left: 0; }
+  }
+  /* light theme preview */
+  html[data-theme="light"] { --bg: #f3f4f6; --ink: #151b22; --muted: #46515d; --faint: #5b6773; --panel: #ffffff; --edge: rgba(21,27,34,.13); }
+  html[data-theme="light"] body { background: var(--bg); }
+  html[data-theme="light"] .vignette { display: none; }
+  html[data-theme="light"] .logo-dark { display: none; }
+  html[data-theme="light"] .logo-light { display: block; }
+  html[data-theme="light"] .hero-map { box-shadow: 0 16px 40px rgba(20,30,40,.18); }
+  html[data-theme="light"] .case-card, html[data-theme="light"] .need-card, html[data-theme="light"] .line, html[data-theme="light"] .verify, html[data-theme="light"] .promises li, html[data-theme="light"] .blog-feature { box-shadow: 0 1px 2px rgba(20,30,40,.06); }
+  html[data-theme="light"] .case-stats li { background: #f6f7f9; }
+  html[data-theme="light"] .blog-feature { background: var(--panel); }
 </style>
 <script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
 </head>
 <body data-topo="page" data-topo-style="fine">
 
 <div class="page">
-  <header class="hero">
-    <picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img class="logo" src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture>
-    <p class="tagline under"><span class="nw">Elevated Data.</span> <span class="nw">Grounded Truth.</span></p>
+  <div class="topnav">
+    <a class="brand" href="/" aria-label="Novak Geospatial Solutions home"><img class="logo-dark" src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"><img class="logo-light" src="/logo-light-v2.png" alt="" width="1200" height="555"></a>
+    <nav aria-label="Main">
+      <a href="#need">Services</a>
+      <a href="#cases-h">Case studies</a>
+      <a href="#verify">Accuracy</a>
+      <a href="/blog/">Blog</a>
+      <a class="nav-quote" href="/quote/">Request a quote</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Light / dark">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg>
+    </button>
+  </div>
 
-    <p class="lede">Aerial site intelligence, RTK-fixed and proven against independent checkpoints.</p>
-
-    <div class="cta-row">
-      <a class="btn-primary" href="/quote/">Request a quote
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+  <header class="hero2">
+    <div class="hero-copy">
+      <p class="eyebrow">Drone mapping &middot; Southern Wisconsin</p>
+      <h1>Accurate aerial maps, elevation models and stockpile volumes.</h1>
+      <p class="lede2">RTK-positioned drone flights, processed in-house and delivered in the formats your CAD, GIS and accounting teams already use. Measurement jobs include ground checkpoints and an accuracy report.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="/quote/">Request a quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       <div class="contact">
         <div class="split">
           <a class="main" href="tel:+16088200224">
@@ -565,9 +646,25 @@
           <a class="wa-link" href="https://wa.me/16088200224" rel="noopener" aria-label="Message on WhatsApp" title="Message on WhatsApp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="#25D366"/><path d="M16.9 14.2c-.3-.1-1.6-.8-1.8-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.5-1.8-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z" fill="#fff"/></svg></a>
         </div>
       </div>
+      </div>
+      <p class="mail"><a href="mailto:info@novakgs.com">info@novakgs.com</a></p>
     </div>
-    <p class="mail"><a href="mailto:info@novakgs.com">info@novakgs.com</a> &middot; <a href="/blog/">Blog</a></p>
+    <figure class="hero-map">
+      <img src="/img/hero/hero-split.jpg" alt="Orthomosaic of a Wisconsin farm blending into a color elevation model with 2-foot contour lines" width="1200" height="900">
+      <span class="map-tag l">Orthomosaic</span>
+      <span class="map-tag r">Elevation<span class="wide"> &middot; 2 ft contours</span></span>
+      <figcaption>Enchanted Valley Acres &middot; 110.5 ac<span class="wide"> &middot; 0.93 in/px &middot; NAVD88</span></figcaption>
+    </figure>
   </header>
+
+  <ul class="specs" aria-label="Technical specifications">
+    <li><span class="k">Positioning</span><span class="v">RTK-fixed, every image</span></li>
+    <li><span class="k">Resolution</span><span class="v">Under 1 in per pixel</span></li>
+    <li><span class="k">Elevation</span><span class="v">Bare-earth DEM, <span class="nw">1&ndash;2 ft</span> contours</span></li>
+    <li><span class="k">Formats</span><span class="v">GeoTIFF, DXF, LAS, KMZ</span></li>
+    <li><span class="k">Coordinates</span><span class="v">WISCRS, State Plane, NAVD88</span></li>
+    <li><span class="k">Credentials</span><span class="v">FAA Part 107 certified</span></li>
+  </ul>
 
   <section class="section cases" aria-labelledby="cases-h">
     <p class="kicker">Case studies</p>
