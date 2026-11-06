@@ -28,7 +28,7 @@ html { scroll-padding-top: calc(var(--band-h, 120px) + 16px); }
 .band-nav nav a.nav-quote:hover { color: #12161c; filter: brightness(1.08); }
 .band .theme-toggle, html[data-theme="dark"] .band .theme-toggle { border-color: rgba(255,255,255,.2); background: rgba(12,16,22,.7); color: #e6eaee; }
 .band .theme-toggle:hover { border-color: #e8711a; color: #e8711a; }
-@media (max-width: 760px) {
+@media (max-width: 960px) {
   .band { padding: 10px 16px 4px; }
   .band .band-logo { width: 150px; }
   .band-nav { display: contents; }
@@ -37,3 +37,6 @@ html { scroll-padding-top: calc(var(--band-h, 120px) + 16px); }
   .band-nav nav a { font-size: 14px; }
   .band-nav nav a.nav-quote { display: none; }
 }
+.band-nav nav a .brk { color: #e8711a; }
+@media (max-width: 400px) { .band-nav nav { gap: 0 8px; } .band-nav nav a { font-size: 13px; } }
+@media (max-width: 340px) { .band-nav nav a { font-size: 12px; } .band-nav nav { gap: 0 6px; } }
