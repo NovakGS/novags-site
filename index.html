@@ -600,6 +600,30 @@
     .theme-toggle { order: 2; margin-left: auto; }
     .topnav nav { order: 3; margin-left: 0; }
   }
+  /* dark header band: logo left, menu right */
+  .band { position: relative; z-index: 3; background: #0a0d12 url("/topo-bg.jpg") center / cover no-repeat; border-bottom: 4px solid var(--orange); padding: 14px 16px; }
+  .band-row { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; max-width: 1080px; margin: 0 auto; flex-wrap: wrap; }
+  .band .band-logo { display: block; flex: none; width: 188px; }
+  .band .band-logo img { width: 100%; height: auto; display: block; }
+  .band-nav { display: flex; align-items: center; gap: 8px 22px; }
+  .band-nav nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
+  .band-nav nav a { color: #c9d0d7; text-decoration: none; font-size: 15px; font-weight: 500; padding: 10px 0; }
+  .band-nav nav a:hover { color: #fff; }
+  .band-nav nav a.nav-quote { background: var(--orange); color: #12161c; padding: 10px 18px; border-radius: 999px; font-weight: 600; }
+  .band-nav nav a.nav-quote:hover { color: #12161c; filter: brightness(1.08); }
+  .band .theme-toggle { border-color: rgba(255,255,255,.2); background: rgba(12,16,22,.7); color: #e6eaee; }
+  .band .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
+  .hero2 { margin-top: 36px; }
+  @media (max-width: 760px) {
+    .band { padding: 10px 16px 4px; }
+    .band .band-logo { width: 150px; }
+    .band-nav { display: contents; }
+    .band .theme-toggle { order: 2; }
+    .band-nav nav { order: 3; width: 100%; justify-content: space-between; gap: 0 12px; border-top: 1px solid rgba(255,255,255,.12); }
+    .band-nav nav a { font-size: 14px; }
+    .band-nav nav a.nav-quote { display: none; }
+    .hero2 { margin-top: 22px; }
+  }
   /* light theme preview */
   html[data-theme="light"] { --bg: #f3f4f6; --ink: #151b22; --muted: #46515d; --faint: #5b6773; --panel: #ffffff; --edge: rgba(21,27,34,.13); }
   html[data-theme="light"] body { background: var(--bg); }
@@ -617,9 +641,10 @@
 </head>
 <body data-topo="page" data-topo-style="fine">
 
-<div class="page">
-  <div class="topnav">
-    <a class="brand" href="/" aria-label="Novak Geospatial Solutions home"><img class="logo-dark" src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"><img class="logo-light" src="/logo-light-v2.png" alt="" width="1200" height="555"></a>
+<header class="band" data-topo="band" data-topo-style="fine">
+  <div class="band-row">
+    <a class="band-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+  <div class="band-nav">
     <nav aria-label="Main">
       <a href="#need">Services</a>
       <a href="#cases-h">Case studies</a>
@@ -632,6 +657,10 @@
       <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg>
     </button>
   </div>
+  </div>
+</header>
+
+<div class="page">
 
   <header class="hero2">
     <div class="hero-copy">
