@@ -9,9 +9,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
 <style>
-body{margin:0;background:#0a0d12 url("/topo-bg.jpg") center top / cover no-repeat fixed;}
+:root{--bg:#0a0d12;--ink:#eef1f3;--muted:#bec6ce;--label:#c3cad1;--faint:#a4adb6;--panel:rgba(12,16,22,.78);--panel-solid:#10151c;--edge:rgba(255,255,255,.12);--hair:rgba(255,255,255,.06);--edge2:rgba(255,255,255,.25)}
+html[data-theme="light"]{--bg:#f3f4f6;--ink:#151b22;--muted:#46515d;--label:#3d4752;--faint:#5b6773;--panel:#ffffff;--panel-solid:#f7f8fa;--edge:rgba(21,27,34,.13);--hair:rgba(21,27,34,.08);--edge2:rgba(21,27,34,.22)}
+html[data-theme="light"] body{background:var(--bg)}
+[data-dark]{--ink:#eef1f3;--muted:#bec6ce;--label:#c3cad1;--faint:#a4adb6;--panel:rgba(12,16,22,.78);--panel-solid:#10151c;--edge:rgba(255,255,255,.12);--hair:rgba(255,255,255,.06);--edge2:rgba(255,255,255,.25)}
+
+body{margin:0;background:var(--bg) url("/topo-bg.jpg") center top / cover no-repeat fixed;}
 .ev-root{position:relative;z-index:1;background:transparent;}
-a{color:#eef1f3;}a:hover{color:#e8711a;}
+a{color:var(--ink);}a:hover{color:#e8711a;}
 .ev-range{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:0;cursor:ew-resize;}
 .ev-range::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:linear-gradient(90deg,#4677a0,#e8711a);}
 .ev-range::-moz-range-track{height:6px;border-radius:999px;background:linear-gradient(90deg,#4677a0,#e8711a);}
@@ -20,92 +25,94 @@ a{color:#eef1f3;}a:hover{color:#e8711a;}
 .ev-range:focus-visible{outline:2px solid #e8711a;outline-offset:4px;border-radius:8px;}
 </style>
 <script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
 </head>
 <body data-topo="page" data-topo-style="fine">
-<div class="ev-root" style="min-height: 100vh; color: #eef1f3; font-family: Roboto, 'Segoe UI', system-ui, Arial, sans-serif; font-size: 17px; -webkit-font-smoothing: antialiased; background-color: transparent">
+<div class="ev-root" style="min-height: 100vh; color: var(--ink); font-family: Roboto, 'Segoe UI', system-ui, Arial, sans-serif; font-size: 17px; -webkit-font-smoothing: antialiased; background-color: transparent">
 <div style="background: transparent">
 <main style="max-width: 1040px; margin: 0 auto; padding: 18px 16px 48px; display: flex; flex-direction: column; gap: 52px">
 
 <header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px">
 <img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" style="height: 84px; width: auto; max-width: 62vw; object-fit: contain; display: block">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #c3cad1">Elevated Data <span style="color: #e8711a; margin: 0 .4em">|</span> Grounded Truth</p>
-<a href="https://novakgs.com/" style="font-size: 16px; color: #bec6ce; text-decoration: none; padding: 11px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: rgba(12,16,22,.78)">novakgs.com</a>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--label)">Elevated Data <span style="color: #e8711a; margin: 0 .4em">|</span> Grounded Truth</p>
+<span class="theme-slot-wrap" data-theme-slot><a href="https://novakgs.com/" style="font-size: 16px; color: var(--muted); text-decoration: none; padding: 11px 18px; border: 1px solid var(--edge); border-radius: 999px; background: var(--panel)">novakgs.com</a></span>
 </header>
 
 <section style="display: flex; flex-direction: column; gap: 18px">
 <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #e8711a">Showcase · Complete site intelligence package</p>
 <h1 style="margin: 0; font-size: 46px; line-height: 1.08; font-weight: 700; letter-spacing: -.01em; text-wrap: balance">One property. One flight day.<br>Every layer of the ground.</h1>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
-<span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1">Good fit for</span>
+<span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--label)">Good fit for</span>
 <span style="font-size: 15px; padding: 5px 12px; border: 1px solid rgba(70,119,160,.65); border-radius: 999px; background: rgba(70,119,160,.14)">Farms &amp; agritourism</span>
 <span style="font-size: 15px; padding: 5px 12px; border: 1px solid rgba(70,119,160,.65); border-radius: 999px; background: rgba(70,119,160,.14)">Land planners</span>
 <span style="font-size: 15px; padding: 5px 12px; border: 1px solid rgba(70,119,160,.65); border-radius: 999px; background: rgba(70,119,160,.14)">Developers &amp; engineers</span>
 <span style="font-size: 15px; padding: 5px 12px; border: 1px solid rgba(70,119,160,.65); border-radius: 999px; background: rgba(70,119,160,.14)">Realtors &amp; land sellers</span>
 <span style="font-size: 15px; padding: 5px 12px; border: 1px solid rgba(70,119,160,.65); border-radius: 999px; background: rgba(70,119,160,.14)">Family legacy</span>
 </div>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #bec6ce; text-wrap: pretty">This is what a finished site intelligence package looks like. Enchanted Valley Acres, just north of Cross Plains, Wisconsin, is a farmstead with two seasons, Fall Fun and Christmas Trees. In one day of automated mapping flights, we captured 110.5 of its 137 acres, from the Big Red Barn and corn mazes in the valley to the Christmas tree fields above the ridge, and turned 9,578 photos into a seamless orthomosaic, a bare-earth elevation model, and 2-foot contours, plus add-ons built from the same flights.<span style="display: block; margin-top: 6px; font-weight: 500; color: #eef1f3">Same flights, same coordinates, every layer lines up.</span></p>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #a4adb6">Our thanks to Enchanted Valley Acres for opening their land to show what a complete package can do.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted); text-wrap: pretty">This is what a finished site intelligence package looks like. Enchanted Valley Acres, just north of Cross Plains, Wisconsin, is a farmstead with two seasons, Fall Fun and Christmas Trees. In one day of automated mapping flights, we captured 110.5 of its 137 acres, from the Big Red Barn and corn mazes in the valley to the Christmas tree fields above the ridge, and turned 9,578 photos into a seamless orthomosaic, a bare-earth elevation model, and 2-foot contours, plus add-ons built from the same flights.<span style="display: block; margin-top: 6px; font-weight: 500; color: var(--ink)">Same flights, same coordinates, every layer lines up.</span></p>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--faint)">Our thanks to Enchanted Valley Acres for opening their land to show what a complete package can do.</p>
 
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; overflow: hidden; background: #05070a">
+<figure data-dark style="margin: 0; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: #05070a">
 <div style="position: relative; width: 100%; aspect-ratio: 1600 / 1407; overflow: hidden">
 <img src="/case-studies/photogrammetry/img/01abe2378fcc00375a4f0fe50c7cf9b6.jpg" alt="Shaded, color-coded elevation model of the upper tree farm" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover">
 <img src="/case-studies/photogrammetry/img/560648362ac5f558af7d5e20bd189883.jpg" alt="Orthomosaic of the upper tree farm in fall color" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; clip-path: inset(0 45% 0 0)" id="sw-top">
 <img id="sw-contours" src="/case-studies/photogrammetry/img/18b511fbb7a29f30c750617cb9fe975d.png" alt="Two-foot contour lines, labeled every 10 feet, over the upper tree farm" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; pointer-events: none">
 
-<div id="sw-line" aria-hidden="true" style="position: absolute; top: 0; bottom: 0; left: 55%; width: 2px; margin-left: -1px; background: #eef1f3; box-shadow: 0 0 0 1px rgba(0,0,0,.35)"></div>
-<span style="position: absolute; left: 14px; top: 14px; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #eef1f3; background: rgba(5,7,10,.78); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: 6px 12px">Orthomosaic</span>
-<span style="position: absolute; right: 14px; top: 14px; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #eef1f3; background: rgba(5,7,10,.78); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: 6px 12px">Elevation</span>
-<div style="position: absolute; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; background: rgba(5,7,10,.82); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; min-width: 190px">
-<span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #c3cad1">Ground elevation · ft NAVD88</span>
+<div id="sw-line" aria-hidden="true" style="position: absolute; top: 0; bottom: 0; left: 55%; width: 2px; margin-left: -1px; background: var(--ink); box-shadow: 0 0 0 1px rgba(0,0,0,.35)"></div>
+<span data-dark style="position: absolute; left: 14px; top: 14px; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); background: rgba(5,7,10,.78); border: 1px solid var(--edge); border-radius: 999px; padding: 6px 12px">Orthomosaic</span>
+<span data-dark style="position: absolute; right: 14px; top: 14px; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); background: rgba(5,7,10,.78); border: 1px solid var(--edge); border-radius: 999px; padding: 6px 12px">Elevation</span>
+<div data-dark style="position: absolute; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; background: rgba(5,7,10,.82); border: 1px solid var(--edge); border-radius: 10px; min-width: 190px">
+<span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--label)">Ground elevation · ft NAVD88</span>
 <div style="height: 8px; border-radius: 999px; background: linear-gradient(90deg, #264653, #2a9d8f, #8ab17d, #e9c46a, #f4a261, #e76f51)"></div>
-<div style="display: flex; justify-content: space-between; font-size: 13px; font-variant-numeric: tabular-nums; color: #eef1f3"><span>910</span><span>1,010</span><span>1,110</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px; font-variant-numeric: tabular-nums; color: var(--ink)"><span>910</span><span>1,010</span><span>1,110</span></div>
 </div>
 </div>
-<div style="padding: 6px 18px 4px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12)">
+<div style="padding: 6px 18px 4px; background: var(--panel-solid); border-top: 1px solid var(--edge)">
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px">
-<span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #c3cad1">Layers</span>
+<span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--label)">Layers</span>
 <button id="sw-btn" type="button" aria-pressed="true" style="min-height: 44px; padding: 0 18px; border-radius: 999px; font: 600 15px Roboto, system-ui, sans-serif; cursor: pointer; background: #e8711a; color: #12161c; border: 1px solid #e8711a">2-ft contours: <span id="sw-lab">On</span></button>
 </div>
-<label for="ev-swipe" style="display: block; padding-top: 8px; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #c3cad1">Drag to compare · upper tree farm</label>
+<label for="ev-swipe" style="display: block; padding-top: 8px; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--label)">Drag to compare · upper tree farm</label>
 <input id="ev-swipe" class="ev-range" type="range" min="0" max="100" step="1" value="55">
 </div>
 </figure>
 </section>
 
-<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78); overflow: hidden">
-<li style="padding: 14px 18px; border-right: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; margin-bottom: 4px">Area mapped</span><span style="font-size: 18px; font-weight: 600">110.5 acres <small style="font-size: 15px; font-weight: 400; color: #bec6ce">of 137, 2 missions, 1 model</small></span></li>
-<li style="padding: 14px 18px; border-right: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; margin-bottom: 4px">Photos</span><span style="font-size: 18px; font-weight: 600">9,577 <small style="font-size: 15px; font-weight: 400; color: #bec6ce">of 9,578 aligned</small></span></li>
-<li style="padding: 14px 18px; border-right: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; margin-bottom: 4px">Image detail</span><span style="font-size: 18px; font-weight: 600">0.93 in <small style="font-size: 15px; font-weight: 400; color: #bec6ce">per pixel</small></span></li>
-<li style="padding: 14px 18px; border-right: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; margin-bottom: 4px">Terrain relief</span><span style="font-size: 18px; font-weight: 600">≈ 207 ft <small style="font-size: 15px; font-weight: 400; color: #bec6ce">valley to ridge</small></span></li>
-<li style="padding: 14px 18px; border-right: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; margin-bottom: 4px">Contours</span><span style="font-size: 18px; font-weight: 600">2 ft <small style="font-size: 15px; font-weight: 400; color: #bec6ce">10 ft labeled</small></span></li>
-<li style="padding: 14px 18px; border-right: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; margin-bottom: 4px">Heights</span><span style="font-size: 18px; font-weight: 600">NAVD88 <small style="font-size: 15px; font-weight: 400; color: #bec6ce">GEOID18, US ft</small></span></li></ul>
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); overflow: hidden">
+<li style="padding: 14px 18px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 4px">Area mapped</span><span style="font-size: 18px; font-weight: 600">110.5 acres <small style="font-size: 15px; font-weight: 400; color: var(--muted)">of 137, 2 missions, 1 model</small></span></li>
+<li style="padding: 14px 18px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 4px">Photos</span><span style="font-size: 18px; font-weight: 600">9,577 <small style="font-size: 15px; font-weight: 400; color: var(--muted)">of 9,578 aligned</small></span></li>
+<li style="padding: 14px 18px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 4px">Image detail</span><span style="font-size: 18px; font-weight: 600">0.93 in <small style="font-size: 15px; font-weight: 400; color: var(--muted)">per pixel</small></span></li>
+<li style="padding: 14px 18px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 4px">Terrain relief</span><span style="font-size: 18px; font-weight: 600">≈ 207 ft <small style="font-size: 15px; font-weight: 400; color: var(--muted)">valley to ridge</small></span></li>
+<li style="padding: 14px 18px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 4px">Contours</span><span style="font-size: 18px; font-weight: 600">2 ft <small style="font-size: 15px; font-weight: 400; color: var(--muted)">10 ft labeled</small></span></li>
+<li style="padding: 14px 18px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair)"><span style="display: block; font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 4px">Heights</span><span style="font-size: 18px; font-weight: 600">NAVD88 <small style="font-size: 15px; font-weight: 400; color: var(--muted)">GEOID18, US ft</small></span></li></ul>
 
 <section style="display: flex; flex-direction: column; gap: 16px">
 <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #e8711a">The whole property</p>
 <h2 style="margin: 0; font-size: 28px; font-weight: 600; text-wrap: balance">110.5 acres, one seamless map</h2>
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: #0a0d12">
+<figure style="margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #0a0d12">
 <img src="/case-studies/photogrammetry/img/6f575d522451c7e01ff4c7e0d5ae3355.jpg" alt="Full orthomosaic of Enchanted Valley Acres in fall color: corn maze, visitor area, and parking in the valley, a wooded ridge, and the Christmas tree blocks across the top" style="display: block; width: 100%; height: auto">
-<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12); font-size: 16px; color: #bec6ce"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">ORTHO</span>The full orthomosaic, under an inch per pixel, built from 9,577 photos solved as one block. Use it to measure, plan layouts, and keep a current record of the property.</figcaption>
+<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 16px; color: var(--muted)"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">ORTHO</span>The full orthomosaic, under an inch per pixel, built from 9,577 photos solved as one block. Use it to measure, plan layouts, and keep a current record of the property.</figcaption>
 </figure>
 <h2 style="margin: 0; font-size: 28px; font-weight: 600; text-wrap: balance">The ground, with the trees taken away</h2>
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: #0a0d12">
+<figure style="margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #0a0d12">
 <img src="/case-studies/photogrammetry/img/f8f70e91038f15c8bf06d58d2215590d.jpg" alt="Shaded elevation model of the entire Enchanted Valley property, low valley in blue-green rising to the orange ridge-top tree farm" style="display: block; width: 100%; height: auto">
-<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12); font-size: 16px; color: #bec6ce"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">DEM</span>Bare-earth elevation, valley floor to ridge top, shaded to show the shape of the land</figcaption>
+<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 16px; color: var(--muted)"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">DEM</span>Bare-earth elevation, valley floor to ridge top, shaded to show the shape of the land</figcaption>
 </figure>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px 28px">
-<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #bec6ce">The farm sits on about 207 feet of relief. The visitor area, parking, and corn maze fill the valley floor, a wooded ridge rises behind them, and the Christmas tree blocks spread across the top. A ground photo can't show that, and a satellite image flattens it.</p>
-<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #bec6ce">This is a <strong style="color: #eef1f3; font-weight: 600">bare-earth model</strong>: trees, buildings, and vehicles are filtered out to show the shape of the ground. In open areas that is the measured surface; under dense tree cover, where the camera can't see the ground, it is estimated from the surrounding terrain. That makes it the starting point for drainage, grading, trail, and expansion planning.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: var(--muted)">The farm sits on about 207 feet of relief. The visitor area, parking, and corn maze fill the valley floor, a wooded ridge rises behind them, and the Christmas tree blocks spread across the top. A ground photo can't show that, and a satellite image flattens it.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: var(--muted)">This is a <strong style="color: var(--ink); font-weight: 600">bare-earth model</strong>: trees, buildings, and vehicles are filtered out to show the shape of the ground. In open areas that is the measured surface; under dense tree cover, where the camera can't see the ground, it is estimated from the surrounding terrain. That makes it the starting point for drainage, grading, trail, and expansion planning.</p>
 </div>
 </section>
 
 <section style="display: flex; flex-direction: column; gap: 16px">
 <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #e8711a">Contours</p>
 <h2 style="margin: 0; font-size: 28px; font-weight: 600; text-wrap: balance">Read the slope at a glance</h2>
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: #05070a">
+<figure data-dark style="margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a">
 <img src="/case-studies/photogrammetry/img/688aa94415512e67030bfe26e9f2f013.jpg" alt="Two-foot contour lines with 10-foot elevation labels over the orthomosaic of the wooded ridge and its trail" style="display: block; width: 100%; height: auto">
-<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12); font-size: 16px; color: #bec6ce"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">CONT</span>2-ft contours over the orthomosaic on the wooded ridge, labeled every 10 ft</figcaption>
+<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 16px; color: var(--muted)"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">CONT</span>2-ft contours over the orthomosaic on the wooded ridge, labeled every 10 ft</figcaption>
 </figure>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #a4adb6">Lines packed close together are steep ground. Where they bend uphill, water collects and runs. Here, the farm trail climbs straight up the draw, which is where runoff will concentrate. Use contours for grading, trail, and drainage planning, and to see which ground is usable.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--faint)">Lines packed close together are steep ground. Where they bend uphill, water collects and runs. Here, the farm trail climbs straight up the draw, which is where runoff will concentrate. Use contours for grading, trail, and drainage planning, and to see which ground is usable.</p>
 </section>
 
 <section style="display: flex; flex-direction: column; gap: 16px">
@@ -113,17 +120,17 @@ a{color:#eef1f3;}a:hover{color:#e8711a;}
 <h2 style="margin: 0; font-size: 28px; font-weight: 600; text-wrap: balance">Two missions, processed as one</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; align-items: start">
 <div style="display: flex; flex-direction: column; gap: 12px">
-<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #bec6ce">We flew the valley and the ridge as two automated mapping missions on the same afternoon with a DJI Matrice 4E. Every photo was tagged with an <strong style="color: #eef1f3; font-weight: 600">RTK-corrected position</strong> from the Wisconsin CORS network.</p>
-<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #bec6ce">Both missions were then <strong style="color: #eef1f3; font-weight: 600">processed together as one block</strong>. Stitching two finished maps leaves a seam where trees lean differently and colors shift. Solving them together gives one continuous map and one continuous elevation surface. The full block, all 9,578 photos, took about 32 hours to process on one workstation.</p>
-<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #bec6ce">Elevations are referenced to NAVD88 (GEOID18) in US survey feet, the vertical datum engineers and county GIS work in.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: var(--muted)">We flew the valley and the ridge as two automated mapping missions on the same afternoon with a DJI Matrice 4E. Every photo was tagged with an <strong style="color: var(--ink); font-weight: 600">RTK-corrected position</strong> from the Wisconsin CORS network.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: var(--muted)">Both missions were then <strong style="color: var(--ink); font-weight: 600">processed together as one block</strong>. Stitching two finished maps leaves a seam where trees lean differently and colors shift. Solving them together gives one continuous map and one continuous elevation surface. The full block, all 9,578 photos, took about 32 hours to process on one workstation.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: var(--muted)">Elevations are referenced to NAVD88 (GEOID18) in US survey feet, the vertical datum engineers and county GIS work in.</p>
 </div>
-<aside aria-label="Quality control" style="border: 1px solid rgba(255,255,255,.12); border-top: 2px solid #e8711a; border-radius: 12px; background: rgba(12,16,22,.78); padding: 18px 20px">
+<aside aria-label="Quality control" style="border: 1px solid var(--edge); border-top: 2px solid #e8711a; border-radius: 12px; background: var(--panel); padding: 18px 20px">
 <h3 style="margin: 0 0 12px; font-family: 'Roboto Mono', Consolas, monospace; font-size: 15px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #e8711a">Processing quality</h3>
 <ul style="list-style: none; margin: 0; padding: 0">
-<li style="padding: 10px 0; border-top: 1px solid rgba(255,255,255,.06); font-size: 16px; line-height: 1.45; color: #bec6ce"><b style="color: #eef1f3; font-weight: 600">Image matching held tight:</b> 1.31 px reprojection error across 34.5 million point observations.</li>
-<li style="padding: 10px 0; border-top: 1px solid rgba(255,255,255,.06); font-size: 16px; line-height: 1.45; color: #bec6ce"><b style="color: #eef1f3; font-weight: 600">9,577 of 9,578 photos aligned</b> in one connected block, tied together by 1.9 million matched points.</li>
-<li style="padding: 10px 0; border-top: 1px solid rgba(255,255,255,.06); font-size: 16px; line-height: 1.45; color: #bec6ce"><b style="color: #eef1f3; font-weight: 600">No seam between missions:</b> valley and ridge solved as a single connected block.</li>
-<li style="padding: 10px 0; border-top: 1px solid rgba(255,255,255,.06); font-size: 16px; line-height: 1.45; color: #bec6ce"><b style="color: #eef1f3; font-weight: 600">Not checkpoint-verified.</b> This showcase was not checked against ground checkpoints. Our workflow's accuracy is being verified separately under the ASPRS accuracy standards.</li></ul>
+<li style="padding: 10px 0; border-top: 1px solid var(--hair); font-size: 16px; line-height: 1.45; color: var(--muted)"><b style="color: var(--ink); font-weight: 600">Image matching held tight:</b> 1.31 px reprojection error across 34.5 million point observations.</li>
+<li style="padding: 10px 0; border-top: 1px solid var(--hair); font-size: 16px; line-height: 1.45; color: var(--muted)"><b style="color: var(--ink); font-weight: 600">9,577 of 9,578 photos aligned</b> in one connected block, tied together by 1.9 million matched points.</li>
+<li style="padding: 10px 0; border-top: 1px solid var(--hair); font-size: 16px; line-height: 1.45; color: var(--muted)"><b style="color: var(--ink); font-weight: 600">No seam between missions:</b> valley and ridge solved as a single connected block.</li>
+<li style="padding: 10px 0; border-top: 1px solid var(--hair); font-size: 16px; line-height: 1.45; color: var(--muted)"><b style="color: var(--ink); font-weight: 600">Not checkpoint-verified.</b> This showcase was not checked against ground checkpoints. Our workflow's accuracy is being verified separately under the ASPRS accuracy standards.</li></ul>
 </aside>
 </div>
 </section>
@@ -131,26 +138,26 @@ a{color:#eef1f3;}a:hover{color:#e8711a;}
 <section style="display: flex; flex-direction: column; gap: 16px">
 <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #e8711a">On site</p>
 <h2 style="margin: 0; font-size: 28px; font-weight: 600; text-wrap: balance">From the air, and from the field</h2>
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: #05070a">
+<figure data-dark style="margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a">
 <img src="/case-studies/photogrammetry/img/2ee88ad42bec7e33526b9e204e062a87.jpg" alt="Aerial view of Enchanted Valley Acres in fall color: red barn, visitor area, pumpkin patch, and parking below the wooded ridge" style="display: block; width: 100%; height: auto">
-<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12); font-size: 16px; color: #bec6ce"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">AERIAL</span>The valley floor in peak fall color: barns, play areas, and the pumpkin patch below the wooded ridge</figcaption>
+<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 16px; color: var(--muted)"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">AERIAL</span>The valley floor in peak fall color: barns, play areas, and the pumpkin patch below the wooded ridge</figcaption>
 </figure>
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: #05070a">
+<figure data-dark style="margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a">
 <img src="/case-studies/photogrammetry/img/b2479d68a80d1ac3a4c42f40354ea0a3.jpg" alt="Sunset aerial over the corn maze, parking lot, red barns, and two pumpkin-shaped jumping pillows" style="display: block; width: 100%; height: auto">
-<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12); font-size: 16px; color: #bec6ce"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">AERIAL</span>Sunset over the corn maze, parking, and attractions on a busy fall weekend</figcaption>
+<figcaption style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 11px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 16px; color: var(--muted)"><span style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; letter-spacing: .14em; color: #e8711a">AERIAL</span>Sunset over the corn maze, parking, and attractions on a busy fall weekend</figcaption>
 </figure>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px">
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: #05070a; display: flex; flex-direction: column">
+<figure data-dark style="margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a; display: flex; flex-direction: column">
 <img src="/case-studies/photogrammetry/img/be9e97c71060944f65b8e31fdb255bea.jpg" alt="Drone controller, case, and battery charger on a pickup tailgate beside an elevated hunting stand" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 60%">
-<figcaption style="flex: 1; padding: 11px 16px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12); font-size: 16px; line-height: 1.45; color: #bec6ce">Field base on the ridge. Batteries charge off the truck between flights.</figcaption>
+<figcaption style="flex: 1; padding: 11px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 16px; line-height: 1.45; color: var(--muted)">Field base on the ridge. Batteries charge off the truck between flights.</figcaption>
 </figure>
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: #05070a; display: flex; flex-direction: column">
+<figure data-dark style="margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a; display: flex; flex-direction: column">
 <img src="/case-studies/photogrammetry/img/5c689d07e2074d729f9140193159bd20.jpg" alt="DJI controller screen showing an automated mapping route in progress over the property" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 35%">
-<figcaption style="flex: 1; padding: 11px 16px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12); font-size: 16px; line-height: 1.45; color: #bec6ce">Automated mapping route mid-flight, on RTK fix, with coverage tracked live.</figcaption>
+<figcaption style="flex: 1; padding: 11px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 16px; line-height: 1.45; color: var(--muted)">Automated mapping route mid-flight, on RTK fix, with coverage tracked live.</figcaption>
 </figure>
-<figure style="margin: 0; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: #05070a; display: flex; flex-direction: column">
+<figure data-dark style="margin: 0; border: 1px solid var(--edge); border-radius: 12px; overflow: hidden; background: #05070a; display: flex; flex-direction: column">
 <img src="/case-studies/photogrammetry/img/6e963d87b2fef8f99043af63c8f25cab.jpg" alt="Overhead view of the pilot in the truck bed, the landing pad, and the hunting stand" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 55% 50%">
-<figcaption style="flex: 1; padding: 11px 16px; background: #10151c; border-top: 1px solid rgba(255,255,255,.12); font-size: 16px; line-height: 1.45; color: #bec6ce">Launch site from above: landing pad in the clear, pilot with eyes on the aircraft.</figcaption>
+<figcaption style="flex: 1; padding: 11px 16px; background: var(--panel-solid); border-top: 1px solid var(--edge); font-size: 16px; line-height: 1.45; color: var(--muted)">Launch site from above: landing pad in the clear, pilot with eyes on the aircraft.</figcaption>
 </figure>
 </div>
 </section>
@@ -159,17 +166,17 @@ a{color:#eef1f3;}a:hover{color:#e8711a;}
 <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #e8711a">More from this property</p>
 <h2 style="margin: 0; font-size: 28px; font-weight: 600; text-wrap: balance">The same flights, put to other uses</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px">
-<a href="/case-studies/photogrammetry/tree-inventory/" style="text-decoration: none; color: #eef1f3; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78); overflow: hidden; display: flex; flex-direction: column">
+<a href="/case-studies/photogrammetry/tree-inventory/" style="text-decoration: none; color: var(--ink); border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); overflow: hidden; display: flex; flex-direction: column">
 <img src="/case-studies/photogrammetry/img/12cbd0272cf4848b3f97917f68db82b8.jpg" alt="Christmas trees detected and colored by height" style="display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 20%">
-<div style="padding: 14px 18px 18px"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Tree inventory <span style="color: #e8711a">→</span></strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">24,099 trees counted across 30 blocks and sorted into retail size classes for sales planning.</span></div>
+<div style="padding: 14px 18px 18px"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Tree inventory <span style="color: #e8711a">→</span></strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">24,099 trees counted across 30 blocks and sorted into retail size classes for sales planning.</span></div>
 </a>
-<a href="/case-studies/photogrammetry/hunting-land/" style="text-decoration: none; color: #eef1f3; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78); overflow: hidden; display: flex; flex-direction: column">
+<a href="/case-studies/photogrammetry/hunting-land/" style="text-decoration: none; color: var(--ink); border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); overflow: hidden; display: flex; flex-direction: column">
 <img src="/case-studies/photogrammetry/img/7bd7e853c9f7c443e867d0b8e1d094e0.jpg" alt="Modeled drainage paths, benches, and estimated thermal arrows over the wooded ridge" style="display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 30%">
-<div style="padding: 14px 18px 18px"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Hunting land <span style="color: #e8711a">→</span></strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">Modeled drainage, benches, and estimated thermals mapped from the ground model for stand and access planning.</span></div>
+<div style="padding: 14px 18px 18px"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Hunting land <span style="color: #e8711a">→</span></strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">Modeled drainage, benches, and estimated thermals mapped from the ground model for stand and access planning.</span></div>
 </a>
-<a href="/work/deer-stand/" style="text-decoration: none; color: #eef1f3; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78); overflow: hidden; display: flex; flex-direction: column">
+<a href="/work/deer-stand/" style="text-decoration: none; color: var(--ink); border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); overflow: hidden; display: flex; flex-direction: column">
 <img src="/case-studies/photogrammetry/img/3d8ec2420c24ab82346ef1333db8ce77.jpg" alt="Textured 3D model of the hunting stand on the property" style="display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 50%">
-<div style="padding: 14px 18px 18px"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">3D structures <span style="color: #e8711a">→</span></strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">A measurable 3D model of a stand on the property, from one automated flight.</span></div>
+<div style="padding: 14px 18px 18px"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">3D structures <span style="color: #e8711a">→</span></strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">A measurable 3D model of a stand on the property, from one automated flight.</span></div>
 </a>
 </div>
 </section>
@@ -178,10 +185,10 @@ a{color:#eef1f3;}a:hover{color:#e8711a;}
 <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #e8711a">What you receive</p>
 <h2 style="margin: 0; font-size: 28px; font-weight: 600; text-wrap: balance">Organized for whoever opens it</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px">
-<div style="padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Maps &amp; reports</strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">11×17 PDF sheets of the orthomosaic, contours, and elevations, ready to print or email.</span></div>
-<div style="padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Point cloud</strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">A classified <code style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; background: rgba(255,255,255,.06); border-radius: 4px; padding: 1px 5px">LAS 1.4</code> point cloud with ground points flagged, for 3D measurement and modeling.</span></div>
-<div style="padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">GIS &amp; CAD data</strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce"><code style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; background: rgba(255,255,255,.06); border-radius: 4px; padding: 1px 5px">GeoTIFF</code> ortho and DEM, contours as <code style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; background: rgba(255,255,255,.06); border-radius: 4px; padding: 1px 5px">DXF</code> and <code style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; background: rgba(255,255,255,.06); border-radius: 4px; padding: 1px 5px">SHP</code> for engineers and surveyors.</span></div>
-<div style="padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Read-me &amp; quality report</strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">What's in the package, how it was checked, and the coordinate systems used.</span></div>
+<div style="padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Maps &amp; reports</strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">11×17 PDF sheets of the orthomosaic, contours, and elevations, ready to print or email.</span></div>
+<div style="padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Point cloud</strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">A classified <code style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; background: var(--hair); border-radius: 4px; padding: 1px 5px">LAS 1.4</code> point cloud with ground points flagged, for 3D measurement and modeling.</span></div>
+<div style="padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">GIS &amp; CAD data</strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)"><code style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; background: var(--hair); border-radius: 4px; padding: 1px 5px">GeoTIFF</code> ortho and DEM, contours as <code style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; background: var(--hair); border-radius: 4px; padding: 1px 5px">DXF</code> and <code style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 13px; background: var(--hair); border-radius: 4px; padding: 1px 5px">SHP</code> for engineers and surveyors.</span></div>
+<div style="padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Read-me &amp; quality report</strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">What's in the package, how it was checked, and the coordinate systems used.</span></div>
 </div>
 </section>
 
@@ -189,27 +196,27 @@ a{color:#eef1f3;}a:hover{color:#e8711a;}
 <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #e8711a">Who it's for</p>
 <h2 style="margin: 0; font-size: 28px; font-weight: 600; text-wrap: balance">Where a complete site package earns its keep</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px">
-<div style="padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Farms &amp; agritourism</strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">Block acreage, visitor and parking layouts, and a current map to plan next season from.</span></div>
-<div style="padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Land planners &amp; engineers</strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">Current imagery and terrain for concept layouts, drainage studies, and site visits from a desk.</span></div>
-<div style="padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(12,16,22,.78)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Realtors &amp; land sellers</strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">Show buyers the whole parcel, its slopes, and its usable ground, not just a listing photo.</span></div>
-<div style="padding: 16px 18px; border: 1px solid rgba(232,113,26,.55); border-radius: 12px; background: rgba(12,16,22,.78)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Family legacy</strong><span style="font-size: 16px; line-height: 1.5; color: #bec6ce">The farm as it stands this fall, recorded in full, before the next generation shapes it.</span></div>
+<div style="padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Farms &amp; agritourism</strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">Block acreage, visitor and parking layouts, and a current map to plan next season from.</span></div>
+<div style="padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Land planners &amp; engineers</strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">Current imagery and terrain for concept layouts, drainage studies, and site visits from a desk.</span></div>
+<div style="padding: 16px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Realtors &amp; land sellers</strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">Show buyers the whole parcel, its slopes, and its usable ground, not just a listing photo.</span></div>
+<div style="padding: 16px 18px; border: 1px solid rgba(232,113,26,.55); border-radius: 12px; background: var(--panel)"><strong style="display: block; font-size: 17px; font-weight: 600; margin-bottom: 4px">Family legacy</strong><span style="font-size: 16px; line-height: 1.5; color: var(--muted)">The farm as it stands this fall, recorded in full, before the next generation shapes it.</span></div>
 </div>
-<p style="margin: 0; font-size: 13px; line-height: 1.55; color: #a4adb6">Orthomosaics, elevation models, and contours are produced from drone photography for planning and visualization. They are not a land survey and do not establish property boundaries.</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.55; color: var(--faint)">Orthomosaics, elevation models, and contours are produced from drone photography for planning and visualization. They are not a land survey and do not establish property boundaries.</p>
 </section>
 
-<div style="border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: rgba(12,16,22,.78); padding: 24px; display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; justify-content: space-between">
+<div style="border: 1px solid var(--edge); border-radius: 14px; background: var(--panel); padding: 24px; display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; justify-content: space-between">
 <div>
 <h2 style="margin: 0; font-size: 22px; font-weight: 600">Have a property you need mapped?</h2>
-<p style="margin: 6px 0 0; color: #bec6ce; font-size: 16px">Tell us where it is and what you need to know. We'll reply within one business day.</p>
+<p style="margin: 6px 0 0; color: var(--muted); font-size: 16px">Tell us where it is and what you need to know. We'll reply within one business day.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
 <a href="https://novakgs.com/quote" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: #e8711a; color: #12161c; font-weight: 600; text-decoration: none">Request a quote</a>
-<a href="tel:+16088200224" style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 16px; padding: 11px 16px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; text-decoration: none; color: #eef1f3; min-height: 44px; display: inline-flex; align-items: center; box-sizing: border-box">(608) 820-0224</a>
-<a href="mailto:info@novakgs.com" style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 16px; padding: 11px 16px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; text-decoration: none; color: #eef1f3; min-height: 44px; display: inline-flex; align-items: center; box-sizing: border-box">info@novakgs.com</a>
+<a href="tel:+16088200224" style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 16px; padding: 11px 16px; border: 1px solid var(--edge); border-radius: 999px; text-decoration: none; color: var(--ink); min-height: 44px; display: inline-flex; align-items: center; box-sizing: border-box">(608) 820-0224</a>
+<a href="mailto:info@novakgs.com" style="font-family: 'Roboto Mono', Consolas, monospace; font-size: 16px; padding: 11px 16px; border: 1px solid var(--edge); border-radius: 999px; text-decoration: none; color: var(--ink); min-height: 44px; display: inline-flex; align-items: center; box-sizing: border-box">info@novakgs.com</a>
 </div>
 </div>
 
-<footer style="text-align: center; font-size: 15px; line-height: 1.7; color: #a4adb6">© 2026 BUCK2NINETY LLC · Novak Geospatial Solutions™</footer>
+<footer style="text-align: center; font-size: 15px; line-height: 1.7; color: var(--faint)">© 2026 BUCK2NINETY LLC · Novak Geospatial Solutions™</footer>
 </main>
 </div>
 </div>

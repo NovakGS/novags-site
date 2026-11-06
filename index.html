@@ -9,7 +9,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
 <link rel="apple-touch-icon" href="/favicon-128.png">
-<meta name="theme-color" content="#0a0d12">
+<meta name="theme-color" content="#f3f4f6">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Novak Geospatial Solutions">
 <meta property="og:title" content="Novak Geospatial Solutions | Aerial Mapping &amp; Geospatial Data">
@@ -21,7 +21,6 @@
 <meta property="og:image:alt" content="DJI Matrice 4E hovering over a field at sunset with the Novak tagline and services">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://novakgs.com/og-image.jpg">
-<script>(function(){var t=null;try{t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("ngs-theme");}catch(e){}if(t==="light")document.documentElement.dataset.theme="light";})();</script>
 <style>
   :root {
     --bg: #0a0d12;
@@ -589,12 +588,7 @@
   }
   html:not([data-theme="light"]) body { background: linear-gradient(rgba(10,13,18,.62), rgba(10,13,18,.62)), var(--bg) url("topo-bg.jpg") center / cover no-repeat fixed; }
   @media (max-width: 640px) { .hero-map .wide { display: none; } }
-  .theme-toggle { order: 3; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--edge); border-radius: 999px; background: var(--panel); color: var(--muted); cursor: pointer; }
-  .theme-toggle:hover { color: var(--ink); border-color: var(--orange); }
-  .theme-toggle svg { width: 20px; height: 20px; }
-  .theme-toggle .i-moon { display: none; }
-  html[data-theme="light"] .theme-toggle .i-sun { display: none; }
-  html[data-theme="light"] .theme-toggle .i-moon { display: block; }
+  .theme-toggle { order: 3; }
   .topnav .brand { order: 1; } .topnav nav { order: 2; margin-left: auto; }
   @media (max-width: 640px) {
     .theme-toggle { order: 2; margin-left: auto; }
@@ -603,7 +597,6 @@
   /* light theme preview */
   html[data-theme="light"] { --bg: #f3f4f6; --ink: #151b22; --muted: #46515d; --faint: #5b6773; --panel: #ffffff; --edge: rgba(21,27,34,.13); }
   html[data-theme="light"] body { background: var(--bg); }
-  html[data-theme="light"] .topo-canvas { opacity: .12 !important; filter: invert(1); }
   html[data-theme="light"] .vignette { display: none; }
   html[data-theme="light"] .logo-dark { display: none; }
   html[data-theme="light"] .logo-light { display: block; }
@@ -613,6 +606,8 @@
   html[data-theme="light"] .blog-feature { background: var(--panel); }
 </style>
 <script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
 </head>
 <body data-topo="page" data-topo-style="fine">
 
@@ -836,18 +831,5 @@
     <p><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin</p>
   </footer>
 </div>
-<script>
-(function(){
-  var b=document.querySelector('.theme-toggle'); if(!b) return;
-  var root=document.documentElement;
-  function sync(){ var light=root.dataset.theme==='light'; b.setAttribute('aria-label', light?'Switch to dark theme':'Switch to light theme'); }
-  sync();
-  b.addEventListener('click',function(){
-    if(root.dataset.theme==='light'){ delete root.dataset.theme; } else { root.dataset.theme='light'; }
-    try{ localStorage.setItem('ngs-theme', root.dataset.theme==='light'?'light':'dark'); }catch(e){}
-    sync();
-  });
-})();
-</script>
 </body>
 </html>

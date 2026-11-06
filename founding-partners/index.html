@@ -274,14 +274,23 @@
   .hero .freebar { margin-bottom: 16px; }
   .nopay { background: #eaf5ee; border-left: 4px solid var(--green); padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0 14px; font-size: 16px; }
   .nopay strong { color: var(--green); }
+
+/* dark theme */
+html[data-theme="dark"]{--ink:#e6eaee;--muted:#a9b3bd;--slate:#a9c8e2;--blue:#7fa9cc;--line:rgba(255,255,255,.14);--paper:#10151c;--wash:#0a0d12;--orange-wash:#2a1a0e;--green:#3f9a66;color-scheme:dark}
+html[data-theme="dark"] ol.terms li::before{background:#2e4a62;color:#fff}
+html[data-theme="dark"] ol.steps li::before{background:#2e4a62}
+html[data-theme="dark"] section.card.cta{background:#1d3347}
+html[data-theme="dark"] .freebar,html[data-theme="dark"] .nopay{background:#10261a}
 </style>
 <script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
 </head>
 <body>
 <header data-topo="band" data-topo-style="fine">
   <div class="flank">
     <span class="side l">Elevated Data</span>
-    <a href="https://novakgs.com/" aria-label="Novak Geospatial Solutions home"><picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+    <a href="https://novakgs.com/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
     <span class="side r">Grounded Truth</span>
   </div>
 </header>

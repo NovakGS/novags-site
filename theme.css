@@ -1,0 +1,14 @@
+/* Novak|GS light/dark toggle button, shared by every page. */
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 44px; height: 44px; padding: 0; border-radius: 999px; cursor: pointer; border: 1px solid rgba(21,27,34,.18); background: #ffffff; color: #2a333d; transition: border-color .2s, color .2s; }
+html[data-theme="dark"] .theme-toggle { border-color: rgba(255,255,255,.16); background: rgba(12,16,22,.78); color: #c3cad1; }
+.theme-toggle:hover { border-color: #e8711a; color: #e8711a; }
+.theme-toggle:focus-visible { outline: 2px solid #e8711a; outline-offset: 2px; }
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .i-moon { display: none; }
+html[data-theme="dark"] .theme-toggle .i-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .i-moon { display: block; }
+.theme-toggle.floating { position: absolute; top: 12px; right: 12px; z-index: 50; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+@media (max-width: 600px) { body.has-floating-toggle > header:first-of-type { padding-top: 64px; } }
+.theme-slot-wrap { display: inline-flex; align-items: center; gap: 8px; }
+/* live contour background, softened for the light theme */
+html[data-theme="light"] [data-topo="page"] > .topo-canvas, html[data-theme="light"] [data-topo="page"].topo-canvas { filter: invert(1); opacity: .12 !important; }

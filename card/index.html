@@ -53,8 +53,19 @@
   .qr-tile { background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
   .qr-code { display: block; width: 196px; height: 196px; }
   .qr figcaption { font-size: 13px; color: #a4adb6; text-align: center; }
+
+html[data-theme="light"] body{background:#f3f4f6;color:#151b22}
+html[data-theme="light"] .role,html[data-theme="light"] .tag,html[data-theme="light"] footer a{color:#46515d}
+html[data-theme="light"] .hint,html[data-theme="light"] .qr figcaption,html[data-theme="light"] footer{color:#5b6773}
+html[data-theme="light"] .btn{color:#151b22;border-color:rgba(21,27,34,.16);background:#fff}
+html[data-theme="light"] .btn.primary{background:#e8711a;border-color:#e8711a;color:#1b0e03}
+html[data-theme="light"] .btn.soon{color:rgba(21,27,34,.5)}
+html[data-theme="light"] .btn.soon:hover{border-color:rgba(21,27,34,.16)}
+html[data-theme="light"] .qr-tile{box-shadow:0 6px 20px rgba(20,30,40,.15)}
 </style>
 <script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
 </head>
 <body data-topo="page" data-topo-style="fine">
 <main class="wrap">

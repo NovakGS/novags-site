@@ -23,7 +23,7 @@
     --panel: rgba(12, 16, 22, .78);
     --panel-solid: #10151c;
     --edge: rgba(255, 255, 255, .12);
-    --hair: rgba(255, 255, 255, .06);
+    --hair: rgba(255, 255, 255, .06); --label: #c3cad1;
     --sans: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
     --mono: "Roboto Mono", "SFMono-Regular", Consolas, monospace;
     color-scheme: dark;
@@ -54,7 +54,7 @@
 
   /* top bar */
   .bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
-  .bar .tagline { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #c3cad1; white-space: nowrap; text-shadow: 0 2px 18px rgba(0,0,0,.6); }
+  .bar .tagline { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--label); white-space: nowrap; text-shadow: 0 2px 18px rgba(0,0,0,.6); }
   .bar .tagline .sep { color: var(--orange); margin: 0 .5em; font-weight: 600; }
   .bar .back { justify-self: end; }
   @media (max-width: 760px) {
@@ -70,7 +70,7 @@
   .kicker { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--orange); }
   h1 { margin: 0; font-size: clamp(30px, 5vw, 46px); line-height: 1.08; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; }
   .fit { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
-  .fit-k { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; }
+  .fit-k { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); }
   .fit ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .fit li { font-size: 13px; color: var(--ink); padding: 5px 12px; border: 1px solid rgba(70,119,160,.65); border-radius: 999px; background: rgba(70,119,160,.14); }
   .lede { margin: 0; max-width: none; font-size: 18px; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
@@ -103,7 +103,7 @@
     .specs li:nth-child(2n) { border-right: 0; }
     .specs li:nth-last-child(-n+2) { border-bottom: 0; }
   }
-  .specs .k { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #c3cad1; margin-bottom: 4px; }
+  .specs .k { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 4px; }
   .specs .v { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .specs .v small { font-size: 13px; font-weight: 400; color: var(--muted); }
 
@@ -177,8 +177,19 @@
     .views, .deliv { grid-template-columns: 1fr; }
     .cta { padding: 20px; }
   }
+.bar .bar-end{justify-self:end}
+html[data-theme="light"] .track{background:rgba(21,27,34,.1)}
+html[data-theme="light"] .deliv code{background:rgba(21,27,34,.06)}
+html[data-theme="light"] .bar .tagline{text-shadow:none}
+/* light theme */
+html[data-theme="light"]{--bg:#f3f4f6;--ink:#151b22;--muted:#46515d;--faint:#5b6773;--label:#3d4752;--panel:#ffffff;--panel-solid:#f7f8fa;--edge:rgba(21,27,34,.13);--hair:rgba(21,27,34,.08);color-scheme:light}
+html[data-theme="light"] body{background:var(--bg)}
+html[data-theme="light"] .shade{display:none}
+
 </style>
 <script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
 </head>
 <body data-topo="page" data-topo-style="fine">
 <div class="shade" aria-hidden="true"></div>
@@ -186,7 +197,7 @@
   <header class="bar">
     <picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture>
     <p class="tagline">Elevated Data<span class="sep">|</span>Grounded Truth</p>
-    <a class="back" href="/">novakgs.com</a>
+    <span class="theme-slot-wrap bar-end" data-theme-slot><a class="back" href="/">novakgs.com</a></span>
   </header>
 
   <div class="hero">
