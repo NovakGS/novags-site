@@ -642,6 +642,12 @@
   .hero-map:focus-within { outline: 2px solid var(--orange); outline-offset: 3px; }
   .hs-hint { color: #e8711a; }
   .hero-map figcaption, .hs-stage .map-tag { pointer-events: none; }
+  .hero-map figcaption { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
+  .hs-ctoggle { pointer-events: auto; flex: none; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #e8711a; background: #e8711a; color: #12161c; font: 600 13px Roboto, "Segoe UI", system-ui, sans-serif; letter-spacing: 0; cursor: pointer; }
+  .hs-ctoggle[aria-pressed="false"] { background: rgba(5,7,10,.8); color: #eef1f3; border-color: rgba(255,255,255,.3); }
+  .hs-ctoggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  #heroSwipe.no-contours .hs-cont { opacity: 0; }
+  .hs-cont { transition: opacity .2s; }
   /* light theme preview */
   html[data-theme="light"] { --bg: #f3f4f6; --ink: #151b22; --muted: #46515d; --faint: #5b6773; --panel: #ffffff; --edge: rgba(21,27,34,.13); }
   html[data-theme="light"] body { background: var(--bg); }
@@ -722,11 +728,11 @@
         <img class="hs-cont" src="/img/hero/contours.png" alt="" width="1200" height="900" aria-hidden="true">
         <div class="hs-line" aria-hidden="true"><span class="hs-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
         <span class="map-tag l">Orthomosaic</span>
-        <span class="map-tag r">Elevation<span class="wide"> &middot; 2 ft contours</span></span>
+        <span class="map-tag r">Elevation</span>
       </div>
       <label class="hs-label" for="hsRange">Drag to compare the orthomosaic and elevation model</label>
       <input class="hs-range" id="hsRange" type="range" min="0" max="100" step="1" value="50">
-      <figcaption>Enchanted Valley Acres &middot; 110.5 ac<span class="wide"> &middot; 0.93 in/px &middot; NAVD88</span></figcaption>
+      <figcaption><span>Enchanted Valley Acres<span class="wide"> &middot; 110.5 ac &middot; NAVD88</span></span><button class="hs-ctoggle" type="button" aria-pressed="true">2 ft contours: On</button></figcaption>
     </figure>
   </header>
 
@@ -925,6 +931,8 @@
   function end(){ drag=false; }
   stage.addEventListener('pointerup',end); stage.addEventListener('pointercancel',end);
   range.addEventListener('input',function(){ set(+range.value); });
+  var ct=fig.querySelector('.hs-ctoggle');
+  if(ct){ ct.addEventListener('click',function(){ var on=ct.getAttribute('aria-pressed')!=='true'; ct.setAttribute('aria-pressed',on?'true':'false'); ct.textContent='2 ft contours: '+(on?'On':'Off'); fig.classList.toggle('no-contours',!on); }); }
   set(50);
 })();
 </script>
