@@ -605,31 +605,8 @@
     .theme-toggle { order: 2; margin-left: auto; }
     .topnav nav { order: 3; margin-left: 0; }
   }
-  /* dark header band: logo left, menu right */
-  html { scroll-padding-top: 140px; }
-  .band { position: sticky; top: 0; z-index: 30; background: #0a0d12 url("/topo-bg.jpg") center / cover no-repeat; border-bottom: 4px solid var(--orange); padding: 14px 16px; }
-  .band-row { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; max-width: 1080px; margin: 0 auto; flex-wrap: wrap; }
-  .band .band-logo { display: block; flex: none; width: 188px; }
-  .band .band-logo img { width: 100%; height: auto; display: block; }
-  .band-nav { display: flex; align-items: center; gap: 8px 22px; }
-  .band-nav nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
-  .band-nav nav a { color: #c9d0d7; text-decoration: none; font-size: 15px; font-weight: 500; padding: 10px 0; }
-  .band-nav nav a:hover { color: #fff; }
-  .band-nav nav a.nav-quote { background: var(--orange); color: #12161c; padding: 10px 18px; border-radius: 999px; font-weight: 600; }
-  .band-nav nav a.nav-quote:hover { color: #12161c; filter: brightness(1.08); }
-  .band .theme-toggle { border-color: rgba(255,255,255,.2); background: rgba(12,16,22,.7); color: #e6eaee; }
-  .band .theme-toggle:hover { border-color: var(--orange); color: var(--orange); }
   .hero2 { margin-top: 36px; }
-  @media (max-width: 760px) {
-    .band { padding: 10px 16px 4px; }
-    .band .band-logo { width: 150px; }
-    .band-nav { display: contents; }
-    .band .theme-toggle { order: 2; }
-    .band-nav nav { order: 3; width: 100%; justify-content: space-between; gap: 0 12px; border-top: 1px solid rgba(255,255,255,.12); }
-    .band-nav nav a { font-size: 14px; }
-    .band-nav nav a.nav-quote { display: none; }
-    .hero2 { margin-top: 22px; }
-  }
+  @media (max-width: 760px) { .hero2 { margin-top: 22px; } }
   /* hero swipe */
   .hs-stage { position: relative; aspect-ratio: 4 / 3; overflow: hidden; touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
   .hs-stage img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }

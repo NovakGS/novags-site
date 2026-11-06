@@ -51,5 +51,13 @@
       sync();
     });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  function bandHeight() {
+    var band = document.querySelector('.band');
+    if (!band) return;
+    var setH = function () { root.style.setProperty('--band-h', Math.round(band.getBoundingClientRect().height) + 'px'); };
+    setH();
+    if (window.ResizeObserver) new ResizeObserver(setH).observe(band); else window.addEventListener('resize', setH);
+  }
+  function start() { init(); bandHeight(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
