@@ -560,6 +560,11 @@
   @media (max-width: 640px) { .svc-chips a { min-height: 40px; font-size: 14px; } }
   .svc-chips a { display: inline-flex; align-items: center; min-height: 34px; padding: 5px 11px; border: 1px solid var(--edge); border-radius: 999px; background: var(--panel); color: var(--ink); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
   .svc-chips a:hover { border-color: var(--orange); color: var(--orange); }
+  .svc-chips li { position: relative; }
+  .svc-chips .tip { position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 20; width: max-content; max-width: 270px; padding: 10px 12px; border-radius: 10px; background: #10151c; color: #e6eaee; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 10px 28px rgba(0,0,0,.35); font-size: 13.5px; font-weight: 400; line-height: 1.45; text-align: left; white-space: normal; pointer-events: none; opacity: 0; visibility: hidden; transform: translate(calc(-50% + var(--tip-shift, 0px)), 4px); transition: opacity .15s, transform .15s, visibility .15s; }
+  .svc-chips .tip::after { content: ""; position: absolute; top: 100%; left: calc(50% - var(--tip-shift, 0px)); margin-left: -6px; border: 6px solid transparent; border-top-color: #10151c; }
+  @media (hover: hover) { .svc-chips li:hover .tip { opacity: 1; visibility: visible; transform: translate(calc(-50% + var(--tip-shift, 0px)), 0); } }
+  .svc-chips a:focus-visible + .tip { opacity: 1; visibility: visible; transform: translate(calc(-50% + var(--tip-shift, 0px)), 0); }
   .hero2 .contact { justify-content: flex-start; }
   .contact .email .em-full { display: none; }
   @media (max-width: 640px) { .contact .email .em-short { display: none; } .contact .email .em-full { display: inline; } }
@@ -668,13 +673,14 @@
       <h1>Accurate aerial maps, elevation models, stockpile volumes and cut/fill analysis.</h1>
       <p class="lede2">RTK-positioned drone flights, processed in-house and delivered in the formats your CAD, GIS and accounting teams already use.</p>
       <ul class="svc-chips" aria-label="Services">
-        <li><a href="/quote/?path=map">Orthomosaics</a></li>
-        <li><a href="/quote/?path=tech">Contours</a></li>
-        <li><a href="/quote/?path=volumes">Stockpile volumes</a></li>
-        <li><a href="/quote/?path=volumes">Cut/fill analysis</a></li>
-        <li><a href="/quote/?path=tech">Progress photos</a></li>
-        <li><a href="/quote/?path=photos">Photo &amp; video</a></li>
-        <li><a href="/quote/?path=tech">3D models</a></li>
+        <li><a href="/quote/?path=map" aria-describedby="tip-0">Orthomosaics</a><span class="tip" role="tooltip" id="tip-0">One seamless, true-to-scale aerial map stitched from hundreds of overlapping photos. Distances and areas can be measured right on it.</span></li>
+        <li><a href="/quote/?path=tech" aria-describedby="tip-1">Contours</a><span class="tip" role="tooltip" id="tip-1">Lines of equal elevation drawn from the bare-earth model, usually every 1 or 2 ft, for grading, drainage and site planning.</span></li>
+        <li><a href="/quote/?path=volumes" aria-describedby="tip-2">Stockpile volumes</a><span class="tip" role="tooltip" id="tip-2">The measured volume of each pile, calculated from a 3D surface of the site, for inventory counts and month-end reporting.</span></li>
+        <li><a href="/quote/?path=volumes" aria-describedby="tip-3">Cut/fill analysis</a><span class="tip" role="tooltip" id="tip-3">Compares the ground today with a design surface or an earlier flight to show how much earth has to come off (cut) or go in (fill), and where.</span></li>
+        <li><a href="/quote/?path=tech" aria-describedby="tip-4">Progress photos</a><span class="tip" role="tooltip" id="tip-4">Repeat flights from the same vantage points, documenting a build phase by phase.</span></li>
+        <li><a href="/quote/?path=photos" aria-describedby="tip-5">Photo &amp; video</a><span class="tip" role="tooltip" id="tip-5">Aerial photos and video of a home, farm, listing or event.</span></li>
+        <li><a href="/quote/?path=tech" aria-describedby="tip-6">3D models</a><span class="tip" role="tooltip" id="tip-6">A measurable, textured 3D model of a structure or site, built from an automated orbit flight.</span></li>
+        <li><a href="/quote/?path=tech" aria-describedby="tip-7">White-label RTK</a><span class="tip" role="tooltip" id="tip-7">For surveyors and engineers: RTK-positioned flights captured in your coordinate system and file formats, for you to process and deliver under your own name.</span></li>
       </ul>
       <div class="cta-row">
         <a class="btn-primary" href="/quote/">Request a quote
@@ -878,5 +884,15 @@
     <p><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin</p>
   </footer>
 </div>
+<script>
+(function(){
+  var chips=document.querySelectorAll('.svc-chips a');
+  function place(a){var t=a.parentNode.querySelector('.tip');if(!t)return;a.style.removeProperty('--tip-shift');t.style.setProperty('--tip-shift','0px');
+    var r=t.getBoundingClientRect(),vw=document.documentElement.clientWidth,pad=12,shift=0;
+    if(r.left<pad)shift=pad-r.left;else if(r.right>vw-pad)shift=(vw-pad)-r.right;
+    t.style.setProperty('--tip-shift',shift+'px');}
+  for(var i=0;i<chips.length;i++){(function(a){a.addEventListener('mouseenter',function(){place(a)});a.addEventListener('focus',function(){place(a)});})(chips[i]);}
+})();
+</script>
 </body>
 </html>
