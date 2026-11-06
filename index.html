@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="DJI Matrice 4E hovering over a field at sunset with the Novak tagline and services">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://novakgs.com/og-image.jpg">
-<script>try{var t=new URLSearchParams(location.search).get("theme");if(t==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+<script>(function(){var t=null;try{t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("ngs-theme");}catch(e){}if(t==="light")document.documentElement.dataset.theme="light";})();</script>
 <style>
   :root {
     --bg: #0a0d12;
@@ -589,6 +589,17 @@
   }
   html:not([data-theme="light"]) body { background: linear-gradient(rgba(10,13,18,.62), rgba(10,13,18,.62)), var(--bg) url("topo-bg.jpg") center / cover no-repeat fixed; }
   @media (max-width: 640px) { .hero-map .wide { display: none; } }
+  .theme-toggle { order: 3; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--edge); border-radius: 999px; background: var(--panel); color: var(--muted); cursor: pointer; }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--orange); }
+  .theme-toggle svg { width: 20px; height: 20px; }
+  .theme-toggle .i-moon { display: none; }
+  html[data-theme="light"] .theme-toggle .i-sun { display: none; }
+  html[data-theme="light"] .theme-toggle .i-moon { display: block; }
+  .topnav .brand { order: 1; } .topnav nav { order: 2; margin-left: auto; }
+  @media (max-width: 640px) {
+    .theme-toggle { order: 2; margin-left: auto; }
+    .topnav nav { order: 3; margin-left: 0; }
+  }
   /* light theme preview */
   html[data-theme="light"] { --bg: #f3f4f6; --ink: #151b22; --muted: #46515d; --faint: #5b6773; --panel: #ffffff; --edge: rgba(21,27,34,.13); }
   html[data-theme="light"] body { background: var(--bg); }
@@ -615,6 +626,10 @@
       <a href="/blog/">Blog</a>
       <a class="nav-quote" href="/quote/">Request a quote</a>
     </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Light / dark">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg>
+    </button>
   </div>
 
   <header class="hero2">
@@ -821,5 +836,18 @@
     <p><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin</p>
   </footer>
 </div>
+<script>
+(function(){
+  var b=document.querySelector('.theme-toggle'); if(!b) return;
+  var root=document.documentElement;
+  function sync(){ var light=root.dataset.theme==='light'; b.setAttribute('aria-label', light?'Switch to dark theme':'Switch to light theme'); }
+  sync();
+  b.addEventListener('click',function(){
+    if(root.dataset.theme==='light'){ delete root.dataset.theme; } else { root.dataset.theme='light'; }
+    try{ localStorage.setItem('ngs-theme', root.dataset.theme==='light'?'light':'dark'); }catch(e){}
+    sync();
+  });
+})();
+</script>
 </body>
 </html>
