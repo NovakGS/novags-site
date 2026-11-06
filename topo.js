@@ -4,7 +4,11 @@
  * Content inside a band is lifted above the canvas automatically.
  */
 (function () {
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mm = window.matchMedia;
+  var reduce = mm && mm('(prefers-reduced-motion: reduce)').matches;
+  // Phones and tablets get one still frame: redrawing 25 times a second ties up
+  // their processors, which made pages slow to respond to taps.
+  var still = reduce || (mm && mm('(max-width: 900px), (pointer: coarse)').matches);
 
   // --- 3D value noise (x, y, time) ---
   var perm = new Uint8Array(512);
@@ -140,7 +144,11 @@
     }
     this.size = size; this.draw = draw;
     size();
-    if (mode === 'band' && window.ResizeObserver) new ResizeObserver(function () { size(); if (reduce) draw(0); }).observe(host);
+    if (mode === 'band' && window.ResizeObserver) new ResizeObserver(function () {
+      var r = host.getBoundingClientRect();
+      if (Math.round(r.width) === W && Math.round(r.height) === H) return;
+      size(); if (still) draw(0);
+    }).observe(host);
   }
 
   var all = [];
@@ -151,8 +159,14 @@
       if (t.draw) all.push(t);
     }
     if (!all.length) return;
-    window.addEventListener('resize', function () { all.forEach(function (t) { t.size(); if (reduce) t.draw(0); }); });
-    if (reduce) { all.forEach(function (t) { t.draw(0); }); return; }
+    var lastW = window.innerWidth, lastH = window.innerHeight;
+    window.addEventListener('resize', function () {
+      // On a phone the address bar sliding away is a small height-only resize; the still frame just stretches.
+      if (still && window.innerWidth === lastW && Math.abs(window.innerHeight - lastH) < 150) return;
+      lastW = window.innerWidth; lastH = window.innerHeight;
+      all.forEach(function (t) { t.size(); if (still) t.draw(0); });
+    });
+    if (still) { all.forEach(function (t) { t.draw(0); }); return; }
     var start = performance.now(), last = 0, running = true;
     function frame(now) {
       if (!running) return;

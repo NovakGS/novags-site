@@ -125,3 +125,4 @@ html[data-theme="light"] body{background:var(--bg)}
 html[data-theme="light"] .shade{display:none}
 
 .hero h1 .brk{color:var(--orange);font-weight:400}
+.blog-intro{margin:0;max-width:68ch;color:var(--muted,inherit);line-height:1.6}
