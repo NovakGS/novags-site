@@ -561,15 +561,15 @@
   .svc-chips a { display: inline-flex; align-items: center; min-height: 34px; padding: 5px 11px; border: 1px solid var(--edge); border-radius: 999px; background: var(--panel); color: var(--ink); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
   .svc-chips a:hover { border-color: var(--orange); color: var(--orange); }
   .svc-chips li { position: relative; }
-  .svc-chips .tip { position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 20; width: max-content; max-width: 270px; padding: 10px 12px; border-radius: 10px; background: #10151c; color: #e6eaee; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 10px 28px rgba(0,0,0,.35); font-size: 13.5px; font-weight: 400; line-height: 1.45; text-align: left; white-space: normal; pointer-events: none; opacity: 0; visibility: hidden; transform: translate(calc(-50% + var(--tip-shift, 0px)), 4px); transition: opacity .15s, transform .15s, visibility .15s; }
+  .svc-chips .tip { position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 20; width: max-content; max-width: 270px; padding: 10px 12px; border-radius: 10px; background: #10151c; color: #e6eaee; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 10px 28px rgba(0,0,0,.35); font-size: 13.5px; font-weight: 400; line-height: 1.45; text-align: left; white-space: normal; pointer-events: none; display: none; transform: translateX(calc(-50% + var(--tip-shift, 0px))); }
   .svc-chips .tip::after { content: ""; position: absolute; top: 100%; left: calc(50% - var(--tip-shift, 0px)); margin-left: -6px; border: 6px solid transparent; border-top-color: #10151c; }
-  @media (hover: hover) { .svc-chips li:hover .tip { opacity: 1; visibility: visible; transform: translate(calc(-50% + var(--tip-shift, 0px)), 0); } }
-  .svc-chips a:focus-visible + .tip { opacity: 1; visibility: visible; transform: translate(calc(-50% + var(--tip-shift, 0px)), 0); }
+  @media (hover: hover) { .svc-chips li:hover .tip { display: block; } }
+  .svc-chips a:focus-visible + .tip { display: block; }
   .hero2 .contact { justify-content: flex-start; }
   .contact .email .em-full { display: none; }
   @media (max-width: 640px) { .contact .email .em-short { display: none; } .contact .email .em-full { display: inline; } }
   .hero-map { position: relative; margin: 0; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: #05070a; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
-  .hero-map img { display: block; width: 100%; height: auto; }
+  .hero-map > img { display: block; width: 100%; height: auto; }
   .map-tag { position: absolute; top: 12px; font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #eef1f3; background: rgba(5,7,10,.8); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 5px 10px; }
   .map-tag.l { left: 12px; } .map-tag.r { right: 12px; }
   .hero-map figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px; font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; letter-spacing: .06em; color: #c3cad1; background: linear-gradient(transparent, rgba(5,7,10,.88)); }
@@ -629,6 +629,18 @@
     .band-nav nav a.nav-quote { display: none; }
     .hero2 { margin-top: 22px; }
   }
+  /* hero swipe */
+  .hs-stage { position: relative; aspect-ratio: 4 / 3; overflow: hidden; touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
+  .hs-stage img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+  .hs-ortho { clip-path: inset(0 calc(100% - var(--hs, 50%)) 0 0); }
+  .hs-line { position: absolute; top: 0; bottom: 0; left: var(--hs, 50%); width: 2px; margin-left: -1px; background: #eef1f3; box-shadow: 0 0 0 1px rgba(0,0,0,.35); pointer-events: none; }
+  .hs-knob { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin: -20px 0 0 -20px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #eef1f3; color: #10151c; box-shadow: 0 4px 14px rgba(0,0,0,.45); }
+  .hs-knob svg { width: 20px; height: 20px; }
+  .hs-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hs-range { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+  .hero-map:focus-within { outline: 2px solid var(--orange); outline-offset: 3px; }
+  .hs-hint { color: #e8711a; }
+  .hero-map figcaption, .hs-stage .map-tag { pointer-events: none; }
   /* light theme preview */
   html[data-theme="light"] { --bg: #f3f4f6; --ink: #151b22; --muted: #46515d; --faint: #5b6773; --panel: #ffffff; --edge: rgba(21,27,34,.13); }
   html[data-theme="light"] body { background: var(--bg); }
@@ -675,10 +687,10 @@
       <ul class="svc-chips" aria-label="Services">
         <li><a href="/quote/?path=map" aria-describedby="tip-0">Orthomosaics</a><span class="tip" role="tooltip" id="tip-0">One seamless, true-to-scale aerial map stitched from hundreds of overlapping photos. Distances and areas can be measured right on it.</span></li>
         <li><a href="/quote/?path=tech" aria-describedby="tip-1">Contours</a><span class="tip" role="tooltip" id="tip-1">Lines of equal elevation drawn from the bare-earth model, usually every 1 or 2 ft, for grading, drainage and site planning.</span></li>
-        <li><a href="/quote/?path=volumes" aria-describedby="tip-2">Stockpile volumes</a><span class="tip" role="tooltip" id="tip-2">The measured volume of each pile, calculated from a 3D surface of the site, for inventory counts and month-end reporting.</span></li>
+        <li><a href="/quote/?path=volumes" aria-describedby="tip-2">Stockpile volumes</a><span class="tip" role="tooltip" id="tip-2">The measured volume of each pile from a 3D surface of the site, plus estimated tonnage using your material densities, for inventory counts and month-end reporting.</span></li>
         <li><a href="/quote/?path=volumes" aria-describedby="tip-3">Cut/fill analysis</a><span class="tip" role="tooltip" id="tip-3">Compares the ground today with a design surface or an earlier flight to show how much earth has to come off (cut) or go in (fill), and where.</span></li>
         <li><a href="/quote/?path=tech" aria-describedby="tip-4">Progress photos</a><span class="tip" role="tooltip" id="tip-4">Repeat flights from the same vantage points, documenting a build phase by phase.</span></li>
-        <li><a href="/quote/?path=photos" aria-describedby="tip-5">Photo &amp; video</a><span class="tip" role="tooltip" id="tip-5">Aerial photos and video of a home, farm, listing or event.</span></li>
+        <li><a href="/quote/?path=photos" aria-describedby="tip-5">Photo &amp; video</a><span class="tip" role="tooltip" id="tip-5">Aerial photos and video for commercial and real estate work, plus homes, farms and events.</span></li>
         <li><a href="/quote/?path=tech" aria-describedby="tip-6">3D models</a><span class="tip" role="tooltip" id="tip-6">A measurable, textured 3D model of a structure or site, built from an automated orbit flight.</span></li>
         <li><a href="/quote/?path=tech" aria-describedby="tip-7">White-label RTK</a><span class="tip" role="tooltip" id="tip-7">For surveyors and engineers: RTK-positioned flights captured in your coordinate system and file formats, for you to process and deliver under your own name.</span></li>
       </ul>
@@ -702,10 +714,17 @@
       </div>
       </div>
     </div>
-    <figure class="hero-map">
-      <img src="/img/hero/hero-split.jpg" alt="Orthomosaic of a Wisconsin farm blending into a color elevation model with 2-foot contour lines" width="1200" height="900">
-      <span class="map-tag l">Orthomosaic</span>
-      <span class="map-tag r">Elevation<span class="wide"> &middot; 2 ft contours</span></span>
+    <figure class="hero-map" id="heroSwipe">
+      <div class="hs-stage">
+        <img class="hs-elev" src="/img/hero/elevation.jpg" alt="Color elevation model of Enchanted Valley Acres" width="1200" height="900">
+        <img class="hs-ortho" src="/img/hero/ortho.jpg" alt="Orthomosaic of Enchanted Valley Acres in fall color" width="1200" height="900">
+        <img class="hs-cont" src="/img/hero/contours.png" alt="" width="1200" height="900" aria-hidden="true">
+        <div class="hs-line" aria-hidden="true"><span class="hs-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <span class="map-tag l">Orthomosaic</span>
+        <span class="map-tag r">Elevation<span class="wide"> &middot; 2 ft contours</span></span>
+      </div>
+      <label class="hs-label" for="hsRange">Drag to compare the orthomosaic and elevation model</label>
+      <input class="hs-range" id="hsRange" type="range" min="0" max="100" step="1" value="50">
       <figcaption>Enchanted Valley Acres &middot; 110.5 ac<span class="wide"> &middot; 0.93 in/px &middot; NAVD88</span></figcaption>
     </figure>
   </header>
@@ -892,6 +911,20 @@
     if(r.left<pad)shift=pad-r.left;else if(r.right>vw-pad)shift=(vw-pad)-r.right;
     t.style.setProperty('--tip-shift',shift+'px');}
   for(var i=0;i<chips.length;i++){(function(a){a.addEventListener('mouseenter',function(){place(a)});a.addEventListener('focus',function(){place(a)});})(chips[i]);}
+})();
+</script>
+<script>
+(function(){
+  var fig=document.getElementById('heroSwipe'); if(!fig) return;
+  var stage=fig.querySelector('.hs-stage'), range=fig.querySelector('.hs-range'), drag=false;
+  function set(v){ v=Math.max(0,Math.min(100,v)); fig.style.setProperty('--hs', v+'%'); range.value=Math.round(v); }
+  function fromX(x){ var r=stage.getBoundingClientRect(); set((x-r.left)/r.width*100); }
+  stage.addEventListener('pointerdown',function(e){ drag=true; stage.setPointerCapture(e.pointerId); fromX(e.clientX); });
+  stage.addEventListener('pointermove',function(e){ if(drag) fromX(e.clientX); });
+  function end(){ drag=false; }
+  stage.addEventListener('pointerup',end); stage.addEventListener('pointercancel',end);
+  range.addEventListener('input',function(){ set(+range.value); });
+  set(50);
 })();
 </script>
 </body>
