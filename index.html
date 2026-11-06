@@ -606,7 +606,8 @@
     .topnav nav { order: 3; margin-left: 0; }
   }
   /* dark header band: logo left, menu right */
-  .band { position: relative; z-index: 3; background: #0a0d12 url("/topo-bg.jpg") center / cover no-repeat; border-bottom: 4px solid var(--orange); padding: 14px 16px; }
+  html { scroll-padding-top: 140px; }
+  .band { position: sticky; top: 0; z-index: 30; background: #0a0d12 url("/topo-bg.jpg") center / cover no-repeat; border-bottom: 4px solid var(--orange); padding: 14px 16px; }
   .band-row { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; max-width: 1080px; margin: 0 auto; flex-wrap: wrap; }
   .band .band-logo { display: block; flex: none; width: 188px; }
   .band .band-logo img { width: 100%; height: auto; display: block; }
