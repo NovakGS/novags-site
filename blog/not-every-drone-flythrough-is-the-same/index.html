@@ -29,14 +29,21 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Not Every Drone Fly-Through Is the Same: What to Ask Before You Hire One", "description": "Live flyovers, FPV, quick app scans and measured 3D models all get sold as aerial video. Here's how they differ, what measured actually means, where property lines come from, and what to ask any drone provider.", "datePublished": "2026-11-09", "image": "https://novakgs.com/blog/not-every-drone-flythrough-is-the-same/og.jpg", "mainEntityOfPage": "https://novakgs.com/blog/not-every-drone-flythrough-is-the-same/", "author": {"@type": "Organization", "name": "Novak Geospatial Solutions", "url": "https://novakgs.com/"}, "publisher": {"@type": "Organization", "name": "Novak Geospatial Solutions", "logo": {"@type": "ImageObject", "url": "https://novakgs.com/logo-dark-v2.png"}}}
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "VideoObject", "name": "Real Estate Drone 3D Fly-Through | 15-Acre Rural Home, Blue Mounds WI", "description": "1-minute 3D fly-through of a 15-acre rural property near Blue Mounds, Wisconsin, rendered from a measured 3D model built from more than 1,000 aerial photos.", "thumbnailUrl": "https://novakgs.com/blog/not-every-drone-flythrough-is-the-same/img/flythrough-poster.jpg", "uploadDate": "2026-11-07", "duration": "PT59S", "embedUrl": "https://www.youtube.com/embed/iY8wzHlo9pA", "contentUrl": "https://www.youtube.com/watch?v=iY8wzHlo9pA", "publisher": {"@type": "Organization", "name": "Novak Geospatial Solutions", "url": "https://novakgs.com/"}}
+</script>
 <link rel="stylesheet" href="/theme.css">
 <script src="/theme.js"></script>
 <style>
-.vid-link{position:relative;display:block;border-radius:12px;overflow:hidden;color:#eef1f3;text-decoration:none}
+.vid-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#05070a}
+.vid-frame iframe,.vid-frame .vid-link{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-frame .vid-link{padding:0;margin:0;cursor:pointer;background:#05070a;border-radius:0}
+.vid-frame .vid-link img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:auto}
+.vid-link{position:relative;display:block;font:inherit;border-radius:12px;overflow:hidden;color:#eef1f3;text-decoration:none}
 .vid-link::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,10,0) 50%,rgba(5,7,10,.6))}
 .vid-link .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:999px;background:#e8711a;display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 8px 28px rgba(0,0,0,.45)}
 .vid-link .play svg{width:28px;height:28px;margin-left:4px}
-.vid-link .tag{position:absolute;left:16px;bottom:14px;z-index:1;font-size:15px;font-weight:500}
+.vid-link .tag{position:absolute;left:16px;bottom:14px;text-align:left;z-index:1;font-size:15px;font-weight:500}
 .vid-link:hover .play{filter:brightness(1.08)}
 .cards li em{display:block;margin-top:8px;font-style:normal;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--label)}
 .cards li.pick{position:relative;border-color:rgba(232,113,26,.5);border-left-color:#e8711a;background:linear-gradient(rgba(232,113,26,.07),rgba(232,113,26,.07)),var(--panel)}
@@ -80,14 +87,14 @@
     <h1>Not every drone &ldquo;fly-through&rdquo; is the same</h1>
     <p class="lede">Scroll through acreage listings and a pattern shows up: the house from the driveway, the house from above, the house from a little higher. Good photos, all of them. But someone buying land isn&rsquo;t only choosing a house. They&rsquo;re choosing a homestead: where the garden goes, which trail the kids will wear in, where they&rsquo;ll walk the dog at dusk. Those shots can&rsquo;t show them that.</p>
     <p class="lede">Live flyovers, FPV runs, quick app scans and measured 3D models all get sold as &ldquo;aerial video,&rdquo; and in a thumbnail they look alike. Underneath, they&rsquo;re different products, built different ways, and only one of them is a measurement.</p>
-    <figure class="lead"><a class="vid-link" href="https://youtu.be/iY8wzHlo9pA" rel="noopener"><img src="img/flythrough-poster.jpg" alt="High aerial view of a 15-acre rural property with two ponds, prairie plantings and a home beside the road" width="1600" height="1199"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#12161c"><path d="M6 3.8v16.4L20 12z"/></svg></span><span class="tag">Watch: a fly-through rendered from a measured model</span></a><figcaption>A 15-acre rural property near Blue Mounds, Wisconsin. Every frame is rendered from a 3D model, not recorded live.</figcaption></figure>
+    <figure class="lead"><div class="vid-frame"><button class="vid-link" id="vid-btn" type="button" data-yt="iY8wzHlo9pA" aria-label="Play the 3D fly-through video"><img src="img/flythrough-poster.jpg" alt="High aerial view of a 15-acre rural property with two ponds, prairie plantings and a home beside the road" width="1600" height="1199"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#12161c"><path d="M6 3.8v16.4L20 12z"/></svg></span><span class="tag">3D fly-through &middot; 0:59</span></button></div><figcaption>A 15-acre rural property near Blue Mounds, Wisconsin. Every frame is rendered from a 3D model, not recorded live. <a href="https://youtu.be/iY8wzHlo9pA" rel="noopener">Watch on YouTube</a></figcaption></figure>
   </div>
 
   <section aria-labelledby="four">
     <h2 id="four">Four things sold as aerial video</h2>
     <ul class="cards">
       <li><strong>Live flyover</strong><span>The drone flies a path and records it. Real footage in real light, but it&rsquo;s one pass: framing is limited by trees, wires, wind and the 400-foot ceiling, and a new angle means a new flight. No scale, no geometry.</span><em>Good for: a quick establishing shot</em></li>
-      <li><strong>FPV video</strong><span>A small, agile drone flown by hand through and around a property, often through doorways and low over the ground. Dramatic and cinematic. It&rsquo;s a performance, not a record of the land.</span><em>Good for: energy and wow on social</em></li>
+      <li><strong>FPV video</strong><span>FPV stands for first-person view: the pilot wears goggles that show a live feed from the drone&rsquo;s camera, as if sitting in the cockpit. A small, agile drone flown by hand through and around a property, often through doorways and low over the ground. Dramatic and cinematic. It&rsquo;s a performance, not a record of the land.</span><em>Good for: energy and wow on social</em></li>
       <li><strong>Quick app scan</strong><span>An app flies a preset orbit and builds a 3D model in minutes from a few hundred photos tagged with the drone&rsquo;s standard GPS. Fine for one building. On acreage, edges sag, scale drifts, and ground surfaces smear.</span><em>Good for: a single structure</em></li>
       <li class="pick"><span class="pick-tag">What Novak|GS delivers</span><strong>Measured 3D model</strong><span>Planned grid and angled flights at high overlap, positions corrected by RTK, the model tied to ground control and checked. The fly-through is rendered from that model, so the camera can go anywhere and the land is shown at true scale.</span><em>Good for: acreage, multiple parcels, land as the selling point</em></li>
     </ul>
@@ -157,5 +164,8 @@
     &copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin
   </footer>
 </div>
+<script>
+(function(){var b=document.getElementById('vid-btn');if(!b)return;b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-yt')+'?autoplay=1&rel=0&modestbranding=1';f.title='15-acre rural property 3D fly-through, Blue Mounds WI';f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';f.allowFullscreen=true;b.replaceWith(f);});})();
+</script>
 </body>
 </html>
