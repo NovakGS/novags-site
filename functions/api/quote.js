@@ -31,7 +31,7 @@ const SERVICES = [
   'Stockpile volume reports', 'Cut/fill analysis', 'Orthomosaic site maps', 'Progress documentation',
   'Acreage listing package', 'High-resolution aerial maps', 'Property overview imagery',
   'Field & farmstead maps', 'Grain & silage pile volumes', 'Visual crop scouting maps', 'Field drainage maps',
-  'White-label RTK data capture', 'Not sure — help me choose',
+  'White-label RTK data capture', '3D fly-through listing package', 'Not sure — help me choose',
 ];
 const FORMATS = ['PDF report', 'Images', 'GeoTIFF', 'KMZ', 'CAD (DXF)', 'Point cloud (LAS)', 'Not sure'];
 
@@ -178,6 +178,14 @@ function buildDetails(fd, services) {
   }
   if (has('Acreage listing package', 'Property overview imagery')) {
     lines.push(`Listing — target listing date: ${str(fd, 'listingDate', 20) || '?'}`);
+  }
+  if (has('3D fly-through listing package')) {
+    const opt = (n, max) => str(fd, n, max) || '?';
+    lines.push(`Listing (3D) — role: ${opt('listingRole', 40)}; status: ${opt('listingStatus', 40)}; target date: ${opt('listingDate', 20)}; list price: ${opt('listPrice', 40)}`);
+    const link = str(fd, 'listingLink', 400);
+    const feats = str(fd, 'listingFeatures', 300);
+    if (link) lines.push(`Listing link: ${link}`);
+    if (feats) lines.push(`Stands out: ${feats}`);
   }
   if (has('Visual crop scouting maps')) {
     lines.push(`Crop scouting — crop: ${str(fd, 'cropType', 80) || '?'}; growth stage: ${str(fd, 'growthStage', 80) || '?'}`);

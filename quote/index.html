@@ -195,10 +195,14 @@ html[data-theme="dark"] .done .check{background:#10261a}
   <fieldset class="step-path">
     <legend><span class="num">01</span> What do you need?</legend>
     <div class="paths" role="radiogroup" aria-label="What do you need?">
+      <label class="path wide"><input type="radio" name="path" value="listing"><span>
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg>
+        <strong>Real estate listing</strong>
+        <em>A 3D fly-through, listing aerials and parcel-overlay photos for acreage, waterfront and luxury listings.</em></span></label>
       <label class="path"><input type="radio" name="path" value="photos"><span>
         <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
         <strong>Aerial photos or video</strong>
-        <em>A home, farm, land, listing or event, shot from above.</em></span></label>
+        <em>A home, farm, land or event, shot from above.</em></span></label>
       <label class="path"><input type="radio" name="path" value="map"><span>
         <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>
         <strong>A map of my property</strong>
@@ -228,7 +232,6 @@ html[data-theme="dark"] .done .check{background:#10261a}
       <label class="chip"><input type="checkbox" name="services" value="Property overview imagery" data-pre="photos"><span>Aerial photos</span></label>
       <label class="chip"><input type="checkbox" name="services" value="Time-lapse &amp; marketing media"><span>Aerial video</span></label>
       <label class="chip"><input type="checkbox" name="services" value="High-resolution aerial maps" data-pre="map"><span>Property map</span></label>
-      <label class="chip"><input type="checkbox" name="services" value="Acreage listing package"><span>Real estate listing package</span></label>
     </div>
     <div class="q req" id="who-label">Who's it for?</div>
     <div class="chips" role="radiogroup" aria-labelledby="who-label">
@@ -238,6 +241,35 @@ html[data-theme="dark"] .done .check{background:#10261a}
       <label class="chip radio"><input type="radio" name="clientType" value="Other"><span>A business or event</span></label>
     </div>
     <p class="note">Delivered as a download link: full-resolution files ready to print, post or share. No special software needed.</p>
+  </fieldset>
+
+  <!-- Real estate listing path -->
+  <fieldset data-path="listing" class="pathset">
+    <legend><span class="num">02</span> The listing</legend>
+    <input type="radio" name="clientType" value="Realtor or landowner" id="listingClient" hidden tabindex="-1" aria-hidden="true">
+    <div class="q req" id="lpkg-label">Package</div>
+    <div class="chips" role="group" aria-labelledby="lpkg-label">
+      <label class="chip"><input type="checkbox" name="services" value="3D fly-through listing package" data-pre="listing"><span>3D fly-through + listing aerials</span></label>
+      <label class="chip"><input type="checkbox" name="services" value="High-resolution aerial maps"><span>Add a property map</span></label>
+    </div>
+    <div class="q req" id="role-label">You are</div>
+    <div class="chips" role="radiogroup" aria-labelledby="role-label">
+      <label class="chip radio"><input type="radio" name="listingRole" value="Listing agent"><span>The listing agent</span></label>
+      <label class="chip radio"><input type="radio" name="listingRole" value="Owner selling"><span>The owner</span></label>
+      <label class="chip radio"><input type="radio" name="listingRole" value="Builder or developer"><span>A builder or developer</span></label>
+    </div>
+    <div class="grid">
+      <label class="f"><span>Listing status</span>
+        <select name="listingStatus"><option value="">Choose</option><option>Not listed yet</option><option>Coming soon</option><option>Active</option></select>
+      </label>
+      <label class="f"><span>Target listing date</span><input type="date" name="listingDate"></label>
+      <label class="f"><span>List price</span>
+        <select name="listPrice"><option value="">Choose</option><option>Under $750K</option><option>$750K–$1M</option><option>$1M–$2M</option><option>$2M+</option><option>Prefer not to say</option></select>
+      </label>
+      <label class="f"><span>Listing link <span class="hint">(optional)</span></span><input type="text" name="listingLink" inputmode="url" autocomplete="url" placeholder="Zillow, MLS or brokerage page"></label>
+      <label class="f full"><span>What makes it stand out? <span class="hint">(optional)</span></span><input type="text" name="listingFeatures" maxlength="300" placeholder="e.g. ponds, woods and trails, outbuildings, waterfront, views"></label>
+    </div>
+    <p class="note">Exterior aerial work only. Parcel lines are drawn from county records for illustration and don't establish property lines. See an <a href="/case-studies/real-estate/residential/">example listing package</a>.</p>
   </fieldset>
 
   <!-- Volumes and cut/fill path -->
@@ -493,7 +525,7 @@ html[data-theme="dark"] .done .check{background:#10261a}
         </label>
       </div>
       <ul class="files" id="fileList"></ul>
-      <fieldset class="bare" data-path="photos map volumes tech" id="notesSet">
+      <fieldset class="bare" data-path="photos map volumes tech listing" id="notesSet">
         <div class="grid">
           <label class="f full"><span>Anything else?</span><textarea name="notes" maxlength="4000" placeholder="Access, deadlines, what you'll use it for…"></textarea></label>
         </div>
@@ -554,6 +586,7 @@ html[data-theme="dark"] .done .check{background:#10261a}
     form.querySelectorAll('input[data-pre]').forEach(function (c) {
       if (c.dataset.pre === p) c.checked = true;
     });
+    if (p === 'listing') document.getElementById('listingClient').checked = true;
     var technical = p === 'tech' || p === 'volumes';
     pinBox.open = technical;
     extras.open = technical;
@@ -683,7 +716,8 @@ html[data-theme="dark"] .done .check{background:#10261a}
     if (v('phone').replace(/\D/g, '').length < 10) missing.push('a phone number');
     if (!form.querySelector('input[name=preferredContact]:checked')) missing.push('how to reach you');
     if (!path) missing.push('what you need');
-    if (path !== 'unsure' && !form.querySelector('input[name=services]:checked:not(:disabled)')) missing.push(path === 'tech' ? 'at least one service' : path === 'volumes' ? 'what you are measuring' : 'what you would like');
+    if (path !== 'unsure' && !form.querySelector('input[name=services]:checked:not(:disabled)')) missing.push(path === 'tech' ? 'at least one service' : path === 'volumes' ? 'what you are measuring' : path === 'listing' ? 'a package' : 'what you would like');
+    if (path === 'listing' && !form.querySelector('input[name=listingRole]:checked')) missing.push("whether you're the agent, owner or builder");
     if (!form.querySelector('input[name=clientType]:checked:not(:disabled)')) missing.push(path === 'tech' ? 'what type of client you are' : "who it's for");
     if (path === 'unsure' && !String(form.querySelector('fieldset[data-path=unsure] textarea').value).trim()) missing.push('a short description of the project');
     if (!v('siteLocation')) missing.push('the address');
