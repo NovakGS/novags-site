@@ -501,6 +501,8 @@
   .case-card.feature .body { padding: 26px 26px 24px; gap: 10px; justify-content: center; }
   .case-card.feature strong { font-size: 26px; }
   .case-card.feature .body > span.desc { font-size: 16px; }
+  .case-card.feature.flip { grid-template-columns: 1fr 1.45fr; }
+  .case-card.feature.flip .thumb { order: 2; border-right: 0; border-left: 1px solid var(--edge); }
   .case-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 6px 0 2px; padding: 0; list-style: none; }
   .case-stats li { padding: 10px 12px; border: 1px solid var(--edge); border-radius: 10px; background: rgba(255,255,255,.03); }
   .case-stats b { display: block; font-size: 19px; font-weight: 600; color: var(--ink); }
@@ -509,7 +511,9 @@
     .case-card.feature { grid-template-columns: 1fr; }
     .case-card.feature .thumb { min-height: 0; aspect-ratio: 16 / 9; border-right: 0; border-bottom: 1px solid var(--edge); }
     .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .case-grid .case-card:last-child { grid-column: 1 / -1; }
+    .case-grid .case-card.span-md { grid-column: 1 / -1; }
+    .case-card.feature.flip { grid-template-columns: 1fr; }
+    .case-card.feature.flip .thumb { order: 0; border-left: 0; border-bottom: 1px solid var(--edge); }
   }
   @media (max-width: 640px) {
     .cases { margin-top: 48px; }
@@ -760,13 +764,27 @@
           <span class="go">View case study <span aria-hidden="true">&rarr;</span></span>
         </span>
       </a>
-      <a class="case-card" href="/work/deer-stand/">
+      <a class="case-card span-md" href="/work/deer-stand/">
         <span class="thumb"><img src="/img/work/cases/stand-3d.jpg" alt="Textured 3D model of a hunting stand" width="800" height="600" loading="lazy"></span>
         <span class="body">
           <span class="tag">3D structures</span>
           <strong>A measurable 3D model from one flight</strong>
           <span class="desc">A hunting stand captured in 3D you can spin, measure and fly around.</span>
           <span class="go">View case study <span aria-hidden="true">&rarr;</span></span>
+        </span>
+      </a>
+      <a class="case-card feature flip" href="/case-studies/real-estate/residential/">
+        <span class="thumb"><img src="/img/work/cases/re-residential.jpg" alt="Rural home seen across a pond, with prairie, garden and a wooded hillside behind it" width="1400" height="787" loading="lazy"></span>
+        <span class="body">
+          <span class="tag">Residential real estate &middot; Blue Mounds</span>
+          <strong>Acreage listings, seen from above</strong>
+          <span class="desc">A 3D fly-through, listing aerials and parcel-overlay photos that show buyers how a rural property lays out before the first showing.</span>
+          <ul class="case-stats">
+            <li><b>15</b><span>acres</span></li>
+            <li><b>1,000+</b><span>photos</span></li>
+            <li><b>4K</b><span>fly-through</span></li>
+          </ul>
+          <span class="go">See the listing package <span aria-hidden="true">&rarr;</span></span>
         </span>
       </a>
     </div>
