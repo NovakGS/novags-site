@@ -457,6 +457,9 @@
   .line { padding: 16px 18px; border-top: 2px solid var(--blue); background: var(--panel); border-radius: 0 0 10px 10px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
   .line h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
   .line p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  a.line-link { display: block; color: inherit; text-decoration: none; transition: border-color .2s; }
+  a.line-link:hover { border-top-color: #e8711a; }
+  a.line-link .go { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 600; color: #e8711a; }
   .who .white-label { margin-top: 12px; }
   .verify { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: center; text-align: left;
     padding: 30px; border: 1px solid var(--edge); border-radius: 14px; background: var(--panel); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
@@ -844,7 +847,7 @@
     <h2 id="who">Built for the people who build, move, sell and grow on Wisconsin land</h2>
     <div class="lines">
       <div class="line"><h3>Developers &amp; builders</h3><p>Pre-development assessments, construction progress tracking, time-lapse and marketing media.</p></div>
-      <div class="line"><h3>Contractors &amp; aggregate</h3><p>Stockpile volume reports, cut/fill, orthomosaic site maps and progress documentation.</p></div>
+      <a class="line line-link" href="/industries/aggregate/"><h3>Contractors &amp; aggregate</h3><p>Stockpile volume reports, cut/fill, orthomosaic site maps and progress documentation.</p><span class="go">See aggregate work <span aria-hidden="true">&rarr;</span></span></a>
       <div class="line"><h3>Realtors &amp; landowners</h3><p>Acreage listing packages, high-resolution aerial maps and property overview imagery.</p></div>
       <div class="line"><h3>Farms &amp; agriculture</h3><p>Field and farmstead maps, drainage maps, grain and silage volumes, crop scouting.</p></div>
     </div>
