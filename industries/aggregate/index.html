@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drone Stockpile Volumes &amp; Cut/Fill for Aggregate and Earthwork | Novak Geospatial Solutions</title>
+<meta name="description" content="Drone stockpile volume reports, cut/fill analysis, and site maps for Wisconsin sand and gravel pits, quarries, and earthwork contractors. RTK-positioned flights with ground control, checkpoints, and a stated accuracy report.">
+<link rel="canonical" href="https://novakgs.com/industries/aggregate/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stockpile volumes you can stand behind | Novak|GS">
+<meta property="og:description" content="Aerial stockpile inventory, cut/fill quantities, and site maps for Wisconsin pits, quarries, and earthwork sites, with a checkpoint report on every measurement job.">
+<meta property="og:url" content="https://novakgs.com/industries/aggregate/">
+<meta property="og:image" content="https://novakgs.com/industries/aggregate/img/pit-stockpiles-oblique.jpg">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Drone stockpile volumes and cut/fill analysis",
+  "serviceType": "Aerial stockpile volume measurement",
+  "description": "Stockpile volume reports, cut/fill analysis, site orthomosaics, and repeat inventory flights for aggregate producers and earthwork contractors, accuracy-verified with ground control and independent checkpoints.",
+  "areaServed": { "@type": "State", "name": "Wisconsin" },
+  "provider": { "@type": "Organization", "name": "Novak Geospatial Solutions", "url": "https://novakgs.com/", "telephone": "+1-608-820-0224", "email": "info@novakgs.com" }
+}
+</script>
+<style>
+:root{--bg:#0a0d12;--ink:#eef1f3;--muted:#bec6ce;--label:#c3cad1;--faint:#a4adb6;--panel:rgba(12,16,22,.78);--panel-solid:#10151c;--edge:rgba(255,255,255,.12);--hair:rgba(255,255,255,.06);--edge2:rgba(255,255,255,.25);--or:#e8711a;--blue:#4677a0}
+html[data-theme="light"]{--bg:#f3f4f6;--ink:#151b22;--muted:#46515d;--label:#3d4752;--faint:#5b6773;--panel:#ffffff;--panel-solid:#f7f8fa;--edge:rgba(21,27,34,.13);--hair:rgba(21,27,34,.08);--edge2:rgba(21,27,34,.22)}
+html[data-theme="light"] body{background:var(--bg)}
+body{margin:0;background:var(--bg) url("/topo-bg.jpg") center top / cover no-repeat fixed;}
+a{color:var(--ink);}a:hover{color:var(--or);}
+.ag-root{position:relative;z-index:1;min-height:100vh;color:var(--ink);font-family:Roboto,'Segoe UI',system-ui,Arial,sans-serif;font-size:17px;-webkit-font-smoothing:antialiased}
+.ag-main{max-width:1040px;margin:0 auto;padding:22px 16px 48px;display:flex;flex-direction:column;gap:52px}
+.ag-sec{display:flex;flex-direction:column;gap:16px}
+.kick{margin:0;font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--or)}
+h1{margin:0;font-size:46px;line-height:1.08;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h2{margin:0;font-size:28px;font-weight:700;text-wrap:balance}
+.lede,.body{margin:0;font-size:18px;line-height:1.6;color:var(--muted);text-wrap:pretty}
+.body{font-size:17px}
+.lede b{display:block;margin-top:6px;font-weight:500;color:var(--ink)}
+.fit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.fit-l{font-family:'Roboto Mono',Consolas,monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--label)}
+.pill{font-size:15px;padding:5px 12px;border:1px solid rgba(70,119,160,.65);border-radius:999px;background:rgba(70,119,160,.14)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.card strong{display:block;font-size:17px;font-weight:600;margin-bottom:4px}
+.card span{font-size:16px;line-height:1.5;color:var(--muted)}
+.note{margin:0;font-size:15px;line-height:1.55;color:var(--faint)}
+/* photos and video keep their full frame: no forced aspect ratios, no cropping */
+.shot{margin:0;border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:var(--panel-solid)}
+.shot img,.shot video{display:block;width:100%;height:auto;background:#05070a}
+.shot figcaption{padding:12px 18px;font-size:16px;line-height:1.5;color:var(--muted);border-top:1px solid var(--edge)}
+.shot figcaption em{font-style:normal;font-family:'Roboto Mono',Consolas,monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin-right:8px}
+/* gallery rows: each photo's flex-grow equals its width/height ratio, so a row lines up at equal heights with nothing cut off */
+.rows{display:flex;flex-direction:column;gap:12px;margin:0}
+.row{display:flex;gap:12px;align-items:flex-start}
+.row figure{margin:0;min-width:0;border:1px solid var(--edge);border-radius:12px;overflow:hidden;background:var(--panel-solid)}
+.row button{display:block;width:100%;padding:0;margin:0;border:0;background:#05070a;cursor:zoom-in}
+.row img{display:block;width:100%;height:auto}
+.row figcaption{padding:10px 14px 12px;font-size:15px;line-height:1.45;color:var(--muted)}
+/* accuracy steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.steps li{padding:16px 18px;border:1px solid var(--edge);border-top:3px solid var(--or);border-radius:12px;background:var(--panel)}
+.steps .n{display:block;font-family:'Roboto Mono',Consolas,monospace;font-size:13px;letter-spacing:.16em;color:var(--or);margin-bottom:6px}
+.steps strong{display:block;font-size:17px;font-weight:600;margin-bottom:4px}
+.steps span{font-size:15px;line-height:1.5;color:var(--muted)}
+.more{margin:0;font-size:16px}.more a{text-decoration:none;border-bottom:1px solid var(--or)}
+.cta{border:1px solid var(--edge);border-radius:14px;background:var(--panel);padding:24px;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between}
+.cta h2{font-size:22px}.cta p{margin:6px 0 0;color:var(--muted);font-size:16px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn-or{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;background:var(--or);color:#12161c;font-weight:600;text-decoration:none}
+.btn-or:hover{color:#12161c;filter:brightness(1.08)}
+.btn-gh{font-family:'Roboto Mono',Consolas,monospace;font-size:16px;padding:11px 16px;border:1px solid var(--edge);border-radius:999px;text-decoration:none;color:var(--ink);min-height:44px;display:inline-flex;align-items:center;box-sizing:border-box}
+footer{text-align:center;font-size:15px;line-height:1.7;color:var(--faint)}
+#lb{position:fixed;inset:0;z-index:100;background:rgba(5,7,10,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;cursor:zoom-out}
+#lb[hidden]{display:none}
+#lb img{max-width:100%;max-height:calc(100vh - 110px);border-radius:8px;display:block}
+#lbcap{margin-top:12px;color:#bec6ce;font-size:15px;text-align:center;max-width:800px}
+#lbx{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(12,16,22,.8);color:#eef1f3;font-size:22px;cursor:pointer}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){
+  h1{font-size:34px}h2{font-size:24px}
+  .row{flex-direction:column}
+  .row figure{flex:none !important;width:100%}
+}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+</style>
+<script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
+</head>
+<body data-topo="page" data-topo-style="fine">
+<div class="band" role="banner" data-topo="band" data-topo-style="fine">
+  <div class="band-row">
+    <a class="band-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+    <div class="band-nav">
+      <nav aria-label="Main">
+        <a href="/#need">Services</a>
+        <a href="/#cases-h">Case studies</a>
+        <a href="/#verify">Accuracy</a>
+        <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
+        <a class="nav-quote" href="/quote/">Request a quote</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div class="ag-root">
+<main class="ag-main">
+
+<section class="ag-sec" style="gap:18px">
+<p class="kick">Industries · Contractors &amp; Aggregate</p>
+<h1>Stockpile Volumes You Can Stand Behind</h1>
+<div class="fit">
+<span class="fit-l">Good fit for</span>
+<span class="pill">Sand &amp; Gravel Pits</span>
+<span class="pill">Quarries</span>
+<span class="pill">Earthwork Contractors</span>
+<span class="pill">Asphalt &amp; Ready-Mix Yards</span>
+</div>
+<p class="lede">Stockpile inventory, cut/fill quantities, and site maps for Wisconsin pits, quarries, and earthwork sites. Every pile is measured from one RTK-positioned flight, and every measurement job comes with a checkpoint report that states the accuracy.<b>Nobody climbs a pile, and nothing is estimated by eye.</b></p>
+<figure class="shot">
+<img src="img/pit-stockpiles-oblique.jpg" alt="High aerial view across an active sand and gravel pit: conical stockpiles, haul roads, a dark recycled-asphalt pile, a settling pond, and a loader working near the center" width="1600" height="900">
+<figcaption><em>On site · Nov 2026</em>An active sand and gravel operation in western Dane County.</figcaption>
+</figure>
+</section>
+
+<section class="ag-sec">
+<p class="kick">What we measure</p>
+<h2>Numbers for Inventory, Billing, and Planning</h2>
+<div class="card-grid">
+<div class="card"><strong>Stockpile volume reports</strong><span>The volume of every pile from a 3D surface of the site, with each pile numbered on a map sheet, plus tonnage when you supply material density.</span></div>
+<div class="card"><strong>Cut/fill analysis</strong><span>Today's ground compared with a design surface or an earlier flight, with quantities and a color-coded cut/fill map.</span></div>
+<div class="card"><strong>Site orthomosaic &amp; contours</strong><span>A current, measurable map of the whole operation for haul-road layout, expansion planning, and reclamation records.</span></div>
+<div class="card"><strong>Repeat inventory flights</strong><span>Monthly or quarterly flights, flown the same way every visit, so month-end and year-end numbers compare cleanly.</span></div>
+</div>
+</section>
+
+<section class="ag-sec">
+<p class="kick">In the field</p>
+<h2>Flown on a Programmed Route</h2>
+<p class="body">Each mapping flight is planned ahead and flown automatically, with a fixed altitude, fixed photo overlap, and a corrected RTK position on every image. The same route is saved and reused on every repeat visit, so each month's data is collected the same way as the last.</p>
+<figure class="shot">
+<video src="img/controller-route.mp4" poster="img/controller-route-poster.jpg" autoplay muted loop playsinline preload="metadata" width="1920" height="1080" aria-label="Drone controller resting on a truck bed, showing a mapping route in progress over the pit with RTK fixed"></video>
+<figcaption><em>Mid-mission</em>Route executing over the pit, RTK fixed, from the tailgate.</figcaption>
+</figure>
+</section>
+
+<section class="ag-sec">
+<p class="kick">Measured, then verified</p>
+<h2>Accuracy Is Stated, Not Assumed</h2>
+<p class="body">Volumes drive billing and inventory decisions, so every volume and cut/fill job is checked against measured points on the ground before the numbers go out.</p>
+<ol class="steps">
+<li><span class="n">01</span><strong>RTK-positioned flight</strong><span>Every photo is tied to a corrected GPS position.</span></li>
+<li><span class="n">02</span><strong>Ground control</strong><span>Targets are set and measured on site with a survey-grade GNSS rover.</span></li>
+<li><span class="n">03</span><strong>Independent checkpoints</strong><span>Extra measured points are held out of processing and used only to test the result.</span></li>
+<li><span class="n">04</span><strong>Checkpoint report</strong><span>Horizontal and vertical accuracy are reported with the volumes.</span></li>
+</ol>
+<p class="more"><a href="/blog/ngs-survey-marks-drone-mapping-accuracy/">How the GPS rover is checked against NGS survey marks →</a></p>
+</section>
+
+<section class="ag-sec">
+<p class="kick">Why fly it</p>
+<h2>Why Measure From the Air</h2>
+<div class="card-grid">
+<div class="card"><strong>Nobody on the piles</strong><span>No one walking stockpile faces or crossing haul roads with a rod while loaders are running.</span></div>
+<div class="card"><strong>Every pile, every time</strong><span>The whole site is captured in one visit, small and odd-shaped piles included.</span></div>
+<div class="card"><strong>A record you can go back to</strong><span>The imagery and surfaces are archived, so any month's numbers can be revisited or re-measured later.</span></div>
+<div class="card"><strong>One pilot, start to finish</strong><span>The same pilot quotes the site, flies it, processes the data, and answers the phone.</span></div>
+</div>
+</section>
+
+<section class="ag-sec">
+<p class="kick">From the site</p>
+<h2>The Operation From Above</h2>
+<div class="rows">
+<div class="row">
+<figure style="flex:1.322 1 0"><button type="button"><img src="img/pit-overview-sm.jpg" data-full="img/pit-overview.jpg" alt="High oblique of the whole pit: stockpiles, haul roads, two ponds, and farm fields beyond" width="900" height="681" loading="lazy"></button><figcaption>The whole operation in one frame.</figcaption></figure>
+<figure style="flex:1 1 0"><button type="button"><img src="img/loader-top-down-sm.jpg" data-full="img/loader-top-down.jpg" alt="Black-and-white top-down view of a wheel loader parked on gravel" width="900" height="900" loading="lazy"></button><figcaption>Straight down on a wheel loader.</figcaption></figure>
+</div>
+<div class="row">
+<figure style="flex:1.335 1 0"><button type="button"><img src="img/loader-stockpile-sm.jpg" data-full="img/loader-stockpile.jpg" alt="Yellow wheel loader parked in front of a large conical sand stockpile, with a stacker conveyor in the distance" width="900" height="674" loading="lazy"></button><figcaption>Loader and sand stockpile.</figcaption></figure>
+<figure style="flex:1.335 1 0"><button type="button"><img src="img/stacker-conveyor-sm.jpg" data-full="img/stacker-conveyor.jpg" alt="Portable stacker conveyor in the foreground, a conical stockpile and loader behind it, wooded hills on the horizon" width="900" height="674" loading="lazy"></button><figcaption>Stacker conveyor and the pile it builds.</figcaption></figure>
+</div>
+</div>
+</section>
+
+<div class="cta">
+<div>
+<h2>Need Stockpile or Cut/Fill Numbers?</h2>
+<p>Tell us where the site is, roughly how many piles, and how often you need numbers. We'll reply within one business day.</p>
+</div>
+<div class="cta-row">
+<a class="btn-or" href="/quote/?path=volumes&amp;src=industry-aggregate">Request a quote</a>
+<a class="btn-gh" href="tel:+16088200224">(608) 820-0224</a>
+<a class="btn-gh" href="mailto:info@novakgs.com">info@novakgs.com</a>
+</div>
+</div>
+
+<p class="note">Volume, cut/fill, and map products are measurement and planning data, not a land survey. All flights are conducted by an FAA Part 107 certified pilot.</p>
+
+<footer>© 2026 BUCK2NINETY LLC · Novak Geospatial Solutions™</footer>
+</main>
+</div>
+
+<div id="lb" hidden role="dialog" aria-modal="true" aria-label="Enlarged photo"><button id="lbx" type="button" aria-label="Close">×</button><img id="lbimg" alt=""><p id="lbcap"></p></div>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'),im=document.getElementById('lbimg'),cap=document.getElementById('lbcap'),last=null;
+  function open(b){var i=b.querySelector('img'),fc=b.closest('figure').querySelector('figcaption');last=b;im.src=i.getAttribute('data-full')||i.src;im.alt=i.alt;cap.textContent=fc?fc.textContent:'';lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbx').focus();}
+  function close(){lb.hidden=true;im.removeAttribute('src');document.body.style.overflow='';if(last)last.focus();}
+  document.querySelectorAll('.row figure button').forEach(function(b){b.addEventListener('click',function(){open(b);});});
+  lb.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close();});
+})();
+</script>
+</body>
+</html>
