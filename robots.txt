@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /cdn-cgi/
 Disallow: /enchanted-valley/
 
 Sitemap: https://novakgs.com/sitemap.xml
