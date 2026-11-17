@@ -58,6 +58,25 @@
     setH();
     if (window.ResizeObserver) new ResizeObserver(setH).observe(band); else window.addEventListener('resize', setH);
   }
+  /* Clicking into a page (menu, logo, any link) always lands at the top.
+     Links with a #section still jump to that section, and Back/Forward/Reload
+     keep the browser's normal scroll memory. */
+  function topOnArrival() {
+    if (location.hash) return;
+    var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if (nav && nav.type !== 'navigate') return;
+    var userMoved = false;
+    var mark = function () { userMoved = true; };
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) {
+      window.addEventListener(ev, mark, { once: true, passive: true });
+    });
+    var toTop = function () { if (!userMoved && !location.hash) window.scrollTo(0, 0); };
+    toTop();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', toTop);
+    window.addEventListener('load', toTop);
+  }
+  topOnArrival();
+
   function start() { init(); bandHeight(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
