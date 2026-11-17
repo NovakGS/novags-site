@@ -737,6 +737,11 @@ html[data-theme="dark"] .done .check{background:#10261a}
       .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
       .then(function (d) {
         if (d && d.ok) {
+                    // GA4 key event (sent through Cloudflare Zaraz) so leads show up by channel.
+          try {
+            var chosen = form.querySelector('[name=path]:checked');
+            if (window.zaraz && zaraz.track) zaraz.track('generate_lead', { form: 'quote', quote_path: (chosen && chosen.value) || '' });
+          } catch (err) {}
           form.hidden = true;
           var done = document.getElementById('done');
           done.hidden = false; done.focus();
