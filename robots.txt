@@ -3,5 +3,6 @@ Allow: /
 Disallow: /api/
 Disallow: /cdn-cgi/
 Disallow: /enchanted-valley/
+Disallow: /proposals/
 
 Sitemap: https://novakgs.com/sitemap.xml
