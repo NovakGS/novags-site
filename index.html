@@ -421,6 +421,7 @@
   .mail { margin: 14px 0 0; font-size: 15px; }
   .mail a { color: var(--muted); }
   .section { margin-top: 84px; }
+  .acc-sum.section { margin-top: 56px; }
   .section > .kicker, .section > h2 { text-align: center; }
   .shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
   .shots figure { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--edge); background: var(--panel); text-align: left; }
@@ -456,6 +457,25 @@
   .acc-sum .acc-foot a { color: var(--orange); font-weight: 600; text-decoration: none; white-space: nowrap; }
   .acc-sum .acc-foot a:hover { text-decoration: underline; }
   @media (max-width: 640px) { .acc-sum .results { grid-template-columns: 1fr; } }
+  .svc-groups { display: grid; gap: 10px; margin: -6px 0 24px; }
+  .svc-group { display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 10px; align-items: center; }
+  .svc-lab { margin: 0; font-family: "Roboto Mono", Consolas, monospace; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+  .svc-groups .svc-chips { margin: 0; }
+  .glance { width: 100%; max-width: 1080px; margin: 40px 0 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 14px; text-align: left; }
+  .g-panel { padding: 22px 22px 20px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); min-width: 0; }
+  .g-commit { box-shadow: inset 0 3px 0 var(--orange); display: flex; flex-direction: column; }
+  .g-panel p.g-k { margin: 0 0 12px; font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+  .g-commit h2 { margin: 0 0 10px; font-size: 22px; line-height: 1.22; font-weight: 700; text-wrap: balance; }
+  .g-commit p { margin: 0 0 14px; font-size: 15px; line-height: 1.55; color: var(--muted); }
+  .g-go { margin-top: auto; color: var(--orange); font-weight: 600; font-size: 15px; text-decoration: none; }
+  .g-go:hover { text-decoration: underline; }
+  .fmt { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 22px; }
+  .fmt li { display: flex; flex-direction: column; gap: 4px; padding-left: 12px; border-left: 2px solid var(--edge); }
+  .fmt strong { font-size: 16px; font-weight: 700; color: var(--ink); }
+  .fmt span { font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .g-note { margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--edge); font-size: 13.5px; line-height: 1.5; color: var(--faint); }
+  @media (max-width: 900px) { .glance { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .fmt { grid-template-columns: repeat(2, minmax(0, 1fr)); } .svc-group { grid-template-columns: 1fr; gap: 6px; } .glance { margin-top: 28px; } }
   .sub-h { margin: 0; text-align: center; color: var(--muted); font-size: 15px; }
   .need-card {
     display: flex; flex-direction: column; overflow: hidden;
@@ -695,18 +715,30 @@
   <header class="hero2">
     <div class="hero-copy">
       <p class="eyebrow">Drone mapping &middot; Southern Wisconsin</p>
-      <h1>Accurate aerial maps, elevation models, stockpile volumes and cut/fill analysis.</h1>
-      <p class="lede2">RTK-positioned drone flights, processed in-house and delivered in the formats your CAD, GIS and accounting teams already use.</p>
-      <ul class="svc-chips" aria-label="Services">
+      <h1>Drone Maps and Measurements, Verified on the Ground.</h1>
+      <p class="lede2">Orthomosaics, elevation models, stockpile volumes and cut/fill for sites across southern Wisconsin. Measured jobs are checked against independent ground checkpoints, and the results are reported with the data.</p>
+      <div class="svc-groups">
+      <div class="svc-group"><p class="svc-lab">Maps</p>
+      <ul class="svc-chips" aria-label="Maps">
         <li><a href="/quote/?path=map" aria-describedby="tip-0">Orthomosaics</a><span class="tip" role="tooltip" id="tip-0">One seamless, true-to-scale aerial map stitched from hundreds of overlapping photos. Distances and areas can be measured right on it.</span></li>
         <li><a href="/quote/?path=tech" aria-describedby="tip-1">Contours</a><span class="tip" role="tooltip" id="tip-1">Lines of equal elevation drawn from the bare-earth model, usually every 1 or 2 ft, for grading, drainage and site planning.</span></li>
+      </ul></div>
+      <div class="svc-group"><p class="svc-lab">Measurements</p>
+      <ul class="svc-chips" aria-label="Measurements">
         <li><a href="/quote/?path=volumes" aria-describedby="tip-2">Stockpile volumes</a><span class="tip" role="tooltip" id="tip-2">The measured volume of each pile from a 3D surface of the site, plus estimated tonnage using your material densities, for inventory counts and month-end reporting.</span></li>
         <li><a href="/quote/?path=volumes" aria-describedby="tip-3">Cut/fill analysis</a><span class="tip" role="tooltip" id="tip-3">Compares the ground today with a design surface or an earlier flight to show how much earth has to come off (cut) or go in (fill), and where.</span></li>
+      </ul></div>
+      <div class="svc-group"><p class="svc-lab">Visuals</p>
+      <ul class="svc-chips" aria-label="Visuals">
         <li><a href="/quote/?path=tech" aria-describedby="tip-4">Progress photos</a><span class="tip" role="tooltip" id="tip-4">Repeat flights from the same vantage points, documenting a build phase by phase.</span></li>
         <li><a href="/quote/?path=photos" aria-describedby="tip-5">Photo &amp; video</a><span class="tip" role="tooltip" id="tip-5">Aerial photos and video for commercial and real estate work, plus homes, farms and events.</span></li>
         <li><a href="/quote/?path=tech" aria-describedby="tip-6">3D models</a><span class="tip" role="tooltip" id="tip-6">A measurable, textured 3D model of a structure or site, built from an automated orbit flight.</span></li>
+      </ul></div>
+      <div class="svc-group"><p class="svc-lab">For engineers</p>
+      <ul class="svc-chips" aria-label="For engineers">
         <li><a href="/quote/?path=tech" aria-describedby="tip-7">White-label RTK</a><span class="tip" role="tooltip" id="tip-7">For surveyors and engineers: RTK-positioned flights captured in your coordinate system and file formats, for you to process and deliver under your own name.</span></li>
-      </ul>
+      </ul></div>
+      </div>
       <div class="cta-row">
         <a class="btn-primary" href="/quote/">Request a quote
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -742,14 +774,26 @@
     </figure>
   </header>
 
-  <ul class="specs" aria-label="Technical specifications">
-    <li><span class="k">Measurements</span><span class="v">GCP &amp; checkpoint QA/QC</span></li>
-    <li><span class="k">Resolution</span><span class="v">Under 1 in per pixel</span></li>
-    <li><span class="k">Elevation</span><span class="v">Bare-earth DEM, <span class="nw">1&ndash;2 ft</span> contours</span></li>
-    <li><span class="k">Formats</span><span class="v">GeoTIFF, DXF, LAS, KMZ</span></li>
-    <li><span class="k">Coordinates</span><span class="v">WISCRS, State Plane, NAVD88</span></li>
-    <li><span class="k">Credentials</span><span class="v">FAA Part 107 certified</span></li>
-  </ul>
+  <section class="glance" aria-label="Accuracy commitment and delivery formats">
+    <div class="g-panel g-commit">
+      <p class="g-k">The Accuracy Commitment</p>
+      <h2>Checked on Your Site, Reported With Your Data</h2>
+      <p>Every job with an accuracy requirement is verified on the ground: at least 5 independent checkpoints, plus 5 ground control points where elevations matter. The checkpoint results come with the deliverables.</p>
+      <a class="g-go" href="/accuracy/">How accuracy is tested <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="g-panel g-deliver">
+      <p class="g-k">How Deliverables Arrive</p>
+      <ul class="fmt">
+        <li><strong>Web page</strong><span>Maps to view and compare in any browser. Nothing to install.</span></li>
+        <li><strong>PDF</strong><span>Map sheets, volume reports and accuracy reports, ready to print or forward.</span></li>
+        <li><strong>CAD</strong><span>DXF contours and linework for design software.</span></li>
+        <li><strong>GIS</strong><span>GeoTIFF maps and elevation models, KMZ, LAS point clouds.</span></li>
+        <li><strong>Spreadsheet</strong><span>Volume and checkpoint tables as CSV or XLSX.</span></li>
+        <li><strong>Photo and video</strong><span>Full-resolution JPG and MP4.</span></li>
+      </ul>
+      <p class="g-note">Files are sent by download link. Under 1 in per pixel &middot; WISCRS, State Plane, NAVD88 &middot; FAA Part 107 certified</p>
+    </div>
+  </section>
 
   <section class="section acc-sum" aria-labelledby="acc-h">
     <p class="kicker">Elevated Data | Grounded Truth</p>
