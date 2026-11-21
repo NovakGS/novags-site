@@ -122,7 +122,7 @@
 .acc .ig-res .s{font-size:14px;font-weight:500}
 @media(max-width:700px){.acc .ig-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.acc .ig-stats-6{grid-template-columns:repeat(2,minmax(0,1fr))}.acc .ig-split{grid-template-columns:1fr}.acc .ig-res{grid-template-columns:1fr}.acc .ig{padding-left:26px}.acc .ig::before{left:7px}.acc .ig-step::before{left:-24px}.acc .ig h3{font-size:19px}.acc .ig-stats b{font-size:24px}}
 
-.acc p.stmt{font-style:italic}
+.acc p.stmt{font-style:italic;font-size:calc(17px - 2pt);line-height:1.4}
 .acc p.stmt strong{font-style:normal}
 .acc .legal{font-size:15px}
 .acc .results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:4px 0 8px}
@@ -170,6 +170,8 @@
     <p class="kicker">Tested accuracy &middot; ASPRS Edition 2 (2024)</p>
     <h1><span class="nb">Elevated Data</span><span class="sep">|</span> <span class="nb">Grounded Truth</span></h1>
 
+    <p class="stmt"><strong>Accuracy statement.</strong> This data set was tested to meet ASPRS Positional Accuracy Standards for Digital Geospatial Data, Edition 2, Version 2 (2024) for a 0.16 ft (5.0 cm) RMSE<sub>H</sub> horizontal positional accuracy class. The tested horizontal positional accuracy was found to be RMSE<sub>H</sub> = 0.10 ft (3.0 cm). The non-vegetated vertical accuracy measured in the same test was RMSE<sub>V</sub> = 0.09 ft (2.6 cm), below the RMSE of the 0.20 ft (6.0 cm) vertical accuracy class. A &ldquo;tested to meet&rdquo; statement is not made for vertical accuracy until the National Geodetic Survey mark check is resolved.</p>
+
     <p>Intentionality is important when raw numbers become real data. At Novak Geospatial Solutions&trade;, Elevated Data is what the drone captures from the air, and Grounded Truth is the proof, measured on the ground, that the data is where it says it is. When a client will rely on the numbers, the deliverable is not finished until it has both. Nothing in drone mapping requires that proof, so it is easy to leave out. Here it is the step the work is built around. That is why the mapping workflow was tested against the ASPRS Positional Accuracy Standards for Digital Geospatial Data, the standard that engineers, surveyors, and public agencies use to state how accurate a map is.</p>
 
     <h2><strong>The Grounded Truth: Tested Results</strong></h2>
@@ -200,7 +202,6 @@
       <li><strong>What this workflow achieved</strong>The 33-checkpoint test, with methods, residuals, and findings.<a href="NovakGS_ASPRS_Positional_Accuracy_Report_26-230.pdf">Full accuracy report (PDF, 10 pages)</a></li>
       <li><strong>What a project receives</strong>The checkpoint results measured on the site, with a table that opens in GIS or a spreadsheet.<a href="NovakGS_Sample_Project_Verification_Report.pdf">Sample verification report (PDF)</a><a href="NovakGS_Sample_Project_Verification_Checkpoints.csv" download>Checkpoint file (CSV)</a></li>
     </ul>
-    <p class="stmt"><strong>Accuracy statement.</strong> This data set was tested to meet ASPRS Positional Accuracy Standards for Digital Geospatial Data, Edition 2, Version 2 (2024) for a 0.16 ft (5.0 cm) RMSE<sub>H</sub> horizontal positional accuracy class. The tested horizontal positional accuracy was found to be RMSE<sub>H</sub> = 0.10 ft (3.0 cm). The non-vegetated vertical accuracy measured in the same test was RMSE<sub>V</sub> = 0.09 ft (2.6 cm), below the RMSE of the 0.20 ft (6.0 cm) vertical accuracy class. A &ldquo;tested to meet&rdquo; statement is not made for vertical accuracy until the National Geodetic Survey mark check is resolved.</p>
     <p>A separate check on a published National Geodetic Survey mark found ellipsoid heights 0.04 to 0.16 ft low. The cause is unresolved. The report explains what that means when the data is used for absolute elevations. Check shots on additional published NGS marks, each with a leveled NAVD88 height and a precise ellipsoid height, are planned to determine whether the difference follows the equipment or the mark. This page and the report will be updated with the result.</p>
     <p>The finished orthomosaic and digital surface model were tested against 33 independently surveyed checkpoints that were withheld from model adjustment, across a 34.4-acre validation area in Dane County, Wisconsin, on November 18, 2026. Horizontal RMSE was 0.10 ft (3.0 cm), and bare-ground vertical RMSE was 0.09 ft (2.6 cm). Both figures include a survey repeatability estimate based on seven repeat pairs.</p>
     <p><strong>What to specify.</strong> In a scope of work, state the intended use of the data, the target RMSE (horizontal, vertical, or both), the project control or coordinate system and vertical datum, and, where it matters, a limit on the largest individual checkpoint error. If verification exceeds the agreed target, the residuals and any known cause are provided, and corrective action or acceptance is discussed before the data is used for that purpose.</p>
