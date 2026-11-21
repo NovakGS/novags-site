@@ -14,12 +14,12 @@
 <link rel="stylesheet" href="/blog/blog.css?v=2">
 <script src="/topo.js?v=3" defer></script>
 <script src="/blog/lightbox.js" defer></script>
-<title>Drone Mapping Accuracy Test, Explained | Novak|GS</title>
-<meta name="description" content="A plain-English walk through an ASPRS accuracy test of a drone mapping workflow in Dane County, Wisconsin: 39 ground targets, 8,317 photos, what went wrong, and the final score.">
+<title>Drone Mapping Accuracy Test (ASPRS), Explained | Novak|GS</title>
+<meta name="description" content="How accurate is drone mapping? A plain-English look at a full ASPRS accuracy test in Wisconsin: checkpoints, ground control, what went wrong, and the results.">
 <link rel="canonical" href="https://novakgs.com/blog/drone-mapping-accuracy-test/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Putting a Drone Map to the Test: How a Mapping Workflow Earns an Accuracy Score">
-<meta property="og:description" content="A plain-English walk through an ASPRS accuracy test of a drone mapping workflow in Dane County, Wisconsin: 39 ground targets, 8,317 photos, what went wrong, and the final score.">
+<meta property="og:title" content="Putting a Drone Map to the Test: Inside an ASPRS Drone Mapping Accuracy Test">
+<meta property="og:description" content="How accurate is drone mapping? A plain-English look at a full ASPRS accuracy test in Wisconsin: checkpoints, ground control, what went wrong, and the results.">
 <meta property="og:url" content="https://novakgs.com/blog/drone-mapping-accuracy-test/">
 <meta property="og:image" content="https://novakgs.com/blog/drone-mapping-accuracy-test/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -28,7 +28,10 @@
 <meta name="twitter:image" content="https://novakgs.com/blog/drone-mapping-accuracy-test/og.jpg">
 <meta property="article:published_time" content="2026-11-21">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Putting a Drone Map to the Test: How a Mapping Workflow Earns an Accuracy Score", "description": "A plain-English walk through an ASPRS accuracy test of a drone mapping workflow in Dane County, Wisconsin: 39 ground targets, 8,317 photos, what went wrong, and the final score.", "datePublished": "2026-11-21", "image": "https://novakgs.com/blog/drone-mapping-accuracy-test/og.jpg", "mainEntityOfPage": "https://novakgs.com/blog/drone-mapping-accuracy-test/", "author": {"@type": "Organization", "name": "Novak Geospatial Solutions", "url": "https://novakgs.com/"}, "publisher": {"@type": "Organization", "name": "Novak Geospatial Solutions", "logo": {"@type": "ImageObject", "url": "https://novakgs.com/logo-dark-v2.png"}}, "keywords": "drone mapping accuracy, ASPRS accuracy standards, checkpoints, ground control points, RMSE, Dane County, Wisconsin"}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Putting a Drone Map to the Test: Inside an ASPRS Drone Mapping Accuracy Test", "description": "How accurate is drone mapping? A plain-English look at a full ASPRS accuracy test in Wisconsin: checkpoints, ground control, what went wrong, and the results.", "datePublished": "2026-11-21", "image": "https://novakgs.com/blog/drone-mapping-accuracy-test/og.jpg", "mainEntityOfPage": "https://novakgs.com/blog/drone-mapping-accuracy-test/", "author": {"@type": "Organization", "name": "Novak Geospatial Solutions", "url": "https://novakgs.com/"}, "publisher": {"@type": "Organization", "name": "Novak Geospatial Solutions", "logo": {"@type": "ImageObject", "url": "https://novakgs.com/logo-dark-v2.png"}}, "keywords": "drone mapping accuracy, ASPRS accuracy standards, drone survey accuracy, checkpoints, ground control points, RMSE, Dane County, Wisconsin", "about": ["Drone mapping accuracy", "ASPRS Positional Accuracy Standards"], "isPartOf": {"@type": "Blog", "name": "Novak|GS Field Notes", "url": "https://novakgs.com/blog/"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How accurate is drone mapping?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the equipment, the site, and how the work is checked. In this ASPRS test, a DJI Matrice 4E RTK workflow with 5 ground control points measured 0.10 ft (3.0 cm) horizontal RMSE and 0.09 ft (2.6 cm) vertical RMSE on open, bare ground. Vegetation, steep faces, and water reduce what is achievable."}}, {"@type": "Question", "name": "What is the ASPRS accuracy standard?", "acceptedAnswer": {"@type": "Answer", "text": "The ASPRS Positional Accuracy Standards for Digital Geospatial Data, from the American Society for Photogrammetry and Remote Sensing, set out how to test and report the accuracy of maps and elevation data. Edition 2 (2024) is the current version used by engineers, surveyors, and public agencies."}}, {"@type": "Question", "name": "What is the difference between a ground control point and a checkpoint?", "acceptedAnswer": {"@type": "Answer", "text": "A ground control point is a surveyed target the software uses to position the map. A checkpoint is surveyed the same way but kept out of processing, so it can be used to grade the finished map independently."}}, {"@type": "Question", "name": "Does every drone mapping project need an accuracy test?", "acceptedAnswer": {"@type": "Answer", "text": "A full ASPRS test isn\u2019t needed on every job, but measured projects should still be checked. Novak|GS uses at least 5 independent checkpoints when horizontal accuracy matters, and at least 5 ground control points plus 5 checkpoints when elevations matter, with the results delivered alongside the data."}}]}
 </script>
 <style>
 .acct .wide{clear:both;margin:8px 0 20px}
@@ -93,11 +96,11 @@
   <main style="display:contents">
   <article class="post-flow prose acct">
     <p class="kicker">field notes &middot; <time datetime="2026-11-21">November 21, 2026</time></p>
-    <h1><span class="accent">Putting a Drone Map to the Test:</span> How a Mapping Workflow Earns an Accuracy Score</h1>
+    <h1><span class="accent">Putting a Drone Map to the Test:</span> Inside an ASPRS Drone Mapping Accuracy Test</h1>
 
     <p class="lede">A drone map can look sharp and still be in the wrong place. The only way to know is to check it against the ground, the same way the engineering world checks every other map. This is the story of one full check: 39 targets, 8,317 photos, a few things that went sideways, and the score at the end.</p>
 
-    <h2 class="clear">Why Test a Drone Map at All?</h2>
+    <h2 class="clear">Why Test Drone Mapping Accuracy at All?</h2>
     <figure class="right w-l"><button type="button" aria-label="Enlarge image"><img src="img/rover-bipod-checkpoint-cp27.jpg" width="840" height="1120" loading="lazy" alt="GNSS rover on a pole held plumb by a bipod over a numbered checkpoint target"></button><figcaption>Checkpoint CP27: a GPS rover held plumb over the target center.</figcaption></figure>
     <p>Most drone maps are sold on how they look: how sharp, how fast, how many acres. Those things matter. But when a contractor bills from a stockpile volume, or an engineer designs from an elevation, the question changes from &ldquo;does it look right?&rdquo; to &ldquo;is it right, and by how much?&rdquo;</p>
     <p>Engineers, surveyors, and public agencies already have an answer for that. It is the <a href="https://www.asprs.org/" target="_blank" rel="noopener">ASPRS</a> Positional Accuracy Standards, published by the American Society for Photogrammetry and Remote Sensing. It spells out how to test a map, how many test points to use, and how to report the result. Nothing requires a drone company to follow it. That is exactly why doing it says something.</p>
@@ -110,7 +113,7 @@
       <div><dt>Accuracy class</dt><dd>The RMSE a map is tested against. This test used 0.16 ft (5 cm) horizontal and 0.20 ft (6 cm) vertical.</dd></div>
     </dl>
 
-    <h2 class="clear">The Test, Start to Finish</h2>
+    <h2 class="clear">How the Accuracy Test Worked, Start to Finish</h2>
     <ol class="steps">
       <li><b>01</b><strong>Lay targets</strong>39 black-and-white targets across 34 acres of pit floor.</li>
       <li><b>02</b><strong>Survey them</strong>A GPS rover on each center, plumb on a bipod.</li>
@@ -127,7 +130,7 @@
       <li><b>33 hrs</b>of computer processing for the final map</li>
     </ul>
 
-    <h2 class="clear">The Ground Work Comes First</h2>
+    <h2 class="clear">The Ground Survey Comes First</h2>
     <figure class="left w-m"><button type="button" aria-label="Enlarge image"><img src="img/rover-bipod-ground-control-gcp5.jpg" width="840" height="1120" loading="lazy" alt="GNSS rover over ground control target number 5"></button><figcaption>Ground control point GCP5. Every point was surveyed the same way.</figcaption></figure>
     <p>Every target was surveyed with a GPS rover on a 2-meter pole, held perfectly upright by a bipod with its tip on the target&rsquo;s center. Each reading was a 30-second average, accepted only on a fixed RTK solution, the most precise kind.</p>
     <p>Before and after the field work, the rover was checked on a <a href="/blog/ngs-survey-marks-drone-mapping-accuracy/">National Geodetic Survey mark</a>, a bronze disk with a published position. Hours later, some targets were surveyed a second time to measure how repeatable the survey itself was. The standard requires that: the measuring stick has to be at least twice as accurate as the thing it measures.</p>
@@ -167,7 +170,7 @@
     </div>
     <p>One more: an outside review of the finished report caught a math error in a what-if calculation. It was corrected. A second set of eyes is part of the process, not a threat to it.</p>
 
-    <h2 class="clear">The Score</h2>
+    <h2 class="clear">The Results: How Accurate Was the Drone Map?</h2>
     <div class="bullwrap">
       <svg class="bull" viewBox="0 0 400 400" role="img" aria-label="Horizontal miss at each of 33 checkpoints, plotted around a bullseye. Most fall inside a 0.10 ft ring.">
 <circle class="r2" cx="200" cy="200" r="147.6"/><circle class="r1" cx="200" cy="200" r="89.1"/>
@@ -186,16 +189,22 @@
       <div><span class="k">Horizontal RMSE</span><b>0.10 ft</b><span class="s">1.2 in &middot; class 0.16 ft &middot; Met</span></div>
       <div><span class="k">Vertical RMSE, bare ground</span><b>0.09 ft</b><span class="s">1.0 in &middot; class 0.20 ft &middot; Below class RMSE</span></div>
     </div>
-    <p>Both numbers include the survey&rsquo;s own uncertainty, as the standard requires. Horizontal accuracy carries a formal &ldquo;tested to meet&rdquo; statement. Vertical is reported as measured until the survey-mark question is resolved. You can explore every checkpoint on the <a href="/accuracy/">interactive accuracy page</a>, or read the full report there.</p>
+    <p>Both numbers include the survey&rsquo;s own uncertainty, as the standard requires. Horizontal accuracy carries a formal &ldquo;tested to meet&rdquo; statement. Vertical is reported as measured until the survey-mark question is resolved. Every checkpoint, the interactive map, and the full 10-page report are on the <a href="/accuracy/">Novak|GS accuracy page</a>.</p>
 
-    <h2 class="clear">What This Means for a Project</h2>
-    <p>A test like this isn&rsquo;t run on every job; it&rsquo;s run once a year and whenever the main equipment or software changes. What carries over to every measured project is the method: checkpoints the software never sees, surveyed the same way, reported with the data. Jobs that need horizontal accuracy get at least 5 checkpoints. Jobs that need elevations get at least 5 ground control points and 5 checkpoints. You can see what that looks like in the <a href="/accuracy/NovakGS_Sample_Project_Verification_Report.pdf">sample project report</a>.</p>
+    <h2 class="clear">What This Means for Your Project</h2>
+    <p>A test like this isn&rsquo;t run on every job; it&rsquo;s run once a year and whenever the main equipment or software changes. What carries over to every measured project is the method: checkpoints the software never sees, surveyed the same way, reported with the data. Jobs that need horizontal accuracy get at least 5 checkpoints. Jobs that need elevations get at least 5 ground control points and 5 checkpoints. You can see what that looks like in the <a href="/accuracy/NovakGS_Sample_Project_Verification_Report.pdf">sample project report</a>, and how accuracy requirements fit into a budget in <a href="/blog/drone-mapping-cost/">what drone mapping costs</a>.</p>
+
+    <h2 class="clear">Why Publish the Whole Process?</h2>
+    <p>Accuracy claims are easy to make and hard to check from the outside. That&rsquo;s why Novak Geospatial Solutions&trade; publishes this test in full: the method, every checkpoint, the problems, and the parts that are still open, like the survey-mark height question. Leaving the snags out would have made a cleaner story and a less useful one.</p>
+    <p>The intent is simple. An engineer, contractor, or landowner deciding whether to rely on drone data shouldn&rsquo;t have to take anyone&rsquo;s word for it. With the full results on the <a href="/accuracy/">accuracy page</a>, anyone can read the numbers, check the math, and see exactly what was proven and what wasn&rsquo;t. Trust is earned by showing the work, including the parts that didn&rsquo;t go to plan.</p>
 
     <div class="why">
       <p class="big">A drone and good software can make a map. Checking that map against the industry&rsquo;s own standard is what turns it into data someone can build on.</p>
       <p>Plenty of maps don&rsquo;t need that proof: a marketing photo, a quick look at a property. But when the numbers drive a bid, a pay application, or a design, the check is the difference between a picture and a measurement. It is a step any drone mapping company can take. It just takes the time to do it and the willingness to publish what comes back.</p>
     </div>
 
+    <h2 class="clear">Common Questions About Drone Mapping Accuracy</h2>
+    <aside class="answer"><p class="q">How accurate is drone mapping?</p><p>It depends on the equipment, the site, and how the work is checked. In this ASPRS test, a DJI Matrice 4E RTK workflow with 5 ground control points measured 0.10 ft (3.0 cm) horizontal RMSE and 0.09 ft (2.6 cm) vertical RMSE on open, bare ground. Vegetation, steep faces, and water reduce what is achievable.</p></aside><aside class="answer"><p class="q">What is the ASPRS accuracy standard?</p><p>The ASPRS Positional Accuracy Standards for Digital Geospatial Data, from the American Society for Photogrammetry and Remote Sensing, set out how to test and report the accuracy of maps and elevation data. Edition 2 (2024) is the current version used by engineers, surveyors, and public agencies.</p></aside><aside class="answer"><p class="q">What is the difference between a ground control point and a checkpoint?</p><p>A ground control point is a surveyed target the software uses to position the map. A checkpoint is surveyed the same way but kept out of processing, so it can be used to grade the finished map independently.</p></aside><aside class="answer"><p class="q">Does every drone mapping project need an accuracy test?</p><p>A full ASPRS test isn&rsquo;t needed on every job, but measured projects should still be checked. Novak|GS uses at least 5 independent checkpoints when horizontal accuracy matters, and at least 5 ground control points plus 5 checkpoints when elevations matter, with the results delivered alongside the data.</p></aside>
     <div class="signoff">
       <p class="tag">Elevated Data<span>|</span>Grounded Truth</p>
       <p>Novak|GS &middot; <a href="/">novakgs.com</a></p>
