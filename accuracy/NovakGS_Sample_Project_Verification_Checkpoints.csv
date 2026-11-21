@@ -1,0 +1,11 @@
+Point,Role,Used_in_RMSE,Easting_ftUS,Northing_ftUS,Elevation_ftUS,East_error_ft,North_error_ft,Horizontal_error_ft,Vertical_error_ft,Error_definition,Horizontal_CRS,Vertical_datum,Units,Note
+GCP1,Ground control point,No,719384.461,523646.541,783.710,-0.045,+0.046,0.065,+0.018,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Used to build the map; shown for reference
+GCP2,Ground control point,No,719305.185,522956.341,769.827,+0.028,+0.086,0.090,+0.013,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Used to build the map; shown for reference
+GCP3,Ground control point,No,719911.690,523712.921,782.046,-0.085,+0.057,0.103,-0.043,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Used to build the map; shown for reference
+GCP4,Ground control point,No,720461.203,523104.439,778.972,-0.013,-0.012,0.018,-0.024,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Used to build the map; shown for reference
+GCP5,Ground control point,No,720927.647,523765.726,808.536,-0.023,+0.018,0.029,-0.001,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Used to build the map; shown for reference
+CP09,Checkpoint,Yes,719786.604,523763.352,779.935,-0.109,+0.023,0.111,-0.035,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Withheld from model adjustment
+CP21,Checkpoint,Yes,720581.237,523243.764,776.962,+0.005,-0.027,0.028,-0.019,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Withheld from model adjustment
+CP27,Checkpoint,Yes,720502.244,523772.617,792.755,-0.004,+0.059,0.059,-0.095,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Withheld from model adjustment
+CP32,Checkpoint,Yes,719740.835,523421.419,775.591,+0.008,-0.097,0.097,+0.227,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Withheld from model adjustment
+CP34,Checkpoint,Yes,720029.552,523568.096,776.459,-0.052,+0.012,0.053,-0.035,Map minus survey,NAD83(2011) WISCRS Dane County (EPSG:7599),NAVD88 (GEOID18),US survey feet,Withheld from model adjustment
