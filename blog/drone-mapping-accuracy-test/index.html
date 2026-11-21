@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
+<link rel="apple-touch-icon" href="/favicon-128.png">
+<meta name="theme-color" content="#0a0d12">
+<meta property="og:site_name" content="Novak Geospatial Solutions">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/blog/blog.css?v=2">
+<script src="/topo.js?v=3" defer></script>
+<script src="/blog/lightbox.js" defer></script>
+<title>Drone Mapping Accuracy Test, Explained | Novak|GS</title>
+<meta name="description" content="A plain-English walk through an ASPRS accuracy test of a drone mapping workflow in Dane County, Wisconsin: 39 ground targets, 8,317 photos, what went wrong, and the final score.">
+<link rel="canonical" href="https://novakgs.com/blog/drone-mapping-accuracy-test/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Putting a Drone Map to the Test: How a Mapping Workflow Earns an Accuracy Score">
+<meta property="og:description" content="A plain-English walk through an ASPRS accuracy test of a drone mapping workflow in Dane County, Wisconsin: 39 ground targets, 8,317 photos, what went wrong, and the final score.">
+<meta property="og:url" content="https://novakgs.com/blog/drone-mapping-accuracy-test/">
+<meta property="og:image" content="https://novakgs.com/blog/drone-mapping-accuracy-test/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta property="og:image:alt" content="Drone map of an aggregate pit with ground control points and checkpoints marked">
+<meta name="twitter:image" content="https://novakgs.com/blog/drone-mapping-accuracy-test/og.jpg">
+<meta property="article:published_time" content="2026-11-21">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Putting a Drone Map to the Test: How a Mapping Workflow Earns an Accuracy Score", "description": "A plain-English walk through an ASPRS accuracy test of a drone mapping workflow in Dane County, Wisconsin: 39 ground targets, 8,317 photos, what went wrong, and the final score.", "datePublished": "2026-11-21", "image": "https://novakgs.com/blog/drone-mapping-accuracy-test/og.jpg", "mainEntityOfPage": "https://novakgs.com/blog/drone-mapping-accuracy-test/", "author": {"@type": "Organization", "name": "Novak Geospatial Solutions", "url": "https://novakgs.com/"}, "publisher": {"@type": "Organization", "name": "Novak Geospatial Solutions", "logo": {"@type": "ImageObject", "url": "https://novakgs.com/logo-dark-v2.png"}}, "keywords": "drone mapping accuracy, ASPRS accuracy standards, checkpoints, ground control points, RMSE, Dane County, Wisconsin"}
+</script>
+<style>
+.acct .wide{clear:both;margin:8px 0 20px}
+.acct .steps{list-style:none;margin:8px 0 22px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;clear:both}
+.acct .steps li{margin:0;padding:14px 12px;border:1px solid var(--edge);border-top:3px solid var(--orange);border-radius:10px;background:var(--panel);font-size:14px;line-height:1.45;color:var(--muted)}
+.acct .steps b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--orange);margin-bottom:6px}
+.acct .steps strong{display:block;font-size:15px;margin-bottom:4px}
+.acct .terms{clear:both;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:6px 0 22px}
+.acct .terms div{padding:14px 16px;border:1px solid var(--edge);border-radius:10px;background:var(--panel)}
+.acct .terms dt{font-weight:700;color:var(--ink);margin-bottom:4px}
+.acct .terms dd{margin:0;font-size:15px;line-height:1.5;color:var(--muted)}
+.acct .stats{clear:both;list-style:none;margin:6px 0 22px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.acct .stats li{margin:0;padding:14px;border:1px solid var(--edge);border-radius:10px;background:var(--panel);font-size:13.5px;line-height:1.35;color:var(--muted)}
+.acct .stats b{display:block;font-size:26px;line-height:1.1;color:var(--ink);margin-bottom:4px}
+.acct .snag{display:flow-root;clear:both;margin:0 0 14px;padding:16px 18px;border:1px solid var(--edge);border-left:4px solid var(--orange);border-radius:12px;background:var(--panel)}
+.acct .snag h3{margin:0 0 6px;font-size:18px;line-height:1.3;color:var(--ink)}
+.acct .snag p{margin:0 0 6px;font-size:16px}
+.acct .snag p:last-child{margin:0}
+.acct .snag .fix{color:var(--ink)}
+.acct .snag .fix b{color:var(--orange);font-weight:700}
+.acct .score{clear:both;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0 20px}
+.acct .score div{padding:18px;border-radius:12px;background:var(--orange);color:#fff}
+.acct .score .k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.92}
+.acct .score b{display:block;font-size:42px;line-height:1.1;margin:4px 0}
+.acct .score .s{font-size:14.5px;font-weight:500}
+.acct .bullwrap{clear:both;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:22px;align-items:center;margin:6px 0 20px}
+.acct svg.bull{width:100%;height:auto;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.acct svg.bull .r1{fill:rgba(232,113,26,.12);stroke:var(--orange);stroke-width:2}
+.acct svg.bull .r2{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:6 5}
+.acct svg.bull .xh{stroke:var(--edge);stroke-width:1}
+.acct svg.bull .pts circle{fill:var(--orange);stroke:var(--panel-solid);stroke-width:1.2}
+.acct svg.bull text{font:600 13px var(--sans)}
+.acct svg.bull .l1{fill:var(--orange)}.acct svg.bull .l2{fill:var(--ink)}.acct svg.bull .n{fill:var(--faint);text-anchor:middle;font-size:12px}
+.acct .bullwrap p{margin:0 0 10px}
+.acct .why{clear:both;margin:10px 0 18px;padding:20px 22px;border-radius:14px;border:1px solid var(--edge);background:var(--panel)}
+.acct .why p{margin:0 0 10px}.acct .why p:last-child{margin:0}
+.acct .why .big{font-size:21px;line-height:1.4;color:var(--ink);font-weight:600}
+@media(max-width:700px){.acct .steps{grid-template-columns:repeat(2,minmax(0,1fr))}.acct .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.acct .terms,.acct .score{grid-template-columns:1fr}.acct .bullwrap{grid-template-columns:1fr}.acct svg.bull{max-width:320px}}
+</style>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
+</head>
+<body data-topo="page" data-topo-style="fine">
+<div class="band" role="banner" data-topo="band" data-topo-style="fine">
+  <div class="band-row">
+    <a class="band-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+    <div class="band-nav">
+      <nav aria-label="Main">
+        <a href="/#need">Services</a>
+        <a href="/#cases-h">Case studies</a>
+        <a href="/accuracy/">Accuracy</a>
+        <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
+        <a class="nav-quote" href="/quote/">Request a quote</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>
+    </div>
+  </div>
+</div>
+<div class="shade" aria-hidden="true"></div>
+<div class="shade" aria-hidden="true"></div>
+<div class="wrap">
+  <main style="display:contents">
+  <article class="post-flow prose acct">
+    <p class="kicker">field notes &middot; <time datetime="2026-11-21">November 21, 2026</time></p>
+    <h1><span class="accent">Putting a Drone Map to the Test:</span> How a Mapping Workflow Earns an Accuracy Score</h1>
+
+    <p class="lede">A drone map can look sharp and still be in the wrong place. The only way to know is to check it against the ground, the same way the engineering world checks every other map. This is the story of one full check: 39 targets, 8,317 photos, a few things that went sideways, and the score at the end.</p>
+
+    <h2 class="clear">Why Test a Drone Map at All?</h2>
+    <figure class="right w-l"><button type="button" aria-label="Enlarge image"><img src="img/rover-bipod-checkpoint-cp27.jpg" width="840" height="1120" loading="lazy" alt="GNSS rover on a pole held plumb by a bipod over a numbered checkpoint target"></button><figcaption>Checkpoint CP27: a GPS rover held plumb over the target center.</figcaption></figure>
+    <p>Most drone maps are sold on how they look: how sharp, how fast, how many acres. Those things matter. But when a contractor bills from a stockpile volume, or an engineer designs from an elevation, the question changes from &ldquo;does it look right?&rdquo; to &ldquo;is it right, and by how much?&rdquo;</p>
+    <p>Engineers, surveyors, and public agencies already have an answer for that. It is the <a href="https://www.asprs.org/" target="_blank" rel="noopener">ASPRS</a> Positional Accuracy Standards, published by the American Society for Photogrammetry and Remote Sensing. It spells out how to test a map, how many test points to use, and how to report the result. Nothing requires a drone company to follow it. That is exactly why doing it says something.</p>
+
+    <h2 class="clear">Four Terms, in Plain English</h2>
+    <dl class="terms">
+      <div><dt>Ground control point (GCP)</dt><dd>A target on the ground, surveyed with GPS, that the software uses to pin the map in place. Think of it as an anchor.</dd></div>
+      <div><dt>Checkpoint</dt><dd>A target surveyed the same way but hidden from the software. It is the answer key used to grade the finished map.</dd></div>
+      <div><dt>RMSE</dt><dd>Root mean square error: one number for the typical miss across all the checkpoints. Lower is better.</dd></div>
+      <div><dt>Accuracy class</dt><dd>The RMSE a map is tested against. This test used 0.16 ft (5 cm) horizontal and 0.20 ft (6 cm) vertical.</dd></div>
+    </dl>
+
+    <h2 class="clear">The Test, Start to Finish</h2>
+    <ol class="steps">
+      <li><b>01</b><strong>Lay targets</strong>39 black-and-white targets across 34 acres of pit floor.</li>
+      <li><b>02</b><strong>Survey them</strong>A GPS rover on each center, plumb on a bipod.</li>
+      <li><b>03</b><strong>Fly</strong>One RTK drone mission, 175 ft up, 8,317 photos.</li>
+      <li><b>04</b><strong>Build the map</strong>Using the 5 anchors only. Checkpoints stay hidden.</li>
+      <li><b>05</b><strong>Grade it</strong>Compare the map to all 33 answer-key checkpoints.</li>
+    </ol>
+    <p>The test site was an active gravel pit in Dane County, Wisconsin, flown on November 18, 2026. Open, bare ground with sand piles, gravel, a pond, and steep edges: a realistic site, not a parking lot.</p>
+    <figure class="wide"><button type="button" aria-label="Enlarge image"><img src="img/test-site-checkpoint-map.jpg" width="1400" height="841" loading="lazy" alt="Map of the test area with 5 ground control points, 33 checkpoints, and one excluded checkpoint"></button><figcaption>Red triangles: the 5 anchors used to build the map. Blue dots: the 33 checkpoints used to grade it. Orange line: the 34.4-acre validation area.</figcaption></figure>
+    <ul class="stats">
+      <li><b>39</b>targets surveyed</li>
+      <li><b>8,317</b>drone photos</li>
+      <li><b>98.4%</b>photos with a fixed RTK position</li>
+      <li><b>33 hrs</b>of computer processing for the final map</li>
+    </ul>
+
+    <h2 class="clear">The Ground Work Comes First</h2>
+    <figure class="left w-m"><button type="button" aria-label="Enlarge image"><img src="img/rover-bipod-ground-control-gcp5.jpg" width="840" height="1120" loading="lazy" alt="GNSS rover over ground control target number 5"></button><figcaption>Ground control point GCP5. Every point was surveyed the same way.</figcaption></figure>
+    <p>Every target was surveyed with a GPS rover on a 2-meter pole, held perfectly upright by a bipod with its tip on the target&rsquo;s center. Each reading was a 30-second average, accepted only on a fixed RTK solution, the most precise kind.</p>
+    <p>Before and after the field work, the rover was checked on a <a href="/blog/ngs-survey-marks-drone-mapping-accuracy/">National Geodetic Survey mark</a>, a bronze disk with a published position. Hours later, some targets were surveyed a second time to measure how repeatable the survey itself was. The standard requires that: the measuring stick has to be at least twice as accurate as the thing it measures.</p>
+
+    <h2 class="clear">What Went Wrong (and What Was Done About It)</h2>
+    <p>No test goes perfectly. The standard doesn&rsquo;t ask for a perfect day. It asks that every problem be documented and that no point be thrown out just because it looked bad. Here is the honest list.</p>
+    <div class="snag">
+      <h3>1. The software marked six targets on their edges</h3>
+      <p>Automatic target detection placed six marks on the edge of the target instead of the center, about a foot off. At this level of accuracy, a foot is a mile.</p>
+      <p class="fix"><b>Fix:</b> each one was re-marked on the true center by hand and checked before the final processing run.</p>
+    </div>
+    <div class="snag">
+      <h3>2. One processing setting lifted the whole map about 0.2 ft</h3>
+      <p>The first run gave the drone&rsquo;s own GPS about as much weight as the surveyed anchors. The result looked fine but sat about 0.2 ft high everywhere.</p>
+      <p class="fix"><b>Fix:</b> the software was set to trust the surveyed anchors, and the map dropped into place. It&rsquo;s the kind of error that hides unless there are checkpoints to catch it.</p>
+    </div>
+    <div class="snag">
+      <figure class="right w-l"><button type="button" aria-label="Enlarge image"><img src="img/wind-folded-checkpoint-target.jpg" width="1003" height="750" loading="lazy" alt="Drone photo of a checkpoint target folded over by wind, beside the crosshair marking its surveyed position"></button><figcaption>CP01 from the air: the wind folded the target over, away from the surveyed spot (crosshair).</figcaption></figure>
+      <h3>3. The wind folded a target</h3>
+      <p>Checkpoint CP01 was surveyed flat in the morning. By the time the drone passed over, wind had folded it over. It was still folded at pickup.</p>
+      <p class="fix"><b>Fix:</b> CP01 was excluded for that physical reason, with this photo as proof. That left 33 checkpoints, still more than the 30 the standard requires.</p>
+    </div>
+    <div class="snag">
+      <h3>4. Most of the afternoon re-shots didn&rsquo;t save</h3>
+      <p>Targets were surveyed a second time in the afternoon to check repeatability, but only eight of those re-shots made it into the saved project. One was the folded CP01.</p>
+      <p class="fix"><b>Fix:</b> the survey&rsquo;s repeatability was measured from the seven good pairs, and the report says so plainly.</p>
+    </div>
+    <div class="snag">
+      <h3>5. The survey mark disagreed on height</h3>
+      <p>Horizontally, the rover matched the published mark within 0.053 ft. In height, it read 0.04 to 0.16 ft low. The cause isn&rsquo;t settled yet.</p>
+      <p class="fix"><b>Fix:</b> rather than claim more than the data proves, the formal vertical accuracy statement is on hold. More published marks will be checked, and the report will be updated with the answer.</p>
+    </div>
+    <div class="snag">
+      <h3>6. The map leaned slightly northwest</h3>
+      <p>On average, the map placed checkpoints about 0.06 ft (under an inch) northwest of their surveyed spots, mostly at points surveyed early in the morning.</p>
+      <p class="fix"><b>Fix:</b> the standard calls for a lean like this to be investigated and reported. It was, and the full review is in the report. No correction was applied to make the numbers look better.</p>
+    </div>
+    <p>One more: an outside review of the finished report caught a math error in a what-if calculation. It was corrected. A second set of eyes is part of the process, not a threat to it.</p>
+
+    <h2 class="clear">The Score</h2>
+    <div class="bullwrap">
+      <svg class="bull" viewBox="0 0 400 400" role="img" aria-label="Horizontal miss at each of 33 checkpoints, plotted around a bullseye. Most fall inside a 0.10 ft ring.">
+<circle class="r2" cx="200" cy="200" r="147.6"/><circle class="r1" cx="200" cy="200" r="89.1"/>
+<line class="xh" x1="20" y1="200" x2="380" y2="200"/><line class="xh" x1="200" y1="20" x2="200" y2="380"/>
+<g class="pts"><circle cx="156.8" cy="189.2" r="5"><title>CP02: 0.05 ft</title></circle><circle cx="205.4" cy="65.0" r="5"><title>CP03: 0.15 ft</title></circle><circle cx="146.9" cy="212.6" r="5"><title>CP04: 0.06 ft</title></circle><circle cx="164.0" cy="155.0" r="5"><title>CP05: 0.06 ft</title></circle><circle cx="161.3" cy="147.8" r="5"><title>CP06: 0.07 ft</title></circle><circle cx="133.4" cy="167.6" r="5"><title>CP07: 0.08 ft</title></circle><circle cx="77.6" cy="161.3" r="5"><title>CP08: 0.14 ft</title></circle><circle cx="101.9" cy="179.3" r="5"><title>CP09: 0.11 ft</title></circle><circle cx="71.3" cy="111.8" r="5"><title>CP10: 0.17 ft</title></circle><circle cx="136.1" cy="111.8" r="5"><title>CP11: 0.12 ft</title></circle><circle cx="110.9" cy="137.0" r="5"><title>CP12: 0.12 ft</title></circle><circle cx="196.4" cy="167.6" r="5"><title>CP13: 0.04 ft</title></circle><circle cx="124.4" cy="165.8" r="5"><title>CP14: 0.09 ft</title></circle><circle cx="161.3" cy="154.1" r="5"><title>CP15: 0.07 ft</title></circle><circle cx="141.5" cy="100.1" r="5"><title>CP16: 0.13 ft</title></circle><circle cx="110.9" cy="177.5" r="5"><title>CP17: 0.10 ft</title></circle><circle cx="209.0" cy="115.4" r="5"><title>CP18: 0.09 ft</title></circle><circle cx="166.7" cy="131.6" r="5"><title>CP19: 0.09 ft</title></circle><circle cx="167.6" cy="194.6" r="5"><title>CP20: 0.04 ft</title></circle><circle cx="204.5" cy="224.3" r="5"><title>CP21: 0.03 ft</title></circle><circle cx="163.1" cy="255.8" r="5"><title>CP22: 0.07 ft</title></circle><circle cx="242.3" cy="229.7" r="5"><title>CP23: 0.06 ft</title></circle><circle cx="236.9" cy="197.3" r="5"><title>CP24: 0.04 ft</title></circle><circle cx="216.2" cy="164.0" r="5"><title>CP25: 0.04 ft</title></circle><circle cx="197.3" cy="214.4" r="5"><title>CP26: 0.02 ft</title></circle><circle cx="196.4" cy="146.9" r="5"><title>CP27: 0.06 ft</title></circle><circle cx="199.1" cy="143.3" r="5"><title>CP28: 0.06 ft</title></circle><circle cx="126.2" cy="131.6" r="5"><title>CP29: 0.11 ft</title></circle><circle cx="110.9" cy="145.1" r="5"><title>CP30: 0.12 ft</title></circle><circle cx="190.1" cy="164.9" r="5"><title>CP31: 0.04 ft</title></circle><circle cx="207.2" cy="287.3" r="5"><title>CP32: 0.10 ft</title></circle><circle cx="157.7" cy="162.2" r="5"><title>CP33: 0.06 ft</title></circle><circle cx="153.2" cy="189.2" r="5"><title>CP34: 0.05 ft</title></circle></g>
+<text class="l1" x="264" y="278">0.10 ft</text>
+<text class="l2" x="306" y="320">0.16 ft</text>
+<text class="n" x="200" y="14">N</text>
+</svg>
+      <div>
+        <p>Each dot is one checkpoint: how far, and in which direction, the finished map placed it from where it was surveyed, drawn much larger than life. The orange ring is the typical miss, 0.10 ft. The dashed ring is the 0.16 ft class the map was tested against.</p>
+        <p>A few dots land outside the dashed ring, and that&rsquo;s normal. The class applies to all the points together, not to each one.</p>
+      </div>
+    </div>
+    <div class="score">
+      <div><span class="k">Horizontal RMSE</span><b>0.10 ft</b><span class="s">1.2 in &middot; class 0.16 ft &middot; Met</span></div>
+      <div><span class="k">Vertical RMSE, bare ground</span><b>0.09 ft</b><span class="s">1.0 in &middot; class 0.20 ft &middot; Below class RMSE</span></div>
+    </div>
+    <p>Both numbers include the survey&rsquo;s own uncertainty, as the standard requires. Horizontal accuracy carries a formal &ldquo;tested to meet&rdquo; statement. Vertical is reported as measured until the survey-mark question is resolved. You can explore every checkpoint on the <a href="/accuracy/">interactive accuracy page</a>, or read the full report there.</p>
+
+    <h2 class="clear">What This Means for a Project</h2>
+    <p>A test like this isn&rsquo;t run on every job; it&rsquo;s run once a year and whenever the main equipment or software changes. What carries over to every measured project is the method: checkpoints the software never sees, surveyed the same way, reported with the data. Jobs that need horizontal accuracy get at least 5 checkpoints. Jobs that need elevations get at least 5 ground control points and 5 checkpoints. You can see what that looks like in the <a href="/accuracy/NovakGS_Sample_Project_Verification_Report.pdf">sample project report</a>.</p>
+
+    <div class="why">
+      <p class="big">A drone and good software can make a map. Checking that map against the industry&rsquo;s own standard is what turns it into data someone can build on.</p>
+      <p>Plenty of maps don&rsquo;t need that proof: a marketing photo, a quick look at a property. But when the numbers drive a bid, a pay application, or a design, the check is the difference between a picture and a measurement. It is a step any drone mapping company can take. It just takes the time to do it and the willingness to publish what comes back.</p>
+    </div>
+
+    <div class="signoff">
+      <p class="tag">Elevated Data<span>|</span>Grounded Truth</p>
+      <p>Novak|GS &middot; <a href="/">novakgs.com</a></p>
+    </div>
+  </article>
+
+  <div class="cta post-cta">
+    <div>
+      <h2>Need accuracy you can document?</h2>
+      <p>Tell us about your site. We'll reply within one business day.</p>
+    </div>
+    <a class="btn" href="/quote/">Request a quote</a>
+  </div>
+  </main>
+
+  <footer>
+    <nav aria-label="Footer"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/quote/">Request a quote</a><a href="/privacy/">Privacy</a></nav>
+    &copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin
+  </footer>
+</div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Enlarged photo">
+  <button class="x" id="lbx" type="button" aria-label="Close">&times;</button>
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+</div>
+</body>
+</html>
