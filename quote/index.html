@@ -93,6 +93,16 @@
   .note { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
   .followup { margin-top: 14px; padding: 14px 16px; background: var(--soft); border-radius: 10px; }
   .followup h4 { margin: 0 0 10px; font-size: 14px; color: var(--navy); }
+  details.acc { margin-top: 18px; }
+  details.acc summary { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 4px; padding-right: 26px; position: relative; }
+  details.acc summary::-webkit-details-marker { display: none; }
+  details.acc summary::after { content: ""; position: absolute; right: 4px; top: 4px; width: 9px; height: 9px; border-right: 2px solid var(--navy); border-bottom: 2px solid var(--navy); transform: rotate(45deg); transition: transform .2s; }
+  details.acc[open] summary::after { transform: rotate(-135deg); top: 9px; }
+  details.acc summary h4 { margin: 0; }
+  details.acc .hint { font-weight: 400; color: var(--muted); }
+  details.acc .acc-sub { font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+  details.acc .note a { color: inherit; }
+  details.acc summary:focus-visible { outline: 2px solid var(--orange, #e8711a); outline-offset: 4px; border-radius: 6px; }
   [hidden] { display: none !important; }
   #map { height: 300px; border-radius: 10px; border: 1.5px solid var(--line); margin-top: 8px; z-index: 0; }
   .maprow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 8px; }
@@ -311,6 +321,25 @@ html[data-theme="dark"] .done .check{background:#10261a}
         </label>
       </div>
     </div>
+    <details class="followup acc">
+      <summary><h4>Accuracy requirements <span class="hint">(optional)</span></h4><span class="acc-sub">For engineering, survey and earthwork projects. Skip it if you&rsquo;re not sure; a recommendation comes with the quote.</span></summary>
+      <div class="grid">
+        <label class="f"><span>What the data will be used for</span>
+          <select name="accUse"><option value="">Choose</option><option>Design or engineering</option><option>Earthwork or volume quantities</option><option>Construction progress or documentation</option><option>Planning or reference</option><option>Marketing or visuals</option><option>Other</option></select>
+        </label>
+        <label class="f"><span>Accuracy requirement</span>
+          <select name="accLevel"><option value="">Choose</option><option>Not sure, recommend one</option><option>Routine project verification (checkpoints reported)</option><option>Specific RMSE targets (below)</option><option>Formal ASPRS accuracy assessment</option><option>No accuracy requirement</option></select>
+        </label>
+        <label class="f"><span>Horizontal target (RMSE)</span><input type="text" name="accH" placeholder="e.g. 0.16 ft"></label>
+        <label class="f"><span>Vertical target (RMSE)</span><input type="text" name="accV" placeholder="e.g. 0.20 ft"></label>
+        <label class="f"><span>Largest single checkpoint error</span><input type="text" name="accMax" placeholder="e.g. 0.30 ft, if it matters"></label>
+        <label class="f"><span>Coordinate system &amp; datum</span><input type="text" name="coordSystem" placeholder="e.g. WISCRS Dane, US ft / NAVD88"></label>
+        <label class="f full"><span>Ground control</span>
+          <select name="accControl"><option value="">Choose</option><option>Novak|GS sets and surveys the control</option><option>Use our surveyor&rsquo;s control points</option><option>Both</option><option>Not sure</option></select>
+        </label>
+      </div>
+      <p class="note">Measured projects get at least 5 independent checkpoints, plus 5 ground control points where elevations matter. <a href="/accuracy/">How accuracy is tested</a></p>
+    </details>
     <p class="note">Volume and cut/fill results are always accuracy-verified with ground control and independent checkpoints, and a checkpoint report comes with the data.</p>
   </fieldset>
 
@@ -414,13 +443,26 @@ html[data-theme="dark"] .done .check{background:#10261a}
         <label class="f"><span>Growth stage</span><input type="text" name="growthStage" placeholder="e.g. V6, R1, first cutting"></label>
       </div>
     </div>
-    <div class="followup" data-when="White-label RTK data capture" hidden>
-      <h4>White-label capture</h4>
+
+    <details class="followup acc">
+      <summary><h4>Accuracy requirements <span class="hint">(optional)</span></h4><span class="acc-sub">For engineering, survey and earthwork projects. Skip it if you&rsquo;re not sure; a recommendation comes with the quote.</span></summary>
       <div class="grid">
+        <label class="f"><span>What the data will be used for</span>
+          <select name="accUse"><option value="">Choose</option><option>Design or engineering</option><option>Earthwork or volume quantities</option><option>Construction progress or documentation</option><option>Planning or reference</option><option>Marketing or visuals</option><option>Other</option></select>
+        </label>
+        <label class="f"><span>Accuracy requirement</span>
+          <select name="accLevel"><option value="">Choose</option><option>Not sure, recommend one</option><option>Routine project verification (checkpoints reported)</option><option>Specific RMSE targets (below)</option><option>Formal ASPRS accuracy assessment</option><option>No accuracy requirement</option></select>
+        </label>
+        <label class="f"><span>Horizontal target (RMSE)</span><input type="text" name="accH" placeholder="e.g. 0.16 ft"></label>
+        <label class="f"><span>Vertical target (RMSE)</span><input type="text" name="accV" placeholder="e.g. 0.20 ft"></label>
+        <label class="f"><span>Largest single checkpoint error</span><input type="text" name="accMax" placeholder="e.g. 0.30 ft, if it matters"></label>
         <label class="f"><span>Coordinate system &amp; datum</span><input type="text" name="coordSystem" placeholder="e.g. WISCRS Dane, US ft / NAVD88"></label>
-        <label class="f"><span>Accuracy needed</span><input type="text" name="accuracy" placeholder="e.g. 0.1 ft horizontal"></label>
+        <label class="f full"><span>Ground control</span>
+          <select name="accControl"><option value="">Choose</option><option>Novak|GS sets and surveys the control</option><option>Use our surveyor&rsquo;s control points</option><option>Both</option><option>Not sure</option></select>
+        </label>
       </div>
-    </div>
+      <p class="note">Measured projects get at least 5 independent checkpoints, plus 5 ground control points where elevations matter. <a href="/accuracy/">How accuracy is tested</a></p>
+    </details>
 
     <div class="q" id="fm-label">File formats you need <span class="hint">(optional)</span></div>
     <div class="chips" role="group" aria-labelledby="fm-label">

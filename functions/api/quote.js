@@ -190,9 +190,17 @@ function buildDetails(fd, services) {
   if (has('Visual crop scouting maps')) {
     lines.push(`Crop scouting — crop: ${str(fd, 'cropType', 80) || '?'}; growth stage: ${str(fd, 'growthStage', 80) || '?'}`);
   }
-  if (has('White-label RTK data capture')) {
-    lines.push(`White-label — coordinate system: ${str(fd, 'coordSystem', 160) || '?'}; accuracy: ${str(fd, 'accuracy', 120) || '?'}`);
-  }
+  const acc = [
+    ['use', str(fd, 'accUse', 80)],
+    ['requirement', str(fd, 'accLevel', 80)],
+    ['horizontal RMSE', str(fd, 'accH', 60)],
+    ['vertical RMSE', str(fd, 'accV', 60)],
+    ['largest checkpoint error', str(fd, 'accMax', 60)],
+    ['coordinate system/datum', str(fd, 'coordSystem', 160)],
+    ['control', str(fd, 'accControl', 80)],
+    ['accuracy (older form)', str(fd, 'accuracy', 120)],
+  ].filter(([, v]) => v);
+  if (acc.length) lines.push(`Accuracy — ${acc.map(([k, v]) => `${k}: ${v}`).join('; ')}`);
   return lines.join('\n');
 }
 
