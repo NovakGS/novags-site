@@ -457,6 +457,12 @@
   .acc-sum .acc-foot a { color: var(--orange); font-weight: 600; text-decoration: none; white-space: nowrap; }
   .acc-sum .acc-foot a:hover { text-decoration: underline; }
   @media (max-width: 640px) { .acc-sum .results { grid-template-columns: 1fr; } }
+  .svc-btns { list-style: none; margin: -6px 0 24px; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .svc-btns a { display: flex; flex-direction: column; gap: 3px; height: 100%; padding: 10px 14px; border: 1px solid var(--edge); border-left: 3px solid var(--orange); border-radius: 10px; background: var(--panel); color: var(--ink); text-decoration: none; transition: border-color .2s, transform .2s; }
+  .svc-btns a:hover { border-color: var(--orange); transform: translateY(-1px); }
+  .svc-btns strong { font-size: 15px; font-weight: 700; line-height: 1.25; }
+  .svc-btns span { font-size: 13px; line-height: 1.35; color: var(--muted); }
+  @media (max-width: 420px) { .svc-btns { grid-template-columns: 1fr; } }
   .svc-groups { display: grid; gap: 10px; margin: -6px 0 24px; }
   .svc-group { display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 10px; align-items: center; }
   .svc-lab { margin: 0; font-family: "Roboto Mono", Consolas, monospace; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
@@ -717,28 +723,14 @@
       <p class="eyebrow">Drone mapping &middot; Southern Wisconsin</p>
       <h1>Drone Maps and Measurements, Verified on the Ground.</h1>
       <p class="lede2">Orthomosaics, elevation models, stockpile volumes and cut/fill for sites across southern Wisconsin. Measured jobs are checked against independent ground checkpoints, and the results are reported with the data.</p>
-      <div class="svc-groups">
-      <div class="svc-group"><p class="svc-lab">Maps</p>
-      <ul class="svc-chips" aria-label="Maps">
-        <li><a href="/quote/?path=map" aria-describedby="tip-0">Orthomosaics</a><span class="tip" role="tooltip" id="tip-0">One seamless, true-to-scale aerial map stitched from hundreds of overlapping photos. Distances and areas can be measured right on it.</span></li>
-        <li><a href="/quote/?path=tech" aria-describedby="tip-1">Contours</a><span class="tip" role="tooltip" id="tip-1">Lines of equal elevation drawn from the bare-earth model, usually every 1 or 2 ft, for grading, drainage and site planning.</span></li>
-      </ul></div>
-      <div class="svc-group"><p class="svc-lab">Measurements</p>
-      <ul class="svc-chips" aria-label="Measurements">
-        <li><a href="/quote/?path=volumes" aria-describedby="tip-2">Stockpile volumes</a><span class="tip" role="tooltip" id="tip-2">The measured volume of each pile from a 3D surface of the site, plus estimated tonnage using your material densities, for inventory counts and month-end reporting.</span></li>
-        <li><a href="/quote/?path=volumes" aria-describedby="tip-3">Cut/fill analysis</a><span class="tip" role="tooltip" id="tip-3">Compares the ground today with a design surface or an earlier flight to show how much earth has to come off (cut) or go in (fill), and where.</span></li>
-      </ul></div>
-      <div class="svc-group"><p class="svc-lab">Visuals</p>
-      <ul class="svc-chips" aria-label="Visuals">
-        <li><a href="/quote/?path=tech" aria-describedby="tip-4">Progress photos</a><span class="tip" role="tooltip" id="tip-4">Repeat flights from the same vantage points, documenting a build phase by phase.</span></li>
-        <li><a href="/quote/?path=photos" aria-describedby="tip-5">Photo &amp; video</a><span class="tip" role="tooltip" id="tip-5">Aerial photos and video for commercial and real estate work, plus homes, farms and events.</span></li>
-        <li><a href="/quote/?path=tech" aria-describedby="tip-6">3D models</a><span class="tip" role="tooltip" id="tip-6">A measurable, textured 3D model of a structure or site, built from an automated orbit flight.</span></li>
-      </ul></div>
-      <div class="svc-group"><p class="svc-lab">For engineers</p>
-      <ul class="svc-chips" aria-label="For engineers">
-        <li><a href="/quote/?path=tech" aria-describedby="tip-7">White-label RTK</a><span class="tip" role="tooltip" id="tip-7">For surveyors and engineers: RTK-positioned flights captured in your coordinate system and file formats, for you to process and deliver under your own name.</span></li>
-      </ul></div>
-      </div>
+      <ul class="svc-btns" aria-label="Services">
+        <li><a href="/quote/?path=tech"><strong>Maps, Elevation &amp; Contours</strong><span>Orthomosaics, elevation models and contour maps</span></a></li>
+        <li><a href="/quote/?path=tech"><strong>Construction Progress</strong><span>Repeat flights from the same vantage points</span></a></li>
+        <li><a href="/quote/?path=volumes"><strong>Volumetrics &amp; Cut/Fill</strong><span>Stockpile volumes, tonnage and earthwork quantities</span></a></li>
+        <li><a href="/quote/?path=tech"><strong>White-Label RTK &amp; Overflow</strong><span>Non-branded capture for surveyors and engineers</span></a></li>
+        <li><a href="/quote/?path=listing"><strong>Real Estate</strong><span>3D fly-thrus, aerial video and photography</span></a></li>
+        <li><a href="/quote/?path=tech"><strong>RGB Inspections</strong><span>High-resolution visual inspection of roofs, structures and sites</span></a></li>
+      </ul>
       <div class="cta-row">
         <a class="btn-primary" href="/quote/">Request a quote
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
