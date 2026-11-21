@@ -116,10 +116,10 @@
 .acc svg.dots .pt{fill:var(--orange);fill-opacity:.78;stroke:var(--panel-solid);stroke-width:1.2}
 .acc p.ig-note{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--faint)}
 .acc .ig-res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.acc .ig-res div{padding:16px 18px;border-radius:12px;background:var(--orange);color:#fff;display:flex;flex-direction:column;gap:4px}
-.acc .ig-res .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
-.acc .ig-res b{font-size:40px;line-height:1.05;font-weight:700}
-.acc .ig-res .s{font-size:14px;font-weight:500}
+.acc .ig-res>div{position:relative;overflow:hidden;padding:20px;border-radius:12px;background:#0a0d12 url("/topo-bg.jpg") center/cover;border-bottom:4px solid var(--orange);color:#fff;display:flex;flex-direction:column;gap:4px}
+.acc .ig-res .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.acc .ig-res b{font-size:44px;line-height:1.1;font-weight:700;color:var(--orange)}
+.acc .ig-res .s{font-size:14.5px;font-weight:500;color:#fff}
 @media(max-width:700px){.acc .ig-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.acc .ig-stats-6{grid-template-columns:repeat(2,minmax(0,1fr))}.acc .ig-split{grid-template-columns:1fr}.acc .ig-res{grid-template-columns:1fr}.acc .ig{padding-left:26px}.acc .ig::before{left:7px}.acc .ig-step::before{left:-24px}.acc .ig h3{font-size:19px}.acc .ig-stats b{font-size:24px}}
 
 .acc p.stmt{font-style:italic;font-size:calc(17px - 2pt);line-height:1.4}
@@ -465,8 +465,8 @@
       <section class="ig-step ig-last">
         <p class="ig-n"><span>05</span>The result</p>
         <div class="ig-res">
-          <div><span class="k">Horizontal RMSE</span><b>0.10 ft</b><span class="s">ASPRS class 0.16 ft &middot; Met</span></div>
-          <div><span class="k">Vertical RMSE, bare ground</span><b>0.09 ft</b><span class="s">ASPRS class 0.20 ft &middot; Below class RMSE</span></div>
+          <div data-topo="band" data-topo-style="fine"><span class="k">Horizontal RMSE</span><b>0.10 ft</b><span class="s">ASPRS class 0.16 ft &middot; Met</span></div>
+          <div data-topo="band" data-topo-style="fine"><span class="k">Vertical RMSE, bare ground</span><b>0.09 ft</b><span class="s">ASPRS class 0.20 ft &middot; Below class RMSE</span></div>
         </div>
       </section>
     </div>
