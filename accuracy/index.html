@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
+<link rel="apple-touch-icon" href="/favicon-128.png">
+<meta name="theme-color" content="#0a0d12">
+<meta property="og:site_name" content="Novak Geospatial Solutions">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/blog/blog.css?v=2">
+<script src="/topo.js?v=3" defer></script>
+<title>Drone Mapping Accuracy: ASPRS Test Results | Novak|GS</title>
+<meta name="description" content="Results of a 33-checkpoint drone mapping accuracy test under the ASPRS Positional Accuracy Standards, Edition 2 (2024), with the full report and a sample project verification report.">
+<link rel="canonical" href="https://novakgs.com/accuracy/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Elevated Data | Grounded Truth: Tested Mapping Accuracy">
+<meta property="og:description" content="Results of a 33-checkpoint drone mapping accuracy test under the ASPRS Positional Accuracy Standards, Edition 2 (2024), with the full report and a sample project verification report.">
+<meta property="og:url" content="https://novakgs.com/accuracy/">
+<meta property="og:image" content="https://novakgs.com/og-image.jpg">
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
+<style>
+.acc h1 .sep{color:var(--orange);margin:0 .1em 0 .35em;font-weight:400}
+.acc h1 .nb{white-space:nowrap}
+.acc .tablebox td:first-child,.acc .tablebox th:first-child{text-align:left}
+.acc .dl{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.acc .dl li{margin:0;padding:16px 18px;border:1px solid var(--edge);border-left:3px solid var(--orange);border-radius:10px;background:var(--panel);font-size:15px;line-height:1.5;color:var(--muted)}
+.acc .dl strong{display:block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--label);margin-bottom:6px}
+.acc .dl a{display:block;margin-top:8px;font-weight:600}
+.acc h3{margin:22px 0 6px;font-size:18px;line-height:1.35;font-weight:600;color:var(--ink)}
+.acc sub{font-size:.7em}
+.acc .legal{font-size:15px}
+@media(max-width:640px){.acc .dl{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-topo="page" data-topo-style="fine">
+<div class="band" role="banner" data-topo="band" data-topo-style="fine">
+  <div class="band-row">
+    <a class="band-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+    <div class="band-nav">
+      <nav aria-label="Main">
+        <a href="/#need">Services</a>
+        <a href="/#cases-h">Case studies</a>
+        <a href="/#verify">Accuracy</a>
+        <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
+        <a class="nav-quote" href="/quote/">Request a quote</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>
+    </div>
+  </div>
+</div>
+<div class="shade" aria-hidden="true"></div>
+<div class="shade" aria-hidden="true"></div>
+<div class="wrap">
+  <main style="display:contents">
+  <article class="post-flow prose acc">
+    <p class="kicker">Tested accuracy &middot; ASPRS Edition 2 (2024)</p>
+    <h1><span class="nb">Elevated Data</span><span class="sep">|</span> <span class="nb">Grounded Truth</span></h1>
+
+    <p>The finished orthomosaic and digital surface model were tested against 33 independently surveyed checkpoints that were withheld from model adjustment, across a 34.4-acre validation area in Dane County, Wisconsin, on November 18, 2026. Horizontal RMSE was 0.10 ft (3.0 cm), and bare-ground vertical RMSE was 0.09 ft (2.6 cm). Both figures include a survey repeatability estimate based on seven repeat pairs.</p>
+    <p>A separate check on a published National Geodetic Survey mark found ellipsoid heights 0.04 to 0.16 ft low. The cause is unresolved. The report explains what that means when the data is used for absolute elevations.</p>
+
+    <h2><strong>The Grounded Truth: Tested Results</strong></h2>
+    <div class="tablebox"><table>
+      <thead><tr><th></th><th>Tested accuracy (RMSE)</th><th>ASPRS class tested (RMSE)</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Horizontal</td><td>0.10 ft (3.0 cm)</td><td>0.16 ft (5.0 cm)</td><td>Met</td></tr>
+        <tr><td>Vertical, bare ground</td><td>0.09 ft (2.6 cm)</td><td>0.20 ft (6.0 cm)</td><td>Below class RMSE</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Accuracy statement.</strong> This data set was tested to meet ASPRS Positional Accuracy Standards for Digital Geospatial Data, Edition 2, Version 2 (2024) for a 0.16 ft (5.0 cm) RMSE<sub>H</sub> horizontal positional accuracy class. The tested horizontal positional accuracy was found to be RMSE<sub>H</sub> = 0.10 ft (3.0 cm). The non-vegetated vertical accuracy measured in the same test was RMSE<sub>V</sub> = 0.09 ft (2.6 cm), below the RMSE of the 0.20 ft (6.0 cm) vertical accuracy class. A &ldquo;tested to meet&rdquo; statement is not made for vertical accuracy until the National Geodetic Survey mark check is resolved.</p>
+
+    <ul class="dl">
+      <li><strong>What this workflow achieved</strong>The 33-checkpoint test, with methods, residuals and findings.<a href="NovakGS_ASPRS_Positional_Accuracy_Report_26-230.pdf">Full accuracy report (PDF, 9 pages)</a></li>
+      <li><strong>What a project receives</strong>The checkpoint results measured on the site, with a table that opens in GIS or a spreadsheet.<a href="NovakGS_Sample_Project_Verification_Report.pdf">Sample verification report (PDF)</a><a href="NovakGS_Sample_Project_Verification_Checkpoints.csv" download>Checkpoint file (CSV)</a></li>
+    </ul>
+    <p><strong>What to specify.</strong> In a scope of work, state the intended use of the data, the target RMSE (horizontal, vertical or both), the project control or coordinate system and vertical datum, and, where it matters, a limit on the largest individual checkpoint error. If verification exceeds the agreed target, the residuals and any known cause are provided, and corrective action or acceptance is discussed before the data is used for that purpose.</p>
+
+    <p>Intentionality is important when raw numbers become real data. At Novak Geospatial Solutions&trade;, Elevated Data is what the drone captures from the air, and Grounded Truth is the proof, measured on the ground, that the data is where it says it is. When a client will rely on the numbers, the deliverable is not finished until it has both. Nothing in drone mapping requires that proof, so it is easy to leave out. Here it is the step the work is built around. That is why the mapping workflow was tested against the ASPRS Positional Accuracy Standards for Digital Geospatial Data, the standard that engineers, surveyors and public agencies use to state how accurate a map is.</p>
+
+    <h2><strong>How the Truth Was Grounded</strong></h2>
+    <ul>
+      <li><strong>Date and site:</strong> November 18, 2026, across about 34 acres of pit floor at an active aggregate pit in Dane County, Wisconsin.</li>
+      <li><strong>Checkpoints:</strong> 34 checkpoints were set and 33 were used in the assessment, more than the 30 the standard requires. One target was folded over by wind during the flight. None were used to build the map.</li>
+      <li><strong>Control:</strong> 5 ground control points (GCPs), surveyed the same way as the checkpoints.</li>
+      <li><strong>Ground survey:</strong> network RTK GNSS on the Wisconsin WISCORS network, checked against a National Geodetic Survey mark before and after fieldwork.</li>
+      <li><strong>What was tested:</strong> the delivered orthomosaic and digital surface model, not the software's internal fit report.</li>
+      <li><strong>Survey error included:</strong> checkpoint survey uncertainty is combined with the checkpoint residual RMSE in quadrature, as Edition 2 requires.</li>
+      <li><strong>Nothing removed for a poor result:</strong> every valid checkpoint is reported. The one exclusion is documented with a photo in the report.</li>
+      <li><strong>Equipment and software:</strong> DJI Matrice 4E with network RTK, Emlid Reach RX2 GNSS receiver, DJI Terra.</li>
+      <li><strong>Flight:</strong> 175 ft above ground, 85% forward and 80% side overlap, 0.64 in (1.6 cm) map pixels.</li>
+      <li><strong>Coordinates:</strong> NAD83(2011) Wisconsin county coordinates (WISCRS, US survey feet) and NAVD88 elevations (GEOID18).</li>
+    </ul>
+
+    <h2><strong>What the Result Covers</strong></h2>
+    <p>The numbers above apply to the map that was tested: open, bare ground inside the 34.4-acre validation area, flown and processed with the settings listed. The flight covered 54.4 acres, and ground outside the validation area was not tested. They show what this workflow achieves under good conditions.</p>
+    <p>They are not a guarantee for every project. Vegetation, steep faces, water, tall structures, satellite reception near steel and other large metal surfaces, flight height and GCP layout all change what is achievable. Accuracy targets for a project are agreed before the flight.</p>
+
+    <h2><strong>Grounded Truth on Every Project</strong></h2>
+    <p>Every mapping project that carries an accuracy requirement gets routine project verification on site. Where horizontal accuracy is the requirement, the minimum is 5 independent checkpoints. Where vertical accuracy is required, the minimum is 5 GCPs and 5 independent checkpoints. The checkpoint results are reported with the deliverables, so the accuracy of your data is measured on your site, not inferred from this test. For projects that require a formal ASPRS accuracy assessment, the applicable standard, target accuracy and checkpoint plan are agreed before the flight. Reported, not claimed.</p>
+    <p>The full ASPRS test is repeated at least once a year and whenever primary equipment or processing software changes.</p>
+
+    <h2><strong>Working With Your Surveyor or Engineer</strong></h2>
+    <p>Novak Geospatial Solutions&trade; provides photogrammetric mapping and measurement data. It does not establish or re-establish property boundaries, and its deliverables are not stamped survey documents. Data is delivered in the project coordinate system with the GCPs, checkpoint residuals and processing report included, so a licensed surveyor or engineer of record can review it, tie it to their own control, and decide how to rely on it.</p>
+
+    <h2><strong>Technical FAQs</strong></h2>
+    <h3>Was accuracy measured on the deliverables or on the processing software's report?</h3>
+    <p>On the deliverables. Horizontal error was measured from target centers in the delivered orthomosaic, and vertical error from the delivered surface model at each surveyed checkpoint. The software's aerotriangulation residuals are reported separately and are not used as the result.</p>
+    <h3>Were the checkpoints independent of the GCPs?</h3>
+    <p>Yes. The 33 checkpoints were separate targets from the 5 GCPs and were withheld from model adjustment. They were spread across all four quadrants of the test area.</p>
+    <h3>How was the ground survey tied to the datum?</h3>
+    <p>By network RTK on the Wisconsin WISCORS network, in NAD83(2011) with NAVD88 elevations from GEOID18. The setup was checked on a published National Geodetic Survey mark before and after fieldwork, and a sample of points was re-observed hours later on a new satellite solution. Survey repeatability, estimated from seven repeat pairs, was 0.04 ft (1.3 cm) horizontal and 0.04 ft (1.3 cm) vertical, and it is combined into the reported results. The check on the NGS mark agreed horizontally within 0.053 ft and read 0.04 to 0.16 ft low in ellipsoid height. That difference is unresolved.</p>
+    <h3>Does the result apply to vegetated ground?</h3>
+    <p>No. Photogrammetry maps the visible surface, so the vertical result applies to bare, open ground only. Vegetated vertical accuracy was not tested.</p>
+    <h3>Does it establish the accuracy of stockpile volumes?</h3>
+    <p>Not directly. The test measured vertical accuracy on the open pit floor. A stockpile volume also depends on how well the pile surface is captured and how the pile base is defined, which is documented on each volume report.</p>
+    <h3>Can a project use the firm's own GCPs?</h3>
+    <p>Yes. GCPs and checkpoints set by the project surveyor can be used in place of, or alongside, points surveyed for the flight, and the data can be delivered in the project's coordinate system.</p>
+    <h3>What comes with the data for review?</h3>
+    <p>The GCP and checkpoint coordinates, the checkpoint residual table, the processing report, and the coordinate system and vertical datum for every file.</p>
+    <h3>How current is the test?</h3>
+    <p>The test date is shown above. It is repeated at least once a year and whenever primary equipment or processing software changes.</p>
+
+    <p class="legal" style="margin-top:28px"><em>Novak Geospatial Solutions&trade;, a BUCK2NINETY LLC company</em></p>
+  </article>
+
+  <div class="cta post-cta">
+    <div>
+      <h2>Need accuracy you can document?</h2>
+      <p>Tell us about your site. We'll reply within one business day.</p>
+    </div>
+    <a class="btn" href="/quote/">Request a quote</a>
+  </div>
+  </main>
+
+  <footer>
+    <nav aria-label="Footer"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/quote/">Request a quote</a><a href="/privacy/">Privacy</a></nav>
+    &copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin
+  </footer>
+</div>
+</body>
+</html>
