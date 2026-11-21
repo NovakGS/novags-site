@@ -58,13 +58,14 @@
 .acct .score b{display:block;font-size:44px;line-height:1.1;margin:4px 0;color:var(--orange)}
 .acct .score .s{font-size:14.5px;font-weight:500;color:#fff}
 .acct .bullwrap{clear:both;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:22px;align-items:center;margin:6px 0 20px}
-.acct svg.bull{width:100%;height:auto;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.acct .bullbg{position:relative;overflow:hidden;border-radius:12px;background:#0a0d12 url("/topo-bg.jpg") center/cover;border-bottom:4px solid var(--orange)}
+.acct svg.bull{display:block;width:100%;height:auto}
 .acct svg.bull .r1{fill:rgba(232,113,26,.12);stroke:var(--orange);stroke-width:2}
-.acct svg.bull .r2{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:6 5}
-.acct svg.bull .xh{stroke:var(--edge);stroke-width:1}
-.acct svg.bull .pts circle{fill:var(--orange);stroke:var(--panel-solid);stroke-width:1.2}
+.acct svg.bull .r2{fill:none;stroke:#fff;stroke-width:1.5;stroke-dasharray:6 5}
+.acct svg.bull .xh{stroke:rgba(255,255,255,.22);stroke-width:1}
+.acct svg.bull .pts circle{fill:var(--orange);stroke:#0a0d12;stroke-width:1.2}
 .acct svg.bull text{font:600 13px var(--sans)}
-.acct svg.bull .l1{fill:var(--orange)}.acct svg.bull .l2{fill:var(--ink)}.acct svg.bull .n{fill:var(--faint);text-anchor:middle;font-size:12px}
+.acct svg.bull .l1{fill:var(--orange)}.acct svg.bull .l2{fill:#fff}.acct svg.bull .n{fill:#c3cad1;text-anchor:middle;font-size:12px}
 .acct .bullwrap p{margin:0 0 10px}
 .acct .snags{clear:both;list-style:none;margin:8px 0 16px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .acct .snags li{margin:0;padding:14px 14px 12px;border:1px solid var(--edge);border-top:3px solid var(--orange);border-radius:10px;background:var(--panel);display:flex;flex-direction:column;gap:5px}
@@ -83,7 +84,7 @@
 .acct .why{clear:both;margin:10px 0 18px;padding:20px 22px;border-radius:14px;border:1px solid var(--edge);background:var(--panel)}
 .acct .why p{margin:0 0 10px}.acct .why p:last-child{margin:0}
 .acct .why .big{font-size:21px;line-height:1.4;color:var(--ink);font-weight:600}
-@media(max-width:700px){.acct .steps{grid-template-columns:repeat(2,minmax(0,1fr))}.acct .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.acct .terms,.acct .score{grid-template-columns:1fr}.acct .bullwrap{grid-template-columns:1fr}.acct svg.bull{max-width:320px}}
+@media(max-width:700px){.acct .steps{grid-template-columns:repeat(2,minmax(0,1fr))}.acct .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.acct .terms,.acct .score{grid-template-columns:1fr}.acct .bullwrap{grid-template-columns:1fr}.acct .bullbg{max-width:320px}}
 </style>
 <link rel="stylesheet" href="/theme.css">
 <script src="/theme.js"></script>
@@ -163,14 +164,14 @@
       <div data-topo="band" data-topo-style="fine"><span class="k">Vertical, Bare Ground</span><b>0.09 ft</b><span class="s">About 1.0 in &middot; Below the 0.20 ft class</span></div>
     </div>
     <div class="bullwrap">
-      <svg class="bull" viewBox="0 0 400 400" role="img" aria-label="Horizontal miss at each of 33 checkpoints, plotted around a bullseye. Most fall inside a 0.10 ft ring.">
+      <div class="bullbg" data-topo="band" data-topo-style="fine"><svg class="bull" viewBox="0 0 400 400" role="img" aria-label="Horizontal miss at each of 33 checkpoints, plotted around a bullseye. Most fall inside a 0.10 ft ring.">
 <circle class="r2" cx="200" cy="200" r="147.6"/><circle class="r1" cx="200" cy="200" r="89.1"/>
 <line class="xh" x1="20" y1="200" x2="380" y2="200"/><line class="xh" x1="200" y1="20" x2="200" y2="380"/>
 <g class="pts"><circle cx="156.8" cy="189.2" r="5"><title>CP02: 0.05 ft</title></circle><circle cx="205.4" cy="65.0" r="5"><title>CP03: 0.15 ft</title></circle><circle cx="146.9" cy="212.6" r="5"><title>CP04: 0.06 ft</title></circle><circle cx="164.0" cy="155.0" r="5"><title>CP05: 0.06 ft</title></circle><circle cx="161.3" cy="147.8" r="5"><title>CP06: 0.07 ft</title></circle><circle cx="133.4" cy="167.6" r="5"><title>CP07: 0.08 ft</title></circle><circle cx="77.6" cy="161.3" r="5"><title>CP08: 0.14 ft</title></circle><circle cx="101.9" cy="179.3" r="5"><title>CP09: 0.11 ft</title></circle><circle cx="71.3" cy="111.8" r="5"><title>CP10: 0.17 ft</title></circle><circle cx="136.1" cy="111.8" r="5"><title>CP11: 0.12 ft</title></circle><circle cx="110.9" cy="137.0" r="5"><title>CP12: 0.12 ft</title></circle><circle cx="196.4" cy="167.6" r="5"><title>CP13: 0.04 ft</title></circle><circle cx="124.4" cy="165.8" r="5"><title>CP14: 0.09 ft</title></circle><circle cx="161.3" cy="154.1" r="5"><title>CP15: 0.07 ft</title></circle><circle cx="141.5" cy="100.1" r="5"><title>CP16: 0.13 ft</title></circle><circle cx="110.9" cy="177.5" r="5"><title>CP17: 0.10 ft</title></circle><circle cx="209.0" cy="115.4" r="5"><title>CP18: 0.09 ft</title></circle><circle cx="166.7" cy="131.6" r="5"><title>CP19: 0.09 ft</title></circle><circle cx="167.6" cy="194.6" r="5"><title>CP20: 0.04 ft</title></circle><circle cx="204.5" cy="224.3" r="5"><title>CP21: 0.03 ft</title></circle><circle cx="163.1" cy="255.8" r="5"><title>CP22: 0.07 ft</title></circle><circle cx="242.3" cy="229.7" r="5"><title>CP23: 0.06 ft</title></circle><circle cx="236.9" cy="197.3" r="5"><title>CP24: 0.04 ft</title></circle><circle cx="216.2" cy="164.0" r="5"><title>CP25: 0.04 ft</title></circle><circle cx="197.3" cy="214.4" r="5"><title>CP26: 0.02 ft</title></circle><circle cx="196.4" cy="146.9" r="5"><title>CP27: 0.06 ft</title></circle><circle cx="199.1" cy="143.3" r="5"><title>CP28: 0.06 ft</title></circle><circle cx="126.2" cy="131.6" r="5"><title>CP29: 0.11 ft</title></circle><circle cx="110.9" cy="145.1" r="5"><title>CP30: 0.12 ft</title></circle><circle cx="190.1" cy="164.9" r="5"><title>CP31: 0.04 ft</title></circle><circle cx="207.2" cy="287.3" r="5"><title>CP32: 0.10 ft</title></circle><circle cx="157.7" cy="162.2" r="5"><title>CP33: 0.06 ft</title></circle><circle cx="153.2" cy="189.2" r="5"><title>CP34: 0.05 ft</title></circle></g>
 <text class="l1" x="264" y="278">0.10 ft</text>
 <text class="l2" x="306" y="320">0.16 ft</text>
 <text class="n" x="200" y="14">N</text>
-</svg>
+</svg></div>
       <div>
         <p>Each dot is one checkpoint: where the map placed it compared with where it was surveyed, drawn much larger than life.</p>
         <p>The orange ring is the typical miss. The dashed ring is the class the map was tested against.</p>
