@@ -38,7 +38,10 @@
     bold: { levels: 14, accent: 7, scale: 380, scaleSm: 260, cell: 14, cellSm: 12, index: 3,
             line: 'rgba(170,179,188,.22)', lineW: 1, idx: 'rgba(70,119,160,.55)', idxW: 1.2, glow: true },
     fine: { levels: 34, accent: 17, scale: 170, scaleSm: 130, cell: 9, cellSm: 8, index: 5,
-            line: 'rgba(170,179,188,.085)', lineW: 0.8, idx: 'rgba(70,119,160,.26)', idxW: 1, glow: false, vignette: true }
+            line: 'rgba(170,179,188,.085)', lineW: 0.8, idx: 'rgba(70,119,160,.26)', idxW: 1, glow: false, vignette: true },
+    // inverted: white ground, navy contours, orange index lines
+    light: { levels: 34, accent: 0, scale: 170, scaleSm: 130, cell: 9, cellSm: 8, index: 5,
+            line: 'rgba(31,52,68,.28)', lineW: 0.8, idx: 'rgba(232,113,26,.42)', idxW: 1.1, glow: false, vignette: false, bg: '#ffffff' }
   };
 
   function Topo(host, mode) {
@@ -107,7 +110,7 @@
       for (j = 0; j < rows; j++)
         for (i = 0; i < cols; i++)
           grid[j * cols + i] = field(i * cell * scale, j * cell * scale, t);
-      ctx.fillStyle = '#0a0d12';
+      ctx.fillStyle = S.bg || '#0a0d12';
       ctx.fillRect(0, 0, W, H);
       ctx.lineJoin = 'round'; ctx.lineCap = 'round';
       for (k = 1; k < LEVELS; k++) {
