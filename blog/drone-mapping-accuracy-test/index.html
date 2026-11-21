@@ -53,10 +53,10 @@
 .acct .snag .fix{color:var(--ink)}
 .acct .snag .fix b{color:var(--orange);font-weight:700}
 .acct .score{clear:both;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0 20px}
-.acct .score div{padding:18px;border-radius:12px;background:var(--orange);color:#fff}
-.acct .score .k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.92}
-.acct .score b{display:block;font-size:42px;line-height:1.1;margin:4px 0}
-.acct .score .s{font-size:14.5px;font-weight:500}
+.acct .score>div{position:relative;overflow:hidden;padding:20px;border-radius:12px;background:#0a0d12 url("/topo-bg.jpg") center/cover;border-bottom:4px solid var(--orange);color:#fff}
+.acct .score .k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.acct .score b{display:block;font-size:44px;line-height:1.1;margin:4px 0;color:var(--orange)}
+.acct .score .s{font-size:14.5px;font-weight:500;color:#fff}
 .acct .bullwrap{clear:both;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:22px;align-items:center;margin:6px 0 20px}
 .acct svg.bull{width:100%;height:auto;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
 .acct svg.bull .r1{fill:rgba(232,113,26,.12);stroke:var(--orange);stroke-width:2}
@@ -159,8 +159,8 @@
 
     <h2 class="clear">The Results: How Accurate Was the Drone Map?</h2>
     <div class="score">
-      <div><span class="k">Horizontal</span><b>0.10 ft</b><span class="s">About 1.2 in &middot; Met the 0.16 ft class</span></div>
-      <div><span class="k">Vertical, Bare Ground</span><b>0.09 ft</b><span class="s">About 1.0 in &middot; Below the 0.20 ft class</span></div>
+      <div data-topo="band" data-topo-style="fine"><span class="k">Horizontal</span><b>0.10 ft</b><span class="s">About 1.2 in &middot; Met the 0.16 ft class</span></div>
+      <div data-topo="band" data-topo-style="fine"><span class="k">Vertical, Bare Ground</span><b>0.09 ft</b><span class="s">About 1.0 in &middot; Below the 0.20 ft class</span></div>
     </div>
     <div class="bullwrap">
       <svg class="bull" viewBox="0 0 400 400" role="img" aria-label="Horizontal miss at each of 33 checkpoints, plotted around a bullseye. Most fall inside a 0.10 ft ring.">
