@@ -34,6 +34,94 @@
 .acc h1 .nb{white-space:nowrap}
 .acc h3{margin:22px 0 6px;font-size:18px;line-height:1.35;font-weight:600;color:var(--ink)}
 .acc sub{font-size:.7em}
+/* interactive test map */
+.acc .imap{margin:0 0 12px}
+.acc .imap-tabs{display:inline-flex;gap:4px;padding:4px;margin:0 0 10px;border:1px solid var(--edge);border-radius:999px;background:var(--panel)}
+.acc .imap-tabs button{all:unset;cursor:pointer;padding:7px 14px;border-radius:999px;font-size:14px;font-weight:600;color:var(--muted)}
+.acc .imap-tabs button[aria-selected=true]{background:var(--orange);color:#fff}
+.acc .imap-tabs button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.acc .imap-stage{position:relative;border:1px solid var(--edge);border-radius:12px;overflow:hidden;background:#141a21}
+.acc .imap-stage img{display:block;width:100%;height:auto}
+.acc .imap-stage svg{position:absolute;inset:0;width:100%;height:100%}
+.acc .imap svg .va{fill:none;stroke:#e8711a;stroke-width:4}
+.acc .imap svg .sbg{fill:rgba(255,255,255,.88)}
+.acc .imap svg .sb{stroke:#1f3444;stroke-width:6}
+.acc .imap svg .sbt{fill:#1f3444;font:700 20px var(--sans);text-anchor:middle}
+.acc .imap svg .na{fill:#1f3444}
+.acc .imap svg .pt{cursor:pointer;outline:none}
+.acc .imap svg .pt circle{fill:#00a9c8;stroke:#fff;stroke-width:3}
+.acc .imap svg .pt.gcp path{fill:#e1232d;stroke:#fff;stroke-width:3}
+.acc .imap svg .pt.x circle.xbg{fill:#fff;stroke:#5e6a76;stroke-width:2}
+.acc .imap svg .pt.x path{stroke:#3d4752;stroke-width:4;stroke-linecap:round}
+.acc .imap svg .lbl{font:700 19px var(--sans);fill:#fff;paint-order:stroke;stroke:rgba(15,22,30,.85);stroke-width:5px;stroke-linejoin:round}
+.acc .imap svg .arr{stroke:#fff;stroke-width:4;stroke-linecap:round}
+.acc .imap svg .arr-h{stroke:rgba(15,22,30,.75);stroke-width:9;stroke-linecap:round}
+.acc .imap svg .ahp{fill:#fff;stroke:rgba(15,22,30,.75);stroke-width:1}
+.acc .imap svg .ez,.acc .imap svg .tp{stroke:#1f3444;stroke-width:3;cursor:pointer;outline:none}
+.acc .imap svg .route{fill:none;stroke:rgba(255,255,255,.8);stroke-width:3;stroke-dasharray:8 7}
+.acc .imap svg [tabindex]:focus-visible{stroke:#e8711a;stroke-width:5}
+.acc .imap-tip{position:absolute;z-index:3;transform:translate(-50%,calc(-100% - 16px));min-width:170px;padding:9px 12px;border-radius:9px;background:#10151c;color:#e6eaee;border:1px solid rgba(255,255,255,.16);box-shadow:0 8px 24px rgba(0,0,0,.35);font-size:13.5px;line-height:1.45;pointer-events:none;white-space:nowrap}
+.acc .imap-tip.below{transform:translate(-50%,18px)}
+.acc .imap-tip b{color:#fff}
+.acc .imap-time{display:flex;align-items:center;gap:12px;margin:10px 0 0}
+.acc .imap-time[hidden]{display:none}
+.acc .imap-time input{flex:1;accent-color:#e8711a}
+.acc .imap-time output{min-width:72px;font:600 14px var(--mono);color:var(--ink);text-align:right}
+.acc .imap-play{all:unset;cursor:pointer;width:34px;height:34px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px}
+.acc .imap-play:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.acc p.imap-legend{margin:8px 0 0;font-size:13.5px;line-height:1.7;color:var(--muted)}
+.acc .lg{display:inline-block;vertical-align:-2px;margin:0 5px 0 10px}
+.acc .lg:first-child{margin-left:0}
+.acc .lg.dot{width:12px;height:12px;border-radius:50%;background:#00a9c8;border:2px solid #1f3444}
+.acc .lg.tri{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #e1232d}
+.acc .lg.xx{font-weight:700;color:var(--faint)}
+.acc .lg.va{width:18px;height:3px;background:#e8711a;vertical-align:3px}
+@media(max-width:640px){.acc .imap-tabs button{padding:7px 11px;font-size:13px}.acc .imap svg .lbl{display:none}.acc .imap svg .pt circle{r:15}.acc .imap svg .ez,.acc .imap svg .tp{r:17}}
+
+/* Test at a glance infographic */
+.acc .ig{position:relative;margin:10px 0 30px;padding-left:34px}
+.acc .ig::before{content:"";position:absolute;left:11px;top:8px;bottom:40px;width:2px;background:linear-gradient(var(--orange),rgba(232,113,26,.25))}
+.acc .ig-step{position:relative;margin:0 0 30px}
+.acc .ig-step::before{content:"";position:absolute;left:-29px;top:3px;width:12px;height:12px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px var(--bg,#0a0d12)}
+.acc p.ig-n{margin:0 0 4px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.acc p.ig-n span{margin-right:10px;color:var(--label)}
+.acc .ig h3{margin:0 0 14px;font-size:21px;line-height:1.25;font-weight:700;color:var(--ink)}
+.acc .ig-fig{margin:0 0 12px;border:1px solid var(--edge);border-radius:12px;overflow:hidden;background:#fff}
+.acc .ig-fig img{display:block;width:100%;height:auto}
+.acc .ig-fig figcaption{padding:8px 12px;font-size:13px;line-height:1.4;color:var(--muted);background:var(--panel-solid);border-top:1px solid var(--edge)}
+.acc .ig-stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.acc .ig-stats-6{grid-template-columns:repeat(3,minmax(0,1fr))}
+.acc .ig-stats li{margin:0;padding:14px 14px 12px;border:1px solid var(--edge);border-radius:10px;background:var(--panel);display:flex;flex-direction:column;gap:4px;min-width:0}
+.acc .ig-stats b{font-size:28px;line-height:1;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.acc .ig-stats span{font-size:13.5px;line-height:1.35;color:var(--muted)}
+.acc .ig-split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:22px;align-items:center}
+.acc .ig-split .ig-photo{margin:0}
+.acc p.ig-sub{margin:-6px 0 12px;font-size:15px;color:var(--muted)}
+.acc .ig-list{margin:0;padding:0;list-style:none;counter-reset:s}
+.acc .ig-list li{position:relative;margin:0 0 12px;padding:0 0 0 34px;font-size:15.5px;line-height:1.5;color:var(--muted);counter-increment:s}
+.acc .ig-list li::before{content:counter(s);position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;border:1.5px solid var(--orange);color:var(--orange);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.acc .ig-list b{color:var(--ink)}
+.acc .ig-chart{padding:16px 16px 12px;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.acc p.ig-ck{margin:0;font-size:13px;font-weight:600;color:var(--label)}
+.acc svg.dots{display:block;width:100%;height:auto;margin:0 0 10px;overflow:visible}
+.acc svg.dots.sm{display:none}
+@media(max-width:640px){.acc svg.dots.lg{display:none}.acc svg.dots.sm{display:block}}
+.acc svg.dots .ax,.acc svg.dots .tk{stroke:var(--faint);stroke-width:1}
+.acc svg.dots .zero{stroke:var(--edge);stroke-width:1;stroke-dasharray:3 3}
+.acc svg.dots .tl{fill:var(--faint);font:11px var(--mono);text-anchor:middle}
+.acc svg.dots .cls{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 4}
+.acc svg.dots .clst{fill:var(--ink);font:600 11.5px var(--sans)}
+.acc svg.dots .rm{stroke:var(--orange);stroke-width:2}
+.acc svg.dots .rmt{fill:var(--orange);font:600 11.5px var(--sans)}
+.acc svg.dots .pt{fill:var(--orange);fill-opacity:.78;stroke:var(--panel-solid);stroke-width:1.2}
+.acc p.ig-note{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--faint)}
+.acc .ig-res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.acc .ig-res div{padding:16px 18px;border-radius:12px;background:var(--orange);color:#fff;display:flex;flex-direction:column;gap:4px}
+.acc .ig-res .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.acc .ig-res b{font-size:40px;line-height:1.05;font-weight:700}
+.acc .ig-res .s{font-size:14px;font-weight:500}
+@media(max-width:700px){.acc .ig-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.acc .ig-stats-6{grid-template-columns:repeat(2,minmax(0,1fr))}.acc .ig-split{grid-template-columns:1fr}.acc .ig-res{grid-template-columns:1fr}.acc .ig{padding-left:26px}.acc .ig::before{left:7px}.acc .ig-step::before{left:-24px}.acc .ig h3{font-size:19px}.acc .ig-stats b{font-size:24px}}
+
 .acc p.stmt{font-style:italic}
 .acc p.stmt strong{font-style:normal}
 .acc .legal{font-size:15px}
@@ -117,6 +205,271 @@
     <p>The finished orthomosaic and digital surface model were tested against 33 independently surveyed checkpoints that were withheld from model adjustment, across a 34.4-acre validation area in Dane County, Wisconsin, on November 18, 2026. Horizontal RMSE was 0.10 ft (3.0 cm), and bare-ground vertical RMSE was 0.09 ft (2.6 cm). Both figures include a survey repeatability estimate based on seven repeat pairs.</p>
     <p><strong>What to specify.</strong> In a scope of work, state the intended use of the data, the target RMSE (horizontal, vertical, or both), the project control or coordinate system and vertical datum, and, where it matters, a limit on the largest individual checkpoint error. If verification exceeds the agreed target, the residuals and any known cause are provided, and corrective action or acceptance is discussed before the data is used for that purpose.</p>
 
+    <h2><strong>The Test at a Glance</strong></h2>
+    <div class="ig">
+      <section class="ig-step">
+        <p class="ig-n"><span>01</span>The site</p>
+        <h3>34.4 acres of open pit floor, 39 surveyed targets</h3>
+        <div class="imap" id="imap">
+          <div class="imap-tabs" role="tablist" aria-label="Map layer">
+            <button type="button" role="tab" aria-selected="true" data-layer="pts">Checkpoints</button>
+            <button type="button" role="tab" aria-selected="false" data-layer="err">Errors</button>
+            <button type="button" role="tab" aria-selected="false" data-layer="time">Survey time</button>
+          </div>
+          <div class="imap-stage">
+            <img src="img/test-site-base.jpg" width="1600" height="984" alt="Orthomosaic of the 34.4-acre validation area" loading="lazy">
+            <svg viewBox="0 0 1600 984" aria-hidden="true"></svg>
+            <div class="imap-tip" hidden></div>
+          </div>
+          <div class="imap-time" hidden>
+            <button type="button" class="imap-play" aria-label="Play the survey order">&#9654;</button>
+            <input type="range" min="0" max="1000" value="1000" aria-label="Survey time">
+            <output>12:11 PM</output>
+          </div>
+          <p class="imap-legend"></p>
+        </div>
+        <script type="application/json" id="imap-data">{"w":1600,"h":984,"ftpx":0.7874089289358784,"poly":"M1089.5,152.0 L1095.5,226.2 L1232.8,192.1 L1395.5,200.6 L1513.3,210.4 L1536.4,169.0 L1575.2,169.0 L1571.6,278.4 L1564.3,402.4 L1559.4,493.5 L1537.6,561.6 L1481.7,647.9 L1464.7,712.3 L1417.4,758.5 L1390.6,790.1 L1332.3,814.4 L1275.3,832.6 L1201.2,863.0 L1128.3,824.1 L1089.5,764.6 L1042.1,725.7 L955.9,725.7 L885.4,707.4 L841.7,730.5 L777.4,734.2 L738.5,681.9 L756.7,626.0 L672.9,649.1 L675.3,715.9 L646.2,791.3 L617.1,871.5 L568.5,937.1 L487.1,944.4 L456.8,959.0 L409.4,888.5 L336.5,883.7 L275.8,888.5 L221.2,906.7 L165.3,864.2 L143.4,799.8 L131.3,705.0 L60.9,612.6 L24.4,523.9 L71.8,434.0 L153.2,369.6 L226.0,313.7 L348.7,226.2 L428.8,158.1 L493.2,76.7 L543.0,24.4 L598.8,28.0 L611.0,90.0 L635.3,127.7 L671.7,97.3 L766.4,69.4 L834.4,68.2 L948.6,98.5 L998.4,90.0 L1050.6,94.9 L1089.5,152.0 Z","pts":[{"n":"GCP1","x":275.7,"y":317.4,"type":"gcp","t":9.4333},{"n":"GCP2","x":213.3,"y":861.3,"type":"gcp","t":8.8333},{"n":"GCP3","x":690.9,"y":265.1,"type":"gcp","t":9.9167},{"n":"GCP4","x":1123.6,"y":744.6,"type":"gcp","t":11.0},{"n":"GCP5","x":1490.8,"y":223.5,"type":"gcp","t":11.8},{"n":"CP01","x":105.6,"y":525.8,"type":"x","t":9.1833},{"n":"CP02","x":242.6,"y":721.2,"type":"cp","t":9.0,"de":-0.048,"dn":0.012,"dh":0.05,"dz":0.08},{"n":"CP03","x":187.3,"y":618.3,"type":"cp","t":9.1167,"de":0.006,"dn":0.15,"dh":0.15,"dz":-0.058},{"n":"CP04","x":229.7,"y":524.6,"type":"cp","t":9.2333,"de":-0.059,"dn":-0.014,"dh":0.06,"dz":0.011},{"n":"CP05","x":295.5,"y":391.5,"type":"cp","t":9.4,"de":-0.04,"dn":0.05,"dh":0.064,"dz":-0.014},{"n":"CP06","x":379.2,"y":307.1,"type":"cp","t":9.4833,"de":-0.043,"dn":0.058,"dh":0.072,"dz":-0.065},{"n":"CP07","x":465.1,"y":245.6,"type":"cp","t":9.8167,"de":-0.074,"dn":0.036,"dh":0.082,"dz":-0.001},{"n":"CP08","x":529.5,"y":155.7,"type":"cp","t":9.9833,"de":-0.136,"dn":0.043,"dh":0.142,"dz":-0.069},{"n":"CP09","x":592.4,"y":225.4,"type":"cp","t":9.75,"de":-0.109,"dn":0.023,"dh":0.111,"dz":-0.035},{"n":"CP10","x":617.5,"y":139.7,"type":"cp","t":10.1167,"de":-0.143,"dn":0.098,"dh":0.173,"dz":-0.112},{"n":"CP11","x":733.3,"y":147.8,"type":"cp","t":10.1667,"de":-0.071,"dn":0.098,"dh":0.121,"dz":0.077},{"n":"CP12","x":593.8,"y":318.7,"type":"cp","t":9.8833,"de":-0.099,"dn":0.07,"dh":0.121,"dz":-0.051},{"n":"CP13","x":420.8,"y":449.1,"type":"cp","t":9.5833,"de":-0.004,"dn":0.036,"dh":0.036,"dz":-0.04},{"n":"CP14","x":498.2,"y":362.3,"type":"cp","t":9.6333,"de":-0.084,"dn":0.038,"dh":0.092,"dz":-0.027},{"n":"CP15","x":579.5,"y":688.0,"type":"cp","t":10.5167,"de":-0.043,"dn":0.051,"dh":0.066,"dz":0.064},{"n":"CP16","x":675.7,"y":600.8,"type":"cp","t":10.6,"de":-0.065,"dn":0.111,"dh":0.129,"dz":-0.013},{"n":"CP17","x":769.9,"y":552.4,"type":"cp","t":10.6667,"de":-0.099,"dn":0.025,"dh":0.102,"dz":-0.082},{"n":"CP18","x":1069.3,"y":557.3,"type":"cp","t":11.1667,"de":0.01,"dn":0.094,"dh":0.094,"dz":0.051},{"n":"CP19","x":1078.7,"y":657.6,"type":"cp","t":10.95,"de":-0.037,"dn":0.076,"dh":0.085,"dz":-0.086},{"n":"CP20","x":971.7,"y":693.1,"type":"cp","t":10.9,"de":-0.036,"dn":0.006,"dh":0.036,"dz":-0.055},{"n":"CP21","x":1218.1,"y":634.8,"type":"cp","t":11.05,"de":0.005,"dn":-0.027,"dh":0.028,"dz":-0.019},{"n":"CP22","x":1288.6,"y":681.6,"type":"cp","t":12.1833,"de":-0.041,"dn":-0.062,"dh":0.075,"dz":0.092},{"n":"CP23","x":1490.3,"y":606.7,"type":"cp","t":12.1167,"de":0.047,"dn":-0.033,"dh":0.057,"dz":0.064},{"n":"CP24","x":1562.1,"y":356.7,"type":"cp","t":11.9,"de":0.041,"dn":0.003,"dh":0.041,"dz":-0.017},{"n":"CP25","x":1343.4,"y":215.6,"type":"cp","t":11.7333,"de":0.018,"dn":0.04,"dh":0.044,"dz":-0.062},{"n":"CP26","x":1278.6,"y":428.2,"type":"cp","t":11.5167,"de":-0.003,"dn":-0.016,"dh":0.017,"dz":-0.116},{"n":"CP27","x":1155.9,"y":218.1,"type":"cp","t":11.6667,"de":-0.004,"dn":0.059,"dh":0.059,"dz":-0.095},{"n":"CP28","x":1056.7,"y":312.6,"type":"cp","t":11.6,"de":-0.001,"dn":0.063,"dh":0.063,"dz":-0.036},{"n":"CP29","x":892.3,"y":135.7,"type":"cp","t":12.0333,"de":-0.082,"dn":0.076,"dh":0.111,"dz":-0.035},{"n":"CP30","x":875.5,"y":227.7,"type":"cp","t":11.9833,"de":-0.099,"dn":0.061,"dh":0.116,"dz":-0.065},{"n":"CP31","x":1115.5,"y":404.6,"type":"cp","t":11.3833,"de":-0.011,"dn":0.039,"dh":0.04,"dz":-0.119},{"n":"CP32","x":556.3,"y":494.8,"type":"cp","t":10.4,"de":0.008,"dn":-0.097,"dh":0.097,"dz":0.227},{"n":"CP33","x":945.4,"y":442.7,"type":"cp","t":11.25,"de":-0.047,"dn":0.042,"dh":0.063,"dz":-0.038},{"n":"CP34","x":783.7,"y":379.2,"type":"cp","t":11.3,"de":-0.052,"dn":0.012,"dh":0.053,"dz":-0.035}]}</script>
+        <ul class="ig-stats">
+          <li><b>33</b><span>independent checkpoints used</span></li>
+          <li><b>5</b><span>ground control points (GCPs)</span></li>
+          <li><b>4</b><span>quadrants, 7 to 10 checkpoints each</span></li>
+          <li><b>1</b><span>checkpoint excluded: target folded by wind</span></li>
+        </ul>
+      </section>
+      <section class="ig-step">
+        <p class="ig-n"><span>02</span>Ground truth</p>
+        <h3>Every point surveyed the same way</h3>
+        <div class="ig-split">
+        <figure class="ig-fig ig-photo"><img src="img/checkpoint-rover-bipod.jpg" width="840" height="1120" loading="lazy" alt="GNSS rover on a pole held plumb by a bipod over a numbered black-and-white checkpoint target"><figcaption>CP27, surveyed at 11:40 AM</figcaption></figure>
+        <div>
+          <ol class="ig-list">
+            <li><b>Plumb on a bipod.</b> GNSS rover on a 2.00 m pole, tip on the target center.</li>
+            <li><b>Fixed RTK, 30-second average.</b> Network corrections from WISCORS, fixed solutions only.</li>
+            <li><b>Checked on an NGS mark.</b> Before and after fieldwork.</li>
+            <li><b>Re-shot hours later.</b> Seven points re-observed on a new fix to measure survey repeatability.</li>
+          </ol>
+        </div>
+        </div>
+      </section>
+      <section class="ig-step">
+        <p class="ig-n"><span>03</span>The flight</p>
+        <h3>One RTK mapping mission, processed with checkpoints withheld</h3>
+        <ul class="ig-stats ig-stats-6">
+          <li><b>175 ft</b><span>above ground</span></li>
+          <li><b>8,317</b><span>photos, nadir and 45&deg; oblique</span></li>
+          <li><b>98.4%</b><span>RTK fixed photo positions</span></li>
+          <li><b>0.64 in</b><span>orthomosaic pixel (1.6 cm)</span></li>
+          <li><b>85 / 80%</b><span>forward / side overlap</span></li>
+          <li><b>0</b><span>checkpoints used to build the map</span></li>
+        </ul>
+      </section>
+      <section class="ig-step">
+        <p class="ig-n"><span>04</span>The errors</p>
+        <h3>Measured on the delivered map and surface model</h3>
+        <p class="ig-sub">Switch the map in step 01 to <b>Errors</b> to see where each one falls.</p>
+        <div class="ig-chart">
+          <p class="ig-ck">Horizontal error at each checkpoint (ft)</p>
+<svg class="dots lg" viewBox="0 0 760 118" role="img" aria-label="Horizontal error at each of 33 checkpoints, 0.02 to 0.17 ft">
+<line class="ax" x1="16" y1="96.5" x2="744" y2="96.5"/>
+<line class="tk" x1="16.0" y1="96.5" x2="16.0" y2="101.5"/><text class="tl" x="16.0" y="114.5">0.00</text>
+<line class="tk" x1="161.6" y1="96.5" x2="161.6" y2="101.5"/><text class="tl" x="161.6" y="114.5">0.05</text>
+<line class="tk" x1="307.2" y1="96.5" x2="307.2" y2="101.5"/><text class="tl" x="307.2" y="114.5">0.10</text>
+<line class="tk" x1="452.8" y1="96.5" x2="452.8" y2="101.5"/><text class="tl" x="452.8" y="114.5">0.15</text>
+<line class="tk" x1="598.4" y1="96.5" x2="598.4" y2="101.5"/><text class="tl" x="598.4" y="114.5">0.20</text>
+<line class="tk" x1="744.0" y1="96.5" x2="744.0" y2="101.5"/><text class="tl" x="744.0" y="114.5">0.25</text>
+<line class="cls" x1="493.6" y1="18" x2="493.6" y2="96.5"/>
+<text class="clst" x="497.6" y="13" text-anchor="start">Class RMSE 0.16</text>
+<line class="rm" x1="304.3" y1="18" x2="304.3" y2="96.5"/>
+<text class="rmt" x="300.3" y="13" text-anchor="end">Reported RMSE 0.10</text>
+<circle class="pt" cx="65.5" cy="51.0" r="6.5"><title>CP26: +0.017 ft</title></circle>
+<circle class="pt" cx="97.5" cy="51.0" r="6.5"><title>CP21: +0.028 ft</title></circle>
+<circle class="pt" cx="120.8" cy="51.0" r="6.5"><title>CP13: +0.036 ft</title></circle>
+<circle class="pt" cx="120.8" cy="65.5" r="6.5"><title>CP20: +0.036 ft</title></circle>
+<circle class="pt" cx="132.5" cy="36.5" r="6.5"><title>CP31: +0.040 ft</title></circle>
+<circle class="pt" cx="135.4" cy="51.0" r="6.5"><title>CP24: +0.041 ft</title></circle>
+<circle class="pt" cx="144.1" cy="65.5" r="6.5"><title>CP25: +0.044 ft</title></circle>
+<circle class="pt" cx="161.6" cy="51.0" r="6.5"><title>CP02: +0.050 ft</title></circle>
+<circle class="pt" cx="170.3" cy="65.5" r="6.5"><title>CP34: +0.053 ft</title></circle>
+<circle class="pt" cx="182.0" cy="51.0" r="6.5"><title>CP23: +0.057 ft</title></circle>
+<circle class="pt" cx="187.8" cy="65.5" r="6.5"><title>CP27: +0.059 ft</title></circle>
+<circle class="pt" cx="190.7" cy="36.5" r="6.5"><title>CP04: +0.060 ft</title></circle>
+<circle class="pt" cx="199.5" cy="51.0" r="6.5"><title>CP28: +0.063 ft</title></circle>
+<circle class="pt" cx="199.5" cy="80.0" r="6.5"><title>CP33: +0.063 ft</title></circle>
+<circle class="pt" cx="202.4" cy="65.5" r="6.5"><title>CP05: +0.064 ft</title></circle>
+<circle class="pt" cx="208.2" cy="36.5" r="6.5"><title>CP15: +0.066 ft</title></circle>
+<circle class="pt" cx="225.7" cy="51.0" r="6.5"><title>CP06: +0.072 ft</title></circle>
+<circle class="pt" cx="234.4" cy="65.5" r="6.5"><title>CP22: +0.075 ft</title></circle>
+<circle class="pt" cx="254.8" cy="51.0" r="6.5"><title>CP07: +0.082 ft</title></circle>
+<circle class="pt" cx="263.5" cy="65.5" r="6.5"><title>CP19: +0.085 ft</title></circle>
+<circle class="pt" cx="283.9" cy="51.0" r="6.5"><title>CP14: +0.092 ft</title></circle>
+<circle class="pt" cx="289.7" cy="65.5" r="6.5"><title>CP18: +0.094 ft</title></circle>
+<circle class="pt" cx="298.5" cy="51.0" r="6.5"><title>CP32: +0.097 ft</title></circle>
+<circle class="pt" cx="313.0" cy="51.0" r="6.5"><title>CP17: +0.102 ft</title></circle>
+<circle class="pt" cx="339.2" cy="51.0" r="6.5"><title>CP09: +0.111 ft</title></circle>
+<circle class="pt" cx="339.2" cy="65.5" r="6.5"><title>CP29: +0.111 ft</title></circle>
+<circle class="pt" cx="353.8" cy="51.0" r="6.5"><title>CP30: +0.116 ft</title></circle>
+<circle class="pt" cx="368.4" cy="51.0" r="6.5"><title>CP11: +0.121 ft</title></circle>
+<circle class="pt" cx="368.4" cy="65.5" r="6.5"><title>CP12: +0.121 ft</title></circle>
+<circle class="pt" cx="391.6" cy="51.0" r="6.5"><title>CP16: +0.129 ft</title></circle>
+<circle class="pt" cx="429.5" cy="51.0" r="6.5"><title>CP08: +0.142 ft</title></circle>
+<circle class="pt" cx="452.8" cy="51.0" r="6.5"><title>CP03: +0.150 ft</title></circle>
+<circle class="pt" cx="519.8" cy="51.0" r="6.5"><title>CP10: +0.173 ft</title></circle>
+</svg>
+<svg class="dots sm" viewBox="0 0 380 136" role="img" aria-label="Horizontal error at each of 33 checkpoints, 0.02 to 0.17 ft">
+<line class="ax" x1="16" y1="113.5" x2="364" y2="113.5"/>
+<line class="tk" x1="16.0" y1="113.5" x2="16.0" y2="118.5"/><text class="tl" x="16.0" y="131.5">0.00</text>
+<line class="tk" x1="85.6" y1="113.5" x2="85.6" y2="118.5"/><text class="tl" x="85.6" y="131.5">0.05</text>
+<line class="tk" x1="155.2" y1="113.5" x2="155.2" y2="118.5"/><text class="tl" x="155.2" y="131.5">0.10</text>
+<line class="tk" x1="224.8" y1="113.5" x2="224.8" y2="118.5"/><text class="tl" x="224.8" y="131.5">0.15</text>
+<line class="tk" x1="294.4" y1="113.5" x2="294.4" y2="118.5"/><text class="tl" x="294.4" y="131.5">0.20</text>
+<line class="tk" x1="364.0" y1="113.5" x2="364.0" y2="118.5"/><text class="tl" x="364.0" y="131.5">0.25</text>
+<line class="cls" x1="244.3" y1="18" x2="244.3" y2="113.5"/>
+<text class="clst" x="248.3" y="13" text-anchor="start">Class RMSE 0.16</text>
+<line class="rm" x1="153.8" y1="18" x2="153.8" y2="113.5"/>
+<text class="rmt" x="149.8" y="13" text-anchor="end">Reported RMSE 0.10</text>
+<circle class="pt" cx="39.7" cy="60.5" r="5.5"><title>CP26: +0.017 ft</title></circle>
+<circle class="pt" cx="55.0" cy="60.5" r="5.5"><title>CP21: +0.028 ft</title></circle>
+<circle class="pt" cx="66.1" cy="73.0" r="5.5"><title>CP13: +0.036 ft</title></circle>
+<circle class="pt" cx="66.1" cy="48.0" r="5.5"><title>CP20: +0.036 ft</title></circle>
+<circle class="pt" cx="71.7" cy="60.5" r="5.5"><title>CP31: +0.040 ft</title></circle>
+<circle class="pt" cx="73.1" cy="85.5" r="5.5"><title>CP24: +0.041 ft</title></circle>
+<circle class="pt" cx="77.2" cy="35.5" r="5.5"><title>CP25: +0.044 ft</title></circle>
+<circle class="pt" cx="85.6" cy="60.5" r="5.5"><title>CP02: +0.050 ft</title></circle>
+<circle class="pt" cx="89.8" cy="73.0" r="5.5"><title>CP34: +0.053 ft</title></circle>
+<circle class="pt" cx="95.3" cy="48.0" r="5.5"><title>CP23: +0.057 ft</title></circle>
+<circle class="pt" cx="98.1" cy="60.5" r="5.5"><title>CP27: +0.059 ft</title></circle>
+<circle class="pt" cx="99.5" cy="85.5" r="5.5"><title>CP04: +0.060 ft</title></circle>
+<circle class="pt" cx="103.7" cy="73.0" r="5.5"><title>CP28: +0.063 ft</title></circle>
+<circle class="pt" cx="103.7" cy="35.5" r="5.5"><title>CP33: +0.063 ft</title></circle>
+<circle class="pt" cx="105.1" cy="98.0" r="5.5"><title>CP05: +0.064 ft</title></circle>
+<circle class="pt" cx="107.9" cy="48.0" r="5.5"><title>CP15: +0.066 ft</title></circle>
+<circle class="pt" cx="116.2" cy="60.5" r="5.5"><title>CP06: +0.072 ft</title></circle>
+<circle class="pt" cx="120.4" cy="73.0" r="5.5"><title>CP22: +0.075 ft</title></circle>
+<circle class="pt" cx="130.1" cy="60.5" r="5.5"><title>CP07: +0.082 ft</title></circle>
+<circle class="pt" cx="134.3" cy="73.0" r="5.5"><title>CP19: +0.085 ft</title></circle>
+<circle class="pt" cx="144.1" cy="60.5" r="5.5"><title>CP14: +0.092 ft</title></circle>
+<circle class="pt" cx="146.8" cy="73.0" r="5.5"><title>CP18: +0.094 ft</title></circle>
+<circle class="pt" cx="151.0" cy="48.0" r="5.5"><title>CP32: +0.097 ft</title></circle>
+<circle class="pt" cx="158.0" cy="60.5" r="5.5"><title>CP17: +0.102 ft</title></circle>
+<circle class="pt" cx="170.5" cy="60.5" r="5.5"><title>CP09: +0.111 ft</title></circle>
+<circle class="pt" cx="170.5" cy="73.0" r="5.5"><title>CP29: +0.111 ft</title></circle>
+<circle class="pt" cx="177.5" cy="48.0" r="5.5"><title>CP30: +0.116 ft</title></circle>
+<circle class="pt" cx="184.4" cy="60.5" r="5.5"><title>CP11: +0.121 ft</title></circle>
+<circle class="pt" cx="184.4" cy="73.0" r="5.5"><title>CP12: +0.121 ft</title></circle>
+<circle class="pt" cx="195.6" cy="48.0" r="5.5"><title>CP16: +0.129 ft</title></circle>
+<circle class="pt" cx="213.7" cy="60.5" r="5.5"><title>CP08: +0.142 ft</title></circle>
+<circle class="pt" cx="224.8" cy="73.0" r="5.5"><title>CP03: +0.150 ft</title></circle>
+<circle class="pt" cx="256.8" cy="60.5" r="5.5"><title>CP10: +0.173 ft</title></circle>
+</svg>
+          <p class="ig-ck">Vertical error at each checkpoint (ft)</p>
+<svg class="dots lg" viewBox="0 0 760 148" role="img" aria-label="Vertical error at each of 33 checkpoints, -0.12 to +0.23 ft">
+<line class="ax" x1="16" y1="125.5" x2="744" y2="125.5"/>
+<line class="tk" x1="88.8" y1="125.5" x2="88.8" y2="130.5"/><text class="tl" x="88.8" y="143.5">-0.2</text>
+<line class="tk" x1="234.4" y1="125.5" x2="234.4" y2="130.5"/><text class="tl" x="234.4" y="143.5">-0.1</text>
+<line class="tk" x1="380.0" y1="125.5" x2="380.0" y2="130.5"/><text class="tl" x="380.0" y="143.5">0</text>
+<line class="tk" x1="525.6" y1="125.5" x2="525.6" y2="130.5"/><text class="tl" x="525.6" y="143.5">+0.1</text>
+<line class="tk" x1="671.2" y1="125.5" x2="671.2" y2="130.5"/><text class="tl" x="671.2" y="143.5">+0.2</text>
+<line class="zero" x1="380.0" y1="22" x2="380.0" y2="125.5"/>
+<line class="cls" x1="666.8" y1="18" x2="666.8" y2="125.5"/>
+<text class="clst" x="662.8" y="13" text-anchor="end">Class RMSE 0.20</text>
+<line class="rm" x1="503.8" y1="18" x2="503.8" y2="125.5"/>
+<line class="cls" x1="93.2" y1="18" x2="93.2" y2="125.5"/>
+<line class="rm" x1="256.2" y1="18" x2="256.2" y2="125.5"/>
+<text class="rmt" x="252.2" y="13" text-anchor="end">Reported RMSE 0.09</text>
+<circle class="pt" cx="206.7" cy="65.5" r="6.5"><title>CP31: -0.119 ft</title></circle>
+<circle class="pt" cx="211.1" cy="80.0" r="6.5"><title>CP26: -0.116 ft</title></circle>
+<circle class="pt" cx="216.9" cy="51.0" r="6.5"><title>CP10: -0.112 ft</title></circle>
+<circle class="pt" cx="241.7" cy="65.5" r="6.5"><title>CP27: -0.095 ft</title></circle>
+<circle class="pt" cx="254.8" cy="80.0" r="6.5"><title>CP19: -0.086 ft</title></circle>
+<circle class="pt" cx="260.6" cy="65.5" r="6.5"><title>CP17: -0.082 ft</title></circle>
+<circle class="pt" cx="279.5" cy="65.5" r="6.5"><title>CP08: -0.069 ft</title></circle>
+<circle class="pt" cx="285.4" cy="80.0" r="6.5"><title>CP06: -0.065 ft</title></circle>
+<circle class="pt" cx="285.4" cy="51.0" r="6.5"><title>CP30: -0.065 ft</title></circle>
+<circle class="pt" cx="289.7" cy="94.5" r="6.5"><title>CP25: -0.062 ft</title></circle>
+<circle class="pt" cx="295.6" cy="65.5" r="6.5"><title>CP03: -0.058 ft</title></circle>
+<circle class="pt" cx="299.9" cy="80.0" r="6.5"><title>CP20: -0.055 ft</title></circle>
+<circle class="pt" cx="305.7" cy="51.0" r="6.5"><title>CP12: -0.051 ft</title></circle>
+<circle class="pt" cx="321.8" cy="65.5" r="6.5"><title>CP13: -0.040 ft</title></circle>
+<circle class="pt" cx="324.7" cy="80.0" r="6.5"><title>CP33: -0.038 ft</title></circle>
+<circle class="pt" cx="327.6" cy="51.0" r="6.5"><title>CP28: -0.036 ft</title></circle>
+<circle class="pt" cx="329.0" cy="94.5" r="6.5"><title>CP09: -0.035 ft</title></circle>
+<circle class="pt" cx="329.0" cy="36.5" r="6.5"><title>CP29: -0.035 ft</title></circle>
+<circle class="pt" cx="329.0" cy="109.0" r="6.5"><title>CP34: -0.035 ft</title></circle>
+<circle class="pt" cx="340.7" cy="65.5" r="6.5"><title>CP14: -0.027 ft</title></circle>
+<circle class="pt" cx="352.3" cy="80.0" r="6.5"><title>CP21: -0.019 ft</title></circle>
+<circle class="pt" cx="355.2" cy="65.5" r="6.5"><title>CP24: -0.017 ft</title></circle>
+<circle class="pt" cx="359.6" cy="51.0" r="6.5"><title>CP05: -0.014 ft</title></circle>
+<circle class="pt" cx="361.1" cy="94.5" r="6.5"><title>CP16: -0.013 ft</title></circle>
+<circle class="pt" cx="378.5" cy="65.5" r="6.5"><title>CP07: -0.001 ft</title></circle>
+<circle class="pt" cx="396.0" cy="65.5" r="6.5"><title>CP04: +0.011 ft</title></circle>
+<circle class="pt" cx="454.3" cy="65.5" r="6.5"><title>CP18: +0.051 ft</title></circle>
+<circle class="pt" cx="473.2" cy="65.5" r="6.5"><title>CP15: +0.064 ft</title></circle>
+<circle class="pt" cx="473.2" cy="80.0" r="6.5"><title>CP23: +0.064 ft</title></circle>
+<circle class="pt" cx="492.1" cy="65.5" r="6.5"><title>CP11: +0.077 ft</title></circle>
+<circle class="pt" cx="496.5" cy="80.0" r="6.5"><title>CP02: +0.080 ft</title></circle>
+<circle class="pt" cx="514.0" cy="65.5" r="6.5"><title>CP22: +0.092 ft</title></circle>
+<circle class="pt" cx="710.5" cy="65.5" r="6.5"><title>CP32: +0.227 ft</title></circle>
+</svg>
+<svg class="dots sm" viewBox="0 0 380 148" role="img" aria-label="Vertical error at each of 33 checkpoints, -0.12 to +0.23 ft">
+<line class="ax" x1="16" y1="126.0" x2="364" y2="126.0"/>
+<line class="tk" x1="50.8" y1="126.0" x2="50.8" y2="131.0"/><text class="tl" x="50.8" y="144.0">-0.2</text>
+<line class="tk" x1="120.4" y1="126.0" x2="120.4" y2="131.0"/><text class="tl" x="120.4" y="144.0">-0.1</text>
+<line class="tk" x1="190.0" y1="126.0" x2="190.0" y2="131.0"/><text class="tl" x="190.0" y="144.0">0</text>
+<line class="tk" x1="259.6" y1="126.0" x2="259.6" y2="131.0"/><text class="tl" x="259.6" y="144.0">+0.1</text>
+<line class="tk" x1="329.2" y1="126.0" x2="329.2" y2="131.0"/><text class="tl" x="329.2" y="144.0">+0.2</text>
+<line class="zero" x1="190.0" y1="22" x2="190.0" y2="126.0"/>
+<line class="cls" x1="327.1" y1="18" x2="327.1" y2="126.0"/>
+<text class="clst" x="323.1" y="13" text-anchor="end">Class RMSE 0.20</text>
+<line class="rm" x1="249.2" y1="18" x2="249.2" y2="126.0"/>
+<line class="cls" x1="52.9" y1="18" x2="52.9" y2="126.0"/>
+<line class="rm" x1="130.8" y1="18" x2="130.8" y2="126.0"/>
+<text class="rmt" x="126.8" y="13" text-anchor="end">Reported RMSE 0.09</text>
+<circle class="pt" cx="107.2" cy="73.0" r="5.5"><title>CP31: -0.119 ft</title></circle>
+<circle class="pt" cx="109.3" cy="85.5" r="5.5"><title>CP26: -0.116 ft</title></circle>
+<circle class="pt" cx="112.0" cy="60.5" r="5.5"><title>CP10: -0.112 ft</title></circle>
+<circle class="pt" cx="123.9" cy="73.0" r="5.5"><title>CP27: -0.095 ft</title></circle>
+<circle class="pt" cx="130.1" cy="85.5" r="5.5"><title>CP19: -0.086 ft</title></circle>
+<circle class="pt" cx="132.9" cy="60.5" r="5.5"><title>CP17: -0.082 ft</title></circle>
+<circle class="pt" cx="142.0" cy="73.0" r="5.5"><title>CP08: -0.069 ft</title></circle>
+<circle class="pt" cx="144.8" cy="85.5" r="5.5"><title>CP06: -0.065 ft</title></circle>
+<circle class="pt" cx="144.8" cy="60.5" r="5.5"><title>CP30: -0.065 ft</title></circle>
+<circle class="pt" cx="146.8" cy="98.0" r="5.5"><title>CP25: -0.062 ft</title></circle>
+<circle class="pt" cx="149.6" cy="48.0" r="5.5"><title>CP03: -0.058 ft</title></circle>
+<circle class="pt" cx="151.7" cy="110.5" r="5.5"><title>CP20: -0.055 ft</title></circle>
+<circle class="pt" cx="154.5" cy="73.0" r="5.5"><title>CP12: -0.051 ft</title></circle>
+<circle class="pt" cx="162.2" cy="85.5" r="5.5"><title>CP13: -0.040 ft</title></circle>
+<circle class="pt" cx="163.6" cy="60.5" r="5.5"><title>CP33: -0.038 ft</title></circle>
+<circle class="pt" cx="164.9" cy="98.0" r="5.5"><title>CP28: -0.036 ft</title></circle>
+<circle class="pt" cx="165.6" cy="48.0" r="5.5"><title>CP09: -0.035 ft</title></circle>
+<circle class="pt" cx="165.6" cy="110.5" r="5.5"><title>CP29: -0.035 ft</title></circle>
+<circle class="pt" cx="165.6" cy="35.5" r="5.5"><title>CP34: -0.035 ft</title></circle>
+<circle class="pt" cx="171.2" cy="73.0" r="5.5"><title>CP14: -0.027 ft</title></circle>
+<circle class="pt" cx="176.8" cy="85.5" r="5.5"><title>CP21: -0.019 ft</title></circle>
+<circle class="pt" cx="178.2" cy="60.5" r="5.5"><title>CP24: -0.017 ft</title></circle>
+<circle class="pt" cx="180.3" cy="98.0" r="5.5"><title>CP05: -0.014 ft</title></circle>
+<circle class="pt" cx="181.0" cy="48.0" r="5.5"><title>CP16: -0.013 ft</title></circle>
+<circle class="pt" cx="189.3" cy="73.0" r="5.5"><title>CP07: -0.001 ft</title></circle>
+<circle class="pt" cx="197.7" cy="85.5" r="5.5"><title>CP04: +0.011 ft</title></circle>
+<circle class="pt" cx="225.5" cy="73.0" r="5.5"><title>CP18: +0.051 ft</title></circle>
+<circle class="pt" cx="234.5" cy="85.5" r="5.5"><title>CP15: +0.064 ft</title></circle>
+<circle class="pt" cx="234.5" cy="60.5" r="5.5"><title>CP23: +0.064 ft</title></circle>
+<circle class="pt" cx="243.6" cy="73.0" r="5.5"><title>CP11: +0.077 ft</title></circle>
+<circle class="pt" cx="245.7" cy="98.0" r="5.5"><title>CP02: +0.080 ft</title></circle>
+<circle class="pt" cx="254.0" cy="85.5" r="5.5"><title>CP22: +0.092 ft</title></circle>
+<circle class="pt" cx="348.0" cy="73.0" r="5.5"><title>CP32: +0.227 ft</title></circle>
+</svg>
+          <p class="ig-note">Each dot is one checkpoint. The class RMSE applies to all points together, not to each point, so a few individual errors can exceed it. Reported RMSE includes checkpoint survey uncertainty.</p>
+        </div>
+      </section>
+      <section class="ig-step ig-last">
+        <p class="ig-n"><span>05</span>The result</p>
+        <div class="ig-res">
+          <div><span class="k">Horizontal RMSE</span><b>0.10 ft</b><span class="s">ASPRS class 0.16 ft &middot; Met</span></div>
+          <div><span class="k">Vertical RMSE, bare ground</span><b>0.09 ft</b><span class="s">ASPRS class 0.20 ft &middot; Below class RMSE</span></div>
+        </div>
+      </section>
+    </div>
+
     <h2><strong>How the Truth Was Grounded</strong></h2>
     <ul>
       <li><strong>Date and site:</strong> November 18, 2026, across about 34 acres of pit floor at an active aggregate pit in Dane County, Wisconsin.</li>
@@ -177,5 +530,95 @@
     &copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin
   </footer>
 </div>
+<script>
+(function(){
+  var root=document.getElementById('imap'); if(!root) return;
+  var D=JSON.parse(document.getElementById('imap-data').textContent);
+  var svg=root.querySelector('svg'), tip=root.querySelector('.imap-tip'), leg=root.querySelector('.imap-legend');
+  var tbar=root.querySelector('.imap-time'), rng=tbar.querySelector('input'), out=tbar.querySelector('output'), play=tbar.querySelector('.imap-play');
+  var NS='http://www.w3.org/2000/svg', layer='pts';
+  var times=D.pts.filter(function(p){return p.t}).map(function(p){return p.t});
+  var T0=Math.min.apply(0,times), T1=Math.max.apply(0,times);
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+  function clock(h){var H=Math.floor(h),M=Math.round((h-H)*60);if(M==60){H++;M=0}var ap=H>=12?'PM':'AM';var h12=H>12?H-12:H;return h12+':'+(M<10?'0':'')+M+' '+ap}
+  function ft(v,s){return (s&&v>0?'+':'')+(v<0?'−':'')+Math.abs(v).toFixed(2)+' ft'}
+  function zc(v){var t=Math.max(-1,Math.min(1,v/0.25));var a=[255,255,255],b=t<0?[47,109,181]:[200,50,40];t=Math.abs(t);return 'rgb('+a.map(function(c,i){return Math.round(c+(b[i]-c)*t)}).join(',')+')'}
+  function tc(h){var t=(h-T0)/(T1-T0);var a=[255,214,170],b=[178,64,0];return 'rgb('+a.map(function(c,i){return Math.round(c+(b[i]-c)*t)}).join(',')+')'}
+  function base(){
+    svg.innerHTML='';
+    el('path',{d:D.poly,'class':'va'});
+    var L=300*D.ftpx,x=26,y=D.h-30;
+    el('rect',{x:x-12,y:y-40,width:L+24,height:58,rx:6,'class':'sbg'});
+    el('line',{x1:x,y1:y,x2:x+L,y2:y,'class':'sb'});
+    var t=el('text',{x:x+L/2,y:y-12,'class':'sbt'});t.textContent='300 ft';
+    var g=el('g',{transform:'translate('+(D.w-46)+',58)'});
+    el('circle',{r:30,'class':'sbg'},g);el('path',{d:'M0,-20 L9,8 L0,2 L-9,8 Z','class':'na'},g);
+  }
+  function hit(p,node){
+    node.setAttribute('tabindex','0');
+    function show(){
+      var s='<b>'+p.n+'</b> · '+(p.type=='gcp'?'Ground control point':p.type=='x'?'Checkpoint, excluded':'Checkpoint');
+      if(p.t) s+='<br>Surveyed '+clock(p.t);
+      if(p.type=='gcp') s+='<br>Used to build the map';
+      else if(p.type=='x') s+='<br>Target folded by wind during the flight';
+      else s+='<br>Horizontal error '+ft(p.dh)+'<br>Vertical error '+ft(p.dz,1);
+      tip.innerHTML=s; tip.hidden=false;
+      var r=svg.getBoundingClientRect(), sx=r.width/D.w;
+      var left=p.x*sx, top=p.y*sx;
+      tip.style.left=Math.min(Math.max(left,90),r.width-90)+'px'; tip.style.top=top+'px';
+      tip.classList.toggle('below',top<90);
+    }
+    node.addEventListener('mouseenter',show);node.addEventListener('focus',show);node.addEventListener('click',function(e){e.stopPropagation();show()});
+    node.addEventListener('mouseleave',function(){tip.hidden=true});node.addEventListener('blur',function(){tip.hidden=true});
+  }
+  function draw(){
+    base(); tip.hidden=true;
+    var cut=T0+(T1-T0)*rng.value/1000;
+    if(layer=='time'){
+      var seq=D.pts.filter(function(p){return p.t&&p.t<=cut+1e-6}).sort(function(a,b){return a.t-b.t});
+      if(seq.length>1) el('polyline',{points:seq.map(function(p){return p.x+','+p.y}).join(' '),'class':'route'});
+      out.textContent=clock(cut);
+    }
+    D.pts.forEach(function(p){
+      if(layer=='err'){
+        if(p.type!='cp') return;
+        var k=600*D.ftpx, x2=p.x+p.de*k, y2=p.y-p.dn*k;
+        el('line',{x1:p.x,y1:p.y,x2:x2,y2:y2,'class':'arr-h'});el('line',{x1:p.x,y1:p.y,x2:x2,y2:y2,'class':'arr','marker-end':'url(#ah)'});
+        hit(p,el('circle',{cx:p.x,cy:p.y,r:13,fill:zc(p.dz),'class':'ez'}));
+        return;
+      }
+      if(layer=='time'){
+        if(!p.t||p.t>cut+1e-6) return;
+        var c=p.type=='gcp'?el('rect',{x:p.x-12,y:p.y-12,width:24,height:24,rx:3,fill:tc(p.t),'class':'tp'}):el('circle',{cx:p.x,cy:p.y,r:12,fill:tc(p.t),'class':'tp'});
+        hit(p,c);return;
+      }
+      var g=el('g',{'class':'pt '+p.type});
+      if(p.type=='gcp') el('path',{d:'M'+p.x+','+(p.y-15)+' l13,23 l-26,0 Z'},g);
+      else if(p.type=='x'){el('circle',{cx:p.x,cy:p.y,r:12,'class':'xbg'},g);el('path',{d:'M'+(p.x-7)+','+(p.y-7)+' l14,14 M'+(p.x+7)+','+(p.y-7)+' l-14,14'},g);}
+      else el('circle',{cx:p.x,cy:p.y,r:10},g);
+      var nr=p.x>D.w-90;var t=el('text',{x:nr?p.x-16:p.x+16,y:p.y-12,'class':'lbl','text-anchor':nr?'end':'start'},g);t.textContent=p.n;
+      hit(p,g);
+    });
+    if(layer=='err'){var m=el('marker',{id:'ah',viewBox:'0 0 10 10',refX:7,refY:5,markerWidth:5,markerHeight:5,orient:'auto-start-reverse'});el('path',{d:'M0,0 L10,5 L0,10 Z','class':'ahp'},m);svg.insertBefore(m,svg.firstChild)}
+    leg.innerHTML= layer=='pts' ? '<span class="lg tri"></span>Ground control point (5) <span class="lg dot"></span>Checkpoint (33) <span class="lg xx">×</span>Excluded (CP01) <span class="lg va"></span>Validation area. Tap or hover a point for its results.'
+      : layer=='err' ? 'Arrows show horizontal error, drawn 600 times actual size. Dot color shows vertical error: <span class="lg dot" style="background:'+zc(-0.2)+'"></span>−0.2 <span class="lg dot" style="background:#fff"></span>0 <span class="lg dot" style="background:'+zc(0.2)+'"></span>+0.2 ft. Tap or hover a point for its values.'
+      : 'Drag the slider to replay the ground survey, 8:50 AM to 12:11 PM. Darker points were surveyed later; squares are ground control points.';
+  }
+  root.querySelectorAll('[role=tab]').forEach(function(b){b.addEventListener('click',function(){
+    layer=b.dataset.layer; root.querySelectorAll('[role=tab]').forEach(function(x){x.setAttribute('aria-selected',x===b)});
+    tbar.hidden=layer!='time'; if(layer=='time'&&rng.value=='1000'){} draw();
+  })});
+  rng.addEventListener('input',draw);
+  var timer=null;
+  play.addEventListener('click',function(){
+    if(timer){clearInterval(timer);timer=null;play.innerHTML='&#9654;';return}
+    if(+rng.value>=1000) rng.value=0;
+    play.innerHTML='&#10074;&#10074;';
+    timer=setInterval(function(){rng.value=Math.min(1000,+rng.value+8);draw();if(+rng.value>=1000){clearInterval(timer);timer=null;play.innerHTML='&#9654;'}},40);
+  });
+  document.addEventListener('click',function(){tip.hidden=true});
+  draw();
+})();
+</script>
 </body>
 </html>
