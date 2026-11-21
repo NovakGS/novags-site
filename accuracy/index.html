@@ -35,6 +35,24 @@
 .acc h3{margin:22px 0 6px;font-size:18px;line-height:1.35;font-weight:600;color:var(--ink)}
 .acc sub{font-size:.7em}
 .acc .legal{font-size:15px}
+.acc .results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:4px 0 8px}
+.acc .res{padding:20px 20px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);box-shadow:inset 0 3px 0 var(--orange);min-width:0}
+.acc .res p{margin:0;max-width:none}
+.acc .res .res-k{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--label)}
+.acc .res .res-v{margin-top:10px;font-size:44px;line-height:1;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.acc .res-v .u{font-size:22px;font-weight:600;letter-spacing:0}
+.acc .res-v .cm{font-size:16px;font-weight:400;letter-spacing:0;color:var(--muted);white-space:nowrap}
+.acc .res .res-s{margin-top:6px;font-size:14px;line-height:1.4;color:var(--muted)}
+.acc .gauge{position:relative;height:10px;margin:40px 0 16px;border-radius:999px;background:var(--hair);box-shadow:inset 0 0 0 1px var(--edge)}
+.acc .g-fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--orange)}
+.acc .g-cls{position:absolute;top:-8px;bottom:-8px;width:2px;margin-left:-1px;background:var(--ink)}
+.acc .g-cls span{position:absolute;bottom:calc(100% + 5px);right:-1px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--label);white-space:nowrap}
+.acc .res-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.acc .badge{display:inline-block;padding:5px 11px;border-radius:999px;font-size:13px;font-weight:600;line-height:1.2;white-space:nowrap;border:1px solid var(--orange);color:var(--orange)}
+.acc .badge.met{background:var(--orange);color:#fff}
+.acc .res-m{font-size:14px;line-height:1.4;color:var(--muted)}
+.acc p.res-note{margin:0 0 18px;font-size:14px;color:var(--faint)}
+@media(max-width:640px){.acc .results{grid-template-columns:1fr}}
 @media(max-width:640px){.acc .dl{grid-template-columns:1fr}}
 </style>
 </head>
@@ -66,13 +84,29 @@
     <p>A separate check on a published National Geodetic Survey mark found ellipsoid heights 0.04 to 0.16 ft low. The cause is unresolved. The report explains what that means when the data is used for absolute elevations.</p>
 
     <h2><strong>The Grounded Truth: Tested Results</strong></h2>
-    <div class="tablebox"><table>
-      <thead><tr><th></th><th>Tested accuracy (RMSE)</th><th>ASPRS class tested (RMSE)</th><th>Result</th></tr></thead>
-      <tbody>
-        <tr><td>Horizontal</td><td>0.10 ft (3.0 cm)</td><td>0.16 ft (5.0 cm)</td><td>Met</td></tr>
-        <tr><td>Vertical, bare ground</td><td>0.09 ft (2.6 cm)</td><td>0.20 ft (6.0 cm)</td><td>Below class RMSE</td></tr>
-      </tbody>
-    </table></div>
+    <div class="results">
+      <div class="res">
+        <p class="res-k">Horizontal</p>
+        <p class="res-v">0.10<span class="u"> ft</span> <span class="cm">(3.0 cm)</span></p>
+        <p class="res-s">Tested RMSE</p>
+        <div class="gauge" role="img" aria-label="Tested RMSE 0.10 ft against an ASPRS class RMSE of 0.16 ft; lower is better">
+          <div class="g-fill" style="width:40%"></div>
+          <div class="g-cls" style="left:64%"><span>Class 0.16 ft</span></div>
+        </div>
+        <div class="res-foot"><span class="badge met">&#10003; Met</span><span class="res-m">ASPRS class RMSE: 0.16 ft (5.0 cm)</span></div>
+      </div>
+      <div class="res">
+        <p class="res-k">Vertical, bare ground</p>
+        <p class="res-v">0.09<span class="u"> ft</span> <span class="cm">(2.6 cm)</span></p>
+        <p class="res-s">Tested RMSE</p>
+        <div class="gauge" role="img" aria-label="Tested RMSE 0.09 ft against an ASPRS class RMSE of 0.20 ft; lower is better">
+          <div class="g-fill" style="width:36%"></div>
+          <div class="g-cls" style="left:80%"><span>Class 0.20 ft</span></div>
+        </div>
+        <div class="res-foot"><span class="badge below">Below class RMSE</span><span class="res-m">ASPRS class RMSE: 0.20 ft (6.0 cm)</span></div>
+      </div>
+    </div>
+    <p class="res-note">Lower is better. Both bars use the same 0 to 0.25 ft scale.</p>
     <p><strong>Accuracy statement.</strong> This data set was tested to meet ASPRS Positional Accuracy Standards for Digital Geospatial Data, Edition 2, Version 2 (2024) for a 0.16 ft (5.0 cm) RMSE<sub>H</sub> horizontal positional accuracy class. The tested horizontal positional accuracy was found to be RMSE<sub>H</sub> = 0.10 ft (3.0 cm). The non-vegetated vertical accuracy measured in the same test was RMSE<sub>V</sub> = 0.09 ft (2.6 cm), below the RMSE of the 0.20 ft (6.0 cm) vertical accuracy class. A &ldquo;tested to meet&rdquo; statement is not made for vertical accuracy until the National Geodetic Survey mark check is resolved.</p>
 
     <ul class="dl">
