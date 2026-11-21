@@ -432,6 +432,30 @@
   .needs .need-card { grid-column: span 2; }
   .needs .need-card:nth-child(-n+2) { grid-column: span 3; }
   .needs .need-card:nth-child(-n+2) .thumb { aspect-ratio: 2 / 1; }
+  /* Tested accuracy summary (homepage), matching the result cards on /accuracy/ */
+  .acc-sum { max-width: 1080px; }
+  .acc-sum .sub-h { max-width: 760px; margin-inline: auto; text-wrap: balance; }
+  .acc-sum .results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; text-align: left; }
+  .acc-sum .res { padding: 20px 20px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); box-shadow: inset 0 3px 0 var(--orange); min-width: 0; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .acc-sum .res p { margin: 0; }
+  .acc-sum .res-k { font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .acc-sum .res p.res-v { margin-top: 10px; font-size: 44px; line-height: 1; font-weight: 700; letter-spacing: -.02em; color: var(--ink); }
+  .acc-sum .res-v .u { font-size: 22px; font-weight: 600; letter-spacing: 0; }
+  .acc-sum .res-v .cm { font-size: 16px; font-weight: 400; letter-spacing: 0; color: var(--muted); white-space: nowrap; }
+  .acc-sum .res p.res-s { margin-top: 6px; font-size: 14px; line-height: 1.4; color: var(--muted); }
+  .acc-sum .gauge { position: relative; height: 10px; margin: 40px 0 16px; border-radius: 999px; background: rgba(128,140,152,.16); box-shadow: inset 0 0 0 1px var(--edge); }
+  .acc-sum .g-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--orange); }
+  .acc-sum .g-cls { position: absolute; top: -8px; bottom: -8px; width: 2px; margin-left: -1px; background: var(--ink); }
+  .acc-sum .g-cls span { position: absolute; bottom: calc(100% + 5px); right: -1px; font-family: "Roboto Mono", Consolas, monospace; font-size: 11px; letter-spacing: .06em; color: var(--faint); white-space: nowrap; }
+  .acc-sum .res-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .acc-sum .badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap; border: 1px solid var(--orange); color: var(--orange); margin: 0; text-transform: none; letter-spacing: 0; background: none; }
+  .acc-sum .badge.met { background: var(--orange); color: #fff; }
+  .acc-sum .res-m { font-size: 14px; line-height: 1.4; color: var(--muted); }
+  .acc-sum .acc-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; margin: 14px 0 0; text-align: left; font-size: 14px; line-height: 1.5; color: var(--faint); }
+  .acc-sum .acc-foot span { flex: 1 1 420px; }
+  .acc-sum .acc-foot a { color: var(--orange); font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .acc-sum .acc-foot a:hover { text-decoration: underline; }
+  @media (max-width: 640px) { .acc-sum .results { grid-template-columns: 1fr; } }
   .sub-h { margin: 0; text-align: center; color: var(--muted); font-size: 15px; }
   .need-card {
     display: flex; flex-direction: column; overflow: hidden;
@@ -726,6 +750,35 @@
     <li><span class="k">Coordinates</span><span class="v">WISCRS, State Plane, NAVD88</span></li>
     <li><span class="k">Credentials</span><span class="v">FAA Part 107 certified</span></li>
   </ul>
+
+  <section class="section acc-sum" aria-labelledby="acc-h">
+    <p class="kicker">Elevated Data | Grounded Truth</p>
+    <h2 id="acc-h">Tested Accuracy</h2>
+    <p class="sub-h">The delivered map and surface model, tested against 33 independent ground checkpoints under the ASPRS Positional Accuracy Standards, Edition 2 (2024).</p>
+    <div class="results">
+      <div class="res">
+        <p class="res-k">Horizontal</p>
+        <p class="res-v">0.10<span class="u"> ft</span> <span class="cm">(3.0 cm)</span></p>
+        <p class="res-s">Tested RMSE</p>
+        <div class="gauge" role="img" aria-label="Tested RMSE 0.10 ft against an ASPRS class RMSE of 0.16 ft; lower is better">
+          <div class="g-fill" style="width:40%"></div>
+          <div class="g-cls" style="left:64%"><span>Class 0.16 ft</span></div>
+        </div>
+        <div class="res-foot"><span class="badge met">&#10003; Met</span><span class="res-m">ASPRS class RMSE: 0.16 ft (5.0 cm)</span></div>
+      </div>
+      <div class="res">
+        <p class="res-k">Vertical, bare ground</p>
+        <p class="res-v">0.09<span class="u"> ft</span> <span class="cm">(2.6 cm)</span></p>
+        <p class="res-s">Tested RMSE</p>
+        <div class="gauge" role="img" aria-label="Tested RMSE 0.09 ft against an ASPRS class RMSE of 0.20 ft; lower is better">
+          <div class="g-fill" style="width:36%"></div>
+          <div class="g-cls" style="left:80%"><span>Class 0.20 ft</span></div>
+        </div>
+        <div class="res-foot"><span class="badge below">Below class RMSE</span><span class="res-m">ASPRS class RMSE: 0.20 ft (6.0 cm)</span></div>
+      </div>
+    </div>
+    <p class="acc-foot"><span>Lower is better. Tested November 18, 2026 on open, bare ground. A formal vertical statement is held until an elevation check on a National Geodetic Survey mark is resolved.</span><a href="/accuracy/">See the test, the report and a sample project report <span aria-hidden="true">&rarr;</span></a></p>
+  </section>
 
   <section class="section cases" aria-labelledby="cases-h">
     <p class="kicker">Case studies</p>
