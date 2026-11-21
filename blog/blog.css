@@ -105,7 +105,7 @@ figure.lead img{aspect-ratio:16/9;object-fit:cover;object-position:50% 0}
 .post-flow td.na{color:var(--faint);font-style:italic}
 .post-flow .answer{clear:both;margin:20px 0 24px;padding:16px 20px;border:1px solid var(--edge);border-left:4px solid var(--orange);border-radius:12px;background:var(--panel)}
 .post-flow .answer p{margin:0}
-.post-flow .answer .q{font-weight:600;color:#fff;margin-bottom:6px}
+.post-flow .answer .q{font-weight:600;color:var(--ink);margin-bottom:6px}
 .post-flow .signoff{clear:both;margin:28px 0 0;padding-top:18px;border-top:1px solid var(--edge)}
 .post-flow .signoff p{margin:0 0 4px;font-size:15px}
 .post-flow .signoff .tag{font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:13px;color:var(--label)}
