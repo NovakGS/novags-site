@@ -31,7 +31,7 @@
 {"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Putting a Drone Map to the Test: Inside an ASPRS Drone Mapping Accuracy Test", "description": "How accurate is drone mapping? A plain-English look at a full ASPRS accuracy test in Wisconsin: checkpoints, ground control, what went wrong, and the results.", "datePublished": "2026-11-21", "image": "https://novakgs.com/blog/drone-mapping-accuracy-test/og.jpg", "mainEntityOfPage": "https://novakgs.com/blog/drone-mapping-accuracy-test/", "author": {"@type": "Organization", "name": "Novak Geospatial Solutions", "url": "https://novakgs.com/"}, "publisher": {"@type": "Organization", "name": "Novak Geospatial Solutions", "logo": {"@type": "ImageObject", "url": "https://novakgs.com/logo-dark-v2.png"}}, "keywords": "drone mapping accuracy, ASPRS accuracy standards, drone survey accuracy, checkpoints, ground control points, RMSE, Dane County, Wisconsin", "about": ["Drone mapping accuracy", "ASPRS Positional Accuracy Standards"], "isPartOf": {"@type": "Blog", "name": "Novak|GS Field Notes", "url": "https://novakgs.com/blog/"}}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How Accurate Is Drone Mapping?", "acceptedAnswer": {"@type": "Answer", "text": "In this test, 0.10 ft (about 1.2 in) horizontally and 0.09 ft (about 1.0 in) vertically on open, bare ground. Vegetation, steep slopes, and water make it harder."}}, {"@type": "Question", "name": "What Is the Difference Between a Ground Control Point and a Checkpoint?", "acceptedAnswer": {"@type": "Answer", "text": "Ground control points anchor the map. Checkpoints are kept hidden from the software and used to grade the finished map."}}, {"@type": "Question", "name": "Does Every Project Get Checked?", "acceptedAnswer": {"@type": "Answer", "text": "Every measured project gets checkpoints and an accuracy report with the data. The full ASPRS test is repeated once a year and whenever the main equipment changes."}}]}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How Accurate Is Drone Mapping?", "acceptedAnswer": {"@type": "Answer", "text": "In this test, 0.10 ft (about 1.2 in) horizontally and 0.09 ft (about 1.0 in) vertically on open, bare ground. Vegetation, steep slopes, and water make it harder."}}, {"@type": "Question", "name": "What Is the Difference Between a Ground Control Point and a Checkpoint?", "acceptedAnswer": {"@type": "Answer", "text": "Ground control points anchor the map. Checkpoints are kept hidden from the software and used to grade the finished map."}}, {"@type": "Question", "name": "Do Clients Get This Check on Every Job?", "acceptedAnswer": {"@type": "Answer", "text": "Every measured job gets checkpoints, and the client gets the accuracy results with the data. The full ASPRS test is repeated once a year and whenever the main equipment changes."}}]}
 </script>
 <style>
 .acct .wide{clear:both;margin:8px 0 20px}
@@ -76,6 +76,10 @@
 .acct .snags em::before{content:"✓ ";color:var(--orange)}
 .acct figure.mid{clear:both;max-width:520px;margin:4px auto 22px}
 .acct p.callout{clear:both;padding:14px 18px;border-left:4px solid var(--orange);border-radius:10px;background:var(--panel);font-size:16px}
+.acct .asks{clear:both;list-style:none;margin:4px 0 16px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.acct .asks li{margin:0;padding:14px;border:1px solid var(--edge);border-radius:10px;background:var(--panel);display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;color:var(--ink)}
+.acct .asks b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px}
+@media(max-width:700px){.acct .asks{grid-template-columns:1fr}}
 .acct p.btns{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px}
 .acct p.btns a.btn{color:#12161c;text-decoration:none}
 .acct p.btns a.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--orange)}
@@ -113,7 +117,7 @@
     <p class="kicker">field notes &middot; <time datetime="2026-11-21">November 21, 2026</time></p>
     <h1><span class="accent">Putting a Drone Map to the Test:</span> Inside an ASPRS Drone Mapping Accuracy Test</h1>
 
-    <p class="lede">A drone map can look sharp and still be in the wrong place. Here&rsquo;s how one was checked against the ground, the same way engineers check every other map, and how it scored.</p>
+    <p class="lede">A drone map can look sharp and still be in the wrong place. Here&rsquo;s a plain-English look at how one was checked against the ground, the same way engineers check every other map, and how it scored.</p>
     <ul class="stats">
       <li><b>39</b>ground targets surveyed</li>
       <li><b>8,317</b>drone photos</li>
@@ -178,8 +182,14 @@
       </div>
     </div>
 
-    <h2 class="clear">What This Means for Your Project</h2>
-    <p>The full test runs once a year. The method runs on every measured job: hidden checkpoints, surveyed the same way, with the results delivered alongside the data.</p>
+    <h2 class="clear">What This Means for Clients</h2>
+    <p>The full test runs once a year. The method runs on every measured job: hidden checkpoints, surveyed the same way, with the results delivered to the client alongside the data. Nobody has to take the accuracy on faith.</p>
+    <p>If you&rsquo;re ever hiring a drone mapping company, these three questions tell you a lot:</p>
+    <ul class="asks">
+      <li><b>?</b><span>Do you check the map with points the software never sees?</span></li>
+      <li><b>?</b><span>Will I get those results with my data?</span></li>
+      <li><b>?</b><span>Which accuracy standard do you follow?</span></li>
+    </ul>
     <p class="btns"><a class="btn" href="/accuracy/">See the Full Results</a> <a class="btn ghost" href="/accuracy/NovakGS_Sample_Project_Verification_Report.pdf">Sample Project Report</a></p>
 
     <div class="why">
@@ -187,7 +197,7 @@
     </div>
 
     <h2 class="clear">Common Questions About Drone Mapping Accuracy</h2>
-    <aside class="answer"><p class="q">How Accurate Is Drone Mapping?</p><p>In this test, 0.10 ft (about 1.2 in) horizontally and 0.09 ft (about 1.0 in) vertically on open, bare ground. Vegetation, steep slopes, and water make it harder.</p></aside><aside class="answer"><p class="q">What Is the Difference Between a Ground Control Point and a Checkpoint?</p><p>Ground control points anchor the map. Checkpoints are kept hidden from the software and used to grade the finished map.</p></aside><aside class="answer"><p class="q">Does Every Project Get Checked?</p><p>Every measured project gets checkpoints and an accuracy report with the data. The full ASPRS test is repeated once a year and whenever the main equipment changes.</p></aside>
+    <aside class="answer"><p class="q">How Accurate Is Drone Mapping?</p><p>In this test, 0.10 ft (about 1.2 in) horizontally and 0.09 ft (about 1.0 in) vertically on open, bare ground. Vegetation, steep slopes, and water make it harder.</p></aside><aside class="answer"><p class="q">What Is the Difference Between a Ground Control Point and a Checkpoint?</p><p>Ground control points anchor the map. Checkpoints are kept hidden from the software and used to grade the finished map.</p></aside><aside class="answer"><p class="q">Do Clients Get This Check on Every Job?</p><p>Every measured job gets checkpoints, and the client gets the accuracy results with the data. The full ASPRS test is repeated once a year and whenever the main equipment changes.</p></aside>
 
     <div class="signoff">
       <p class="tag">Elevated Data<span>|</span>Grounded Truth</p>
