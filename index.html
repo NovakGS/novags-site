@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Novak Geospatial Solutions | Aerial Mapping &amp; Geospatial Data</title>
-<meta name="description" content="Novak Geospatial Solutions provides drone-based aerial mapping and geospatial data from Cross Plains, Wisconsin.">
+<title>Novak Geospatial Solutions | Drone Mapping &amp; Thermal Imaging in Southern Wisconsin</title>
+<meta name="description" content="Drone mapping and thermal imaging from Cross Plains, Wisconsin: accuracy-tested maps, elevation models, and volumes, plus thermal inspections, deer recovery, and drainage tile locating.">
 <link rel="canonical" href="https://novakgs.com/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png">
@@ -12,979 +12,113 @@
 <meta name="theme-color" content="#f3f4f6">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Novak Geospatial Solutions">
-<meta property="og:title" content="Novak Geospatial Solutions | Aerial Mapping &amp; Geospatial Data">
-<meta property="og:description" content="Novak Geospatial Solutions provides drone-based aerial mapping and geospatial data from Cross Plains, Wisconsin.">
+<meta property="og:title" content="Novak Geospatial Solutions | Drone Mapping &amp; Thermal Imaging in Southern Wisconsin">
+<meta property="og:description" content="Drone mapping and thermal imaging from Cross Plains, Wisconsin: accuracy-tested maps, elevation models, and volumes, plus thermal inspections, deer recovery, and drainage tile locating.">
 <meta property="og:url" content="https://novakgs.com/">
 <meta property="og:image" content="https://novakgs.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="628">
-<meta property="og:image:alt" content="DJI Matrice 4E hovering over a field at sunset with the Novak tagline and services">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://novakgs.com/og-image.jpg">
-<style>
-  :root {
-    --bg: #0a0d12;
-    --ink: #eef1f3;
-    --muted: #bec6ce;
-    --faint: #a4adb6;
-    --orange: #e8711a;
-    --blue: #4677a0;
-    --panel: rgba(12, 16, 22, .72);
-    --edge: rgba(255, 255, 255, .12);
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; }
-  body {
-    min-height: 100vh;
-    min-height: 100svh;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  /* Live contour background */
-  #topo {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: var(--bg);
-    z-index: 0;
-  }
-  .vignette {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 42%, rgba(10,13,18,.15) 0%, rgba(10,13,18,.72) 70%, rgba(10,13,18,.92) 100%);
-  }
-  .page {
-    position: relative;
-    z-index: 2;
-    min-height: 100vh;
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 16px calc(28px + env(safe-area-inset-bottom));
-    text-align: center;
-  }
-  .logo {
-    width: 560px;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    filter: drop-shadow(0 6px 28px rgba(0,0,0,.55));
-  }
-  .tagline {
-    margin: 0 0 22px;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--orange);
-    padding-left: .2em;
-    text-shadow: 0 2px 18px rgba(0,0,0,.6);
-  }
-  .tagline .dot { color: var(--orange); }
-  .nw { white-space: nowrap; }
-  .sub {
-    margin: 18px 0 0;
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--muted);
-  }
-  .status {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 16px 0 0;
-    padding: 7px 14px;
-    border: 1px solid var(--edge);
-    border-radius: 999px;
-    background: var(--panel);
-    font-size: 12px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--muted);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-  }
-  .status::before {
-    content: "";
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--orange);
-    box-shadow: 0 0 10px rgba(232,113,26,.7);
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse { 50% { opacity: .35; } }
-
-  .contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 22px;
-  }
-  .contact a {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 17px;
-    padding: 13px 24px;
-    border-radius: 999px;
-    border: 1px solid var(--edge);
-    background: var(--panel);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    transition: border-color .2s, transform .2s;
-  }
-  .contact a:hover { border-color: var(--orange); transform: translateY(-1px); }
-  .contact svg { width: 18px; height: 18px; flex: none; stroke: var(--orange); }
-  .contact .split {
-    display: inline-flex;
-    align-items: stretch;
-    border-radius: 999px;
-    border: 1px solid var(--edge);
-    background: var(--panel);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    transition: border-color .2s;
-  }
-  .contact .split:hover { border-color: var(--orange); }
-  .contact .split a { border: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
-  .contact .split a:hover { transform: none; }
-  .contact .split .main { padding-right: 18px; }
-  .contact .split .sms-link {
-    padding: 0 14px;
-    border-left: 1px solid var(--edge);
-    border-radius: 0;
-  }
-  .contact .split .sms-link:hover { background: rgba(232,113,26,.12); }
-  .contact .sms {
-    font-size: 15px;
-    font-weight: 800;
-    letter-spacing: .06em;
-    color: var(--orange);
-    line-height: 1;
-  }
-  .contact .split .wa-link {
-    padding: 0 18px 0 16px;
-    border-left: 1px solid var(--edge);
-    border-radius: 0 999px 999px 0;
-  }
-  .contact .split .wa-link:hover { background: rgba(37,211,102,.12); }
-  .contact svg.wa { width: 24px; height: 24px; stroke: none; }
-
-  .links {
-    width: 100%;
-    max-width: 820px;
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    text-align: left;
-  }
-  .tile {
-    position: relative;
-    display: block;
-    padding: 18px 20px 18px 22px;
-    border: 1px solid var(--edge);
-    border-left: 3px solid var(--blue);
-    border-radius: 10px;
-    background: var(--panel);
-    color: var(--ink);
-    text-decoration: none;
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    transition: border-color .2s, transform .2s, background .2s;
-  }
-  a.tile:hover { border-color: var(--edge); border-left-color: var(--orange); background: rgba(16,21,29,.82); transform: translateY(-2px); }
-  .tile h2 {
-    margin: 0 0 4px;
-    font-size: 17px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .tile p { margin: 0; font-size: 14px; line-height: 1.45; color: var(--muted); }
-  a.tile h2::after {
-    content: "\2192";
-    margin-left: auto;
-    color: var(--orange);
-    transition: transform .2s;
-  }
-  a.tile:hover h2::after { transform: translateX(3px); }
-  .tile.soon { border-left-color: rgba(255,255,255,.25); cursor: default; }
-  .tile.soon h2, .tile.soon p { opacity: .75; }
-  .badge {
-    margin-left: auto;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--orange);
-    border: 1px solid rgba(232,113,26,.5);
-    border-radius: 999px;
-    padding: 3px 8px;
-    opacity: 1 !important;
-  }
-
-  footer {
-    margin-top: 44px;
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--faint);
-  }
-  footer a { color: var(--muted); }
-  footer .tm { color: var(--muted); letter-spacing: .04em; }
-
-  @media (max-width: 640px) {
-    .page { padding-top: 28px; }
-    .tagline { font-size: 19px; line-height: 1.3; letter-spacing: .14em; padding-left: .14em; margin-bottom: 16px; }
-    .tagline .nw { display: block; }
-    .sub { font-size: 15px; }
-    .sub .sep { display: none; }
-    .sub .nw { display: block; }
-    .contact { width: 100%; }
-    .contact > a, .contact .split { flex: 1 1 100%; }
-    .contact a { justify-content: center; font-size: 16px; }
-    .contact .split .main { flex: 1; }
-    .links { grid-template-columns: 1fr; margin-top: 30px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .status::before { animation: none; }
-    .contact a, .tile { transition: none; }
-  }
-  .page { justify-content: flex-start; }
-  .hero {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .rule {
-    width: 100%;
-    max-width: 920px;
-    height: 1px;
-    margin: 36px 0 30px;
-    border: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.18) 20%, rgba(232,113,26,.55) 50%, rgba(255,255,255,.18) 80%, transparent);
-  }
-  .section {
-    width: 100%;
-    max-width: 920px;
-  }
-  .links.section { margin-top: 14px; }
-  .kicker {
-    margin: 0 0 6px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .24em;
-    text-transform: uppercase;
-    color: var(--orange);
-  }
-  .section > h2 {
-    margin: 0 0 10px;
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: .01em;
-  }
-  .intro {
-    max-width: 640px;
-    margin: 0 auto 26px;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--muted);
-  }
-  .services {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    text-align: left;
-  }
-  .svc {
-    padding: 20px 22px 20px;
-    border: 1px solid var(--edge);
-    border-radius: 12px;
-    background: var(--panel);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-  }
-  .svc .num {
-    font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace;
-    font-size: 12px;
-    letter-spacing: .1em;
-    color: var(--orange);
-  }
-  .svc h3 { margin: 4px 0 6px; font-size: 19px; font-weight: 600; }
-  .svc p { margin: 0 0 12px; font-size: 14px; line-height: 1.5; color: var(--muted); }
-  .svc ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--edge); }
-  .svc li {
-    position: relative;
-    padding: 9px 0 9px 18px;
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    font-size: 15px;
-  }
-  .svc li:last-child { border-bottom: 0; padding-bottom: 0; }
-  .svc li::before {
-    content: "";
-    position: absolute;
-    left: 2px; top: 16px;
-    width: 7px; height: 7px;
-    border: 1.5px solid var(--blue);
-    transform: rotate(45deg);
-  }
-  .white-label {
-    margin-top: 14px;
-    padding: 16px 22px;
-    border: 1px solid var(--edge);
-    border-left: 3px solid var(--orange);
-    border-radius: 12px;
-    background: var(--panel);
-    text-align: left;
-    font-size: 15px;
-    line-height: 1.5;
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-  }
-  .white-label p { margin: 0; }
-  .white-label strong { font-weight: 600; }
-  .white-label .proof { justify-content: flex-start; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--edge); }
-  .white-label span { color: var(--muted); }
-  .proof {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 22px;
-    margin: 22px 0 0;
-    padding: 0;
-    list-style: none;
-    font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace;
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .proof li { display: flex; align-items: center; gap: 8px; }
-  .proof li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
-  .promises {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    text-align: left;
-  }
-  .promises li {
-    padding: 14px 18px;
-    border: 1px solid var(--edge);
-    border-top: 2px solid var(--orange);
-    border-radius: 10px;
-    background: var(--panel);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-  }
-  .promises strong { display: block; font-size: 16px; font-weight: 600; margin-bottom: 3px; }
-  .promises span { font-size: 14px; line-height: 1.45; color: var(--muted); }
-  .links { margin-left: auto; margin-right: auto; }
-  @media (max-width: 640px) {
-    .rule { margin: 28px 0 24px; }
-    .section > h2 { font-size: 23px; }
-    .services, .promises { grid-template-columns: 1fr; }
-    .proof { font-size: 11px; gap: 8px 16px; }
-  }
-  /* v2 layout */
-  .page { padding-top: 56px; }
-  .hero { padding-bottom: 8px; }
-  .hero .logo { width: 520px; }
-  .tagline.under { margin: 14px 0 0; font-size: 18px; }
-  .lede { max-width: 620px; margin: 22px auto 0; font-size: 19px; line-height: 1.55; color: var(--ink); text-wrap: balance; }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: stretch; margin-top: 30px; }
-  .cta-row .contact { margin-top: 0; }
-  .btn-primary {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    min-height: 52px; padding: 13px 28px; border-radius: 999px;
-    background: var(--orange); color: #160b02; font-size: 17px; font-weight: 600; text-decoration: none;
-    box-shadow: 0 8px 26px rgba(232,113,26,.28); transition: background .2s, transform .2s;
-  }
-  .btn-primary:hover { background: #f07f2c; transform: translateY(-1px); }
-  .btn-primary svg { width: 18px; height: 18px; }
-  .mail { margin: 14px 0 0; font-size: 15px; }
-  .mail a { color: var(--muted); }
-  .section { margin-top: 84px; }
-  .section > .kicker, .section > h2 { text-align: center; }
-  .shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
-  .shots figure { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--edge); background: var(--panel); text-align: left; }
-  .shots a { display: block; color: inherit; text-decoration: none; }
-  .shots img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
-  .shots figcaption { padding: 10px 14px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace; }
-  .shots a:hover figcaption { color: var(--orange); }
-  .needs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-top: 22px; text-align: left; }
-  .needs .need-card { grid-column: span 2; }
-  .needs .need-card:nth-child(-n+2) { grid-column: span 3; }
-  .needs .need-card:nth-child(-n+2) .thumb { aspect-ratio: 2 / 1; }
-  /* Tested accuracy summary (homepage), matching the result cards on /accuracy/ */
-  .acc-sum { max-width: 1080px; }
-  .acc-sum .sub-h { max-width: 760px; margin-inline: auto; text-wrap: balance; }
-  .acc-sum .results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; text-align: left; }
-  .acc-sum .res { padding: 20px 20px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); box-shadow: inset 0 3px 0 var(--orange); min-width: 0; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-  .acc-sum .res p { margin: 0; }
-  .acc-sum .res-k { font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
-  .acc-sum .res p.res-v { margin-top: 10px; font-size: 44px; line-height: 1; font-weight: 700; letter-spacing: -.02em; color: var(--ink); }
-  .acc-sum .res-v .u { font-size: 22px; font-weight: 600; letter-spacing: 0; }
-  .acc-sum .res-v .cm { font-size: 16px; font-weight: 400; letter-spacing: 0; color: var(--muted); white-space: nowrap; }
-  .acc-sum .res p.res-s { margin-top: 6px; font-size: 14px; line-height: 1.4; color: var(--muted); }
-  .acc-sum .gauge { position: relative; height: 10px; margin: 40px 0 16px; border-radius: 999px; background: rgba(128,140,152,.16); box-shadow: inset 0 0 0 1px var(--edge); }
-  .acc-sum .g-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--orange); }
-  .acc-sum .g-cls { position: absolute; top: -8px; bottom: -8px; width: 2px; margin-left: -1px; background: var(--ink); }
-  .acc-sum .g-cls span { position: absolute; bottom: calc(100% + 5px); right: -1px; font-family: "Roboto Mono", Consolas, monospace; font-size: 11px; letter-spacing: .06em; color: var(--faint); white-space: nowrap; }
-  .acc-sum .res-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
-  .acc-sum .badge { display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap; border: 1px solid var(--orange); color: var(--orange); margin: 0; text-transform: none; letter-spacing: 0; background: none; }
-  .acc-sum .badge.met { background: var(--orange); color: #fff; }
-  .acc-sum .res-m { font-size: 14px; line-height: 1.4; color: var(--muted); }
-  .acc-sum .acc-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; margin: 14px 0 0; text-align: left; font-size: 14px; line-height: 1.5; color: var(--faint); }
-  .acc-sum .acc-foot span { flex: 1 1 420px; }
-  .acc-sum .acc-foot a { color: var(--orange); font-weight: 600; text-decoration: none; white-space: nowrap; }
-  .acc-sum .acc-foot a:hover { text-decoration: underline; }
-  @media (max-width: 640px) { .acc-sum .results { grid-template-columns: 1fr; } }
-  .sub-h { margin: 0; text-align: center; color: var(--muted); font-size: 15px; }
-  .need-card {
-    display: flex; flex-direction: column; overflow: hidden;
-    border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); color: var(--ink); text-decoration: none;
-    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: border-color .2s, transform .2s;
-  }
-  .need-card .thumb { display: block; position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: #0f141b; border-bottom: 1px solid var(--edge); }
-  .need-card .thumb picture { position: absolute; inset: 0; }
-  .need-card .thumb img, .need-card .thumb video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-  .need-card:hover .thumb img, .need-card:hover .thumb video { transform: scale(1.03); }
-  .need-card .thumb.placeholder { display: flex; align-items: center; justify-content: center; text-align: center;
-    background: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 12px, transparent 12px 24px), #0f141b;
-    outline: 1.5px dashed rgba(255,255,255,.22); outline-offset: -10px;
-    font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
-  .need-card .body { display: flex; flex-direction: column; gap: 6px; padding: 16px 16px 16px; flex: 1; }
-  .need-card strong { font-size: 17px; font-weight: 600; line-height: 1.25; }
-  .need-card .body > span:not(.go) { font-size: 14px; line-height: 1.45; color: var(--muted); }
-  .need-card .go { margin-top: auto; padding-top: 8px; font-size: 14px; font-weight: 600; color: var(--orange); }
-  .need-card:hover { border-color: var(--orange); transform: translateY(-2px); }
-  .aside { margin: 16px 0 0; text-align: center; font-size: 15px; color: var(--muted); }
-  .aside a { color: var(--ink); }
-  .lines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 22px; text-align: left; }
-  .line { padding: 16px 18px; border-top: 2px solid var(--blue); background: var(--panel); border-radius: 0 0 10px 10px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-  .line h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
-  .line p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
-  .who .white-label { margin-top: 12px; }
-  .verify { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: center; text-align: left;
-    padding: 30px; border: 1px solid var(--edge); border-radius: 14px; background: var(--panel); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-  .verify .kicker, .verify h2 { text-align: left; }
-  .verify h2 { margin: 0 0 10px; font-size: 28px; font-weight: 600; }
-  .verify-copy p:last-child { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-  .steps li { display: grid; grid-template-columns: 34px 1fr; column-gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--edge); }
-  .steps li:last-child { border-bottom: 0; }
-  .steps .n { grid-row: span 2; font-family: "SFMono-Regular", Consolas, "Roboto Mono", monospace; font-size: 13px; color: var(--orange); padding-top: 2px; }
-  .steps strong { font-size: 16px; font-weight: 600; }
-  .steps span:last-child { font-size: 14px; color: var(--muted); }
-  .blog-feature { display: grid; grid-template-columns: minmax(0, 1fr) 300px; margin-top: 22px; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: rgba(12,16,22,.78); color: inherit; text-decoration: none; text-align: left; transition: border-color .2s, transform .2s; }
-  .blog-feature:hover { border-color: var(--orange); transform: translateY(-2px); }
-  .blog-feature img { order: 2; display: block; width: 100%; height: 100%; min-height: 200px; object-fit: cover; }
-  .blog-feature .body { display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; }
-  .blog-feature strong { font-size: 21px; font-weight: 600; line-height: 1.25; }
-  .blog-feature .body > span:not(.go) { font-size: 15px; line-height: 1.5; color: var(--muted); }
-  .blog-feature .go { margin-top: auto; padding-top: 8px; font-size: 14px; font-weight: 600; color: var(--orange); }
-  .blog-all { margin: 14px 0 0; text-align: center; font-size: 15px; }
-  .blog-all a { color: var(--muted); }
-  @media (max-width: 760px) { .blog-feature { grid-template-columns: 1fr; } .blog-feature img { order: 0; height: auto; aspect-ratio: 16 / 9; min-height: 0; } }
-  .closing { text-align: center; padding: 36px 24px; border-top: 1px solid var(--edge); }
-  .closing h2 { margin: 0 0 8px; font-size: 30px; font-weight: 600; }
-  .closing > p { margin: 0 0 22px; color: var(--muted); font-size: 16px; }
-  footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; margin-bottom: 10px; }
-  footer nav a { color: var(--muted); }
-  .cases { margin-top: 64px; }
-  .case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 22px; text-align: left; }
-  .case-card { display: flex; flex-direction: column; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: var(--panel); color: var(--ink); text-decoration: none; transition: border-color .2s, transform .2s; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-  .case-card:hover { border-color: var(--orange); transform: translateY(-2px); }
-  .case-card .thumb { display: block; position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: #0f141b; border-bottom: 1px solid var(--edge); }
-  .case-card .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
-  .case-card:hover .thumb img { transform: scale(1.03); }
-  .case-card .body { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px 18px; flex: 1; }
-  .case-card .tag { font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
-  .case-card strong { font-size: 18px; font-weight: 600; line-height: 1.25; }
-  .case-card .body > span.desc { font-size: 15px; line-height: 1.5; color: var(--muted); }
-  .case-card .go { margin-top: auto; padding-top: 8px; font-size: 15px; font-weight: 600; color: var(--orange); }
-  .case-card.feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.45fr 1fr; }
-  .case-card.feature .thumb { aspect-ratio: auto; min-height: 340px; border-bottom: 0; border-right: 1px solid var(--edge); }
-  .case-card.feature .body { padding: 26px 26px 24px; gap: 10px; justify-content: center; }
-  .case-card.feature strong { font-size: 26px; }
-  .case-card.feature .body > span.desc { font-size: 16px; }
-  .case-card.feature.flip { grid-template-columns: 1fr 1.45fr; }
-  .case-card.feature.flip .thumb { order: 2; border-right: 0; border-left: 1px solid var(--edge); }
-  .case-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 6px 0 2px; padding: 0; list-style: none; }
-  .case-stats li { padding: 10px 12px; border: 1px solid var(--edge); border-radius: 10px; background: rgba(255,255,255,.03); }
-  .case-stats b { display: block; font-size: 19px; font-weight: 600; color: var(--ink); }
-  .case-stats span { font-size: 13px; color: var(--faint); }
-  @media (max-width: 900px) {
-    .case-card.feature { grid-template-columns: 1fr; }
-    .case-card.feature .thumb { min-height: 0; aspect-ratio: 16 / 9; border-right: 0; border-bottom: 1px solid var(--edge); }
-    .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .case-grid .case-card.span-md { grid-column: 1 / -1; }
-    .case-card.feature.flip { grid-template-columns: 1fr; }
-    .case-card.feature.flip .thumb { order: 0; border-left: 0; border-bottom: 1px solid var(--edge); }
-  }
-  @media (max-width: 640px) {
-    .cases { margin-top: 48px; }
-    .case-grid { grid-template-columns: 1fr; }
-    .case-card.feature strong { font-size: 22px; }
-    .case-card.feature .body { padding: 20px 18px; }
-    .case-card .thumb { aspect-ratio: 16 / 9; }
-  }
-  @media (max-width: 900px) {
-    .lines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .needs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .needs .need-card, .needs .need-card:nth-child(-n+2) { grid-column: span 1; }
-    .needs .need-card:nth-child(-n+2) .thumb { aspect-ratio: 4 / 3; }
-    .needs .need-card:nth-child(5) { grid-column: 1 / -1; }
-    .needs .need-card:nth-child(5) .thumb { aspect-ratio: 16 / 9; }
-    .verify { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 640px) {
-    .page { padding-top: 32px; }
-    .tagline.under { font-size: 15px; }
-    .lede { font-size: 17px; }
-    .cta-row { width: 100%; }
-    .cta-row .btn-primary, .cta-row .contact { flex: 1 1 100%; }
-    .section { margin-top: 60px; }
-    .lines { grid-template-columns: 1fr; }
-    .needs { gap: 10px; }
-    .verify { padding: 22px 18px; }
-    .verify h2, .closing h2 { font-size: 24px; }
-  }
-  /* v2 header */
-  .page { padding-top: 22px; }
-  .section { max-width: 1080px; }
-  .topnav { width: 100%; max-width: 1080px; display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-bottom: 16px; border-bottom: 1px solid var(--edge); }
-  .topnav .brand { display: block; line-height: 0; }
-  .topnav .brand img { height: 52px; width: auto; }
-  .logo-light { display: none; }
-  .topnav nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; }
-  .topnav nav a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 0; }
-  .topnav nav a:hover { color: var(--ink); }
-  .topnav nav a.nav-quote { background: var(--orange); color: #12161c; padding: 11px 18px; border-radius: 999px; font-weight: 600; margin-left: 4px; }
-  .hero2 { width: 100%; max-width: 1080px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: center; text-align: left; margin-top: 48px; }
-  .eyebrow { margin: 0; font-family: "Roboto Mono", Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
-  .hero2 h1 { margin: 12px 0 16px; font-size: 42px; line-height: 1.12; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; }
-  .lede2 { margin: 0 0 26px; font-size: 18px; line-height: 1.55; color: var(--muted); }
-  .hero2 .cta-row { justify-content: flex-start; margin-top: 0; }
-  .svc-chips { list-style: none; margin: -10px 0 24px; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
-  @media (max-width: 640px) { .svc-chips a { min-height: 40px; font-size: 14px; } }
-  .svc-chips a { display: inline-flex; align-items: center; min-height: 34px; padding: 5px 11px; border: 1px solid var(--edge); border-radius: 999px; background: var(--panel); color: var(--ink); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
-  .svc-chips a:hover { border-color: var(--orange); color: var(--orange); }
-  .svc-chips li { position: relative; }
-  .svc-chips .tip { position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 20; width: max-content; max-width: 270px; padding: 10px 12px; border-radius: 10px; background: #10151c; color: #e6eaee; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 10px 28px rgba(0,0,0,.35); font-size: 13.5px; font-weight: 400; line-height: 1.45; text-align: left; white-space: normal; pointer-events: none; display: none; transform: translateX(calc(-50% + var(--tip-shift, 0px))); }
-  .svc-chips .tip::after { content: ""; position: absolute; top: 100%; left: calc(50% - var(--tip-shift, 0px)); margin-left: -6px; border: 6px solid transparent; border-top-color: #10151c; }
-  @media (hover: hover) { .svc-chips li:hover .tip { display: block; } }
-  .svc-chips a:focus-visible + .tip { display: block; }
-  .hero2 .contact { justify-content: flex-start; }
-  .contact .email .em-full { display: none; }
-  @media (max-width: 640px) { .contact .email .em-short { display: none; } .contact .email .em-full { display: inline; } }
-  .hero-map { position: relative; margin: 0; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: #05070a; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
-  .hero-map > img { display: block; width: 100%; height: auto; }
-  .map-tag { position: absolute; top: 12px; font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #eef1f3; background: rgba(5,7,10,.8); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 5px 10px; }
-  .map-tag.l { left: 12px; } .map-tag.r { right: 12px; }
-  .hero-map figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px; font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; letter-spacing: .06em; color: #c3cad1; background: linear-gradient(transparent, rgba(5,7,10,.88)); }
-  .specs { width: 100%; max-width: 1080px; list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--edge); border-radius: 12px; background: var(--panel); overflow: hidden; text-align: left; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-  .specs li { padding: 14px 16px; border-right: 1px solid var(--edge); display: flex; flex-direction: column; gap: 4px; }
-  .specs li:last-child { border-right: 0; }
-  .specs .k { font-family: "Roboto Mono", Consolas, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
-  .specs .v { font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--ink); }
-  @media (max-width: 960px) {
-    .hero2 { grid-template-columns: 1fr; gap: 28px; margin-top: 32px; }
-    .specs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .specs li:nth-child(3) { border-right: 0; }
-    .specs li:nth-child(-n+3) { border-bottom: 1px solid var(--edge); }
-  }
-  @media (max-width: 640px) {
-    .topnav .brand img { height: 40px; }
-    .topnav nav { width: 100%; justify-content: space-between; gap: 0 12px; }
-    .topnav nav a { font-size: 14px; padding: 12px 0; }
-    .topnav nav a.nav-quote { display: none; }
-    .hero2 h1 { font-size: 30px; }
-    .lede2 { font-size: 16px; }
-    .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .specs li { border-right: 1px solid var(--edge); border-bottom: 1px solid var(--edge); }
-    .specs li:nth-child(2n) { border-right: 0; }
-    .specs li:nth-child(n+5) { border-bottom: 0; }
-    .map-tag { font-size: 11px; }
-  }
-  @media (max-width: 640px) { .hero-map .wide { display: none; } }
-  .theme-toggle { order: 3; }
-  .topnav .brand { order: 1; } .topnav nav { order: 2; margin-left: auto; }
-  @media (max-width: 640px) {
-    .theme-toggle { order: 2; margin-left: auto; }
-    .topnav nav { order: 3; margin-left: 0; }
-  }
-  .hero2 { margin-top: 36px; }
-  @media (max-width: 760px) { .hero2 { margin-top: 22px; } }
-  /* hero swipe */
-  .hs-stage { position: relative; aspect-ratio: 4 / 3; overflow: hidden; touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
-  .hs-stage img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
-  .hs-ortho { clip-path: inset(0 calc(100% - var(--hs, 50%)) 0 0); }
-  .hs-line { position: absolute; top: 0; bottom: 0; left: var(--hs, 50%); width: 2px; margin-left: -1px; background: #eef1f3; box-shadow: 0 0 0 1px rgba(0,0,0,.35); pointer-events: none; }
-  .hs-knob { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin: -20px 0 0 -20px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #eef1f3; color: #10151c; box-shadow: 0 4px 14px rgba(0,0,0,.45); }
-  .hs-knob svg { width: 20px; height: 20px; }
-  .hs-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .hs-range { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
-  .hero-map:focus-within { outline: 2px solid var(--orange); outline-offset: 3px; }
-  .hs-hint { color: #e8711a; }
-  .hero-map figcaption, .hs-stage .map-tag { pointer-events: none; }
-  .hero-map figcaption { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
-  .hs-ctoggle { pointer-events: auto; flex: none; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #e8711a; background: #e8711a; color: #12161c; font: 600 13px Roboto, "Segoe UI", system-ui, sans-serif; letter-spacing: 0; cursor: pointer; }
-  .hs-ctoggle[aria-pressed="false"] { background: rgba(5,7,10,.8); color: #eef1f3; border-color: rgba(255,255,255,.3); }
-  .hs-ctoggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-  #heroSwipe.no-contours .hs-cont { opacity: 0; }
-  .hs-cont { transition: opacity .2s; }
-  .section > h2 .brk { color: var(--orange); font-weight: 400; }
-  /* light theme preview */
-  html[data-theme="light"] { --bg: #f3f4f6; --ink: #151b22; --muted: #46515d; --faint: #5b6773; --panel: #ffffff; --edge: rgba(21,27,34,.13); }
-  html[data-theme="light"] body { background: var(--bg); }
-  html[data-theme="light"] .vignette { display: none; }
-  html[data-theme="light"] .logo-dark { display: none; }
-  html[data-theme="light"] .logo-light { display: block; }
-  html[data-theme="light"] .hero-map { box-shadow: 0 16px 40px rgba(20,30,40,.18); }
-  html[data-theme="light"] .case-card, html[data-theme="light"] .need-card, html[data-theme="light"] .line, html[data-theme="light"] .verify, html[data-theme="light"] .promises li, html[data-theme="light"] .blog-feature { box-shadow: 0 1px 2px rgba(20,30,40,.06); }
-  html[data-theme="light"] .case-stats li { background: #f6f7f9; }
-  html[data-theme="light"] .blog-feature { background: var(--panel); }
-</style>
-<script src="/topo.js?v=3" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="/pages.css">
 <link rel="stylesheet" href="/theme.css">
 <script src="/theme.js"></script>
+<script src="/topo.js?v=3" defer></script>
+<script>
+/* Old homepage section links now live on the mapping page. */
+(function(){var h=location.hash;if(/^#(need|cases-h|verify|acc-h|who|pilot|blog-h|closing)$/.test(h))location.replace('/mapping/'+h);})();
+</script>
 <script>
   window.origami = window.origami || function () { (origami.q = origami.q || []).push(arguments) };
 </script>
 <script async src="/_ov/o.js" data-key="og_pk_Su-2C-gMMfibonqqBRnoTw" data-endpoint="/_ov"></script>
 </head>
 <body data-topo="page" data-topo-style="fine">
-
 <header class="band" data-topo="band" data-topo-style="fine">
   <div class="band-row">
     <a class="band-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
-  <div class="band-nav">
-    <nav aria-label="Main">
-      <a href="#need">Services</a>
-      <a href="#cases-h">Case studies</a>
-      <a href="/accuracy/">Accuracy</a>
-      <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
-      <a class="nav-quote" href="/quote/">Request a quote</a>
-    </nav>
-    <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Light / dark">
-      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
-      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg>
-    </button>
-  </div>
+    <div class="band-nav">
+      <nav aria-label="Main">
+        <a href="/mapping/">Mapping</a>
+        <a href="/thermal/">Thermal</a>
+        <a href="/mapping/#cases-h">Case studies</a>
+        <a href="/accuracy/">Accuracy</a>
+        <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
+        <a class="nav-quote" href="/quote/">Request a quote</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>
+    </div>
   </div>
 </header>
+<div class="pg">
 
-<div class="page">
+<section class="hero center">
+<p class="eyebrow">Drone Mapping &amp; Thermal Imaging &middot; Southern Wisconsin</p>
+<h1>Measured Maps and Thermal Imaging, From One Pilot</h1>
+<p class="lede">Novak|GS flies two aircraft: an RTK mapping drone for accuracy-tested maps and measurements, and a thermal drone for finding what the eye can't see. Choose where to start.</p>
+</section>
 
-  <header class="hero2">
-    <div class="hero-copy">
-      <p class="eyebrow">Drone mapping &middot; Southern Wisconsin</p>
-      <h1>Accurate aerial maps, elevation models, stockpile volumes, and cut/fill analysis.</h1>
-      <p class="lede2">RTK-positioned drone flights, processed in-house and delivered in the formats your CAD, GIS, and accounting teams already use.</p>
-      <ul class="svc-chips" aria-label="Services">
-        <li><a href="/quote/?path=map" aria-describedby="tip-0">Orthomosaics</a><span class="tip" role="tooltip" id="tip-0">One seamless, true-to-scale aerial map stitched from hundreds of overlapping photos. Distances and areas can be measured right on it.</span></li>
-        <li><a href="/quote/?path=tech" aria-describedby="tip-1">Contours</a><span class="tip" role="tooltip" id="tip-1">Lines of equal elevation drawn from the bare-earth model, usually every 1 or 2 ft, for grading, drainage, and site planning.</span></li>
-        <li><a href="/quote/?path=volumes" aria-describedby="tip-2">Stockpile volumes</a><span class="tip" role="tooltip" id="tip-2">The measured volume of each pile from a 3D surface of the site, plus estimated tonnage using your material densities, for inventory counts and month-end reporting.</span></li>
-        <li><a href="/quote/?path=volumes" aria-describedby="tip-3">Cut/fill analysis</a><span class="tip" role="tooltip" id="tip-3">Compares the ground today with a design surface or an earlier flight to show how much earth has to come off (cut) or go in (fill), and where.</span></li>
-        <li><a href="/quote/?path=tech" aria-describedby="tip-4">Progress photos</a><span class="tip" role="tooltip" id="tip-4">Repeat flights from the same vantage points, documenting a build phase by phase.</span></li>
-        <li><a href="/quote/?path=photos" aria-describedby="tip-5">Photo &amp; video</a><span class="tip" role="tooltip" id="tip-5">Aerial photos and video for commercial and real estate work, plus homes, farms, and events.</span></li>
-        <li><a href="/quote/?path=tech" aria-describedby="tip-6">3D models</a><span class="tip" role="tooltip" id="tip-6">A measurable, textured 3D model of a structure or site, built from an automated orbit flight.</span></li>
-        <li><a href="/quote/?path=tech" aria-describedby="tip-7">White-label RTK</a><span class="tip" role="tooltip" id="tip-7">For surveyors and engineers: RTK-positioned flights captured in your coordinate system and file formats, for you to process and deliver under your own name.</span></li>
+<section aria-label="Service lines">
+<div class="lanes">
+  <article class="lane">
+    <a class="lane-art" href="/mapping/" aria-label="Explore mapping services">
+      <img src="/img/hero/elevation.jpg" alt="Color elevation model of a mapped property" width="1200" height="900">
+      <img class="half" src="/img/hero/ortho.jpg" alt="Orthomosaic of the same property in fall color" width="1200" height="900">
+      <img src="/img/hero/contours.png" alt="" width="1200" height="900" aria-hidden="true">
+      <span class="seam" aria-hidden="true"></span>
+      <span class="tag l">Orthomosaic</span><span class="tag r">Elevation</span>
+    </a>
+    <div class="lane-body">
+      <p class="eyebrow">Measure It</p>
+      <h2>Mapping</h2>
+      <p>RTK-positioned flights turned into maps, elevation models, and volumes, checked against ground points and delivered in CAD and GIS formats.</p>
+      <ul class="lane-list" aria-label="Mapping services">
+        <li><span>Orthomosaics</span></li><li><span>Elevation &amp; Contours</span></li><li><span>Stockpile Volumes</span></li><li><span>Cut/Fill</span></li><li><span>Progress Photos</span></li><li><span>3D Models</span></li><li><span>Real Estate Media</span></li><li><span>White-Label RTK</span></li>
       </ul>
-      <div class="cta-row">
-        <a class="btn-primary" href="/quote/">Request a quote
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      <div class="contact">
-        <div class="split">
-          <a class="main" href="tel:+16088200224">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-            (608) 820-0224
-          </a>
-          <a class="sms-link" href="sms:+16088200224" aria-label="Send a text message" title="Send a text"><span class="sms">SMS</span></a>
-          <a class="wa-link" href="https://wa.me/16088200224" rel="noopener" aria-label="Message on WhatsApp" title="Message on WhatsApp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2z" fill="#25D366"/><path d="M16.9 14.2c-.3-.1-1.6-.8-1.8-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.5-1.8-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z" fill="#fff"/></svg></a>
-        </div>
-        <a class="email" href="mailto:info@novakgs.com" title="info@novakgs.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
-          <span class="em-short">Email</span><span class="em-full">info@novakgs.com</span>
-        </a>
-      </div>
-      </div>
+      <a class="btn" href="/mapping/">Explore Mapping <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <figure class="hero-map" id="heroSwipe">
-      <div class="hs-stage">
-        <img class="hs-elev" src="/img/hero/elevation.jpg" alt="Color elevation model of Enchanted Valley Acres" width="1200" height="900">
-        <img class="hs-ortho" src="/img/hero/ortho.jpg" alt="Orthomosaic of Enchanted Valley Acres in fall color" width="1200" height="900">
-        <img class="hs-cont" src="/img/hero/contours.png" alt="" width="1200" height="900" aria-hidden="true">
-        <div class="hs-line" aria-hidden="true"><span class="hs-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
-        <span class="map-tag l">Orthomosaic</span>
-        <span class="map-tag r">Elevation</span>
-      </div>
-      <label class="hs-label" for="hsRange">Drag to compare the orthomosaic and elevation model</label>
-      <input class="hs-range" id="hsRange" type="range" min="0" max="100" step="1" value="50">
-      <figcaption><span>Enchanted Valley Acres<span class="wide"> &middot; 110.5 ac &middot; NAVD88</span></span><button class="hs-ctoggle" type="button" aria-pressed="true">2 ft contours: On</button></figcaption>
-    </figure>
-  </header>
-
-  <ul class="specs" aria-label="Technical specifications">
-    <li><span class="k">Measurements</span><span class="v">GCP &amp; checkpoint QA/QC</span></li>
-    <li><span class="k">Resolution</span><span class="v">Under 1 in per pixel</span></li>
-    <li><span class="k">Elevation</span><span class="v">Bare-earth DEM, <span class="nw">1&ndash;2 ft</span> contours</span></li>
-    <li><span class="k">Formats</span><span class="v">GeoTIFF, DXF, LAS, KMZ</span></li>
-    <li><span class="k">Coordinates</span><span class="v">WISCRS, State Plane, NAVD88</span></li>
-    <li><span class="k">Credentials</span><span class="v">FAA Part 107 certified</span></li>
-  </ul>
-
-  <section class="section acc-sum" aria-labelledby="acc-h">
-    <p class="kicker">Elevated Data | Grounded Truth</p>
-    <h2 id="acc-h">Tested Accuracy</h2>
-    <p class="sub-h">The delivered map and surface model, tested against 33 independent ground checkpoints under the ASPRS Positional Accuracy Standards, Edition 2 (2024).</p>
-    <div class="results">
-      <div class="res">
-        <p class="res-k">Horizontal</p>
-        <p class="res-v">0.10<span class="u"> ft</span> <span class="cm">(3.0 cm)</span></p>
-        <p class="res-s">Tested RMSE</p>
-        <div class="gauge" role="img" aria-label="Tested RMSE 0.10 ft against an ASPRS class RMSE of 0.16 ft; lower is better">
-          <div class="g-fill" style="width:40%"></div>
-          <div class="g-cls" style="left:64%"><span>Class 0.16 ft</span></div>
-        </div>
-        <div class="res-foot"><span class="badge met">&#10003; Met</span><span class="res-m">ASPRS class RMSE: 0.16 ft (5.0 cm)</span></div>
-      </div>
-      <div class="res">
-        <p class="res-k">Vertical, bare ground</p>
-        <p class="res-v">0.09<span class="u"> ft</span> <span class="cm">(2.6 cm)</span></p>
-        <p class="res-s">Tested RMSE</p>
-        <div class="gauge" role="img" aria-label="Tested RMSE 0.09 ft against an ASPRS class RMSE of 0.20 ft; lower is better">
-          <div class="g-fill" style="width:36%"></div>
-          <div class="g-cls" style="left:80%"><span>Class 0.20 ft</span></div>
-        </div>
-        <div class="res-foot"><span class="badge below">Below class RMSE</span><span class="res-m">ASPRS class RMSE: 0.20 ft (6.0 cm)</span></div>
-      </div>
-    </div>
-    <p class="acc-foot"><span>Lower is better. Tested November 18, 2026 on open, bare ground. A formal vertical statement is held until an elevation check on a National Geodetic Survey mark is resolved.</span><a href="/accuracy/">See the test, the report, and a sample project report <span aria-hidden="true">&rarr;</span></a></p>
-  </section>
-
-  <section class="section cases" aria-labelledby="cases-h">
-    <p class="kicker">Case studies</p>
-    <h2 id="cases-h">See the data before you hire</h2>
-    <p class="sub-h">Real flights, real deliverables, real property near Cross Plains.</p>
-    <div class="case-grid">
-      <a class="case-card feature" href="/case-studies/photogrammetry/">
-        <span class="thumb"><img src="/img/work/cases/ev-showcase.jpg" alt="Aerial view of Enchanted Valley Acres in fall: red barn, visitor area, and parking below a wooded ridge" width="1400" height="787"></span>
-        <span class="body">
-          <span class="tag">Showcase &middot; Enchanted Valley Acres</span>
-          <strong>A complete site intelligence package</strong>
-          <span class="desc">Orthomosaic, bare-earth elevation model, and 2-foot contours for a farm and Christmas tree operation, from one day of flights.</span>
-          <ul class="case-stats">
-            <li><b>110.5</b><span>acres mapped</span></li>
-            <li><b>9,578</b><span>photos</span></li>
-            <li><b>2 ft</b><span>contours</span></li>
-          </ul>
-          <span class="go">See the full package <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="case-card" href="/case-studies/photogrammetry/tree-inventory/">
-        <span class="thumb"><img src="/img/work/cases/ev-trees.jpg" alt="Christmas trees detected and colored by height" width="800" height="600" loading="lazy"></span>
-        <span class="body">
-          <span class="tag">Counting &amp; inventory</span>
-          <strong>24,099 trees counted and sized</strong>
-          <span class="desc">AI-assisted tree counts across 30 blocks, sorted into retail size classes.</span>
-          <span class="go">View case study <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="case-card" href="/case-studies/photogrammetry/hunting-land/">
-        <span class="thumb"><img src="/img/work/cases/ev-hunting.jpg" alt="Modeled drainage paths and benches over a wooded ridge" width="800" height="600" loading="lazy"></span>
-        <span class="body">
-          <span class="tag">Hunting land</span>
-          <strong>Terrain mapped for stands and access</strong>
-          <span class="desc">Modeled drainage, benches, and estimated wind thermals from the elevation model.</span>
-          <span class="go">View case study <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="case-card span-md" href="/work/deer-stand/">
-        <span class="thumb"><img src="/img/work/cases/stand-3d.jpg" alt="Textured 3D model of a hunting stand" width="800" height="600" loading="lazy"></span>
-        <span class="body">
-          <span class="tag">3D structures</span>
-          <strong>A measurable 3D model from one flight</strong>
-          <span class="desc">A hunting stand captured in 3D you can spin, measure, and fly around.</span>
-          <span class="go">View case study <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="case-card feature flip" href="/case-studies/real-estate/residential/">
-        <span class="thumb"><img src="/img/work/cases/re-residential.jpg" alt="Rural home seen across a pond, with prairie, garden, and a wooded hillside behind it" width="1400" height="787" loading="lazy"></span>
-        <span class="body">
-          <span class="tag">Residential real estate &middot; Blue Mounds</span>
-          <strong>Acreage listings, seen from above</strong>
-          <span class="desc">A 3D fly-through, listing aerials, and parcel-overlay photos that show buyers how a rural property lays out before the first showing.</span>
-          <ul class="case-stats">
-            <li><b>15</b><span>acres</span></li>
-            <li><b>1,000+</b><span>photos</span></li>
-            <li><b>4K</b><span>fly-through</span></li>
-          </ul>
-          <span class="go">See the listing package <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-    </div>
-  </section>
-
-  <section class="section need" aria-labelledby="need">
-    <p class="kicker">Start here</p>
-    <h2 id="need">What&rsquo;s your mission?</h2>
-    <p class="sub-h">Pick what you need to start a quote.</p>
-    <div class="needs">
-      <a class="need-card" href="/quote/?path=tech">
-        <span class="thumb"><picture><source media="(min-width: 901px)" srcset="/img/work/map-reports-wide.jpg"><img src="/img/work/map-reports.jpg" alt="Three map sheets fanned out: orthomosaic, bare-earth elevation, and two-foot contours" width="960" height="720" loading="lazy"></picture></span>
-        <span class="body">
-          <strong>Maps, elevation &amp; contours</strong>
-          <span>Orthomosaics, elevation models, and contour maps of a site, farm, or parcel.</span>
-          <span class="go">Start a quote <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="need-card" href="/quote/?path=tech">
-        <span class="thumb"><picture><source media="(min-width: 901px)" srcset="/img/work/progress-wide.jpg"><img src="/img/work/progress.jpg" alt="Aerial view of a construction site with a framed building and poured foundation, labeled progress flight, vantage 03" width="960" height="720" loading="lazy"></picture></span>
-        <span class="body">
-          <strong>Construction progress photos</strong>
-          <span>Repeat flights from the same vantage points to document a build, phase by phase.</span>
-          <span class="go">Start a quote <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="need-card" href="/quote/?path=photos">
-        <span class="thumb"><img src="/img/work/aerial-photo.jpg" alt="Oblique aerial photo of a farm and orchard in fall color" width="960" height="720" loading="lazy"></span>
-        <span class="body">
-          <strong>Aerial photos &amp; video</strong>
-          <span>A home, farm, land, listing, or event, shot from above.</span>
-          <span class="go">Start a quote <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="need-card" href="/quote/?path=tech">
-        <span class="thumb"><img src="/img/work/white-label.jpg" alt="RTK drone controller in its case, with LAS, DXF, GeoTIFF, and LandXML file formats" width="960" height="720" loading="lazy"></span>
-        <span class="body">
-          <strong>White-label RTK capture</strong>
-          <span>For surveyors and engineers: RTK data captured in your coordinate system and file formats.</span>
-          <span class="go">Start a quote <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="need-card" href="/quote/?path=tech">
-        <span class="thumb"><video src="/img/work/3d-flythrough.mp4" poster="/img/work/3d-flythrough-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Fly-around of a measured 3D model of a hunting stand"></video></span>
-        <span class="body">
-          <strong>Other mapping &amp; data</strong>
-          <span>3D capture, drainage maps, intelligent inventories (like counting and sizing every tree on a tree farm), and hunting land intel: wind-thermal scouting, benches, ridges, and travel routes.</span>
-          <span class="go">Start a quote <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-    </div>
-    <p class="aside">Not sure what fits? <a href="/quote/?path=unsure">Describe the project</a> and the right option will be recommended.</p>
-  </section>
-
-  <section class="section who" aria-labelledby="who">
-    <p class="kicker">Who it's for</p>
-    <h2 id="who">Built for the people who build, move, sell, and grow on Wisconsin land</h2>
-    <div class="lines">
-      <div class="line"><h3>Developers &amp; builders</h3><p>Pre-development assessments, construction progress tracking, time-lapse, and marketing media.</p></div>
-      <div class="line"><h3>Contractors &amp; aggregate</h3><p>Stockpile volume reports, cut/fill, orthomosaic site maps, and progress documentation.</p></div>
-      <div class="line"><h3>Realtors &amp; landowners</h3><p>Acreage listing packages, high-resolution aerial maps, and property overview imagery.</p></div>
-      <div class="line"><h3>Farms &amp; agriculture</h3><p>Field and farmstead maps, drainage maps, grain and silage volumes, crop scouting.</p></div>
-    </div>
-  </section>
-
-  <section class="section verify" aria-labelledby="verify">
-    <div class="verify-copy">
-      <p class="kicker">Measured, then verified</p>
-      <h2 id="verify">Numbers that hold up</h2>
-      <p>Volumes, surfaces, and elevations drive billing, design, and inventory decisions. Measurement jobs include ground checkpoints and an accuracy report.</p>
-    </div>
-    <ol class="steps">
-      <li><span class="n">01</span><strong>RTK-positioned flights</strong><span>Every image is tied to corrected GPS positions.</span></li>
-      <li><span class="n">02</span><strong>Ground control on measurement jobs</strong><span>Targets set and measured on site before processing.</span></li>
-      <li><span class="n">03</span><strong>Checkpoint report delivered</strong><span>Horizontal and vertical accuracy stated, not assumed.</span></li>
-    </ol>
-  </section>
-
-  <section class="section pilot" aria-labelledby="pilot">
-    <p class="kicker">One pilot. Zero guesswork.</p>
-    <h2 id="pilot">One pilot, first call to final file</h2>
-    <p class="intro">The person who quotes the site is the person who flies it, processes the data, and answers the phone. No hand-offs, no account managers, no getting lost in someone else&rsquo;s queue.</p>
-    <ul class="promises">
-      <li><strong>Direct line</strong><span>Call or text the pilot, not a front desk.</span></li>
-      <li><strong>Same pilot, every visit</strong><span>Repeat flights are run the same way, by the same person.</span></li>
-      <li><strong>Quick replies</strong><span>Answers within one business day.</span></li>
-    </ul>
-  </section>
-
-  <section class="section blog-link" aria-labelledby="blog-h">
-    <h2 id="blog-h"><span class="brk" aria-hidden="true">[</span> field notes <span class="brk" aria-hidden="true">]</span></h2>
-    <a class="blog-feature" href="/blog/ngs-survey-marks-drone-mapping-accuracy/">
-      <img src="/blog/ngs-survey-marks-drone-mapping-accuracy/og.jpg" alt="" width="1200" height="628" loading="lazy">
-      <span class="body">
-        <strong>Hidden in Plain Sight: Checking Drone Mapping Accuracy Against NGS Survey Marks</strong>
-        <span>What does commercial drone work have to do with geocaching? A day hunting brass survey marks near Cross Plains, and what our GPS readings showed.</span>
-        <span class="go">Read the post <span aria-hidden="true">&rarr;</span></span>
-      </span>
+  </article>
+  <article class="lane">
+    <a class="lane-art" href="/thermal/" aria-label="Explore thermal services">
+      <span class="heat" aria-hidden="true"></span>
+      <span class="tag l">Thermal</span>
+      <span class="scale" aria-hidden="true">Cool<i></i>Warm</span>
     </a>
-    <p class="blog-all"><a href="/blog/">See all posts</a></p>
-  </section>
-
-  <section class="section closing" aria-labelledby="closing">
-    <h2 id="closing">Get a quote in about a minute</h2>
-    <p>Tell Novak|GS what you need and where. A reply comes within one business day.</p>
-    <a class="btn-primary" href="/quote/">Request a quote
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-    <ul class="proof">
-      <li>FAA Part 107 certified</li>
-      <li>RTK-positioned</li>
-      <li>Accuracy-verified</li>
-    </ul>
-  </section>
-
-  <footer>
-    <nav aria-label="Footer"><a href="/blog/">Blog</a><a href="/card/">Digital business card</a><a href="/privacy/">Privacy</a><a href="/tos/">Terms of Service</a></nav>
-    <p><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 BUCK2NINETY LLC &middot; Novak Geospatial Solutions&trade; &middot; Cross Plains, Wisconsin</p>
-  </footer>
+    <div class="lane-body">
+      <p class="eyebrow">Find It</p>
+      <h2>Thermal</h2>
+      <p>A radiometric thermal camera that reads surface temperature from the air, day or night, for searches and inspections that visible light can't answer.</p>
+      <ul class="lane-list" aria-label="Thermal services">
+        <li><a href="/thermal/deer-recovery/">Deer Recovery</a></li><li><a href="/thermal/inspections/">Thermal Inspections</a></li><li><a href="/thermal/drainage-tile/">Drainage Tile Locating</a></li><li><a href="/thermal/#more">More Thermal Work</a></li>
+      </ul>
+      <a class="btn" href="/thermal/">Explore Thermal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </article>
 </div>
-<script>
-(function(){
-  var chips=document.querySelectorAll('.svc-chips a');
-  function place(a){var t=a.parentNode.querySelector('.tip');if(!t)return;a.style.removeProperty('--tip-shift');t.style.setProperty('--tip-shift','0px');
-    var r=t.getBoundingClientRect(),vw=document.documentElement.clientWidth,pad=12,shift=0;
-    if(r.left<pad)shift=pad-r.left;else if(r.right>vw-pad)shift=(vw-pad)-r.right;
-    t.style.setProperty('--tip-shift',shift+'px');}
-  for(var i=0;i<chips.length;i++){(function(a){a.addEventListener('mouseenter',function(){place(a)});a.addEventListener('focus',function(){place(a)});})(chips[i]);}
-})();
-</script>
-<script>
-(function(){
-  var fig=document.getElementById('heroSwipe'); if(!fig) return;
-  var stage=fig.querySelector('.hs-stage'), range=fig.querySelector('.hs-range'), drag=false;
-  function set(v){ v=Math.max(0,Math.min(100,v)); fig.style.setProperty('--hs', v+'%'); range.value=Math.round(v); }
-  function fromX(x){ var r=stage.getBoundingClientRect(); set((x-r.left)/r.width*100); }
-  stage.addEventListener('pointerdown',function(e){ drag=true; stage.setPointerCapture(e.pointerId); fromX(e.clientX); });
-  stage.addEventListener('pointermove',function(e){ if(drag) fromX(e.clientX); });
-  function end(){ drag=false; }
-  stage.addEventListener('pointerup',end); stage.addEventListener('pointercancel',end);
-  range.addEventListener('input',function(){ set(+range.value); });
-  var ct=fig.querySelector('.hs-ctoggle');
-  if(ct){ ct.addEventListener('click',function(){ var on=ct.getAttribute('aria-pressed')!=='true'; ct.setAttribute('aria-pressed',on?'true':'false'); ct.textContent='2 ft contours: '+(on?'On':'Off'); fig.classList.toggle('no-contours',!on); }); }
-  set(50);
-})();
-</script>
+</section>
+
+<section aria-label="Why Novak|GS">
+<ul class="strip">
+  <li><span class="k">Tested Accuracy</span><span class="v">0.10 ft horizontal RMSE, <a href="/accuracy/">ASPRS-tested</a></span></li>
+  <li><span class="k">Credentials</span><span class="v">FAA Part 107 certified</span></li>
+  <li><span class="k">One Pilot</span><span class="v">The same person quotes, flies, and delivers</span></li>
+  <li><span class="k">Replies</span><span class="v">Within one business day</span></li>
+</ul>
+</section>
+
+<div class="cta"><div><h2>Not Sure Which Side Fits?</h2><p>Describe the project and the right option will be recommended.</p></div><div class="btn-row">
+<a class="btn" href="/quote/?path=unsure&amp;src=home">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="btn ghost" href="tel:+16088200224">(608) 820-0224</a>
+<a class="btn ghost" href="sms:+16088200224">Text</a>
+<a class="btn ghost" href="mailto:info@novakgs.com">info@novakgs.com</a>
+</div></div>
+
+<footer class="foot">
+  <nav aria-label="Footer"><a href="/mapping/">Mapping</a><a href="/thermal/">Thermal</a><a href="/blog/">Blog</a><a href="/card/">Digital Business Card</a><a href="/privacy/">Privacy</a><a href="/tos/">Terms of Service</a></nav>
+  <p style="margin:0"><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 Novak Geospatial Solutions&trade;, a BUCK2NINETY LLC company &middot; Cross Plains, Wisconsin &middot; FAA Part 107 Certified</p>
+</footer>
+</div>
 </body>
 </html>
