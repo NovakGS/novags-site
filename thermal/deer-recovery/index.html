@@ -26,7 +26,28 @@
 <link rel="stylesheet" href="/theme.css">
 <script src="/theme.js"></script>
 <script>/* This page is dark only. */document.documentElement.setAttribute('data-theme','dark');</script>
-<style>.theme-toggle{display:none!important}.wait-h{margin:36px 0 8px;font-size:20px;font-weight:700;color:var(--ink)}.wait-p{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--muted);max-width:640px}.rows.wait{max-width:560px}.wait-note{margin-top:12px}</style>
+<style>.theme-toggle{display:none!important}.wait-h{margin:36px 0 8px;font-size:20px;font-weight:700;color:var(--ink)}.wait-p{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--muted);max-width:640px}.rows.wait{max-width:560px}.wait-note{margin-top:12px}
+.avail{min-width:0;max-width:100%;box-sizing:border-box;border:1px solid var(--edge);border-top:3px solid var(--orange);border-radius:12px;background:var(--panel);padding:18px 18px 16px;display:flex;flex-direction:column;gap:14px}
+.avail-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:"Roboto Mono",Consolas,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label)}
+.avail-legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{display:inline-block;width:16px;height:12px;border-radius:3px}
+.sw.open,.slot.open{background:var(--orange)}
+.sw.off,.slot.off{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--edge)}
+.sw.past,.slot.past{background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 3px,transparent 3px 6px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.slot.open.past{background:repeating-linear-gradient(135deg,rgba(232,113,26,.28) 0 3px,transparent 3px 6px)}
+.avail-scroll{min-width:0;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.avail-grid{display:grid;grid-template-columns:58px repeat(7,minmax(40px,1fr));gap:3px;min-width:300px}
+.avail-grid .avail-msg{grid-column:1/-1;padding:8px 0}
+.dh{position:sticky;top:0;text-align:center;padding:0 0 8px;font-size:13px;line-height:1.25;color:var(--muted)}
+.dh b{display:block;font-family:"Roboto Mono",Consolas,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--label)}
+.dh.today b{color:var(--orange)}
+.tl{font-family:"Roboto Mono",Consolas,monospace;font-size:11px;line-height:18px;color:var(--faint);text-align:right;padding-right:6px;white-space:nowrap}
+.slot{height:18px;border-radius:3px}
+.slot.top{margin-top:4px}
+.tl.top{margin-top:4px}
+.avail-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px}
+@media (max-width:600px){.avail{padding:14px 12px}.avail-grid{grid-template-columns:40px repeat(7,minmax(0,1fr));gap:2px}.dh{font-size:11px}.dh{font-size:10.5px}.dh b{font-size:10.5px;letter-spacing:.04em}.tl{font-size:10px;padding-right:4px}}
+</style>
 <script src="/topo.js?v=3" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Drone Deer Recovery Legal in Wisconsin?", "acceptedAnswer": {"@type": "Answer", "text": "Hunting with a drone is illegal in Wisconsin. Wisconsin DNR policy treats recovering a dead animal differently from hunting, and wardens weigh the circumstances of each flight. Novak|GS flies recoveries as an independent third party, only when there is good reason to believe the deer is dead, and with no weapons carried during the search. See the Wisconsin DNR drone use policy for details."}}, {"@type": "Question", "name": "What Happens if the Deer Is Still Alive?", "acceptedAnswer": {"@type": "Answer", "text": "The search ends and the drone is recalled. No location information on a live animal is shared, because using a drone to pursue or track a live deer can be treated as hunting."}}, {"@type": "Question", "name": "When Does a Thermal Search Work Best?", "acceptedAnswer": {"@type": "Answer", "text": "Evenings, early mornings, and cold, overcast days. Bright sun warms logs, rocks, and bare ground, which can mask a deer's heat. A deer cools toward the air temperature after it dies, so the sooner the search, the better. Recovery operators generally report the best results at 30 to 50 degrees F. In cool weather under 50 degrees F, a deer is typically still detectable 24 to 48 hours after the shot. In warm weather, around 60 degrees F and up, that shortens to roughly 4 to 12 hours. These are ranges reported by recovery operators, not guarantees. Sun, rain, snow, standing water, and heavy cover all change them. Below 30 degrees F, cold and wind shorten battery life and flight time, so the area a search can cover shrinks. Whether a cold-weather search is accepted depends on the time since the shot, how confident the hunter is in where the deer went, the size of that area, and conditions such as wind, snow, and freezing fog."}}, {"@type": "Question", "name": "Is a Recovery Guaranteed?", "acceptedAnswer": {"@type": "Answer", "text": "No. Thick cover, standing water, and time since the shot all affect what a thermal camera can find. A search covers ground much faster than walking it, but it does not guarantee a recovery."}}, {"@type": "Question", "name": "How Long Does a Search Last?", "acceptedAnswer": {"@type": "Answer", "text": "Each search includes up to 90 minutes of flight time. If the deer has not been found by then, the search is called. The flight time goes first to the area the hunter believes is most likely, so the hit site, the last blood, and the direction of travel make a real difference."}}, {"@type": "Question", "name": "What Area Is Covered?", "acceptedAnswer": {"@type": "Answer", "text": "Dane County and the surrounding counties. Trips over 50 miles round trip add mileage at the current IRS business rate, confirmed before dispatch."}}]}</script>
 <script>
@@ -80,11 +101,24 @@
     <h3>Availability</h3>
     <ul class="rows">
       <li><b>Every Day</b><span>8:00 AM to 5:00 PM</span></li>
-      <li><b>Sunday, Monday, and Tuesday Evenings</b><span>5:00 PM to 10:00 PM</span></li>
+      <li><b>Sunday and Monday Evenings</b><span>5:00 PM to 10:00 PM</span></li>
+      <li><b>Tuesday Evenings</b><span>5:00 to 5:30 PM and 7:30 to 10:00 PM</span></li>
       <li><b>Service Area</b><span>Dane County and surrounding counties</span></li>
     </ul>
     <p>Daytime searches work best on cold, overcast days. Evening and early-morning searches give the strongest thermal contrast.</p>
+    <p><a href="#cal-h">See this week's open times &darr;</a></p>
   </div>
+</div>
+</section>
+
+<section aria-labelledby="cal-h">
+<p class="kicker">Live Availability</p>
+<h2 id="cal-h">Open Times This Week</h2>
+<p class="lede">Updated by the pilot in real time. Open times are first come, first served; call or text to claim one.</p>
+<div class="avail" id="avail" aria-live="polite">
+  <div class="avail-legend" aria-hidden="true"><span><i class="sw open"></i>Open</span><span><i class="sw off"></i>Unavailable</span><span><i class="sw past"></i>Past</span></div>
+  <div class="avail-scroll"><div class="avail-grid" id="avail-grid" role="table" aria-label="Deer recovery availability, next 7 days, Central Time"><p class="note avail-msg">Loading availability&hellip;</p></div></div>
+  <p class="note avail-foot" id="avail-foot">Times are Central. Each block is 30 minutes.</p>
 </div>
 </section>
 
@@ -150,5 +184,73 @@
   <p style="margin:0"><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 Novak Geospatial Solutions&trade;, a BUCK2NINETY LLC company &middot; Cross Plains, Wisconsin &middot; FAA Part 107 Certified</p>
 </footer>
 </div>
+<script>
+(function () {
+  var grid = document.getElementById('avail-grid');
+  var foot = document.getElementById('avail-foot');
+  if (!grid) return;
+  var WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var WDL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var MO = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function clock(m, short) {
+    var h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? 'PM' : 'AM', h12 = h % 12 || 12;
+    if (short) return h12 + (mm ? ':' + (mm < 10 ? '0' : '') + mm : '') + ' ' + ap;
+    return h12 + ':' + (mm < 10 ? '0' : '') + mm + ' ' + ap;
+  }
+  function nowCentral() {
+    var p = {};
+    new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+      .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+    return { date: p.year + '-' + p.month + '-' + p.day, mins: Number(p.hour) * 60 + Number(p.minute) };
+  }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function fail() {
+    grid.innerHTML = '';
+    var p = el('p', 'note avail-msg');
+    p.innerHTML = 'Live times could not be loaded right now. Call or text <a href="tel:+16088200224">608-820-0224</a> to check availability.';
+    grid.appendChild(p);
+  }
+  function render(data) {
+    var now = nowCentral();
+    var step = data.slotMinutes || 30, first = data.firstSlot, last = data.lastSlot;
+    var days = data.days || [];
+    grid.innerHTML = '';
+    var hdr = el('div', 'dh'); hdr.setAttribute('role', 'columnheader'); grid.appendChild(hdr);
+    days.forEach(function (d) {
+      var dt = new Date(d.date + 'T12:00:00Z');
+      var h = el('div', 'dh' + (d.date === now.date ? ' today' : ''));
+      h.setAttribute('role', 'columnheader');
+      h.appendChild(el('b', null, d.date === now.date ? 'Today' : WD[d.weekday]));
+      h.appendChild(document.createTextNode(MO[dt.getUTCMonth()] + ' ' + dt.getUTCDate()));
+      grid.appendChild(h);
+    });
+    for (var m = first; m <= last; m += step) {
+      var top = m % 60 === 0 && m !== first;
+      var tl = el('div', 'tl' + (top ? ' top' : ''), m % 60 === 0 ? clock(m, true) : '');
+      tl.setAttribute('role', 'rowheader');
+      grid.appendChild(tl);
+      days.forEach(function (d) {
+        var open = d.open.indexOf(m) !== -1;
+        var past = d.date < now.date || (d.date === now.date && m + step <= now.mins);
+        var c = el('div', 'slot ' + (open ? 'open' : 'off') + (past ? ' past' : '') + (top ? ' top' : ''));
+        c.setAttribute('role', 'cell');
+        var label = WDL[d.weekday] + ' ' + clock(m) + ' to ' + clock(m + step) + ': ' + (past ? 'past' : open ? 'open' : 'unavailable');
+        c.title = label; c.setAttribute('aria-label', label);
+        grid.appendChild(c);
+      });
+    }
+    if (foot && data.updated) {
+      var t = new Date(data.updated).toLocaleTimeString('en-US', { timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit' });
+      foot.textContent = '';
+      foot.appendChild(el('span', null, 'Times are Central. Each block is 30 minutes.'));
+      foot.appendChild(el('span', null, 'Checked ' + t));
+    }
+  }
+  fetch('/api/availability', { headers: { accept: 'application/json' } })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function (d) { if (d && d.ok && d.days) render(d); else fail(); })
+    .catch(fail);
+})();
+</script>
 </body>
 </html>
