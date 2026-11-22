@@ -32,6 +32,8 @@
 .acc .dl strong{display:block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--label);margin-bottom:6px}
 .acc .dl a{display:block;margin-top:8px;font-weight:600}
 .acc h1 .nb{white-space:nowrap}
+.acc h1 .sub{display:block;margin-top:10px;font-size:.5em;line-height:1.25;font-weight:600;color:#fff}
+html[data-theme="light"] .acc h1 .sub{color:#1f3444}
 .acc h3{margin:22px 0 6px;font-size:18px;line-height:1.35;font-weight:600;color:var(--ink)}
 .acc sub{font-size:.7em}
 /* interactive test map */
@@ -116,13 +118,13 @@
 .acc svg.dots .pt{fill:var(--orange);fill-opacity:.78;stroke:var(--panel-solid);stroke-width:1.2}
 .acc p.ig-note{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--faint)}
 .acc .ig-res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.acc .ig-res div{padding:16px 18px;border-radius:12px;background:var(--orange);color:#fff;display:flex;flex-direction:column;gap:4px}
-.acc .ig-res .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
-.acc .ig-res b{font-size:40px;line-height:1.05;font-weight:700}
-.acc .ig-res .s{font-size:14px;font-weight:500}
+.acc .ig-res>div{position:relative;overflow:hidden;padding:20px;border-radius:12px;background:#0a0d12 url("/topo-bg.jpg") center/cover;border-bottom:4px solid var(--orange);color:#fff;display:flex;flex-direction:column;gap:4px}
+.acc .ig-res .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.acc .ig-res b{font-size:44px;line-height:1.1;font-weight:700;color:var(--orange)}
+.acc .ig-res .s{font-size:14.5px;font-weight:500;color:#fff}
 @media(max-width:700px){.acc .ig-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.acc .ig-stats-6{grid-template-columns:repeat(2,minmax(0,1fr))}.acc .ig-split{grid-template-columns:1fr}.acc .ig-res{grid-template-columns:1fr}.acc .ig{padding-left:26px}.acc .ig::before{left:7px}.acc .ig-step::before{left:-24px}.acc .ig h3{font-size:19px}.acc .ig-stats b{font-size:24px}}
 
-.acc p.stmt{font-style:italic}
+.acc p.stmt{font-style:italic;font-size:calc(17px - 2pt);line-height:1.4}
 .acc p.stmt strong{font-style:normal}
 .acc .legal{font-size:15px}
 .acc .results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:4px 0 8px}
@@ -168,7 +170,9 @@
   <main style="display:contents">
   <article class="post-flow prose acc">
     <p class="kicker">Tested accuracy &middot; ASPRS Edition 2 (2024)</p>
-    <h1><span class="nb">Elevated Data</span><span class="sep">|</span> <span class="nb">Grounded Truth</span></h1>
+    <h1><span class="nb">Elevated Data</span><span class="sep">|</span> <span class="nb">Grounded Truth</span><span class="sub">Drone Mapping Accuracy &amp; Verification</span></h1>
+
+    <p class="stmt"><strong>Accuracy statement.</strong> This data set was tested to meet ASPRS Positional Accuracy Standards for Digital Geospatial Data, Edition 2, Version 2 (2024) for a 0.16 ft (5.0 cm) RMSE<sub>H</sub> horizontal positional accuracy class. The tested horizontal positional accuracy was found to be RMSE<sub>H</sub> = 0.10 ft (3.0 cm). The non-vegetated vertical accuracy measured in the same test was RMSE<sub>V</sub> = 0.09 ft (2.6 cm), below the RMSE of the 0.20 ft (6.0 cm) vertical accuracy class. A &ldquo;tested to meet&rdquo; statement is not made for vertical accuracy until the National Geodetic Survey mark check is resolved.</p>
 
     <p>Intentionality is important when raw numbers become real data. At Novak Geospatial Solutions&trade;, Elevated Data is what the drone captures from the air, and Grounded Truth is the proof, measured on the ground, that the data is where it says it is. When a client will rely on the numbers, the deliverable is not finished until it has both. Nothing in drone mapping requires that proof, so it is easy to leave out. Here it is the step the work is built around. That is why the mapping workflow was tested against the ASPRS Positional Accuracy Standards for Digital Geospatial Data, the standard that engineers, surveyors, and public agencies use to state how accurate a map is.</p>
 
@@ -197,10 +201,9 @@
     </div>
     <p class="res-note">Lower is better. Both bars use the same 0 to 0.25 ft scale.</p>
     <ul class="dl">
-      <li><strong>What this workflow achieved</strong>The 33-checkpoint test, with methods, residuals, and findings.<a href="NovakGS_ASPRS_Positional_Accuracy_Report_26-230.pdf">Full accuracy report (PDF, 10 pages)</a></li>
+      <li><strong>What this workflow achieved</strong>The 33-checkpoint test, with methods, residuals, and findings.<a href="NovakGS_ASPRS_Positional_Accuracy_Report_26-230.pdf">Full accuracy report (PDF, 10 pages)</a><a href="NovakGS_ASPRS_Checkpoint_Results_26-230.csv" download>All 39 points with measured errors (CSV)</a></li>
       <li><strong>What a project receives</strong>The checkpoint results measured on the site, with a table that opens in GIS or a spreadsheet.<a href="NovakGS_Sample_Project_Verification_Report.pdf">Sample verification report (PDF)</a><a href="NovakGS_Sample_Project_Verification_Checkpoints.csv" download>Checkpoint file (CSV)</a></li>
     </ul>
-    <p class="stmt"><strong>Accuracy statement.</strong> This data set was tested to meet ASPRS Positional Accuracy Standards for Digital Geospatial Data, Edition 2, Version 2 (2024) for a 0.16 ft (5.0 cm) RMSE<sub>H</sub> horizontal positional accuracy class. The tested horizontal positional accuracy was found to be RMSE<sub>H</sub> = 0.10 ft (3.0 cm). The non-vegetated vertical accuracy measured in the same test was RMSE<sub>V</sub> = 0.09 ft (2.6 cm), below the RMSE of the 0.20 ft (6.0 cm) vertical accuracy class. A &ldquo;tested to meet&rdquo; statement is not made for vertical accuracy until the National Geodetic Survey mark check is resolved.</p>
     <p>A separate check on a published National Geodetic Survey mark found ellipsoid heights 0.04 to 0.16 ft low. The cause is unresolved. The report explains what that means when the data is used for absolute elevations. Check shots on additional published NGS marks, each with a leveled NAVD88 height and a precise ellipsoid height, are planned to determine whether the difference follows the equipment or the mark. This page and the report will be updated with the result.</p>
     <p>The finished orthomosaic and digital surface model were tested against 33 independently surveyed checkpoints that were withheld from model adjustment, across a 34.4-acre validation area in Dane County, Wisconsin, on November 18, 2026. Horizontal RMSE was 0.10 ft (3.0 cm), and bare-ground vertical RMSE was 0.09 ft (2.6 cm). Both figures include a survey repeatability estimate based on seven repeat pairs.</p>
     <p><strong>What to specify.</strong> In a scope of work, state the intended use of the data, the target RMSE (horizontal, vertical, or both), the project control or coordinate system and vertical datum, and, where it matters, a limit on the largest individual checkpoint error. If verification exceeds the agreed target, the residuals and any known cause are provided, and corrective action or acceptance is discussed before the data is used for that purpose.</p>
@@ -464,8 +467,8 @@
       <section class="ig-step ig-last">
         <p class="ig-n"><span>05</span>The result</p>
         <div class="ig-res">
-          <div><span class="k">Horizontal RMSE</span><b>0.10 ft</b><span class="s">ASPRS class 0.16 ft &middot; Met</span></div>
-          <div><span class="k">Vertical RMSE, bare ground</span><b>0.09 ft</b><span class="s">ASPRS class 0.20 ft &middot; Below class RMSE</span></div>
+          <div data-topo="band" data-topo-style="fine"><span class="k">Horizontal RMSE</span><b>0.10 ft</b><span class="s">ASPRS class 0.16 ft &middot; Met</span></div>
+          <div data-topo="band" data-topo-style="fine"><span class="k">Vertical RMSE, bare ground</span><b>0.09 ft</b><span class="s">ASPRS class 0.20 ft &middot; Below class RMSE</span></div>
         </div>
       </section>
     </div>
