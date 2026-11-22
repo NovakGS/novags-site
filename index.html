@@ -37,7 +37,7 @@
   body {
     min-height: 100vh;
     min-height: 100svh;
-    background: var(--bg) url("topo-bg.jpg") center / cover no-repeat fixed;
+    background: var(--bg);
     color: var(--ink);
     font-family: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -568,7 +568,6 @@
     .verify h2, .closing h2 { font-size: 24px; }
   }
   /* v2 header */
-  .topo-canvas { opacity: .35 !important; }
   .page { padding-top: 22px; }
   .section { max-width: 1080px; }
   .topnav { width: 100%; max-width: 1080px; display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-bottom: 16px; border-bottom: 1px solid var(--edge); }
@@ -625,7 +624,6 @@
     .specs li:nth-child(n+5) { border-bottom: 0; }
     .map-tag { font-size: 11px; }
   }
-  html:not([data-theme="light"]) body { background: linear-gradient(rgba(10,13,18,.62), rgba(10,13,18,.62)), var(--bg) url("topo-bg.jpg") center / cover no-repeat fixed; }
   @media (max-width: 640px) { .hero-map .wide { display: none; } }
   .theme-toggle { order: 3; }
   .topnav .brand { order: 1; } .topnav nav { order: 2; margin-left: auto; }
