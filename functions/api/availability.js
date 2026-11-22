@@ -1,7 +1,7 @@
 // Cloudflare Pages Function: /api/availability
 // Public, read-only deer recovery availability for the next 7 days, in 30-minute slots.
 //
-// Source of truth: the SharePoint list "Deer Recovery Availability", edited from the
+// Source of truth: the SharePoint list "NGS Deer Availability", edited from the
 // Novak|GS Power App. One row per day that differs from the standard hours:
 //   Title      text  "YYYY-MM-DD" (Central time)
 //   OpenHours  text  comma-wrapped open slot starts in minutes after midnight,
@@ -15,7 +15,7 @@
 //
 // Environment: MS_TENANT_ID, MS_CLIENT_ID, SP_SITE_ID, GRAPH_CLIENT_SECRET (same as /api/quote)
 
-const LIST_NAME = 'Deer Recovery Availability';
+const LIST_NAME = 'NGS Deer Availability';
 const TZ = 'America/Chicago';
 const DAYS = 7;
 const SLOT = 30;          // minutes per slot
