@@ -160,6 +160,13 @@
   details.more summary::before { content: "+"; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 18px; width: 18px; color: var(--orange-ink); }
   details.more[open] summary::before { content: "\2212"; }
   details.more[open] { padding-bottom: 16px; }
+  .call { margin-top: 18px; background: #fff; border-radius: 14px; box-shadow: 0 10px 30px rgba(10, 13, 18, 0.12); padding: 22px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; border-left: 4px solid var(--orange); }
+  .call div { flex: 1 1 320px; }
+  .call h2 { margin: 0 0 4px; font-size: 19px; font-weight: 600; }
+  .call p { margin: 0; font-size: 15px; color: var(--muted); }
+  .call .alt { display: block; margin-top: 6px; font-size: 13px; }
+  .call .btn { font-size: 16px; }
+  @media (max-width: 640px) { .call { padding: 18px; } .call .btn { width: 100%; } }
   footer { text-align: center; font-size: 13px; color: var(--muted); padding: 0 16px 32px; }
   @media (max-width: 640px) {
     header { padding-bottom: 84px; }
@@ -181,6 +188,7 @@ html[data-theme="dark"] .card input:checked + span,html[data-theme="dark"] .chip
 html[data-theme="dark"] .chip input:checked + span::before{box-shadow:inset 0 0 0 3px #0d1117}
 html[data-theme="dark"] .group.mine{background:#121c27}
 html[data-theme="dark"] .done .check{background:#10261a}
+html[data-theme="dark"] .call{background:#10151c}
 </style>
 <script src="/topo.js?v=3" defer></script>
 <link rel="stylesheet" href="/theme.css">
@@ -614,6 +622,15 @@ html[data-theme="dark"] .done .check{background:#10261a}
   <h2>Request received</h2>
   <p>Thanks — we'll review the site and get back to you within one business day. If it's urgent, call or text <a href="tel:+16088200224">608-820-0224</a>.</p>
 </div>
+
+<section class="call" aria-labelledby="callH">
+  <div>
+    <h2 id="callH">Prefer to Talk It Through First?</h2>
+    <p>Book a free 15-minute scoping call on Microsoft Teams to cover the site, deliverables, accuracy needs, and timeline.</p>
+    <a class="alt" href="https://cal.com/novakgeospatial/scoping-call" target="_blank" rel="noopener">Or open the booking page</a>
+  </div>
+  <button type="button" class="btn primary" data-cal-link="novakgeospatial/scoping-call" data-cal-namespace="scoping-call" data-cal-config='{"layout":"month_view"}'>Book a Scoping Call</button>
+</section>
 </main>
 <footer>© 2026 Novak Geospatial Solutions™ · <a href="/">novakgs.com</a> · <a href="/privacy/">Privacy</a> · <a href="/tos/">Terms</a></footer>
 
@@ -813,6 +830,11 @@ html[data-theme="dark"] .done .check{background:#10261a}
       .finally(function () { btn.disabled = false; btn.textContent = 'Send request'; });
   });
 })();
+</script>
+<script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "scoping-call", { origin: "https://app.cal.com" });
+Cal.ns["scoping-call"]("ui", { hideEventTypeDetails: false, layout: "month_view" });
 </script>
 </body>
 </html>
