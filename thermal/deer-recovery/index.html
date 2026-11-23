@@ -286,6 +286,8 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
     var now = nowCentral();
     var step = data.slotMinutes || 30, first = data.firstSlot, last = data.lastSlot;
     var days = data.days || [];
+    // The current hour and the next full hour are never bookable (e.g. at 7:54 PM, everything before 9:00 PM).
+    var cutoff = (Math.floor(now.mins / 60) + 2) * 60;
     grid.innerHTML = '';
     var hdr = el('div', 'dh'); hdr.setAttribute('role', 'columnheader'); grid.appendChild(hdr);
     days.forEach(function (d) {
@@ -302,9 +304,10 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
       tl.setAttribute('role', 'rowheader');
       grid.appendChild(tl);
       days.forEach(function (d) {
-        var open = d.open.indexOf(m) !== -1;
-        var hold = !open && (d.hold || []).indexOf(m) !== -1;
         var past = d.date < now.date || (d.date === now.date && m + step <= now.mins);
+        var soon = !past && d.date === now.date && m < cutoff;
+        var open = !soon && d.open.indexOf(m) !== -1;
+        var hold = !soon && !open && (d.hold || []).indexOf(m) !== -1;
         var book = open && !past;
         var c = el(book ? 'a' : 'div', 'slot ' + (open ? 'open' : hold ? 'hold' : 'off') + (past ? ' past' : '') + (top ? ' top' : ''));
         c.setAttribute('role', 'cell');
@@ -339,7 +342,7 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
   }
   fetch('/api/availability', { headers: { accept: 'application/json' } })
     .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-    .then(function (d) { if (d && d.ok && d.days) render(d); else fail(); })
+    .then(function (d) { if (d && d.ok && d.days) { render(d); setInterval(function () { render(d); }, 60000); } else fail(); })
     .catch(fail);
 })();
 </script>
