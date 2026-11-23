@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="/theme.css">
 <script src="/theme.js"></script>
 <script>/* This page is dark only. */document.documentElement.setAttribute('data-theme','dark');</script>
-<style>.theme-toggle{display:none!important}.dq{gap:12px}.pq-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.pq-quote{display:flex;flex-direction:column;gap:12px;border-left:1px solid var(--edge);padding-left:28px}.pq-fees{display:flex;flex-direction:column;gap:10px}.price-q .rows b{white-space:nowrap}@media(max-width:760px){.pq-grid{grid-template-columns:1fr}.pq-quote{border-left:0;padding-left:0;border-top:1px solid var(--edge);padding-top:20px}}.dq-form{display:flex;flex-direction:column;gap:10px}.dq-form label{font-size:14px;font-weight:600;color:var(--ink)}.dq-form input{width:100%;box-sizing:border-box;min-height:48px;padding:0 16px;border-radius:10px;border:1px solid var(--edge);background:var(--bg,#0f1318);color:var(--ink);font:inherit;font-size:16px}.dq-form input:focus{outline:none;border-color:var(--orange)}.dq-out:empty{display:none}.dq-out{border-top:1px solid var(--edge);padding-top:14px;display:flex;flex-direction:column;gap:10px}.dq-place{margin:0;font-size:15px;color:var(--muted)}.dq-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.dq-tot div{padding:12px 14px;border:1px solid var(--edge);border-radius:10px}.dq-tot b{display:block;font-size:26px;color:var(--ink)}.dq-tot span{font-size:14px;color:var(--muted)}.dq-tot .hi{border-color:var(--orange)}.dq-err{margin:0;color:var(--orange)}.dq-out .rows{margin:0}.steps .step-or{margin-top:8px;padding-top:8px;border-top:1px solid var(--edge)}.step-or b{color:var(--orange);font-weight:700;margin-right:4px}.step-or a{color:var(--ink)}.duo .rows b{white-space:nowrap}.wait-h{margin:36px 0 8px;font-size:20px;font-weight:700;color:var(--ink)}.wait-p{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--muted);max-width:640px}.rows.wait{max-width:560px}.wait-note{margin-top:12px}
+<style>.theme-toggle{display:none!important}.dq{gap:12px}.pq-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.pq-quote{display:flex;flex-direction:column;gap:12px;border-left:1px solid var(--edge);padding-left:28px}.pq-fees{display:flex;flex-direction:column;gap:10px}.price-q .rows b{white-space:nowrap}@media(max-width:760px){.pq-grid{grid-template-columns:1fr}.pq-quote{border-left:0;padding-left:0;border-top:1px solid var(--edge);padding-top:20px}}.dq-form{display:flex;flex-direction:column;gap:10px}.dq-form label{font-size:14px;font-weight:600;color:var(--ink)}.dq-form input{width:100%;box-sizing:border-box;min-height:48px;padding:0 16px;border-radius:10px;border:1px solid var(--edge);background:var(--bg,#0f1318);color:var(--ink);font:inherit;font-size:16px}.dq-form input:focus{outline:none;border-color:var(--orange)}.dq-out:empty{display:none}.dq-out{border-top:1px solid var(--edge);padding-top:14px;display:flex;flex-direction:column;gap:10px}.dq-place{margin:0;font-size:15px;color:var(--muted)}.dq-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.dq-tot div{padding:12px 14px;border:1px solid var(--edge);border-radius:10px}.dq-tot b{display:block;font-size:26px;color:var(--ink)}.dq-tot span{font-size:14px;color:var(--muted)}.dq-tot .hi{border-color:var(--orange)}.dq-err{margin:0;color:var(--orange)}.dq-out .rows{margin:0}.steps .step-or{margin-top:8px;padding-top:8px;border-top:1px solid var(--edge)}.step-or b{color:var(--orange);font-weight:700;margin-right:4px}.step-or a{color:var(--ink)}.duo .rows b{white-space:nowrap}.wait-h{margin:36px 0 8px;font-size:20px;font-weight:700;color:var(--ink)}.wait-p{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--muted);max-width:640px}.rows.wait{max-width:560px}.wait-note{margin-top:12px}.cal-short{display:none}@media(max-width:760px){.cal-long{display:none}.cal-short{display:inline}.btn-row.cal-act .btn.ghost{flex:1 1 0;min-width:0;padding-left:8px;padding-right:8px;font-size:14px}}
 .avail{min-width:0;max-width:100%;box-sizing:border-box;border:1px solid var(--edge);border-top:3px solid var(--orange);border-radius:12px;background:var(--panel);padding:18px 18px 16px;display:flex;flex-direction:column;gap:14px}
 .avail-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:"Roboto Mono",Consolas,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label)}
 .avail-legend span{display:inline-flex;align-items:center;gap:8px}
@@ -139,7 +139,8 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
 <section aria-labelledby="cal-h">
 <p class="kicker">Live Availability</p>
 <h2 id="cal-h">Open Times This Week</h2>
-<p class="lede">Updated by the pilot in real time. Tap an open time to send the pilot a text requesting it. Open times are first come, first served.</p>
+<p class="lede" id="cal-lede">Updated by the pilot in real time. Tap an open time to open a text request to the pilot. Open times are first come, first served.</p>
+<div class="btn-row cal-act"><a class="btn" href="#quote-h">Get a Quote</a><a class="btn ghost" href="tel:+16088200224" aria-label="Call the pilot at (608) 820-0224"><span class="cal-long">Call (608) 820-0224</span><span class="cal-short">Call the Pilot</span></a><a class="btn ghost" href="sms:+16088200224">Text the Pilot</a></div>
 <div class="avail" id="avail" aria-live="polite">
   <div class="avail-legend" aria-hidden="true"><span><i class="sw open"></i>Open</span><span><i class="sw hold"></i>Weather Hold</span><span><i class="sw off"></i>Unavailable</span><span><i class="sw past"></i>Past</span></div>
   <p class="avail-wx" id="avail-wx" role="status"></p>
@@ -152,7 +153,7 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
 <p class="kicker">How It Works</p>
 <h2 id="how-h">From the Call to the Recovery</h2>
 <ol class="steps">
-  <li><strong>Call or Text</strong><span>Reach the pilot directly at 608-820-0224 to set a time.</span><span class="step-or"><b>Or</b> tap an open time in the <a href="#cal-h">live calendar</a> above. A text requesting that exact time opens automatically, ready to send.</span></li>
+  <li><strong>Call or Text</strong><span>Reach the pilot directly at 608-820-0224 to set a time.</span><span class="step-or" id="step-or"><b>Or</b> tap an open time in the <a href="#cal-h">live calendar</a> above. A text requesting that exact time opens automatically, ready to send.</span></li>
   <li><strong>Share the Details</strong><span>Send a dropped pin of the hit site, the last blood, and the deer's direction of travel.</span></li>
   <li><strong>The Search</strong><span>The drone grid-searches the area with thermal and zoom cameras, then confirms any heat signature visually.</span></li>
   <li><strong>The Recovery</strong><span>Once a dead deer is confirmed, its location is marked and the hunter is guided in.</span></li>
@@ -243,6 +244,14 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
     return { date: p.year + '-' + p.month + '-' + p.day, mins: Number(p.hour) * 60 + Number(p.minute) };
   }
   var MOBILE = (window.matchMedia && matchMedia('(pointer: coarse)').matches) || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  if (!MOBILE) {
+    var lede = document.getElementById('cal-lede');
+    if (lede) lede.textContent = 'Updated by the pilot in real time. On desktop, click an open time for a QR code. Scan it with your phone to open a text request. Open times are first come, first served.';
+    var so = document.getElementById('step-or');
+    var af = document.getElementById('avail-foot');
+    if (af) af.textContent = 'Times are Central. Each block is 30 minutes. Click an open block for a QR code to text a request from your phone.';
+    if (so) so.innerHTML = '<b>Or</b> click an open time in the <a href="#cal-h">live calendar</a> above and scan the QR code with your phone. A text requesting that exact time opens, ready to send.';
+  }
   var dlg = document.getElementById('qrd');
   if (!MOBILE && dlg) {
     var qs = document.createElement('script'); qs.src = '/qr.js'; document.head.appendChild(qs);
