@@ -508,43 +508,9 @@
   .closing > p { margin: 0 0 22px; color: var(--muted); font-size: 16px; }
   footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; margin-bottom: 10px; }
   footer nav a { color: var(--muted); }
-  .cases { margin-top: 64px; }
-  .case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 22px; text-align: left; }
-  .case-card { display: flex; flex-direction: column; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: var(--panel); color: var(--ink); text-decoration: none; transition: border-color .2s, transform .2s; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-  .case-card:hover { border-color: var(--orange); transform: translateY(-2px); }
-  .case-card .thumb { display: block; position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: #0f141b; border-bottom: 1px solid var(--edge); }
-  .case-card .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
-  .case-card:hover .thumb img { transform: scale(1.03); }
-  .case-card .body { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px 18px; flex: 1; }
-  .case-card .tag { font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
-  .case-card strong { font-size: 18px; font-weight: 600; line-height: 1.25; }
-  .case-card .body > span.desc { font-size: 15px; line-height: 1.5; color: var(--muted); }
-  .case-card .go { margin-top: auto; padding-top: 8px; font-size: 15px; font-weight: 600; color: var(--orange); }
-  .case-card.feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.45fr 1fr; }
-  .case-card.feature .thumb { aspect-ratio: auto; min-height: 340px; border-bottom: 0; border-right: 1px solid var(--edge); }
-  .case-card.feature .body { padding: 26px 26px 24px; gap: 10px; justify-content: center; }
-  .case-card.feature strong { font-size: 26px; }
-  .case-card.feature .body > span.desc { font-size: 16px; }
-  .case-card.feature.flip { grid-template-columns: 1fr 1.45fr; }
-  .case-card.feature.flip .thumb { order: 2; border-right: 0; border-left: 1px solid var(--edge); }
-  .case-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 6px 0 2px; padding: 0; list-style: none; }
-  .case-stats li { padding: 10px 12px; border: 1px solid var(--edge); border-radius: 10px; background: rgba(255,255,255,.03); }
-  .case-stats b { display: block; font-size: 19px; font-weight: 600; color: var(--ink); }
-  .case-stats span { font-size: 13px; color: var(--faint); }
   @media (max-width: 900px) {
-    .case-card.feature { grid-template-columns: 1fr; }
-    .case-card.feature .thumb { min-height: 0; aspect-ratio: 16 / 9; border-right: 0; border-bottom: 1px solid var(--edge); }
-    .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .case-grid .case-card.span-md { grid-column: 1 / -1; }
-    .case-card.feature.flip { grid-template-columns: 1fr; }
-    .case-card.feature.flip .thumb { order: 0; border-left: 0; border-bottom: 1px solid var(--edge); }
   }
   @media (max-width: 640px) {
-    .cases { margin-top: 48px; }
-    .case-grid { grid-template-columns: 1fr; }
-    .case-card.feature strong { font-size: 22px; }
-    .case-card.feature .body { padding: 20px 18px; }
-    .case-card .thumb { aspect-ratio: 16 / 9; }
   }
   @media (max-width: 900px) {
     .lines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -659,8 +625,7 @@
   html[data-theme="light"] .logo-dark { display: none; }
   html[data-theme="light"] .logo-light { display: block; }
   html[data-theme="light"] .hero-map { box-shadow: 0 16px 40px rgba(20,30,40,.18); }
-  html[data-theme="light"] .case-card, html[data-theme="light"] .need-card, html[data-theme="light"] .line, html[data-theme="light"] .verify, html[data-theme="light"] .promises li, html[data-theme="light"] .blog-feature { box-shadow: 0 1px 2px rgba(20,30,40,.06); }
-  html[data-theme="light"] .case-stats li { background: #f6f7f9; }
+  html[data-theme="light"] .need-card, html[data-theme="light"] .line, html[data-theme="light"] .verify, html[data-theme="light"] .promises li, html[data-theme="light"] .blog-feature { box-shadow: 0 1px 2px rgba(20,30,40,.06); }
   html[data-theme="light"] .blog-feature { background: var(--panel); }
 </style>
 <script src="/topo.js?v=3" defer></script>
@@ -672,6 +637,7 @@
 <script async src="/_ov/o.js" data-key="og_pk_Su-2C-gMMfibonqqBRnoTw" data-endpoint="/_ov"></script>
 </head>
 <body data-topo="page" data-topo-style="fine">
+<script>if(location.hash==="#cases-h")location.replace("/case-studies/");</script>
 
 <header class="band" data-topo="band" data-topo-style="fine">
   <div class="band-row">
@@ -680,10 +646,10 @@
     <nav aria-label="Main">
       <a href="/mapping/" aria-current="page">Mapping</a>
       <a href="/thermal/">Thermal</a>
-      <a href="#cases-h">Case studies</a>
+      <a href="/case-studies/">Case Studies</a>
       <a href="/accuracy/">Accuracy</a>
       <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
-      <a class="nav-quote" href="/quote/">Request a quote</a>
+      <a class="nav-quote" href="/quote/">Request a Quote</a>
     </nav>
     <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Light / dark">
       <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
@@ -781,69 +747,6 @@
       </div>
     </div>
     <p class="acc-foot"><span>Lower is better. Tested November 18, 2026 on open, bare ground. A formal vertical statement is held until an elevation check on a National Geodetic Survey mark is resolved.</span><a href="/accuracy/">See the test, the report, and a sample project report <span aria-hidden="true">&rarr;</span></a></p>
-  </section>
-
-  <section class="section cases" aria-labelledby="cases-h">
-    <p class="kicker">Case studies</p>
-    <h2 id="cases-h">See the data before you hire</h2>
-    <p class="sub-h">Real flights, real deliverables, real property near Cross Plains.</p>
-    <div class="case-grid">
-      <a class="case-card feature" href="/case-studies/photogrammetry/">
-        <span class="thumb"><img src="/img/work/cases/ev-showcase.jpg" alt="Aerial view of Enchanted Valley Acres in fall: red barn, visitor area, and parking below a wooded ridge" width="1400" height="787"></span>
-        <span class="body">
-          <span class="tag">Showcase &middot; Enchanted Valley Acres</span>
-          <strong>A complete site intelligence package</strong>
-          <span class="desc">Orthomosaic, bare-earth elevation model, and 2-foot contours for a farm and Christmas tree operation, from one day of flights.</span>
-          <ul class="case-stats">
-            <li><b>110.5</b><span>acres mapped</span></li>
-            <li><b>9,578</b><span>photos</span></li>
-            <li><b>2 ft</b><span>contours</span></li>
-          </ul>
-          <span class="go">See the full package <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="case-card" href="/case-studies/photogrammetry/tree-inventory/">
-        <span class="thumb"><img src="/img/work/cases/ev-trees.jpg" alt="Christmas trees detected and colored by height" width="800" height="600" loading="lazy"></span>
-        <span class="body">
-          <span class="tag">Counting &amp; inventory</span>
-          <strong>24,099 trees counted and sized</strong>
-          <span class="desc">AI-assisted tree counts across 30 blocks, sorted into retail size classes.</span>
-          <span class="go">View case study <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="case-card" href="/case-studies/photogrammetry/hunting-land/">
-        <span class="thumb"><img src="/img/work/cases/ev-hunting.jpg" alt="Modeled drainage paths and benches over a wooded ridge" width="800" height="600" loading="lazy"></span>
-        <span class="body">
-          <span class="tag">Hunting land</span>
-          <strong>Terrain mapped for stands and access</strong>
-          <span class="desc">Modeled drainage, benches, and estimated wind thermals from the elevation model.</span>
-          <span class="go">View case study <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="case-card span-md" href="/work/deer-stand/">
-        <span class="thumb"><img src="/img/work/cases/stand-3d.jpg" alt="Textured 3D model of a hunting stand" width="800" height="600" loading="lazy"></span>
-        <span class="body">
-          <span class="tag">3D structures</span>
-          <strong>A measurable 3D model from one flight</strong>
-          <span class="desc">A hunting stand captured in 3D you can spin, measure, and fly around.</span>
-          <span class="go">View case study <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-      <a class="case-card feature flip" href="/case-studies/real-estate/residential/">
-        <span class="thumb"><img src="/img/work/cases/re-residential.jpg" alt="Rural home seen across a pond, with prairie, garden, and a wooded hillside behind it" width="1400" height="787" loading="lazy"></span>
-        <span class="body">
-          <span class="tag">Residential real estate &middot; Blue Mounds</span>
-          <strong>Acreage listings, seen from above</strong>
-          <span class="desc">A 3D fly-through, listing aerials, and parcel-overlay photos that show buyers how a rural property lays out before the first showing.</span>
-          <ul class="case-stats">
-            <li><b>15</b><span>acres</span></li>
-            <li><b>1,000+</b><span>photos</span></li>
-            <li><b>4K</b><span>fly-through</span></li>
-          </ul>
-          <span class="go">See the listing package <span aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
-    </div>
   </section>
 
   <section class="section need" aria-labelledby="need">
