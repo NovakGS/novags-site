@@ -39,7 +39,7 @@
 .live-go{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;border-radius:999px;background:var(--orange);color:#12161c;font-size:14px;font-weight:600}
 .live-go svg{width:16px;height:16px}
 @media (prefers-reduced-motion:reduce){.live-dot::after{animation:none}}
-@media (max-width:600px){.live-bar{margin-bottom:-16px;padding:10px 10px 10px 14px;gap:10px}.live-tx span{display:none}.live-go{padding:0 12px}}
+@media (max-width:600px){.live-bar{margin-bottom:-16px;padding:10px 10px 10px 14px;gap:10px}.live-tx{flex-direction:column;gap:0}.live-tx span{font-size:14px}.live-go{padding:0 12px}}
 </style>
 <script>
 /* Old homepage section links now live on the mapping page. */
@@ -69,7 +69,7 @@
 </header>
 <div class="pg">
 
-<a class="live-bar" id="live-bar" href="/thermal/deer-recovery/#cal-h" hidden><span class="live-dot" aria-hidden="true"></span><span class="live-tx"><b>Happy Gun Season! Deer Recovery Is Live</b><span>See open search times through Nov 29 and text to claim one.</span></span><span class="live-go">Open Times <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<a class="live-bar" id="live-bar" href="/thermal/deer-recovery/#cal-h" hidden><span class="live-dot" aria-hidden="true"></span><span class="live-tx"><b>Happy Gun Season!</b><span>Check Real-Time Availability for Deer Recovery</span></span><span class="live-go">Open Times <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
 <script>
 /* Show only during the Wisconsin nine-day gun deer season (Central Time). */
 (function(){var b=document.getElementById('live-bar');if(!b)return;var START='2026-11-21',END='2026-11-29';var p={};try{new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});}catch(e){return;}var d=p.year+'-'+p.month+'-'+p.day;if(d>=START&&d<=END)b.hidden=false;})();
