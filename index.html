@@ -61,6 +61,29 @@
   window.origami = window.origami || function () { (origami.q = origami.q || []).push(arguments) };
 </script>
 <script async src="/_ov/o.js" data-key="og_pk_Su-2C-gMMfibonqqBRnoTw" data-endpoint="/_ov"></script>
+<style>
+.who-box{border:1px solid var(--edge);border-radius:14px;background:var(--panel);padding:26px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.who-box h2{font-size:26px}
+.who-sub{margin:0;color:var(--muted);font-size:16px}
+.who-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
+.who-chip{display:flex;align-items:center;gap:12px;padding:7px 14px 7px 7px;border:1px solid var(--edge);border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-size:15px;font-weight:600;text-align:left;cursor:pointer;text-decoration:none;transition:border-color .2s,background .2s}
+a.who-chip:hover{color:var(--ink)}
+.who-chip:hover{border-color:var(--orange)}
+.who-chip[aria-pressed="true"]{border-color:var(--orange);background:rgba(232,113,26,.12)}
+.who-chip:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.who-th{position:relative;flex:none;width:44px;height:44px;border-radius:50%;overflow:hidden;background:#0f141b}
+.who-th img{width:100%;height:100%;object-fit:cover;display:block}
+.who-q{display:grid;place-items:center;font-size:20px;font-weight:700;color:var(--orange);background:rgba(232,113,26,.12)}
+.who-l{line-height:1.25}
+.who-panel{margin-top:6px;padding:18px 20px;border:1px solid var(--orange);border-radius:12px;background:var(--panel-solid)}
+.who-panel h3{margin:0;font-size:20px;font-weight:600}
+.who-panel p{margin:6px 0 14px;color:var(--muted);font-size:16px;line-height:1.55}
+.who-panel .btn.ghost{font-family:inherit;font-weight:600}
+.who-contact{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px;padding-top:16px;border-top:1px solid var(--edge)}
+.who-contact span{color:var(--muted);font-size:15px;margin-right:4px}
+@media (max-width:900px){.who-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.who-chip{font-size:14px;gap:9px;padding-right:10px}.who-th{width:38px;height:38px}.who-box{padding:22px 16px 18px}}
+</style>
 </head>
 <body data-topo="page" data-topo-style="fine">
 <header class="band" data-topo="band" data-topo-style="fine">
@@ -138,12 +161,38 @@
 </article>
 </section>
 
-<div class="cta"><div><h2>Not Sure Which Service Fits?</h2><p>Describe the project and the right option will be recommended.</p></div><div class="btn-row">
-<a class="btn" href="/quote/?path=unsure&amp;src=home">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<section class="who-box" aria-labelledby="who-h">
+<p class="kicker">Start Here</p>
+<h2 id="who-h">What Best Describes You?</h2>
+<p class="who-sub">Pick the one that fits, and the right services and examples come up.</p>
+<div class="who-grid">
+  <button type="button" class="who-chip" id="who-engineers" aria-pressed="false" aria-controls="whp-engineers"><span class="who-th"><img src="/img/who/engineers.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="who-l">Engineers &amp; Surveyors</span></button>
+  <button type="button" class="who-chip" id="who-contractors" aria-pressed="false" aria-controls="whp-contractors"><span class="who-th"><img src="/img/who/contractors.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="who-l">Contractors &amp; Builders</span></button>
+  <button type="button" class="who-chip" id="who-aggregate" aria-pressed="false" aria-controls="whp-aggregate"><span class="who-th"><img src="/img/who/aggregate.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="who-l">Aggregate &amp; Quarries</span></button>
+  <button type="button" class="who-chip" id="who-real-estate" aria-pressed="false" aria-controls="whp-real-estate"><span class="who-th"><img src="/img/who/real-estate.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="who-l">Real Estate Agents</span></button>
+  <button type="button" class="who-chip" id="who-farms" aria-pressed="false" aria-controls="whp-farms"><span class="who-th"><img src="/img/who/farms.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="who-l">Farms &amp; Landowners</span></button>
+  <a class="who-chip" href="/thermal/deer-recovery/"><span class="who-th"><img src="/img/who/hunters.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="who-l">Hunters (Deer Recovery)</span></a>
+  <button type="button" class="who-chip" id="who-land" aria-pressed="false" aria-controls="whp-land"><span class="who-th"><img src="/img/who/land-managers.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="who-l">Land Managers</span></button>
+  <button type="button" class="who-chip" id="who-facilities" aria-pressed="false" aria-controls="whp-facilities"><span class="who-th"><span class="heat"></span></span><span class="who-l">Property &amp; Facility Managers</span></button>
+  <button type="button" class="who-chip" id="who-other" aria-pressed="false" aria-controls="whp-other"><span class="who-th who-q" aria-hidden="true">?</span><span class="who-l">Something Else</span></button>
+</div>
+  <div class="who-panel" id="whp-engineers" role="region" aria-labelledby="who-engineers" hidden><h3>Survey-Grade Data You Can Check</h3><p>RTK-positioned flights with ground checkpoints, an ASPRS accuracy report, and delivery in your coordinate system and file formats. White-label capture is available for your own deliverables.</p><div class="btn-row"><a class="btn" href="/quote/?path=tech&amp;src=home-engineers">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="/accuracy/">See the Accuracy Test</a><a class="btn ghost" href="/blog/drone-mapping-accuracy-test/">How the Test Was Run</a></div></div>
+  <div class="who-panel" id="whp-contractors" role="region" aria-labelledby="who-contractors" hidden><h3>Progress, Grades, and Quantities</h3><p>Repeat progress flights from the same vantage points, cut/fill against your design surface, and site maps your field and office teams can both open.</p><div class="btn-row"><a class="btn" href="/quote/?path=tech&amp;src=home-contractors">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="/mapping/">Explore Mapping Services</a><a class="btn ghost" href="/accuracy/">See the Accuracy Test</a></div></div>
+  <div class="who-panel" id="whp-aggregate" role="region" aria-labelledby="who-aggregate" hidden><h3>Stockpile Volumes You Can Book</h3><p>Measured pile volumes from a 3D surface, with checkpoints on site and a report that shows how each number was reached.</p><div class="btn-row"><a class="btn" href="/quote/?path=volumes&amp;src=home-aggregate">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="/mapping/">Explore Mapping Services</a><a class="btn ghost" href="/blog/drone-mapping-cost/">What Drone Mapping Costs</a></div></div>
+  <div class="who-panel" id="whp-real-estate" role="region" aria-labelledby="who-real-estate" hidden><h3>Listings Buyers Can Understand from Above</h3><p>A 3D fly-thru, listing aerials, and parcel-overlay photos that show how an acreage property lays out before the first showing.</p><div class="btn-row"><a class="btn" href="/quote/?path=photos&amp;src=home-realestate">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="/case-studies/real-estate/residential/">See a Listing Package</a><a class="btn ghost" href="/blog/not-every-drone-flythrough-is-the-same/">Not Every Fly-Thru Is the Same</a></div></div>
+  <div class="who-panel" id="whp-farms" role="region" aria-labelledby="who-farms" hidden><h3>Know Your Ground</h3><p>Maps, elevation, and contours of fields and woods, tree and crop counts, and thermal flights that trace buried drainage tile.</p><div class="btn-row"><a class="btn" href="/quote/?path=map&amp;src=home-farms">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="/case-studies/photogrammetry/">See a Full Site Package</a><a class="btn ghost" href="/thermal/drainage-tile/">Drainage Tile Locating</a></div></div>
+  <div class="who-panel" id="whp-land" role="region" aria-labelledby="who-land" hidden><h3>Read the Land Before You Work It</h3><p>Terrain mapping of benches, drainages, and travel routes for stand and access planning, measurable 3D models of structures, and off-season thermal deer herd counts.</p><div class="btn-row"><a class="btn" href="/quote/?path=map&amp;src=home-land">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="/case-studies/photogrammetry/hunting-land/">Hunting Land Case Study</a><a class="btn ghost" href="/work/deer-stand/">3D Structure Model</a></div></div>
+  <div class="who-panel" id="whp-facilities" role="region" aria-labelledby="who-facilities" hidden><h3>Problems That Show Up as Heat</h3><p>Flat roof moisture, solar panel faults, heat loss, and rooftop equipment scanned from the air, with a matching visible photo of every finding.</p><div class="btn-row"><a class="btn" href="/quote/?path=unsure&amp;src=home-facilities">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="/thermal/inspections/">Thermal Inspections</a><a class="btn ghost" href="/thermal/">All Thermal Services</a></div></div>
+  <div class="who-panel" id="whp-other" role="region" aria-labelledby="who-other" hidden><h3>Describe the Project</h3><p>Share the site and what you need from it, and the right service will be recommended. A reply comes within one business day.</p><div class="btn-row"><a class="btn" href="/quote/?path=unsure&amp;src=home-other">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+<div class="who-contact"><span>Or reach out directly:</span>
 <a class="btn ghost" href="tel:+16088200224">(608) 820-0224</a>
 <a class="btn ghost" href="sms:+16088200224">Text</a>
 <a class="btn ghost" href="mailto:info@novakgs.com">info@novakgs.com</a>
-</div></div>
+</div>
+<script>
+(function(){var cs=document.querySelectorAll('button.who-chip');cs.forEach(function(c){c.addEventListener('click',function(){var on=c.getAttribute('aria-pressed')!=='true';cs.forEach(function(o){o.setAttribute('aria-pressed','false');document.getElementById(o.getAttribute('aria-controls')).hidden=true;});if(on){c.setAttribute('aria-pressed','true');var p=document.getElementById(c.getAttribute('aria-controls'));p.hidden=false;if(p.getBoundingClientRect().bottom>innerHeight)p.scrollIntoView({behavior:'smooth',block:'nearest'});}});});})();
+</script>
+</section>
 
 <footer class="foot">
   <nav aria-label="Footer"><a href="/mapping/">Mapping</a><a href="/thermal/">Thermal</a><a href="/blog/">Blog</a><a href="/card/">Digital Business Card</a><a href="/privacy/">Privacy</a><a href="/tos/">Terms of Service</a></nav>
