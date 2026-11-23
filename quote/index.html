@@ -17,7 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Request a Quote | Novak Geospatial Solutions</title>
   <link rel="canonical" href="https://novakgs.com/quote/">
-<meta name="description" content="Request a quote for drone mapping, stockpile volumes, progress monitoring, listing imagery, and crop scouting across southern and central Wisconsin.">
+<meta name="description" content="Request a quote for drone mapping, stockpile volumes, progress monitoring, listing imagery, crop scouting, and thermal inspections across southern and central Wisconsin.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   :root {
@@ -151,6 +151,9 @@
   .path input:checked + span svg { color: var(--orange-ink); }
   .path input:focus-visible + span { outline: 3px solid rgba(58, 102, 144, 0.35); outline-offset: 1px; }
   .path.wide { grid-column: 1 / -1; }
+  .lines .path strong { font-size: 19px; }
+  .sub-q { margin-top: 22px; }
+  .group.th h3 .num { color: var(--orange-ink); }
   .step-path { border-bottom: 0; padding-bottom: 8px; }
   #rest { border-top: 1px solid var(--line); }
   fieldset.bare { border: 0; padding: 0; }
@@ -209,7 +212,7 @@ html[data-theme="dark"] .done .check{background:#10261a}
 </div>
 <header data-topo="band" data-topo-style="fine">
   <h1>Request a quote</h1>
-  <p>Photos, a property map, or full mapping data. Simple requests take about a minute.</p>
+  <p>Mapping, aerial imagery, or thermal work. Simple requests take about a minute.</p>
 </header>
 
 <main>
@@ -222,7 +225,20 @@ html[data-theme="dark"] .done .check{background:#10261a}
 
   <fieldset class="step-path">
     <legend><span class="num">01</span> What do you need?</legend>
-    <div class="paths" role="radiogroup" aria-label="What do you need?">
+    <div class="paths lines" role="radiogroup" aria-label="Type of work">
+      <label class="path"><input type="radio" name="line" value="mapping"><span>
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>
+        <strong>Mapping &amp; Imagery</strong>
+        <em>Maps, elevations, volumes, progress tracking, real estate, and aerial photos or video.</em></span></label>
+      <label class="path"><input type="radio" name="line" value="thermal"><span>
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.8V4.5a2 2 0 0 0-4 0v10.3a4 4 0 1 0 4 0z"/><path d="M12 9v7"/></svg>
+        <strong>Thermal</strong>
+        <em>Roof moisture, solar panels, heat loss, drainage tile, and other heat-based scans.</em></span></label>
+    </div>
+    <input type="radio" name="path" value="thermal" id="thermalPath" hidden tabindex="-1" aria-hidden="true">
+    <div id="mapPaths" hidden>
+    <div class="q sub-q" id="mp-label">What kind of mapping or imagery?</div>
+    <div class="paths" role="radiogroup" aria-labelledby="mp-label">
       <label class="path wide"><input type="radio" name="path" value="listing"><span>
         <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg>
         <strong>Real estate listing</strong>
@@ -247,6 +263,7 @@ html[data-theme="dark"] .done .check{background:#10261a}
         <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1v.5"/><path d="M12 17h.01"/></svg>
         <strong>Not sure yet</strong>
         <em>Describe the project and the right option will be recommended.</em></span></label>
+    </div>
     </div>
   </fieldset>
 
@@ -494,6 +511,113 @@ html[data-theme="dark"] .done .check{background:#10261a}
     <p class="note">Novak|GS provides aerial mapping and imagery; it doesn't establish property lines.</p>
   </fieldset>
 
+  <!-- Thermal path -->
+  <fieldset data-path="thermal" class="pathset">
+    <legend><span class="num">02</span> The thermal job</legend>
+    <input type="hidden" name="thermalClient" id="thermalClient">
+    <div class="q req">What needs scanning? <span class="hint">Check everything that applies.</span></div>
+      <div class="group th">
+        <h3><span class="num">01</span>Buildings &amp; Energy</h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Roof moisture scan"><span>Roof Moisture Scans</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Solar panel scan"><span>Solar Panel Scans</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Heat loss survey"><span>Heat Loss Surveys</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Rooftop HVAC check"><span>Rooftop HVAC Checks</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Ice dam &amp; roof heat loss"><span>Ice Dam &amp; Roof Heat Loss</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Snowmelt system check"><span>Snowmelt System Checks</span></label>
+        </div>
+      </div>
+      <div class="group th">
+        <h3><span class="num">02</span>Farm &amp; Land</h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Drainage tile locating"><span>Drainage Tile Locating</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Irrigation leak check"><span>Irrigation Leak Checks</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Livestock check"><span>Livestock Checks</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Lost pet search"><span>Lost Pet Search</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Deer herd count"><span>Deer Herd Counts</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Hunting land scouting"><span>Hunting Land Thermal Scouting</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Compost &amp; silage hot spots"><span>Compost &amp; Silage Hot Spots</span></label>
+        </div>
+      </div>
+      <div class="group th">
+        <h3><span class="num">03</span>Industrial</h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Stockpile hot spots"><span>Stockpile Hot Spots</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Tank level check"><span>Tank Level Checks</span></label>
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Steam &amp; buried pipe leaks"><span>Steam &amp; Buried Pipe Leaks</span></label>
+        </div>
+      </div>
+      <div class="group th">
+        <h3><span class="num">04</span>Something Else</h3>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="services" value="Thermal: Something else"><span>Something Else (Describe Below)</span></label>
+        </div>
+      </div>
+    <div class="q req" id="tcl-label">Who's it for?</div>
+    <div class="chips" role="radiogroup" aria-labelledby="tcl-label">
+      <label class="chip radio"><input type="radio" name="clientType" value="Other" data-label="Property owner or manager"><span>Property owner or manager</span></label>
+      <label class="chip radio"><input type="radio" name="clientType" value="Contractor or aggregate" data-label="Roofer or contractor"><span>Roofer or contractor</span></label>
+      <label class="chip radio"><input type="radio" name="clientType" value="Other" data-label="Solar owner or installer"><span>Solar owner or installer</span></label>
+      <label class="chip radio"><input type="radio" name="clientType" value="Other" data-label="Facility or industrial site"><span>Facility or industrial site</span></label>
+      <label class="chip radio"><input type="radio" name="clientType" value="Surveyor or engineer" data-label="Engineer or energy auditor"><span>Engineer or energy auditor</span></label>
+      <label class="chip radio"><input type="radio" name="clientType" value="Farm or ag" data-label="Farm"><span>Farm</span></label>
+      <label class="chip radio"><input type="radio" name="clientType" value="Realtor or landowner" data-label="Landowner or hunting land"><span>Landowner or hunting land</span></label>
+      <label class="chip radio"><input type="radio" name="clientType" value="Other" data-label="Other"><span>Other</span></label>
+    </div>
+    <div class="followup" data-when="Thermal: Roof moisture scan|Thermal: Solar panel scan|Thermal: Heat loss survey|Thermal: Rooftop HVAC check|Thermal: Ice dam &amp; roof heat loss|Thermal: Snowmelt system check|Thermal: Drainage tile locating|Thermal: Irrigation leak check|Thermal: Livestock check|Thermal: Lost pet search|Thermal: Deer herd count|Thermal: Hunting land scouting|Thermal: Compost &amp; silage hot spots|Thermal: Stockpile hot spots|Thermal: Tank level check|Thermal: Steam &amp; buried pipe leaks|Thermal: Something else" hidden>
+      <h4>Sites &amp; scheduling</h4>
+      <div class="grid">
+        <label class="f"><span>Number of sites</span><input type="number" name="thermalSites" min="1" inputmode="numeric"></label>
+        <label class="f"><span>How often</span>
+          <select name="thermalFreq"><option value="">Choose</option><option>One-time</option><option>Seasonal</option><option>Quarterly</option><option>Ongoing contract</option><option>Not sure</option></select>
+        </label>
+        <label class="f full"><span>Site access during the flight</span>
+          <select name="thermalAccess"><option value="">Choose</option><option>Someone can be on site</option><option>Fly with no one present (written consent)</option><option>Not sure</option></select>
+        </label>
+      </div>
+    </div>
+    <div class="followup" data-when="Thermal: Roof moisture scan|Thermal: Rooftop HVAC check|Thermal: Ice dam &amp; roof heat loss" hidden>
+      <h4>Roof</h4>
+      <div class="grid">
+        <label class="f"><span>Roof type</span>
+          <select name="roofType"><option value="">Choose</option><option>Flat or low-slope</option><option>Pitched</option><option>Both</option><option>Not sure</option></select>
+        </label>
+        <label class="f"><span>Approximate roof area</span><input type="text" name="roofArea" placeholder="e.g. 40,000 sq ft"></label>
+      </div>
+    </div>
+    <div class="followup" data-when="Thermal: Solar panel scan" hidden>
+      <h4>Solar array</h4>
+      <div class="grid">
+        <label class="f"><span>Array type</span>
+          <select name="arrayType"><option value="">Choose</option><option>Rooftop</option><option>Ground mount</option><option>Carport</option><option>Not sure</option></select>
+        </label>
+        <label class="f"><span>System size</span><input type="text" name="arraySize" placeholder="e.g. 250 kW or 600 panels"></label>
+      </div>
+    </div>
+    <div class="followup" data-when="Thermal: Drainage tile locating" hidden>
+      <h4>Drainage tile</h4>
+      <div class="grid">
+        <label class="f"><span>Field condition right now</span>
+          <select name="fieldCondition"><option value="">Choose</option><option>Bare soil</option><option>Crop residue</option><option>Growing crop</option><option>Pasture or hay</option><option>Not sure</option></select>
+        </label>
+        <label class="f"><span>Existing tile maps or records?</span>
+          <select name="tileRecords"><option value="">Choose</option><option>Yes, I can send them</option><option>Partial</option><option>No</option></select>
+        </label>
+      </div>
+    </div>
+    <div class="followup" data-when="Thermal: Lost pet search|Thermal: Livestock check" hidden>
+      <h4>Animal search</h4>
+      <div class="grid">
+        <label class="f full"><span>What animal, and when was it last seen?</span><input type="text" name="animalInfo" maxlength="200" placeholder="e.g. black lab, last seen 7 PM near the north woods"></label>
+      </div>
+      <p class="note">Urgent search? After sending, text <a href="sms:+16088200224">608-820-0224</a> so it's seen right away.</p>
+    </div>
+    <div class="grid">
+      <label class="f full"><span id="thNotesLabel">What needs finding? <span class="hint">(optional)</span></span><textarea name="notes" maxlength="4000" placeholder="e.g. Leak suspected over the east wing after the last storm."></textarea></label>
+    </div>
+    <p class="note">Discounts for several sites in one day and for quarterly or contract work. Deer recovery is requested on the <a href="/thermal/deer-recovery/">deer recovery page</a>.</p>
+  </fieldset>
+
   <!-- Not sure path -->
   <fieldset data-path="unsure" class="pathset">
     <legend><span class="num">02</span> Tell us about it</legend>
@@ -648,7 +772,7 @@ html[data-theme="dark"] .done .check{background:#10261a}
     });
     if (p === 'listing') document.getElementById('listingClient').checked = true;
     var technical = p === 'tech' || p === 'volumes';
-    pinBox.open = technical;
+    pinBox.open = technical || p === 'thermal';
     extras.open = technical;
     if (technical) initMap();
     syncFollowups();
@@ -656,11 +780,46 @@ html[data-theme="dark"] .done .check{background:#10261a}
   form.querySelectorAll('input[name=path]').forEach(function (r) {
     r.addEventListener('change', function () { if (r.checked) setPath(r.value); });
   });
+  // First choice: mapping & imagery, or thermal.
+  var mapPaths = document.getElementById('mapPaths');
+  var thermalPath = document.getElementById('thermalPath');
+  function setLine(line) {
+    var l = form.querySelector('input[name=line][value="' + line + '"]');
+    if (l) l.checked = true;
+    if (line === 'thermal') {
+      mapPaths.hidden = true;
+      thermalPath.checked = true;
+      setPath('thermal');
+    } else {
+      mapPaths.hidden = false;
+      thermalPath.checked = false;
+      if (path === 'thermal') { path = ''; rest.hidden = true; }
+    }
+  }
+  form.querySelectorAll('input[name=line]').forEach(function (r) {
+    r.addEventListener('change', function () { if (r.checked) setLine(r.value); });
+  });
+  // Keep the exact thermal client label alongside the shared client type.
+  form.querySelectorAll('fieldset[data-path=thermal] input[name=clientType]').forEach(function (r) {
+    r.addEventListener('change', function () { if (r.checked) document.getElementById('thermalClient').value = r.dataset.label; });
+  });
   pinBox.addEventListener('toggle', function () { if (pinBox.open) initMap(); });
   // Arriving from a homepage card: /quote/?path=volumes
   var startPath = (params.get('path') || '').replace(/[^a-z]/g, '');
   var startRadio = startPath && form.querySelector('input[name=path][value="' + startPath + '"]');
-  if (startRadio) { startRadio.checked = true; setTimeout(function () { setPath(startPath); }, 0); }
+  if (startPath === 'thermal') {
+    setTimeout(function () { setLine('thermal'); }, 0);
+  } else if (startRadio) {
+    startRadio.checked = true;
+    setTimeout(function () { setLine('mapping'); setPath(startPath); }, 0);
+  }
+  // Preselect a thermal service: /quote/?path=thermal&svc=tile
+  var svcMap = { tile: 'Thermal: Drainage tile locating', roof: 'Thermal: Roof moisture scan', solar: 'Thermal: Solar panel scan' };
+  var startSvc = svcMap[params.get('svc') || ''];
+  if (startSvc) setTimeout(function () {
+    var c = form.querySelector('input[name=services][value="' + startSvc + '"]');
+    if (c) { c.checked = true; syncFollowups(); }
+  }, 0);
 
   // Put the client's own service group first and mark it.
   var groupsEl = document.getElementById('groups');
@@ -681,7 +840,7 @@ html[data-theme="dark"] .done .check{background:#10261a}
   // Follow-up questions for the services that need them.
   function syncFollowups() {
     var picked = Array.prototype.map.call(form.querySelectorAll('input[name=services]:checked:not(:disabled)'), function (c) { return c.value; });
-    form.querySelectorAll('.followup').forEach(function (f) {
+    form.querySelectorAll('.followup[data-when]').forEach(function (f) {
       var wants = f.dataset.when.split('|');
       f.hidden = !wants.some(function (w) { return picked.indexOf(w) !== -1; });
     });
@@ -775,10 +934,11 @@ html[data-theme="dark"] .done .check{background:#10261a}
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) missing.push('a valid email');
     if (v('phone').replace(/\D/g, '').length < 10) missing.push('a phone number');
     if (!form.querySelector('input[name=preferredContact]:checked')) missing.push('how to reach you');
-    if (!path) missing.push('what you need');
-    if (path !== 'unsure' && !form.querySelector('input[name=services]:checked:not(:disabled)')) missing.push(path === 'tech' ? 'at least one service' : path === 'volumes' ? 'what you are measuring' : path === 'listing' ? 'a package' : 'what you would like');
+    if (!path) missing.push(form.querySelector('input[name=line]:checked') ? 'what kind of mapping or imagery' : 'what you need');
+    if (path && path !== 'unsure' && !form.querySelector('input[name=services]:checked:not(:disabled)')) missing.push(path === 'tech' ? 'at least one service' : path === 'volumes' ? 'what you are measuring' : path === 'listing' ? 'a package' : path === 'thermal' ? 'what needs scanning' : 'what you would like');
+    if (path === 'thermal' && form.querySelector('input[name=services][value="Thermal: Something else"]:checked') && !String(form.querySelector('fieldset[data-path=thermal] textarea').value).trim()) missing.push('a short description of what needs finding');
     if (path === 'listing' && !form.querySelector('input[name=listingRole]:checked')) missing.push("whether you're the agent, owner or builder");
-    if (!form.querySelector('input[name=clientType]:checked:not(:disabled)')) missing.push(path === 'tech' ? 'what type of client you are' : "who it's for");
+    if (path && !form.querySelector('input[name=clientType]:checked:not(:disabled)')) missing.push(path === 'tech' ? 'what type of client you are' : "who it's for");
     if (path === 'unsure' && !String(form.querySelector('fieldset[data-path=unsure] textarea').value).trim()) missing.push('a short description of the project');
     if (!v('siteLocation')) missing.push('the address');
     if (!v('county')) missing.push('the county');

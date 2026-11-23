@@ -32,6 +32,13 @@ const SERVICES = [
   'Acreage listing package', 'High-resolution aerial maps', 'Property overview imagery',
   'Field & farmstead maps', 'Grain & silage pile volumes', 'Visual crop scouting maps', 'Field drainage maps',
   'White-label RTK data capture', '3D fly-through listing package', 'Not sure — help me choose',
+  // Thermal (deer recovery has its own request flow)
+  'Thermal: Roof moisture scan', 'Thermal: Solar panel scan', 'Thermal: Heat loss survey', 'Thermal: Rooftop HVAC check',
+  'Thermal: Ice dam & roof heat loss', 'Thermal: Snowmelt system check',
+  'Thermal: Drainage tile locating', 'Thermal: Irrigation leak check', 'Thermal: Livestock check', 'Thermal: Lost pet search',
+  'Thermal: Deer herd count', 'Thermal: Hunting land scouting', 'Thermal: Compost & silage hot spots',
+  'Thermal: Stockpile hot spots', 'Thermal: Tank level check', 'Thermal: Steam & buried pipe leaks',
+  'Thermal: Something else',
 ];
 const FORMATS = ['PDF report', 'Images', 'GeoTIFF', 'KMZ', 'CAD (DXF)', 'Point cloud (LAS)', 'Not sure'];
 
@@ -189,6 +196,16 @@ function buildDetails(fd, services) {
   }
   if (has('Visual crop scouting maps')) {
     lines.push(`Crop scouting — crop: ${str(fd, 'cropType', 80) || '?'}; growth stage: ${str(fd, 'growthStage', 80) || '?'}`);
+  }
+  if (services.some((x) => x.startsWith('Thermal: '))) {
+    const opt = (n, max) => str(fd, n, max) || '?';
+    lines.push(`Thermal — client: ${opt('thermalClient', 60)}; sites: ${opt('thermalSites', 20)}; frequency: ${opt('thermalFreq', 40)}; access: ${opt('thermalAccess', 60)}`);
+    if (has('Thermal: Roof moisture scan', 'Thermal: Rooftop HVAC check', 'Thermal: Ice dam & roof heat loss')) {
+      lines.push(`Roof — type: ${opt('roofType', 40)}; area: ${opt('roofArea', 60)}`);
+    }
+    if (has('Thermal: Solar panel scan')) lines.push(`Solar — array: ${opt('arrayType', 40)}; size: ${opt('arraySize', 60)}`);
+    if (has('Thermal: Drainage tile locating')) lines.push(`Drainage tile — field: ${opt('fieldCondition', 40)}; tile records: ${opt('tileRecords', 40)}`);
+    if (has('Thermal: Lost pet search', 'Thermal: Livestock check')) lines.push(`Animal — ${opt('animalInfo', 200)}`);
   }
   const acc = [
     ['use', str(fd, 'accUse', 80)],
