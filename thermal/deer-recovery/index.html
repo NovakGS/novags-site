@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="/theme.css">
 <script src="/theme.js"></script>
 <script>/* This page is dark only. */document.documentElement.setAttribute('data-theme','dark');</script>
-<style>.theme-toggle{display:none!important}.dq{max-width:720px;gap:14px}.dq-form{display:flex;flex-direction:column;gap:10px}.dq-form label{font-size:14px;font-weight:600;color:var(--ink)}.dq-row{display:flex;gap:10px;flex-wrap:wrap}.dq-row input{flex:1 1 260px;min-height:48px;padding:0 16px;border-radius:10px;border:1px solid var(--edge);background:var(--bg,#0f1318);color:var(--ink);font:inherit;font-size:16px}.dq-row input:focus{outline:none;border-color:var(--orange)}.dq-loc{align-self:flex-start}.dq-out:empty{display:none}.dq-out{border-top:1px solid var(--edge);padding-top:14px;display:flex;flex-direction:column;gap:10px}.dq-place{margin:0;font-size:15px;color:var(--muted)}.dq-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.dq-tot div{padding:12px 14px;border:1px solid var(--edge);border-radius:10px}.dq-tot b{display:block;font-size:26px;color:var(--ink)}.dq-tot span{font-size:14px;color:var(--muted)}.dq-tot .hi{border-color:var(--orange)}.dq-err{margin:0;color:var(--orange)}.dq-out .rows{margin:0}.steps .step-or{margin-top:8px;padding-top:8px;border-top:1px solid var(--edge)}.step-or b{color:var(--orange);font-weight:700;margin-right:4px}.step-or a{color:var(--ink)}.duo .rows b{white-space:nowrap}.wait-h{margin:36px 0 8px;font-size:20px;font-weight:700;color:var(--ink)}.wait-p{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--muted);max-width:640px}.rows.wait{max-width:560px}.wait-note{margin-top:12px}
+<style>.theme-toggle{display:none!important}.dq{gap:12px}.dq-form{display:flex;flex-direction:column;gap:10px}.dq-form label{font-size:14px;font-weight:600;color:var(--ink)}.dq-form input{width:100%;box-sizing:border-box;min-height:48px;padding:0 16px;border-radius:10px;border:1px solid var(--edge);background:var(--bg,#0f1318);color:var(--ink);font:inherit;font-size:16px}.dq-form input:focus{outline:none;border-color:var(--orange)}.dq-out:empty{display:none}.dq-out{border-top:1px solid var(--edge);padding-top:14px;display:flex;flex-direction:column;gap:10px}.dq-place{margin:0;font-size:15px;color:var(--muted)}.dq-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.dq-tot div{padding:12px 14px;border:1px solid var(--edge);border-radius:10px}.dq-tot b{display:block;font-size:26px;color:var(--ink)}.dq-tot span{font-size:14px;color:var(--muted)}.dq-tot .hi{border-color:var(--orange)}.dq-err{margin:0;color:var(--orange)}.dq-out .rows{margin:0}.steps .step-or{margin-top:8px;padding-top:8px;border-top:1px solid var(--edge)}.step-or b{color:var(--orange);font-weight:700;margin-right:4px}.step-or a{color:var(--ink)}.duo .rows b{white-space:nowrap}.wait-h{margin:36px 0 8px;font-size:20px;font-weight:700;color:var(--ink)}.wait-p{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--muted);max-width:640px}.rows.wait{max-width:560px}.wait-note{margin-top:12px}
 .avail{min-width:0;max-width:100%;box-sizing:border-box;border:1px solid var(--edge);border-top:3px solid var(--orange);border-radius:12px;background:var(--panel);padding:18px 18px 16px;display:flex;flex-direction:column;gap:14px}
 .avail-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:"Roboto Mono",Consolas,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label)}
 .avail-legend span{display:inline-flex;align-items:center;gap:8px}
@@ -109,38 +109,19 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
       <li><b>Located Fee</b><span>+$100 when the deer is located, dead or alive</span></li>
       <li><b>Flight Time</b><span>Up to 90 minutes included; extra time is $100 per hour, billed in 15&#8209;minute increments</span></li>
       <li><b>Mileage</b><span>Round trips over 50 miles: current IRS business rate for each mile past 50</span></li>
-      <li><b>No Surprises</b><span>Get an <a href="#quote-h">instant quote</a> below. Mileage is confirmed before dispatch, and extra flight time only with the hunter's approval</span></li>
+      <li><b>No Surprises</b><span>Get an <a href="#quote-h">instant quote</a> for your hunt location. Mileage is confirmed before dispatch, and extra flight time only with the hunter's approval</span></li>
     </ul>
   </div>
-  <div class="panel">
-    <h3>Availability</h3>
-    <ul class="rows">
-      <li><b>Every Day</b><span>8:00 AM to 5:00 PM</span></li>
-      <li><b>Sunday and Monday Evenings</b><span>5:00 PM to 10:00 PM</span></li>
-      <li><b>Tuesday Evenings</b><span>5:00 to 5:30 PM and 7:30 to 10:00 PM</span></li>
-      <li><b>Thanksgiving Day</b><span>Open Thursday, Nov 26, 8:00 AM to 5:00 PM</span></li>
-      <li><b>Service Area</b><span>All of southern Wisconsin; rate confirmed before dispatch</span></li>
-    </ul>
-    <p>Daytime searches work best on cold, overcast days. Evening and early-morning searches give the strongest thermal contrast.</p>
-    <p><a href="#cal-h">See this week's open times &darr;</a></p>
+  <div class="panel dq">
+    <h3 id="quote-h">Instant Quote</h3>
+    <p>Enter where you're hunting for an on-the-spot price, mileage included. Covers all of southern Wisconsin; the rate is confirmed before dispatch.</p>
+    <form class="dq-form" id="dq-form" autocomplete="off">
+      <label for="dq-q">Hunt Location</label>
+      <input id="dq-q" name="q" type="text" placeholder="Address, town, or GPS coordinates" maxlength="200">
+      <div class="btn-row"><button class="btn" type="submit" id="dq-go">Get Quote</button><button class="btn ghost" type="button" id="dq-loc">Use My Location</button></div>
+    </form>
+    <div class="dq-out" id="dq-out" role="status" aria-live="polite"></div>
   </div>
-</div>
-</section>
-
-<section aria-labelledby="quote-h">
-<p class="kicker">Instant Quote</p>
-<h2 id="quote-h">Price Your Search</h2>
-<p class="lede">Enter where you're hunting to get an on-the-spot price, including any mileage. The rate is confirmed before dispatch.</p>
-<div class="panel dq">
-  <form class="dq-form" id="dq-form" autocomplete="off">
-    <label for="dq-q">Hunt Location</label>
-    <div class="dq-row">
-      <input id="dq-q" name="q" type="text" inputmode="text" placeholder="Address, town, or GPS coordinates" maxlength="200">
-      <button class="btn" type="submit" id="dq-go">Get Quote</button>
-    </div>
-    <button class="btn ghost dq-loc" type="button" id="dq-loc">Use My Current Location</button>
-  </form>
-  <div class="dq-out" id="dq-out" role="status" aria-live="polite"></div>
 </div>
 </section>
 
