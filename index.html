@@ -26,6 +26,20 @@
 <link rel="stylesheet" href="/theme.css">
 <script src="/theme.js"></script>
 <script src="/topo.js?v=3" defer></script>
+<style>
+.live-bar{display:flex;align-items:center;gap:14px;margin-bottom:-22px;padding:12px 14px 12px 18px;border:1px solid var(--orange);border-radius:12px;background:linear-gradient(90deg,rgba(232,113,26,.16),var(--panel) 70%);color:var(--ink);text-decoration:none;transition:transform .2s,box-shadow .2s}
+.live-bar:hover{color:var(--ink);transform:translateY(-1px);box-shadow:0 10px 28px rgba(232,113,26,.18)}
+.live-dot{position:relative;flex:0 0 12px;width:12px;height:12px;border-radius:50%;background:var(--orange)}
+.live-dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--orange);opacity:0;animation:livePulse 1.8s ease-out infinite}
+@keyframes livePulse{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.live-tx{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;font-size:15px;line-height:1.4}
+.live-tx b{font-weight:700}
+.live-tx span{color:var(--muted)}
+.live-go{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;border-radius:999px;background:var(--orange);color:#12161c;font-size:14px;font-weight:600}
+.live-go svg{width:16px;height:16px}
+@media (prefers-reduced-motion:reduce){.live-dot::after{animation:none}}
+@media (max-width:600px){.live-bar{margin-bottom:-16px;padding:10px 10px 10px 14px;gap:10px}.live-tx span{display:none}.live-go{padding:0 12px}}
+</style>
 <script>
 /* Old homepage section links now live on the mapping page. */
 (function(){var h=location.hash;if(/^#(need|cases-h|verify|acc-h|who|pilot|blog-h|closing)$/.test(h))location.replace('/mapping/'+h);})();
@@ -53,6 +67,8 @@
   </div>
 </header>
 <div class="pg">
+
+<a class="live-bar" href="/thermal/deer-recovery/#cal-h"><span class="live-dot" aria-hidden="true"></span><span class="live-tx"><b>Deer Recovery Is Live</b><span>See this week's open search times and text to claim one.</span></span><span class="live-go">Open Times <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
 
 <section class="hero center">
 <p class="eyebrow">Southern Wisconsin &middot; FAA Part 107 Certified &middot; Insured</p>
