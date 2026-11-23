@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="/theme.css">
 <script src="/theme.js"></script>
 <script>/* This page is dark only. */document.documentElement.setAttribute('data-theme','dark');</script>
-<style>.theme-toggle{display:none!important}.dq{gap:12px}.dq-form{display:flex;flex-direction:column;gap:10px}.dq-form label{font-size:14px;font-weight:600;color:var(--ink)}.dq-form input{width:100%;box-sizing:border-box;min-height:48px;padding:0 16px;border-radius:10px;border:1px solid var(--edge);background:var(--bg,#0f1318);color:var(--ink);font:inherit;font-size:16px}.dq-form input:focus{outline:none;border-color:var(--orange)}.dq-out:empty{display:none}.dq-out{border-top:1px solid var(--edge);padding-top:14px;display:flex;flex-direction:column;gap:10px}.dq-place{margin:0;font-size:15px;color:var(--muted)}.dq-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.dq-tot div{padding:12px 14px;border:1px solid var(--edge);border-radius:10px}.dq-tot b{display:block;font-size:26px;color:var(--ink)}.dq-tot span{font-size:14px;color:var(--muted)}.dq-tot .hi{border-color:var(--orange)}.dq-err{margin:0;color:var(--orange)}.dq-out .rows{margin:0}.steps .step-or{margin-top:8px;padding-top:8px;border-top:1px solid var(--edge)}.step-or b{color:var(--orange);font-weight:700;margin-right:4px}.step-or a{color:var(--ink)}.duo .rows b{white-space:nowrap}.wait-h{margin:36px 0 8px;font-size:20px;font-weight:700;color:var(--ink)}.wait-p{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--muted);max-width:640px}.rows.wait{max-width:560px}.wait-note{margin-top:12px}
+<style>.theme-toggle{display:none!important}.dq{gap:12px}.pq-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.pq-quote{display:flex;flex-direction:column;gap:12px;border-left:1px solid var(--edge);padding-left:28px}.pq-fees{display:flex;flex-direction:column;gap:10px}@media(max-width:760px){.pq-grid{grid-template-columns:1fr}.pq-quote{border-left:0;padding-left:0;border-top:1px solid var(--edge);padding-top:20px}}.dq-form{display:flex;flex-direction:column;gap:10px}.dq-form label{font-size:14px;font-weight:600;color:var(--ink)}.dq-form input{width:100%;box-sizing:border-box;min-height:48px;padding:0 16px;border-radius:10px;border:1px solid var(--edge);background:var(--bg,#0f1318);color:var(--ink);font:inherit;font-size:16px}.dq-form input:focus{outline:none;border-color:var(--orange)}.dq-out:empty{display:none}.dq-out{border-top:1px solid var(--edge);padding-top:14px;display:flex;flex-direction:column;gap:10px}.dq-place{margin:0;font-size:15px;color:var(--muted)}.dq-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.dq-tot div{padding:12px 14px;border:1px solid var(--edge);border-radius:10px}.dq-tot b{display:block;font-size:26px;color:var(--ink)}.dq-tot span{font-size:14px;color:var(--muted)}.dq-tot .hi{border-color:var(--orange)}.dq-err{margin:0;color:var(--orange)}.dq-out .rows{margin:0}.steps .step-or{margin-top:8px;padding-top:8px;border-top:1px solid var(--edge)}.step-or b{color:var(--orange);font-weight:700;margin-right:4px}.step-or a{color:var(--ink)}.duo .rows b{white-space:nowrap}.wait-h{margin:36px 0 8px;font-size:20px;font-weight:700;color:var(--ink)}.wait-p{margin:0 0 14px;font-size:16px;line-height:1.55;color:var(--muted);max-width:640px}.rows.wait{max-width:560px}.wait-note{margin-top:12px}
 .avail{min-width:0;max-width:100%;box-sizing:border-box;border:1px solid var(--edge);border-top:3px solid var(--orange);border-radius:12px;background:var(--panel);padding:18px 18px 16px;display:flex;flex-direction:column;gap:14px}
 .avail-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:"Roboto Mono",Consolas,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label)}
 .avail-legend span{display:inline-flex;align-items:center;gap:8px}
@@ -100,27 +100,27 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
 </figure>
 
 <section aria-label="Pricing and availability">
-<div class="duo">
-  <div class="panel">
-    <h3>Pricing</h3>
-    <p class="fig">$225<small>search fee</small></p>
-    <p>Per recovery search within 50 miles round trip of Cross Plains, WI.</p>
-    <ul class="rows">
-      <li><b>Located Fee</b><span>+$100 when the deer is located, dead or alive</span></li>
-      <li><b>Flight Time</b><span>Up to 90 minutes included; extra time is $100 per hour, billed in 15&#8209;minute increments</span></li>
-      <li><b>Mileage</b><span>Round trips over 50 miles: current IRS business rate for each mile past 50</span></li>
-      <li><b>No Surprises</b><span>Get an <a href="#quote-h">instant quote</a> for your hunt location. Mileage is confirmed before dispatch, and extra flight time only with the hunter's approval</span></li>
-    </ul>
-  </div>
-  <div class="panel dq">
-    <h3 id="quote-h">Instant Quote</h3>
-    <p>Enter where you're hunting for an on-the-spot price, mileage included. Covers all of southern Wisconsin; the rate is confirmed before dispatch.</p>
-    <form class="dq-form" id="dq-form" autocomplete="off">
-      <label for="dq-q">Hunt Location</label>
-      <input id="dq-q" name="q" type="text" placeholder="Address, town, or GPS coordinates" maxlength="200">
-      <div class="btn-row"><button class="btn" type="submit" id="dq-go">Get Quote</button><button class="btn ghost" type="button" id="dq-loc">Use My Location</button></div>
-    </form>
-    <div class="dq-out" id="dq-out" role="status" aria-live="polite"></div>
+<div class="panel dq price-q">
+  <div class="pq-grid">
+    <div class="pq-fees">
+      <h3>Pricing</h3>
+      <p class="fig">$225<small>search fee</small></p>
+      <ul class="rows">
+        <li><b>Located Fee</b><span>+$100 when the deer is located, dead or alive</span></li>
+        <li><b>Flight Time</b><span>Up to 90 minutes included; extra time is $100 per hour, billed in 15&#8209;minute increments, only with the hunter's approval</span></li>
+        <li><b>Mileage</b><span>First 50 miles round trip from Cross Plains included; past that, the current IRS business rate per mile</span></li>
+        <li><b>Service Area</b><span>All of southern Wisconsin; rate confirmed before dispatch</span></li>
+      </ul>
+    </div>
+    <div class="pq-quote">
+      <h3 id="quote-h">Instant Quote</h3>
+      <form class="dq-form" id="dq-form" autocomplete="off">
+        <label for="dq-q">Hunt Location</label>
+        <input id="dq-q" name="q" type="text" placeholder="Address, town, or GPS coordinates" maxlength="200">
+        <div class="btn-row"><button class="btn" type="submit" id="dq-go">Get Quote</button><button class="btn ghost" type="button" id="dq-loc">Use My Location</button></div>
+      </form>
+      <div class="dq-out" id="dq-out" role="status" aria-live="polite"></div>
+    </div>
   </div>
 </div>
 </section>
@@ -304,7 +304,7 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
     out.innerHTML =
       '<p class="dq-place">Quote for <b>' + esc(d.place) + '</b> &middot; about ' + d.roundTripMiles + ' mi round trip' + (d.approx ? ' (estimated)' : '') + '</p>' +
       '<div class="dq-tot"><div><b>' + $(d.notLocated) + '</b><span>Search, deer not located</span></div><div class="hi"><b>' + $(d.located) + '</b><span>Search, deer located (+' + $(d.locatedFee) + ')</span></div></div>' +
-      '<ul class="rows"><li><b>Search Fee</b><span>' + $(d.search) + ', up to 90 minutes of flight time</span></li><li><b>Mileage</b><span>' + mi + '</span></li><li><b>Extra Time</b><span>$100 per hour in 15&#8209;minute increments, only with your approval</span></li></ul>' +
+      '<ul class="rows"><li><b>Mileage</b><span>' + mi + '</span></li></ul>' +
       (d.inArea ? '' : '<p class="dq-err">This location looks outside southern Wisconsin. Call or text to check before booking.</p>') +
       '<p class="note">Estimate only. The rate is confirmed before dispatch.</p>' +
       '<div class="btn-row"><a class="btn" href="sms:+16088200224?&body=' + encodeURIComponent(msg) + '">Text This Quote to the Pilot</a><a class="btn ghost" href="#cal-h">See Open Times</a></div>';
