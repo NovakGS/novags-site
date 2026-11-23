@@ -216,11 +216,11 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
 <dialog class="qrd" id="qrd" aria-labelledby="qrd-h">
   <div class="qrd-in">
     <button type="button" class="qrd-x" id="qrd-x" aria-label="Close">&times;</button>
-    <p class="qrd-k">Text From Your Phone</p>
+    <p class="qrd-k" id="qrd-k">Text From Your Phone</p>
     <h2 class="qrd-h" id="qrd-h"></h2>
     <div class="qrd-tile" id="qrd-code" role="img" aria-label="QR code that opens a text to the pilot with this request filled in"></div>
-    <p class="qrd-p">Scan with your phone camera. Your messages app opens with the request already filled in. Just hit send.</p>
-    <p class="qrd-alt">Can&rsquo;t scan? Text <b>(608) 820-0224</b></p>
+    <p class="qrd-p" id="qrd-p">Scan with your phone camera. Your messages app opens with the request already filled in. Just hit send.</p>
+    <p class="qrd-alt" id="qrd-alt">Can&rsquo;t scan? Text <b>(608) 820-0224</b></p>
   </div>
 </dialog>
 <script>
@@ -255,24 +255,42 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
   var dlg = document.getElementById('qrd');
   if (!MOBILE && dlg) {
     var qs = document.createElement('script'); qs.src = '/qr.js'; document.head.appendChild(qs);
+    var QRT = {
+      sms: ['Text From Your Phone', 'Scan with your phone camera. Your messages app opens with the request already filled in. Just hit send.', 'Can&rsquo;t scan? Text <b>(608) 820-0224</b>', 'QR code that opens a text to the pilot with this request filled in'],
+      tel: ['Call From Your Phone', 'Scan with your phone camera. Your phone app opens with the number ready to dial. Just tap call.', 'Can&rsquo;t scan? Call <b>(608) 820-0224</b>', 'QR code that opens your phone app to call the pilot']
+    };
+    var showQR = function (call, heading, payload) {
+      var t = QRT[call ? 'tel' : 'sms'];
+      document.getElementById('qrd-k').textContent = t[0];
+      document.getElementById('qrd-p').textContent = t[1];
+      document.getElementById('qrd-alt').innerHTML = t[2];
+      document.getElementById('qrd-h').textContent = heading;
+      var code = document.getElementById('qrd-code');
+      code.setAttribute('aria-label', t[3]);
+      code.innerHTML = window.NovakQR(payload);
+      dlg.showModal();
+    };
     document.getElementById('qrd-x').addEventListener('click', function () { dlg.close(); });
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
     grid.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a.slot');
       if (!a || !a.dataset.msg || !window.NovakQR || !dlg.showModal) return;
       e.preventDefault();
-      document.getElementById('qrd-h').textContent = a.dataset.when;
-      document.getElementById('qrd-code').innerHTML = window.NovakQR('SMSTO:+16088200224:' + a.dataset.msg);
-      dlg.showModal();
+      showQR(false, a.dataset.when, 'SMSTO:+16088200224:' + a.dataset.msg);
     });
     document.querySelectorAll('a.btn[href^="sms:"]').forEach(function (b) {
       b.addEventListener('click', function (e) {
         if (!window.NovakQR || !dlg.showModal) return;
         e.preventDefault();
-        document.getElementById('qrd-h').textContent = 'Text the Pilot';
-        document.getElementById('qrd-code').innerHTML = window.NovakQR('SMSTO:+16088200224:Hi, I would like to request a deer recovery search.');
-        dlg.showModal();
+        showQR(false, 'Text the Pilot', 'SMSTO:+16088200224:Hi, I would like to request a deer recovery search.');
       });
+    });
+    // Call buttons and phone links: QR code that opens the phone app ready to dial.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+      if (!a || !window.NovakQR || !dlg.showModal) return;
+      e.preventDefault();
+      showQR(true, 'Call the Pilot', 'tel:+16088200224');
     });
   }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
