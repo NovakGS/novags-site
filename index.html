@@ -27,6 +27,7 @@
 <script src="/theme.js"></script>
 <script src="/topo.js?v=3" defer></script>
 <style>
+.live-bar[hidden]{display:none}
 .live-bar{display:flex;align-items:center;gap:14px;margin-bottom:-22px;padding:12px 14px 12px 18px;border:1px solid var(--orange);border-radius:12px;background:linear-gradient(90deg,rgba(232,113,26,.16),var(--panel) 70%);color:var(--ink);text-decoration:none;transition:transform .2s,box-shadow .2s}
 .live-bar:hover{color:var(--ink);transform:translateY(-1px);box-shadow:0 10px 28px rgba(232,113,26,.18)}
 .live-dot{position:relative;flex:0 0 12px;width:12px;height:12px;border-radius:50%;background:var(--orange)}
@@ -68,7 +69,11 @@
 </header>
 <div class="pg">
 
-<a class="live-bar" href="/thermal/deer-recovery/#cal-h"><span class="live-dot" aria-hidden="true"></span><span class="live-tx"><b>Deer Recovery Is Live</b><span>See this week's open search times and text to claim one.</span></span><span class="live-go">Open Times <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<a class="live-bar" id="live-bar" href="/thermal/deer-recovery/#cal-h" hidden><span class="live-dot" aria-hidden="true"></span><span class="live-tx"><b>Happy Gun Season! Deer Recovery Is Live</b><span>See open search times through Nov 29 and text to claim one.</span></span><span class="live-go">Open Times <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<script>
+/* Show only during the Wisconsin nine-day gun deer season (Central Time). */
+(function(){var b=document.getElementById('live-bar');if(!b)return;var START='2026-11-21',END='2026-11-29';var p={};try{new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});}catch(e){return;}var d=p.year+'-'+p.month+'-'+p.day;if(d>=START&&d<=END)b.hidden=false;})();
+</script>
 
 <section class="hero center">
 <p class="eyebrow">Southern Wisconsin &middot; FAA Part 107 Certified &middot; Insured</p>
