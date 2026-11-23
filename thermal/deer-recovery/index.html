@@ -295,35 +295,32 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
   function $(n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); }
   function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
   function busy(on) { go.disabled = loc.disabled = on; if (on) out.innerHTML = '<p class="dq-place">Calculating&hellip;</p>'; }
-  function show(d, where) {
+  function show(d) {
     if (!d.ok) { out.innerHTML = '<p class="dq-err">' + esc(d.error || 'Something went wrong. Call or text 608-820-0224.') + '</p>'; return; }
     var mi = d.billableMiles > 0
       ? d.billableMiles + ' mi past the first ' + d.freeMiles + ' &times; $' + d.rate.toFixed(3).replace(/0$/, '') + '/mi = ' + $(d.mileage)
       : 'None (' + d.roundTripMiles + ' mi round trip is within the first ' + d.freeMiles + ')';
-    var msg = 'Deer recovery request. Hunt location: ' + where + '. Instant quote: ' + $(d.notLocated) + ', or ' + $(d.located) + ' if located (' + d.roundTripMiles + ' mi round trip).';
     out.innerHTML =
       '<p class="dq-place">Quote for <b>' + esc(d.place) + '</b> &middot; about ' + d.roundTripMiles + ' mi round trip' + (d.approx ? ' (estimated)' : '') + '</p>' +
       '<div class="dq-tot"><div><b>' + $(d.notLocated) + '</b><span>Search, deer not located</span></div><div class="hi"><b>' + $(d.located) + '</b><span>Search, deer located (+' + $(d.locatedFee) + ')</span></div></div>' +
       '<ul class="rows"><li><b>Mileage</b><span>' + mi + '</span></li></ul>' +
       (d.inArea ? '' : '<p class="dq-err">This location looks outside southern Wisconsin. Call or text to check before booking.</p>') +
-      '<p class="note">Estimate only. The rate is confirmed before dispatch.</p>' +
-      '<div class="btn-row"><a class="btn" href="sms:+16088200224?&body=' + encodeURIComponent(msg) + '">Text This Quote to the Pilot</a><a class="btn ghost" href="#cal-h">See Open Times</a></div>';
+      '<p class="note">Estimate only. The rate is confirmed before dispatch.</p>';
   }
-  function ask(body, where) {
+  function ask(body) {
     busy(true);
     fetch('/api/deer-quote', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
       .then(function (r) { return r.json(); })
-      .then(function (d) { show(d, where); })
+      .then(function (d) { show(d); })
       .catch(function () { show({ ok: false }); })
       .then(function () { go.disabled = loc.disabled = false; });
   }
-  f.addEventListener('submit', function (e) { e.preventDefault(); var v = q.value.trim(); if (v.length < 3) { q.focus(); return; } ask({ q: v }, v); });
+  f.addEventListener('submit', function (e) { e.preventDefault(); var v = q.value.trim(); if (v.length < 3) { q.focus(); return; } ask({ q: v }); });
   loc.addEventListener('click', function () {
     if (!navigator.geolocation) { show({ ok: false, error: 'Location is not available on this device. Type the hunt location instead.' }); return; }
     busy(true);
     navigator.geolocation.getCurrentPosition(function (p) {
-      var la = +p.coords.latitude.toFixed(5), lo = +p.coords.longitude.toFixed(5);
-      ask({ lat: la, lon: lo }, la + ', ' + lo + ' (https://maps.google.com/?q=' + la + ',' + lo + ')');
+      ask({ lat: +p.coords.latitude.toFixed(5), lon: +p.coords.longitude.toFixed(5) });
     }, function () { go.disabled = loc.disabled = false; show({ ok: false, error: 'Location permission was denied. Type the hunt location instead.' }); }, { enableHighAccuracy: true, timeout: 15000 });
   });
 })();
