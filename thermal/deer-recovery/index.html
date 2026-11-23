@@ -53,6 +53,17 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
 .tl.top{margin-top:4px}
 .avail-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px}
 @media (max-width:600px){.avail{padding:14px 12px}.avail-grid{grid-template-columns:40px repeat(7,minmax(0,1fr));gap:2px}.dh{font-size:11px}.dh{font-size:10.5px}.dh b{font-size:10.5px;letter-spacing:.04em}.tl{font-size:10px;padding-right:4px}}
+.qrd{width:min(92vw,380px);padding:0;border:1px solid var(--edge);border-top:3px solid var(--orange);border-radius:14px;background:var(--panel-solid);color:var(--ink);box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.qrd::backdrop{background:rgba(5,7,10,.72)}
+.qrd-in{position:relative;padding:22px 22px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.qrd-k{margin:0;font-family:"Roboto Mono",Consolas,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--label)}
+.qrd-h{margin:0;font-size:21px;line-height:1.3;font-weight:700;color:var(--ink)}
+.qrd-tile{background:#fff;border-radius:12px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.qrd-tile svg{display:block;width:220px;height:220px}
+.qrd-p{margin:0;font-size:15px;line-height:1.5;color:var(--muted);max-width:300px}
+.qrd-alt{margin:0;font-size:14px;color:var(--faint)}.qrd-alt b{color:var(--ink);font-weight:600;white-space:nowrap}
+.qrd-x{position:absolute;top:8px;right:8px;width:36px;height:36px;border:0;border-radius:8px;background:transparent;color:var(--muted);font-size:24px;line-height:1;cursor:pointer}
+.qrd-x:hover,.qrd-x:focus-visible{background:rgba(255,255,255,.08);color:var(--ink);outline:none}
 .deer-shot{margin:0;border:1px solid var(--edge);border-top:3px solid var(--orange);border-radius:12px;overflow:hidden;background:#000}.deer-shot img{display:block;width:100%;height:auto}
 </style>
 <script src="/topo.js?v=3" defer></script>
@@ -201,6 +212,16 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
   <p style="margin:0"><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 Novak Geospatial Solutions&trade;, a BUCK2NINETY LLC company &middot; Cross Plains, Wisconsin &middot; FAA Part 107 Certified</p>
 </footer>
 </div>
+<dialog class="qrd" id="qrd" aria-labelledby="qrd-h">
+  <div class="qrd-in">
+    <button type="button" class="qrd-x" id="qrd-x" aria-label="Close">&times;</button>
+    <p class="qrd-k">Text From Your Phone</p>
+    <h2 class="qrd-h" id="qrd-h"></h2>
+    <div class="qrd-tile" id="qrd-code" role="img" aria-label="QR code that opens a text to the pilot with this request filled in"></div>
+    <p class="qrd-p">Scan with your phone camera. Your messages app opens with the request already filled in. Just hit send.</p>
+    <p class="qrd-alt">Can&rsquo;t scan? Text <b>(608) 820-0224</b></p>
+  </div>
+</dialog>
 <script>
 (function () {
   var grid = document.getElementById('avail-grid');
@@ -220,6 +241,21 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
     new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
       .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
     return { date: p.year + '-' + p.month + '-' + p.day, mins: Number(p.hour) * 60 + Number(p.minute) };
+  }
+  var MOBILE = (window.matchMedia && matchMedia('(pointer: coarse)').matches) || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  var dlg = document.getElementById('qrd');
+  if (!MOBILE && dlg) {
+    var qs = document.createElement('script'); qs.src = '/qr.js'; document.head.appendChild(qs);
+    document.getElementById('qrd-x').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    grid.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a.slot');
+      if (!a || !a.dataset.msg || !window.NovakQR || !dlg.showModal) return;
+      e.preventDefault();
+      document.getElementById('qrd-h').textContent = a.dataset.when;
+      document.getElementById('qrd-code').innerHTML = window.NovakQR('SMSTO:+16088200224:' + a.dataset.msg);
+      dlg.showModal();
+    });
   }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function fail() {
@@ -259,7 +295,9 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
           var dd = new Date(d.date + 'T12:00:00Z');
           var msg = 'Hi, I would like to request a deer recovery search on ' + WDL[d.weekday] + ', ' + MO[dd.getUTCMonth()] + ' ' + dd.getUTCDate() + ' at ' + clock(m) + '. Is that time still open?';
           c.href = 'sms:+16088200224?&body=' + encodeURIComponent(msg);
-          label += '. Tap to text the pilot and request this time';
+          c.dataset.msg = msg;
+          c.dataset.when = WDL[d.weekday] + ', ' + MO[dd.getUTCMonth()] + ' ' + dd.getUTCDate() + ' at ' + clock(m);
+          label += MOBILE ? '. Tap to text the pilot and request this time' : '. Click for a QR code to text the pilot from your phone';
         }
         c.title = label; c.setAttribute('aria-label', label);
         grid.appendChild(c);
@@ -277,7 +315,7 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
     if (foot && data.updated) {
       var t = new Date(data.updated).toLocaleTimeString('en-US', { timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit' });
       foot.textContent = '';
-      foot.appendChild(el('span', null, 'Times are Central. Each block is 30 minutes. Tap an open block to text a request.'));
+      foot.appendChild(el('span', null, 'Times are Central. Each block is 30 minutes. ' + (MOBILE ? 'Tap an open block to text a request.' : 'Click an open block to text a request from your phone.')));
       foot.appendChild(el('span', null, 'Checked ' + t));
     }
   }
