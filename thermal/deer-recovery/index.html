@@ -265,6 +265,15 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
       document.getElementById('qrd-code').innerHTML = window.NovakQR('SMSTO:+16088200224:' + a.dataset.msg);
       dlg.showModal();
     });
+    document.querySelectorAll('a.btn[href^="sms:"]').forEach(function (b) {
+      b.addEventListener('click', function (e) {
+        if (!window.NovakQR || !dlg.showModal) return;
+        e.preventDefault();
+        document.getElementById('qrd-h').textContent = 'Text the Pilot';
+        document.getElementById('qrd-code').innerHTML = window.NovakQR('SMSTO:+16088200224:Hi, I would like to request a deer recovery search.');
+        dlg.showModal();
+      });
+    });
   }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function fail() {
