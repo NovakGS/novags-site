@@ -47,6 +47,8 @@
 .dh.today b{color:var(--orange)}
 .tl{font-family:"Roboto Mono",Consolas,monospace;font-size:11px;line-height:18px;color:var(--faint);text-align:right;padding-right:6px;white-space:nowrap}
 .slot{height:18px;border-radius:3px}
+a.slot{display:block;cursor:pointer;transition:filter .15s,box-shadow .15s}
+a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0 0 0 2px var(--ink);outline:none;position:relative;z-index:1}
 .slot.top{margin-top:4px}
 .tl.top{margin-top:4px}
 .avail-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px}
@@ -119,12 +121,12 @@
 <section aria-labelledby="cal-h">
 <p class="kicker">Live Availability</p>
 <h2 id="cal-h">Open Times This Week</h2>
-<p class="lede">Updated by the pilot in real time. Open times are first come, first served; call or text to claim one.</p>
+<p class="lede">Updated by the pilot in real time. Tap an open time to send the pilot a text requesting it. Open times are first come, first served.</p>
 <div class="avail" id="avail" aria-live="polite">
   <div class="avail-legend" aria-hidden="true"><span><i class="sw open"></i>Open</span><span><i class="sw hold"></i>Weather Hold</span><span><i class="sw off"></i>Unavailable</span><span><i class="sw past"></i>Past</span></div>
   <p class="avail-wx" id="avail-wx" role="status"></p>
   <div class="avail-scroll"><div class="avail-grid" id="avail-grid" role="table" aria-label="Deer recovery availability, next 7 days, Central Time"><p class="note avail-msg">Loading availability&hellip;</p></div></div>
-  <p class="note avail-foot" id="avail-foot">Times are Central. Each block is 30 minutes.</p>
+  <p class="note avail-foot" id="avail-foot">Times are Central. Each block is 30 minutes. Tap an open block to text a request.</p>
 </div>
 </section>
 
@@ -240,9 +242,16 @@
         var open = d.open.indexOf(m) !== -1;
         var hold = !open && (d.hold || []).indexOf(m) !== -1;
         var past = d.date < now.date || (d.date === now.date && m + step <= now.mins);
-        var c = el('div', 'slot ' + (open ? 'open' : hold ? 'hold' : 'off') + (past ? ' past' : '') + (top ? ' top' : ''));
+        var book = open && !past;
+        var c = el(book ? 'a' : 'div', 'slot ' + (open ? 'open' : hold ? 'hold' : 'off') + (past ? ' past' : '') + (top ? ' top' : ''));
         c.setAttribute('role', 'cell');
         var label = WDL[d.weekday] + ' ' + clock(m) + ' to ' + clock(m + step) + ': ' + (past ? 'past' : open ? 'open' : hold ? 'weather hold' : 'unavailable');
+        if (book) {
+          var dd = new Date(d.date + 'T12:00:00Z');
+          var msg = 'Hi, I would like to request a deer recovery search on ' + WDL[d.weekday] + ', ' + MO[dd.getUTCMonth()] + ' ' + dd.getUTCDate() + ' at ' + clock(m) + '. Is that time still open?';
+          c.href = 'sms:+16088200224?&body=' + encodeURIComponent(msg);
+          label += '. Tap to text the pilot and request this time';
+        }
         c.title = label; c.setAttribute('aria-label', label);
         grid.appendChild(c);
       });
@@ -259,7 +268,7 @@
     if (foot && data.updated) {
       var t = new Date(data.updated).toLocaleTimeString('en-US', { timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit' });
       foot.textContent = '';
-      foot.appendChild(el('span', null, 'Times are Central. Each block is 30 minutes.'));
+      foot.appendChild(el('span', null, 'Times are Central. Each block is 30 minutes. Tap an open block to text a request.'));
       foot.appendChild(el('span', null, 'Checked ' + t));
     }
   }
