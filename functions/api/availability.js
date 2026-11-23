@@ -13,6 +13,11 @@
 // GET           -> { ok, tz, firstSlot, lastSlot, slotMinutes, days:[{date, weekday, open:[480,510,...], custom}] }
 // GET ?check=1  -> makes sure the list exists (creates it if missing) and reports config.
 //
+// Weather hold: the "BASE" row of the SharePoint list "NGS Weather" (written by the Ops Worker and
+// shown on the app's Go / No-Go screen) is read on every request. If any current factor is No-Go
+// (st = 2), open slots in the next 60 minutes become "hold" instead of "open". Daylight is ignored,
+// because deer searches fly at night. Weather data older than WEATHER_MAX_AGE_MIN is ignored.
+//
 // Environment: MS_TENANT_ID, MS_CLIENT_ID, SP_SITE_ID, GRAPH_CLIENT_SECRET (same as /api/quote)
 
 const LIST_NAME = 'NGS Deer Availability';
@@ -22,6 +27,10 @@ const SLOT = 30;          // minutes per slot
 const FIRST_SLOT = 8 * 60;  // 8:00 AM
 const LAST_SLOT = 21 * 60 + 30; // 9:30 PM slot, ends 10:00 PM
 const CACHE_SECONDS = 60;
+const WEATHER_LIST = 'NGS Weather';
+const WEATHER_ROW = 'BASE';
+const HOLD_WINDOW_MIN = 60;      // "right now" = slots overlapping the next 60 minutes
+const WEATHER_MAX_AGE_MIN = 120; // ignore stale weather
 
 const json = (body, status = 200, cache = 'no-store') =>
   new Response(JSON.stringify(body), {
@@ -124,6 +133,31 @@ async function readOverrides(env, token, listId, from, to) {
   return out;
 }
 
+// Current No-Go factors at base, ignoring daylight. Returns null when there is no usable data.
+async function readWeather(env, token) {
+  const r = await graph(token, 'GET',
+    `${site(env)}/lists/${encodeURIComponent(WEATHER_LIST)}/items?$expand=fields($select=Title,FactorsJson,UpdatedAt,Verdict)&$top=200`);
+  if (!r.ok) throw new Error(`Reading "${WEATHER_LIST}" failed (${r.status})`);
+  const row = (r.data.value || []).map((it) => it.fields || {}).find((f) => String(f.Title || '').trim() === WEATHER_ROW);
+  if (!row || !row.UpdatedAt) return null;
+  const ageMin = (Date.now() - Date.parse(row.UpdatedAt)) / 60000;
+  if (!(ageMin >= -5 && ageMin <= WEATHER_MAX_AGE_MIN)) return null;
+  let factors = [];
+  try { factors = JSON.parse(row.FactorsJson || '[]'); } catch { return null; }
+  const nogo = factors
+    .filter((f) => f && Number(f.st) === 2 && !/daylight/i.test(String(f.label || '')))
+    .map((f) => ({ label: String(f.label || '').slice(0, 60), val: String(f.val || '').slice(0, 30), note: String(f.note || '').slice(0, 60) }));
+  return { updatedAt: row.UpdatedAt, nogo };
+}
+
+// Minutes after midnight, Central time, right now.
+function centralNowMinutes() {
+  const p = {};
+  new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+    .formatToParts(new Date()).forEach((x) => { p[x.type] = x.value; });
+  return Number(p.hour) * 60 + Number(p.minute);
+}
+
 export async function onRequestGet({ request, env, waitUntil }) {
   const url = new URL(request.url);
   const required = ['MS_TENANT_ID', 'MS_CLIENT_ID', 'SP_SITE_ID', 'GRAPH_CLIENT_SECRET'];
@@ -142,7 +176,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
 
   // Short edge cache so a page full of visitors doesn't hit SharePoint on every load.
   const cache = caches.default;
-  const cacheKey = new Request(`${url.origin}/api/availability#v2`);
+  const cacheKey = new Request(`${url.origin}/api/availability#v3`);
   const hit = await cache.match(cacheKey);
   if (hit) return hit;
 
@@ -150,26 +184,41 @@ export async function onRequestGet({ request, env, waitUntil }) {
   const last = addDays(today, DAYS - 1);
   let overrides = {};
   let source = 'standard';
+  let weather = null;
   if (configured) {
     try {
       const token = await getToken(env);
       const list = await ensureList(env, token);
       overrides = await readOverrides(env, token, list.id, today, last);
       source = 'live';
+      try { weather = await readWeather(env, token); } catch (err) {
+        console.error('weather read failed:', err && err.message ? err.message : err);
+      }
     } catch (err) {
       console.error('availability read failed:', err && err.message ? err.message : err);
     }
   }
+  const holdActive = !!(weather && weather.nogo.length);
+  const nowMin = centralNowMinutes();
 
   const days = [];
   for (let i = 0; i < DAYS; i++) {
     const date = addDays(today, i);
     const custom = Object.prototype.hasOwnProperty.call(overrides, date);
-    days.push({ date, weekday: weekdayOf(date), open: custom ? parseHours(overrides[date]) : standardHours(date), custom });
+    let open = custom ? parseHours(overrides[date]) : standardHours(date);
+    let hold = [];
+    if (holdActive && i === 0) {
+      // Slots that overlap [now, now + HOLD_WINDOW_MIN) are held for weather.
+      const inWindow = (m) => m + SLOT > nowMin && m < nowMin + HOLD_WINDOW_MIN;
+      hold = open.filter(inWindow);
+      open = open.filter((m) => !inWindow(m));
+    }
+    days.push({ date, weekday: weekdayOf(date), open, hold, custom });
   }
 
   const res = json(
-    { ok: true, source, tz: TZ, today, firstSlot: FIRST_SLOT, lastSlot: LAST_SLOT, slotMinutes: SLOT, updated: new Date().toISOString(), days },
+    { ok: true, source, tz: TZ, today, firstSlot: FIRST_SLOT, lastSlot: LAST_SLOT, slotMinutes: SLOT, updated: new Date().toISOString(),
+      weather: holdActive ? { hold: true, updatedAt: weather.updatedAt, reasons: weather.nogo } : { hold: false }, days },
     200,
     `public, max-age=${CACHE_SECONDS}`,
   );
