@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (GTM-5GBK7HP6) -->
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5GBK7HP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  // Google Ads conversion: Call or Text the Operator Click (call, text, and calendar time buttons)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"],a[href^="sms:"],a.slot');
+    if (a) gtag('event', 'conversion', {'send_to': 'AW-18590889895/vE_yCPCu0r0dEKfv6aBF'});
+  }, true);
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hunting Land Drone Mapping + LiDAR: Leaf-Off Terrain, Cover &amp; Thermal Case Study | Novak Geospatial Solutions</title>
+<meta name="description" content="A 13.7-acre Dane County hunting parcel mapped in winter with a DJI Matrice 4E and 4T, combined with public 2024 LiDAR and analyzed in QGIS: terrain features, travel hubs, cover types, field edges, and a thermal survey example.">
+<link rel="canonical" href="https://novakgs.com/case-studies/hunting-land/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Read the Ground Before the Green Comes Back | Novak|GS Case Study">
+<meta property="og:description" content="Leaf-off drone mapping plus public LiDAR, analyzed in QGIS: terrain, cover, edges, and thermal for a 13.7-acre hunting parcel in Dane County, Wisconsin.">
+<meta property="og:url" content="https://novakgs.com/case-studies/hunting-land/">
+<meta property="og:image" content="https://novakgs.com/case-studies/hunting-land/img/og.jpg">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Why fly hunting land in winter?","acceptedAnswer":{"@type":"Answer","text":"With the leaves down, a mapping flight sees through bare hardwoods to the ground: trails, old logging roads, fence lines, wet spots, and terrain that are hidden under summer canopy. Conifers stand out against the bare timber, and winter flights happen after the season, when there is nothing to disturb. The maps are in hand for spring work on food plots, trails, and stand sites."}},
+{"@type":"Question","name":"Why combine public LiDAR with a drone flight?","acceptedAnswer":{"@type":"Answer","text":"Public LiDAR measures the bare ground and the height of the trees, even under heavy cover, but it is a few years old and has no photo. A drone flight is current and far more detailed, but a camera cannot see through dense canopy. Together they give a current, high-detail picture of the property on top of a reliable ground and canopy model, and each one checks the other."}},
+{"@type":"Question","name":"Can a thermal flight tell me where the deer are right now?","acceptedAnswer":{"@type":"Answer","text":"No. A thermal survey is a snapshot of one flight morning, delivered after processing. It gives a general picture of wildlife presence and where animals were bedded or feeding at that time. It is informational only and is not a real-time locating service. Animals move, and deer under thick conifer cover or out of the flight area are not counted."}},
+{"@type":"Question","name":"Was the thermal layer on this page flown on this property?","acceptedAnswer":{"@type":"Answer","text":"No. The thermal layer in this case study is a simulated example, built on this parcel's real terrain and cover to show the format of the deliverable. Everything else on the page comes from real data."}},
+{"@type":"Question","name":"Can one flight do it all?","acceptedAnswer":{"@type":"Answer","text":"A Matrice 4T mapping flight can capture elevations, contours, and thermal scouting in one mission. This case study used the Matrice 4E for the most detailed map and the 4T for thermal."}},
+{"@type":"Question","name":"Will the maps work in a hunting app?","acceptedAnswer":{"@type":"Answer","text":"Yes. Terrain features, cover, edges, and contours are delivered as KML/KMZ files for Google Earth and most hunting apps, along with a printed map and a live web map."}},
+{"@type":"Question","name":"Is this a land survey?","acceptedAnswer":{"@type":"Answer","text":"No. The maps are produced from drone imagery and public LiDAR for planning and visualization. They are not a land survey and do not establish property boundaries."}}
+]}</script>
+<style>
+:root{--bg:#0a0d12;--ink:#eef1f3;--muted:#bec6ce;--label:#c3cad1;--faint:#a4adb6;--panel:rgba(12,16,22,.78);--panel-solid:#10151c;--edge:rgba(255,255,255,.12);--hair:rgba(255,255,255,.06);--edge2:rgba(255,255,255,.25);--or:#e8711a;--blue:#4677a0}
+html[data-theme="light"]{--bg:#f3f4f6;--ink:#151b22;--muted:#46515d;--label:#3d4752;--faint:#5b6773;--panel:#ffffff;--panel-solid:#f7f8fa;--edge:rgba(21,27,34,.13);--hair:rgba(21,27,34,.08);--edge2:rgba(21,27,34,.22)}
+html[data-theme="light"] body{background:var(--bg)}
+[data-dark]{--ink:#eef1f3;--muted:#bec6ce;--label:#c3cad1;--faint:#a4adb6;--panel-solid:#10151c;--edge:rgba(255,255,255,.12)}
+body{margin:0;background:var(--bg)}
+a{color:var(--ink)}a:hover{color:var(--or)}
+.hl-root{position:relative;z-index:1;min-height:100vh;color:var(--ink);font-family:Roboto,'Segoe UI',system-ui,Arial,sans-serif;font-size:17px;-webkit-font-smoothing:antialiased}
+.hl-main{max-width:1040px;margin:0 auto;padding:22px 16px 48px;display:flex;flex-direction:column;gap:56px}
+.sec{display:flex;flex-direction:column;gap:16px}
+.kick{margin:0;font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--or)}
+h1{margin:0;font-size:46px;line-height:1.08;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h2{margin:0;font-size:28px;font-weight:700;text-wrap:balance}
+h3{margin:0;font-size:19px;font-weight:600}
+.lede{margin:0;font-size:18px;line-height:1.6;color:var(--muted);text-wrap:pretty}
+.lede b{display:block;margin-top:6px;font-weight:500;color:var(--ink)}
+.body{margin:0;font-size:17px;line-height:1.6;color:var(--muted);text-wrap:pretty}
+.fit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.fit-l{font-family:'Roboto Mono',Consolas,monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--label)}
+.pill{font-size:15px;padding:5px 12px;border:1px solid rgba(70,119,160,.65);border-radius:999px;background:rgba(70,119,160,.14)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.card strong{display:block;font-size:17px;font-weight:600;margin-bottom:4px}
+.card span{font-size:16px;line-height:1.5;color:var(--muted)}
+.card-grid.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:860px){.card-grid.four{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.card-grid.four{grid-template-columns:1fr}}
+.note{margin:0;font-size:15px;line-height:1.55;color:var(--faint)}
+/* layer viewer */
+.viewer{color:var(--ink);margin:0;border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:#05070a}
+.tabs{display:flex;gap:6px;padding:10px;overflow-x:auto;background:var(--panel-solid);border-bottom:1px solid var(--edge);scrollbar-width:thin}
+.tab{flex:0 0 auto;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--edge2);background:transparent;color:var(--ink);font:500 15px Roboto,system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.tab:hover{border-color:var(--or)}
+.tab[aria-selected="true"]{background:var(--or);border-color:var(--or);color:#12161c;font-weight:600}
+.tab .sim{font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.08em;margin-left:6px;padding:2px 6px;border-radius:4px;background:rgba(244,162,97,.18);color:#f4a261}
+.tab[aria-selected="true"] .sim{background:rgba(18,22,28,.2);color:#12161c}
+.frame{position:relative;width:100%;aspect-ratio:1600/1127;background:#05070a}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.frame img.on{opacity:1}
+.badge{position:absolute;top:14px;left:14px;z-index:2;padding:7px 12px;border-radius:6px;background:rgba(5,7,10,.82);border:1px solid #f4a261;color:#f4a261;font:600 13px 'Roboto Mono',Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
+.badge[hidden]{display:none}
+.vcap{padding:14px 18px 16px;background:var(--panel-solid);border-top:1px solid var(--edge);display:flex;flex-direction:column;gap:10px}
+.vcap h3{font-size:18px}
+.vcap p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{display:inline-block;width:14px;height:14px;border-radius:3px;flex:0 0 auto}
+.ln{display:inline-block;width:22px;height:4px;border-radius:2px;flex:0 0 auto}
+.dot{display:inline-block;width:12px;height:12px;border-radius:999px;flex:0 0 auto}
+.ramp{display:inline-block;width:120px;height:10px;border-radius:3px;flex:0 0 auto}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:16px 18px;border:1px solid var(--edge);border-top:3px solid var(--or);border-radius:12px;background:var(--panel)}
+.stat b{display:block;font-size:30px;font-weight:700;line-height:1.1}
+.stat span{display:block;margin-top:4px;font-size:15px;color:var(--muted);line-height:1.4}
+/* winter band */
+.winter{border:1px solid rgba(70,119,160,.55);border-radius:14px;background:linear-gradient(160deg,rgba(70,119,160,.20),rgba(70,119,160,.05) 60%);padding:26px 24px;display:flex;flex-direction:column;gap:16px}
+.season{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.season div{padding:12px 14px;border-radius:10px;border:1px solid var(--edge);background:var(--panel)}
+.season b{display:block;font-family:'Roboto Mono',Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:4px}
+.season span{font-size:15px;line-height:1.45;color:var(--muted)}
+.season .now{border-color:var(--or)}
+/* compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{padding:18px 20px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;gap:10px}
+.col h3{display:flex;align-items:center;gap:10px}
+.col h3 em{font-style:normal;font-family:'Roboto Mono',Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--label);font-weight:500}
+.col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.col li{font-size:16px;line-height:1.5;color:var(--muted);padding-left:24px;position:relative}
+.col li::before{position:absolute;left:0;top:0;font-weight:700}
+.col li.y::before{content:"+";color:#7fc97f}
+.col li.n::before{content:"\2013";color:#f4a261}
+.together{padding:20px 22px;border:1px solid var(--or);border-radius:12px;background:rgba(232,113,26,.08);display:flex;flex-direction:column;gap:10px}
+.together p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
+.together p b{color:var(--ink);font-weight:600}
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.proof div{padding:14px 16px;border:1px solid var(--edge);border-radius:10px;background:var(--panel)}
+.proof b{display:block;font-size:24px;font-weight:700}
+.proof span{display:block;margin-top:2px;font-size:15px;line-height:1.4;color:var(--muted)}
+/* bars */
+.bars{display:flex;flex-direction:column;gap:8px;padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.bar{display:grid;grid-template-columns:170px 1fr 62px;gap:12px;align-items:center;font-size:15px;color:var(--muted)}
+.bar i{display:block;height:12px;border-radius:3px}
+.bar em{white-space:nowrap;font-style:normal;text-align:right;font-family:'Roboto Mono',Consolas,monospace;font-size:14px;color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+/* thermal disclaimer */
+.disc{display:flex;gap:16px;padding:18px 20px;border:1px solid #f4a261;border-radius:12px;background:rgba(244,162,97,.08)}
+.disc svg{flex:0 0 26px;width:26px;height:26px;color:#f4a261;margin-top:2px}
+.disc p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
+.disc p b{color:var(--ink)}
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;counter-reset:s}
+.steps li{counter-increment:s;padding:16px 18px 16px 62px;position:relative;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:999px;background:var(--or);color:#12161c;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps strong{display:block;font-size:17px;font-weight:600;margin-bottom:4px}
+.steps span{font-size:16px;line-height:1.5;color:var(--muted)}
+details{border:1px solid var(--edge);border-radius:12px;background:var(--panel);padding:14px 18px}
+summary{cursor:pointer;font-size:17px;font-weight:600}
+details p{margin:10px 0 0;font-size:16px;line-height:1.55;color:var(--muted)}
+.cta{border:1px solid var(--edge);border-radius:14px;background:var(--panel);padding:24px;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between}
+.cta h2{font-size:22px}.cta p{margin:6px 0 0;color:var(--muted);font-size:16px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn-or{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;background:var(--or);color:#12161c;font-weight:600;text-decoration:none}
+.btn-or:hover{color:#12161c;filter:brightness(1.08)}
+.btn-gh{font-family:'Roboto Mono',Consolas,monospace;font-size:16px;padding:11px 16px;border:1px solid var(--edge);border-radius:999px;text-decoration:none;color:var(--ink);min-height:44px;display:inline-flex;align-items:center;box-sizing:border-box}
+.back{font-size:16px;color:var(--muted);text-decoration:none}
+footer{text-align:center;font-size:15px;line-height:1.7;color:var(--faint)}
+footer .tm{color:var(--label);font-weight:500}
+@media (max-width:860px){.season{grid-template-columns:repeat(2,1fr)}.compare,.two{grid-template-columns:1fr}.proof{grid-template-columns:1fr}}
+@media (max-width:760px){h1{font-size:34px}h2{font-size:24px}.stats{grid-template-columns:repeat(2,1fr)}.bar{grid-template-columns:118px 1fr 66px;gap:8px}}
+@media (max-width:480px){.season{grid-template-columns:1fr}.badge{font-size:11px;top:10px;left:10px}}
+</style>
+<script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
+<script>
+  window.origami = window.origami || function () { (origami.q = origami.q || []).push(arguments) };
+</script>
+<script async src="/_ov/o.js" data-key="og_pk_Su-2C-gMMfibonqqBRnoTw" data-endpoint="/_ov"></script>
+</head>
+<body data-topo="page" data-topo-style="fine">
+<div class="band" role="banner" data-topo="band" data-topo-style="fine">
+  <div class="band-row">
+    <a class="band-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+    <div class="band-nav">
+      <nav aria-label="Main">
+        <a href="/mapping/">Mapping</a>
+        <a href="/thermal/">Thermal</a>
+        <a href="/case-studies/" aria-current="page">Case Studies</a>
+        <a href="/accuracy/">Accuracy</a>
+        <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
+        <a class="nav-quote" href="/quote/">Request a Quote</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div class="hl-root">
+<main class="hl-main">
+
+<a class="back" href="/case-studies/">&larr; All Case Studies</a>
+
+<!-- HERO -->
+<section class="sec" style="gap:18px">
+<p class="kick">Case Study &middot; Hunting Land &middot; Leaf-Off Winter Flight</p>
+<h1>Read the Ground Before<br>the Green Comes Back.</h1>
+<div class="fit">
+<span class="fit-l">Good Fit For</span>
+<span class="pill">Landowners</span>
+<span class="pill">Hunting Leases &amp; Clubs</span>
+<span class="pill">Land Buyers</span>
+<span class="pill">Habitat &amp; Food Plot Planning</span>
+</div>
+<p class="lede">A 13.7-acre hunting parcel in Dane County, Wisconsin, flown in late November with the leaves down. A DJI Matrice 4E mapped the property, a Matrice 4T added thermal, and the county's 2024 public LiDAR filled in the ground and canopy. QGIS then turned the stack into the things a hunter actually plans around: draws, ridges, saddles, travel hubs, cover, field edges, and where animals were bedded.<b>Every layer below covers the same ground. Switch between them to see how they fit together.</b></p>
+
+<figure class="viewer" data-dark>
+<div class="tabs" role="tablist" aria-label="Map layers">
+<button class="tab" role="tab" aria-selected="true" data-k="ortho">Leaf-Off Aerial</button>
+<button class="tab" role="tab" aria-selected="false" data-k="ground">LiDAR Bare Earth</button>
+<button class="tab" role="tab" aria-selected="false" data-k="canopy">Canopy Height</button>
+<button class="tab" role="tab" aria-selected="false" data-k="terrain">Terrain Features</button>
+<button class="tab" role="tab" aria-selected="false" data-k="landforms">Landforms</button>
+<button class="tab" role="tab" aria-selected="false" data-k="cover">Cover &amp; Edges</button>
+<button class="tab" role="tab" aria-selected="false" data-k="thermal">Thermal<span class="sim">SIMULATED</span></button>
+</div>
+<div class="frame">
+<img class="on" data-k="ortho" src="img/hl-ortho.jpg" alt="Leaf-off orthomosaic of the parcel: an open field across the top and bare hardwood timber below, with the parcel boundary dashed in orange" width="1600" height="1127">
+<img data-k="ground" src="img/hl-ground.jpg" alt="Shaded relief of the LiDAR bare-earth model showing draws, knobs, and a ridge through the timber" width="1600" height="1127" loading="lazy">
+<img data-k="canopy" src="img/hl-canopy.jpg" alt="LiDAR canopy height in shades of green over the timber, with the open field left uncolored" width="1600" height="1127" loading="lazy">
+<img data-k="terrain" src="img/hl-terrain.jpg" alt="Drainage lines in blue, ridgelines in orange, travel hubs as purple dots, a saddle as a red star, and south-facing slopes shaded yellow" width="1600" height="1127" loading="lazy">
+<img data-k="landforms" src="img/hl-landforms.jpg" alt="Landform classes colored over shaded relief: ridges and knobs in browns, draws and bottoms in blues, sidehills in gray" width="1600" height="1127" loading="lazy">
+<img data-k="cover" src="img/hl-cover.jpg" alt="Cover types over the aerial: open field, hardwood, thicket, and conifer, with the hard field-to-timber edge in orange" width="1600" height="1127" loading="lazy">
+<img data-k="thermal" src="img/hl-thermal.jpg" alt="Simulated pre-dawn thermal image: cold field in dark purple, warmer timber, circled deer-sized heat signatures, and two warm springs" width="1600" height="1127" loading="lazy">
+<span class="badge" id="simbadge" hidden>Simulated Demo &middot; Not a Real Survey</span>
+</div>
+<figcaption class="vcap" id="vcap" aria-live="polite"></figcaption>
+</figure>
+</section>
+
+<!-- STATS -->
+<section class="stats" aria-label="Project at a glance">
+<div class="stat"><b>13.7 ac</b><span>Field and hardwood timber, Dane County, WI</span></div>
+<div class="stat"><b>2</b><span>Aircraft: Matrice 4E mapping, Matrice 4T thermal</span></div>
+<div class="stat"><b>2024</b><span>Public LiDAR (USGS 3DEP), checked against the drone</span></div>
+<div class="stat"><b>16</b><span>Map layers from QGIS, delivered on paper, on screen, and in-app</span></div>
+</section>
+
+<!-- WINTER -->
+<section class="winter">
+<p class="kick">Why Fly in Winter</p>
+<h2>Leaf-Off Is the Best Time to Plan Next Season</h2>
+<p class="body">From November through March, the hardwoods are bare and the property is quiet. That window is when a mapping flight sees the most ground, disturbs the least, and leaves the most time to act on what it finds before spring green-up.</p>
+<div class="card-grid four">
+<div class="card"><strong>See the Ground Through the Timber</strong><span>Bare hardwoods let the camera reach the forest floor. Trails, old logging roads, fence lines, wet spots, and blowdowns show up that summer canopy hides completely.</span></div>
+<div class="card"><strong>Conifers Stand Out</strong><span>Evergreen cover is easy to separate from bare timber in winter imagery, so thermal cover and screening can be mapped block by block.</span></div>
+<div class="card"><strong>Nothing to Disturb</strong><span>Flying after the season means no pressure on deer during the hunt. Cold, still mornings are also when thermal contrast is strongest.</span></div>
+<div class="card"><strong>Time to Act on It</strong><span>Maps in hand by January leave the rest of the winter for cutting trails, hinge-cutting, laying out food plots, and choosing stand sites before spring.</span></div>
+</div>
+<div class="season" aria-label="Planning calendar">
+<div class="now"><b>Nov&ndash;Dec</b><span>Leaf-off mapping and thermal flights after the season.</span></div>
+<div class="now"><b>Jan&ndash;Feb</b><span>Maps delivered. Plan plots, trails, access, and stands.</span></div>
+<div><b>Mar&ndash;Apr</b><span>Habitat work and trail cutting before green-up.</span></div>
+<div><b>Summer</b><span>Plant, hang stands, and stay out of the bedding areas.</span></div>
+</div>
+</section>
+
+<!-- LIDAR + DRONE -->
+<section class="sec">
+<p class="kick">The Combination</p>
+<h2>Why Public LiDAR and Drone Mapping Work Better Together</h2>
+<p class="body">LiDAR and drone mapping answer different questions. Each covers the other's weak spot, and putting them on the same vertical datum lets one check the other.</p>
+<div class="compare">
+<div class="col">
+<h3>Public LiDAR <em>Airborne laser, 2024</em></h3>
+<ul>
+<li class="y">Laser pulses reach the ground through gaps in the canopy, so the bare-earth model holds up under heavy timber.</li>
+<li class="y">Measures tree height directly, which is how canopy and cover classes were built here.</li>
+<li class="y">Free, county-wide, and consistent from one property to the next.</li>
+<li class="n">A few years old. It doesn't show this year's cuts, plots, or blowdowns.</li>
+<li class="n">No photo, and a coarser ground grid (2 ft here).</li>
+</ul>
+</div>
+<div class="col">
+<h3>Drone Mapping <em>Matrice 4E &amp; 4T, Nov 2026</em></h3>
+<ul>
+<li class="y">Current to the day of the flight.</li>
+<li class="y">A sharp aerial photo, far more detailed than satellite imagery.</li>
+<li class="y">Adds thermal from the same visit with the 4T.</li>
+<li class="n">A camera can't see through dense canopy, so the ground model is estimated under thick cover.</li>
+<li class="n">In leaf-off hardwoods, bare branches don't reconstruct, so the drone surface can't measure tree height.</li>
+</ul>
+</div>
+</div>
+<div class="together">
+<h3>Together</h3>
+<p><b>LiDAR supplies the ground and the trees. The drone supplies today's picture and the thermal.</b> On this parcel the leaf-off drone surface sat almost on the ground under the bare hardwoods. That is ideal for seeing the forest floor, and exactly why the LiDAR is used for canopy height. Before any analysis, both datasets were put in the same coordinate system and heights (NAVD88, US survey feet) and compared on open, flat ground.</p>
+</div>
+<div class="proof">
+<div><b>+0.86 ft</b><span>Median drone-minus-LiDAR difference on open, flat ground, measured on 50,738 cells and removed before analysis</span></div>
+<div><b>0.68 ft</b><span>Spread of that difference (NMAD): the two surfaces track each other closely</span></div>
+<div><b>45 ft</b><span>Median canopy height from LiDAR in the timber, with the tallest 5% at 76 ft and up</span></div>
+</div>
+<p class="note">The drone-to-LiDAR check confirms the two datasets line up for planning use. It is not an accuracy certification. For measured, accuracy-verified work, see the <a href="/accuracy/">accuracy page</a>.</p>
+</section>
+
+<!-- TERRAIN -->
+<section class="sec">
+<p class="kick">Terrain</p>
+<h2>What the Ground Says About Deer Movement</h2>
+<p class="body">The LiDAR bare-earth model was run through an automated QGIS workflow that traces drainages and ridgelines, classifies landforms, flags saddles, and marks the hubs where several draws or ridges meet. Those are the terrain features deer use to move between bedding cover and food.</p>
+<div class="two">
+<div class="bars" aria-label="Landform acreage">
+<h3 style="margin-bottom:6px">Landforms Inside the Boundary</h3>
+<div class="bar"><span>Sidehill</span><i style="width:100%;background:#d9d9d9"></i><em>5.46 ac</em></div>
+<div class="bar"><span>Draw / Bowl</span><i style="width:39.9%;background:#80cdc1"></i><em>2.18 ac</em></div>
+<div class="bar"><span>Point / Finger</span><i style="width:35.2%;background:#fdd49e"></i><em>1.92 ac</em></div>
+<div class="bar"><span>Ridge</span><i style="width:26.9%;background:#b35806"></i><em>1.47 ac</em></div>
+<div class="bar"><span>Bottom / Drainage</span><i style="width:24.5%;background:#2c7fb8"></i><em>1.34 ac</em></div>
+<div class="bar"><span>Depression</span><i style="width:14.7%;background:#542788"></i><em>0.80 ac</em></div>
+<div class="bar"><span>Knob / Hilltop</span><i style="width:8.2%;background:#7f2704"></i><em>0.45 ac</em></div>
+</div>
+<div class="card-grid" style="grid-template-columns:1fr 1fr">
+<div class="card"><strong>2,112 ft</strong><span>Drainage lines: the draws deer use as travel lanes between the ridge and the field.</span></div>
+<div class="card"><strong>1,602 ft</strong><span>Ridgelines, mapped from the elevation model.</span></div>
+<div class="card"><strong>8 Hubs</strong><span>5 draw hubs and 3 ridge hubs, where three or more travel lines meet.</span></div>
+<div class="card"><strong>1 Saddle</strong><span>A low crossing along the ridge, a natural funnel.</span></div>
+<div class="card"><strong>1.69 ac</strong><span>South- and southwest-facing slopes, the warmest winter bedding ground.</span></div>
+<div class="card"><strong>0 Benches</strong><span>The slopes here are gentle, so the honest answer is none. Steeper ground usually has several.</span></div>
+</div>
+</div>
+<p class="note">Drainage lines are modeled surface-water paths, not streams; most are dry most of the year. Terrain features are planning aids and should be confirmed on foot.</p>
+</section>
+
+<!-- COVER -->
+<section class="sec">
+<p class="kick">Cover &amp; Edges</p>
+<h2>Where the Cover Is, and Where It Meets the Field</h2>
+<p class="body">Cover was classified by combining LiDAR canopy height (open, thicket, or timber) with the greenness of the leaf-off aerial, which separates evergreens from bare hardwoods. Where open ground meets cover, the edge is traced and typed.</p>
+<div class="two">
+<div class="bars" aria-label="Cover acreage">
+<h3 style="margin-bottom:6px">Cover Types Inside the Boundary</h3>
+<div class="bar"><span>Hardwood</span><i style="width:100%;background:#a6763c"></i><em>8.06 ac</em></div>
+<div class="bar"><span>Open / Field</span><i style="width:59.1%;background:#e9e2b0"></i><em>4.76 ac</em></div>
+<div class="bar"><span>Thicket / Regrowth</span><i style="width:4.3%;background:#b5d36b"></i><em>0.35 ac</em></div>
+<div class="bar"><span>Conifer</span><i style="width:1%;min-width:3px;background:#1b6b3a"></i><em>0.03 ac</em></div>
+</div>
+<div class="card-grid" style="grid-template-columns:1fr 1fr">
+<div class="card"><strong>1,081 ft</strong><span>Hard edge, where the field meets mature timber.</span></div>
+<div class="card"><strong>110 ft</strong><span>Soft edge, where the field grades into thicket.</span></div>
+<div class="card"><strong>1 Inside Corner</strong><span>A spot where the field cuts into the timber.</span></div>
+<div class="card"><strong>Planning Read</strong><span>Mostly hard edge and very little thicket or conifer: room to soften edges and add screening cover.</span></div>
+</div>
+</div>
+</section>
+
+<!-- THERMAL -->
+<section class="sec">
+<p class="kick">Thermal Survey</p>
+<h2>A Snapshot of Wildlife on the Property</h2>
+<div class="disc" role="note">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/></svg>
+<p><b>The thermal layer on this page is a simulated example.</b> It was built on this parcel's real terrain and cover to show what a thermal survey deliverable looks like. A thermal flight of this property has not been flown yet. Every other layer on this page comes from real data.</p>
+</div>
+<p class="body">A Matrice 4T flies the property before sunrise, when animals are warmest against the cold ground. The thermal map is then processed to pick out deer-sized heat signatures, group animals that were together, and flag warm-water spots such as springs and seeps that stay open in winter.</p>
+<div class="card-grid">
+<div class="card"><strong>9 Signatures, 4 Groups</strong><span>In the example: a pair feeding on the field edge and three groups bedded on the wooded slopes.</span></div>
+<div class="card"><strong>2 Springs / Seeps</strong><span>Warm water along two draws. In winter, open water draws deer.</span></div>
+<div class="card"><strong>Bedding vs. Feeding</strong><span>Where animals sit relative to cover, slope, and the field says more than the count alone.</span></div>
+</div>
+<div class="together" style="border-color:var(--edge2);background:var(--panel)">
+<h3>Informational, Not Real-Time</h3>
+<p>A thermal survey is a snapshot of one flight morning, delivered after processing. It gives a general picture of what uses the property and where animals were at that moment. <b>It is not a real-time locating service and isn't meant for finding deer to hunt that day.</b> Animals move, and deer under thick conifer cover or off the property at flight time won't be counted. Treat the numbers as a minimum.</p>
+</div>
+</section>
+
+<!-- WORKFLOW -->
+<section class="sec">
+<p class="kick">The Workflow</p>
+<h2>From Flight to Hunting Map</h2>
+<ol class="steps">
+<li><strong>Leaf-Off Mapping Flight</strong><span>Matrice 4E mapping flight, processed into a high-detail aerial (orthomosaic) and surface model.</span></li>
+<li><strong>Public LiDAR, Pulled and Checked</strong><span>The county's 2024 LiDAR tiles for the parcel are downloaded, merged into bare-earth and canopy models, and checked against the drone surface.</span></li>
+<li><strong>Terrain Analysis</strong><span>Automated QGIS tools trace drainages and ridgelines and classify landforms, saddles, hubs, and slope aspect.</span></li>
+<li><strong>Cover Mapping</strong><span>Canopy height and leaf-off greenness sort the property into open, thicket, hardwood, and conifer, then trace the edges.</span></li>
+<li><strong>Pre-Dawn Thermal Flight</strong><span>Matrice 4T survey, processed for heat signatures and warm water, with every result tied to the flight date and time.</span></li>
+<li><strong>Delivered</strong><span>A printed map, KML/KMZ files for hunting apps, and a live web map with every layer.</span></li>
+</ol>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="sec">
+<p class="kick">What You Receive</p>
+<h2>On Paper, on Screen, and in Your Hunting App</h2>
+<div class="card-grid four">
+<div class="card"><strong>Printed Hunting Map</strong><span>Terrain, cover, and edges over the leaf-off aerial, printed large for the cabin wall or the truck.</span></div>
+<div class="card"><strong>Live Web Map</strong><span>Every layer on this page in a shareable web map you can open on a phone or laptop.</span></div>
+<div class="card"><strong>Google Earth &amp; App Files</strong><span>Drainages, ridges, saddles, hubs, edges, and contours as KML/KMZ for Google Earth and most hunting apps.</span></div>
+<div class="card"><strong>Thermal Survey Summary</strong><span>The thermal map with signatures, groups, and warm water marked, dated to the flight.</span></div>
+</div>
+<p class="note">Maps are produced from drone imagery and public LiDAR for planning and visualization. They are not a land survey and do not establish property boundaries. Always confirm hunting regulations and landowner permission. All flights are conducted by an FAA Part 107 certified pilot.</p>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+<p class="kick">FAQ</p>
+<h2>Hunting Land Mapping Questions</h2>
+<div style="display:flex;flex-direction:column;gap:10px">
+<details><summary>Why fly hunting land in winter?</summary><p>With the leaves down, a mapping flight sees through bare hardwoods to the ground: trails, old logging roads, fence lines, wet spots, and terrain that are hidden under summer canopy. Conifers stand out against the bare timber, and winter flights happen after the season, when there is nothing to disturb. The maps are in hand for spring work on food plots, trails, and stand sites.</p></details>
+<details><summary>Why combine public LiDAR with a drone flight?</summary><p>Public LiDAR measures the bare ground and the height of the trees, even under heavy cover, but it is a few years old and has no photo. A drone flight is current and far more detailed, but a camera cannot see through dense canopy. Together they give a current, high-detail picture of the property on top of a reliable ground and canopy model, and each one checks the other.</p></details>
+<details><summary>Can a thermal flight tell me where the deer are right now?</summary><p>No. A thermal survey is a snapshot of one flight morning, delivered after processing. It gives a general picture of wildlife presence and where animals were bedded or feeding at that time. It is informational only and is not a real-time locating service. Animals move, and deer under thick conifer cover or out of the flight area are not counted.</p></details>
+<details><summary>Was the thermal layer on this page flown on this property?</summary><p>No. The thermal layer in this case study is a simulated example, built on this parcel's real terrain and cover to show the format of the deliverable. Everything else on the page comes from real data.</p></details>
+<details><summary>Can one flight do it all?</summary><p>A Matrice 4T mapping flight can capture elevations, contours, and thermal scouting in one mission. This case study used the Matrice 4E for the most detailed map and the 4T for thermal.</p></details>
+<details><summary>Will the maps work in a hunting app?</summary><p>Yes. Terrain features, cover, edges, and contours are delivered as KML/KMZ files for Google Earth and most hunting apps, along with a printed map and a live web map.</p></details>
+<details><summary>Is this a land survey?</summary><p>No. The maps are produced from drone imagery and public LiDAR for planning and visualization. They are not a land survey and do not establish property boundaries.</p></details>
+</div>
+</section>
+
+<div class="cta">
+<div>
+<h2>Book a Winter Flight for Your Ground</h2>
+<p>Share where the land is and how many acres. A reply comes within one business day.</p>
+</div>
+<div class="cta-row">
+<a class="btn-or" href="/quote/?src=case-hunting-land">Request a Quote</a>
+<a class="btn-gh" href="tel:+16088200224">(608) 820-0224</a>
+<a class="btn-gh" href="mailto:info@novakgs.com">info@novakgs.com</a>
+</div>
+</div>
+
+<footer><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 Novak Geospatial Solutions&trade;, a BUCK2NINETY LLC company &middot; Cross Plains, Wisconsin &middot; FAA Part 107 Certified</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  var C={
+    ortho:{t:'Leaf-Off Aerial, Matrice 4E',p:'Flown with the leaves down. The open field runs across the top; below it, bare hardwood timber lets the camera reach the forest floor. Dashed orange marks the parcel.',l:[['ln','#e8711a','Parcel boundary']]},
+    ground:{t:'LiDAR Bare Earth, 2024',p:'The county LiDAR with the trees removed, shaded to show relief. The draws, knobs, and ridge through the timber are all visible, including under the canopy.',l:[['ln','#e8711a','Parcel boundary']]},
+    canopy:{t:'Canopy Height from LiDAR',p:'Tree height measured by the LiDAR, from low regrowth (dark green) to the tallest crowns (yellow-green). Median canopy is about 45 ft. The leaf-off drone surface can\'t measure this, which is one reason the two are combined.',l:[['ramp','linear-gradient(90deg,#284628,#46823c,#82be50,#e1f082)','3 ft to 80 ft'],['ln','#e8711a','Parcel boundary']]},
+    terrain:{t:'Terrain Features',p:'Traced automatically from the bare-earth model. Hubs mark where three or more draws or ridges meet. South-facing slopes warm first on winter mornings.',l:[['ln','#2f9be0','Drainage lines'],['ln','#d9822b','Ridgelines'],['dot','#9b5fd7','Travel hubs'],['dot','#d7191c','Saddle'],['sw','rgba(255,217,47,.6)','South-facing slopes']]},
+    landforms:{t:'Landforms',p:'The ground classified into the shapes hunters talk about: ridges, points and fingers, sidehills, draws and bowls, and bottoms.',l:[['sw','#7f2704','Knob / Hilltop'],['sw','#b35806','Ridge'],['sw','#fdd49e','Point / Finger'],['sw','#d9d9d9','Sidehill'],['sw','#80cdc1','Draw / Bowl'],['sw','#2c7fb8','Bottom / Drainage'],['sw','#542788','Depression']]},
+    cover:{t:'Cover Types &amp; Field Edges',p:'Open ground, thicket, hardwood, and conifer from LiDAR canopy height plus leaf-off greenness, with the field edge traced and typed.',l:[['sw','#e9e2b0','Open / Field'],['sw','#b5d36b','Thicket / Regrowth'],['sw','#a6763c','Hardwood'],['sw','#1b6b3a','Conifer'],['ln','#e6550d','Hard edge'],['ln','#9acd32','Soft edge']]},
+    thermal:{t:'Thermal Survey, Simulated Example',p:'Simulated to show the deliverable format; not flown on this property. In a real survey, this is a pre-dawn snapshot of one morning, not real-time tracking.',l:[['ramp','linear-gradient(90deg,#000004,#420a68,#932667,#dd513a,#fca50a,#fcffa4)','Colder to warmer'],['dot','transparent;box-shadow:inset 0 0 0 2px #00e5ff','Deer-sized signature'],['dot','#1e90ff','Spring / seep']]}
+  };
+  var tabs=document.querySelectorAll('.tab'),imgs=document.querySelectorAll('.frame img'),cap=document.getElementById('vcap'),badge=document.getElementById('simbadge');
+  function show(k){
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-k')===k);});
+    imgs.forEach(function(i){i.classList.toggle('on',i.getAttribute('data-k')===k);});
+    badge.hidden=(k!=='thermal');
+    var c=C[k];
+    cap.innerHTML='<h3>'+c.t+'</h3><p>'+c.p+'</p><div class="legend">'+c.l.map(function(x){return '<span><i class="'+x[0]+'" style="background:'+x[1]+'"></i>'+x[2]+'</span>';}).join('')+'</div>';
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.getAttribute('data-k'));});});
+  show('ortho');
+})();
+</script>
+</body>
+</html>
