@@ -64,27 +64,44 @@ h3{margin:0;font-size:19px;font-weight:600}
 @media (max-width:480px){.card-grid.four{grid-template-columns:1fr}}
 .note{margin:0;font-size:15px;line-height:1.55;color:var(--faint)}
 /* layer viewer */
-.viewer{color:var(--ink);margin:0;border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:#05070a}
-.tabs{display:flex;gap:6px;padding:10px;overflow-x:auto;background:var(--panel-solid);border-bottom:1px solid var(--edge);scrollbar-width:thin}
-.tab{flex:0 0 auto;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--edge2);background:transparent;color:var(--ink);font:500 15px Roboto,system-ui,sans-serif;cursor:pointer;white-space:nowrap}
-.tab:hover{border-color:var(--or)}
-.tab[aria-selected="true"]{background:var(--or);border-color:var(--or);color:#12161c;font-weight:600}
-.tab .sim{font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.08em;margin-left:6px;padding:2px 6px;border-radius:4px;background:rgba(244,162,97,.18);color:#f4a261}
-.tab[aria-selected="true"] .sim{background:rgba(18,22,28,.2);color:#12161c}
-.frame{position:relative;width:100%;aspect-ratio:1600/1127;background:#05070a}
-.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
-.frame img.on{opacity:1}
-.badge{position:absolute;top:14px;left:14px;z-index:2;padding:7px 12px;border-radius:6px;background:rgba(5,7,10,.82);border:1px solid #f4a261;color:#f4a261;font:600 13px 'Roboto Mono',Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
+.viewer{color:var(--ink);margin:0 calc(50% - min(660px,50vw - 16px));border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:var(--panel-solid);display:grid;grid-template-columns:1fr 300px}
+.mapwrap{position:relative;background:#05070a;overflow:hidden;touch-action:pan-y;cursor:grab;align-self:start}
+.mapwrap.drag{cursor:grabbing}
+.mapwrap.zoomed{touch-action:none}
+.stack{position:relative;width:100%;aspect-ratio:1800/1268;transform-origin:0 0;will-change:transform}
+.stack img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.stack img[hidden]{display:none}
+.zoom{position:absolute;right:12px;top:12px;z-index:3;display:flex;flex-direction:column;gap:6px}
+.zoom button{width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(12,16,22,.85);color:#eef1f3;font:600 20px Roboto,system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.zoom button:hover{border-color:var(--or)}
+.zoom button svg{width:18px;height:18px}
+.badge{position:absolute;top:12px;left:12px;z-index:3;padding:7px 12px;border-radius:6px;background:rgba(5,7,10,.85);border:1px solid #f4a261;color:#f4a261;font:600 12px 'Roboto Mono',Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;pointer-events:none}
 .badge[hidden]{display:none}
-.vcap{padding:14px 18px 16px;background:var(--panel-solid);border-top:1px solid var(--edge);display:flex;flex-direction:column;gap:10px}
-.vcap h3{font-size:18px}
-.vcap p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
-.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;color:var(--muted)}
+.hint{position:absolute;left:12px;bottom:12px;z-index:3;padding:5px 10px;border-radius:6px;background:rgba(5,7,10,.75);color:#bec6ce;font-size:13px;pointer-events:none}
+.panel{border-left:1px solid var(--edge);display:flex;flex-direction:column;overflow:auto;contain:size}
+.presets{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px;border-bottom:1px solid var(--edge)}
+.presets p{flex-basis:100%;margin:0 0 2px;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--label)}
+.pre{min-height:32px;padding:0 11px;border-radius:999px;border:1px solid var(--edge2);background:transparent;color:var(--ink);font:500 13px Roboto,system-ui,sans-serif;cursor:pointer}
+.pre:hover,.pre.on{border-color:var(--or)}
+.pre.on{background:rgba(232,113,26,.16)}
+.grp{padding:10px 14px 6px;border-bottom:1px solid var(--edge)}
+.grp:last-child{border-bottom:0}
+.grp h4{margin:0 0 4px;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--label)}
+.grp h4 .sim{margin-left:6px;color:#f4a261}
+.row{display:grid;grid-template-columns:20px 22px 1fr;align-items:center;gap:8px;padding:4px 0;font-size:14.5px;cursor:pointer}
+.row input{width:16px;height:16px;margin:0;accent-color:#e8711a;cursor:pointer}
+.row .op{grid-column:3;width:100%;height:4px;margin:2px 0 4px;accent-color:#e8711a;cursor:pointer}
+.row .op[hidden]{display:none}
+.key{display:inline-block;width:20px;height:12px;border-radius:3px}
+.key.l{height:4px;border-radius:2px}
+.key.d{width:12px;height:12px;border-radius:999px;margin-left:4px}
+.vcap{grid-column:1/-1;padding:12px 18px 14px;background:var(--panel-solid);border-top:1px solid var(--edge);display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14.5px;color:var(--muted)}
+.vcap b{color:var(--ink);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14.5px;color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:7px}
-.sw{display:inline-block;width:14px;height:14px;border-radius:3px;flex:0 0 auto}
-.ln{display:inline-block;width:22px;height:4px;border-radius:2px;flex:0 0 auto}
-.dot{display:inline-block;width:12px;height:12px;border-radius:999px;flex:0 0 auto}
-.ramp{display:inline-block;width:120px;height:10px;border-radius:3px;flex:0 0 auto}
+.ramp{display:inline-block;width:110px;height:10px;border-radius:3px}
+@media (max-width:900px){.viewer{grid-template-columns:1fr}.panel{contain:none;border-left:0;border-top:1px solid var(--edge)}.grps{display:grid;grid-template-columns:1fr 1fr}.grp{border-right:1px solid var(--edge)}}
+@media (max-width:560px){.grps{grid-template-columns:1fr}.grp{border-right:0}.hint{display:none}}
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .stat{padding:16px 18px;border:1px solid var(--edge);border-top:3px solid var(--or);border-radius:12px;background:var(--panel)}
@@ -189,38 +206,62 @@ footer .tm{color:var(--label);font-weight:500}
 <span class="pill">Land Buyers</span>
 <span class="pill">Habitat &amp; Food Plot Planning</span>
 </div>
-<p class="lede">A 13.7-acre hunting parcel in Dane County, Wisconsin, flown in late November with the leaves down. A DJI Matrice 4E mapped the property, a Matrice 4T added thermal, and the county's 2024 public LiDAR filled in the ground and canopy. QGIS then turned the stack into the things a hunter actually plans around: draws, ridges, saddles, travel hubs, cover, field edges, and where animals were bedded.<b>Every layer below covers the same ground. Switch between them to see how they fit together.</b></p>
+<p class="lede">A 13.7-acre hunting parcel in Dane County, Wisconsin, flown in late November with the leaves down. A DJI Matrice 4E mapped the property, a Matrice 4T added thermal, and the county's 2024 public LiDAR filled in the ground and canopy. QGIS then turned the stack into the things a hunter actually plans around: draws, ridges, saddles, travel hubs, cover, field edges, and where animals were bedded.<b>Every layer below sits on the same ground. Turn on any combination, zoom in, and read the property the way it will be delivered.</b></p>
 
-<figure class="viewer" data-dark>
-<div class="tabs" role="tablist" aria-label="Map layers">
-<button class="tab" role="tab" aria-selected="true" data-k="ortho">Leaf-Off Aerial</button>
-<button class="tab" role="tab" aria-selected="false" data-k="ground">LiDAR Bare Earth</button>
-<button class="tab" role="tab" aria-selected="false" data-k="canopy">Canopy Height</button>
-<button class="tab" role="tab" aria-selected="false" data-k="terrain">Terrain Features</button>
-<button class="tab" role="tab" aria-selected="false" data-k="landforms">Landforms</button>
-<button class="tab" role="tab" aria-selected="false" data-k="cover">Cover &amp; Edges</button>
-<button class="tab" role="tab" aria-selected="false" data-k="thermal">Thermal<span class="sim">SIMULATED</span></button>
+<figure class="viewer" data-dark aria-label="Interactive layer map of the parcel">
+<div class="mapwrap" id="mapwrap">
+<div class="stack" id="stack">
+<img data-k="relief" src="img/relief.jpg" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="elevation" src="img/elevation.jpg" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="aerial" src="img/aerial.jpg" alt="" width="1800" height="1268" decoding="async">
+<img data-k="thermal" src="img/thermal.jpg" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="canopy" src="img/canopy.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="landforms" src="img/landforms.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="cover" src="img/cover.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="south" src="img/south.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="contours" src="img/contours.webp" alt="" width="1800" height="1268" decoding="async">
+<img data-k="drainage" src="img/drainage.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="ridges" src="img/ridges.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="edges" src="img/edges.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="hubs" src="img/hubs.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="saddles" src="img/saddles.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="corners" src="img/corners.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="springs" src="img/springs.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="deer" src="img/deer.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="boundary" src="img/boundary.webp" alt="" width="1800" height="1268" decoding="async">
 </div>
-<div class="frame">
-<img class="on" data-k="ortho" src="img/hl-ortho.jpg" alt="Leaf-off orthomosaic of the parcel: an open field across the top and bare hardwood timber below, with the parcel boundary dashed in orange" width="1600" height="1127">
-<img data-k="ground" src="img/hl-ground.jpg" alt="Shaded relief of the LiDAR bare-earth model showing draws, knobs, and a ridge through the timber" width="1600" height="1127" loading="lazy">
-<img data-k="canopy" src="img/hl-canopy.jpg" alt="LiDAR canopy height in shades of green over the timber, with the open field left uncolored" width="1600" height="1127" loading="lazy">
-<img data-k="terrain" src="img/hl-terrain.jpg" alt="Drainage lines in blue, ridgelines in orange, travel hubs as purple dots, a saddle as a red star, and south-facing slopes shaded yellow" width="1600" height="1127" loading="lazy">
-<img data-k="landforms" src="img/hl-landforms.jpg" alt="Landform classes colored over shaded relief: ridges and knobs in browns, draws and bottoms in blues, sidehills in gray" width="1600" height="1127" loading="lazy">
-<img data-k="cover" src="img/hl-cover.jpg" alt="Cover types over the aerial: open field, hardwood, thicket, and conifer, with the hard field-to-timber edge in orange" width="1600" height="1127" loading="lazy">
-<img data-k="thermal" src="img/hl-thermal.jpg" alt="Simulated pre-dawn thermal image: cold field in dark purple, warmer timber, circled deer-sized heat signatures, and two warm springs" width="1600" height="1127" loading="lazy">
-<span class="badge" id="simbadge" hidden>Simulated Demo &middot; Not a Real Survey</span>
+<span class="badge" id="simbadge" hidden>Simulated Thermal &middot; Not a Real Survey</span>
+<div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">&minus;</button><button type="button" id="zreset" aria-label="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
+<span class="hint" id="hint">Ctrl + scroll or pinch to zoom &middot; drag to pan</span>
 </div>
-<figcaption class="vcap" id="vcap" aria-live="polite"></figcaption>
+<div class="panel">
+<div class="presets"><p>Quick Views</p>
+<button class="pre" type="button" data-p="aerial,contours,boundary">Aerial + Contours</button>
+<button class="pre" type="button" data-p="elevation,contours,boundary">Elevation</button>
+<button class="pre" type="button" data-p="relief,drainage,ridges,hubs,saddles,south,boundary">Terrain Read</button>
+<button class="pre" type="button" data-p="aerial,cover,edges,corners,boundary">Cover &amp; Edges</button>
+<button class="pre" type="button" data-p="thermal,deer,springs,boundary">Thermal</button>
+<button class="pre" type="button" data-p="boundary">Clear</button>
+</div>
+<div class="grps">
+<div class="grp"><h4>Imagery</h4><label class="row"><input type="checkbox" data-k="aerial" checked><i class="key" style="background:linear-gradient(90deg,#6b6f68,#a7a294,#5a5e57)"></i><span>Leaf-Off Aerial (4E)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Leaf-Off Aerial (4E) opacity" data-op="aerial"></label><label class="row"><input type="checkbox" data-k="thermal"><i class="key" style="background:linear-gradient(90deg,#000004,#932667,#fca50a)"></i><span>Thermal (4T)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Thermal (4T) opacity" data-op="thermal"></label></div>
+<div class="grp"><h4>Elevation</h4><label class="row"><input type="checkbox" data-k="elevation"><i class="key" style="background:linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)"></i><span>Elevation (954&ndash;1,014 ft)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Elevation (954&ndash;1,014 ft) opacity" data-op="elevation"></label><label class="row"><input type="checkbox" data-k="relief"><i class="key" style="background:linear-gradient(90deg,#3a3a3a,#d9d9d9)"></i><span>Shaded Relief (LiDAR)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Shaded Relief (LiDAR) opacity" data-op="relief"></label><label class="row"><input type="checkbox" data-k="contours" checked><i class="key l" style="background:#7a4a22"></i><span>Contours (2 ft, 10 ft Index)</span></label><label class="row"><input type="checkbox" data-k="canopy"><i class="key" style="background:linear-gradient(90deg,#284628,#82be50,#e1f082)"></i><span>Canopy Height (LiDAR)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Canopy Height (LiDAR) opacity" data-op="canopy"></label></div>
+<div class="grp"><h4>Terrain</h4><label class="row"><input type="checkbox" data-k="landforms"><i class="key" style="background:linear-gradient(90deg,#b35806,#fdd49e,#d9d9d9,#80cdc1,#2c7fb8)"></i><span>Landforms</span><input class="op" type="range" min="0" max="100" value="70" aria-label="Landforms opacity" data-op="landforms"></label><label class="row"><input type="checkbox" data-k="south"><i class="key" style="background:rgba(255,217,47,.75)"></i><span>South-Facing Slopes</span><input class="op" type="range" min="0" max="100" value="60" aria-label="South-Facing Slopes opacity" data-op="south"></label><label class="row"><input type="checkbox" data-k="drainage"><i class="key l" style="background:#2f9be0"></i><span>Drainage Lines</span></label><label class="row"><input type="checkbox" data-k="ridges"><i class="key l" style="background:#d9822b"></i><span>Ridgelines</span></label><label class="row"><input type="checkbox" data-k="hubs"><i class="key d" style="background:#9b5fd7"></i><span>Travel Hubs</span></label><label class="row"><input type="checkbox" data-k="saddles"><i class="key d" style="background:#d7191c"></i><span>Saddle</span></label></div>
+<div class="grp"><h4>Cover</h4><label class="row"><input type="checkbox" data-k="cover"><i class="key" style="background:linear-gradient(90deg,#e9e2b0,#b5d36b,#a6763c,#1b6b3a)"></i><span>Cover Types</span><input class="op" type="range" min="0" max="100" value="55" aria-label="Cover Types opacity" data-op="cover"></label><label class="row"><input type="checkbox" data-k="edges"><i class="key l" style="background:#e6550d"></i><span>Field Edges</span></label><label class="row"><input type="checkbox" data-k="corners"><i class="key d" style="background:#e6550d"></i><span>Inside Corner</span></label></div>
+<div class="grp"><h4>Thermal Detections<span class="sim">Simulated</span></h4><label class="row"><input type="checkbox" data-k="deer"><i class="key" style="background:#05070a;border:1px solid #fff;height:10px"></i><span>Deer Groups</span></label><label class="row"><input type="checkbox" data-k="springs"><i class="key" style="background:#05070a;border:1px solid #fff;height:10px"></i><span>Springs / Seeps</span></label></div>
+<div class="grp"><h4>Reference</h4><label class="row"><input type="checkbox" data-k="boundary" checked><i class="key l" style="background:repeating-linear-gradient(90deg,#e8711a 0 5px,transparent 5px 8px)"></i><span>Parcel Boundary</span></label></div>
+</div>
+</div>
+<figcaption class="vcap" id="vcap"><b>18 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground.</figcaption>
 </figure>
 </section>
 
 <!-- STATS -->
 <section class="stats" aria-label="Project at a glance">
 <div class="stat"><b>13.7 ac</b><span>Field and hardwood timber, Dane County, WI</span></div>
-<div class="stat"><b>2</b><span>Aircraft: Matrice 4E mapping, Matrice 4T thermal</span></div>
+<div class="stat"><b>60 ft</b><span>Of relief, 954 to 1,014 ft (NAVD88), mapped in 2-ft contours</span></div>
 <div class="stat"><b>2024</b><span>Public LiDAR (USGS 3DEP), checked against the drone</span></div>
-<div class="stat"><b>16</b><span>Map layers from QGIS, delivered on paper, on screen, and in-app</span></div>
+<div class="stat"><b>18</b><span>Stackable map layers, delivered on paper, on screen, and in-app</span></div>
 </section>
 
 <!-- WINTER -->
@@ -411,25 +452,46 @@ footer .tm{color:var(--label);font-weight:500}
 
 <script>
 (function(){
-  var C={
-    ortho:{t:'Leaf-Off Aerial, Matrice 4E',p:'Flown with the leaves down. The open field runs across the top; below it, bare hardwood timber lets the camera reach the forest floor. Dashed orange marks the parcel.',l:[['ln','#e8711a','Parcel boundary']]},
-    ground:{t:'LiDAR Bare Earth, 2024',p:'The county LiDAR with the trees removed, shaded to show relief. The draws, knobs, and ridge through the timber are all visible, including under the canopy.',l:[['ln','#e8711a','Parcel boundary']]},
-    canopy:{t:'Canopy Height from LiDAR',p:'Tree height measured by the LiDAR, from low regrowth (dark green) to the tallest crowns (yellow-green). Median canopy is about 45 ft. The leaf-off drone surface can\'t measure this, which is one reason the two are combined.',l:[['ramp','linear-gradient(90deg,#284628,#46823c,#82be50,#e1f082)','3 ft to 80 ft'],['ln','#e8711a','Parcel boundary']]},
-    terrain:{t:'Terrain Features',p:'Traced automatically from the bare-earth model. Hubs mark where three or more draws or ridges meet. South-facing slopes warm first on winter mornings.',l:[['ln','#2f9be0','Drainage lines'],['ln','#d9822b','Ridgelines'],['dot','#9b5fd7','Travel hubs'],['dot','#d7191c','Saddle'],['sw','rgba(255,217,47,.6)','South-facing slopes']]},
-    landforms:{t:'Landforms',p:'The ground classified into the shapes hunters talk about: ridges, points and fingers, sidehills, draws and bowls, and bottoms.',l:[['sw','#7f2704','Knob / Hilltop'],['sw','#b35806','Ridge'],['sw','#fdd49e','Point / Finger'],['sw','#d9d9d9','Sidehill'],['sw','#80cdc1','Draw / Bowl'],['sw','#2c7fb8','Bottom / Drainage'],['sw','#542788','Depression']]},
-    cover:{t:'Cover Types &amp; Field Edges',p:'Open ground, thicket, hardwood, and conifer from LiDAR canopy height plus leaf-off greenness, with the field edge traced and typed.',l:[['sw','#e9e2b0','Open / Field'],['sw','#b5d36b','Thicket / Regrowth'],['sw','#a6763c','Hardwood'],['sw','#1b6b3a','Conifer'],['ln','#e6550d','Hard edge'],['ln','#9acd32','Soft edge']]},
-    thermal:{t:'Thermal Survey, Simulated Example',p:'Simulated to show the deliverable format; not flown on this property. In a real survey, this is a pre-dawn snapshot of one morning, not real-time tracking.',l:[['ramp','linear-gradient(90deg,#000004,#420a68,#932667,#dd513a,#fca50a,#fcffa4)','Colder to warmer'],['dot','transparent;box-shadow:inset 0 0 0 2px #00e5ff','Deer-sized signature'],['dot','#1e90ff','Spring / seep']]}
-  };
-  var tabs=document.querySelectorAll('.tab'),imgs=document.querySelectorAll('.frame img'),cap=document.getElementById('vcap'),badge=document.getElementById('simbadge');
-  function show(k){
-    tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-k')===k);});
-    imgs.forEach(function(i){i.classList.toggle('on',i.getAttribute('data-k')===k);});
-    badge.hidden=(k!=='thermal');
-    var c=C[k];
-    cap.innerHTML='<h3>'+c.t+'</h3><p>'+c.p+'</p><div class="legend">'+c.l.map(function(x){return '<span><i class="'+x[0]+'" style="background:'+x[1]+'"></i>'+x[2]+'</span>';}).join('')+'</div>';
+  var stack=document.getElementById('stack'),wrap=document.getElementById('mapwrap'),badge=document.getElementById('simbadge');
+  var boxes=document.querySelectorAll('.panel input[type=checkbox]'),pres=document.querySelectorAll('.pre');
+  function img(k){return stack.querySelector('img[data-k="'+k+'"]');}
+  function sync(){
+    var on={};
+    boxes.forEach(function(b){var k=b.getAttribute('data-k');on[k]=b.checked;img(k).hidden=!b.checked;var o=b.parentNode.querySelector('.op');if(o)o.hidden=!b.checked;});
+    badge.hidden=!(on.thermal||on.deer||on.springs);
+    var cur=Object.keys(on).filter(function(k){return on[k];}).sort().join(',');
+    pres.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p').split(',').sort().join(',')===cur);});
   }
-  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.getAttribute('data-k'));});});
-  show('ortho');
+  boxes.forEach(function(b){b.addEventListener('change',sync);});
+  document.querySelectorAll('.op').forEach(function(o){
+    var k=o.getAttribute('data-op');img(k).style.opacity=o.value/100;
+    o.addEventListener('input',function(){img(k).style.opacity=o.value/100;});
+  });
+  pres.forEach(function(p){p.addEventListener('click',function(){
+    var want=p.getAttribute('data-p').split(',');
+    boxes.forEach(function(b){b.checked=want.indexOf(b.getAttribute('data-k'))>-1;});sync();
+  });});
+  sync();
+  // zoom + pan
+  var s=1,x=0,y=0,MAX=6;
+  function clamp(){var w=wrap.clientWidth,h=stack.clientHeight;x=Math.min(0,Math.max(w-w*s,x));y=Math.min(0,Math.max(h-h*s,y));}
+  function apply(){clamp();stack.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';wrap.classList.toggle('zoomed',s>1);}
+  function zoomAt(f,cx,cy){var ns=Math.min(MAX,Math.max(1,s*f));x=cx-(cx-x)*ns/s;y=cy-(cy-y)*ns/s;s=ns;apply();}
+  wrap.addEventListener('wheel',function(e){if(!(e.ctrlKey||e.metaKey))return;e.preventDefault();var r=wrap.getBoundingClientRect();zoomAt(e.deltaY<0?1.2:1/1.2,e.clientX-r.left,e.clientY-r.top);},{passive:false});
+  document.getElementById('zin').addEventListener('click',function(){zoomAt(1.5,wrap.clientWidth/2,stack.clientHeight/2);});
+  document.getElementById('zout').addEventListener('click',function(){zoomAt(1/1.5,wrap.clientWidth/2,stack.clientHeight/2);});
+  document.getElementById('zreset').addEventListener('click',function(){s=1;x=0;y=0;apply();});
+  var pts={},last=null,pd=0;
+  wrap.addEventListener('pointerdown',function(e){if(e.target.closest('.zoom'))return;wrap.setPointerCapture(e.pointerId);pts[e.pointerId]={x:e.clientX,y:e.clientY};wrap.classList.add('drag');});
+  wrap.addEventListener('pointermove',function(e){
+    if(!pts[e.pointerId])return;var ids=Object.keys(pts);
+    if(ids.length===1){x+=e.clientX-pts[e.pointerId].x;y+=e.clientY-pts[e.pointerId].y;pts[e.pointerId]={x:e.clientX,y:e.clientY};apply();}
+    else if(ids.length===2){pts[e.pointerId]={x:e.clientX,y:e.clientY};var a=pts[ids[0]],b=pts[ids[1]],d=Math.hypot(a.x-b.x,a.y-b.y),r=wrap.getBoundingClientRect();
+      if(pd)zoomAt(d/pd,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top);pd=d;}
+  });
+  function up(e){delete pts[e.pointerId];pd=0;if(!Object.keys(pts).length)wrap.classList.remove('drag');}
+  wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);
+  window.addEventListener('resize',apply);
 })();
 </script>
 </body>
