@@ -232,23 +232,24 @@ footer .tm{color:var(--label);font-weight:500}
 <figure class="viewer" data-dark aria-label="Interactive layer map of the parcel">
 <div class="mapwrap" id="mapwrap">
 <div class="stack" id="stack">
-<img data-k="relief" src="img/relief.jpg" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="elevation" src="img/elevation.jpg" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="relief" src="img/relief.jpg" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="elevation" src="img/elevation.jpg" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
 <img data-k="aerial" src="img/aerial.jpg" alt="" width="1800" height="1268" decoding="async">
-<img data-k="thermal" src="img/thermal.jpg" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="canopy" src="img/canopy.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="landforms" src="img/landforms.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="cover" src="img/cover.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="south" src="img/south.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="thermal" src="img/thermal.jpg" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="lidar" src="img/lidar.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="canopy" src="img/canopy.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="landforms" src="img/landforms.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="cover" src="img/cover.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="south" src="img/south.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
 <img data-k="contours" src="img/contours.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="drainage" src="img/drainage.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="ridges" src="img/ridges.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="edges" src="img/edges.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="hubs" src="img/hubs.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="saddles" src="img/saddles.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="corners" src="img/corners.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="springs" src="img/springs.webp" alt="" width="1800" height="1268" hidden decoding="async">
-<img data-k="deer" src="img/deer.webp" alt="" width="1800" height="1268" hidden decoding="async">
+<img data-k="drainage" src="img/drainage.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="ridges" src="img/ridges.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="edges" src="img/edges.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="hubs" src="img/hubs.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="saddles" src="img/saddles.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="corners" src="img/corners.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="springs" src="img/springs.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
+<img data-k="deer" src="img/deer.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
 <img data-k="boundary" src="img/boundary.webp" alt="" width="1800" height="1268" decoding="async">
 </div>
 <span class="badge" id="simbadge" hidden>Simulated Thermal &middot; Not a Real Survey</span>
@@ -259,6 +260,7 @@ footer .tm{color:var(--label);font-weight:500}
 <div class="presets"><p>Quick Views</p>
 <button class="pre" type="button" data-p="aerial,contours,boundary">Aerial + Contours</button>
 <button class="pre" type="button" data-p="elevation,contours,boundary">Elevation</button>
+<button class="pre" type="button" data-p="lidar,boundary">Raw LiDAR</button>
 <button class="pre" type="button" data-p="relief,drainage,ridges,hubs,saddles,south,boundary">Terrain Read</button>
 <button class="pre" type="button" data-p="aerial,cover,edges,corners,boundary">Cover &amp; Edges</button>
 <button class="pre" type="button" data-p="thermal,deer,springs,boundary">Thermal</button>
@@ -266,7 +268,8 @@ footer .tm{color:var(--label);font-weight:500}
 </div>
 <div class="grps">
 <div class="grp"><h4>Imagery</h4><label class="row"><input type="checkbox" data-k="aerial" checked><i class="key" style="background:linear-gradient(90deg,#6b6f68,#a7a294,#5a5e57)"></i><span>Leaf-Off Aerial (4E)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Leaf-Off Aerial (4E) opacity" data-op="aerial"></label><label class="row"><input type="checkbox" data-k="thermal"><i class="key" style="background:linear-gradient(90deg,#000004,#932667,#fca50a)"></i><span>Thermal (4T)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Thermal (4T) opacity" data-op="thermal"></label></div>
-<div class="grp"><h4>Elevation</h4><label class="row"><input type="checkbox" data-k="elevation"><i class="key" style="background:linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)"></i><span>Elevation (954&ndash;1,014 ft)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Elevation (954&ndash;1,014 ft) opacity" data-op="elevation"></label><label class="row"><input type="checkbox" data-k="relief"><i class="key" style="background:linear-gradient(90deg,#3a3a3a,#d9d9d9)"></i><span>Shaded Relief (LiDAR)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Shaded Relief (LiDAR) opacity" data-op="relief"></label><label class="row"><input type="checkbox" data-k="contours" checked><i class="key l" style="background:#7a4a22"></i><span>Contours (2 ft, 10 ft Index)</span></label><label class="row"><input type="checkbox" data-k="canopy"><i class="key" style="background:linear-gradient(90deg,#284628,#82be50,#e1f082)"></i><span>Canopy Height (LiDAR)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Canopy Height (LiDAR) opacity" data-op="canopy"></label></div>
+<div class="grp"><h4>LiDAR (2024)</h4><label class="row"><input type="checkbox" data-k="lidar"><i class="key" style="background:linear-gradient(90deg,#b88048,#aac85a,#78c44e,#268c40)"></i><span>Raw LiDAR Points (2024)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Raw LiDAR Points opacity" data-op="lidar"></label><label class="row"><input type="checkbox" data-k="relief"><i class="key" style="background:linear-gradient(90deg,#3a3a3a,#d9d9d9)"></i><span>Shaded Relief (Bare Earth)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Shaded Relief (Bare Earth) opacity" data-op="relief"></label><label class="row"><input type="checkbox" data-k="canopy"><i class="key" style="background:linear-gradient(90deg,#284628,#82be50,#e1f082)"></i><span>Canopy Height</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Canopy Height opacity" data-op="canopy"></label></div>
+<div class="grp"><h4>Elevation</h4><label class="row"><input type="checkbox" data-k="elevation"><i class="key" style="background:linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)"></i><span>Elevation (954&ndash;1,014 ft)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Elevation (954&ndash;1,014 ft) opacity" data-op="elevation"></label><label class="row"><input type="checkbox" data-k="contours" checked><i class="key l" style="background:#7a4a22"></i><span>Contours (2 ft, 10 ft Index)</span></label></div>
 <div class="grp"><h4>Terrain</h4><label class="row"><input type="checkbox" data-k="landforms"><i class="key" style="background:linear-gradient(90deg,#b35806,#fdd49e,#d9d9d9,#80cdc1,#2c7fb8)"></i><span>Landforms</span><input class="op" type="range" min="0" max="100" value="70" aria-label="Landforms opacity" data-op="landforms"></label><label class="row"><input type="checkbox" data-k="south"><i class="key" style="background:rgba(255,217,47,.75)"></i><span>South-Facing Slopes</span><input class="op" type="range" min="0" max="100" value="60" aria-label="South-Facing Slopes opacity" data-op="south"></label><label class="row"><input type="checkbox" data-k="drainage"><i class="key l" style="background:#2f9be0"></i><span>Drainage Lines</span></label><label class="row"><input type="checkbox" data-k="ridges"><i class="key l" style="background:#d9822b"></i><span>Ridgelines</span></label><label class="row"><input type="checkbox" data-k="hubs"><i class="key d" style="background:#9b5fd7"></i><span>Travel Hubs</span></label><label class="row"><input type="checkbox" data-k="saddles"><i class="key d" style="background:#d7191c"></i><span>Saddle</span></label></div>
 <div class="grp"><h4>Cover</h4><label class="row"><input type="checkbox" data-k="cover"><i class="key" style="background:linear-gradient(90deg,#e9e2b0,#b5d36b,#a6763c,#1b6b3a)"></i><span>Cover Types</span><input class="op" type="range" min="0" max="100" value="55" aria-label="Cover Types opacity" data-op="cover"></label><label class="row"><input type="checkbox" data-k="edges"><i class="key l" style="background:#e6550d"></i><span>Field Edges</span></label><label class="row"><input type="checkbox" data-k="corners"><i class="key d" style="background:#e6550d"></i><span>Inside Corner</span></label></div>
 <div class="grp"><h4>Thermal Detections<span class="sim">Simulated</span></h4><label class="row"><input type="checkbox" data-k="deer"><i class="key" style="background:#05070a;border:1px solid #fff;height:10px"></i><span>Deer Groups</span></label><label class="row"><input type="checkbox" data-k="springs"><i class="key" style="background:#05070a;border:1px solid #fff;height:10px"></i><span>Springs / Seeps</span></label></div>
@@ -274,7 +277,7 @@ footer .tm{color:var(--label);font-weight:500}
 </div>
 </div>
 <div class="mkey" id="mkey" hidden></div>
-<figcaption class="vcap" id="vcap"><b>18 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground. <a href="#guide" style="color:var(--or);white-space:nowrap">What does each feature mean? &darr;</a></figcaption>
+<figcaption class="vcap" id="vcap"><b>19 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground. <a href="#guide" style="color:var(--or);white-space:nowrap">What does each feature mean? &darr;</a></figcaption>
 </figure>
 </section>
 
@@ -283,7 +286,7 @@ footer .tm{color:var(--label);font-weight:500}
 <div class="stat"><b>13.7 ac</b><span>Field and hardwood timber, Dane County, WI</span></div>
 <div class="stat"><b>60 ft</b><span>Of relief, 954 to 1,014 ft (NAVD88), mapped in 2-ft contours</span></div>
 <div class="stat"><b>2024</b><span>Public LiDAR (USGS 3DEP), checked against the drone</span></div>
-<div class="stat"><b>18</b><span>Stackable map layers, delivered on paper, on screen, and in-app</span></div>
+<div class="stat"><b>19</b><span>Stackable map layers, delivered on paper, on screen, and in-app</span></div>
 </section>
 
 <!-- WINTER -->
@@ -335,6 +338,11 @@ footer .tm{color:var(--label);font-weight:500}
 <div class="together">
 <h3>Together</h3>
 <p><b>LiDAR supplies the ground and the trees. The drone supplies today's picture and the thermal.</b> On this parcel the leaf-off drone surface sat almost on the ground under the bare hardwoods. That is ideal for seeing the forest floor, and exactly why the LiDAR is used for canopy height. Before any analysis, both datasets were put in the same coordinate system and heights (NAVD88, US survey feet) and compared on open, flat ground.</p>
+</div>
+<div class="together" style="border-color:var(--edge2);background:var(--panel)">
+<h3>See the Raw LiDAR</h3>
+<p>The 2024 LiDAR is <b>1.63 million laser points</b> inside this frame, about 27 per square meter. Ground points are as classified in the county delivery. The rest are split by height above ground into low, mid, and high vegetation, so the timber reads crown by crown while the bare field shows as ground.</p>
+<button class="show" type="button" data-show="lidar,boundary" style="margin-top:4px">Show on Map <span aria-hidden="true">&uarr;</span></button>
 </div>
 <div class="proof">
 <div><b>+0.86 ft</b><span>Median drone-minus-LiDAR difference on open, flat ground, measured on 50,738 cells and removed before analysis</span></div>
@@ -543,9 +551,10 @@ footer .tm{color:var(--label);font-weight:500}
     elevation:['Elevation',[['linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)','954 ft &rarr; 1,014 ft','r']]],
     contours:['Contours',[['#5c3414','Index (Every 10 ft, Labeled)','l'],['rgba(120,78,40,.6)','Intermediate (2 ft)','l']]],
     canopy:['Canopy Height',[['linear-gradient(90deg,#284628,#46823c,#82be50,#e1f082)','3 ft &rarr; 80 ft','r']]],
+    lidar:['Raw LiDAR Points',[['#b88048','Ground'],['#aac85a','Low Vegetation (Under 3 ft)'],['#78c44e','Mid Vegetation (3&ndash;15 ft)'],['#268c40','High Vegetation (Over 15 ft)']]],
     thermal:['Thermal (Simulated)',[['linear-gradient(90deg,#000004,#420a68,#932667,#dd513a,#fca50a,#fcffa4)','Colder &rarr; Warmer','r']]]
   };
-  var ORDER=['elevation','contours','canopy','landforms','cover','edges','thermal'],mkey=document.getElementById('mkey');
+  var ORDER=['lidar','elevation','contours','canopy','landforms','cover','edges','thermal'],mkey=document.getElementById('mkey');
   function keys(on){
     var h=ORDER.filter(function(k){return on[k];}).map(function(k){var d=KEY[k];
       return '<div class="mk"><h5>'+d[0]+'</h5>'+d[1].map(function(c){return '<span><i class="'+(c[2]||'')+'" style="background:'+c[0]+'"></i>'+c[1]+'</span>';}).join('')+'</div>';}).join('');
@@ -559,19 +568,22 @@ footer .tm{color:var(--label);font-weight:500}
     var cur=Object.keys(on).filter(function(k){return on[k];}).sort().join(',');
     pres.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p').split(',').sort().join(',')===cur);});
   }
-  boxes.forEach(function(b){b.addEventListener('change',sync);});
+  var BASES=['relief','elevation','aerial','thermal','lidar'],zc=10;
+  stack.querySelectorAll('img').forEach(function(im,i){im.style.zIndex=(BASES.indexOf(im.getAttribute('data-k'))>-1?1+i:100+i);});
+  function lift(k){if(BASES.indexOf(k)>-1)img(k).style.zIndex=++zc;}
+  boxes.forEach(function(b){b.addEventListener('change',function(){if(b.checked)lift(b.getAttribute('data-k'));sync();});});
   document.querySelectorAll('.op').forEach(function(o){
     var k=o.getAttribute('data-op');img(k).style.opacity=o.value/100;
     o.addEventListener('input',function(){img(k).style.opacity=o.value/100;});
   });
   pres.forEach(function(p){p.addEventListener('click',function(){
     var want=p.getAttribute('data-p').split(',');
-    boxes.forEach(function(b){b.checked=want.indexOf(b.getAttribute('data-k'))>-1;});sync();
+    boxes.forEach(function(b){b.checked=want.indexOf(b.getAttribute('data-k'))>-1;});want.forEach(lift);sync();
   });});
-  sync();
+  img('aerial').style.zIndex=++zc;sync();
   document.querySelectorAll('.show').forEach(function(b){b.addEventListener('click',function(){
     var want=b.getAttribute('data-show').split(',');
-    boxes.forEach(function(x){x.checked=want.indexOf(x.getAttribute('data-k'))>-1;});sync();
+    boxes.forEach(function(x){x.checked=want.indexOf(x.getAttribute('data-k'))>-1;});want.forEach(lift);sync();
     document.querySelector('.viewer').scrollIntoView({behavior:'smooth',block:'center'});
   });});
   // zoom + pan
