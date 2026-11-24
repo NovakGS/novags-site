@@ -137,6 +137,19 @@ h3{margin:0;font-size:19px;font-weight:600}
 .bar i{display:block;height:12px;border-radius:3px}
 .bar em{white-space:nowrap;font-style:normal;text-align:right;font-family:'Roboto Mono',Consolas,monospace;font-size:14px;color:var(--ink)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+/* terrain guide */
+.tgh{margin:8px 0 0;font-size:20px;font-weight:700}
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tg{padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;gap:8px}
+.tg header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tg header h3{font-size:18px;font-weight:600}
+.tg .here{margin-left:auto;font-family:'Roboto Mono',Consolas,monospace;font-size:12.5px;padding:3px 8px;border-radius:999px;border:1px solid var(--edge2);color:var(--label);white-space:nowrap}
+.tg p{margin:0;font-size:15.5px;line-height:1.55;color:var(--muted)}
+.tg p b{display:block;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:2px}
+.tg .key{width:22px;height:14px}.tg .key.l{height:4px}.tg .key.d{width:14px;height:14px}
+.show{align-self:flex-start;margin-top:auto;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--edge2);background:transparent;color:var(--ink);font:500 14px Roboto,system-ui,sans-serif;cursor:pointer}
+.show:hover{border-color:var(--or);color:var(--or)}
+@media (max-width:760px){.tgrid{grid-template-columns:1fr}}
 /* thermal disclaimer */
 .disc{display:flex;gap:16px;padding:18px 20px;border:1px solid #f4a261;border-radius:12px;background:rgba(244,162,97,.08)}
 .disc svg{flex:0 0 26px;width:26px;height:26px;color:#f4a261;margin-top:2px}
@@ -252,7 +265,7 @@ footer .tm{color:var(--label);font-weight:500}
 <div class="grp"><h4>Reference</h4><label class="row"><input type="checkbox" data-k="boundary" checked><i class="key l" style="background:repeating-linear-gradient(90deg,#e8711a 0 5px,transparent 5px 8px)"></i><span>Parcel Boundary</span></label></div>
 </div>
 </div>
-<figcaption class="vcap" id="vcap"><b>18 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground.</figcaption>
+<figcaption class="vcap" id="vcap"><b>18 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground. <a href="#guide" style="color:var(--or);white-space:nowrap">What does each feature mean? &darr;</a></figcaption>
 </figure>
 </section>
 
@@ -322,54 +335,114 @@ footer .tm{color:var(--label);font-weight:500}
 <p class="note">The drone-to-LiDAR check confirms the two datasets line up for planning use. It is not an accuracy certification. For measured, accuracy-verified work, see the <a href="/accuracy/">accuracy page</a>.</p>
 </section>
 
-<!-- TERRAIN -->
-<section class="sec">
-<p class="kick">Terrain</p>
-<h2>What the Ground Says About Deer Movement</h2>
-<p class="body">The LiDAR bare-earth model was run through an automated QGIS workflow that traces drainages and ridgelines, classifies landforms, flags saddles, and marks the hubs where several draws or ridges meet. Those are the terrain features deer use to move between bedding cover and food.</p>
-<div class="two">
-<div class="bars" aria-label="Landform acreage">
-<h3 style="margin-bottom:6px">Landforms Inside the Boundary</h3>
-<div class="bar"><span>Sidehill</span><i style="width:100%;background:#d9d9d9"></i><em>5.46 ac</em></div>
-<div class="bar"><span>Draw / Bowl</span><i style="width:39.9%;background:#80cdc1"></i><em>2.18 ac</em></div>
-<div class="bar"><span>Point / Finger</span><i style="width:35.2%;background:#fdd49e"></i><em>1.92 ac</em></div>
-<div class="bar"><span>Ridge</span><i style="width:26.9%;background:#b35806"></i><em>1.47 ac</em></div>
-<div class="bar"><span>Bottom / Drainage</span><i style="width:24.5%;background:#2c7fb8"></i><em>1.34 ac</em></div>
-<div class="bar"><span>Depression</span><i style="width:14.7%;background:#542788"></i><em>0.80 ac</em></div>
-<div class="bar"><span>Knob / Hilltop</span><i style="width:8.2%;background:#7f2704"></i><em>0.45 ac</em></div>
-</div>
-<div class="card-grid" style="grid-template-columns:1fr 1fr">
-<div class="card"><strong>2,112 ft</strong><span>Drainage lines: the draws deer use as travel lanes between the ridge and the field.</span></div>
-<div class="card"><strong>1,602 ft</strong><span>Ridgelines, mapped from the elevation model.</span></div>
-<div class="card"><strong>8 Hubs</strong><span>5 draw hubs and 3 ridge hubs, where three or more travel lines meet.</span></div>
-<div class="card"><strong>1 Saddle</strong><span>A low crossing along the ridge, a natural funnel.</span></div>
-<div class="card"><strong>1.69 ac</strong><span>South- and southwest-facing slopes, the warmest winter bedding ground.</span></div>
-<div class="card"><strong>0 Benches</strong><span>The slopes here are gentle, so the honest answer is none. Steeper ground usually has several.</span></div>
-</div>
-</div>
-<p class="note">Drainage lines are modeled surface-water paths, not streams; most are dry most of the year. Terrain features are planning aids and should be confirmed on foot.</p>
-</section>
-
-<!-- COVER -->
-<section class="sec">
-<p class="kick">Cover &amp; Edges</p>
-<h2>Where the Cover Is, and Where It Meets the Field</h2>
-<p class="body">Cover was classified by combining LiDAR canopy height (open, thicket, or timber) with the greenness of the leaf-off aerial, which separates evergreens from bare hardwoods. Where open ground meets cover, the edge is traced and typed.</p>
-<div class="two">
-<div class="bars" aria-label="Cover acreage">
-<h3 style="margin-bottom:6px">Cover Types Inside the Boundary</h3>
-<div class="bar"><span>Hardwood</span><i style="width:100%;background:#a6763c"></i><em>8.06 ac</em></div>
-<div class="bar"><span>Open / Field</span><i style="width:59.1%;background:#e9e2b0"></i><em>4.76 ac</em></div>
-<div class="bar"><span>Thicket / Regrowth</span><i style="width:4.3%;background:#b5d36b"></i><em>0.35 ac</em></div>
-<div class="bar"><span>Conifer</span><i style="width:1%;min-width:3px;background:#1b6b3a"></i><em>0.03 ac</em></div>
-</div>
-<div class="card-grid" style="grid-template-columns:1fr 1fr">
-<div class="card"><strong>1,081 ft</strong><span>Hard edge, where the field meets mature timber.</span></div>
-<div class="card"><strong>110 ft</strong><span>Soft edge, where the field grades into thicket.</span></div>
-<div class="card"><strong>1 Inside Corner</strong><span>A spot where the field cuts into the timber.</span></div>
-<div class="card"><strong>Planning Read</strong><span>Mostly hard edge and very little thicket or conifer: room to soften edges and add screening cover.</span></div>
-</div>
-</div>
+<!-- GUIDE -->
+<section class="sec" id="guide">
+<p class="kick">Terrain Guide</p>
+<h2>What Each Feature Is, and Why It Matters for Wildlife</h2>
+<p class="body">Every color and line on the map above has a meaning. This guide explains each feature, what it tends to mean for deer and other wildlife, and how much of it is on this parcel. Tap <b style="color:var(--ink);font-weight:600">Show on Map</b> on any card to turn that layer on.</p>
+<h3 class="tgh">Landforms</h3>
+<p class="note" style="margin-top:-6px">The shape of the ground, classified from the LiDAR bare-earth model.</p>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:#7f2704"></i><h3>Knob / Hilltop</h3><span class="here">0.45 ac here</span></header>
+<p><b>What It Is</b>A high point where the ground falls away on every side.</p>
+<p><b>Why It Matters</b>Deer often bed just below the top, where they can watch downhill and catch rising air on their nose. Wind hits knobs from every direction, so approach and stand placement take care.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#b35806"></i><h3>Ridge</h3><span class="here">1.47 ac here</span></header>
+<p><b>What It Is</b>A long, narrow spine of high ground.</p>
+<p><b>Why It Matters</b>Ridges are natural travel routes. Deer tend to move just below the crest on the side away from the wind, where they stay hidden from the skyline and can still scent what is above and below them.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#fdd49e"></i><h3>Point / Finger</h3><span class="here">1.92 ac here</span></header>
+<p><b>What It Is</b>A spur of high ground running off a ridge toward lower ground.</p>
+<p><b>Why It Matters</b>The end of a point is classic bedding: a view down the slope, wind at the deer's back, and several escape routes. Fingers also channel travel up and down the hill.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#f1a340"></i><h3>Shoulder (Transition)</h3><span class="here">None here</span></header>
+<p><b>What It Is</b>The rounded break where a ridge top rolls over into the slope.</p>
+<p><b>Why It Matters</b>Shoulders are where flat high ground turns into hillside. Trails often follow them, and bedding commonly sits just over the break, out of sight from the top.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#d9d9d9"></i><h3>Sidehill</h3><span class="here">5.46 ac here</span></header>
+<p><b>What It Is</b>A steady slope between the high ground and the low ground.</p>
+<p><b>Why It Matters</b>Deer cross sidehills on trails that follow the contour lines. Steep sidehills are where benches form, and on gentle ground like this parcel, travel spreads out instead of funneling.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#c4a0ff"></i><h3>Bench</h3><span class="here">None here</span></header>
+<p><b>What It Is</b>A flat shelf partway up a slope.</p>
+<p><b>Why It Matters</b>Benches are easy walking and easy bedding on otherwise steep ground, so they often carry travel along the hill. This parcel's slopes are gentle (median about 6&deg;), so none qualified. Steeper ground usually has several.</p>
+</article>
+<article class="tg"><header><i class="key" style="background:#80cdc1"></i><h3>Draw / Bowl</h3><span class="here">2.18 ac here</span></header>
+<p><b>What It Is</b>A hollow or trough in the hillside that funnels toward lower ground.</p>
+<p><b>Why It Matters</b>Draws are sheltered from the wind and link the ridge to the bottom, so deer use them to move between bedding and food. Cool air also slides down them at dawn and dusk, which carries scent downhill.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#b2abd2"></i><h3>Toe Slope (Transition)</h3><span class="here">None here</span></header>
+<p><b>What It Is</b>The base of a slope where it flattens into the bottom.</p>
+<p><b>Why It Matters</b>Travel often runs along the toe of a hill, and the richer soil there can grow thicker browse.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#2c7fb8"></i><h3>Bottom / Drainage</h3><span class="here">1.34 ac here</span></header>
+<p><b>What It Is</b>Low ground along a draw or waterway.</p>
+<p><b>Why It Matters</b>Bottoms collect water, browse, and thick cover. They are also where cold air pools on still mornings, so scent tends to settle and drift down them.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#542788"></i><h3>Depression</h3><span class="here">0.80 ac here</span></header>
+<p><b>What It Is</b>An enclosed low spot with no outlet.</p>
+<p><b>Why It Matters</b>Depressions can hold seasonal water and stay wet after rain or snowmelt, which can attract wildlife and limit equipment access.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
+<h3 class="tgh">Travel Features</h3>
+<div class="tgrid"><article class="tg"><header><i class="key l" style="background:#2f9be0"></i><h3>Drainage Lines</h3><span class="here">2,112 ft here</span></header>
+<p><b>What It Is</b>Paths surface water would follow, traced from the ground model. Not streams, and most are dry most of the year.</p>
+<p><b>Why It Matters</b>They mark the draws and low ground that deer follow between ridge and field, and the crossings where trails come together.</p>
+<button class="show" type="button" data-show="relief,drainage,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key l" style="background:#d9822b"></i><h3>Ridgelines</h3><span class="here">1,602 ft here</span></header>
+<p><b>What It Is</b>The spines of the high ground, traced from the elevation model.</p>
+<p><b>Why It Matters</b>Ridgelines show the travel routes along the high ground and where air currents split as they flow over the top.</p>
+<button class="show" type="button" data-show="relief,ridges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key d" style="background:#9b5fd7"></i><h3>Travel Hubs</h3><span class="here">8 here (5 draw, 3 ridge)</span></header>
+<p><b>What It Is</b>Places where three or more draws or ridges meet.</p>
+<p><b>Why It Matters</b>When several travel lines join, movement from different parts of the property passes through one spot. Hubs are worth a close look for stand and camera sites.</p>
+<button class="show" type="button" data-show="relief,drainage,ridges,hubs,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key d" style="background:#d7191c"></i><h3>Saddle</h3><span class="here">1 here</span></header>
+<p><b>What It Is</b>A low dip in a ridge between two higher points.</p>
+<p><b>Why It Matters</b>Deer cross ridges at the lowest point to save energy, so saddles are natural funnels and long-time stand locations.</p>
+<button class="show" type="button" data-show="relief,ridges,saddles,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
+<h3 class="tgh">Cover &amp; Edges</h3>
+<p class="note" style="margin-top:-6px">Classified from LiDAR canopy height plus the greenness of the leaf-off aerial.</p>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:#e9e2b0"></i><h3>Open / Field</h3><span class="here">4.76 ac here</span></header>
+<p><b>What It Is</b>Ground with little or no woody cover under 3 ft.</p>
+<p><b>Why It Matters</b>Food and visibility, but little security. Deer usually use open ground at low light and stay close to cover.</p>
+<button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#b5d36b"></i><h3>Thicket / Regrowth</h3><span class="here">0.35 ac here</span></header>
+<p><b>What It Is</b>Young, dense woody growth from 3 to 15 ft tall.</p>
+<p><b>Why It Matters</b>Thickets offer both browse and security cover, and they are favorite bedding areas, especially under hunting pressure. This parcel has very little.</p>
+<button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#a6763c"></i><h3>Hardwood</h3><span class="here">8.06 ac here</span></header>
+<p><b>What It Is</b>Mature deciduous timber over 15 ft tall.</p>
+<p><b>Why It Matters</b>Hardwoods can drop mast such as acorns in the fall, but once leaves are down the understory opens up, and so does visibility.</p>
+<button class="show" type="button" data-show="canopy,relief,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#1b6b3a"></i><h3>Conifer</h3><span class="here">0.03 ac here</span></header>
+<p><b>What It Is</b>Evergreen timber that holds its needles through the winter.</p>
+<p><b>Why It Matters</b>Conifers block wind and snow and hold heat, so deer often shelter in them in hard winter weather. Adding or protecting conifer is a common habitat goal.</p>
+<button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key l" style="background:#e6550d"></i><h3>Hard Edge</h3><span class="here">1,081 ft here</span></header>
+<p><b>What It Is</b>An abrupt line where open ground meets mature timber.</p>
+<p><b>Why It Matters</b>Deer step out at hard edges but have little cover to stage in. Softening a hard edge with shrubs or hinge-cutting creates a transition they can use.</p>
+<button class="show" type="button" data-show="aerial,edges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key l" style="background:#9acd32"></i><h3>Soft Edge</h3><span class="here">110 ft here</span></header>
+<p><b>What It Is</b>A gradual change from field to thicket to timber.</p>
+<p><b>Why It Matters</b>Soft edges offer browse and security next to the food, so deer tend to linger and stage in them before entering a field.</p>
+<button class="show" type="button" data-show="aerial,edges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key d" style="background:#e6550d"></i><h3>Inside Corner</h3><span class="here">1 here</span></header>
+<p><b>What It Is</b>A spot where the field cuts into the timber, so cover wraps around open ground.</p>
+<p><b>Why It Matters</b>Deer often leave cover where the woods reach the farthest into a field. Inside corners are classic stand sites on field edges.</p>
+<button class="show" type="button" data-show="aerial,edges,corners,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
+<h3 class="tgh">Warmth, Water &amp; Elevation</h3>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:rgba(255,217,47,.75)"></i><h3>South-Facing Slopes</h3><span class="here">1.69 ac here</span></header>
+<p><b>What It Is</b>Slopes facing south or southwest, at 8 to 35&deg;.</p>
+<p><b>Why It Matters</b>They get the most winter sun, so they are warmer, melt off first, and green up first in spring. They are often preferred winter bedding.</p>
+<button class="show" type="button" data-show="relief,south,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:linear-gradient(90deg,#31688e,#94be5f,#964e32)"></i><h3>Elevation &amp; Contours</h3><span class="here">954&ndash;1,014 ft here</span></header>
+<p><b>What It Is</b>Ground height colored from low to high, with lines every 2 ft and labeled lines every 10 ft.</p>
+<p><b>Why It Matters</b>Contours show how steep the ground is and which way it faces at a glance. Tight lines mean steep slopes; wide lines mean flats. They are the base for planning trails, plots, and access.</p>
+<button class="show" type="button" data-show="elevation,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key d" style="background:#1e90ff"></i><h3>Springs / Seeps</h3><span class="here">2 in the simulated example</span></header>
+<p><b>What It Is</b>Ground water reaching the surface, usually at the head or side of a draw.</p>
+<p><b>Why It Matters</b>Spring water stays warmer than the air, so it stays open in winter. Open water and the early green growth around it draw deer.</p>
+<button class="show" type="button" data-show="thermal,springs,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
+<p class="note">Deer behavior shifts with weather, food, season, and hunting pressure. These are tendencies to plan around, not rules, and every feature should be confirmed on foot.</p>
 </section>
 
 <!-- THERMAL -->
@@ -472,6 +545,11 @@ footer .tm{color:var(--label);font-weight:500}
     boxes.forEach(function(b){b.checked=want.indexOf(b.getAttribute('data-k'))>-1;});sync();
   });});
   sync();
+  document.querySelectorAll('.show').forEach(function(b){b.addEventListener('click',function(){
+    var want=b.getAttribute('data-show').split(',');
+    boxes.forEach(function(x){x.checked=want.indexOf(x.getAttribute('data-k'))>-1;});sync();
+    document.querySelector('.viewer').scrollIntoView({behavior:'smooth',block:'center'});
+  });});
   // zoom + pan
   var s=1,x=0,y=0,MAX=6;
   function clamp(){var w=wrap.clientWidth,h=stack.clientHeight;x=Math.min(0,Math.max(w-w*s,x));y=Math.min(0,Math.max(h-h*s,y));}
