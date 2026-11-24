@@ -158,6 +158,18 @@ h3{margin:0;font-size:19px;font-weight:600}
 .show{align-self:flex-start;margin-top:auto;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--edge2);background:transparent;color:var(--ink);font:500 14px Roboto,system-ui,sans-serif;cursor:pointer}
 .show:hover{border-color:var(--or);color:var(--or)}
 @media (max-width:760px){.tgrid{grid-template-columns:1fr}}
+/* live location */
+#zloc[aria-pressed="true"]{background:#e8711a;border-color:#e8711a;color:#12161c}
+#zloc.wait svg{animation:locp 1s ease-in-out infinite}
+@keyframes locp{50%{opacity:.35}}
+.me{position:absolute;z-index:300;left:0;top:0;width:0;height:0;pointer-events:none}
+.me[hidden]{display:none}
+.me .acc{position:absolute;border-radius:999px;background:rgba(37,140,255,.16);border:1px solid rgba(37,140,255,.55);transform:translate(-50%,-50%)}
+.me .dot{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:999px;background:#258cff;border:3px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.35),0 2px 8px rgba(0,0,0,.5)}
+.me .dot::after{content:"";position:absolute;inset:-9px;border-radius:999px;border:2px solid rgba(37,140,255,.6);animation:mep 2s ease-out infinite}
+@keyframes mep{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
+.loctoast{position:absolute;left:12px;right:64px;top:54px;margin:0 auto;z-index:5;max-width:420px;padding:8px 12px;border-radius:10px;background:rgba(5,7,10,.9);border:1px solid rgba(255,255,255,.2);color:#eef1f3;font-size:13px;line-height:1.45;text-align:center}
+.loctoast[hidden]{display:none}
 /* thermal disclaimer */
 .disc{display:flex;gap:16px;padding:18px 20px;border:1px solid #f4a261;border-radius:12px;background:rgba(244,162,97,.08)}
 .disc svg{flex:0 0 26px;width:26px;height:26px;color:#f4a261;margin-top:2px}
@@ -232,6 +244,7 @@ footer .tm{color:var(--label);font-weight:500}
 <figure class="viewer" data-dark aria-label="Interactive layer map of the parcel">
 <div class="mapwrap" id="mapwrap">
 <div class="stack" id="stack">
+<div class="me" id="me" hidden><span class="acc"></span><span class="dot"></span></div>
 <img data-k="relief" src="img/relief.jpg" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
 <img data-k="elevation" src="img/elevation.jpg" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
 <img data-k="aerial" src="img/aerial.jpg" alt="" width="1800" height="1268" decoding="async">
@@ -254,7 +267,8 @@ footer .tm{color:var(--label);font-weight:500}
 <img data-k="boundary" src="img/boundary.webp" alt="" width="1800" height="1268" decoding="async">
 </div>
 <span class="badge" id="simbadge" hidden>Simulated Thermal &middot; Not a Real Survey</span>
-<div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">&minus;</button><button type="button" id="zreset" aria-label="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
+<div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">&minus;</button><button type="button" id="zloc" aria-label="Show my location on the map" aria-pressed="false" title="Show My Location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="currentColor"/><circle cx="12" cy="12" r="7.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg></button><button type="button" id="zreset" aria-label="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
+<span class="loctoast" id="loctoast" hidden aria-live="polite"></span>
 <span class="hint" id="hint">Ctrl + scroll or pinch to zoom &middot; drag to pan</span>
 </div>
 <div class="panel">
@@ -514,7 +528,7 @@ footer .tm{color:var(--label);font-weight:500}
 </div>
 <div class="card-grid four">
 <div class="card"><strong>Printed Hunting Map</strong><span>Terrain, cover, and edges over the leaf-off aerial, printed large for the cabin wall or the truck.</span></div>
-<div class="card"><strong>Live Web Map</strong><span>Every layer on this page in a shareable web map you can open on a phone or laptop.</span></div>
+<div class="card"><strong>Live Web Map</strong><span>Every layer on this page in a shareable web map you can open on a phone or laptop. On the property, one tap shows your live location on the map, with your permission.</span></div>
 <div class="card"><strong>Hunting App Files</strong><span>Drainages, ridges, saddles, hubs, edges, and contours as GPX and KML for apps such as onX, HuntStand, BaseMap, and Gaia GPS.</span></div>
 <div class="card"><strong>Thermal Survey Summary</strong><span>The thermal map with signatures, groups, and warm water marked, dated to the flight.</span></div>
 </div>
@@ -601,7 +615,7 @@ footer .tm{color:var(--label);font-weight:500}
   // zoom + pan
   var s=1,x=0,y=0,MAX=6;
   function clamp(){var w=wrap.clientWidth,h=stack.clientHeight;x=Math.min(0,Math.max(w-w*s,x));y=Math.min(0,Math.max(h-h*s,y));}
-  function apply(){clamp();stack.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';wrap.classList.toggle('zoomed',s>1);}
+  function apply(){clamp();stack.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';wrap.classList.toggle('zoomed',s>1);if(window.__meScale)window.__meScale(s);}
   function zoomAt(f,cx,cy){var ns=Math.min(MAX,Math.max(1,s*f));x=cx-(cx-x)*ns/s;y=cy-(cy-y)*ns/s;s=ns;apply();}
   wrap.addEventListener('wheel',function(e){if(!(e.ctrlKey||e.metaKey))return;e.preventDefault();var r=wrap.getBoundingClientRect();zoomAt(e.deltaY<0?1.2:1/1.2,e.clientX-r.left,e.clientY-r.top);},{passive:false});
   document.getElementById('zin').addEventListener('click',function(){zoomAt(1.5,wrap.clientWidth/2,stack.clientHeight/2);});
@@ -618,6 +632,31 @@ footer .tm{color:var(--label);font-weight:500}
   function up(e){delete pts[e.pointerId];pd=0;if(!Object.keys(pts).length)wrap.classList.remove('drag');}
   wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);
   window.addEventListener('resize',apply);
+  // live location: only after the visitor taps the button and allows it; position stays on the device
+  (function(){
+    var U=[279.8485197655203,0.9454534717567785,25042.041664364722],V=[0.9751710542588375,-542.3398593618997,23466.9162199191],WFT=952.79;
+    var btn=document.getElementById('zloc'),me=document.getElementById('me'),dot=me.querySelector('.dot'),acc=me.querySelector('.acc'),toast=document.getElementById('loctoast'),hint=document.getElementById('hint');
+    var wid=null,first=true,tt=null;
+    function say(t,ms){toast.textContent=t;toast.hidden=false;clearTimeout(tt);if(ms)tt=setTimeout(function(){toast.hidden=true;},ms);}
+    function stop(){if(wid!==null)navigator.geolocation.clearWatch(wid);wid=null;me.hidden=true;btn.setAttribute('aria-pressed','false');btn.classList.remove('wait');first=true;}
+    window.__meScale=function(sc){dot.style.transform='scale('+(1/sc)+')';};
+    btn.addEventListener('click',function(){
+      if(wid!==null){stop();say('Location off.',2000);return;}
+      if(!('geolocation' in navigator)){say('This browser can\u2019t share location.',4000);return;}
+      btn.classList.add('wait');btn.setAttribute('aria-pressed','true');
+      say('Finding your location\u2026 It stays on your device and is only used to draw your dot.',0);
+      wid=navigator.geolocation.watchPosition(function(p){
+        btn.classList.remove('wait');
+        var lon=p.coords.longitude,lat=p.coords.latitude,u=U[0]*lon+U[1]*lat+U[2],v=V[0]*lon+V[1]*lat+V[2];
+        if(u<-0.25||u>1.25||v<-0.25||v>1.25){me.hidden=true;say('You\u2019re not on this property right now. Your dot appears when you\u2019re on or near it.',0);return;}
+        me.hidden=false;me.style.left=(u*100)+'%';me.style.top=(v*100)+'%';
+        var r=Math.max(p.coords.accuracy/0.3048/WFT*100,0.6),px=2*r*stack.clientWidth/100;acc.style.width=acc.style.height=px+'px';
+        say('You are here (\u00b1'+Math.round(p.coords.accuracy/0.3048)+' ft). Your location stays on your device.',4000);
+        if(first){first=false;var cx=u*wrap.clientWidth,cy=v*stack.clientHeight;if(s<2){zoomAt(2/s,cx,cy);}x=wrap.clientWidth/2-cx*s;y=stack.clientHeight/2-cy*s;apply();}
+      },function(e){stop();say(e.code===1?'Location permission was declined. Nothing was shared.':'Couldn\u2019t get a location fix. Try again in the open.',5000);},{enableHighAccuracy:true,maximumAge:5000,timeout:20000});
+    });
+  })();
+
 })();
 </script>
 </body>
