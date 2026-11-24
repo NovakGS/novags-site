@@ -95,6 +95,14 @@ h3{margin:0;font-size:19px;font-weight:600}
 .key{display:inline-block;width:20px;height:12px;border-radius:3px}
 .key.l{height:4px;border-radius:2px}
 .key.d{width:12px;height:12px;border-radius:999px;margin-left:4px}
+.mkey{grid-column:1/-1;padding:12px 18px;background:var(--panel-solid);border-top:1px solid var(--edge);display:flex;flex-direction:column;gap:10px}
+.mkey[hidden]{display:none}
+.mk{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;font-size:14px;color:var(--muted)}
+.mk h5{margin:0;min-width:150px;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--label)}
+.mk span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.mk i{display:inline-block;width:16px;height:12px;border-radius:3px;flex:0 0 auto}
+.mk i.l{height:4px;width:20px;border-radius:2px}
+.mk i.r{width:120px;height:10px}
 .vcap{grid-column:1/-1;padding:12px 18px 14px;background:var(--panel-solid);border-top:1px solid var(--edge);display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14.5px;color:var(--muted)}
 .vcap b{color:var(--ink);font-weight:600}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14.5px;color:var(--muted)}
@@ -265,6 +273,7 @@ footer .tm{color:var(--label);font-weight:500}
 <div class="grp"><h4>Reference</h4><label class="row"><input type="checkbox" data-k="boundary" checked><i class="key l" style="background:repeating-linear-gradient(90deg,#e8711a 0 5px,transparent 5px 8px)"></i><span>Parcel Boundary</span></label></div>
 </div>
 </div>
+<div class="mkey" id="mkey" hidden></div>
 <figcaption class="vcap" id="vcap"><b>18 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground. <a href="#guide" style="color:var(--or);white-space:nowrap">What does each feature mean? &darr;</a></figcaption>
 </figure>
 </section>
@@ -527,11 +536,26 @@ footer .tm{color:var(--label);font-weight:500}
 (function(){
   var stack=document.getElementById('stack'),wrap=document.getElementById('mapwrap'),badge=document.getElementById('simbadge');
   var boxes=document.querySelectorAll('.panel input[type=checkbox]'),pres=document.querySelectorAll('.pre');
+  var KEY={
+    landforms:['Landforms',[['#7f2704','Knob / Hilltop'],['#b35806','Ridge'],['#f1a340','Shoulder'],['#fdd49e','Point / Finger'],['#d9d9d9','Sidehill'],['#80cdc1','Draw / Bowl'],['#b2abd2','Toe Slope'],['#2c7fb8','Bottom / Drainage'],['#542788','Depression']]],
+    cover:['Cover Types',[['#e9e2b0','Open / Field'],['#b5d36b','Thicket / Regrowth'],['#a6763c','Hardwood'],['#1b6b3a','Conifer']]],
+    edges:['Field Edges',[['#e6550d','Hard Edge (Field to Timber)','l'],['#9acd32','Soft Edge (Field to Thicket)','l']]],
+    elevation:['Elevation',[['linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)','954 ft &rarr; 1,014 ft','r']]],
+    contours:['Contours',[['#5c3414','Index (Every 10 ft, Labeled)','l'],['rgba(120,78,40,.6)','Intermediate (2 ft)','l']]],
+    canopy:['Canopy Height',[['linear-gradient(90deg,#284628,#46823c,#82be50,#e1f082)','3 ft &rarr; 80 ft','r']]],
+    thermal:['Thermal (Simulated)',[['linear-gradient(90deg,#000004,#420a68,#932667,#dd513a,#fca50a,#fcffa4)','Colder &rarr; Warmer','r']]]
+  };
+  var ORDER=['elevation','contours','canopy','landforms','cover','edges','thermal'],mkey=document.getElementById('mkey');
+  function keys(on){
+    var h=ORDER.filter(function(k){return on[k];}).map(function(k){var d=KEY[k];
+      return '<div class="mk"><h5>'+d[0]+'</h5>'+d[1].map(function(c){return '<span><i class="'+(c[2]||'')+'" style="background:'+c[0]+'"></i>'+c[1]+'</span>';}).join('')+'</div>';}).join('');
+    mkey.innerHTML=h;mkey.hidden=!h;
+  }
   function img(k){return stack.querySelector('img[data-k="'+k+'"]');}
   function sync(){
     var on={};
     boxes.forEach(function(b){var k=b.getAttribute('data-k');on[k]=b.checked;img(k).hidden=!b.checked;var o=b.parentNode.querySelector('.op');if(o)o.hidden=!b.checked;});
-    badge.hidden=!(on.thermal||on.deer||on.springs);
+    badge.hidden=!(on.thermal||on.deer||on.springs);keys(on);
     var cur=Object.keys(on).filter(function(k){return on[k];}).sort().join(',');
     pres.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p').split(',').sort().join(',')===cur);});
   }
