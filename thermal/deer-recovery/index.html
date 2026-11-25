@@ -55,7 +55,6 @@
 .avail-wx{display:none;margin:0;padding:10px 12px;border:1px solid #4677a0;border-left:4px solid #4677a0;border-radius:8px;background:rgba(70,119,160,.14);font-size:15px;line-height:1.5;color:var(--ink)}
 .avail-wx.on{display:block}
 .avail-wx b{color:#9cc3e3}
-.slot.open.past{background:repeating-linear-gradient(135deg,rgba(232,113,26,.28) 0 3px,transparent 3px 6px)}
 .avail-scroll{min-width:0;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .avail-grid{display:grid;grid-template-columns:58px repeat(7,minmax(40px,1fr));gap:3px;min-width:300px}
 .avail-grid .avail-msg{grid-column:1/-1;padding:8px 0}
@@ -345,7 +344,7 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
         var open = !soon && d.open.indexOf(m) !== -1;
         var hold = !soon && !open && (d.hold || []).indexOf(m) !== -1;
         var book = open && !past;
-        var c = el(book ? 'a' : 'div', 'slot ' + (open ? 'open' : hold ? 'hold' : 'off') + (past ? ' past' : '') + (top ? ' top' : ''));
+        var c = el(book ? 'a' : 'div', 'slot ' + (past ? 'past' : open ? 'open' : hold ? 'hold' : 'off') + (top ? ' top' : ''));
         c.setAttribute('role', 'cell');
         var label = WDL[d.weekday] + ' ' + clock(m) + ' to ' + clock(m + step) + ': ' + (past ? 'past' : open ? 'open' : hold ? 'weather hold' : 'unavailable');
         if (book) {
@@ -376,10 +375,21 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
       foot.appendChild(el('span', null, 'Checked ' + t));
     }
   }
-  fetch('/api/availability', { headers: { accept: 'application/json' } })
-    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-    .then(function (d) { if (d && d.ok && d.days) { render(d); setInterval(function () { render(d); }, 60000); } else fail(); })
-    .catch(fail);
+  // Live: past times and the current + next hour close as the clock moves, and changes
+  // made in the app show without a reload. Re-checks every minute, and right away when the
+  // page comes back into view (phones pause timers while the screen is off or the tab is hidden).
+  var latest = null;
+  function load() {
+    return fetch('/api/availability', { headers: { accept: 'application/json' }, cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function (d) { if (d && d.ok && d.days) { latest = d; render(d); } else if (!latest) fail(); })
+      .catch(function () { if (!latest) fail(); });
+  }
+  function tick() { if (latest) render(latest); load(); }
+  load();
+  setInterval(function () { if (!document.hidden) tick(); }, 60000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) tick(); });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) tick(); });
 })();
 </script>
 <script>

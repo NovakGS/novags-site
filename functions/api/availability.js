@@ -176,7 +176,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
 
   // Short edge cache so a page full of visitors doesn't hit SharePoint on every load.
   const cache = caches.default;
-  const cacheKey = new Request(`${url.origin}/api/availability#v3`);
+  const cacheKey = new Request(`${url.origin}/api/availability#v4`);
   const hit = await cache.match(cacheKey);
   if (hit) return hit;
 
@@ -200,6 +200,9 @@ export async function onRequestGet({ request, env, waitUntil }) {
   }
   const holdActive = !!(weather && weather.nogo.length);
   const nowMin = centralNowMinutes();
+  // Today, nothing before the end of the next full hour is bookable (same rule as the page:
+  // at 3:19 PM everything before 5:00 PM is closed), and past times are never open.
+  const cutoff = (Math.floor(nowMin / 60) + 2) * 60;
 
   const days = [];
   for (let i = 0; i < DAYS; i++) {
@@ -213,6 +216,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
       hold = open.filter(inWindow);
       open = open.filter((m) => !inWindow(m));
     }
+    if (i === 0) open = open.filter((m) => m >= cutoff);
     days.push({ date, weekday: weekdayOf(date), open, hold, custom });
   }
 
