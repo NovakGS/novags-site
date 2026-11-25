@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (GTM-5GBK7HP6) -->
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5GBK7HP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  // Google Ads conversion: Call or Text the Operator Click (call, text, and calendar time buttons)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"],a[href^="sms:"],a.slot');
+    if (a) gtag('event', 'conversion', {'send_to': 'AW-18590889895/vE_yCPCu0r0dEKfv6aBF'});
+  }, true);
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>33-Acre Hunting Property: Interactive Map | Novak Geospatial Solutions&trade;</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="Interactive map of a 33-acre hunting property in Dane County, Wisconsin: terrain, cover, contours, and a night thermal survey.">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--bg:#0a0d12;--ink:#eef1f3;--muted:#bec6ce;--label:#c3cad1;--faint:#a4adb6;--panel:rgba(12,16,22,.78);--panel-solid:#10151c;--edge:rgba(255,255,255,.12);--hair:rgba(255,255,255,.06);--edge2:rgba(255,255,255,.25);--or:#e8711a;--blue:#4677a0}
+html[data-theme="light"]{--bg:#f3f4f6;--ink:#151b22;--muted:#46515d;--label:#3d4752;--faint:#5b6773;--panel:#ffffff;--panel-solid:#f7f8fa;--edge:rgba(21,27,34,.13);--hair:rgba(21,27,34,.08);--edge2:rgba(21,27,34,.22)}
+html[data-theme="light"] body{background:var(--bg)}
+[data-dark]{--ink:#eef1f3;--muted:#bec6ce;--label:#c3cad1;--faint:#a4adb6;--panel-solid:#10151c;--edge:rgba(255,255,255,.12)}
+body{margin:0;background:var(--bg)}
+a{color:var(--ink)}a:hover{color:var(--or)}
+.hl-root{position:relative;z-index:1;min-height:100vh;color:var(--ink);font-family:Roboto,'Segoe UI',system-ui,Arial,sans-serif;font-size:17px;-webkit-font-smoothing:antialiased}
+.hl-main{max-width:1040px;margin:0 auto;padding:22px 16px 48px;display:flex;flex-direction:column;gap:56px}
+.sec{display:flex;flex-direction:column;gap:16px}
+.kick{margin:0;font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--or)}
+h1{margin:0;font-size:46px;line-height:1.08;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h2{margin:0;font-size:28px;font-weight:700;text-wrap:balance}
+h3{margin:0;font-size:19px;font-weight:600}
+.lede{margin:0;font-size:18px;line-height:1.6;color:var(--muted);text-wrap:pretty}
+.lede b{display:block;margin-top:6px;font-weight:500;color:var(--ink)}
+.body{margin:0;font-size:17px;line-height:1.6;color:var(--muted);text-wrap:pretty}
+.fit{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.fit-l{font-family:'Roboto Mono',Consolas,monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--label)}
+.pill{font-size:15px;padding:5px 12px;border:1px solid rgba(70,119,160,.65);border-radius:999px;background:rgba(70,119,160,.14)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.card strong{display:block;font-size:17px;font-weight:600;margin-bottom:4px}
+.card span{font-size:16px;line-height:1.5;color:var(--muted)}
+.card-grid.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:860px){.card-grid.four{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.card-grid.four{grid-template-columns:1fr}}
+.note{margin:0;font-size:15px;line-height:1.55;color:var(--faint)}
+/* layer viewer */
+.viewer{color:var(--ink);margin:0 calc(50% - min(660px,50vw - 16px));border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:var(--panel-solid);display:grid;grid-template-columns:1fr 300px}
+.mapwrap{position:relative;background:#05070a;overflow:hidden;touch-action:pan-y;cursor:grab;align-self:start}
+.mapwrap.drag{cursor:grabbing}
+.mapwrap.zoomed{touch-action:none}
+.stack{position:relative;width:100%;aspect-ratio:3600/2964;transform-origin:0 0;will-change:transform}
+.stack img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.stack img[hidden],.stack .vl[hidden],.stack .mkl[hidden],.stack .tl[hidden]{display:none}
+.stack .vl,.stack .mkl,.stack .tl,.stack .tw{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.stack .tw img{position:absolute;width:auto;height:auto;inset:auto}
+.stack .tl .tg{display:none}.mapwrap.z2 .stack .tl .tg{display:block}
+.mk{position:absolute;left:0;top:0;width:0;height:0;transform:scale(var(--inv,1));transform-origin:0 0}
+.mk>*{position:absolute;transform:translate(-50%,-50%)}
+.mk .hub{width:9px;height:9px;border-radius:999px;background:#9b5fd7;border:1.5px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+.mk .cor{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #e6550d;filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)}
+.mk .ring{width:16px;height:16px;border-radius:999px;border:2.5px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.4)}
+.mk .ring.p{border-color:rgba(255,255,255,.6);border-style:dashed}
+.mk .tag{transform:translate(-50%,-100%);top:-22px;padding:2px 7px;border-radius:7px;background:rgba(5,7,10,.86);border:1px solid rgba(255,255,255,.55);color:#fff;font:700 11px Roboto,system-ui,sans-serif;white-space:nowrap}
+.mk .tag::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:12px;background:rgba(255,255,255,.8)}
+.mk .cl{transform:translate(-50%,-50%) rotate(var(--a));font:600 9px Roboto,system-ui,sans-serif;color:#46260c;text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff;white-space:nowrap}
+.zoom{position:absolute;right:12px;top:12px;z-index:3;display:flex;flex-direction:column;gap:6px}
+.zoom button{width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(12,16,22,.85);color:#eef1f3;font:600 20px Roboto,system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.zoom button:hover{border-color:var(--or)}
+.zoom button svg{width:18px;height:18px}
+.badge{position:absolute;top:12px;left:12px;z-index:3;padding:7px 12px;border-radius:6px;background:rgba(5,7,10,.85);border:1px solid #f4a261;color:#f4a261;font:600 12px 'Roboto Mono',Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;pointer-events:none}
+.badge[hidden]{display:none}
+.hint{position:absolute;left:12px;bottom:12px;z-index:3;padding:5px 10px;border-radius:6px;background:rgba(5,7,10,.75);color:#bec6ce;font-size:13px;pointer-events:none}
+.panel{border-left:1px solid var(--edge);display:flex;flex-direction:column;overflow:auto;contain:size}
+.presets{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px;border-bottom:1px solid var(--edge)}
+.presets p{flex-basis:100%;margin:0 0 2px;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--label)}
+.pre{min-height:32px;padding:0 11px;border-radius:999px;border:1px solid var(--edge2);background:transparent;color:var(--ink);font:500 13px Roboto,system-ui,sans-serif;cursor:pointer}
+.pre:hover,.pre.on{border-color:var(--or)}
+.pre.on{background:rgba(232,113,26,.16)}
+.grp{padding:10px 14px 6px;border-bottom:1px solid var(--edge)}
+.grp:last-child{border-bottom:0}
+.grp h4{margin:0 0 4px;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--label)}
+.grp h4 .sim{margin-left:6px;color:#f4a261}
+.row{display:grid;grid-template-columns:20px 22px 1fr;align-items:center;gap:8px;padding:4px 0;font-size:14.5px;cursor:pointer}
+.row input{width:16px;height:16px;margin:0;accent-color:#e8711a;cursor:pointer}
+.row .op{grid-column:3;width:100%;height:4px;margin:2px 0 4px;accent-color:#e8711a;cursor:pointer}
+.row .op[hidden]{display:none}
+.key{display:inline-block;width:20px;height:12px;border-radius:3px}
+.key.l{height:4px;border-radius:2px}
+.key.d{width:12px;height:12px;border-radius:999px;margin-left:4px}
+.mkey{grid-column:1/-1;padding:12px 18px;background:var(--panel-solid);border-top:1px solid var(--edge);display:flex;flex-direction:column;gap:10px}
+.mkey[hidden]{display:none}
+.mk{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;font-size:14px;color:var(--muted)}
+.mk h5{margin:0;min-width:150px;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--label)}
+.mk span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.mk i{display:inline-block;width:16px;height:12px;border-radius:3px;flex:0 0 auto}
+.mk i.l{height:4px;width:20px;border-radius:2px}
+.mk i.r{width:120px;height:10px}
+.vcap{grid-column:1/-1;padding:12px 18px 14px;background:var(--panel-solid);border-top:1px solid var(--edge);display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14.5px;color:var(--muted)}
+.vcap b{color:var(--ink);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.ramp{display:inline-block;width:110px;height:10px;border-radius:3px}
+@media (max-width:900px){.viewer{grid-template-columns:1fr}.panel{contain:none;border-left:0;border-top:1px solid var(--edge)}.grps{display:grid;grid-template-columns:1fr 1fr}.grp{border-right:1px solid var(--edge)}}
+@media (max-width:560px){.grps{grid-template-columns:1fr}.grp{border-right:0}.hint{display:none}}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:16px 18px;border:1px solid var(--edge);border-top:3px solid var(--or);border-radius:12px;background:var(--panel)}
+.stat b{display:block;font-size:30px;font-weight:700;line-height:1.1}
+.stat span{display:block;margin-top:4px;font-size:15px;color:var(--muted);line-height:1.4}
+/* winter band */
+.winter{border:1px solid rgba(70,119,160,.55);border-radius:14px;background:linear-gradient(160deg,rgba(70,119,160,.20),rgba(70,119,160,.05) 60%);padding:26px 24px;display:flex;flex-direction:column;gap:16px}
+.season{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.season div{padding:12px 14px;border-radius:10px;border:1px solid var(--edge);background:var(--panel)}
+.season b{display:block;font-family:'Roboto Mono',Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:4px}
+.season span{font-size:15px;line-height:1.45;color:var(--muted)}
+.season .now{border-color:var(--or)}
+/* compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{padding:18px 20px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;gap:10px}
+.col h3{display:flex;align-items:center;gap:10px}
+.col h3 em{font-style:normal;font-family:'Roboto Mono',Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--label);font-weight:500}
+.col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.col li{font-size:16px;line-height:1.5;color:var(--muted);padding-left:24px;position:relative}
+.col li::before{position:absolute;left:0;top:0;font-weight:700}
+.col li.y::before{content:"+";color:#7fc97f}
+.col li.n::before{content:"\2013";color:#f4a261}
+.together{padding:20px 22px;border:1px solid var(--or);border-radius:12px;background:rgba(232,113,26,.08);display:flex;flex-direction:column;gap:10px}
+.together p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
+.together p b{color:var(--ink);font-weight:600}
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.proof div{padding:14px 16px;border:1px solid var(--edge);border-radius:10px;background:var(--panel)}
+.proof b{display:block;font-size:24px;font-weight:700}
+.proof span{display:block;margin-top:2px;font-size:15px;line-height:1.4;color:var(--muted)}
+/* bars */
+.bars{display:flex;flex-direction:column;gap:8px;padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.bar{display:grid;grid-template-columns:170px 1fr 62px;gap:12px;align-items:center;font-size:15px;color:var(--muted)}
+.bar i{display:block;height:12px;border-radius:3px}
+.bar em{white-space:nowrap;font-style:normal;text-align:right;font-family:'Roboto Mono',Consolas,monospace;font-size:14px;color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+/* terrain guide */
+.tgh{margin:8px 0 0;font-size:20px;font-weight:700}
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tg{padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;gap:8px}
+.tg header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tg header h3{font-size:18px;font-weight:600}
+.tg .here{margin-left:auto;font-family:'Roboto Mono',Consolas,monospace;font-size:12.5px;padding:3px 8px;border-radius:999px;border:1px solid var(--edge2);color:var(--label);white-space:nowrap}
+.tg p{margin:0;font-size:15.5px;line-height:1.55;color:var(--muted)}
+.tg p b{display:block;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:2px}
+.tg .key{width:22px;height:14px}.tg .key.l{height:4px}.tg .key.d{width:14px;height:14px}
+.show{align-self:flex-start;margin-top:auto;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--edge2);background:transparent;color:var(--ink);font:500 14px Roboto,system-ui,sans-serif;cursor:pointer}
+.show:hover{border-color:var(--or);color:var(--or)}
+@media (max-width:760px){.tgrid{grid-template-columns:1fr}}
+/* travis */
+.tv{display:flex;flex-direction:column;gap:18px}
+.tv .for{display:inline-flex;align-self:flex-start;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--or);border-radius:999px;background:rgba(232,113,26,.10);font-family:'Roboto Mono',Consolas,monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.tv .for i{width:8px;height:8px;border-radius:999px;background:var(--or)}
+.note-tv{padding:22px 24px;border:1px solid var(--edge);border-left:4px solid var(--or);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;gap:12px}
+.note-tv p{margin:0;font-size:17px;line-height:1.65;color:var(--muted)}
+.note-tv p b{color:var(--ink);font-weight:600}
+.pkg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pkg .card em{display:block;margin-top:8px;font-style:normal;font-size:14.5px;line-height:1.45;color:var(--label)}
+.pkg .card em::before{content:"How it's used: ";font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
+.fitlist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pilot{padding:22px 24px;border:1px solid var(--or);border-radius:12px;background:rgba(232,113,26,.08);display:grid;grid-template-columns:1.1fr 1fr;gap:18px 28px}
+.pilot ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.pilot li{position:relative;padding-left:22px;font-size:16px;line-height:1.5;color:var(--muted)}
+.pilot li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--or)}
+.pilot p{margin:0;font-size:16px;line-height:1.6;color:var(--muted)}
+.ask{padding:20px 24px;border:1px dashed var(--edge2);border-radius:12px;text-align:center}
+.ask p{margin:0;font-size:19px;line-height:1.5;font-weight:500;color:var(--ink);text-wrap:balance}
+.divider{display:flex;align-items:center;gap:14px;margin:6px 0 -20px}
+.divider span{font-family:'Roboto Mono',Consolas,monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--label);white-space:nowrap}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--edge)}
+@media (max-width:860px){.pkg{grid-template-columns:1fr 1fr}.pilot{grid-template-columns:1fr}}
+@media (max-width:560px){.pkg,.fitlist{grid-template-columns:1fr}}
+@media (max-width:760px){.flycard{grid-template-columns:1fr!important}}
+/* live location */
+#zloc[aria-pressed="true"]{background:#e8711a;border-color:#e8711a;color:#12161c}
+#zloc.wait svg{animation:locp 1s ease-in-out infinite}
+@keyframes locp{50%{opacity:.35}}
+.me{position:absolute;z-index:300;left:0;top:0;width:0;height:0;pointer-events:none}
+.me[hidden]{display:none}
+.me .acc{position:absolute;border-radius:999px;background:rgba(37,140,255,.16);border:1px solid rgba(37,140,255,.55);transform:translate(-50%,-50%)}
+.me .dot{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:999px;background:#258cff;border:3px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.35),0 2px 8px rgba(0,0,0,.5)}
+.me .dot::after{content:"";position:absolute;inset:-9px;border-radius:999px;border:2px solid rgba(37,140,255,.6);animation:mep 2s ease-out infinite}
+@keyframes mep{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
+.loctoast{position:absolute;left:12px;right:64px;top:54px;margin:0 auto;z-index:5;max-width:420px;padding:8px 12px;border-radius:10px;background:rgba(5,7,10,.9);border:1px solid rgba(255,255,255,.2);color:#eef1f3;font-size:13px;line-height:1.45;text-align:center}
+.loctoast[hidden]{display:none}
+@media (max-width:560px){.badge{right:62px;font-size:10px;letter-spacing:.06em;padding:6px 9px}.loctoast{top:66px}}
+/* thermal disclaimer */
+.card.dl{text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;transition:border-color .15s}.card.dl:hover{border-color:var(--or)}.card.dl em{font-style:normal;color:var(--or);font-weight:600;margin-top:auto}
+.dgal{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:10px}
+@media (max-width:980px){.dgal{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:560px){.dgal{grid-template-columns:repeat(2,1fr)}}
+.dc{margin:0;border:1px solid var(--edge2);border-radius:12px;overflow:hidden;background:var(--panel)}
+.dc img{display:block;width:100%;height:auto;aspect-ratio:1}
+.dc figcaption{display:flex;flex-direction:column;gap:2px;padding:8px 10px;font-size:13px}
+.dc figcaption b{color:#eef1f3}.dc figcaption span{color:#bec6ce}.dc figcaption em{color:#8e98a2;font-style:normal;font-size:12px}
+.disc{display:flex;gap:16px;padding:18px 20px;border:1px solid #f4a261;border-radius:12px;background:rgba(244,162,97,.08)}
+.disc svg{flex:0 0 26px;width:26px;height:26px;color:#f4a261;margin-top:2px}
+.disc p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
+.disc p b{color:var(--ink)}
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;counter-reset:s}
+.steps li{counter-increment:s;padding:16px 18px 16px 62px;position:relative;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:999px;background:var(--or);color:#12161c;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps strong{display:block;font-size:17px;font-weight:600;margin-bottom:4px}
+.steps span{font-size:16px;line-height:1.5;color:var(--muted)}
+details{border:1px solid var(--edge);border-radius:12px;background:var(--panel);padding:14px 18px}
+summary{cursor:pointer;font-size:17px;font-weight:600}
+details p{margin:10px 0 0;font-size:16px;line-height:1.55;color:var(--muted)}
+.cta{border:1px solid var(--edge);border-radius:14px;background:var(--panel);padding:24px;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between}
+.cta h2{font-size:22px}.cta p{margin:6px 0 0;color:var(--muted);font-size:16px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn-or{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;background:var(--or);color:#12161c;font-weight:600;text-decoration:none}
+.btn-or:hover{color:#12161c;filter:brightness(1.08)}
+.btn-gh{font-family:'Roboto Mono',Consolas,monospace;font-size:16px;padding:11px 16px;border:1px solid var(--edge);border-radius:999px;text-decoration:none;color:var(--ink);min-height:44px;display:inline-flex;align-items:center;box-sizing:border-box}
+.back{font-size:16px;color:var(--muted);text-decoration:none}
+footer{text-align:center;font-size:15px;line-height:1.7;color:var(--faint)}
+footer .tm{color:var(--label);font-weight:500}
+@media (max-width:860px){.season{grid-template-columns:repeat(2,1fr)}.compare,.two{grid-template-columns:1fr}.proof{grid-template-columns:1fr}}
+@media (max-width:760px){h1{font-size:34px}h2{font-size:24px}.stats{grid-template-columns:repeat(2,1fr)}.bar{grid-template-columns:118px 1fr 66px;gap:8px}}
+@media (max-width:480px){.season{grid-template-columns:1fr}.badge{font-size:11px;top:10px;left:10px}}
+</style>
+<script src="/topo.js?v=3" defer></script>
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
+<script>/* this page defaults to dark unless the visitor already chose a theme */(function(){var t=null;try{t=new URLSearchParams(location.search).get('theme')||localStorage.getItem('ngs-theme');}catch(e){}if(!t)document.documentElement.setAttribute('data-theme','dark');})();</script>
+<script>
+  window.origami = window.origami || function () { (origami.q = origami.q || []).push(arguments) };
+</script>
+<script async src="/_ov/o.js" data-key="og_pk_Su-2C-gMMfibonqqBRnoTw" data-endpoint="/_ov"></script>
+</head>
+<body data-topo="page" data-topo-style="fine">
+<div class="band" role="banner" data-topo="band" data-topo-style="fine">
+  <div class="band-row">
+    <a class="band-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+    <div class="band-nav">
+      <nav aria-label="Main">
+        <a href="/mapping/">Mapping</a>
+        <a href="/thermal/">Thermal</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/accuracy/">Accuracy</a>
+        <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
+        <a class="nav-quote" href="/quote/">Request a Quote</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div class="hl-root">
+<main class="hl-main">
+
+<!-- HERO -->
+<section class="sec" style="gap:14px">
+<p class="kick">Sample Listing Map &middot; Prepared for United Country Midwest Lifestyle Properties</p>
+<h1 style="font-size:36px;line-height:1.12;margin:0">33-Acre Hunting Property<br>Dane County, Wisconsin</h1>
+<p class="lede">An interactive map of the property built from a leaf-off mapping flight and a night thermal flight on November 24, 2026, combined with the county's 2024 public LiDAR. Turn layers on and off, zoom in on the timber, and on a phone at the property, tap the location button to see where you're standing.</p>
+<figure class="viewer" data-dark aria-label="Interactive layer map of the parcel">
+<div class="mapwrap" id="mapwrap">
+<div class="stack" id="stack">
+<div class="me" id="me" hidden><span class="acc"></span><span class="dot"></span></div>
+<img data-k="relief" src="/hamele/img/relief.jpg" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="elevation" src="/hamele/img/elevation.jpg" alt="" width="1800" height="1482" decoding="async">
+<div data-k="aerial" class="tl"><img src="/hamele/img/aerial_s.jpg" alt="" width="1800" height="1482" decoding="async"><div class="tw tg" data-tiles="aerial"></div></div>
+<div data-k="thermal" class="tl" hidden><img src="/hamele/img/thermal_s.jpg" alt="" width="1800" height="1482" loading="lazy" decoding="async"><div class="tw tg" data-tiles="thermal"></div></div>
+<img data-k="lidar" src="/hamele/img/lidar_s.webp" data-hi="/hamele/img/lidar.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="canopy" src="/hamele/img/canopy_s.webp" data-hi="/hamele/img/canopy.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<svg data-k="landforms" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+<svg data-k="cover" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none" hidden></svg>
+<svg data-k="south" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+<div data-k="contours" class="mkl"><svg class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg></div>
+<svg data-k="drainage" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+<svg data-k="ridges" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+<svg data-k="edges" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none" hidden></svg>
+<svg data-k="benches" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none" hidden></svg>
+<div data-k="hubs" class="mkl"></div>
+<div data-k="corners" class="mkl" hidden></div>
+<div data-k="deer" class="mkl"></div>
+<svg data-k="boundary" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+</div>
+<div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">&minus;</button><button type="button" id="zloc" aria-label="Show my location on the map" aria-pressed="false" title="Show My Location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="currentColor"/><circle cx="12" cy="12" r="7.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg></button><button type="button" id="zreset" aria-label="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
+<span class="loctoast" id="loctoast" hidden aria-live="polite"></span>
+<span class="hint" id="hint">Click the map, then scroll to zoom &middot; drag to pan &middot; pinch on phones</span>
+</div>
+<div class="panel">
+<div class="presets"><p>Quick Views</p>
+<button class="pre" type="button" data-p="aerial,contours,boundary">Aerial + Contours</button>
+<button class="pre" type="button" data-p="elevation,contours,boundary">Elevation</button>
+<button class="pre" type="button" data-p="lidar,boundary">Raw LiDAR</button>
+<button class="pre" type="button" data-p="relief,drainage,ridges,hubs,benches,south,boundary">Terrain Read</button>
+<button class="pre" type="button" data-p="aerial,cover,edges,corners,boundary">Cover &amp; Edges</button>
+<button class="pre" type="button" data-p="thermal,deer,boundary">Thermal</button>
+<button class="pre" type="button" data-p="boundary">Clear</button>
+</div>
+<div class="grps">
+<div class="grp"><h4>Imagery</h4><label class="row"><input type="checkbox" data-k="aerial" checked><i class="key" style="background:linear-gradient(90deg,#6b6f68,#a7a294,#5a5e57)"></i><span>Leaf-Off Aerial (4E)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Leaf-Off Aerial (4E) opacity" data-op="aerial"></label><label class="row"><input type="checkbox" data-k="thermal"><i class="key" style="background:linear-gradient(90deg,#000004,#932667,#fca50a)"></i><span>Thermal (4T)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Thermal (4T) opacity" data-op="thermal"></label></div>
+<div class="grp"><h4>LiDAR (2024)</h4><label class="row"><input type="checkbox" data-k="lidar"><i class="key" style="background:linear-gradient(90deg,#b88048,#aac85a,#78c44e,#268c40)"></i><span>Raw LiDAR Points (2024)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Raw LiDAR Points opacity" data-op="lidar"></label><label class="row"><input type="checkbox" data-k="relief"><i class="key" style="background:linear-gradient(90deg,#3a3a3a,#d9d9d9)"></i><span>Shaded Relief (Bare Earth)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Shaded Relief (Bare Earth) opacity" data-op="relief"></label><label class="row"><input type="checkbox" data-k="canopy"><i class="key" style="background:linear-gradient(90deg,#284628,#82be50,#e1f082)"></i><span>Canopy Height</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Canopy Height opacity" data-op="canopy"></label></div>
+<div class="grp"><h4>Elevation</h4><label class="row"><input type="checkbox" data-k="elevation" checked><i class="key" style="background:linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)"></i><span>Elevation (925&ndash;1,078 ft)</span><input class="op" type="range" min="0" max="100" value="13" aria-label="Elevation (925&ndash;1,078 ft) opacity" data-op="elevation"></label><label class="row"><input type="checkbox" data-k="contours" checked><i class="key l" style="background:#7a4a22"></i><span>Contours (2 ft, 10 ft Index)</span></label></div>
+<div class="grp"><h4>Terrain</h4><label class="row"><input type="checkbox" data-k="landforms" checked><i class="key" style="background:linear-gradient(90deg,#b35806,#fdd49e,#d9d9d9,#80cdc1,#2c7fb8)"></i><span>Landforms</span><input class="op" type="range" min="0" max="100" value="22" aria-label="Landforms opacity" data-op="landforms"></label><label class="row"><input type="checkbox" data-k="south" checked><i class="key" style="background:rgba(255,217,47,.75)"></i><span>South-Facing Slopes</span><input class="op" type="range" min="0" max="100" value="60" aria-label="South-Facing Slopes opacity" data-op="south"></label><label class="row"><input type="checkbox" data-k="drainage" checked><i class="key l" style="background:repeating-linear-gradient(90deg,#6ec6f5 0 4px,transparent 4px 7px)"></i><span>Drainage Paths (Modeled)</span></label><label class="row"><input type="checkbox" data-k="ridges" checked><i class="key l" style="background:#d9822b"></i><span>Ridgelines</span></label><label class="row"><input type="checkbox" data-k="hubs" checked><i class="key d" style="background:#9b5fd7"></i><span>Travel Hubs</span></label><label class="row"><input type="checkbox" data-k="benches"><i class="key" style="background:#9b5fd7;opacity:.85"></i><span>Benches</span></label></div>
+<div class="grp"><h4>Cover</h4><label class="row"><input type="checkbox" data-k="cover"><i class="key" style="background:linear-gradient(90deg,#e9e2b0,#b5d36b,#a6763c,#1b6b3a)"></i><span>Cover Types</span><input class="op" type="range" min="0" max="100" value="55" aria-label="Cover Types opacity" data-op="cover"></label><label class="row"><input type="checkbox" data-k="edges"><i class="key l" style="background:#e6550d"></i><span>Field Edges</span></label><label class="row"><input type="checkbox" data-k="corners"><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;margin-left:2px;background:none"><path d="M12 3l9.5 17h-19z" fill="#e6550d" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><span>Inside Corner</span></label></div>
+<div class="grp"><h4>Thermal Detections</h4><label class="row"><input type="checkbox" data-k="deer" checked><i class="key" style="background:#05070a;border:1px solid #fff;height:10px"></i><span>Deer Groups</span></label></div>
+<div class="grp"><h4>Reference</h4><label class="row"><input type="checkbox" data-k="boundary" checked><i class="key l" style="background:repeating-linear-gradient(90deg,#e8711a 0 5px,transparent 5px 8px)"></i><span>Property Boundary (Approx.)</span></label></div>
+</div>
+</div>
+<div class="mkey" id="mkey" hidden></div>
+<figcaption class="vcap" id="vcap"><b>18 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground. <a href="#guide" style="color:var(--or);white-space:nowrap">What does each feature mean? &darr;</a></figcaption>
+</figure>
+</section>
+
+<!-- STATS -->
+<section class="stats" aria-label="Project at a glance">
+<div class="stat"><b>33.3 ac</b><span>Hardwood timber with trails and a small opening, Dane County, WI</span></div>
+<div class="stat"><b>152 ft</b><span>Of relief, 925 to 1,078 ft (NAVD88), mapped in 2-ft contours</span></div>
+<div class="stat"><b>2024</b><span>Public LiDAR (USGS 3DEP), checked against the drone</span></div>
+<div class="stat"><b>18</b><span>Stackable map layers, delivered on paper, on screen, and in-app</span></div>
+</section>
+
+
+<!-- DOWNLOADS -->
+<section class="sec" id="downloads">
+<p class="kick">Take It With You</p>
+<h2>Downloads</h2>
+<div class="card-grid">
+<a class="card dl" href="/hamele/map/files/26-239-property-map.kmz" download="26-239 Property Map (Google Earth).kmz"><strong>Google Earth File</strong><span>Every layer in one file. Tap it on a phone to open in the free Google Earth app. 18.5 MB.</span><em>Download KMZ &darr;</em></a>
+<a class="card dl" href="/hamele/map/files/26-239-hunting-app-files.zip" download="26-239 Hunting App Files (GPX + KML).zip"><strong>Hunting App Files</strong><span>Ridgelines, drainage paths, travel hubs, benches, field edges, inside corners, contours, and the boundary as GPX and KML for onX, HuntStand, BaseMap, Gaia GPS, and others.</span><em>Download ZIP &darr;</em></a>
+<a class="card dl" href="/hamele/map/files/26-239-property-overview.pdf" download="26-239 Property Overview.pdf"><strong>Two-Page Property Overview</strong><span>A plain-language PDF summary of the terrain, cover, and thermal survey, ready to print or share.</span><em>Download PDF &darr;</em></a>
+</div>
+<p class="note">Thermal deer locations are shown on this page and in the Google Earth file as a dated snapshot only. They are not included in the hunting-app files.</p>
+</section>
+<!-- THERMAL -->
+<section class="sec" id="deercount">
+<p class="kick">Thermal Survey</p>
+<h2>Deer Count from the Night Flight</h2>
+<p class="body">A Matrice 4T flew the whole property after dark on November 24, 2026, from 7:19 to 8:40 PM, at 150 ft with heavy photo overlap: 3,345 thermal photos across three batteries. Every photo was checked on its own for deer-sized heat signatures, and each one was confirmed by eye before it was counted. The stitched thermal map is the backdrop on the map above.</p>
+<div class="card-grid">
+<div class="card"><strong>7 Likely Deer</strong><span>Clear body shapes. A pair at the south end, and a group on the east side.</span></div>
+<div class="card"><strong>9 Possible</strong><span>Compact warm spots where the shape couldn't be confirmed, mostly on the north and northeast side.</span></div>
+<div class="card"><strong>3,345 Photos Checked</strong><span>Each photo is searched on its own, so a deer that moved between passes is still caught.</span></div>
+</div>
+<h3 class="tgh">Closest Looks at the Likely Deer</h3>
+<p class="note" style="margin-top:0">Straight-down thermal close-ups, each about 13 ft across. Brighter is warmer. The east-side deer were seen over about 5 minutes and some may be the same animals moving, so that group is somewhere between 3 and 5 deer.</p>
+<div class="dgal">
+<figure class="dc"><img src="/hamele/img/deer/deer01.jpg" alt="Thermal close-up of Deer 1, 20 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 1</b><span>7:34 PM &middot; 20 &deg;F warmer than the ground</span><em>South end, in the same spot across 13 photos</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer02.jpg" alt="Thermal close-up of Deer 2, 20 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 2</b><span>7:36 PM &middot; 20 &deg;F warmer than the ground</span><em>South end, next to deer 1</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer03.jpg" alt="Thermal close-up of Deer 3, 13 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 3</b><span>8:11 PM &middot; 13 &deg;F warmer than the ground</span><em>East side</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer08.jpg" alt="Thermal close-up of Deer 4, 9 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 4</b><span>8:11 PM &middot; 9 &deg;F warmer than the ground</span><em>East side, a second deer in the same frame</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer07.jpg" alt="Thermal close-up of Deer 5, 9 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 5</b><span>8:13 PM &middot; 9 &deg;F warmer than the ground</span><em>East side</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer04.jpg" alt="Thermal close-up of Deer 6, 12 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 6</b><span>8:13 PM &middot; 12 &deg;F warmer than the ground</span><em>East side, a second deer below it</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer06.jpg" alt="Thermal close-up of Deer 7, 10 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 7</b><span>8:14 PM &middot; 10 &deg;F warmer than the ground</span><em>East side</em></figcaption></figure>
+</div>
+<button class="show" type="button" data-show="thermal,deer,boundary" style="margin-top:14px">Show Deer on Map <span aria-hidden="true">&uarr;</span></button>
+<div class="together" style="border-color:var(--edge2);background:var(--panel);margin-top:18px">
+<h3>Informational, Not Real-Time</h3>
+<p>A thermal survey is a snapshot of one flight, delivered after processing. It gives a general picture of what uses the property and where animals were at that moment. <b>It is not a real-time locating service and isn't meant for finding deer to hunt that day.</b> Animals move, and deer under thick conifer cover or off the property at flight time won't be counted. Treat the numbers as a minimum.</p>
+</div>
+</section>
+
+<!-- GUIDE -->
+<section class="sec" id="guide">
+<p class="kick">Terrain Guide</p>
+<h2>What Each Feature Is, and Why It Matters for Wildlife</h2>
+<p class="body">Every color and line on the map above has a meaning. This guide explains each feature, what it tends to mean for deer and other wildlife, and how much of it is on this parcel. Tap <b style="color:var(--ink);font-weight:600">Show on Map</b> on any card to turn that layer on.</p>
+<h3 class="tgh">Landforms</h3>
+<p class="note" style="margin-top:-6px">The shape of the ground, classified from the LiDAR bare-earth model.</p>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:#7f2704"></i><h3>Knob / Hilltop</h3><span class="here">None here</span></header>
+<p><b>What It Is</b>A high point where the ground falls away on every side.</p>
+<p><b>Why It Matters</b>Deer often bed just below the top, where they can watch downhill while rising daytime thermals carry scent up to them. Wind swirls around knobs, so approach and stand placement take care.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#b35806"></i><h3>Ridge</h3><span class="here">2.96 ac here</span></header>
+<p><b>What It Is</b>A long, narrow spine of high ground.</p>
+<p><b>Why It Matters</b>Ridges are natural travel routes. Deer tend to move just below the crest on the side away from the wind, where they stay off the skyline, can watch downhill, and still have the wind bringing them scent from over the top.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#fdd49e"></i><h3>Point / Finger</h3><span class="here">5.80 ac here</span></header>
+<p><b>What It Is</b>A spur of high ground running off a ridge toward lower ground.</p>
+<p><b>Why It Matters</b>The end of a point is classic bedding: a view down the slope, wind at the deer's back, and several escape routes. Fingers also channel travel up and down the hill.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#f1a340"></i><h3>Shoulder (Transition)</h3><span class="here">None here</span></header>
+<p><b>What It Is</b>The rounded break where a ridge top rolls over into the slope.</p>
+<p><b>Why It Matters</b>Shoulders are where flat high ground turns into hillside. Trails often follow them, and bedding commonly sits just over the break, out of sight from the top.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#d9d9d9"></i><h3>Sidehill</h3><span class="here">15.34 ac here</span></header>
+<p><b>What It Is</b>A steady slope between the high ground and the low ground.</p>
+<p><b>Why It Matters</b>Deer cross sidehills on trails that follow the contour lines. Steep sidehills are where benches form; where the ground is gentle, travel spreads out instead of funneling.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#c4a0ff"></i><h3>Bench</h3><span class="here">18 here (0.57 ac)</span></header>
+<p><b>What It Is</b>A flat shelf partway up a slope.</p>
+<p><b>Why It Matters</b>Benches are easy walking and easy bedding on otherwise steep ground, so they often carry travel along the hill. The LiDAR picked out 18 small benches on this parcel's steeper hillsides.</p>
+<button class="show" type="button" data-show="relief,benches,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button>
+</article>
+<article class="tg"><header><i class="key" style="background:#80cdc1"></i><h3>Draw / Bowl</h3><span class="here">5.06 ac here</span></header>
+<p><b>What It Is</b>A hollow or trough in the hillside that funnels toward lower ground.</p>
+<p><b>Why It Matters</b>Draws are sheltered from the wind and link the ridge to the bottom, so deer use them to move between bedding and food. In the evening and early morning, cooling air drains down them and carries scent downhill; once the sun warms the slopes, that flow reverses and rises.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#b2abd2"></i><h3>Toe Slope (Transition)</h3><span class="here">None here</span></header>
+<p><b>What It Is</b>The base of a slope where it flattens into the bottom.</p>
+<p><b>Why It Matters</b>Travel often runs along the toe of a hill, and the richer soil there can grow thicker browse.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#2c7fb8"></i><h3>Bottom / Drainage</h3><span class="here">4.09 ac here</span></header>
+<p><b>What It Is</b>Low ground along a draw or waterway.</p>
+<p><b>Why It Matters</b>Bottoms collect water, browse, and thick cover. They are also where cold air pools on still mornings, so scent tends to settle and drift down them.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#542788"></i><h3>Depression</h3><span class="here">None here</span></header>
+<p><b>What It Is</b>An enclosed low spot with no outlet.</p>
+<p><b>Why It Matters</b>Depressions can hold seasonal water and stay wet after rain or snowmelt, which can attract wildlife and limit equipment access.</p>
+<button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
+<h3 class="tgh">Travel Features</h3>
+<div class="tgrid"><article class="tg"><header><i class="key l" style="background:repeating-linear-gradient(90deg,#6ec6f5 0 4px,transparent 4px 7px)"></i><h3>Drainage Paths</h3><span class="here">4,704 ft here</span></header>
+<p><b>What It Is</b>Paths surface water would follow, traced from the ground model and shown as dotted lines. They are not streams, and most are dry most of the year.</p>
+<p><b>Why It Matters</b>They mark the draws and low ground that deer follow between ridge and field, and the crossings where trails come together.</p>
+<button class="show" type="button" data-show="relief,drainage,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key l" style="background:#d9822b"></i><h3>Ridgelines</h3><span class="here">4,469 ft here</span></header>
+<p><b>What It Is</b>The spines of the high ground, traced from the elevation model.</p>
+<p><b>Why It Matters</b>Ridgelines show the travel routes along the high ground and where wind rolls over the top and eddies on the downwind side, a key to reading how scent moves.</p>
+<button class="show" type="button" data-show="relief,ridges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key d" style="background:#9b5fd7"></i><h3>Travel Hubs</h3><span class="here">18 here (11 draw, 7 ridge)</span></header>
+<p><b>What It Is</b>Places where three or more draws or ridges meet.</p>
+<p><b>Why It Matters</b>When several travel lines join, movement from different parts of the property passes through one spot. Hubs are worth a close look for stand and camera sites.</p>
+<button class="show" type="button" data-show="relief,drainage,ridges,hubs,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;margin-left:2px;background:none"><path d="M12 2.5l2.8 6.1 6.7.7-5 4.5 1.4 6.6L12 17l-5.9 3.4 1.4-6.6-5-4.5 6.7-.7z" fill="#d7191c" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><h3>Saddle</h3><span class="here">None here</span></header>
+<p><b>What It Is</b>A low dip in a ridge between two higher points.</p>
+<p><b>Why It Matters</b>Deer cross ridges at the lowest point to save energy, so saddles are natural funnels and long-time stand locations. None on this parcel met the test of at least a 3-ft rise along the ridge and a drop to each side.</p></article></div>
+<h3 class="tgh">Cover &amp; Edges</h3>
+<p class="note" style="margin-top:-6px">Classified from LiDAR canopy height plus the greenness of the leaf-off aerial.</p>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:#e9e2b0"></i><h3>Open / Field</h3><span class="here">1.71 ac here</span></header>
+<p><b>What It Is</b>Ground where the vegetation is under 3 ft tall, such as fields, grass, and crops.</p>
+<p><b>Why It Matters</b>Food and visibility, but little security. Deer usually use open ground at low light and stay close to cover.</p>
+<button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#b5d36b"></i><h3>Thicket / Regrowth</h3><span class="here">0.29 ac here</span></header>
+<p><b>What It Is</b>Young trees, shrubs, and brush from 3 to 15 ft tall.</p>
+<p><b>Why It Matters</b>Thickets offer both browse and security cover, and they are favorite bedding areas, especially under hunting pressure. This parcel has very little.</p>
+<button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#a6763c"></i><h3>Hardwood</h3><span class="here">30.78 ac here</span></header>
+<p><b>What It Is</b>Deciduous trees over 15 ft tall.</p>
+<p><b>Why It Matters</b>Oaks and other hardwoods can drop mast such as acorns in the fall, but once leaves are down the understory opens up, and so does visibility.</p>
+<button class="show" type="button" data-show="canopy,relief,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:#1b6b3a"></i><h3>Conifer</h3><span class="here">0.54 ac here</span></header>
+<p><b>What It Is</b>Evergreen timber that holds its needles through the winter.</p>
+<p><b>Why It Matters</b>Conifers cut the wind, catch snow in their branches, and slow heat loss at night, so deer often shelter in them in hard winter weather. Adding or protecting conifer is a common habitat goal.</p>
+<button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key l" style="background:#e6550d"></i><h3>Hard Edge</h3><span class="here">2,895 ft here</span></header>
+<p><b>What It Is</b>An abrupt line where open ground meets mature timber.</p>
+<p><b>Why It Matters</b>Deer step out at hard edges but have little cover to stage in. Softening a hard edge with shrubs or edge feathering (hinge-cutting along the timber line) creates a transition they can use.</p>
+<button class="show" type="button" data-show="aerial,edges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key l" style="background:#9acd32"></i><h3>Soft Edge</h3><span class="here">199 ft here</span></header>
+<p><b>What It Is</b>A gradual change from field to thicket to timber.</p>
+<p><b>Why It Matters</b>Soft edges offer browse and security next to the food, so deer tend to linger and stage in them before entering a field.</p>
+<button class="show" type="button" data-show="aerial,edges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;margin-left:2px;background:none"><path d="M12 3l9.5 17h-19z" fill="#e6550d" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><h3>Inside Corner</h3><span class="here">6 here</span></header>
+<p><b>What It Is</b>A spot where the field cuts into the timber, so cover wraps around open ground.</p>
+<p><b>Why It Matters</b>Deer often enter a field at an inside corner, where they can step out with cover on two sides. Inside corners are classic stand sites on field edges.</p>
+<button class="show" type="button" data-show="aerial,edges,corners,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
+<h3 class="tgh">Warmth, Water &amp; Elevation</h3>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:rgba(255,217,47,.75)"></i><h3>South-Facing Slopes</h3><span class="here">2.81 ac here</span></header>
+<p><b>What It Is</b>Slopes facing south or southwest, at 8 to 35&deg;.</p>
+<p><b>Why It Matters</b>They get the most winter sun, so they are warmer, melt off first, and green up first in spring. They are often preferred winter bedding.</p>
+<button class="show" type="button" data-show="relief,south,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key" style="background:linear-gradient(90deg,#31688e,#94be5f,#964e32)"></i><h3>Elevation &amp; Contours</h3><span class="here">925&ndash;1,078 ft here</span></header>
+<p><b>What It Is</b>Ground height colored from low to high, with lines every 2 ft and labeled lines every 10 ft.</p>
+<p><b>Why It Matters</b>Contours show how steep the ground is and which way it faces at a glance. Tight lines mean steep slopes; wide lines mean flats. They are the base for planning trails, plots, and access.</p>
+<button class="show" type="button" data-show="elevation,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
+<article class="tg"><header><i class="key d" style="background:#1e90ff;width:18px;height:12px;border-radius:58% 42% 55% 45% / 52% 60% 40% 48%"></i><h3>Springs / Seeps</h3><span class="here">None found on this flight</span></header>
+<p><b>What It Is</b>Ground water reaching the surface, usually at the head or side of a draw.</p>
+<p><b>Why It Matters</b>Spring water comes out of the ground at a steady temperature, warmer than winter air, so it stays open in winter. Open water and the early green growth around it draw deer. The thermal survey checked the drainages for warm water, and none stood out on this flight.</p></article></div>
+<p class="note">Deer behavior shifts with weather, food, season, and hunting pressure. These are tendencies to plan around, not rules, and every feature should be confirmed on foot.</p>
+</section>
+
+
+<section class="sec">
+<p class="note">Maps are produced from drone imagery and public LiDAR for planning and visualization. They are not a land survey and do not establish property boundaries. Deer behavior shifts with weather, food, season, and hunting pressure; every feature should be confirmed on foot. Thermal results are a snapshot of one flight and are not a real-time locating service. All flights were conducted by an FAA Part 107 certified pilot. This is a sample map prepared to show the format of a listing package.</p>
+</section>
+
+<div class="cta">
+<div>
+<h2>Want a Map Like This for a Listing?</h2>
+<p>Mapping, thermal, and LiDAR by Novak Geospatial Solutions&trade;, prepared for United Country Midwest Lifestyle Properties.</p>
+</div>
+<div class="cta-row">
+<a class="btn-or" href="sms:+16088200224">Text Novak|GS</a>
+<a class="btn-gh" href="tel:+16088200224">(608) 820-0224</a>
+<a class="btn-gh" href="mailto:info@novakgs.com">info@novakgs.com</a>
+</div>
+</div>
+
+<footer><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 Novak Geospatial Solutions&trade;, a BUCK2NINETY LLC company &middot; Cross Plains, Wisconsin &middot; FAA Part 107 Certified</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  var stack=document.getElementById('stack'),wrap=document.getElementById('mapwrap');
+  var boxes=document.querySelectorAll('.panel input[type=checkbox]'),pres=document.querySelectorAll('.pre');
+  var KEY={
+    landforms:['Landforms',[['#7f2704','Knob / Hilltop'],['#b35806','Ridge'],['#f1a340','Shoulder'],['#fdd49e','Point / Finger'],['#d9d9d9','Sidehill'],['#80cdc1','Draw / Bowl'],['#b2abd2','Toe Slope'],['#2c7fb8','Bottom / Drainage'],['#542788','Depression']]],
+    cover:['Cover Types',[['#e9e2b0','Open / Field'],['#b5d36b','Thicket / Regrowth'],['#a6763c','Hardwood'],['#1b6b3a','Conifer']]],
+    edges:['Field Edges',[['#e6550d','Hard Edge (Field to Timber)','l'],['#9acd32','Soft Edge (Field to Thicket)','l']]],
+    elevation:['Elevation',[['linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)','925 ft &rarr; 1,078 ft','r']]],
+    contours:['Contours',[['#5c3414','Index (Every 10 ft, Labeled)','l'],['rgba(120,78,40,.6)','Intermediate (2 ft)','l']]],
+    canopy:['Canopy Height',[['linear-gradient(90deg,#284628,#46823c,#82be50,#e1f082)','3 ft &rarr; 80 ft','r']]],
+    lidar:['Raw LiDAR Points',[['#b88048','Ground'],['#aac85a','Low Vegetation (Under 3 ft)'],['#78c44e','Mid Vegetation (3&ndash;15 ft)'],['#268c40','High Vegetation (Over 15 ft)']]],
+    thermal:['Thermal (Matrice 4T, Nov 24, 2026)',[['linear-gradient(90deg,#000004,#420a68,#932667,#dd513a,#fca50a,#fcffa4)','Colder &rarr; Warmer','r']]]
+  };
+  var ORDER=['lidar','elevation','contours','canopy','landforms','cover','edges','thermal'],mkey=document.getElementById('mkey');
+  function keys(on){
+    var h=ORDER.filter(function(k){return on[k];}).map(function(k){var d=KEY[k];
+      return '<div class="mk"><h5>'+d[0]+'</h5>'+d[1].map(function(c){return '<span><i class="'+(c[2]||'')+'" style="background:'+c[0]+'"></i>'+c[1]+'</span>';}).join('')+'</div>';}).join('');
+    mkey.innerHTML=h;mkey.hidden=!h;
+  }
+  function img(k){return stack.querySelector('[data-k="'+k+'"]');}
+  function sync(){
+    var on={};
+    boxes.forEach(function(b){var k=b.getAttribute('data-k');on[k]=b.checked;img(k).toggleAttribute('hidden',!b.checked);var o=b.parentNode.querySelector('.op');if(o)o.hidden=!b.checked;});
+    keys(on);
+    var cur=Object.keys(on).filter(function(k){return on[k];}).sort().join(',');
+    pres.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p').split(',').sort().join(',')===cur);});
+  }
+  var BASES=['relief','elevation','aerial','thermal','lidar'],zc=10;
+  stack.querySelectorAll(':scope>[data-k]').forEach(function(im,i){im.style.zIndex=(BASES.indexOf(im.getAttribute('data-k'))>-1?1+i:100+i);});
+  function lift(k){if(BASES.indexOf(k)>-1)img(k).style.zIndex=++zc;}
+  boxes.forEach(function(b){b.addEventListener('change',function(){if(b.checked)lift(b.getAttribute('data-k'));sync();});});
+  document.querySelectorAll('.op').forEach(function(o){
+    var k=o.getAttribute('data-op');img(k).style.opacity=o.value/100;
+    o.addEventListener('input',function(){img(k).style.opacity=o.value/100;});
+  });
+  pres.forEach(function(p){p.addEventListener('click',function(){
+    var want=p.getAttribute('data-p').split(',');
+    boxes.forEach(function(b){b.checked=want.indexOf(b.getAttribute('data-k'))>-1;});want.forEach(lift);sync();
+  });});
+  img('aerial').style.zIndex=++zc;img('elevation').style.zIndex=++zc;sync();stack.style.setProperty('--u',3600/Math.max(1,stack.clientWidth));
+  document.querySelectorAll('.show').forEach(function(b){b.addEventListener('click',function(){
+    var want=b.getAttribute('data-show').split(',');
+    boxes.forEach(function(x){x.checked=want.indexOf(x.getAttribute('data-k'))>-1;});want.forEach(lift);sync();
+    document.querySelector('.viewer').scrollIntoView({behavior:'smooth',block:'center'});
+  });});
+  // zoom + pan
+  var s=1,x=0,y=0,MAX=10,act=false,hiDone=false;
+  function clamp(){var w=wrap.clientWidth,h=stack.clientHeight;x=Math.min(0,Math.max(w-w*s,x));y=Math.min(0,Math.max(h-h*s,y));}
+  function hires(){if(hiDone||s<1.4)return;hiDone=true;stack.querySelectorAll('img[data-hi]').forEach(function(im){var p=new Image();p.onload=function(){im.src=im.getAttribute('data-hi');};p.src=im.getAttribute('data-hi');});}
+  function apply(){clamp();stack.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';stack.style.setProperty('--inv',1/s);stack.style.setProperty('--u',(3600/Math.max(1,stack.clientWidth))/s);wrap.classList.toggle('zoomed',s>1);wrap.classList.toggle('z2',s>=2);if(window.__meScale)window.__meScale(s);hires();}
+  function zoomAt(f,cx,cy){var ns=Math.min(MAX,Math.max(1,s*f));x=cx-(cx-x)*ns/s;y=cy-(cy-y)*ns/s;s=ns;apply();}
+  wrap.addEventListener('mouseleave',function(){act=false;wrap.classList.remove('act');});
+  wrap.addEventListener('wheel',function(e){if(!(e.ctrlKey||e.metaKey||act))return;e.preventDefault();var r=wrap.getBoundingClientRect();zoomAt(e.deltaY<0?1.2:1/1.2,e.clientX-r.left,e.clientY-r.top);},{passive:false});
+  document.getElementById('zin').addEventListener('click',function(){zoomAt(1.5,wrap.clientWidth/2,stack.clientHeight/2);});
+  document.getElementById('zout').addEventListener('click',function(){zoomAt(1/1.5,wrap.clientWidth/2,stack.clientHeight/2);});
+  document.getElementById('zreset').addEventListener('click',function(){s=1;x=0;y=0;apply();});
+  var pts={},last=null,pd=0;
+  wrap.addEventListener('pointerdown',function(e){act=true;wrap.classList.add('act');if(e.target.closest('.zoom'))return;wrap.setPointerCapture(e.pointerId);pts[e.pointerId]={x:e.clientX,y:e.clientY};wrap.classList.add('drag');});
+  wrap.addEventListener('pointermove',function(e){
+    if(!pts[e.pointerId])return;var ids=Object.keys(pts);
+    if(ids.length===1){x+=e.clientX-pts[e.pointerId].x;y+=e.clientY-pts[e.pointerId].y;pts[e.pointerId]={x:e.clientX,y:e.clientY};apply();}
+    else if(ids.length===2){pts[e.pointerId]={x:e.clientX,y:e.clientY};var a=pts[ids[0]],b=pts[ids[1]],d=Math.hypot(a.x-b.x,a.y-b.y),r=wrap.getBoundingClientRect();
+      if(pd)zoomAt(d/pd,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top);pd=d;}
+  });
+  function up(e){delete pts[e.pointerId];pd=0;if(!Object.keys(pts).length)wrap.classList.remove('drag');}
+  wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);
+  window.addEventListener('resize',apply);
+  // sharp vector features: lines keep their on-screen width, markers keep their size, at any zoom
+  (function(){
+    var NS='http://www.w3.org/2000/svg';
+    function svg(k){var e=stack.querySelector('[data-k="'+k+'"]');return e.tagName.toLowerCase()==='svg'?e:e.querySelector('svg');}
+    function add(el,d,a){var p=document.createElementNS(NS,'path');p.setAttribute('d',d);for(var n in a)p.setAttribute(n,a[n]);el.appendChild(p);}
+    var LN={fill:'none','stroke-linecap':'round','stroke-linejoin':'round'};
+    function ln(o){var r={};for(var n in LN)r[n]=LN[n];for(n in o)r[n]=o[n];var st='stroke-width:calc(var(--u,1) * '+o['stroke-width']+')';if(o['stroke-dasharray']){var d=o['stroke-dasharray'].split(' ');st+=';stroke-dasharray:calc(var(--u,1) * '+d[0]+') calc(var(--u,1) * '+d[1]+')';delete r['stroke-dasharray'];}delete r['stroke-width'];r.style=st;return r;}
+    function mk(k,x,y,html){var d=document.createElement('div');d.className='mk';d.style.left=(x*100)+'%';d.style.top=(y*100)+'%';d.innerHTML=html;stack.querySelector('[data-k="'+k+'"]').appendChild(d);}
+    fetch('/hamele/img/vec.json').then(function(r){return r.json();}).then(function(V){
+      ['landforms','cover','south','benches'].forEach(function(k){var e=svg(k);V[k].forEach(function(f){add(e,f[1],{fill:f[0],stroke:'none','fill-rule':'evenodd'});});});
+      var c=svg('contours');
+      V.contours.forEach(function(f){add(c,f[1],f[0]==='i'?ln({stroke:'#5c3414','stroke-width':1.6,'stroke-opacity':.92}):ln({stroke:'#784e28','stroke-width':.7,'stroke-opacity':.6}));});
+      V.drainage.forEach(function(f){add(svg('drainage'),f[1],ln({stroke:'#6ec6f5','stroke-width':3.2,'stroke-dasharray':'0.1 6'}));});
+      V.ridges.forEach(function(f){add(svg('ridges'),f[1],ln({stroke:'#d9822b','stroke-width':2.4}));});
+      V.edges.forEach(function(f){add(svg('edges'),f[1],ln({stroke:f[0],'stroke-width':2.6}));});
+      var b=svg('boundary');add(b,V.boundary,ln({stroke:'rgba(0,0,0,.45)','stroke-width':4.5}));add(b,V.boundary,ln({stroke:'#e8711a','stroke-width':2.4,'stroke-dasharray':'9 6'}));
+      V.hubs.forEach(function(p){mk('hubs',p[0],p[1],'<i class="hub" title="'+p[2]+'"></i>');});
+      V.corners.forEach(function(p){mk('corners',p[0],p[1],'<i class="cor" title="Inside corner"></i>');});
+      V.contour_labels.forEach(function(p){mk('contours',p[0],p[1],'<span class="cl" style="--a:'+p[3]+'deg">'+p[2]+'</span>');});
+      var G={};
+      V.deer.forEach(function(p){mk('deer',p[0],p[1],'<i class="ring'+(p[2]?'':' p')+'" title="'+(p[2]?'Likely deer':'Possible deer')+'"></i>');
+        var g=G[p[3]]||(G[p[3]]={x:0,y:1,n:0,l:0,k:0});g.x+=p[0];g.k++;g.y=Math.min(g.y,p[1]);if(p[2])g.l++;});
+      Object.keys(G).forEach(function(k){var g=G[k];if(!g.l)return;mk('deer',g.x/g.k,g.y,'<span class="tag">'+g.l+' Deer</span>');});
+      Object.keys(V.tiles||{}).forEach(function(k){var t=V.tiles[k],w=stack.querySelector('[data-tiles="'+k+'"]'),h='';
+        for(var r=0;r<t.r;r++)for(var q=0;q<t.c;q++){var tw=Math.min(t.ts,t.w-q*t.ts),th=Math.min(t.ts,t.h-r*t.ts);
+          h+='<img loading="lazy" decoding="async" alt="" src="/hamele/img/tiles/'+k+'/'+r+'_'+q+'.'+t.ext+'" style="left:'+(q*t.ts/t.w*100)+'%;top:'+(r*t.ts/t.h*100)+'%;width:'+(tw/t.w*100+0.06)+'%;height:'+(th/t.h*100+0.06)+'%">';}
+        w.innerHTML=h;});
+    });
+  })();
+  // live location: only after the visitor taps the button and allows it; position stays on the device
+  (function(){
+    var U=[192.3345843590126,0.6340680788077862,17211.128211048122],V=[0.5643033063034897,-318.8825461982714,13798.2773817042],WFT=1388.48;
+    var btn=document.getElementById('zloc'),me=document.getElementById('me'),dot=me.querySelector('.dot'),acc=me.querySelector('.acc'),toast=document.getElementById('loctoast'),hint=document.getElementById('hint');
+    var wid=null,first=true,tt=null;
+    function say(t,ms){toast.textContent=t;toast.hidden=false;clearTimeout(tt);if(ms)tt=setTimeout(function(){toast.hidden=true;},ms);}
+    function stop(){if(wid!==null)navigator.geolocation.clearWatch(wid);wid=null;me.hidden=true;btn.setAttribute('aria-pressed','false');btn.classList.remove('wait');first=true;}
+    window.__meScale=function(sc){dot.style.transform='scale('+(1/sc)+')';};
+    btn.addEventListener('click',function(){
+      if(wid!==null){stop();say('Location off.',2000);return;}
+      if(!('geolocation' in navigator)){say('This browser can\u2019t share location.',4000);return;}
+      btn.classList.add('wait');btn.setAttribute('aria-pressed','true');
+      say('Finding your location\u2026 It stays on your device and is only used to draw your dot.',0);
+      wid=navigator.geolocation.watchPosition(function(p){
+        btn.classList.remove('wait');
+        var lon=p.coords.longitude,lat=p.coords.latitude,u=U[0]*lon+U[1]*lat+U[2],v=V[0]*lon+V[1]*lat+V[2];
+        if(u<-0.25||u>1.25||v<-0.25||v>1.25){me.hidden=true;say('You\u2019re not on this property right now. Your dot appears when you\u2019re on or near it.',0);return;}
+        me.hidden=false;me.style.left=(u*100)+'%';me.style.top=(v*100)+'%';
+        var r=Math.max(p.coords.accuracy/0.3048/WFT*100,0.6),px=2*r*stack.clientWidth/100;acc.style.width=acc.style.height=px+'px';
+        say('You are here (\u00b1'+Math.round(p.coords.accuracy/0.3048)+' ft). Your location stays on your device.',4000);
+        if(first){first=false;var cx=u*wrap.clientWidth,cy=v*stack.clientHeight;if(s<2){zoomAt(2/s,cx,cy);}x=wrap.clientWidth/2-cx*s;y=stack.clientHeight/2-cy*s;apply();}
+      },function(e){stop();say(e.code===1?'Location permission was declined. Nothing was shared.':'Couldn\u2019t get a location fix. Try again in the open.',5000);},{enableHighAccuracy:true,maximumAge:5000,timeout:20000});
+    });
+  })();
+
+})();
+</script>
+</body>
+</html>
