@@ -182,6 +182,13 @@ h3{margin:0;font-size:19px;font-weight:600}
 .loctoast[hidden]{display:none}
 @media (max-width:560px){.badge{right:62px;font-size:10px;letter-spacing:.06em;padding:6px 9px}.loctoast{top:66px}}
 /* thermal disclaimer */
+.dgal{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:10px}
+@media (max-width:980px){.dgal{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:560px){.dgal{grid-template-columns:repeat(2,1fr)}}
+.dc{margin:0;border:1px solid var(--edge2);border-radius:12px;overflow:hidden;background:var(--panel)}
+.dc img{display:block;width:100%;height:auto;aspect-ratio:1}
+.dc figcaption{display:flex;flex-direction:column;gap:2px;padding:8px 10px;font-size:13px}
+.dc figcaption b{color:#eef1f3}.dc figcaption span{color:#bec6ce}.dc figcaption em{color:#8e98a2;font-style:normal;font-size:12px}
 .disc{display:flex;gap:16px;padding:18px 20px;border:1px solid #f4a261;border-radius:12px;background:rgba(244,162,97,.08)}
 .disc svg{flex:0 0 26px;width:26px;height:26px;color:#f4a261;margin-top:2px}
 .disc p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
@@ -248,7 +255,7 @@ footer .tm{color:var(--label);font-weight:500}
 <p><b>The Goal:</b> To see if there's a real-world application for combining drone mapping and thermal data with public LiDAR data to create a true &ldquo;site intelligence&rdquo; component to land management and recreational real estate.</p>
 <p><b>The proposal:</b> The short version is I'd like to fly one of your listings for free and hand over the deliverables for you to use in your listing, under your branding. Details about what that entails are in <a href="#the-test" style="color:var(--or)">The Test</a> section below.</p>
 <p>I'm building this business in a distinct way, to set it apart from the typical aerial media companies. The focus is on going deeper and turning data into true intelligence that buyers can benefit from, so they can actually feel a property before they ever set foot on it.</p>
-<p>Everything below is a working example on a 13.7-acre parcel, so you can see what that page could look like. If it's worth a test, all I'd need is the listing and the seller's okay to fly.</p>
+<p>Everything below is a working example on a 33-acre parcel, so you can see what that page could look like. If it's worth a test, all I'd need is the listing and the seller's okay to fly.</p>
 </div>
 </section>
 
@@ -297,7 +304,7 @@ footer .tm{color:var(--label);font-weight:500}
 </div>
 </section>
 
-<div class="divider"><span>The Example &middot; 13.7-Acre Case Study</span></div>
+<div class="divider"><span>The Example &middot; 33-Acre Case Study</span></div>
 
 <!-- HERO -->
 <section class="sec" style="gap:18px">
@@ -310,69 +317,66 @@ footer .tm{color:var(--label);font-weight:500}
 <span class="pill">Land Buyers</span>
 <span class="pill">Habitat &amp; Food Plot Planning</span>
 </div>
-<p class="lede"><span style="display:block;margin-bottom:4px">Mapping. Thermal. LiDAR.</span><span style="display:block;margin-bottom:12px">Not a combination you're likely to find anywhere else in Wisconsin.</span>On its own, each one gives today's landowner far more data than their parents or grandparents ever had. Together, a whole new level of knowledge emerges. It's what turns Elevated Data into Grounded Truth, and what differentiates aerial pictures from true site intelligence.<b>Below is what site intelligence can truly do: 20 layers of data, each with its own on/off toggle, so you can read the property more accurately than ever before, without ever leaving the house.</b></p>
+<p class="lede"><span style="display:block;margin-bottom:4px">Mapping. Thermal. LiDAR.</span><span style="display:block;margin-bottom:12px">Not a combination you're likely to find anywhere else in Wisconsin.</span>On its own, each one gives today's landowner far more data than their parents or grandparents ever had. Together, a whole new level of knowledge emerges. It's what turns Elevated Data into Grounded Truth, and what differentiates aerial pictures from true site intelligence.<b>Below is what site intelligence can truly do: 18 layers of data, each with its own on/off toggle, so you can read the property more accurately than ever before, without ever leaving the house.</b></p>
 
 <figure class="viewer" data-dark aria-label="Interactive layer map of the parcel">
 <div class="mapwrap" id="mapwrap">
 <div class="stack" id="stack">
 <div class="me" id="me" hidden><span class="acc"></span><span class="dot"></span></div>
-<img data-k="relief" src="/case-studies/hunting-land/img/relief.jpg" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
-<img data-k="elevation" src="/case-studies/hunting-land/img/elevation.jpg" alt="" width="1800" height="1268" decoding="async">
-<img data-k="aerial" src="/case-studies/hunting-land/img/aerial.jpg" alt="" width="1800" height="1268" decoding="async">
-<img data-k="thermal" src="/case-studies/hunting-land/img/thermal.jpg?v=3" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
-<img data-k="lidar" src="/case-studies/hunting-land/img/lidar.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
-<img data-k="canopy" src="/case-studies/hunting-land/img/canopy.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
-<img data-k="landforms" src="/case-studies/hunting-land/img/landforms.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="cover" src="/case-studies/hunting-land/img/cover.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
-<img data-k="south" src="/case-studies/hunting-land/img/south.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="contours" src="/case-studies/hunting-land/img/contours.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="drainage" src="/case-studies/hunting-land/img/drainage.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="streams" src="/case-studies/hunting-land/img/streams.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="ridges" src="/case-studies/hunting-land/img/ridges.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="edges" src="/case-studies/hunting-land/img/edges.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
-<img data-k="hubs" src="/case-studies/hunting-land/img/hubs.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="saddles" src="/case-studies/hunting-land/img/saddles.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="corners" src="/case-studies/hunting-land/img/corners.webp" alt="" width="1800" height="1268" hidden loading="lazy" decoding="async">
-<img data-k="springs" src="/case-studies/hunting-land/img/springs.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="deer" src="/case-studies/hunting-land/img/deer.webp" alt="" width="1800" height="1268" decoding="async">
-<img data-k="boundary" src="/case-studies/hunting-land/img/boundary.webp" alt="" width="1800" height="1268" decoding="async">
+<img data-k="relief" src="/hamele/img/relief.jpg" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="elevation" src="/hamele/img/elevation.jpg" alt="" width="1800" height="1482" decoding="async">
+<img data-k="aerial" src="/hamele/img/aerial_s.jpg" data-hi="/hamele/img/aerial.jpg" alt="" width="1800" height="1482" decoding="async">
+<img data-k="thermal" src="/hamele/img/thermal_s.jpg" data-hi="/hamele/img/thermal.jpg" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="lidar" src="/hamele/img/lidar_s.webp" data-hi="/hamele/img/lidar.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="canopy" src="/hamele/img/canopy_s.webp" data-hi="/hamele/img/canopy.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="landforms" src="/hamele/img/landforms.webp" alt="" width="1800" height="1482" decoding="async">
+<img data-k="cover" src="/hamele/img/cover.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="south" src="/hamele/img/south.webp" alt="" width="1800" height="1482" decoding="async">
+<img data-k="contours" src="/hamele/img/contours_s.webp" data-hi="/hamele/img/contours.webp" alt="" width="1800" height="1482" decoding="async">
+<img data-k="drainage" src="/hamele/img/drainage.webp" alt="" width="1800" height="1482" decoding="async">
+<img data-k="ridges" src="/hamele/img/ridges.webp" alt="" width="1800" height="1482" decoding="async">
+<img data-k="edges" src="/hamele/img/edges.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="benches" src="/hamele/img/benches.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="hubs" src="/hamele/img/hubs.webp" alt="" width="1800" height="1482" decoding="async">
+<img data-k="corners" src="/hamele/img/corners.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<img data-k="deer" src="/hamele/img/deer.webp" alt="" width="1800" height="1482" decoding="async">
+<img data-k="boundary" src="/hamele/img/boundary.webp" alt="" width="1800" height="1482" decoding="async">
 </div>
-<span class="badge" id="simbadge" hidden>Simulated Thermal &middot; Not a Real Survey</span>
 <div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">&minus;</button><button type="button" id="zloc" aria-label="Show my location on the map" aria-pressed="false" title="Show My Location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="currentColor"/><circle cx="12" cy="12" r="7.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg></button><button type="button" id="zreset" aria-label="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
 <span class="loctoast" id="loctoast" hidden aria-live="polite"></span>
-<span class="hint" id="hint">Ctrl + scroll or pinch to zoom &middot; drag to pan</span>
+<span class="hint" id="hint">Click the map, then scroll to zoom &middot; drag to pan &middot; pinch on phones</span>
 </div>
 <div class="panel">
 <div class="presets"><p>Quick Views</p>
 <button class="pre" type="button" data-p="aerial,contours,boundary">Aerial + Contours</button>
 <button class="pre" type="button" data-p="elevation,contours,boundary">Elevation</button>
 <button class="pre" type="button" data-p="lidar,boundary">Raw LiDAR</button>
-<button class="pre" type="button" data-p="relief,streams,drainage,ridges,hubs,saddles,south,boundary">Terrain Read</button>
+<button class="pre" type="button" data-p="relief,drainage,ridges,hubs,benches,south,boundary">Terrain Read</button>
 <button class="pre" type="button" data-p="aerial,cover,edges,corners,boundary">Cover &amp; Edges</button>
-<button class="pre" type="button" data-p="thermal,deer,springs,boundary">Thermal</button>
+<button class="pre" type="button" data-p="thermal,deer,boundary">Thermal</button>
 <button class="pre" type="button" data-p="boundary">Clear</button>
 </div>
 <div class="grps">
 <div class="grp"><h4>Imagery</h4><label class="row"><input type="checkbox" data-k="aerial" checked><i class="key" style="background:linear-gradient(90deg,#6b6f68,#a7a294,#5a5e57)"></i><span>Leaf-Off Aerial (4E)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Leaf-Off Aerial (4E) opacity" data-op="aerial"></label><label class="row"><input type="checkbox" data-k="thermal"><i class="key" style="background:linear-gradient(90deg,#000004,#932667,#fca50a)"></i><span>Thermal (4T)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Thermal (4T) opacity" data-op="thermal"></label></div>
 <div class="grp"><h4>LiDAR (2024)</h4><label class="row"><input type="checkbox" data-k="lidar"><i class="key" style="background:linear-gradient(90deg,#b88048,#aac85a,#78c44e,#268c40)"></i><span>Raw LiDAR Points (2024)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Raw LiDAR Points opacity" data-op="lidar"></label><label class="row"><input type="checkbox" data-k="relief"><i class="key" style="background:linear-gradient(90deg,#3a3a3a,#d9d9d9)"></i><span>Shaded Relief (Bare Earth)</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Shaded Relief (Bare Earth) opacity" data-op="relief"></label><label class="row"><input type="checkbox" data-k="canopy"><i class="key" style="background:linear-gradient(90deg,#284628,#82be50,#e1f082)"></i><span>Canopy Height</span><input class="op" type="range" min="0" max="100" value="100" aria-label="Canopy Height opacity" data-op="canopy"></label></div>
-<div class="grp"><h4>Elevation</h4><label class="row"><input type="checkbox" data-k="elevation" checked><i class="key" style="background:linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)"></i><span>Elevation (954&ndash;1,014 ft)</span><input class="op" type="range" min="0" max="100" value="13" aria-label="Elevation (954&ndash;1,014 ft) opacity" data-op="elevation"></label><label class="row"><input type="checkbox" data-k="contours" checked><i class="key l" style="background:#7a4a22"></i><span>Contours (2 ft, 10 ft Index)</span></label></div>
-<div class="grp"><h4>Terrain</h4><label class="row"><input type="checkbox" data-k="landforms" checked><i class="key" style="background:linear-gradient(90deg,#b35806,#fdd49e,#d9d9d9,#80cdc1,#2c7fb8)"></i><span>Landforms</span><input class="op" type="range" min="0" max="100" value="22" aria-label="Landforms opacity" data-op="landforms"></label><label class="row"><input type="checkbox" data-k="south" checked><i class="key" style="background:rgba(255,217,47,.75)"></i><span>South-Facing Slopes</span><input class="op" type="range" min="0" max="100" value="60" aria-label="South-Facing Slopes opacity" data-op="south"></label><label class="row"><input type="checkbox" data-k="streams" checked><i class="key l" style="background:#1565c0"></i><span>Streams &amp; Creeks (USGS)</span></label><label class="row"><input type="checkbox" data-k="drainage" checked><i class="key l" style="background:repeating-linear-gradient(90deg,#6ec6f5 0 4px,transparent 4px 7px)"></i><span>Drainage Paths (Modeled)</span></label><label class="row"><input type="checkbox" data-k="ridges" checked><i class="key l" style="background:#d9822b"></i><span>Ridgelines</span></label><label class="row"><input type="checkbox" data-k="hubs" checked><i class="key d" style="background:#9b5fd7"></i><span>Travel Hubs</span></label><label class="row"><input type="checkbox" data-k="saddles" checked><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;margin-left:2px;background:none"><path d="M12 2.5l2.8 6.1 6.7.7-5 4.5 1.4 6.6L12 17l-5.9 3.4 1.4-6.6-5-4.5 6.7-.7z" fill="#d7191c" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><span>Saddle</span></label></div>
+<div class="grp"><h4>Elevation</h4><label class="row"><input type="checkbox" data-k="elevation" checked><i class="key" style="background:linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)"></i><span>Elevation (925&ndash;1,078 ft)</span><input class="op" type="range" min="0" max="100" value="13" aria-label="Elevation (925&ndash;1,078 ft) opacity" data-op="elevation"></label><label class="row"><input type="checkbox" data-k="contours" checked><i class="key l" style="background:#7a4a22"></i><span>Contours (2 ft, 10 ft Index)</span></label></div>
+<div class="grp"><h4>Terrain</h4><label class="row"><input type="checkbox" data-k="landforms" checked><i class="key" style="background:linear-gradient(90deg,#b35806,#fdd49e,#d9d9d9,#80cdc1,#2c7fb8)"></i><span>Landforms</span><input class="op" type="range" min="0" max="100" value="22" aria-label="Landforms opacity" data-op="landforms"></label><label class="row"><input type="checkbox" data-k="south" checked><i class="key" style="background:rgba(255,217,47,.75)"></i><span>South-Facing Slopes</span><input class="op" type="range" min="0" max="100" value="60" aria-label="South-Facing Slopes opacity" data-op="south"></label><label class="row"><input type="checkbox" data-k="drainage" checked><i class="key l" style="background:repeating-linear-gradient(90deg,#6ec6f5 0 4px,transparent 4px 7px)"></i><span>Drainage Paths (Modeled)</span></label><label class="row"><input type="checkbox" data-k="ridges" checked><i class="key l" style="background:#d9822b"></i><span>Ridgelines</span></label><label class="row"><input type="checkbox" data-k="hubs" checked><i class="key d" style="background:#9b5fd7"></i><span>Travel Hubs</span></label><label class="row"><input type="checkbox" data-k="benches"><i class="key" style="background:#9b5fd7;opacity:.85"></i><span>Benches</span></label></div>
 <div class="grp"><h4>Cover</h4><label class="row"><input type="checkbox" data-k="cover"><i class="key" style="background:linear-gradient(90deg,#e9e2b0,#b5d36b,#a6763c,#1b6b3a)"></i><span>Cover Types</span><input class="op" type="range" min="0" max="100" value="55" aria-label="Cover Types opacity" data-op="cover"></label><label class="row"><input type="checkbox" data-k="edges"><i class="key l" style="background:#e6550d"></i><span>Field Edges</span></label><label class="row"><input type="checkbox" data-k="corners"><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;margin-left:2px;background:none"><path d="M12 3l9.5 17h-19z" fill="#e6550d" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><span>Inside Corner</span></label></div>
-<div class="grp"><h4>Thermal Detections<span class="sim">Simulated</span></h4><label class="row"><input type="checkbox" data-k="deer" checked><i class="key" style="background:#05070a;border:1px solid #fff;height:10px"></i><span>Deer Groups</span></label><label class="row"><input type="checkbox" data-k="springs" checked><i class="key" style="background:#05070a;border:1px solid #fff;height:10px"></i><span>Springs / Seeps</span></label></div>
+<div class="grp"><h4>Thermal Detections</h4><label class="row"><input type="checkbox" data-k="deer" checked><i class="key" style="background:#05070a;border:1px solid #fff;height:10px"></i><span>Deer Groups</span></label></div>
 <div class="grp"><h4>Reference</h4><label class="row"><input type="checkbox" data-k="boundary" checked><i class="key l" style="background:repeating-linear-gradient(90deg,#e8711a 0 5px,transparent 5px 8px)"></i><span>Parcel Boundary</span></label></div>
 </div>
 </div>
 <div class="mkey" id="mkey" hidden></div>
-<figcaption class="vcap" id="vcap"><b>20 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground. <a href="#guide" style="color:var(--or);white-space:nowrap">What does each feature mean? &darr;</a></figcaption>
+<figcaption class="vcap" id="vcap"><b>18 layers, one frame.</b> Check any combination; opacity sliders let imagery and elevation show through each other. Everything is aligned to the same ground. <a href="#guide" style="color:var(--or);white-space:nowrap">What does each feature mean? &darr;</a></figcaption>
 </figure>
 </section>
 
 <!-- STATS -->
 <section class="stats" aria-label="Project at a glance">
-<div class="stat"><b>13.7 ac</b><span>Field and hardwood timber, Dane County, WI</span></div>
-<div class="stat"><b>60 ft</b><span>Of relief, 954 to 1,014 ft (NAVD88), mapped in 2-ft contours</span></div>
+<div class="stat"><b>33.3 ac</b><span>Hardwood timber with trails and a small opening, Dane County, WI</span></div>
+<div class="stat"><b>152 ft</b><span>Of relief, 925 to 1,078 ft (NAVD88), mapped in 2-ft contours</span></div>
 <div class="stat"><b>2024</b><span>Public LiDAR (USGS 3DEP), checked against the drone</span></div>
-<div class="stat"><b>20</b><span>Stackable map layers, delivered on paper, on screen, and in-app</span></div>
+<div class="stat"><b>18</b><span>Stackable map layers, delivered on paper, on screen, and in-app</span></div>
 </section>
 
 <!-- WINTER -->
@@ -427,13 +431,13 @@ footer .tm{color:var(--label);font-weight:500}
 </div>
 <div class="together" style="border-color:var(--edge2);background:var(--panel)">
 <h3>See the Raw LiDAR</h3>
-<p>The 2024 LiDAR averages <b>about 110,000 laser points per acre</b> (about 27 per square meter). Ground points are as classified in the county delivery. The rest are split by height above ground into low, mid, and high vegetation, so the timber reads crown by crown while the bare field shows as ground.</p>
+<p>The 2024 LiDAR averages <b>about 84,000 laser points per acre</b> (about 21 per square meter). Ground points are as classified in the county delivery. The rest are split by height above ground into low, mid, and high vegetation, so the timber reads crown by crown while the bare field shows as ground.</p>
 <button class="show" type="button" data-show="lidar,boundary" style="margin-top:4px">Show on Map <span aria-hidden="true">&uarr;</span></button>
 </div>
 <div class="proof">
-<div><b>+0.86 ft</b><span>Median drone-minus-LiDAR difference on open, flat ground, measured on 50,738 cells and removed before analysis</span></div>
-<div><b>0.68 ft</b><span>Spread of that difference (NMAD): the two surfaces track each other closely</span></div>
-<div><b>45 ft</b><span>Median canopy height from LiDAR in the timber, with the tallest 5% at 76 ft and up</span></div>
+<div><b>+0.09 ft</b><span>Median drone-minus-LiDAR difference on open, flat ground, measured on 72,544 cells and removed before analysis</span></div>
+<div><b>3.60 ft</b><span>Spread of that difference (NMAD): wider than ideal, so the terrain layers here are built from the LiDAR, not the drone surface</span></div>
+<div><b>52 ft</b><span>Median canopy height from LiDAR in the timber, with the tallest 5% at 79 ft and up</span></div>
 </div>
 <p class="note">The drone-to-LiDAR check confirms the two datasets line up for planning use. It is not an accuracy certification. For measured, accuracy-verified work, see the <a href="/accuracy/">accuracy page</a>.</p>
 </section>
@@ -445,15 +449,15 @@ footer .tm{color:var(--label);font-weight:500}
 <p class="body">Every color and line on the map above has a meaning. This guide explains each feature, what it tends to mean for deer and other wildlife, and how much of it is on this parcel. Tap <b style="color:var(--ink);font-weight:600">Show on Map</b> on any card to turn that layer on.</p>
 <h3 class="tgh">Landforms</h3>
 <p class="note" style="margin-top:-6px">The shape of the ground, classified from the LiDAR bare-earth model.</p>
-<div class="tgrid"><article class="tg"><header><i class="key" style="background:#7f2704"></i><h3>Knob / Hilltop</h3><span class="here">0.45 ac here</span></header>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:#7f2704"></i><h3>Knob / Hilltop</h3><span class="here">None here</span></header>
 <p><b>What It Is</b>A high point where the ground falls away on every side.</p>
 <p><b>Why It Matters</b>Deer often bed just below the top, where they can watch downhill while rising daytime thermals carry scent up to them. Wind swirls around knobs, so approach and stand placement take care.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#b35806"></i><h3>Ridge</h3><span class="here">1.47 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#b35806"></i><h3>Ridge</h3><span class="here">2.96 ac here</span></header>
 <p><b>What It Is</b>A long, narrow spine of high ground.</p>
 <p><b>Why It Matters</b>Ridges are natural travel routes. Deer tend to move just below the crest on the side away from the wind, where they stay off the skyline, can watch downhill, and still have the wind bringing them scent from over the top.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#fdd49e"></i><h3>Point / Finger</h3><span class="here">1.92 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#fdd49e"></i><h3>Point / Finger</h3><span class="here">5.80 ac here</span></header>
 <p><b>What It Is</b>A spur of high ground running off a ridge toward lower ground.</p>
 <p><b>Why It Matters</b>The end of a point is classic bedding: a view down the slope, wind at the deer's back, and several escape routes. Fingers also channel travel up and down the hill.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
@@ -461,15 +465,16 @@ footer .tm{color:var(--label);font-weight:500}
 <p><b>What It Is</b>The rounded break where a ridge top rolls over into the slope.</p>
 <p><b>Why It Matters</b>Shoulders are where flat high ground turns into hillside. Trails often follow them, and bedding commonly sits just over the break, out of sight from the top.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#d9d9d9"></i><h3>Sidehill</h3><span class="here">5.46 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#d9d9d9"></i><h3>Sidehill</h3><span class="here">15.34 ac here</span></header>
 <p><b>What It Is</b>A steady slope between the high ground and the low ground.</p>
-<p><b>Why It Matters</b>Deer cross sidehills on trails that follow the contour lines. Steep sidehills are where benches form, and on gentle ground like this parcel, travel spreads out instead of funneling.</p>
+<p><b>Why It Matters</b>Deer cross sidehills on trails that follow the contour lines. Steep sidehills are where benches form; where the ground is gentle, travel spreads out instead of funneling.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#c4a0ff"></i><h3>Bench</h3><span class="here">None here</span></header>
+<article class="tg"><header><i class="key" style="background:#c4a0ff"></i><h3>Bench</h3><span class="here">18 here (0.57 ac)</span></header>
 <p><b>What It Is</b>A flat shelf partway up a slope.</p>
-<p><b>Why It Matters</b>Benches are easy walking and easy bedding on otherwise steep ground, so they often carry travel along the hill. This parcel's slopes are gentle (median about 6&deg;), so none qualified. Steeper ground usually has several.</p>
+<p><b>Why It Matters</b>Benches are easy walking and easy bedding on otherwise steep ground, so they often carry travel along the hill. The LiDAR picked out 18 small benches on this parcel's steeper hillsides.</p>
+<button class="show" type="button" data-show="relief,benches,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button>
 </article>
-<article class="tg"><header><i class="key" style="background:#80cdc1"></i><h3>Draw / Bowl</h3><span class="here">2.18 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#80cdc1"></i><h3>Draw / Bowl</h3><span class="here">5.06 ac here</span></header>
 <p><b>What It Is</b>A hollow or trough in the hillside that funnels toward lower ground.</p>
 <p><b>Why It Matters</b>Draws are sheltered from the wind and link the ridge to the bottom, so deer use them to move between bedding and food. In the evening and early morning, cooling air drains down them and carries scent downhill; once the sun warms the slopes, that flow reverses and rises.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
@@ -477,98 +482,100 @@ footer .tm{color:var(--label);font-weight:500}
 <p><b>What It Is</b>The base of a slope where it flattens into the bottom.</p>
 <p><b>Why It Matters</b>Travel often runs along the toe of a hill, and the richer soil there can grow thicker browse.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#2c7fb8"></i><h3>Bottom / Drainage</h3><span class="here">1.34 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#2c7fb8"></i><h3>Bottom / Drainage</h3><span class="here">4.09 ac here</span></header>
 <p><b>What It Is</b>Low ground along a draw or waterway.</p>
 <p><b>Why It Matters</b>Bottoms collect water, browse, and thick cover. They are also where cold air pools on still mornings, so scent tends to settle and drift down them.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#542788"></i><h3>Depression</h3><span class="here">0.80 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#542788"></i><h3>Depression</h3><span class="here">None here</span></header>
 <p><b>What It Is</b>An enclosed low spot with no outlet.</p>
 <p><b>Why It Matters</b>Depressions can hold seasonal water and stay wet after rain or snowmelt, which can attract wildlife and limit equipment access.</p>
 <button class="show" type="button" data-show="landforms,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
 <h3 class="tgh">Travel Features</h3>
-<div class="tgrid"><article class="tg"><header><i class="key l" style="background:repeating-linear-gradient(90deg,#6ec6f5 0 4px,transparent 4px 7px)"></i><h3>Drainage Paths</h3><span class="here">2,112 ft here</span></header>
+<div class="tgrid"><article class="tg"><header><i class="key l" style="background:repeating-linear-gradient(90deg,#6ec6f5 0 4px,transparent 4px 7px)"></i><h3>Drainage Paths</h3><span class="here">4,704 ft here</span></header>
 <p><b>What It Is</b>Paths surface water would follow, traced from the ground model and shown as dotted lines. They are not streams, and most are dry most of the year.</p>
 <p><b>Why It Matters</b>They mark the draws and low ground that deer follow between ridge and field, and the crossings where trails come together.</p>
 <button class="show" type="button" data-show="relief,drainage,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key l" style="background:#d9822b"></i><h3>Ridgelines</h3><span class="here">1,602 ft here</span></header>
+<article class="tg"><header><i class="key l" style="background:#d9822b"></i><h3>Ridgelines</h3><span class="here">4,469 ft here</span></header>
 <p><b>What It Is</b>The spines of the high ground, traced from the elevation model.</p>
 <p><b>Why It Matters</b>Ridgelines show the travel routes along the high ground and where wind rolls over the top and eddies on the downwind side, a key to reading how scent moves.</p>
 <button class="show" type="button" data-show="relief,ridges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key d" style="background:#9b5fd7"></i><h3>Travel Hubs</h3><span class="here">8 here (5 draw, 3 ridge)</span></header>
+<article class="tg"><header><i class="key d" style="background:#9b5fd7"></i><h3>Travel Hubs</h3><span class="here">18 here (11 draw, 7 ridge)</span></header>
 <p><b>What It Is</b>Places where three or more draws or ridges meet.</p>
 <p><b>Why It Matters</b>When several travel lines join, movement from different parts of the property passes through one spot. Hubs are worth a close look for stand and camera sites.</p>
 <button class="show" type="button" data-show="relief,drainage,ridges,hubs,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;margin-left:2px;background:none"><path d="M12 2.5l2.8 6.1 6.7.7-5 4.5 1.4 6.6L12 17l-5.9 3.4 1.4-6.6-5-4.5 6.7-.7z" fill="#d7191c" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><h3>Saddle</h3><span class="here">1 here</span></header>
+<article class="tg"><header><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;margin-left:2px;background:none"><path d="M12 2.5l2.8 6.1 6.7.7-5 4.5 1.4 6.6L12 17l-5.9 3.4 1.4-6.6-5-4.5 6.7-.7z" fill="#d7191c" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><h3>Saddle</h3><span class="here">None here</span></header>
 <p><b>What It Is</b>A low dip in a ridge between two higher points.</p>
-<p><b>Why It Matters</b>Deer cross ridges at the lowest point to save energy, so saddles are natural funnels and long-time stand locations.</p>
-<button class="show" type="button" data-show="relief,ridges,saddles,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
+<p><b>Why It Matters</b>Deer cross ridges at the lowest point to save energy, so saddles are natural funnels and long-time stand locations. None on this parcel met the test of at least a 3-ft rise along the ridge and a drop to each side.</p></article></div>
 <h3 class="tgh">Cover &amp; Edges</h3>
 <p class="note" style="margin-top:-6px">Classified from LiDAR canopy height plus the greenness of the leaf-off aerial.</p>
-<div class="tgrid"><article class="tg"><header><i class="key" style="background:#e9e2b0"></i><h3>Open / Field</h3><span class="here">4.76 ac here</span></header>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:#e9e2b0"></i><h3>Open / Field</h3><span class="here">1.71 ac here</span></header>
 <p><b>What It Is</b>Ground where the vegetation is under 3 ft tall, such as fields, grass, and crops.</p>
 <p><b>Why It Matters</b>Food and visibility, but little security. Deer usually use open ground at low light and stay close to cover.</p>
 <button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#b5d36b"></i><h3>Thicket / Regrowth</h3><span class="here">0.35 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#b5d36b"></i><h3>Thicket / Regrowth</h3><span class="here">0.29 ac here</span></header>
 <p><b>What It Is</b>Young trees, shrubs, and brush from 3 to 15 ft tall.</p>
 <p><b>Why It Matters</b>Thickets offer both browse and security cover, and they are favorite bedding areas, especially under hunting pressure. This parcel has very little.</p>
 <button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#a6763c"></i><h3>Hardwood</h3><span class="here">8.06 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#a6763c"></i><h3>Hardwood</h3><span class="here">30.78 ac here</span></header>
 <p><b>What It Is</b>Deciduous trees over 15 ft tall.</p>
 <p><b>Why It Matters</b>Oaks and other hardwoods can drop mast such as acorns in the fall, but once leaves are down the understory opens up, and so does visibility.</p>
 <button class="show" type="button" data-show="canopy,relief,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:#1b6b3a"></i><h3>Conifer</h3><span class="here">0.03 ac here</span></header>
+<article class="tg"><header><i class="key" style="background:#1b6b3a"></i><h3>Conifer</h3><span class="here">0.54 ac here</span></header>
 <p><b>What It Is</b>Evergreen timber that holds its needles through the winter.</p>
 <p><b>Why It Matters</b>Conifers cut the wind, catch snow in their branches, and slow heat loss at night, so deer often shelter in them in hard winter weather. Adding or protecting conifer is a common habitat goal.</p>
 <button class="show" type="button" data-show="aerial,cover,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key l" style="background:#e6550d"></i><h3>Hard Edge</h3><span class="here">1,081 ft here</span></header>
+<article class="tg"><header><i class="key l" style="background:#e6550d"></i><h3>Hard Edge</h3><span class="here">2,895 ft here</span></header>
 <p><b>What It Is</b>An abrupt line where open ground meets mature timber.</p>
 <p><b>Why It Matters</b>Deer step out at hard edges but have little cover to stage in. Softening a hard edge with shrubs or edge feathering (hinge-cutting along the timber line) creates a transition they can use.</p>
 <button class="show" type="button" data-show="aerial,edges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key l" style="background:#9acd32"></i><h3>Soft Edge</h3><span class="here">110 ft here</span></header>
+<article class="tg"><header><i class="key l" style="background:#9acd32"></i><h3>Soft Edge</h3><span class="here">199 ft here</span></header>
 <p><b>What It Is</b>A gradual change from field to thicket to timber.</p>
 <p><b>Why It Matters</b>Soft edges offer browse and security next to the food, so deer tend to linger and stage in them before entering a field.</p>
 <button class="show" type="button" data-show="aerial,edges,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;margin-left:2px;background:none"><path d="M12 3l9.5 17h-19z" fill="#e6550d" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><h3>Inside Corner</h3><span class="here">1 here</span></header>
+<article class="tg"><header><svg class="key" viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;margin-left:2px;background:none"><path d="M12 3l9.5 17h-19z" fill="#e6550d" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg><h3>Inside Corner</h3><span class="here">6 here</span></header>
 <p><b>What It Is</b>A spot where the field cuts into the timber, so cover wraps around open ground.</p>
 <p><b>Why It Matters</b>Deer often enter a field at an inside corner, where they can step out with cover on two sides. Inside corners are classic stand sites on field edges.</p>
 <button class="show" type="button" data-show="aerial,edges,corners,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
 <h3 class="tgh">Warmth, Water &amp; Elevation</h3>
-<div class="tgrid"><article class="tg"><header><i class="key l" style="background:#1565c0"></i><h3>Streams &amp; Creeks</h3><span class="here">1 intermittent here</span></header>
-<p><b>What It Is</b>Mapped streams and creeks from the USGS National Hydrography Dataset, shown as a solid line. The one crossing this parcel's southeast corner is classified as intermittent, meaning it flows only part of the year.</p>
-<p><b>Why It Matters</b>Creek bottoms hold water, browse, and thicker cover along the banks. Deer tend to cross at shallow spots and low banks, which concentrates travel at those crossings.</p>
-<button class="show" type="button" data-show="aerial,streams,drainage,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:rgba(255,217,47,.75)"></i><h3>South-Facing Slopes</h3><span class="here">1.69 ac here</span></header>
+<div class="tgrid"><article class="tg"><header><i class="key" style="background:rgba(255,217,47,.75)"></i><h3>South-Facing Slopes</h3><span class="here">2.81 ac here</span></header>
 <p><b>What It Is</b>Slopes facing south or southwest, at 8 to 35&deg;.</p>
 <p><b>Why It Matters</b>They get the most winter sun, so they are warmer, melt off first, and green up first in spring. They are often preferred winter bedding.</p>
 <button class="show" type="button" data-show="relief,south,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key" style="background:linear-gradient(90deg,#31688e,#94be5f,#964e32)"></i><h3>Elevation &amp; Contours</h3><span class="here">954&ndash;1,014 ft here</span></header>
+<article class="tg"><header><i class="key" style="background:linear-gradient(90deg,#31688e,#94be5f,#964e32)"></i><h3>Elevation &amp; Contours</h3><span class="here">925&ndash;1,078 ft here</span></header>
 <p><b>What It Is</b>Ground height colored from low to high, with lines every 2 ft and labeled lines every 10 ft.</p>
 <p><b>Why It Matters</b>Contours show how steep the ground is and which way it faces at a glance. Tight lines mean steep slopes; wide lines mean flats. They are the base for planning trails, plots, and access.</p>
 <button class="show" type="button" data-show="elevation,contours,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article>
-<article class="tg"><header><i class="key d" style="background:#1e90ff;width:18px;height:12px;border-radius:58% 42% 55% 45% / 52% 60% 40% 48%"></i><h3>Springs / Seeps</h3><span class="here">2 in the simulated example</span></header>
+<article class="tg"><header><i class="key d" style="background:#1e90ff;width:18px;height:12px;border-radius:58% 42% 55% 45% / 52% 60% 40% 48%"></i><h3>Springs / Seeps</h3><span class="here">None found on this flight</span></header>
 <p><b>What It Is</b>Ground water reaching the surface, usually at the head or side of a draw.</p>
-<p><b>Why It Matters</b>Spring water comes out of the ground at a steady temperature, warmer than winter air, so it stays open in winter. Open water and the early green growth around it draw deer.</p>
-<button class="show" type="button" data-show="thermal,springs,boundary">Show on Map <span aria-hidden="true">&uarr;</span></button></article></div>
+<p><b>Why It Matters</b>Spring water comes out of the ground at a steady temperature, warmer than winter air, so it stays open in winter. Open water and the early green growth around it draw deer. The thermal survey checked the drainages for warm water, and none stood out on this flight.</p></article></div>
 <p class="note">Deer behavior shifts with weather, food, season, and hunting pressure. These are tendencies to plan around, not rules, and every feature should be confirmed on foot.</p>
 </section>
 
 <!-- THERMAL -->
-<section class="sec">
+<section class="sec" id="deercount">
 <p class="kick">Thermal Survey</p>
-<h2>A Snapshot of Wildlife on the Property</h2>
-<div class="disc" role="note">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/></svg>
-<p><b>The thermal layer on this page is a simulated example.</b> It was built on this parcel's real terrain and cover to show what a thermal survey deliverable looks like. A thermal flight of this property has not been flown yet. Every other layer on this page comes from real data.</p>
-</div>
-<p class="body">A Matrice 4T flies the property before sunrise, when animals are warmest against the cold ground. The thermal map is then processed to pick out deer-sized heat signatures, group animals that were together, and flag warm-water spots such as springs and seeps that stay open in winter.</p>
+<h2>Deer Count from the Night Flight</h2>
+<p class="body">A Matrice 4T flew the whole property after dark on November 24, 2026, from 7:19 to 8:40 PM, at 150 ft with heavy photo overlap: 3,345 thermal photos across three batteries. Every photo was checked on its own for deer-sized heat signatures, and each one was confirmed by eye before it was counted. The stitched thermal map is the backdrop on the map above.</p>
 <div class="card-grid">
-<div class="card"><strong>9 Signatures, 4 Groups</strong><span>In the example: a pair feeding on the field edge and three groups bedded on the wooded slopes.</span></div>
-<div class="card"><strong>2 Springs / Seeps</strong><span>Warm water along two draws. In winter, open water draws deer.</span></div>
-<div class="card"><strong>Bedding vs. Feeding</strong><span>Where animals sit relative to cover, slope, and the field says more than the count alone.</span></div>
+<div class="card"><strong>7 Likely Deer</strong><span>Clear body shapes. A pair at the south end, and a group on the east side.</span></div>
+<div class="card"><strong>9 Possible</strong><span>Compact warm spots where the shape couldn't be confirmed, mostly on the north and northeast side.</span></div>
+<div class="card"><strong>3,345 Photos Checked</strong><span>Each photo is searched on its own, so a deer that moved between passes is still caught.</span></div>
 </div>
-<div class="together" style="border-color:var(--edge2);background:var(--panel)">
+<h3 class="tgh">Closest Looks at the Likely Deer</h3>
+<p class="note" style="margin-top:0">Straight-down thermal close-ups, each about 13 ft across. Brighter is warmer. The east-side deer were seen over about 5 minutes and some may be the same animals moving, so that group is somewhere between 3 and 5 deer.</p>
+<div class="dgal">
+<figure class="dc"><img src="/hamele/img/deer/deer01.jpg" alt="Thermal close-up of Deer 1, 20 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 1</b><span>7:34 PM &middot; 20 &deg;F warmer than the ground</span><em>South end, in the same spot across 13 photos</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer02.jpg" alt="Thermal close-up of Deer 2, 20 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 2</b><span>7:36 PM &middot; 20 &deg;F warmer than the ground</span><em>South end, next to deer 1</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer03.jpg" alt="Thermal close-up of Deer 3, 13 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 3</b><span>8:11 PM &middot; 13 &deg;F warmer than the ground</span><em>East side</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer08.jpg" alt="Thermal close-up of Deer 4, 9 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 4</b><span>8:11 PM &middot; 9 &deg;F warmer than the ground</span><em>East side, a second deer in the same frame</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer07.jpg" alt="Thermal close-up of Deer 5, 9 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 5</b><span>8:13 PM &middot; 9 &deg;F warmer than the ground</span><em>East side</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer04.jpg" alt="Thermal close-up of Deer 6, 12 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 6</b><span>8:13 PM &middot; 12 &deg;F warmer than the ground</span><em>East side, a second deer below it</em></figcaption></figure>
+<figure class="dc"><img src="/hamele/img/deer/deer06.jpg" alt="Thermal close-up of Deer 7, 10 &deg;F warmer than the ground" width="480" height="480" loading="lazy" decoding="async"><figcaption><b>Deer 7</b><span>8:14 PM &middot; 10 &deg;F warmer than the ground</span><em>East side</em></figcaption></figure>
+</div>
+<button class="show" type="button" data-show="thermal,deer,boundary" style="margin-top:14px">Show Deer on Map <span aria-hidden="true">&uarr;</span></button>
+<div class="together" style="border-color:var(--edge2);background:var(--panel);margin-top:18px">
 <h3>Informational, Not Real-Time</h3>
-<p>A thermal survey is a snapshot of one flight morning, delivered after processing. It gives a general picture of what uses the property and where animals were at that moment. <b>It is not a real-time locating service and isn't meant for finding deer to hunt that day.</b> Animals move, and deer under thick conifer cover or off the property at flight time won't be counted. Treat the numbers as a minimum.</p>
+<p>A thermal survey is a snapshot of one flight, delivered after processing. It gives a general picture of what uses the property and where animals were at that moment. <b>It is not a real-time locating service and isn't meant for finding deer to hunt that day.</b> Animals move, and deer under thick conifer cover or off the property at flight time won't be counted. Treat the numbers as a minimum.</p>
 </div>
 </section>
 
@@ -579,9 +586,9 @@ footer .tm{color:var(--label);font-weight:500}
 <ol class="steps">
 <li><strong>Leaf-Off Mapping Flight</strong><span>Matrice 4E mapping flight, processed into a high-detail aerial (orthomosaic) and surface model.</span></li>
 <li><strong>Public LiDAR, Pulled and Checked</strong><span>The county's 2024 LiDAR tiles for the parcel are downloaded, merged into bare-earth and canopy models, and checked against the drone surface.</span></li>
-<li><strong>Terrain Analysis</strong><span>Automated QGIS tools trace drainages and ridgelines and classify landforms, saddles, hubs, and slope aspect.</span></li>
+<li><strong>Terrain Analysis</strong><span>Automated QGIS tools trace drainages and ridgelines and classify landforms, benches, saddles, hubs, and slope aspect.</span></li>
 <li><strong>Cover Mapping</strong><span>Canopy height and leaf-off greenness sort the property into open, thicket, hardwood, and conifer, then trace the edges.</span></li>
-<li><strong>Pre-Dawn Thermal Flight</strong><span>Matrice 4T survey, processed into a deer herd analysis, heat signatures, and warm water, with every result tied to the flight date and time.</span></li>
+<li><strong>Night Thermal Flight</strong><span>Matrice 4T survey after dark, every photo checked for heat signatures and warm water, with every result tied to the flight date and time.</span></li>
 <li><strong>Delivered</strong><span>One Google Earth file with every layer, GPX and KML files for hunting apps, a printed map, and a live web map.</span></li>
 </ol>
 </section>
@@ -628,8 +635,8 @@ footer .tm{color:var(--label);font-weight:500}
 <div style="display:flex;flex-direction:column;gap:10px">
 <details><summary>Why fly hunting land in winter?</summary><p>With the leaves down, a mapping flight sees through bare hardwoods to the ground: trails, old logging roads, fence lines, wet spots, and terrain that are hidden under summer canopy. Conifers stand out against the bare timber, and winter flights happen after the season, when there is nothing to disturb. The maps are in hand for spring work on food plots, trails, and stand sites.</p></details>
 <details><summary>Why combine public LiDAR with a drone flight?</summary><p>Public LiDAR measures the bare ground and the height of the trees, even under heavy cover, but it is a few years old and has no photo. A drone flight is current and far more detailed, but a camera cannot see through dense canopy. Together they give a current, high-detail picture of the property on top of a reliable ground and canopy model, and each one checks the other.</p></details>
-<details><summary>Can a thermal flight tell me where the deer are right now?</summary><p>No. A thermal survey is a snapshot of one flight morning, delivered after processing. It gives a general picture of wildlife presence and where animals were bedded or feeding at that time. It is informational only and is not a real-time locating service. Animals move, and deer under thick conifer cover or out of the flight area are not counted.</p></details>
-<details><summary>Was the thermal layer on this page flown on this property?</summary><p>No. The thermal layer in this case study is a simulated example, built on this parcel's real terrain and cover to show the format of the deliverable. Everything else on the page comes from real data.</p></details>
+<details><summary>Can a thermal flight tell me where the deer are right now?</summary><p>No. A thermal survey is a snapshot of one flight, delivered after processing. It gives a general picture of wildlife presence and where animals were bedded or feeding at that time. It is informational only and is not a real-time locating service. Animals move, and deer under thick conifer cover or out of the flight area are not counted.</p></details>
+<details><summary>Was the thermal layer on this page flown on this property?</summary><p>Yes. The thermal map and deer count come from a Matrice 4T flight of this property on the evening of November 24, 2026. The aerial was flown with the Matrice 4E the same morning.</p></details>
 <details><summary>Can one flight do it all?</summary><p>A Matrice 4T mapping flight can capture elevations, contours, and thermal scouting in one mission. This case study used the Matrice 4E for the most detailed map and the 4T for thermal.</p></details>
 <details><summary>Will the maps work in a hunting app?</summary><p>Yes. Every layer comes in one Google Earth file (KMZ) that opens on a phone with a single tap. Terrain features, cover, edges, and contours also come as GPX and KML files for hunting apps such as onX, HuntStand, BaseMap, and Gaia GPS, along with a printed map and a live web map.</p></details>
 <details><summary>Is this a land survey?</summary><p>No. The maps are produced from drone imagery and public LiDAR for planning and visualization. They are not a land survey and do not establish property boundaries.</p></details>
@@ -654,17 +661,17 @@ footer .tm{color:var(--label);font-weight:500}
 
 <script>
 (function(){
-  var stack=document.getElementById('stack'),wrap=document.getElementById('mapwrap'),badge=document.getElementById('simbadge');
+  var stack=document.getElementById('stack'),wrap=document.getElementById('mapwrap');
   var boxes=document.querySelectorAll('.panel input[type=checkbox]'),pres=document.querySelectorAll('.pre');
   var KEY={
     landforms:['Landforms',[['#7f2704','Knob / Hilltop'],['#b35806','Ridge'],['#f1a340','Shoulder'],['#fdd49e','Point / Finger'],['#d9d9d9','Sidehill'],['#80cdc1','Draw / Bowl'],['#b2abd2','Toe Slope'],['#2c7fb8','Bottom / Drainage'],['#542788','Depression']]],
     cover:['Cover Types',[['#e9e2b0','Open / Field'],['#b5d36b','Thicket / Regrowth'],['#a6763c','Hardwood'],['#1b6b3a','Conifer']]],
     edges:['Field Edges',[['#e6550d','Hard Edge (Field to Timber)','l'],['#9acd32','Soft Edge (Field to Thicket)','l']]],
-    elevation:['Elevation',[['linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)','954 ft &rarr; 1,014 ft','r']]],
+    elevation:['Elevation',[['linear-gradient(90deg,#31688e,#359778,#94be5f,#e8d678,#cd8c48,#964e32)','925 ft &rarr; 1,078 ft','r']]],
     contours:['Contours',[['#5c3414','Index (Every 10 ft, Labeled)','l'],['rgba(120,78,40,.6)','Intermediate (2 ft)','l']]],
     canopy:['Canopy Height',[['linear-gradient(90deg,#284628,#46823c,#82be50,#e1f082)','3 ft &rarr; 80 ft','r']]],
     lidar:['Raw LiDAR Points',[['#b88048','Ground'],['#aac85a','Low Vegetation (Under 3 ft)'],['#78c44e','Mid Vegetation (3&ndash;15 ft)'],['#268c40','High Vegetation (Over 15 ft)']]],
-    thermal:['Thermal (Simulated)',[['linear-gradient(90deg,#000004,#420a68,#932667,#dd513a,#fca50a,#fcffa4)','Colder &rarr; Warmer','r']]]
+    thermal:['Thermal (Matrice 4T, Nov 24, 2026)',[['linear-gradient(90deg,#000004,#420a68,#932667,#dd513a,#fca50a,#fcffa4)','Colder &rarr; Warmer','r']]]
   };
   var ORDER=['lidar','elevation','contours','canopy','landforms','cover','edges','thermal'],mkey=document.getElementById('mkey');
   function keys(on){
@@ -676,7 +683,7 @@ footer .tm{color:var(--label);font-weight:500}
   function sync(){
     var on={};
     boxes.forEach(function(b){var k=b.getAttribute('data-k');on[k]=b.checked;img(k).hidden=!b.checked;var o=b.parentNode.querySelector('.op');if(o)o.hidden=!b.checked;});
-    badge.hidden=!(on.thermal||on.deer||on.springs);keys(on);
+    keys(on);
     var cur=Object.keys(on).filter(function(k){return on[k];}).sort().join(',');
     pres.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p').split(',').sort().join(',')===cur);});
   }
@@ -699,16 +706,18 @@ footer .tm{color:var(--label);font-weight:500}
     document.querySelector('.viewer').scrollIntoView({behavior:'smooth',block:'center'});
   });});
   // zoom + pan
-  var s=1,x=0,y=0,MAX=6;
+  var s=1,x=0,y=0,MAX=10,act=false,hiDone=false;
   function clamp(){var w=wrap.clientWidth,h=stack.clientHeight;x=Math.min(0,Math.max(w-w*s,x));y=Math.min(0,Math.max(h-h*s,y));}
-  function apply(){clamp();stack.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';wrap.classList.toggle('zoomed',s>1);if(window.__meScale)window.__meScale(s);}
+  function hires(){if(hiDone||s<1.4)return;hiDone=true;stack.querySelectorAll('img[data-hi]').forEach(function(im){var p=new Image();p.onload=function(){im.src=im.getAttribute('data-hi');};p.src=im.getAttribute('data-hi');});}
+  function apply(){clamp();stack.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';wrap.classList.toggle('zoomed',s>1);if(window.__meScale)window.__meScale(s);hires();}
   function zoomAt(f,cx,cy){var ns=Math.min(MAX,Math.max(1,s*f));x=cx-(cx-x)*ns/s;y=cy-(cy-y)*ns/s;s=ns;apply();}
-  wrap.addEventListener('wheel',function(e){if(!(e.ctrlKey||e.metaKey))return;e.preventDefault();var r=wrap.getBoundingClientRect();zoomAt(e.deltaY<0?1.2:1/1.2,e.clientX-r.left,e.clientY-r.top);},{passive:false});
+  wrap.addEventListener('mouseleave',function(){act=false;wrap.classList.remove('act');});
+  wrap.addEventListener('wheel',function(e){if(!(e.ctrlKey||e.metaKey||act))return;e.preventDefault();var r=wrap.getBoundingClientRect();zoomAt(e.deltaY<0?1.2:1/1.2,e.clientX-r.left,e.clientY-r.top);},{passive:false});
   document.getElementById('zin').addEventListener('click',function(){zoomAt(1.5,wrap.clientWidth/2,stack.clientHeight/2);});
   document.getElementById('zout').addEventListener('click',function(){zoomAt(1/1.5,wrap.clientWidth/2,stack.clientHeight/2);});
   document.getElementById('zreset').addEventListener('click',function(){s=1;x=0;y=0;apply();});
   var pts={},last=null,pd=0;
-  wrap.addEventListener('pointerdown',function(e){if(e.target.closest('.zoom'))return;wrap.setPointerCapture(e.pointerId);pts[e.pointerId]={x:e.clientX,y:e.clientY};wrap.classList.add('drag');});
+  wrap.addEventListener('pointerdown',function(e){act=true;wrap.classList.add('act');if(e.target.closest('.zoom'))return;wrap.setPointerCapture(e.pointerId);pts[e.pointerId]={x:e.clientX,y:e.clientY};wrap.classList.add('drag');});
   wrap.addEventListener('pointermove',function(e){
     if(!pts[e.pointerId])return;var ids=Object.keys(pts);
     if(ids.length===1){x+=e.clientX-pts[e.pointerId].x;y+=e.clientY-pts[e.pointerId].y;pts[e.pointerId]={x:e.clientX,y:e.clientY};apply();}
@@ -720,7 +729,7 @@ footer .tm{color:var(--label);font-weight:500}
   window.addEventListener('resize',apply);
   // live location: only after the visitor taps the button and allows it; position stays on the device
   (function(){
-    var U=[279.8485197655203,0.9454534717567785,25042.041664364722],V=[0.9751710542588375,-542.3398593618997,23466.9162199191],WFT=952.79;
+    var U=[192.3345843590126,0.6340680788077862,17211.128211048122],V=[0.5643033063034897,-318.8825461982714,13798.2773817042],WFT=1388.48;
     var btn=document.getElementById('zloc'),me=document.getElementById('me'),dot=me.querySelector('.dot'),acc=me.querySelector('.acc'),toast=document.getElementById('loctoast'),hint=document.getElementById('hint');
     var wid=null,first=true,tt=null;
     function say(t,ms){toast.textContent=t;toast.hidden=false;clearTimeout(tt);if(ms)tt=setTimeout(function(){toast.hidden=true;},ms);}
