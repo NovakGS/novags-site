@@ -82,6 +82,14 @@ a.who-chip:hover{color:var(--ink)}
 .who-contact{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px;padding-top:16px;border-top:1px solid var(--edge)}
 .who-contact span{color:var(--muted);font-size:15px;margin-right:4px}
 @media (max-width:900px){.who-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.li-latest{display:grid;grid-template-columns:minmax(0,1fr) 504px;gap:32px;align-items:start;border:1px solid var(--edge);border-radius:14px;background:var(--panel);padding:26px 24px}
+.li-copy{position:sticky;top:24px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.li-copy h2{font-size:26px;margin:0}
+.li-copy p:not(.eyebrow){margin:0 0 6px;color:var(--muted);font-size:16px;line-height:1.55}
+.li-frame{width:100%;max-width:504px;justify-self:center}
+.li-frame iframe{display:block;width:100%;border:0;border-radius:10px;background:#fff}
+@media (max-width:900px){.li-latest{grid-template-columns:1fr;gap:20px}.li-copy{position:static}}
+@media (max-width:420px){.li-latest{padding:22px 14px 16px}}
 @media (max-width:420px){.who-chip{font-size:14px;gap:9px;padding-right:10px}.who-th{width:38px;height:38px}.who-box{padding:22px 16px 18px}}
 </style>
 </head>
@@ -188,6 +196,20 @@ a.who-chip:hover{color:var(--ink)}
   </div>
 </article>
 </section>
+
+<section class="li-latest" aria-labelledby="li-h">
+  <div class="li-copy">
+    <p class="eyebrow">From the Field</p>
+    <h2 id="li-h">Latest on LinkedIn</h2>
+    <p>Project notes, accuracy work, and new services as they happen, posted to the Novak|GS company page.</p>
+    <a class="btn ghost" href="https://www.linkedin.com/company/144012841/" target="_blank" rel="noopener">Follow Novak|GS on LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+  </div>
+  <!-- LATEST LINKEDIN POST: to swap in a newer post, change data-post to the new post's activity number (and data-h to its height in px if it isn't a vertical video). -->
+  <div class="li-frame" data-post="7531478217040379905" data-h="1480"></div>
+</section>
+<script>
+(function(){var b=document.querySelector('.li-frame');if(!b)return;var f=document.createElement('iframe');f.src='https://www.linkedin.com/embed/feed/update/urn:li:activity:'+b.getAttribute('data-post');f.title='Latest Novak|GS LinkedIn post';f.loading='lazy';f.height=b.getAttribute('data-h')||'900';f.setAttribute('allowfullscreen','');f.setAttribute('frameborder','0');b.appendChild(f);})();
+</script>
 
 <div class="cta"><div><h2>Have a Project in Mind?</h2><p>Share the site and what you need from it. A reply comes within one business day.</p></div><div class="btn-row">
 <a class="btn" href="/quote/?path=unsure&amp;src=home">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
