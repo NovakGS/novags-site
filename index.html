@@ -52,14 +52,12 @@
 .live-go svg{width:16px;height:16px}
 @media (prefers-reduced-motion:reduce){.live-dot::after{animation:none}}
 @media (max-width:600px){.live-bar{margin-bottom:-16px;padding:10px 10px 10px 14px;gap:10px}.live-tx{flex-direction:column;gap:0}.live-tx span{font-size:14px}.live-go{padding:0 12px}.live-bar{flex-wrap:wrap;row-gap:10px}.live-tx{flex:1 1 calc(100% - 30px)}.live-go{flex:1 1 100%;justify-content:center}}
-/* Hero: business name in the logo's brushed silver (stops sampled from the NOVAK letters of logo-dark-v2),
-   a deeper steel version of the same gradient on the light theme so it stays readable. Each wrapped line gets the full gradient. */
-.hero h1 .silver{color:#3a424a}
+/* Hero: business name in the logo's brushed silver on the dark theme (stops sampled from the NOVAK letters of logo-dark-v2).
+   The light theme keeps the plain heading color. Each wrapped line gets the full gradient. */
 @supports (-webkit-background-clip:text) or (background-clip:text){
-.hero h1 .silver{background-image:linear-gradient(180deg,#737a82 0%,#737a82 19.6%,#8a9097 24.2%,#a3a8ad 28.9%,#b4b8bc 36.6%,#a3a8ad 42.8%,#8c9197 47.5%,#767c83 52.1%,#626970 56.8%,#525a62 61.4%,#464e56 66%,#3c444c 70.7%,#333b43 75.3%,#333b43 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-html[data-theme="dark"] .hero h1 .silver{background-image:linear-gradient(180deg,#e3e4e7 0%,#e3e4e7 19.6%,#ededef 24.2%,#f4f4f5 28.9%,#fbfbfb 36.6%,#f0f0f0 42.8%,#e1e1e3 47.5%,#d2d3d5 52.1%,#bebec1 56.8%,#a8a9ad 61.4%,#93969a 66%,#84898e 70.7%,#757d84 75.3%,#757d84 100%)}
+html[data-theme="dark"] .hero h1 .silver{background-image:linear-gradient(180deg,#e3e4e7 0%,#e3e4e7 19.6%,#ededef 24.2%,#f4f4f5 28.9%,#fbfbfb 36.6%,#f0f0f0 42.8%,#e1e1e3 47.5%,#d2d3d5 52.1%,#bebec1 56.8%,#a8a9ad 61.4%,#93969a 66%,#84898e 70.7%,#757d84 75.3%,#757d84 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 }
-@media (forced-colors:active){.hero h1 .silver,html[data-theme] .hero h1 .silver{background:none;-webkit-text-fill-color:CanvasText;color:CanvasText}}
+@media (forced-colors:active){html[data-theme] .hero h1 .silver{background:none;-webkit-text-fill-color:CanvasText;color:CanvasText}}
 .hero-lines .nw{white-space:nowrap}
 </style>
 <script>
