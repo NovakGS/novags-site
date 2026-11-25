@@ -13,6 +13,7 @@ a{color:var(--ink)}a:hover{color:var(--orange)}
 h1{margin:0;font-size:44px;line-height:1.1;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
 h2{margin:0;font-size:28px;line-height:1.2;font-weight:700;text-wrap:balance}
 .lede{margin:0;font-size:18px;line-height:1.6;color:var(--muted);max-width:760px;text-wrap:pretty}
+.lede strong{color:var(--ink);font-weight:700}.lede .tagword{color:var(--orange);font-style:italic}
 .note{margin:0;font-size:15px;line-height:1.55;color:var(--faint)}
 .hero{gap:18px!important;padding-top:14px}
 .hero.center{align-items:center;text-align:center}
