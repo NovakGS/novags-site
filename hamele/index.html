@@ -54,9 +54,21 @@ h3{margin:0;font-size:19px;font-weight:600}
 .mapwrap{position:relative;background:#05070a;overflow:hidden;touch-action:pan-y;cursor:grab;align-self:start}
 .mapwrap.drag{cursor:grabbing}
 .mapwrap.zoomed{touch-action:none}
-.stack{position:relative;width:100%;aspect-ratio:1800/1268;transform-origin:0 0;will-change:transform}
+.stack{position:relative;width:100%;aspect-ratio:3600/2964;transform-origin:0 0;will-change:transform}
 .stack img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
-.stack img[hidden]{display:none}
+.stack img[hidden],.stack .vl[hidden],.stack .mkl[hidden],.stack .tl[hidden]{display:none}
+.stack .vl,.stack .mkl,.stack .tl,.stack .tw{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.stack .tw img{position:absolute;width:auto;height:auto;inset:auto}
+.stack .tl .tg{display:none}.mapwrap.z2 .stack .tl .tg{display:block}
+.mk{position:absolute;left:0;top:0;width:0;height:0;transform:scale(var(--inv,1));transform-origin:0 0}
+.mk>*{position:absolute;transform:translate(-50%,-50%)}
+.mk .hub{width:9px;height:9px;border-radius:999px;background:#9b5fd7;border:1.5px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+.mk .cor{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #e6550d;filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)}
+.mk .ring{width:16px;height:16px;border-radius:999px;border:2.5px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.4)}
+.mk .ring.p{border-color:rgba(255,255,255,.6);border-style:dashed}
+.mk .tag{transform:translate(-50%,-100%);top:-22px;padding:2px 7px;border-radius:7px;background:rgba(5,7,10,.86);border:1px solid rgba(255,255,255,.55);color:#fff;font:700 11px Roboto,system-ui,sans-serif;white-space:nowrap}
+.mk .tag::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:12px;background:rgba(255,255,255,.8)}
+.mk .cl{transform:translate(-50%,-50%) rotate(var(--a));font:600 9px Roboto,system-ui,sans-serif;color:#46260c;text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff;white-space:nowrap}
 .zoom{position:absolute;right:12px;top:12px;z-index:3;display:flex;flex-direction:column;gap:6px}
 .zoom button{width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(12,16,22,.85);color:#eef1f3;font:600 20px Roboto,system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .zoom button:hover{border-color:var(--or)}
@@ -325,22 +337,22 @@ footer .tm{color:var(--label);font-weight:500}
 <div class="me" id="me" hidden><span class="acc"></span><span class="dot"></span></div>
 <img data-k="relief" src="/hamele/img/relief.jpg" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
 <img data-k="elevation" src="/hamele/img/elevation.jpg" alt="" width="1800" height="1482" decoding="async">
-<img data-k="aerial" src="/hamele/img/aerial_s.jpg" data-hi="/hamele/img/aerial.jpg" alt="" width="1800" height="1482" decoding="async">
-<img data-k="thermal" src="/hamele/img/thermal_s.jpg" data-hi="/hamele/img/thermal.jpg" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
+<div data-k="aerial" class="tl"><img src="/hamele/img/aerial_s.jpg" alt="" width="1800" height="1482" decoding="async"><div class="tw tg" data-tiles="aerial"></div></div>
+<div data-k="thermal" class="tl" hidden><img src="/hamele/img/thermal_s.jpg" alt="" width="1800" height="1482" loading="lazy" decoding="async"><div class="tw tg" data-tiles="thermal"></div></div>
 <img data-k="lidar" src="/hamele/img/lidar_s.webp" data-hi="/hamele/img/lidar.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
 <img data-k="canopy" src="/hamele/img/canopy_s.webp" data-hi="/hamele/img/canopy.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
-<img data-k="landforms" src="/hamele/img/landforms.webp" alt="" width="1800" height="1482" decoding="async">
-<img data-k="cover" src="/hamele/img/cover.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
-<img data-k="south" src="/hamele/img/south.webp" alt="" width="1800" height="1482" decoding="async">
-<img data-k="contours" src="/hamele/img/contours_s.webp" data-hi="/hamele/img/contours.webp" alt="" width="1800" height="1482" decoding="async">
-<img data-k="drainage" src="/hamele/img/drainage.webp" alt="" width="1800" height="1482" decoding="async">
-<img data-k="ridges" src="/hamele/img/ridges.webp" alt="" width="1800" height="1482" decoding="async">
-<img data-k="edges" src="/hamele/img/edges.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
-<img data-k="benches" src="/hamele/img/benches.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
-<img data-k="hubs" src="/hamele/img/hubs.webp" alt="" width="1800" height="1482" decoding="async">
-<img data-k="corners" src="/hamele/img/corners.webp" alt="" width="1800" height="1482" hidden loading="lazy" decoding="async">
-<img data-k="deer" src="/hamele/img/deer.webp" alt="" width="1800" height="1482" decoding="async">
-<img data-k="boundary" src="/hamele/img/boundary.webp" alt="" width="1800" height="1482" decoding="async">
+<svg data-k="landforms" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+<svg data-k="cover" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none" hidden></svg>
+<svg data-k="south" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+<div data-k="contours" class="mkl"><svg class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg></div>
+<svg data-k="drainage" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+<svg data-k="ridges" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
+<svg data-k="edges" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none" hidden></svg>
+<svg data-k="benches" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none" hidden></svg>
+<div data-k="hubs" class="mkl"></div>
+<div data-k="corners" class="mkl" hidden></div>
+<div data-k="deer" class="mkl"></div>
+<svg data-k="boundary" class="vl" viewBox="0 0 3600 2964" preserveAspectRatio="none"></svg>
 </div>
 <div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">&minus;</button><button type="button" id="zloc" aria-label="Show my location on the map" aria-pressed="false" title="Show My Location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="currentColor"/><circle cx="12" cy="12" r="7.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg></button><button type="button" id="zreset" aria-label="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
 <span class="loctoast" id="loctoast" hidden aria-live="polite"></span>
@@ -679,16 +691,16 @@ footer .tm{color:var(--label);font-weight:500}
       return '<div class="mk"><h5>'+d[0]+'</h5>'+d[1].map(function(c){return '<span><i class="'+(c[2]||'')+'" style="background:'+c[0]+'"></i>'+c[1]+'</span>';}).join('')+'</div>';}).join('');
     mkey.innerHTML=h;mkey.hidden=!h;
   }
-  function img(k){return stack.querySelector('img[data-k="'+k+'"]');}
+  function img(k){return stack.querySelector('[data-k="'+k+'"]');}
   function sync(){
     var on={};
-    boxes.forEach(function(b){var k=b.getAttribute('data-k');on[k]=b.checked;img(k).hidden=!b.checked;var o=b.parentNode.querySelector('.op');if(o)o.hidden=!b.checked;});
+    boxes.forEach(function(b){var k=b.getAttribute('data-k');on[k]=b.checked;img(k).toggleAttribute('hidden',!b.checked);var o=b.parentNode.querySelector('.op');if(o)o.hidden=!b.checked;});
     keys(on);
     var cur=Object.keys(on).filter(function(k){return on[k];}).sort().join(',');
     pres.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p').split(',').sort().join(',')===cur);});
   }
   var BASES=['relief','elevation','aerial','thermal','lidar'],zc=10;
-  stack.querySelectorAll('img').forEach(function(im,i){im.style.zIndex=(BASES.indexOf(im.getAttribute('data-k'))>-1?1+i:100+i);});
+  stack.querySelectorAll(':scope>[data-k]').forEach(function(im,i){im.style.zIndex=(BASES.indexOf(im.getAttribute('data-k'))>-1?1+i:100+i);});
   function lift(k){if(BASES.indexOf(k)>-1)img(k).style.zIndex=++zc;}
   boxes.forEach(function(b){b.addEventListener('change',function(){if(b.checked)lift(b.getAttribute('data-k'));sync();});});
   document.querySelectorAll('.op').forEach(function(o){
@@ -699,7 +711,7 @@ footer .tm{color:var(--label);font-weight:500}
     var want=p.getAttribute('data-p').split(',');
     boxes.forEach(function(b){b.checked=want.indexOf(b.getAttribute('data-k'))>-1;});want.forEach(lift);sync();
   });});
-  img('aerial').style.zIndex=++zc;img('elevation').style.zIndex=++zc;sync();
+  img('aerial').style.zIndex=++zc;img('elevation').style.zIndex=++zc;sync();stack.style.setProperty('--u',3600/Math.max(1,stack.clientWidth));
   document.querySelectorAll('.show').forEach(function(b){b.addEventListener('click',function(){
     var want=b.getAttribute('data-show').split(',');
     boxes.forEach(function(x){x.checked=want.indexOf(x.getAttribute('data-k'))>-1;});want.forEach(lift);sync();
@@ -709,7 +721,7 @@ footer .tm{color:var(--label);font-weight:500}
   var s=1,x=0,y=0,MAX=10,act=false,hiDone=false;
   function clamp(){var w=wrap.clientWidth,h=stack.clientHeight;x=Math.min(0,Math.max(w-w*s,x));y=Math.min(0,Math.max(h-h*s,y));}
   function hires(){if(hiDone||s<1.4)return;hiDone=true;stack.querySelectorAll('img[data-hi]').forEach(function(im){var p=new Image();p.onload=function(){im.src=im.getAttribute('data-hi');};p.src=im.getAttribute('data-hi');});}
-  function apply(){clamp();stack.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';wrap.classList.toggle('zoomed',s>1);if(window.__meScale)window.__meScale(s);hires();}
+  function apply(){clamp();stack.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';stack.style.setProperty('--inv',1/s);stack.style.setProperty('--u',(3600/Math.max(1,stack.clientWidth))/s);wrap.classList.toggle('zoomed',s>1);wrap.classList.toggle('z2',s>=2);if(window.__meScale)window.__meScale(s);hires();}
   function zoomAt(f,cx,cy){var ns=Math.min(MAX,Math.max(1,s*f));x=cx-(cx-x)*ns/s;y=cy-(cy-y)*ns/s;s=ns;apply();}
   wrap.addEventListener('mouseleave',function(){act=false;wrap.classList.remove('act');});
   wrap.addEventListener('wheel',function(e){if(!(e.ctrlKey||e.metaKey||act))return;e.preventDefault();var r=wrap.getBoundingClientRect();zoomAt(e.deltaY<0?1.2:1/1.2,e.clientX-r.left,e.clientY-r.top);},{passive:false});
@@ -727,6 +739,35 @@ footer .tm{color:var(--label);font-weight:500}
   function up(e){delete pts[e.pointerId];pd=0;if(!Object.keys(pts).length)wrap.classList.remove('drag');}
   wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);
   window.addEventListener('resize',apply);
+  // sharp vector features: lines keep their on-screen width, markers keep their size, at any zoom
+  (function(){
+    var NS='http://www.w3.org/2000/svg';
+    function svg(k){var e=stack.querySelector('[data-k="'+k+'"]');return e.tagName.toLowerCase()==='svg'?e:e.querySelector('svg');}
+    function add(el,d,a){var p=document.createElementNS(NS,'path');p.setAttribute('d',d);for(var n in a)p.setAttribute(n,a[n]);el.appendChild(p);}
+    var LN={fill:'none','stroke-linecap':'round','stroke-linejoin':'round'};
+    function ln(o){var r={};for(var n in LN)r[n]=LN[n];for(n in o)r[n]=o[n];var st='stroke-width:calc(var(--u,1) * '+o['stroke-width']+')';if(o['stroke-dasharray']){var d=o['stroke-dasharray'].split(' ');st+=';stroke-dasharray:calc(var(--u,1) * '+d[0]+') calc(var(--u,1) * '+d[1]+')';delete r['stroke-dasharray'];}delete r['stroke-width'];r.style=st;return r;}
+    function mk(k,x,y,html){var d=document.createElement('div');d.className='mk';d.style.left=(x*100)+'%';d.style.top=(y*100)+'%';d.innerHTML=html;stack.querySelector('[data-k="'+k+'"]').appendChild(d);}
+    fetch('/hamele/img/vec.json').then(function(r){return r.json();}).then(function(V){
+      ['landforms','cover','south','benches'].forEach(function(k){var e=svg(k);V[k].forEach(function(f){add(e,f[1],{fill:f[0],stroke:'none','fill-rule':'evenodd'});});});
+      var c=svg('contours');
+      V.contours.forEach(function(f){add(c,f[1],f[0]==='i'?ln({stroke:'#5c3414','stroke-width':1.6,'stroke-opacity':.92}):ln({stroke:'#784e28','stroke-width':.7,'stroke-opacity':.6}));});
+      V.drainage.forEach(function(f){add(svg('drainage'),f[1],ln({stroke:'#6ec6f5','stroke-width':3.2,'stroke-dasharray':'0.1 6'}));});
+      V.ridges.forEach(function(f){add(svg('ridges'),f[1],ln({stroke:'#d9822b','stroke-width':2.4}));});
+      V.edges.forEach(function(f){add(svg('edges'),f[1],ln({stroke:f[0],'stroke-width':2.6}));});
+      var b=svg('boundary');add(b,V.boundary,ln({stroke:'rgba(0,0,0,.45)','stroke-width':4.5}));add(b,V.boundary,ln({stroke:'#e8711a','stroke-width':2.4,'stroke-dasharray':'9 6'}));
+      V.hubs.forEach(function(p){mk('hubs',p[0],p[1],'<i class="hub" title="'+p[2]+'"></i>');});
+      V.corners.forEach(function(p){mk('corners',p[0],p[1],'<i class="cor" title="Inside corner"></i>');});
+      V.contour_labels.forEach(function(p){mk('contours',p[0],p[1],'<span class="cl" style="--a:'+p[3]+'deg">'+p[2]+'</span>');});
+      var G={};
+      V.deer.forEach(function(p){mk('deer',p[0],p[1],'<i class="ring'+(p[2]?'':' p')+'" title="'+(p[2]?'Likely deer':'Possible deer')+'"></i>');
+        var g=G[p[3]]||(G[p[3]]={x:0,y:1,n:0,l:0,k:0});g.x+=p[0];g.k++;g.y=Math.min(g.y,p[1]);if(p[2])g.l++;});
+      Object.keys(G).forEach(function(k){var g=G[k];if(!g.l)return;mk('deer',g.x/g.k,g.y,'<span class="tag">'+g.l+' Deer</span>');});
+      Object.keys(V.tiles||{}).forEach(function(k){var t=V.tiles[k],w=stack.querySelector('[data-tiles="'+k+'"]'),h='';
+        for(var r=0;r<t.r;r++)for(var q=0;q<t.c;q++){var tw=Math.min(t.ts,t.w-q*t.ts),th=Math.min(t.ts,t.h-r*t.ts);
+          h+='<img loading="lazy" decoding="async" alt="" src="/hamele/img/tiles/'+k+'/'+r+'_'+q+'.'+t.ext+'" style="left:'+(q*t.ts/t.w*100)+'%;top:'+(r*t.ts/t.h*100)+'%;width:'+(tw/t.w*100+0.06)+'%;height:'+(th/t.h*100+0.06)+'%">';}
+        w.innerHTML=h;});
+    });
+  })();
   // live location: only after the visitor taps the button and allows it; position stays on the device
   (function(){
     var U=[192.3345843590126,0.6340680788077862,17211.128211048122],V=[0.5643033063034897,-318.8825461982714,13798.2773817042],WFT=1388.48;
