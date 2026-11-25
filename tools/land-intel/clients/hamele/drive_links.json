@@ -1,22 +1,45 @@
-{"folder": "18vJQOSK9wva_roMO_HPF_qGlotqsLDQD",
+{
+ "folder": "18vJQOSK9wva_roMO_HPF_qGlotqsLDQD",
  "packages": {
-  "1 Essentials": {"folder": "12HIO1ldipEHJHDvqYYJHxfNJmECX3HYS", "files": {
+  "1 Essentials": {
+   "folder": "12HIO1ldipEHJHDvqYYJHxfNJmECX3HYS",
+   "files": {
     "26-239 Essentials Report.pdf": "1uRDvfj4vz65Vc1iMGZurcGBNZT3OkBzv",
     "26-239 Essentials Map (Google Earth).kmz": "1YQI1E3wG2P4FTf0nby4CkfoYGevoOLUW",
     "26-239 Essentials GIS Layers (GeoJSON).zip": "1UDsXMqiRX8_7rD98L_ZmIIcCDOZgk2a2",
-    "26-239 Elevation 2ft Contours (Shapefile).zip": "18WnfWSBr7Y17ZlPPoV1BkaSBWZ1jlukd"}},
-  "2 Hunting & Recreation": {"folder": "1OaxOdQU0NgJp8TD8r6Nc0ao0EQPpPhZE", "files": {
+    "26-239 Elevation 2ft Contours (Shapefile).zip": "18WnfWSBr7Y17ZlPPoV1BkaSBWZ1jlukd",
+    "26-239 Leaf-Off Aerial (GeoTIFF).tif": "1M5cMwl9qsxxq0Ry6rzmJE8jOuHyYI5Zw",
+    "26-239 Listing Graphics.zip": "1soHB0MwiC8LJid2_CMliw1lmzFkhjL6x"
+   }
+  },
+  "2 Hunting & Recreation": {
+   "folder": "1OaxOdQU0NgJp8TD8r6Nc0ao0EQPpPhZE",
+   "files": {
     "26-239 Property Overview.pdf": "1xwhAnQFs1eRtNxKe4qJMSA3zlCSL4ngg",
-    "26-239 Hunting App Files (GPX + KML).zip": "1RTx5v8wsTvUcUb-fE5cgi9j2Qigpd8jG"}},
-  "3 Buyer Due Diligence": {"folder": "1yRW17Dsl5w382GjJIwRhh0I-IMYYMLgv", "files": {
+    "26-239 Hunting App Files (GPX + KML).zip": "1RTx5v8wsTvUcUb-fE5cgi9j2Qigpd8jG",
+    "26-239 Property Map (Google Earth).kmz": "1KcRgqmaaRGYRi5YOWxGBWadk3zWravpd"
+   }
+  },
+  "3 Buyer Due Diligence": {
+   "folder": "1yRW17Dsl5w382GjJIwRhh0I-IMYYMLgv",
+   "files": {
     "26-239 Buyer Due Diligence Report.pdf": "189BpiVlGZgWFHctLelKbKDcRrlwGbiBU",
     "26-239 Due Diligence Map (Google Earth).kmz": "1Zc_anRD51KOV4NuFN4RMzvgrxerlmuHQ",
     "26-239 Due Diligence GIS Layers (GeoJSON).zip": "15_VHuHMzW8DwfcxLRJvSHIwwAKns9dFj",
     "26-239 Public Records (CSV).zip": "1ufuXLDKLTiRMdHfOnMKSsDwovXEId4o4",
-    "26-239 Bare Earth 2024 LiDAR (GeoTIFF).tif": "1qpBe7sxDPOqlTYjDHRcSnfxyjiQm8uwh"}},
-  "4 Stewardship": {"folder": "1SkaoFQPYCtkQjodPPiUgxJjWYBtheCrU", "files": {
+    "26-239 Bare Earth 2024 LiDAR (GeoTIFF).tif": "1qpBe7sxDPOqlTYjDHRcSnfxyjiQm8uwh",
+    "26-239 Surface Model (GeoTIFF).tif": "1bqrqXuInOTdQ4s_vOVM31gKqyrQ5o68g",
+    "26-239 Historical Topo Maps.zip": "1vmSC3EQi9YVMr_jLuSEVOZ_1lSuqLNpB"
+   }
+  },
+  "4 Stewardship": {
+   "folder": "1SkaoFQPYCtkQjodPPiUgxJjWYBtheCrU",
+   "files": {
     "26-239 Stewardship Baseline Report.pdf": "1ISCBRZIXKOIgonsMv_94kcZfW8uEVk34",
     "26-239 Stewardship Map (Google Earth).kmz": "1ZRlxSttKDANDxNmMypBLLxH0jaEJyvuX",
     "26-239 Stewardship GIS Layers (GeoJSON).zip": "1JiwXJY_U8nOka4iT-NqMhVocPr3nReD6",
-    "26-239 Repeat Photo Points.gpx": "1sRPpEmxrEm8oAYGFjaffah75WUfNJkPS"}}
- }}
+    "26-239 Repeat Photo Points.gpx": "1sRPpEmxrEm8oAYGFjaffah75WUfNJkPS"
+   }
+  }
+ }
+}
