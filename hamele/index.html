@@ -226,6 +226,12 @@ footer .tm{color:var(--label);font-weight:500}
 @media (max-width:860px){.season{grid-template-columns:repeat(2,1fr)}.compare,.two{grid-template-columns:1fr}.proof{grid-template-columns:1fr}}
 @media (max-width:760px){h1{font-size:34px}h2{font-size:24px}.stats{grid-template-columns:repeat(2,1fr)}.bar{grid-template-columns:118px 1fr 66px;gap:8px}}
 @media (max-width:480px){.season{grid-template-columns:1fr}.badge{font-size:11px;top:10px;left:10px}}
+.ucb{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding:16px 20px;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
+.ucb-logo img{display:block;width:220px;height:auto}
+.ucb-d{display:none!important}html[data-theme="light"] .ucb-w{display:none!important}html[data-theme="light"] .ucb-d{display:block!important}
+.ucb-t{display:flex;flex-direction:column;gap:8px;padding-left:26px;border-left:1px solid var(--edge)}
+.ucb-t p{margin:0;font-size:16px;line-height:1.45;color:var(--muted)}.ucb-t p b{color:var(--ink);font-weight:600}
+@media (max-width:560px){.ucb-t{padding-left:0;border-left:0}.ucb-logo img{width:200px}}
 </style>
 <script src="/topo.js?v=3" defer></script>
 <link rel="stylesheet" href="/theme.css">
@@ -260,7 +266,10 @@ footer .tm{color:var(--label);font-weight:500}
 
 <!-- TRAVIS -->
 <section class="tv">
-<span class="for"><i></i>Private Preview &middot; Prepared for Travis Hamele</span>
+<div class="ucb">
+<a class="ucb-logo" href="https://www.uchuntingproperties.com/" target="_blank" rel="noopener" aria-label="UC Hunting Properties"><img class="ucb-w" src="/hamele/map/uc/uch-logo-white.png" alt="UC Hunting Properties, powered by Realtree" width="295" height="87"><img class="ucb-d" src="/hamele/map/uc/uch-logo-dark.png" alt="UC Hunting Properties, powered by Realtree" width="295" height="87"></a>
+<div class="ucb-t"><span class="for"><i></i>Private Preview</span><p>Prepared specifically for <b>Travis Hamele</b><br>United Country Midwest Lifestyle Properties</p></div>
+</div>
 <h1>A Hunting Listing Package That Explains the Ground, Not Just Shows It.</h1>
 <div class="note-tv" style="border:1px solid var(--or);background:rgba(232,113,26,.08)">
 <p>Travis, I appreciate the conversation and the opportunity. I think our two ventures could combine into a package few in this field have put together.</p>
