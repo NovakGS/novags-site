@@ -376,7 +376,7 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
     }
   }
   // Live: past times and the current + next hour close as the clock moves, and changes
-  // made in the app show without a reload. Re-checks every minute, and right away when the
+  // made in the app show without a reload. Re-checks every 15 seconds, and right away when the
   // page comes back into view (phones pause timers while the screen is off or the tab is hidden).
   var latest = null;
   function load() {
@@ -387,7 +387,7 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
   }
   function tick() { if (latest) render(latest); load(); }
   load();
-  setInterval(function () { if (!document.hidden) tick(); }, 60000);
+  setInterval(function () { if (!document.hidden) tick(); }, 15000);
   document.addEventListener('visibilitychange', function () { if (!document.hidden) tick(); });
   window.addEventListener('pageshow', function (e) { if (e.persisted) tick(); });
 })();

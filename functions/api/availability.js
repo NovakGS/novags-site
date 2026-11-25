@@ -26,7 +26,7 @@ const DAYS = 7;
 const SLOT = 30;          // minutes per slot
 const FIRST_SLOT = 8 * 60;  // 8:00 AM
 const LAST_SLOT = 21 * 60 + 30; // 9:30 PM slot, ends 10:00 PM
-const CACHE_SECONDS = 60;
+const CACHE_SECONDS = 10;  // short, so a change made in the app shows on the site within seconds
 const WEATHER_LIST = 'NGS Weather';
 const WEATHER_ROW = 'BASE';
 const HOLD_WINDOW_MIN = 60;      // "right now" = slots overlapping the next 60 minutes
@@ -176,7 +176,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
 
   // Short edge cache so a page full of visitors doesn't hit SharePoint on every load.
   const cache = caches.default;
-  const cacheKey = new Request(`${url.origin}/api/availability#v4`);
+  const cacheKey = new Request(`${url.origin}/api/availability#v5`);
   const hit = await cache.match(cacheKey);
   if (hit) return hit;
 
