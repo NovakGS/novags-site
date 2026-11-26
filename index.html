@@ -111,7 +111,7 @@ a.who-chip:hover{color:var(--ink)}
 </header>
 <div class="pg">
 
-<a class="live-bar" id="live-bar" href="/thermal/deer-recovery/#cal-h" hidden><span class="live-dot" aria-hidden="true"></span><span class="live-tx"><b>Gun Season · Thermal Deer Recovery</b><span>Real-Time Open Times from the Pilot</span></span><span class="live-go">Check Availability <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<a class="live-bar" id="live-bar" href="/thermal/deer-recovery/#cal-h" hidden><span class="live-dot" aria-hidden="true"></span><span class="live-tx"><b>Gun Season · Thermal Deer Recovery</b><span>Real-Time Open Times from the Operator</span></span><span class="live-go">Check Availability <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
 <script>
 /* Show only during the Wisconsin nine-day gun deer season (Central Time). */
 (function(){var b=document.getElementById('live-bar');if(!b)return;var START='2026-11-21',END='2026-11-29';var p={};try{new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});}catch(e){return;}var d=p.year+'-'+p.month+'-'+p.day;if(d>=START&&d<=END)b.hidden=false;})();
