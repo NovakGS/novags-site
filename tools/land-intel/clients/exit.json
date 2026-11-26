@@ -76,6 +76,40 @@
     "53528",
     null
    ]
+  ],
+  "facts": [
+   [
+    "Acres",
+    "33.3&plusmn;"
+   ],
+   [
+    "Elevation",
+    "921 to 1,085 ft"
+   ],
+   [
+    "Relief",
+    "164 ft"
+   ],
+   [
+    "Median Slope",
+    "15.8%"
+   ],
+   [
+    "Hardwood",
+    "30.8 ac"
+   ],
+   [
+    "Open Ground",
+    "1.7 ac"
+   ],
+   [
+    "Flood Zone",
+    "Zone X"
+   ],
+   [
+    "Watershed",
+    "Black Earth Creek"
+   ]
   ]
  },
  "footer": {

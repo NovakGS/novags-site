@@ -357,7 +357,7 @@ html .li-src,html .li-src a{color:#5a6a85}
 .xag{display:flex;gap:14px;align-items:flex-start}
 .xav{flex:none;width:52px;height:52px;border-radius:999px;background:#e3f1f3;color:#00656a;display:flex;align-items:center;justify-content:center;font-family:Outfit,Roboto,Arial,sans-serif;font-weight:600;font-size:18px}
 .xag b,.xag .nm{display:block;margin:0;font-family:Roboto,Arial,sans-serif;font-size:16px;font-weight:500;color:#2a2a2a}
-.xag span,.xag .xrole{display:block;margin:2px 0 0;font-size:14px;color:#5a6a85}
+.xag div>span,.xag .xrole{display:block;margin:2px 0 0;font-size:14px;color:#5a6a85}
 .xag a{display:inline-block;margin-top:2px;color:#2a2a2a;text-decoration:none;font-size:15px}
 .xbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .xbtns a{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #e0e0e0;border-radius:6px;color:#2a2a2a;text-decoration:none;font-size:15px;font-weight:500;background:#fff}
@@ -394,6 +394,13 @@ html .li-src,html .li-src a{color:#5a6a85}
 .xf-bot b{color:#2a2a2a;font-weight:500}
 @media (max-width:900px){.xhero{grid-template-columns:1fr}.crumbs{text-align:left}.xf-main .in{grid-template-columns:1fr 1fr}.xf-main .in>div:last-child{grid-column:1/-1}.contact{grid-template-columns:1fr}.xh-office span{display:none}}
 @media (max-width:640px){.xh-office{display:none}.xh-nav .xph{display:none}.xt-act{display:none}.ltitle{font-size:28px}.xf-main .in{grid-template-columns:1fr}.hl-main{gap:36px}}
+/* key facts under the hero title, like the brokerage's listing page */
+.xfacts{margin:22px 0 0;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #e0e0e0;border-radius:8px;background:#fff}
+.xfacts>div{padding:13px 16px;border-left:1px solid #e0e0e0;border-top:1px solid #e0e0e0;min-width:0}
+.xfacts>div:nth-child(4n+1){border-left:0}.xfacts>div:nth-child(-n+4){border-top:0}
+.xfacts dt{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#5a6a85}
+.xfacts dd{margin:4px 0 0;font-family:Outfit,Roboto,Arial,sans-serif;font-size:19px;font-weight:600;line-height:1.25;color:#2a2a2a}
+@media (max-width:640px){.xfacts{grid-template-columns:1fr 1fr}.xfacts>div:nth-child(4n+1),.xfacts>div:nth-child(-n+4){border-left:1px solid #e0e0e0;border-top:1px solid #e0e0e0}.xfacts>div:nth-child(2n+1){border-left:0}.xfacts>div:nth-child(-n+2){border-top:0}.xfacts dd{font-size:17px}}
 </style>
 <script>
   window.origami = window.origami || function () { (origami.q = origami.q || []).push(arguments) };
@@ -423,6 +430,7 @@ html .li-src,html .li-src a{color:#5a6a85}
 <p class="xsub">Cross Plains, WI 53528</p>
 <p class="xcounty">Dane County</p>
 <div class="xpills"><span>33.3&plusmn; acres</span><span>Flown Nov 24, 2026</span><span>Land Intelligence Package 3 of 4</span></div>
+<dl class="xfacts"><div><dt>Acres</dt><dd>33.3&plusmn;</dd></div><div><dt>Elevation</dt><dd>921 to 1,085 ft</dd></div><div><dt>Relief</dt><dd>164 ft</dd></div><div><dt>Median Slope</dt><dd>15.8%</dd></div><div><dt>Hardwood</dt><dd>30.8 ac</dd></div><div><dt>Open Ground</dt><dd>1.7 ac</dd></div><div><dt>Flood Zone</dt><dd>Zone X</dd></div><div><dt>Watershed</dt><dd>Black Earth Creek</dd></div></dl>
 </div>
 <aside class="xcard" aria-label="Package and listing agent">
 <div class="xcard-top"><div><p class="xpk">Buyer Due Diligence</p><p class="xpk-s">Records &amp; Build Sites</p><p class="xpk-a">33.3&plusmn; acres &middot; Dane County</p></div><span class="xbadge">Sample</span></div>

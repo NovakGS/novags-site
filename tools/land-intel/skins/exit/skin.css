@@ -130,7 +130,7 @@ html .li-src,html .li-src a{color:#5a6a85}
 .xag{display:flex;gap:14px;align-items:flex-start}
 .xav{flex:none;width:52px;height:52px;border-radius:999px;background:#e3f1f3;color:#00656a;display:flex;align-items:center;justify-content:center;font-family:Outfit,Roboto,Arial,sans-serif;font-weight:600;font-size:18px}
 .xag b,.xag .nm{display:block;margin:0;font-family:Roboto,Arial,sans-serif;font-size:16px;font-weight:500;color:#2a2a2a}
-.xag span,.xag .xrole{display:block;margin:2px 0 0;font-size:14px;color:#5a6a85}
+.xag div>span,.xag .xrole{display:block;margin:2px 0 0;font-size:14px;color:#5a6a85}
 .xag a{display:inline-block;margin-top:2px;color:#2a2a2a;text-decoration:none;font-size:15px}
 .xbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .xbtns a{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #e0e0e0;border-radius:6px;color:#2a2a2a;text-decoration:none;font-size:15px;font-weight:500;background:#fff}
@@ -167,3 +167,10 @@ html .li-src,html .li-src a{color:#5a6a85}
 .xf-bot b{color:#2a2a2a;font-weight:500}
 @media (max-width:900px){.xhero{grid-template-columns:1fr}.crumbs{text-align:left}.xf-main .in{grid-template-columns:1fr 1fr}.xf-main .in>div:last-child{grid-column:1/-1}.contact{grid-template-columns:1fr}.xh-office span{display:none}}
 @media (max-width:640px){.xh-office{display:none}.xh-nav .xph{display:none}.xt-act{display:none}.ltitle{font-size:28px}.xf-main .in{grid-template-columns:1fr}.hl-main{gap:36px}}
+/* key facts under the hero title, like the brokerage's listing page */
+.xfacts{margin:22px 0 0;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #e0e0e0;border-radius:8px;background:#fff}
+.xfacts>div{padding:13px 16px;border-left:1px solid #e0e0e0;border-top:1px solid #e0e0e0;min-width:0}
+.xfacts>div:nth-child(4n+1){border-left:0}.xfacts>div:nth-child(-n+4){border-top:0}
+.xfacts dt{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#5a6a85}
+.xfacts dd{margin:4px 0 0;font-family:Outfit,Roboto,Arial,sans-serif;font-size:19px;font-weight:600;line-height:1.25;color:#2a2a2a}
+@media (max-width:640px){.xfacts{grid-template-columns:1fr 1fr}.xfacts>div:nth-child(4n+1),.xfacts>div:nth-child(-n+4){border-left:1px solid #e0e0e0;border-top:1px solid #e0e0e0}.xfacts>div:nth-child(2n+1){border-left:0}.xfacts>div:nth-child(-n+2){border-top:0}.xfacts dd{font-size:17px}}

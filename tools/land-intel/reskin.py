@@ -248,6 +248,7 @@ def page_vals(cfg, pk):
         crumbs.append('<a href="%s" rel="noopener">%s</a>' % (u, t) if u else '<span>%s</span>' % t)
     crumbs.append('<span>%s</span>' % cfg['property']['property_name'])
     v['crumbs'] = '<i>/</i>'.join(crumbs)
+    v['facts'] = ''.join('<div><dt>%s</dt><dd>%s</dd></div>' % (a, b) for a, b in cfg['property'].get('facts', []))
     return v
 
 
