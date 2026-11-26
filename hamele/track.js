@@ -41,10 +41,20 @@
     var h = box && box.querySelector('h3, h2');
     return h ? strip(h.textContent) : '';
   }
+  function textOf(el) {
+    var out = [];
+    (function walk(n) {
+      for (var c = n.firstChild; c; c = c.nextSibling) {
+        if (c.nodeType === 3) out.push(c.nodeValue);
+        else if (c.nodeType === 1 && !/^(script|style|svg)$/i.test(c.tagName)) { out.push(' '); walk(c); out.push(' '); }
+      }
+    })(el);
+    return out.join('');
+  }
   function labelFor(el) {
     var strong = el.querySelector('strong');
     var img = el.querySelector('img[alt]');
-    return strip(el.getAttribute('aria-label') || (strong && strong.textContent) || el.innerText || el.textContent ||
+    return strip(el.getAttribute('aria-label') || (strong && strong.textContent) || textOf(el) ||
       (img && img.getAttribute('alt')) || el.getAttribute('title') || '');
   }
 
@@ -69,8 +79,8 @@
     if (el.tagName === 'BUTTON') {
       var b = labelFor(el);
       if (!b || SKIP.test(b) || el.classList.contains('theme-toggle') || el.classList.contains('uch-mbtn')) return;
-      if (el.classList.contains('pre')) return send('map', 'Quick view: ' + b);
-      if (el.classList.contains('show')) return send('map', b + ': ' + heading(el));
+      if (el.classList.contains('pre')) return send('map', b + ' (quick view)');
+      if (el.classList.contains('show')) return send('map', (heading(el) || b) + ' (' + b + ')');
       if (el.id === 'zloc') return send('map', 'Show my location');
       return send('click', b);
     }
@@ -83,7 +93,11 @@
     if (/^mailto:/i.test(href)) return send('email', label);
     var isFile = el.hasAttribute('download') || /\.(pdf|zip|kmz|kml|gpx|jpe?g|png|tiff?)$/i.test(u.pathname) ||
       (u.hostname === 'drive.google.com' && u.pathname === '/uc');
-    if (isFile) return send('download', label);
+    if (isFile) {
+      var dn = el.getAttribute('download');
+      if (dn && !el.querySelector('strong')) label = dn;
+      return send('download', label);
+    }
     if (u.hostname === 'drive.google.com') return send('folder', label);
     if (u.origin === location.origin) {
       if (u.pathname === location.pathname && u.hash) return send('click', label + ' (jump on page)');
@@ -99,7 +113,7 @@
     if (!el || el.type !== 'checkbox' || !el.hasAttribute('data-k')) return;
     var row = el.closest('label');
     var name = row ? strip((row.querySelector('span') || row).textContent) : el.getAttribute('data-k');
-    send('map', (el.checked ? 'Turned on: ' : 'Turned off: ') + name);
+    send('map', (el.checked ? 'Turned on ' : 'Turned off ') + name);
   }, true);
 
   // FAQ questions (details/summary) when opened.
