@@ -41,3 +41,12 @@ listing agent's card, and a presentation page at `/exit/`. The sample job is 26-
    presentation page, only when it should change. Its body is `skins/exit/pitch-main.html`; wording in the
    shared data-sources section is changed with `pitch.replace` [find, replace] pairs in the client file.
 6. Push to a preview branch. Going live is a merge, and only on Gregg's OK.
+
+**Visit tracking.** `"tracker"` in the client file puts `/exit/track.js` on every EXIT page (the
+Hamele tracker is removed). Events go to `/api/track`, which writes EXIT pages to the D1 table
+`exit_events` (Hamele stays in `events`), and Gregg reads them at `/exit-activity/` with the same
+password as `/hamele-activity/`. A tracked link is the page address plus `?r=<code>`; the code
+stands in for a name, and `EXIT_ALIASES` in `functions/api/track.js` turns it back into the name in
+the log (`ufsm` is Lexie). Add a short random code there for each new person. `?internal=1` marks
+Gregg's own browser as don't-count, once per device, on the EXIT address itself (cookies are per
+address). The preview and live links share one database, so test on a local copy, not a preview.

@@ -1,7 +1,9 @@
 // Cloudflare Pages Function: /api/track
-// First-party activity log for the Hamele package pages (/hamele/...). No cookies are set on
-// visitors and no third party is involved: each event is one row in the D1 database bound as
-// ACTIVITY_DB (database "novags-hamele-activity", table "events"). Gregg reads it at /hamele-activity/.
+// First-party activity log for the Hamele package pages (/hamele/...) and the EXIT package pages
+// (/exit/...). No cookies are set on visitors and no third party is involved: each event is one row
+// in the D1 database bound as ACTIVITY_DB (database "novags-hamele-activity"). Hamele events go to
+// table "events" (read at /hamele-activity/); EXIT events go to table "exit_events" (read at
+// /exit-activity/), so the two logs never mix.
 //
 // POST (sent by /hamele/track.js with navigator.sendBeacon) -> stores one event:
 //   page views, clicks, downloads, call/text/email taps, map changes, FAQ opens, and time on page.
@@ -13,8 +15,9 @@
 
 const MAX_BODY = 2000;
 // Link codes that stand in for a name, so the link someone receives doesn't show who it's for.
-// The link carries the code (?r=k7m2); the activity log shows the name.
+// The link carries the code (?r=k7m2); the activity log shows the name. One list per log.
 const ALIASES = { k7m2: 'Sarina' };
+const EXIT_ALIASES = { ufsm: 'Lexie' };
 const BOT_RE = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|headless|lighthouse|pingdom|monitor/i;
 const KINDS = new Set(['view', 'click', 'download', 'folder', 'call', 'text', 'email', 'out', 'faq', 'map', 'time']);
 const PAGES = {
@@ -24,14 +27,31 @@ const PAGES = {
   '/hamele/stewardship/': 'Stewardship',
   '/hamele/essentials/': 'Essentials',
 };
+// EXIT: /exit/ is the presentation; each listing's package pages sit at /exit/<listing>/<package>/.
+const EXIT_PACKAGES = {
+  essentials: 'Essentials',
+  'country-property': 'Country Property',
+  'due-diligence': 'Buyer Due Diligence',
+  stewardship: 'New Owner Stewardship',
+};
 
 const clip = (v, n) => String(v == null ? '' : v).replace(/[\u0000-\u001f]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, n);
 const noContent = () => new Response(null, { status: 204, headers: { 'cache-control': 'no-store' } });
 
-function pageName(path) {
+function normPath(path) {
   let p = String(path || '').split('?')[0].split('#')[0].replace(/index\.html$/, '');
   if (!p.endsWith('/')) p += '/';
-  return PAGES[p] || '';
+  return p;
+}
+
+// Which log a page belongs to: { table, aliases, page } or null for pages that aren't logged.
+function site(path) {
+  const p = normPath(path);
+  if (PAGES[p]) return { table: 'events', aliases: ALIASES, page: PAGES[p] };
+  if (p === '/exit/') return { table: 'exit_events', aliases: EXIT_ALIASES, page: 'Presentation' };
+  const m = p.match(/^\/exit\/[a-z0-9-]{1,60}\/([a-z-]+)\/$/);
+  if (m && EXIT_PACKAGES[m[1]]) return { table: 'exit_events', aliases: EXIT_ALIASES, page: EXIT_PACKAGES[m[1]] };
+  return null;
 }
 
 function device(ua, touch) {
@@ -69,6 +89,8 @@ function place(cf) {
 const SCHEMA = [
   "CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY AUTOINCREMENT, ts INTEGER NOT NULL, host TEXT NOT NULL, who TEXT NOT NULL DEFAULT '', page TEXT NOT NULL DEFAULT '', kind TEXT NOT NULL DEFAULT '', item TEXT NOT NULL DEFAULT '', secs INTEGER, device TEXT NOT NULL DEFAULT '', place TEXT NOT NULL DEFAULT '', visit TEXT NOT NULL DEFAULT '')",
   'CREATE INDEX IF NOT EXISTS events_ts ON events(ts)',
+  "CREATE TABLE IF NOT EXISTS exit_events (id INTEGER PRIMARY KEY AUTOINCREMENT, ts INTEGER NOT NULL, host TEXT NOT NULL, who TEXT NOT NULL DEFAULT '', page TEXT NOT NULL DEFAULT '', kind TEXT NOT NULL DEFAULT '', item TEXT NOT NULL DEFAULT '', secs INTEGER, device TEXT NOT NULL DEFAULT '', place TEXT NOT NULL DEFAULT '', visit TEXT NOT NULL DEFAULT '')",
+  'CREATE INDEX IF NOT EXISTS exit_events_ts ON exit_events(ts)',
   'CREATE TABLE IF NOT EXISTS settings (k TEXT PRIMARY KEY, v TEXT NOT NULL)',
 ];
 let schemaReady = null;
@@ -95,16 +117,17 @@ export async function onRequestPost({ request, env, waitUntil }) {
   let evt;
   try { evt = JSON.parse(raw); } catch { return noContent(); }
   if (!evt || typeof evt !== 'object') return noContent();
-  const page = pageName(evt.p);
-  if (!page) return noContent();
+  const where = site(evt.p);
+  if (!where) return noContent();
+  const page = where.page;
 
   const kind = KINDS.has(evt.k) ? evt.k : 'click';
   const tag = /^[a-z0-9-]{1,20}$/i.test(String(evt.r || '')) ? String(evt.r).toLowerCase() : '';
-  const who = tag ? (ALIASES[tag] || tag.charAt(0).toUpperCase() + tag.slice(1)) : '';
+  const who = tag ? (where.aliases[tag] || tag.charAt(0).toUpperCase() + tag.slice(1)) : '';
   const secs = kind === 'time' ? Math.max(0, Math.min(86400, Math.round(Number(evt.s) || 0))) : null;
 
   const stmt = env.ACTIVITY_DB.prepare(
-    'INSERT INTO events (ts, host, who, page, kind, item, secs, device, place, visit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    `INSERT INTO ${where.table} (ts, host, who, page, kind, item, secs, device, place, visit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).bind(Date.now(), url.host, who, page, kind, kind === 'time' ? '' : clip(evt.l, 200), secs,
     device(ua, !!evt.t), place(request.cf), clip(evt.v, 12));
   waitUntil(ensureSchema(env.ACTIVITY_DB).then(() => stmt.run()).catch((err) => console.log('track:', String(err.message || err))));

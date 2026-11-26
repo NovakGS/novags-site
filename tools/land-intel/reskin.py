@@ -305,6 +305,8 @@ def transform(cfg, pk, s, skin_css, frags, drive_map):
     for a, b in drive_map.items():
         s = s.replace(a, b)
     s = re.sub(r'<script src="/hamele/track\.js[^"]*"[^>]*></script>\n?', '', s)
+    if cfg.get('tracker'):
+        s = once(s, '</body>', '<script src="%s" defer></script>\n</body>' % cfg['tracker'], where)
     if drive_map:
         ids = set(re.findall(r'drive\.google\.com/(?:uc\?export=download&amp;id=|drive/folders/|file/d/)([\w-]{20,})', s))
         stray = ids - set(drive_map.values())

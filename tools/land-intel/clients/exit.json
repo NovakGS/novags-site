@@ -11,6 +11,7 @@
   "base": "/exit/33-acre-cross-plains"
  },
  "skin": "tools/land-intel/skins/exit",
+ "tracker": "/exit/track.js?v=1",
  "fonts_css": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&amp;family=Roboto:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap",
  "brand": {
   "brand_name": "EXIT Realty",

@@ -8,7 +8,7 @@ look, the theme toggle, the pinned partner bar, the menu, and the map/thermal sl
 Swaps in the client's logo pair, the "Prepared for" lines, and the page body
 (pitch.main, with <!-- COMBINATION --> replaced by the source page's data-sources section,
 then any pitch.replace [find, replace] pairs applied once each),
-adds the client CSS, and drops the source page's visit tracker.
+adds the client CSS, and swaps the source page's visit tracker for the client's own ("tracker").
 """
 import json, re, sys
 from pathlib import Path
@@ -72,6 +72,9 @@ def main():
     if not n: die('main not found')
 
     s = re.sub(r'<script src="/[a-z0-9-]+/track\.js[^"]*"[^>]*></script>\n?', '', s)
+    if cfg.get('tracker'):
+        if s.count('</body>') != 1: die('</body> not found once')
+        s = s.replace('</body>', '<script src="%s" defer></script>\n</body>' % cfg['tracker'])
     s = s.replace('/* pinned UC banner:', '/* pinned partner banner:')
     for bad in p.get('must_not_contain', []):
         k = s.lower().find(bad.lower())

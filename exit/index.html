@@ -615,5 +615,6 @@ window.addEventListener("scroll",function(){if(!menu.hidden&&menu.dataset.from==
 window.addEventListener("resize",close);
 var t2=mini.querySelector(".uch-tt2"),t1=top.querySelector(".theme-toggle");if(t1&&t2)t2.addEventListener("click",function(){t1.click();});})();</script>
 <script>/* map/thermal compare slider on the Package 2 card */document.querySelectorAll(".ba").forEach(function(b){var h=b.querySelector(".ba-h"),dn=false,p=50;function set(v){p=Math.max(0,Math.min(100,v));b.style.setProperty("--p",p+"%");h.setAttribute("aria-valuenow",Math.round(p));}function at(e){var r=b.getBoundingClientRect();set((e.clientX-r.left)/r.width*100);}b.addEventListener("pointerdown",function(e){dn=true;try{b.setPointerCapture(e.pointerId);}catch(_){}if(e.pointerType==="mouse")at(e);});b.addEventListener("pointermove",function(e){if(dn)at(e);});["pointerup","pointercancel","lostpointercapture"].forEach(function(t){b.addEventListener(t,function(){dn=false;});});h.addEventListener("keydown",function(e){if(e.key==="ArrowLeft"){set(p-5);e.preventDefault();}else if(e.key==="ArrowRight"){set(p+5);e.preventDefault();}else if(e.key==="Home"){set(0);e.preventDefault();}else if(e.key==="End"){set(100);e.preventDefault();}});});</script>
+<script src="/exit/track.js?v=1" defer></script>
 </body>
 </html>
