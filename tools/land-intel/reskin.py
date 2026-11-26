@@ -328,12 +328,24 @@ def pages(cfg):
         print('page:', out.relative_to(ROOT))
 
 
+def load_client(path):
+    """Read the client file. "{job}" anywhere in it stands for the job number, so the next
+    listing only needs a new "job" value (plus its property, agent, and dest details)."""
+    cfg = json.load(open(path, encoding='utf-8'))
+    job = cfg.get('job', '')
+    def fill(v):
+        if isinstance(v, str): return v.replace('{job}', job)
+        if isinstance(v, list): return [fill(x) for x in v]
+        if isinstance(v, dict): return {fill(k): fill(x) for k, x in v.items()}
+        return v
+    return fill(cfg)
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('client')
     ap.add_argument('--pages-only', action='store_true', help='rebuild the HTML only (files and PDFs already done)')
     a = ap.parse_args()
-    cfg = json.load(open(a.client, encoding='utf-8'))
+    cfg = load_client(a.client)
     if not a.pages_only:
         copy_assets(cfg)
         archives(cfg)

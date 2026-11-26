@@ -16,6 +16,13 @@ The client file (clients/<name>.json) says where things live:
   presentation URL of the presentation page (kept for reference; the client pages do not link to it)
   crumbs       optional breadcrumb trail [[text, url or null], ...] shown above each page title
   pages        which packages get a page here and at what slug; package 2 can point at an existing page
+  packs        optional per-client package names, e.g. {"2 Hunting & Recreation": {"name": "Country Property",
+               "tag": "Interactive Map", "desc": "...", "drive": "2 Country Property"}}; "drive" is the folder
+               name used in drive_links.json when the client's Drive copy is renamed
+  site_root    optional folder to write into instead of the repo (for a staging build)
+
+The shell can be any client page with a <header> holding <nav class="uc-nav ...">, a contact section
+(<section class="sec" id="contact">), and a <footer> whose link list sits under "Quick Links" or "Menu".
 """
 import json, os, re, sys, html, shutil
 from PIL import Image
@@ -40,6 +47,20 @@ PACK_INFO = {
 }
 
 PACK_TAG = {'1 Essentials': 'The Land', '2 Hunting & Recreation': 'Interactive Map', '3 Buyer Due Diligence': 'Records & Build Sites', '4 Stewardship': 'After Closing'}
+DRIVE_KEY = {}   # package key -> folder name in drive_links.json, when a client renames a package
+
+def apply_packs(cfg):
+    """Let a client rename packages without touching the builders.
+    cfg["packs"] = {"2 Hunting & Recreation": {"name": "Country Property", "desc": "...", "tag": "Interactive Map",
+                                               "drive": "2 Country Property"}, ...}  (every field optional)"""
+    for k, o in cfg.get('packs', {}).items():
+        if k not in PACK_INFO: sys.exit('unknown package in "packs": %s' % k)
+        PACK_INFO[k] = (o.get('name', PACK_INFO[k][0]), o.get('desc', PACK_INFO[k][1]))
+        PACK_TAG[k] = o.get('tag', PACK_TAG[k])
+        if o.get('drive'): DRIVE_KEY[k] = o['drive']
+
+def drive_pack(cfg, pack):
+    return cfg['_drive']['packages'].get(DRIVE_KEY.get(pack, pack), {})
 AGENT_FILES = ('Listing Graphics.zip',)   # for the listing team; offered on the presentation page, not on the client pages
 
 # ------------------------------------------------------------------------------------------- shell
@@ -75,15 +96,16 @@ def load_shell(path):
     header = s[s.find('<header'):s.find('</header>') + 9]
     contact = s[s.find('<section class="sec" id="contact">'):]
     contact = contact[:contact.find('</section>') + 10]
-    footer = s[s.find('<footer>'):s.find('</footer>') + 9]
+    m = re.search(r'<footer[\s>]', s)
+    footer = s[m.start():s.find('</footer>') + 9] if m else ''
     return head, header, contact, footer
 
 def page(shell, title, desc, nav, quick, main):
     head, header, contact, footer = shell
     head = re.sub(r'<title>.*?</title>', '<title>%s</title>' % E(title), head, flags=re.S)
     head = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="%s">' % E(desc), head)
-    header = re.sub(r'<nav class="uc-nav".*?</nav>', '<nav class="uc-nav" aria-label="Page">%s</nav>' % ''.join('<a href="%s">%s</a>' % (h, E(t)) for h, t in nav), header, flags=re.S)
-    footer = re.sub(r'<h5>Quick Links</h5><ul>.*?</ul>', '<h5>Quick Links</h5><ul>%s</ul>' % ''.join('<li><a href="%s">%s</a></li>' % (h, E(t)) for h, t in quick), footer, flags=re.S)
+    header = re.sub(r'<nav class="(uc-nav[^"]*)"[^>]*>.*?</nav>', lambda m: '<nav class="%s" aria-label="Page">%s</nav>' % (m.group(1), ''.join('<a href="%s">%s</a>' % (h, E(t)) for h, t in nav)), header, count=1, flags=re.S)
+    footer = re.sub(r'<h5>(Quick Links|Menu)</h5><ul>.*?</ul>', lambda m: '<h5>%s</h5><ul>%s</ul>' % (m.group(1), ''.join('<li><a href="%s">%s</a></li>' % (h, E(t)) for h, t in quick)), footer, count=1, flags=re.S)
     extra_css = EXTRA_CSS
     if '.li-sw{' not in head:
         head = head.replace('</head>', extra_css + '\n</head>')
@@ -180,7 +202,7 @@ USE = {   # plain-language "How to Use It" note under each download, by file-nam
     'Repeat Photo Points.gpx': 'GPS points for a phone app like onX, HuntStand, or Gaia GPS. Walk to each point and take a photo from the same spot each visit, so changes are easy to compare.',
 }
 def downloads(cfg, D, pack, intro):
-    links = cfg['_drive']['packages'].get(pack, {}); files = {f['name']: f['bytes'] for f in D['files'].get(pack, [])}
+    links = drive_pack(cfg, pack); files = {f['name']: f['bytes'] for f in D['files'].get(pack, [])}
     cards = []
     order = list(DESC)
     files = dict(sorted(files.items(), key=lambda kv_: next((i for i, k in enumerate(order) if kv_[0].endswith(k)), 99)))
@@ -378,7 +400,7 @@ def prep_images(cfg, outdir):
 # ------------------------------------------------------------------------------------------- package 2 page (existing)
 def patch_package2(cfg, D, path):
     s = open(path, encoding='utf-8').read()
-    links = cfg['_drive']['packages'].get('2 Hunting & Recreation', {}).get('files', {})
+    links = drive_pack(cfg, '2 Hunting & Recreation').get('files', {})
     for name, fid in links.items():
         for old in re.findall(r'href="(/[^"]+)" download="%s"' % re.escape(name), s):
             s = s.replace('href="%s" download="%s"' % (old, name), 'href="%s" rel="noopener"' % dl_url(fid))
@@ -394,6 +416,7 @@ def main():
     rel = lambda p: p if os.path.isabs(p) else os.path.join(ROOT, p)
     D = json.load(open(rel(cfg['data']), encoding='utf-8'))
     cfg['_drive'] = json.load(open(rel(cfg['drive']), encoding='utf-8'))
+    apply_packs(cfg)
     cfg['images'] = rel(cfg['images'])
     shell = load_shell(rel(cfg['shell']))
     site = rel(cfg.get('site_root', '.'))

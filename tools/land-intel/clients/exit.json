@@ -302,16 +302,16 @@
    "img/pkg/country-thermal.webp"
   ],
   [
-   "country-property/files/26-239-hunting-app-files.zip",
-   "country-property/files/26-239-outdoor-app-files.zip"
+   "country-property/files/{job}-hunting-app-files.zip",
+   "country-property/files/{job}-outdoor-app-files.zip"
   ],
   [
-   "country-property/files/26-239-hunting-listing-graphics.zip",
-   "country-property/files/26-239-country-listing-graphics.zip"
+   "country-property/files/{job}-hunting-listing-graphics.zip",
+   "country-property/files/{job}-country-listing-graphics.zip"
   ]
  ],
  "zip_folder_renames": {
-  "country-property/files/26-239-outdoor-app-files.zip": [
+  "country-property/files/{job}-outdoor-app-files.zip": [
    [
     "Hunting App Files (GPX)/",
     "Outdoor App Files (GPX)/"
@@ -323,32 +323,32 @@
   ]
  },
  "kmz_text": {
-  "country-property/files/26-239-property-map.kmz": [
+  "country-property/files/{job}-property-map.kmz": [
    [
-    "26-239 Hunting Land - 33 ac Property Map",
-    "26-239 Country Property - 33 ac Property Map"
+    "{job} Hunting Land - 33 ac Property Map",
+    "{job} Country Property - 33 ac Property Map"
    ]
   ]
  },
  "pdfs": [
   {
-   "file": "essentials/files/26-239-essentials-report.pdf",
+   "file": "essentials/files/{job}-essentials-report.pdf",
    "kind": "report"
   },
   {
-   "file": "due-diligence/files/26-239-buyer-due-diligence-report.pdf",
+   "file": "due-diligence/files/{job}-buyer-due-diligence-report.pdf",
    "kind": "report"
   },
   {
-   "file": "stewardship/files/26-239-stewardship-baseline-report.pdf",
+   "file": "stewardship/files/{job}-stewardship-baseline-report.pdf",
    "kind": "report"
   },
   {
-   "file": "country-property/files/26-239-property-overview.pdf",
+   "file": "country-property/files/{job}-property-overview.pdf",
    "kind": "overview",
    "title": "33-Acre Wooded Parcel · Dane County, WI",
    "sub": "Property Overview  ·  Prepared for EXIT Professional Real Estate  ·  Page {n} of {N}",
-   "meta_title": "26-239 Property Overview - 33-Acre Wooded Parcel"
+   "meta_title": "{job} Property Overview - 33-Acre Wooded Parcel"
   }
  ],
  "pdf_text": [
@@ -388,12 +388,12 @@
    "<b>After Closing</b><span>New Owner Stewardship</span>"
   ],
   [
-   "download=\"26-239 Hunting Listing Graphics.zip\"",
-   "download=\"26-239 Country Listing Graphics.zip\""
+   "download=\"{job} Hunting Listing Graphics.zip\"",
+   "download=\"{job} Country Listing Graphics.zip\""
   ],
   [
-   "26-239-hunting-listing-graphics.zip",
-   "26-239-country-listing-graphics.zip"
+   "{job}-hunting-listing-graphics.zip",
+   "{job}-country-listing-graphics.zip"
   ],
   [
    "/img/pkg/hunting-map.webp",
