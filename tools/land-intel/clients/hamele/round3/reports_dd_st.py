@@ -202,8 +202,9 @@ def due_diligence(path):
          PageBreak(),
          # 8. Historical maps
          P('Historical Maps', 'h2'),
-         P('USGS topographic maps of this ground exist for 1907, 1909, 1957, 1960, 1962, 1983, 1991. The oldest and newest detailed editions are below, with '
-           'the boundary in orange.'),
+         P('USGS topographic maps covering this ground exist for 1907, 1909, 1957, 1960, 1962, and 1991. The two below are the oldest and newest '
+           '1:62,500-scale editions, the most detailed scale that covers the property, with the boundary in orange. The 1957, 1960, and 1991 maps '
+           'are regional editions at 1:250,000 and 1:100,000, with far less detail.'),
          fig('historic_topo_1907.jpg', 'USGS 1:62500-scale Quadrangle for Cross Plains, WI 1907', h=270),
          Spacer(1, 4),
          fig('historic_topo_1962.jpg', 'USGS 1:62500-scale Quadrangle for Cross Plains, WI 1962', h=270),
@@ -218,7 +219,7 @@ def stewardship(path):
          P('The Baseline', 'h2'),
          P('This flight is the baseline. Change maps (trails and food plots, canopy, erosion, and restoration) are measured against it on each repeat flight.'),
          P('Deer Herd Baseline', 'h2'),
-         P('Night thermal survey on November 24, 2026, 7:19 to 8:40 PM: 7 likely deer, which may include the same deer seen twice (5 to 7 animals), and 9 possible. Each ongoing deer herd survey flies the property again '
+         P('Night thermal survey on November 24, 2026, 7:19 to 8:40 PM: 7 likely sightings, which may include the same deer seen twice (5 to 7 deer), and 9 possible. Each ongoing deer herd survey flies the property again '
            'after dark, in the same season and on the same flight plan, so herd use can be compared from one year to the next.'),
          P('Each survey is a snapshot of one night. Deer under heavy cover or off the property that night are not counted, so treat each number as a minimum.', 'note'),
          KeepTogether([P('Cover and Canopy', 'h2'),

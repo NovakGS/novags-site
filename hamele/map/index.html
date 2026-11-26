@@ -461,7 +461,7 @@ h3{font-weight:600}
 <a class="card dl" href="/hamele/map/files/26-239-property-map.kmz" download="26-239 Property Map (Google Earth).kmz" rel="noopener"><strong>Google Earth File</strong><span>Every layer in one file. Tap it on a phone to open in the free Google Earth app. 17.5 MB.</span><small class="use"><b>How to Use It</b>A map file for the free Google Earth app. Tap it on a phone or open it on a computer, then turn layers on and off to scout the terrain before a visit.</small><em>Download KMZ</em></a>
 <a class="card dl" href="https://drive.google.com/uc?export=download&amp;id=1RTx5v8wsTvUcUb-fE5cgi9j2Qigpd8jG" rel="noopener"><strong>Hunting App Files</strong><span>Ridgelines, drainage paths, travel hubs, benches, field edges, inside corners, contours, and the boundary as GPX and KML for onX, HuntStand, BaseMap, Gaia GPS, and others.</span><small class="use"><b>How to Use It</b>The scouting lines and points in the formats hunting apps import. Unzip the folder, then add the files with the app&rsquo;s import option (often on its website) to see them on a phone in the field.</small><em>Download ZIP</em></a>
 <a class="card dl" href="/hamele/map/files/26-239-property-overview.pdf" download="26-239 Property Overview.pdf" rel="noopener"><strong>Two-Page Property Overview</strong><span>A plain-language PDF summary of the terrain, cover, and thermal survey, ready to print or share.</span><small class="use"><b>How to Use It</b>A standard document that opens on any phone or computer, so you can print it or send it to a buyer as a quick read on the property.</small><em>Download PDF</em></a>
-<a class="card dl" href="/hamele/map/files/26-239-hunting-listing-graphics.zip" download="26-239 Hunting Listing Graphics.zip" rel="noopener"><strong>Listing Graphics</strong><span>The terrain read, cover and edges, thermal survey, and showing guide as four 2400 px images for a listing gallery. 5.9 MB.</span><small class="use"><b>How to Use It</b>A ZIP is one download that holds all four images. Open it and they unpack like a folder, ready to upload alongside the property photos in any listing gallery.</small><em>Download ZIP</em></a>
+<a class="card dl" href="/hamele/map/files/26-239-hunting-listing-graphics.zip" download="26-239 Hunting Listing Graphics.zip" rel="noopener"><strong>Listing Graphics</strong><span>The terrain read, cover and edges, thermal survey, and showing guide as four 2400 px images for a listing gallery. 6.0 MB.</span><small class="use"><b>How to Use It</b>A ZIP is one download that holds all four images. Open it and they unpack like a folder, ready to upload alongside the property photos in any listing gallery.</small><em>Download ZIP</em></a>
 </div>
 <p class="note">Thermal deer locations are shown on this page, in the Google Earth file, and in the listing graphics as a dated snapshot only. They are not included in the hunting-app files.</p>
 </section>
@@ -471,7 +471,7 @@ h3{font-weight:600}
 <h2>Thermal Deer Count</h2>
 <p class="body">A Matrice 4T flew the whole property after dark on November 24, 2026, from 7:19 to 8:40 PM, at 150 ft with heavy photo overlap: 3,345 thermal photos across three batteries. Every photo was checked on its own for deer-sized heat signatures, and each one was confirmed by eye before it was counted. The stitched thermal map is the backdrop on the map above.</p>
 <div class="card-grid">
-<div class="card"><strong>7 Likely Deer</strong><span>Clear body shapes: a pair at the south end and 5 sightings on the east side. Those 5 came over about 5 minutes and may repeat the same deer, so 5 to 7 deer in all.</span></div>
+<div class="card"><strong>7 Likely Sightings (5 to 7 Deer)</strong><span>Clear body shapes: a pair at the south end and 5 sightings on the east side. Those 5 came over about 5 minutes and may repeat the same deer, so 5 to 7 deer in all.</span></div>
 <div class="card"><strong>9 Possible</strong><span>Compact warm spots where the shape couldn't be confirmed, mostly on the north and northeast side. Not counted in the 7.</span></div>
 <div class="card"><strong>3,345 Photos Checked</strong><span>Each photo is searched on its own, so a deer that moved between passes is still caught.</span></div>
 </div>
@@ -729,7 +729,7 @@ h3{font-weight:600}
       var G={};
       V.deer.forEach(function(p){mk('deer',p[0],p[1],'<i class="ring'+(p[2]?'':' p')+'" title="'+(p[2]?'Likely deer':'Possible deer')+'"></i>');
         var g=G[p[3]]||(G[p[3]]={x:0,y:1,n:0,l:0,k:0});g.x+=p[0];g.k++;g.y=Math.min(g.y,p[1]);if(p[2])g.l++;});
-      Object.keys(G).forEach(function(k){var g=G[k];if(!g.l)return;mk('deer',g.x/g.k,g.y,'<span class="tag">'+g.l+' Deer</span>');});
+      Object.keys(G).forEach(function(k){var g=G[k];if(!g.l)return;mk('deer',g.x/g.k,g.y,'<span class="tag">'+g.l+(g.l>2?' Sightings':' Deer')+'</span>');});
       Object.keys(V.tiles||{}).forEach(function(k){var t=V.tiles[k],w=stack.querySelector('[data-tiles="'+k+'"]'),h='';
         for(var r=0;r<t.r;r++)for(var q=0;q<t.c;q++){var tw=Math.min(t.ts,t.w-q*t.ts),th=Math.min(t.ts,t.h-r*t.ts);
           h+='<img loading="lazy" decoding="async" alt="" src="/hamele/img/tiles/'+k+'/'+r+'_'+q+'.'+t.ext+'" style="left:'+(q*t.ts/t.w*100)+'%;top:'+(r*t.ts/t.h*100)+'%;width:'+(tw/t.w*100+0.06)+'%;height:'+(th/t.h*100+0.06)+'%">';}
