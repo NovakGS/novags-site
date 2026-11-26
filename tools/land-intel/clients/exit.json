@@ -153,16 +153,16 @@
      "Map"
     ],
     [
+     "#home",
+     "Home With Acreage"
+    ],
+    [
      "#deercount",
      "Wildlife Survey"
     ],
     [
      "#guide",
      "Terrain Guide"
-    ],
-    [
-     "#home",
-     "Home With Acreage"
     ]
    ]
   },
@@ -438,7 +438,7 @@
   },
   {
    "page": "country-property",
-   "find": "<!-- DOWNLOADS -->",
+   "find": "<!-- THERMAL -->",
    "insert_before": "fragments/country-home.html"
   },
   {
@@ -488,6 +488,12 @@
    "United Country",
    "Realtree",
    "/hamele/"
+  ],
+  "replace": [
+   [
+    "Every package starts with two flights: a leaf-off mapping flight and a night thermal flight, both showing the property as it is on the day they&rsquo;re flown.",
+    "A full listing set starts with two flights on the same day: a leaf-off mapping flight and a night thermal flight, both showing the property as it is on the day they&rsquo;re flown. A simple lot can start with Essentials alone, which needs only the daylight mapping flight; the night flight adds the wildlife survey and the thermal layers."
+   ]
   ]
  }
 }

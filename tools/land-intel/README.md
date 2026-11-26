@@ -38,5 +38,6 @@ listing agent's card, and a presentation page at `/exit/`. The sample job is 26-
    renames them, rebrands the PDFs, and writes the four pages. Add the four rebranded PDFs to the
    EXIT Drive folder and their IDs to `drive_links`, then run it again with `--pages-only`.
 5. `python3 tools/land-intel/build_pitch.py tools/land-intel/clients/exit-<job>.json` rebuilds the
-   presentation page, only when it should change.
+   presentation page, only when it should change. Its body is `skins/exit/pitch-main.html`; wording in the
+   shared data-sources section is changed with `pitch.replace` [find, replace] pairs in the client file.
 6. Push to a preview branch. Going live is a merge, and only on Gregg's OK.

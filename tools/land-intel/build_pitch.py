@@ -6,7 +6,8 @@
 Starts from an earlier presentation page (pitch.source, e.g. hamele/index.html) so the shared
 look, the theme toggle, the pinned partner bar, the menu, and the map/thermal slider carry over.
 Swaps in the client's logo pair, the "Prepared for" lines, and the page body
-(pitch.main, with <!-- COMBINATION --> replaced by the source page's data-sources section),
+(pitch.main, with <!-- COMBINATION --> replaced by the source page's data-sources section,
+then any pitch.replace [find, replace] pairs applied once each),
 adds the client CSS, and drops the source page's visit tracker.
 """
 import json, re, sys
@@ -63,6 +64,10 @@ def main():
     if main_html.count('<!-- COMBINATION -->') != 1:
         die('pitch body needs one <!-- COMBINATION --> marker')
     main_html = main_html.replace('<!-- COMBINATION -->', comb.group(0))
+    for find, repl in p.get('replace', []):
+        if main_html.count(find) != 1:
+            die('pitch.replace text found %d times: %s' % (main_html.count(find), find[:60]))
+        main_html = main_html.replace(find, repl)
     s, n = re.subn(r'(<main class="hl-main">\n).*?(?=\n<footer>)', lambda m: m.group(1) + main_html.strip('\n') + '\n', s, count=1, flags=re.S)
     if not n: die('main not found')
 
