@@ -137,9 +137,9 @@ function describe(e) {
     case 'time': return `Spent <b>${duration(e.secs || 0)}</b> on ${esc(e.page)}`;
     case 'download': return `Downloaded <b>${it}</b>`;
     case 'folder': return `Opened Drive folder <b>${it}</b>`;
-    case 'call': return `Tapped call <b>${it}</b>`;
-    case 'text': return `Tapped text <b>${it}</b>`;
-    case 'email': return `Tapped email <b>${it}</b>`;
+    case 'call': return /^call\b/i.test(e.item || '') ? `Tapped <b>${it}</b>` : `Tapped to call <b>${it}</b>`;
+    case 'text': return /^text\b/i.test(e.item || '') ? `Tapped <b>${it}</b>` : `Tapped to text <b>${it}</b>`;
+    case 'email': return /^email\b/i.test(e.item || '') ? `Tapped <b>${it}</b>` : `Tapped to email <b>${it}</b>`;
     case 'out': return `Opened outside link <b>${it}</b>`;
     case 'faq': return `Opened question <b>${it}</b>`;
     case 'map': return `Changed map: <b>${it}</b>`;
