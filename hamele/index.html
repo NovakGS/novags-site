@@ -130,6 +130,20 @@ h3{margin:0;font-size:19px;font-weight:600}
 .col li::before{position:absolute;left:0;top:0;font-weight:700}
 .col li.y::before{content:"+";color:#7fc97f}
 .col li.n::before{content:"\2013";color:#f4a261}
+.fly{display:grid;grid-template-columns:1.2fr 1fr;border:1.5px solid var(--or);border-radius:14px;overflow:hidden;background:var(--panel);scroll-margin-top:24px}
+.fly-v{position:relative;display:block;background:#05070a}
+.fly-v img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+.fly-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:999px;background:#e8711a;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.45)}
+.fly-play svg{width:28px;height:28px;margin-left:4px}
+.fly-free{position:absolute;left:14px;top:14px;padding:6px 12px;border-radius:999px;background:#e8711a;color:#12161c;font:700 12px 'Open Sans',Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.fly-t{padding:22px 24px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.fly-t>b{font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
+.fly-t h3{margin:0;font-size:24px;line-height:1.25}
+.fly-t p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
+.fly-t .fly-deal{padding:12px 14px;border-radius:10px;border:1px solid var(--or);background:rgba(232,113,26,.08)}
+.fly-deal strong{color:var(--ink);font-weight:600}
+.fly-t .fly-ex{font-size:14.5px;color:var(--label)}
+.fly-t a{font-weight:600;color:#e8711a;text-decoration:none}
 .together{padding:20px 22px;border:1px solid var(--or);border-radius:12px;background:rgba(232,113,26,.08);display:flex;flex-direction:column;gap:10px}
 .together p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
 .together p b{color:var(--ink);font-weight:600}
@@ -179,7 +193,7 @@ h3{margin:0;font-size:19px;font-weight:600}
 .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--edge)}
 @media (max-width:860px){.pkg{grid-template-columns:1fr 1fr}.pilot ul{grid-template-columns:1fr;gap:8px}}
 @media (max-width:560px){.pkg,.fitlist{grid-template-columns:1fr}}
-@media (max-width:760px){.flycard{grid-template-columns:1fr!important}}
+@media (max-width:760px){.fly{grid-template-columns:1fr}}
 /* live location */
 #zloc[aria-pressed="true"]{background:#e8711a;border-color:#e8711a;color:#12161c}
 #zloc.wait svg{animation:locp 1s ease-in-out infinite}
@@ -234,6 +248,7 @@ footer .tm{color:var(--label);font-weight:500}
 @media (max-width:560px){.ucb-t{padding-left:0;border-left:0}.ucb-logo img{width:200px}}
 .li-pk{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.li-pk .card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;transition:border-color .15s}.li-pk .card:hover{border-color:var(--or)}.li-pk .card b{font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}.li-pk .card em{margin-top:auto;padding-top:6px;font-style:normal;font-weight:600;color:var(--or);font-size:14.5px}@media(max-width:960px){.li-pk{grid-template-columns:1fr 1fr}}@media(max-width:560px){.li-pk{grid-template-columns:1fr}}
 .li-pk2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.li-pk2 .pk{display:flex;flex-direction:column;border:1px solid var(--edge);border-radius:12px;background:var(--panel);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s}.li-pk2 .pk:hover{border-color:var(--or)}.li-pk2 .pk img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#05070a;border-bottom:1px solid var(--edge)}.pk-t{flex:1;padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px}.pk-t b{font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}.pk-t strong{font-size:19px;font-weight:600}.pk-t span{font-size:16px;line-height:1.5;color:var(--muted)}.pk-t small{margin-top:4px;font-size:14.5px;line-height:1.45;color:var(--label)}.pk-t small::before{content:"Downloads: ";font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}.pk-t .pay{align-self:flex-start;margin-top:2px;padding:4px 10px;border:1px solid var(--or);border-radius:999px;font-style:normal;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:rgba(232,113,26,.10)}.pk-t em{margin-top:auto;padding-top:8px;font-style:normal;font-weight:600;color:var(--or);font-size:15px}.gift ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}.gift li{position:relative;padding-left:22px;font-size:16px;line-height:1.55;color:var(--muted)}.gift li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--or)}.gift li b{color:var(--ink);font-weight:600}.srcs .card em{display:block;margin-top:10px;font-style:normal;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}.srcs .card em::before{content:"Used in: ";color:var(--label)}.card-grid.srcs{grid-template-columns:repeat(3,1fr)}@media(max-width:860px){.card-grid.srcs{grid-template-columns:1fr 1fr}}@media(max-width:560px){.card-grid.srcs{grid-template-columns:1fr}}
+.li-pk2 .pk img{aspect-ratio:1200/997;object-fit:cover;background:transparent}.li-pk2 a.pk-t{text-decoration:none;color:inherit}.ba{position:relative;touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none;border-bottom:1px solid var(--edge)}.li-pk2 .ba img{border-bottom:0;-webkit-user-drag:none;pointer-events:none}.ba .ba-t{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 0 0 var(--p))}.ba-tag{position:absolute;bottom:12px;padding:3px 9px;border-radius:6px;background:rgba(5,7,10,.8);border:1px solid rgba(255,255,255,.4);color:#fff;font:700 11px 'Open Sans',Helvetica,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;pointer-events:none}.ba-l{left:10px}.ba-r{right:10px}.ba-h{position:absolute;top:0;bottom:0;left:var(--p);width:0;outline:none}.ba-h::before{content:"";position:absolute;top:0;bottom:0;left:-1.5px;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.35)}.ba-h i{position:absolute;top:50%;left:0;width:38px;height:38px;transform:translate(-50%,-50%);border-radius:999px;background:#e8711a;border:2px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center}.ba-h i svg{width:20px;height:20px;fill:none;stroke:#12161c;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}.ba-h:focus-visible i{outline:3px solid #fff;outline-offset:2px}
 @media(max-width:760px){.li-pk2{grid-template-columns:1fr}}.li-post{width:100%;max-width:504px}.li-post iframe{display:block;width:100%;height:2084px;border:0;border-radius:8px;background:#fff}
 </style>
 <script src="/topo.js?v=3" defer></script>
@@ -288,13 +303,13 @@ footer .tm{color:var(--label);font-weight:500}
 <h2>Four Packages, One Property</h2>
 <p class="body">The same 33-acre example, built out as four client-facing pages in UC Hunting Properties branding. These are the pages your buyers would see, with your branding and contact details on every one. Each page has working downloads that open on a phone, and each package builds on the one before it.</p>
 <div class="li-pk2">
-<a class="pk" href="/hamele/essentials/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/essentials.jpg" alt="Map of floodplain, wetlands, and streams on the 33-acre property" width="960" height="540" loading="lazy" decoding="async"><div class="pk-t"><b>Package 1</b><strong>Essentials</strong><span>What the land is, where the water goes, and what&rsquo;s underfoot: the leaf-off aerial, parcel lines, slope and elevation, floodplain, wetlands, streams, and soils.</span><small>Report (PDF), Google Earth file, GIS layers, 2-ft contours, and the leaf-off aerial.</small><em>Open the Essentials Page &rarr;</em></div></a>
-<a class="pk" href="/hamele/map/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/hunting.jpg" alt="Night thermal map of the 33-acre property" width="960" height="540" loading="lazy" decoding="async"><div class="pk-t"><b>Package 2</b><strong>Hunting &amp; Recreation</strong><span>The interactive map: the terrain read (ridges, draws, benches, and travel hubs), cover and edges, the night thermal deer count, and the full Terrain Guide.</span><small>Two-page property overview, Google Earth file, and GPX and KML files for onX, HuntStand, BaseMap, and Gaia GPS.</small><em>Open the Map Page &rarr;</em></div></a>
-<a class="pk" href="/hamele/due-diligence/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/due-diligence.jpg" alt="Candidate build sites and driveway routes on the aerial" width="960" height="540" loading="lazy" decoding="async"><div class="pk-t"><b>Package 3</b><strong>Buyer Due Diligence</strong><span>Parcels and assessment, zoning and land-use records, candidate build sites with driveway routes, pond screening, geology and wells, what surrounds the property, and USGS maps back to 1907.</span><small>Report (PDF), Google Earth file, GIS layers, records tables, bare-earth LiDAR and drone surface models, and historical USGS maps.</small><em>Open the Due Diligence Page &rarr;</em></div></a>
-<a class="pk" href="/hamele/stewardship/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/stewardship.jpg" alt="Erosion watch lines and repeat photo points on the aerial" width="960" height="540" loading="lazy" decoding="async"><div class="pk-t"><b>Package 4</b><strong>Stewardship</strong><span>For the buyer after closing: the baseline for erosion watch, cover and canopy, repeat photo points, and ongoing deer herd surveys.</span><i class="pay">Paid for by the buyer</i><small>Baseline report (PDF), Google Earth file, GIS layers, and repeat photo points (GPX).</small><em>Open the Stewardship Page &rarr;</em></div></a>
+<a class="pk" href="/hamele/essentials/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/essentials.webp" alt="The 33-acre property: leaf-off aerial with elevation shading and 2-ft contours" width="1200" height="997" loading="lazy" decoding="async"><div class="pk-t"><b>Package 1</b><strong>Essentials</strong><span>What the land is, where the water goes, and what&rsquo;s underfoot: the leaf-off aerial, parcel lines, slope and elevation, floodplain, wetlands, streams, and soils.</span><small>Report (PDF), Google Earth file, GIS layers, 2-ft contours, and the leaf-off aerial.</small><em>Open the Essentials Page &rarr;</em></div></a>
+<div class="pk pk-sl"><div class="ba" style="--p:50%"><img src="/hamele/img/pkg/hunting-map.webp" alt="Map view: aerial, terrain, contours, drainage paths, ridgelines, and travel hubs" width="1200" height="997" loading="lazy" decoding="async" draggable="false"><img class="ba-t" src="/hamele/img/pkg/hunting-thermal.webp" alt="Night thermal view with the likely deer circled and counted" width="1200" height="997" loading="lazy" decoding="async" draggable="false"><span class="ba-tag ba-l">Map</span><span class="ba-tag ba-r">Thermal</span><span class="ba-h" role="slider" tabindex="0" aria-label="Drag to compare the map and thermal views" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></i></span></div><a class="pk-t" href="/hamele/map/" target="_blank" rel="noopener"><b>Package 2</b><strong>Hunting &amp; Recreation</strong><span>The interactive map: the terrain read (ridges, draws, benches, and travel hubs), cover and edges, the night thermal deer count, and the full Terrain Guide.</span><small>Two-page property overview, Google Earth file, and GPX and KML files for onX, HuntStand, BaseMap, and Gaia GPS.</small><em>Open the Map Page &rarr;</em></a></div>
+<a class="pk" href="/hamele/due-diligence/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/due-diligence.webp" alt="Candidate build sites and driveway routes on the aerial" width="1200" height="997" loading="lazy" decoding="async"><div class="pk-t"><b>Package 3</b><strong>Buyer Due Diligence</strong><span>Parcels and assessment, zoning and land-use records, candidate build sites with driveway routes, pond screening, geology and wells, what surrounds the property, and USGS maps back to 1907.</span><small>Report (PDF), Google Earth file, GIS layers, records tables, bare-earth LiDAR and drone surface models, and historical USGS maps.</small><em>Open the Due Diligence Page &rarr;</em></div></a>
+<a class="pk" href="/hamele/stewardship/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/stewardship.webp" alt="Erosion watch line and repeat photo points on the aerial" width="1200" height="997" loading="lazy" decoding="async"><div class="pk-t"><b>Package 4</b><strong>Stewardship</strong><span>For the buyer after closing: the baseline for erosion watch, cover and canopy, repeat photo points, and ongoing deer herd surveys.</span><i class="pay">Paid for by the buyer</i><small>Baseline report (PDF), Google Earth file, GIS layers, and repeat photo points (GPX).</small><em>Open the Stewardship Page &rarr;</em></div></a>
 </div>
 <div class="together gift">
-<h3>Stewardship as Your Closing Gift</h3>
+<h3>Stewardship as Your Closing Gift to the Buyer</h3>
 <p>Stewardship is the one package that keeps working after the sale, which makes it a natural closing gift.</p>
 <ul>
 <li><b>Your gift:</b> a deer herd survey in the buyer&rsquo;s first season after closing, co-branded with UC Hunting Properties. You buy it at an agent rate and hand it over at the closing table.</li>
@@ -303,6 +318,18 @@ footer .tm{color:var(--label);font-weight:500}
 <li><b>Hosting under your own address (optional):</b> I host all four package pages, and they can show a UC Hunting Properties web address instead of mine. The cleanest way is a subdomain such as maps.uchuntingproperties.com: your website admin adds one DNS record that points it to my site, and buyers only ever see UC&rsquo;s address. Your listing pages could also embed the package pages, or a first test could run on a neutral address with no Novak name in it, which needs nothing from your web team.</li>
 <li><b>Why that helps your team:</b> you don&rsquo;t have to organize or keep the large map, 3D, and thermal files on your servers or use up your storage, and I keep the pages up and running.</li>
 </ul>
+</div>
+<div class="fly" id="fly-thru">
+<a class="fly-v" href="https://www.youtube.com/watch?v=iY8wzHlo9pA" rel="noopener" target="_blank" aria-label="Watch the 3D fly-thru example on YouTube"><img src="/case-studies/real-estate/residential/img/re-01.jpg" alt="High aerial of a 15-acre rural property with two ponds, prairie plantings, and a home" width="1600" height="1199" loading="lazy" decoding="async"><span class="fly-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#12161c"><path d="M6 3.8v16.4L20 12z"/></svg></span><span class="fly-free">Free with the Full Set</span></a>
+<div class="fly-t">
+<b>Add-On</b>
+<h3>3D Fly-Thru for the Listing</h3>
+<p>A true-to-scale 3D fly-thru of the property, built from more than 1,000 aerial photos, that can be added to any of the four packages.</p>
+<p class="fly-deal"><strong>Included free with the full set:</strong> Essentials, Hunting &amp; Recreation, and Buyer Due Diligence, plus one round of Stewardship at your agent rate as the closing gift to the buyer.</p>
+<p class="fly-ex">Example: a 15-acre rural property in Blue Mounds, WI, with the home, two ponds, prairie, wetland, and woods in one 59-second video.</p>
+<a href="https://www.youtube.com/watch?v=iY8wzHlo9pA" rel="noopener" target="_blank">Watch the Fly-Thru on YouTube &rarr;</a>
+<p class="fly-ex">Or see the <a href="/case-studies/real-estate/residential/" style="color:var(--ink);font-weight:400;text-decoration:underline">full listing case study</a>.</p>
+</div>
 </div>
 </section>
 
@@ -372,7 +399,7 @@ footer .tm{color:var(--label);font-weight:500}
 <div class="pkg">
 <div class="card"><strong>Your Branding on Every Page</strong><span>UC Hunting Properties branding, the listing agent&rsquo;s name, and a call button on every client page. The mapping credit sits quietly in the footer.</span><em>Buyers call the listing agent straight from the page they&rsquo;re reading.</em></div>
 <div class="card"><strong>Private Links</strong><span>The pages are kept out of search engines, so they reach only the people you share them with.</span><em>Link from the listing, marketing emails, and social posts, and open them at showings.</em></div>
-<div class="card"><strong>Listing Graphics</strong><span>Six 2400 px images sized for a listing gallery, in one ZIP file (9.2 MB). <a href="https://drive.google.com/uc?export=download&amp;id=1soHB0MwiC8LJid2_CMliw1lmzFkhjL6x" rel="noopener" style="color:var(--or);font-weight:600">Download the graphics</a></span><em>Upload alongside the property photos in any listing gallery.</em></div>
+<div class="card"><strong>Listing Graphics</strong><span>Six 2400 px images sized for a listing gallery, in one ZIP file (9.2 MB). <a href="https://drive.google.com/uc?export=download&amp;id=1soHB0MwiC8LJid2_CMliw1lmzFkhjL6x" rel="noopener" style="color:var(--or);font-weight:600">Download the graphics</a></span><em>A ZIP is one download that holds all six images. Open it and they unpack like a folder, ready to upload alongside the property photos in any listing gallery.</em></div>
 <div class="card"><strong>Live Location at Showings</strong><span>On a phone at the property, one tap on the interactive map shows the buyer&rsquo;s live location, with their permission. It never leaves their device.</span><em>Help buyers find their way during an authorized showing.</em></div>
 <div class="card"><strong>A Report With Every Package</strong><span>Each package includes its own report (PDF), from the two-page property overview to the full due diligence report.</span><em>Send to interested buyers or include in auction and property-information packets.</em></div>
 <div class="card"><strong>Optional Map Walkthrough</strong><span>A short captioned or narrated tour of the map.</span><em>Use in a listing video or social post.</em></div>
@@ -421,20 +448,6 @@ footer .tm{color:var(--label);font-weight:500}
 </div>
 </section>
 
-<section class="sec">
-<p class="kick">Add-On Example</p>
-<h2>3D Fly-Thru for the Listing</h2>
-<div style="display:grid;grid-template-columns:1.25fr 1fr;text-decoration:none;color:var(--ink);border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:var(--panel)" class="flycard">
-<a href="https://www.youtube.com/watch?v=iY8wzHlo9pA" rel="noopener" target="_blank" aria-label="Watch the 3D fly-thru on YouTube" style="position:relative;display:block;background:#05070a"><img src="/case-studies/real-estate/residential/img/re-01.jpg" alt="High aerial of a 15-acre rural property with two ponds, prairie plantings, and a home" width="1600" height="1199" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/10">
-<span aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:999px;background:#e8711a;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.45)"><svg viewBox="0 0 24 24" fill="#12161c" style="width:28px;height:28px;margin-left:4px"><path d="M6 3.8v16.4L20 12z"/></svg></span></a>
-<span style="padding:20px 22px;display:flex;flex-direction:column;gap:10px;justify-content:center">
-<strong style="font-size:19px">15-Acre Rural Property, Blue Mounds, WI</strong>
-<span style="font-size:16px;line-height:1.55;color:var(--muted)">A true-to-scale 3D fly-thru built from more than 1,000 aerial photos: the home, two ponds, prairie, wetland, and woods in one 59-second video. The same capture can be added to any of the four packages.</span>
-<a href="https://www.youtube.com/watch?v=iY8wzHlo9pA" rel="noopener" target="_blank" style="font-weight:600;color:#e8711a;text-decoration:none">Watch the Fly-Thru on YouTube &rarr;</a>
-<span style="font-size:14px;color:var(--faint)">Or see the <a href="/case-studies/real-estate/residential/" style="color:var(--ink)">full listing case study</a>.</span>
-</span>
-</div>
-</section>
 
 <!-- FAQ -->
 <section class="sec">
@@ -473,5 +486,6 @@ footer .tm{color:var(--label);font-weight:500}
 <footer><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 Novak Geospatial Solutions&trade;, a BUCK2NINETY LLC company &middot; Cross Plains, Wisconsin &middot; FAA Part 107 Certified</footer>
 </main>
 </div>
+<script>/* map/thermal compare slider on the Package 2 card */document.querySelectorAll(".ba").forEach(function(b){var h=b.querySelector(".ba-h"),dn=false,p=50;function set(v){p=Math.max(0,Math.min(100,v));b.style.setProperty("--p",p+"%");h.setAttribute("aria-valuenow",Math.round(p));}function at(e){var r=b.getBoundingClientRect();set((e.clientX-r.left)/r.width*100);}b.addEventListener("pointerdown",function(e){dn=true;try{b.setPointerCapture(e.pointerId);}catch(_){}if(e.pointerType==="mouse")at(e);});b.addEventListener("pointermove",function(e){if(dn)at(e);});["pointerup","pointercancel","lostpointercapture"].forEach(function(t){b.addEventListener(t,function(){dn=false;});});h.addEventListener("keydown",function(e){if(e.key==="ArrowLeft"){set(p-5);e.preventDefault();}else if(e.key==="ArrowRight"){set(p+5);e.preventDefault();}else if(e.key==="Home"){set(0);e.preventDefault();}else if(e.key==="End"){set(100);e.preventDefault();}});});</script>
 </body>
 </html>
