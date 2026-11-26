@@ -147,7 +147,10 @@ def due_diligence(path):
              ('Resource protection corridor', '3.74 ac'), ('Farmland preservation plan', 'Not Farmland Preservation'),
              ('Zoning permits on these parcels', 'None on record'), ('Conditional use permits', 'None mapped'),
              ('Zoning deed restrictions', 'None mapped'), ('Zoning office', 'Dane County Department of Planning &amp; Development, Zoning Division')]),
-         Spacer(1, 8),
+         Spacer(1, 4),
+         P('<b>Shoreland ring:</b> The shoreland ring on this map comes from the most recent public data available. '
+           'Follow-up with the zoning office is needed if it has to be confirmed.', 'note'),
+         Spacer(1, 6),
          fig('landuse_history.jpg', 'How Dane County has classified the ground inside the boundary over time (acres).', w=W * 0.85),
          PageBreak(),
          # 4. Ponds
