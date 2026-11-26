@@ -58,6 +58,8 @@ EXTRA_CSS = ('<style>'
              '.li-tbl th{background:#e6e6e6;text-align:left;padding:8px 10px;font-weight:600;font-size:13px;text-transform:uppercase;color:#1a1a1a}'
              '.li-tbl td{padding:8px 10px;border-top:1px solid #efefef;color:#555;vertical-align:top}'
              '.li-scroll{overflow-x:auto}'
+             '.card.dl small.use{flex:1;display:block;padding:8px 16px 4px;font-size:14.5px;line-height:1.5;color:var(--muted)}'
+             '.card.dl small.use b{display:block;margin-bottom:3px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}'
              '.li-kv{display:grid;grid-template-columns:minmax(180px,.8fr) 2fr;border:1px solid #e6e6e6;background:#fff}'
              '.li-kv dt,.li-kv dd{margin:0;padding:9px 12px;border-top:1px solid #efefef;font-size:14.5px;line-height:1.5}'
              '.li-kv dt{font-weight:600;color:#1a1a1a}.li-kv dd{color:#555}'
@@ -156,6 +158,27 @@ DESC = {   # what each download is, by file-name ending
     'Stewardship GIS Layers (GeoJSON).zip': ('GIS Layers', 'Every Stewardship layer as GeoJSON.'),
     'Repeat Photo Points.gpx': ('Repeat Photo Points (GPX)', 'Load into a phone app and stand in the same spots each visit.'),
 }
+USE = {   # plain-language "How to Use It" note under each download, by file-name ending
+    'Essentials Report.pdf': 'A standard document that opens on any phone or computer, so you can print it for a showing or email it to a buyer, lender, or appraiser.',
+    'Essentials Map (Google Earth).kmz': 'A map file for the free Google Earth app. Tap it on a phone or open it on a computer, then turn layers on and off to see what’s where on the property.',
+    'Essentials GIS Layers (GeoJSON).zip': 'The map layers in a format that professional mapping software reads. Most buyers won’t open it; it’s the file to hand a surveyor, forester, or builder.',
+    'Leaf-Off Aerial (GeoTIFF).tif': 'A high-detail photo of the property that mapping software places exactly where it belongs. It’s a large file, so download it on Wi-Fi; for a quick look, the Google Earth file is easier.',
+    'Elevation 2ft Contours (Shapefile).zip': 'Lines that connect points of equal height, every 2 feet. A builder, engineer, or excavator uses them to plan a driveway, building pad, or pond.',
+    'Property Map (Google Earth).kmz': 'A map file for the free Google Earth app. Tap it on a phone or open it on a computer, then turn layers on and off to scout the terrain before a visit.',
+    'Property Overview.pdf': 'A standard document that opens on any phone or computer, so you can print it or send it to a buyer as a quick read on the property.',
+    'Hunting App Files (GPX + KML).zip': 'The scouting lines and points in the formats hunting apps import. Unzip the folder, then add the files with the app’s import option (often on its website) to see them on a phone in the field.',
+    'Buyer Due Diligence Report.pdf': 'A standard document that opens on any phone or computer, so you can share it with a buyer, lender, attorney, or builder as one summary of the records and build options.',
+    'Due Diligence Map (Google Earth).kmz': 'A map file for the free Google Earth app. Tap it on a phone or open it on a computer, then turn layers on and off to compare build sites, driveway routes, and nearby records.',
+    'Due Diligence GIS Layers (GeoJSON).zip': 'The map layers in a format that professional mapping software reads. Most buyers won’t open it; it’s the file to hand a surveyor, forester, or builder.',
+    'Public Records (CSV).zip': 'Spreadsheets of the records behind the report. Unzip the folder and open the tables in Excel or Google Sheets to sort, filter, or print them.',
+    'Surface Model (GeoTIFF).tif': 'A height map of the property as the drone saw it, treetops and buildings included. It’s for an engineer, forester, or anyone working in mapping software.',
+    'Bare Earth 2024 LiDAR (GeoTIFF).tif': 'A height map of the ground itself, with the trees taken out. An engineer or excavator uses it to size up a driveway, building pad, or pond.',
+    'Historical Topo Maps.zip': 'Old government maps of the area. Unzip the folder and open the images like any photo; the mapping copies line up with today’s maps in mapping software.',
+    'Stewardship Baseline Report.pdf': 'A standard document that opens on any phone or computer, so you can keep it with the property records as the starting point each repeat flight is compared to.',
+    'Stewardship Map (Google Earth).kmz': 'A map file for the free Google Earth app. Tap it on a phone or open it on a computer, then turn layers on and off to see the erosion watch lines and photo points on the aerial.',
+    'Stewardship GIS Layers (GeoJSON).zip': 'The map layers in a format that professional mapping software reads. Most buyers won’t open it; it’s the file to hand a surveyor, forester, or builder.',
+    'Repeat Photo Points.gpx': 'GPS points for a phone app like onX, HuntStand, or Gaia GPS. Walk to each point and take a photo from the same spot each visit, so changes are easy to compare.',
+}
 def downloads(cfg, D, pack, intro):
     links = cfg['_drive']['packages'].get(pack, {}); files = {f['name']: f['bytes'] for f in D['files'].get(pack, [])}
     cards = []
@@ -167,7 +190,9 @@ def downloads(cfg, D, pack, intro):
         key = next((k for k in DESC if name.endswith(k)), None)
         t, s = DESC.get(key, (name, ''))
         ext = name.rsplit('.', 1)[-1].upper()
-        cards.append('<a class="card dl" href="%s" rel="noopener"><strong>%s</strong><span>%s %s.</span><em>Download %s</em></a>' % (dl_url(fid), E(t), E(s), mb(size), ext))
+        use = USE.get(key, '')
+        use = ('<small class="use"><b>How to Use It</b>%s</small>' % E(use)) if use else ''
+        cards.append('<a class="card dl" href="%s" rel="noopener"><strong>%s</strong><span>%s %s.</span>%s<em>Download %s</em></a>' % (dl_url(fid), E(t), E(s), mb(size), use, ext))
     folder = links.get('folder')
     if not cards: return ''
     return ('<section class="sec" id="downloads"><h2>Downloads</h2><p class="body" style="margin-top:-4px">%s</p><div class="card-grid">%s</div>'
