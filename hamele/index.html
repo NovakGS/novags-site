@@ -172,8 +172,8 @@ h3{margin:0;font-size:19px;font-weight:600}
 @media (max-width:760px){.tgrid{grid-template-columns:1fr}}
 /* travis */
 .tv{display:flex;flex-direction:column;gap:18px}
-.tv .for{display:inline-flex;align-self:flex-start;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--or);border-radius:999px;background:rgba(232,113,26,.10);font-family:'Roboto Mono',Consolas,monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
-.tv .for i{width:8px;height:8px;border-radius:999px;background:var(--or)}
+.for{display:inline-flex;align-self:flex-start;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--or);border-radius:999px;background:rgba(232,113,26,.10);font-family:'Roboto Mono',Consolas,monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.for i{width:8px;height:8px;border-radius:999px;background:var(--or)}
 .note-tv{padding:22px 24px;border:1px solid var(--edge);border-left:4px solid var(--or);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;gap:12px}
 .note-tv p{margin:0;font-size:17px;line-height:1.65;color:var(--muted)}
 .note-tv p b{color:var(--ink);font-weight:600}
@@ -240,12 +240,61 @@ footer .tm{color:var(--label);font-weight:500}
 @media (max-width:860px){.season{grid-template-columns:repeat(2,1fr)}.compare,.two{grid-template-columns:1fr}.proof{grid-template-columns:1fr}}
 @media (max-width:760px){h1{font-size:34px}h2{font-size:24px}.stats{grid-template-columns:repeat(2,1fr)}.bar{grid-template-columns:118px 1fr 66px;gap:8px}}
 @media (max-width:480px){.season{grid-template-columns:1fr}.badge{font-size:11px;top:10px;left:10px}}
-.ucb{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding:16px 20px;border:1px solid var(--edge);border-radius:12px;background:var(--panel)}
-.ucb-logo img{display:block;width:220px;height:auto}
+html{--band-h:66px}
 .ucb-d{display:none!important}html[data-theme="light"] .ucb-w{display:none!important}html[data-theme="light"] .ucb-d{display:block!important}
-.ucb-t{display:flex;flex-direction:column;gap:8px;padding-left:26px;border-left:1px solid var(--edge)}
-.ucb-t p{margin:0;font-size:16px;line-height:1.45;color:var(--muted)}.ucb-t p b{color:var(--ink);font-weight:600}
-@media (max-width:560px){.ucb-t{padding-left:0;border-left:0}.ucb-logo img{width:200px}}
+/* UC banner as the page header; a compact copy stays pinned while scrolling */
+.uch,.uch-mini,.uch-menu{font-family:Roboto,'Segoe UI',system-ui,Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.uch{position:relative;z-index:30;background:var(--panel-solid);border-bottom:4px solid var(--or)}
+.uch-row{max-width:1040px;margin:0 auto;padding:16px;display:flex;align-items:center;gap:14px 26px;box-sizing:border-box}
+.uch-pair{flex:none;display:flex;align-items:center;gap:14px;--lh:60px}.uch-logo,.uch-nlogo{flex:none;display:block}.uch-pair img{display:block;height:var(--lh);width:auto}.uch-pair .uch-nlogo img{height:calc(var(--lh)*var(--nk,1.3))}.uch-x{font:300 24px/1 Roboto,'Segoe UI',system-ui,Arial,sans-serif;color:var(--label)}
+.uch-t{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:8px;padding-left:26px;border-left:1px solid var(--edge)}
+.uch-t p{margin:0;font-size:16px;line-height:1.45;color:var(--muted)}.uch-t p b{color:var(--ink);font-weight:600}
+.uch-act{flex:none;display:flex;align-items:center;gap:10px;margin-left:auto;align-self:flex-start}
+.uch-mbtn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border:1px solid var(--edge2);border-radius:999px;background:transparent;color:var(--ink);font:500 15px Roboto,'Segoe UI',system-ui,Arial,sans-serif;cursor:pointer}
+.uch-mbtn svg{width:20px;height:20px}.uch-mbtn:hover,.uch-mbtn[aria-expanded="true"]{border-color:var(--or);color:var(--or)}
+.uch-mbtn:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.uch-mini{position:fixed;top:0;left:0;right:0;z-index:40;background:var(--panel-solid);border-bottom:3px solid var(--or);box-shadow:0 6px 18px rgba(0,0,0,.28);transform:translateY(-110%);visibility:hidden;transition:transform .22s ease,visibility 0s linear .22s}
+.uch-mini.on{transform:none;visibility:visible;transition:transform .22s ease}
+.uch-mini .uch-row{padding:9px 16px;gap:10px 18px}
+.uch-mini .uch-pair{--lh:38px;--nk:1.15;gap:10px}.uch-mini .uch-x{font-size:18px}
+.uch-mini .uch-t{flex-direction:row;align-items:center;gap:14px;padding-left:18px}
+.uch-mini .for{align-self:center;padding:5px 11px;font-size:11px}
+.uch-mini .uch-t p{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uch-mini .uch-act{align-self:center}
+.uch-mini .uch-mbtn{height:40px;padding:0 14px}.uch-mini .theme-toggle{width:40px;height:40px}
+.uch-menu{position:fixed;z-index:45;right:16px;top:70px;width:250px;display:flex;flex-direction:column;padding:10px;border:1px solid var(--edge2);border-radius:12px;background:var(--panel-solid);box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.uch-menu[hidden]{display:none}
+.uch-menu a{display:block;padding:11px 12px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:15px;font-weight:500}
+.uch-menu a:hover{background:rgba(232,113,26,.10);color:var(--or)}
+.uch-menu .brk{color:var(--or)}
+.uch-menu a.uch-menu-logo{padding:6px 12px 12px;margin-bottom:6px;border-bottom:1px solid var(--edge);border-radius:0}
+.uch-menu a.uch-menu-logo:hover{background:none}
+.uch-menu-logo img{display:block;width:150px;height:auto}
+.uch-menu a.nav-quote{margin-top:8px;text-align:center;background:var(--or);color:#12161c;border-radius:999px;font-weight:600}
+.uch-menu a.nav-quote:hover{color:#12161c;filter:brightness(1.08)}
+@media (max-width:760px){
+  .uch-row{flex-wrap:wrap}
+  .uch .uch-pair{--lh:52px}
+  .uch .uch-t{order:3;flex-basis:100%;padding-left:0;border-left:0}
+  .uch .uch-act{align-self:center}
+}
+@media (max-width:600px){
+  html{--band-h:56px}
+  .uch-row{padding:12px 14px}
+  .uch-mbtn span{display:none}.uch-mbtn{width:44px;padding:0;justify-content:center}
+  .uch-mini .uch-row{padding:7px 12px;flex-wrap:nowrap;gap:10px}
+  .uch .uch-pair{--lh:min(46px,9vw);gap:10px}.uch .uch-x{font-size:20px}
+  .uch-mini .uch-pair{--lh:min(30px,6.4vw);--nk:1.3;gap:6px}.uch-mini .uch-x{font-size:14px}
+  .uch-mini .uch-pf{display:none}
+  .uch-mini .uch-t{flex-direction:column;align-items:flex-start;gap:3px;padding-left:10px}
+  .uch-mini .for{align-self:flex-start;padding:0;border:0;background:none;font-size:10.5px;gap:6px;color:var(--or)}
+  .uch-mini .for i{width:6px;height:6px}
+  .uch-mini .uch-t p{font-size:14px}
+  .uch-mini .uch-co{display:none}
+  .uch-mini .uch-mbtn{width:40px;padding:0}
+  .uch-menu{right:12px;left:auto}
+}
+@media (max-width:400px){.uch-mini .theme-toggle{display:none}}
 .li-pk{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.li-pk .card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;transition:border-color .15s}.li-pk .card:hover{border-color:var(--or)}.li-pk .card b{font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}.li-pk .card em{margin-top:auto;padding-top:6px;font-style:normal;font-weight:600;color:var(--or);font-size:14.5px}@media(max-width:960px){.li-pk{grid-template-columns:1fr 1fr}}@media(max-width:560px){.li-pk{grid-template-columns:1fr}}
 .li-pk2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.li-pk2 .pk{display:flex;flex-direction:column;border:1px solid var(--edge);border-radius:12px;background:var(--panel);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s}.li-pk2 .pk:hover{border-color:var(--or)}.li-pk2 .pk img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#05070a;border-bottom:1px solid var(--edge)}.pk-t{flex:1;padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px}.pk-t b{font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}.pk-t strong{font-size:19px;font-weight:600}.pk-t span{font-size:16px;line-height:1.5;color:var(--muted)}.pk-t small{margin-top:4px;font-size:14.5px;line-height:1.45;color:var(--label)}.pk-t small::before{content:"Downloads: ";font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}.pk-t .pay{align-self:flex-start;margin-top:2px;padding:4px 10px;border:1px solid var(--or);border-radius:999px;font-style:normal;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:rgba(232,113,26,.10)}.pk-t em{margin-top:auto;padding-top:8px;font-style:normal;font-weight:600;color:var(--or);font-size:15px}.gift ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}.gift li{position:relative;padding-left:22px;font-size:16px;line-height:1.55;color:var(--muted)}.gift li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--or)}.gift li b{color:var(--ink);font-weight:600}.srcs .card em{display:block;margin-top:10px;font-style:normal;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}.srcs .card em::before{content:"Used in: ";color:var(--label)}.card-grid.srcs{grid-template-columns:repeat(3,1fr)}@media(max-width:860px){.card-grid.srcs{grid-template-columns:1fr 1fr}}@media(max-width:560px){.card-grid.srcs{grid-template-columns:1fr}}
 .li-pk2 .pk img{aspect-ratio:1200/997;object-fit:cover;background:transparent}.li-pk2 a.pk-t{text-decoration:none;color:inherit}.ba{position:relative;touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none;border-bottom:1px solid var(--edge)}.li-pk2 .ba img{border-bottom:0;-webkit-user-drag:none;pointer-events:none}.ba .ba-t{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 0 0 var(--p))}.ba-tag{position:absolute;bottom:12px;padding:3px 9px;border-radius:6px;background:rgba(5,7,10,.8);border:1px solid rgba(255,255,255,.4);color:#fff;font:700 11px 'Open Sans',Helvetica,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;pointer-events:none}.ba-l{left:10px}.ba-r{right:10px}.ba-h{position:absolute;top:0;bottom:0;left:var(--p);width:0;outline:none}.ba-h::before{content:"";position:absolute;top:0;bottom:0;left:-1.5px;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.35)}.ba-h i{position:absolute;top:50%;left:0;width:38px;height:38px;transform:translate(-50%,-50%);border-radius:999px;background:#e8711a;border:2px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center}.ba-h i svg{width:20px;height:20px;fill:none;stroke:#12161c;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}.ba-h:focus-visible i{outline:3px solid #fff;outline-offset:2px}
@@ -261,22 +310,35 @@ footer .tm{color:var(--label);font-weight:500}
 <script async src="/_ov/o.js" data-key="og_pk_Su-2C-gMMfibonqqBRnoTw" data-endpoint="/_ov"></script>
 </head>
 <body data-topo="page" data-topo-style="fine">
-<div class="band" role="banner" data-topo="band" data-topo-style="fine">
-  <div class="band-row">
-    <a class="band-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source data-keep-logo srcset="/logo-dark-v2.webp" type="image/webp"><img data-keep-logo src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
-    <div class="band-nav">
-      <nav aria-label="Main">
-        <a href="/mapping/">Mapping</a>
-        <a href="/thermal/">Thermal</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/accuracy/">Accuracy</a>
-        <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
-        <a class="nav-quote" href="/quote/">Request a Quote</a>
-      </nav>
+<header class="uch" id="uch">
+  <div class="uch-row">
+    <div class="uch-pair"><a class="uch-logo" href="https://www.uchuntingproperties.com/" target="_blank" rel="noopener" aria-label="UC Hunting Properties"><img class="ucb-w" src="/hamele/map/uc/uch-logo-white.png" alt="UC Hunting Properties, powered by Realtree" width="295" height="87"><img class="ucb-d" src="/hamele/map/uc/uch-logo-dark.png" alt="UC Hunting Properties, powered by Realtree" width="295" height="87"></a><span class="uch-x" aria-hidden="true">&times;</span><a class="uch-nlogo" href="/" aria-label="Novak Geospatial Solutions"><picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a></div>
+    <div class="uch-t"><span class="for"><i></i>Private Preview</span><p>Prepared specifically for <b>Travis Hamele</b><br>UC Hunting Properties<br>United Country Midwest Lifestyle Properties</p></div>
+    <div class="uch-act">
+      <button class="uch-mbtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="uch-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
       <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>
     </div>
   </div>
+</header>
+<div class="uch-mini" id="uch-mini" aria-hidden="true">
+  <div class="uch-row">
+    <div class="uch-pair"><a class="uch-logo" href="https://www.uchuntingproperties.com/" target="_blank" rel="noopener" aria-label="UC Hunting Properties" tabindex="-1"><img class="ucb-w" src="/hamele/map/uc/uch-logo-white.png" alt="UC Hunting Properties, powered by Realtree" width="295" height="87"><img class="ucb-d" src="/hamele/map/uc/uch-logo-dark.png" alt="UC Hunting Properties, powered by Realtree" width="295" height="87"></a><span class="uch-x" aria-hidden="true">&times;</span><a class="uch-nlogo" href="/" aria-label="Novak Geospatial Solutions" tabindex="-1"><picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a></div>
+    <div class="uch-t"><span class="for"><i></i>Private Preview</span><p><span class="uch-pf">Prepared for </span><b>Travis Hamele</b><span class="uch-co">, UC Hunting Properties</span></p></div>
+    <div class="uch-act">
+      <button class="uch-mbtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="uch-menu" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
+      <button class="theme-toggle uch-tt2" type="button" aria-label="Switch theme" tabindex="-1"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>
+    </div>
+  </div>
 </div>
+<nav class="uch-menu" id="uch-menu" aria-label="Novak Geospatial Solutions" hidden>
+  <a class="uch-menu-logo" href="/" aria-label="Novak Geospatial Solutions home"><picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="Novak Geospatial Solutions" width="1200" height="555"></picture></a>
+  <a href="/mapping/">Mapping</a>
+  <a href="/thermal/">Thermal</a>
+  <a href="/case-studies/">Case Studies</a>
+  <a href="/accuracy/">Accuracy</a>
+  <a href="/blog/"><span class="brk" aria-hidden="true">[ </span>field notes<span class="brk" aria-hidden="true"> ]</span></a>
+  <a class="nav-quote" href="/quote/">Request a Quote</a>
+</nav>
 
 <div class="hl-root">
 <main class="hl-main">
@@ -284,10 +346,6 @@ footer .tm{color:var(--label);font-weight:500}
 
 <!-- TRAVIS -->
 <section class="tv">
-<div class="ucb">
-<a class="ucb-logo" href="https://www.uchuntingproperties.com/" target="_blank" rel="noopener" aria-label="UC Hunting Properties"><img class="ucb-w" src="/hamele/map/uc/uch-logo-white.png" alt="UC Hunting Properties, powered by Realtree" width="295" height="87"><img class="ucb-d" src="/hamele/map/uc/uch-logo-dark.png" alt="UC Hunting Properties, powered by Realtree" width="295" height="87"></a>
-<div class="ucb-t"><span class="for"><i></i>Private Preview</span><p>Prepared specifically for <b>Travis Hamele</b><br>UC Hunting Properties<br>United Country Midwest Lifestyle Properties</p></div>
-</div>
 <h1>Land Intelligence Packages That Explain the Ground, Not Just Show It.</h1>
 <div class="note-tv" style="border:1px solid var(--or);background:rgba(232,113,26,.08)">
 <p>Travis - I'm excited to present to you what I think might be the most comprehensive way to present a prospective land buyer with everything they need to make an educated purchase decision, no matter where they are in the country. Below you'll find 4 distinct &ldquo;land intelligence&rdquo; packages, each of which builds upon the last.</p>
@@ -431,7 +489,7 @@ footer .tm{color:var(--label);font-weight:500}
 <li>Flown only with the seller's permission; no cost to you or the seller</li>
 <li><b style="color:var(--ink)">The finished package is yours to keep and use in full, at no cost</b></li>
 <li><b style="color:var(--ink)">In return:</b> permission to feature it as a public Novak|GS case study, your honest feedback, and a testimonial</li>
-<li><b style="color:var(--ink)">After the test:</b> a heavy first-run discount on your next listings, before regular pricing</li>
+<li><b style="color:var(--ink)">After the test:</b> your first paid listing at a discount, before regular pricing</li>
 </ul>
 </div>
 <div class="note-tv" style="border-left-color:var(--or)">
@@ -486,6 +544,16 @@ footer .tm{color:var(--label);font-weight:500}
 <footer><span class="tm">Elevated Data | Grounded Truth</span><br>&copy; 2026 Novak Geospatial Solutions&trade;, a BUCK2NINETY LLC company &middot; Cross Plains, Wisconsin &middot; FAA Part 107 Certified</footer>
 </main>
 </div>
+<script>/* pinned UC banner: show the compact bar once the full header scrolls away; Novak menu */(function(){var top=document.getElementById("uch"),mini=document.getElementById("uch-mini"),menu=document.getElementById("uch-menu");if(!top||!mini||!menu)return;var btns=document.querySelectorAll(".uch-mbtn");function setMini(on){mini.classList.toggle("on",on);mini.setAttribute("aria-hidden",on?"false":"true");mini.querySelectorAll("a,button").forEach(function(el){el.tabIndex=on?0:-1;});if(!on&&menu.dataset.from==="mini")close();}
+if("IntersectionObserver"in window){new IntersectionObserver(function(e){setMini(!e[0].isIntersecting);}).observe(top);}else{var chk=function(){setMini(top.getBoundingClientRect().bottom<=0);};window.addEventListener("scroll",chk,{passive:true});chk();}
+function place(b){var r=b.getBoundingClientRect();menu.style.top=Math.round(r.bottom+8)+"px";menu.style.right=Math.max(12,Math.round(window.innerWidth-r.right))+"px";}
+function close(){menu.hidden=true;btns.forEach(function(b){b.setAttribute("aria-expanded","false");});}
+btns.forEach(function(b){b.addEventListener("click",function(ev){ev.stopPropagation();var open=menu.hidden||b.getAttribute("aria-expanded")!=="true";close();if(open){menu.dataset.from=mini.contains(b)?"mini":"top";place(b);menu.hidden=false;b.setAttribute("aria-expanded","true");var f=menu.querySelector("a");if(f)f.focus({preventScroll:true});}});});
+document.addEventListener("click",function(ev){if(!menu.hidden&&!menu.contains(ev.target))close();});
+document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&!menu.hidden){close();}});
+window.addEventListener("scroll",function(){if(!menu.hidden&&menu.dataset.from==="top")close();},{passive:true});
+window.addEventListener("resize",close);
+var t2=mini.querySelector(".uch-tt2"),t1=top.querySelector(".theme-toggle");if(t1&&t2)t2.addEventListener("click",function(){t1.click();});})();</script>
 <script>/* map/thermal compare slider on the Package 2 card */document.querySelectorAll(".ba").forEach(function(b){var h=b.querySelector(".ba-h"),dn=false,p=50;function set(v){p=Math.max(0,Math.min(100,v));b.style.setProperty("--p",p+"%");h.setAttribute("aria-valuenow",Math.round(p));}function at(e){var r=b.getBoundingClientRect();set((e.clientX-r.left)/r.width*100);}b.addEventListener("pointerdown",function(e){dn=true;try{b.setPointerCapture(e.pointerId);}catch(_){}if(e.pointerType==="mouse")at(e);});b.addEventListener("pointermove",function(e){if(dn)at(e);});["pointerup","pointercancel","lostpointercapture"].forEach(function(t){b.addEventListener(t,function(){dn=false;});});h.addEventListener("keydown",function(e){if(e.key==="ArrowLeft"){set(p-5);e.preventDefault();}else if(e.key==="ArrowRight"){set(p+5);e.preventDefault();}else if(e.key==="Home"){set(0);e.preventDefault();}else if(e.key==="End"){set(100);e.preventDefault();}});});</script>
 </body>
 </html>
