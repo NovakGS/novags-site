@@ -4,5 +4,8 @@
 /thermal/deer-recovery/deer-recovery.vcf
   Content-Type: text/vcard; charset=utf-8
 
+/thermal/pet-recovery/pet-recovery.vcf
+  Content-Type: text/vcard; charset=utf-8
+
 /proposals/*
   X-Robots-Tag: noindex, nofollow
