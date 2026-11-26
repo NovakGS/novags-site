@@ -91,7 +91,7 @@ def essentials(path):
              ('FEMA floodplain in boundary', '0 ac'), ('Mapped wetland in boundary', '1.6 ac'),
              ('Nearest public road', 'Shady Street (848 ft)'), ('Leaf-off aerial flown', 'November 24, 2026')]),
          Spacer(1, 6), img('map_overview.jpg', 352), Spacer(1, 6),
-         P('County tax-parcel lines from the statewide parcel map. Approximate, not a survey. Owner names are not included.', 'note'),
+         P('Flight boundary (orange) with its approximate side lengths, and county tax-parcel lines (yellow) from the statewide parcel map. Approximate, not a survey. Owner names are not included.', 'note'),
          PageBreak(),
          P('The Lay of the Land', 'h2'),
          P('Elevation ranges from 921 to 1,085 ft, 164 ft of relief. Median slope is 15.8%. About 10.9 acres are under 12% slope, '
@@ -104,6 +104,12 @@ def essentials(path):
                ['20 to 35%', 'Steep', '10.0', '30%'], ['35% and over', 'Very steep', '1.1', '3%'], ['Total', '', '33.3', '100%']],
               [131.4, 131.4, 131.4, 131.4], bold_last=True),
          P('Slope is measured from the 2024 bare-earth LiDAR on about a 4 ft grid. Classes are for planning; a site plan or engineer decides what can be built where.', 'note'),
+         PageBreak(),
+         P('Contours', 'h2'),
+         P('2-ft contours from the 2024 bare-earth LiDAR, with every 10-ft line drawn heavier and elevations labeled every 20 ft, in feet above sea level (NAVD88). '
+           'The lowest ground, about 921 ft, is on the north line; the highest, about 1,085 ft, is in the southeast corner.'),
+         Spacer(1, 4), img('map_contours.jpg'), Spacer(1, 6),
+         P('Lines close together mean steep ground; lines far apart mean gentle ground. Green is the low ground, tan the high ground.', 'note'),
          PageBreak(),
          P('Where the Water Goes', 'h2'),
          P('The whole property is FEMA Zone X, an area of minimal flood hazard, on FIRM panels 55025C0357H and 55025C0376H (both effective 2016-06-16). '
