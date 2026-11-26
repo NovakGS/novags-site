@@ -109,19 +109,16 @@ def due_diligence(path):
          P('Build sites, the ground and water beneath, zoning, ponds, soils, and the records around the property.', 'sub'), Spacer(1, 6),
          # 1. Build sites
          P('Where a House, Shop, or Driveway Could Go', 'h2'),
-         fig('map_build.jpg', 'Candidate build areas (yellow) and the gentlest driveway route from the nearest public road (red).', h=270),
+         fig('map_build.jpg', 'Candidate build areas (yellow) and the gentlest driveway route on the property (red), starting at the property line nearest the public road.', h=236),
          Spacer(1, 6),
          grid(['Site', 'Acres', 'Avg slope', 'Soil', 'Homes w/o basements', 'Septic fields', 'Driveway', 'Steepest 50 ft'], build_rows,
               [50, 48, 56, 60, 84, 76, 72, 79.6]),
-         Spacer(1, 2)]
+         Spacer(1, 2),
+         P('<b>Confirm with the Village:</b> The property is in the Village of Cross Plains, which sets its own zoning. This screen used county, state, and federal layers only, so check any site with the Village before relying on it.', 'note')]
     s += [P('<b>%s</b> %s' % r, 'note') for r in RATINGS]
     s += [P('A Very limited rating doesn&rsquo;t rule a site out, but it means planning on engineering and added cost.', 'note'),
-         P('Ground at or under 10% slope (up to 15% counted as workable), at least 50 ft inside the boundary, outside the FEMA 1% floodplain, at least 75 ft '
-           'from mapped wetlands, outside county shoreland/wetland/floodplain districts where mapped, and at least 40 ft from modeled drainage paths. '
-           'Driveway lengths and grades are the gentlest route over the 2024 LiDAR bare earth from the stretch of property line closest to the nearest '
-           'public road, measured on the property only.', 'note'),
-         P('Screening only. Setbacks, driveway permits, septic suitability, and building approvals are set by the municipality and county. Legal access to '
-           'the property line is a title question.', 'note'),
+         P('Ground at or under 10% slope on the 2024 LiDAR bare earth (up to 15% counted as workable), at least 50 ft inside the boundary, outside the FEMA 1% floodplain, at least 75 ft from WI DNR mapped wetlands, outside Dane County shoreland, wetland, and floodplain districts where mapped, and at least 40 ft from modeled drainage paths. Driveway lengths and grades are the gentlest route over the 2024 LiDAR bare earth, measured on the property only, from the stretch of property line closest to the nearest public road.', 'note'),
+         P('Screening only. Setbacks, driveway permits, septic suitability, and building approvals are set by the Village and county. The property has no road frontage on public road maps: the nearest mapped public road, Shady Street, is about 850 ft past the boundary in a straight line, so access to the property line is a title and easement question.', 'note'),
          PageBreak(),
          # 2. Ground and water
          P('Ground and Water Beneath', 'h2'),
@@ -142,11 +139,11 @@ def due_diligence(path):
          P('Zoning and Land-Use Records', 'h2'),
          fig('map_zoning.jpg', 'Dane County zoning and planning layers.', h=235),
          Spacer(1, 6),
-         kv([('County rural zoning in boundary', 'None. The property is in Village of Cross Plains, which zones its own land; check with the municipality.'),
+         kv([('County rural zoning in boundary', 'None. The property is in the Village of Cross Plains, which zones its own land. Village zoning is not in this report; confirm it with the Village.'),
              ('Shoreland, wetland, floodplain districts', 'Shoreland district (primary, 300 ft): 1.66 ac, Wetland district (75 ft buffer): 3.71 ac'),
              ('Resource protection corridor', '3.74 ac'), ('Farmland preservation plan', 'Not Farmland Preservation'),
              ('Zoning permits on these parcels', 'None on record'), ('Conditional use permits', 'None mapped'),
-             ('Zoning deed restrictions', 'None mapped'), ('Zoning office', 'Dane County Department of Planning &amp; Development, Zoning Division')]),
+             ('Zoning deed restrictions', 'None mapped'), ('Zoning office', 'Village of Cross Plains for zoning on Village land; Dane County Department of Planning &amp; Development, Zoning Division, for the county layers in this report')]),
          Spacer(1, 4),
          P('<b>Shoreland ring:</b> The shoreland ring on this map comes from the most recent public data available. '
            'Follow-up with the zoning office is needed if it has to be confirmed.', 'note'),
@@ -196,11 +193,11 @@ def due_diligence(path):
          # 7. Around it
          P('What Is Around It', 'h2'),
          P('Within 1 mile of the property: 0 open records and 6 closed records in the WI DNR contaminated-lands database, none on the property itself. '
-           '12 public properties within 3 miles.'),
+           'The 12 nearest public properties are all within about 1.25 miles.'),
          fig('map_context.jpg', 'Public land (green) and WI DNR contaminated-land records (red) within about two miles.', h=330),
          Spacer(1, 6),
          grid(['Record', 'Status', 'Address', 'Years', 'Distance'], records, [150, 55, 170, 80, 70.6]),
-         P('Public Land Within 3 Miles', 'h3'),
+         P('Nearest Public Land', 'h3'),
          grid(['Name', 'Managed by', 'Access', 'Acres', 'Distance'], public, [165, 130, 105, 55, 70.6]),
          PageBreak(),
          # 8. Historical maps
@@ -221,7 +218,7 @@ def stewardship(path):
          P('The Baseline', 'h2'),
          P('This flight is the baseline. Change maps (trails and food plots, canopy, erosion, and restoration) are measured against it on each repeat flight.'),
          P('Deer Herd Baseline', 'h2'),
-         P('Night thermal survey on November 24, 2026, 7:19 to 8:40 PM: 7 likely deer and 9 possible. Each ongoing deer herd survey flies the property again '
+         P('Night thermal survey on November 24, 2026, 7:19 to 8:40 PM: 7 likely deer, which may include the same deer seen twice (5 to 7 animals), and 9 possible. Each ongoing deer herd survey flies the property again '
            'after dark, in the same season and on the same flight plan, so herd use can be compared from one year to the next.'),
          P('Each survey is a snapshot of one night. Deer under heavy cover or off the property that night are not counted, so treat each number as a minimum.', 'note'),
          KeepTogether([P('Cover and Canopy', 'h2'),

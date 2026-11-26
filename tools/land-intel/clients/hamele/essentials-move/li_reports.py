@@ -89,7 +89,7 @@ def essentials(path):
              ('Elevation', '921 to 1,085 ft (164 ft of relief)'),
              ('Cover', 'Hardwood 30.8 ac, Open / Field 1.7 ac, Conifer 0.5 ac, Thicket / Regrowth 0.3 ac'),
              ('FEMA floodplain in boundary', '0 ac'), ('Mapped wetland in boundary', '1.6 ac'),
-             ('Nearest public road', 'Shady Street (848 ft)'), ('Leaf-off aerial flown', 'November 24, 2026')]),
+             ('Nearest public road', 'Shady Street, about 850 ft from the boundary in a straight line. No road frontage; legal access is a title question.'), ('Leaf-off aerial flown', 'November 24, 2026')]),
          Spacer(1, 6), img('map_overview.jpg', 352), Spacer(1, 6),
          P('Flight boundary (orange) with its approximate side lengths, and county tax-parcel lines (yellow) from the statewide parcel map. Approximate, not a survey. Owner names are not included.', 'note'),
          PageBreak(),
@@ -123,7 +123,7 @@ def essentials(path):
                ['Ponds and open water', '0 ac', 'Unnamed pond, about 60 ft away'],
                ['Streams', '0 ft', 'Unnamed stream, about 755 ft away']],
               [175.2, 120, 230.4]),
-         P('Wetland points (too small to outline): 0 inside the boundary, 1 within 1/4 mile. Watershed: Black Earth Creek.', 'note'),
+         P('Small wetlands mapped as points: 0 inside the boundary, 1 within 1/4 mile. Watershed: Black Earth Creek.', 'note'),
          P(WET_NOTE, 'note'),
          PageBreak(),
          P('Boundary dimensions are measured on the map from the flight boundary and rounded to the nearest 5 ft: about 1,340 ft on the north and south lines '
