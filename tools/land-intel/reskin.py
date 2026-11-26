@@ -249,6 +249,14 @@ def page_vals(cfg, pk):
     crumbs.append('<span>%s</span>' % cfg['property']['property_name'])
     v['crumbs'] = '<i>/</i>'.join(crumbs)
     v['facts'] = ''.join('<div><dt>%s</dt><dd>%s</dd></div>' % (a, b) for a, b in cfg['property'].get('facts', []))
+    # The agent's email is optional: with "agent_email" in the client file, the hero card and the
+    # contact box get an email link and an Email button; without it they show phone and text only.
+    em = cfg.get('agent', {}).get('agent_email', '')
+    first = cfg.get('agent', {}).get('agent_first', '')
+    v['agent_email_link'] = '<a class="xem" href="mailto:%s">%s</a>' % (em, em) if em else ''
+    v['agent_email_ln'] = '<a href="mailto:%s">%s%s</a>' % (em, ICONS['icon_mail'], em) if em else ''
+    v['agent_email_btn'] = '<a href="mailto:%s">Email</a>' % em if em else ''
+    v['agent_email_btn_named'] = '<a href="mailto:%s">Email %s</a>' % (em, first) if em else ''
     return v
 
 
