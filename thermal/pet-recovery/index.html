@@ -406,7 +406,7 @@ a.slot.open:hover,a.slot.open:focus-visible{filter:brightness(1.25);box-shadow:0
       : 'None (' + d.roundTripMiles + ' mi round trip is within the first ' + d.freeMiles + ')';
     out.innerHTML =
       '<p class="dq-place">Quote for <b>' + esc(d.place) + '</b> &middot; about ' + d.roundTripMiles + ' mi round trip' + (d.approx ? ' (estimated)' : '') + '</p>' +
-      '<div class="dq-tot"><div class="hi"><b>' + $(d.notLocated) + '</b><span>Flat search price, found or not</span></div></div>' +
+      '<div class="dq-tot"><div class="hi"><b>' + $(d.notLocated) + '</b><span>Search total, found or not</span></div></div>' +
       '<ul class="rows"><li><b>Mileage</b><span>' + mi + '</span></li></ul>' +
       (d.inArea ? '' : '<p class="dq-err">This location looks outside southern Wisconsin. Call or text to check before booking.</p>') +
       '<p class="note">Estimate only. The rate is confirmed before dispatch.</p>';
