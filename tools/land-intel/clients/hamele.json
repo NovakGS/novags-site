@@ -4,6 +4,20 @@
  "shell": "hamele/map/index.html",
  "base": "/hamele",
  "presentation": "/hamele/",
+ "crumbs": [
+  [
+   "Home",
+   "https://www.uchuntingproperties.com/"
+  ],
+  [
+   "Land for Sale in Wisconsin",
+   "https://www.uchuntingproperties.com/properties/wisconsin/"
+  ],
+  [
+   "Dane",
+   null
+  ]
+ ],
  "data": "tools/land-intel/clients/hamele/land_intel.json",
  "drive": "tools/land-intel/clients/hamele/drive_links.json",
  "images": "tools/land-intel/clients/hamele/maps",

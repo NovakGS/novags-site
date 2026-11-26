@@ -13,7 +13,8 @@ The client file (clients/<name>.json) says where things live:
   data         land_intel.json produced by land_intel.py
   drive        drive_links.json: {"folder": id, "packages": {"1 Essentials": {"folder": id, "files": {name: id}}, ...}}
   images       folder holding the engine's map images (map_*.png, cross_sections.png, landuse_history.png)
-  presentation URL of the presentation page
+  presentation URL of the presentation page (kept for reference; the client pages do not link to it)
+  crumbs       optional breadcrumb trail [[text, url or null], ...] shown above each page title
   pages        which packages get a page here and at what slug; package 2 can point at an existing page
 """
 import json, os, re, sys, html, shutil
@@ -35,8 +36,11 @@ PACK_INFO = {
     '1 Essentials': ('Essentials', 'What the land is, where the water goes, and what is underfoot. One mapping flight plus the public layers every buyer asks about.'),
     '2 Hunting & Recreation': ('Hunting & Recreation', 'The terrain read, cover and edges, live night thermal, and files for the hunting apps buyers already use.'),
     '3 Buyer Due Diligence': ('Buyer Due Diligence', 'Public records, candidate build sites and driveways, pond screening, and what surrounds the property.'),
-    '4 Stewardship': ('Stewardship', 'The baseline for owning it: erosion watch, cover and canopy, thermal baseline, and repeat photo points.'),
+    '4 Stewardship': ('Stewardship', 'The baseline for owning it: erosion watch, cover and canopy, ongoing deer herd surveys, and repeat photo points. Paid for by the buyer after closing.'),
 }
+
+PACK_TAG = {'1 Essentials': 'The Land', '2 Hunting & Recreation': 'Interactive Map', '3 Buyer Due Diligence': 'Records & Build Sites', '4 Stewardship': 'After Closing'}
+AGENT_FILES = ('Listing Graphics.zip',)   # for the listing team; offered on the presentation page, not on the client pages
 
 # ------------------------------------------------------------------------------------------- shell
 EXTRA_CSS = ('<style>'
@@ -76,32 +80,33 @@ def page(shell, title, desc, nav, quick, main):
     head, header, contact, footer = shell
     head = re.sub(r'<title>.*?</title>', '<title>%s</title>' % E(title), head, flags=re.S)
     head = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="%s">' % E(desc), head)
-    header = header.replace('Private Link &middot; Sample Listing Map', 'Private Link &middot; Sample Land Intelligence Package')
     header = re.sub(r'<nav class="uc-nav".*?</nav>', '<nav class="uc-nav" aria-label="Page">%s</nav>' % ''.join('<a href="%s">%s</a>' % (h, E(t)) for h, t in nav), header, flags=re.S)
     footer = re.sub(r'<h5>Quick Links</h5><ul>.*?</ul>', '<h5>Quick Links</h5><ul>%s</ul>' % ''.join('<li><a href="%s">%s</a></li>' % (h, E(t)) for h, t in quick), footer, flags=re.S)
-    footer = footer.replace('This is a sample map prepared to show the format of a listing package.', 'This is a sample package prepared to show the format of a Land Intelligence listing package.')
     extra_css = EXTRA_CSS
-    head = head.replace('</head>', extra_css + '\n</head>')
+    if '.li-sw{' not in head:
+        head = head.replace('</head>', extra_css + '\n</head>')
     return (head + '<body>\n' + header + '\n<div class="hl-root">\n<main class="hl-main">\n' + main + '\n' + contact + '\n</main>\n</div>\n' + footer + '\n</body>\n</html>\n')
 
 # ------------------------------------------------------------------------------------------- blocks
 def hero(cfg, D, kicker, h1, lede):
     pr = D['property']; m = D['meta']
+    trail = ' // '.join(('<a href="%s" rel="noopener">%s</a>' % (E(u), E(t))) if u else E(t) for t, u in cfg.get('crumbs', []))
+    crumbs = (trail + ' // ' if trail else '') + E('%s: %s' % (cfg['property_name'], h1))
     return ('<section class="sec" style="gap:14px">\n'
-            '<p class="crumbs"><a href="%s">Listing Package</a> // %s</p>\n'
+            '<p class="crumbs">%s</p>\n'
             '<div><p class="lnum">%s</p><h1 class="ltitle">%s<span class="sep"> | </span><span class="l2">%s</span></h1></div>\n'
             '<div class="lmeta"><div style="display:flex;flex-direction:column;gap:8px"><p class="county">County: %s</p><p class="loc">%s County, %s</p></div><p class="price">%s&plusmn; Acres</p></div>\n'
             '<h2 class="uh" style="margin-top:6px">What This Package Covers</h2>\n<p class="lede">%s</p>\n</section>\n'
-            % (cfg['presentation'], E(kicker), E(kicker), E(cfg['property_name']), E(h1), E(m['county']), E(m['county']), E(m['state']), ac(pr['acres']), lede))
+            % (crumbs, E(kicker), E(cfg['property_name']), E(h1), E(m['county']), E(m['county']), E(m['state']), ac(pr['acres']), lede))
 
 def switcher(cfg, current):
     a = []
     for k in PACK_ORDER:
         url = cfg['pages'].get(k)
         if not url: continue
-        a.append('<a href="%s"%s><b>Package %s</b><span>%s</span></a>' % (url, ' class="on" aria-current="page"' if k == current else '', k[0], E(PACK_INFO[k][0])))
-    return ('<section class="sec"><h2>The Four Packages</h2><nav class="li-sw" aria-label="Land Intelligence packages">%s</nav>'
-            '<p class="note">Each package builds on the one before it. <a href="%s">Back to the presentation</a>.</p></section>\n' % (''.join(a), cfg['presentation']))
+        a.append('<a href="%s"%s><b>%s</b><span>%s</span></a>' % (url, ' class="on" aria-current="page"' if k == current else '', E(PACK_TAG[k]), E(PACK_INFO[k][0])))
+    if len(a) < 2: return ''
+    return '<section class="sec"><h2>More About This Property</h2><nav class="li-sw" aria-label="More about this property">%s</nav></section>\n' % ''.join(a)
 
 def stats(items):
     return '<div class="stats">%s</div>\n' % ''.join('<div class="stat"><b>%s</b><span>%s</span></div>' % (b, s) for b, s in items)
@@ -109,6 +114,8 @@ def stats(items):
 def fig(cfg, img, alt, cap):
     if not img: return ''
     return '<figure class="li-fig"><img src="%s" alt="%s" width="%d" height="%d" loading="lazy" decoding="async"><figcaption>%s</figcaption></figure>\n' % (img['url'], E(alt), img['w'], img['h'], cap)
+
+def join_and(xs): return ' and '.join(xs) if len(xs) < 3 else ', '.join(xs[:-1]) + ', and ' + xs[-1]
 
 def two(left, right): return '<div class="li-two">%s<div style="display:flex;flex-direction:column;gap:14px">%s</div></div>\n' % (left, right)
 
@@ -156,7 +163,7 @@ def downloads(cfg, D, pack, intro):
     files = dict(sorted(files.items(), key=lambda kv_: next((i for i, k in enumerate(order) if kv_[0].endswith(k)), 99)))
     for name, size in files.items():
         fid = links.get('files', {}).get(name)
-        if not fid: continue
+        if not fid or name.endswith(AGENT_FILES): continue
         key = next((k for k in DESC if name.endswith(k)), None)
         t, s = DESC.get(key, (name, ''))
         ext = name.rsplit('.', 1)[-1].upper()
@@ -172,8 +179,8 @@ def p_essentials(cfg, D, I):
     cov = (D.get('cover') or {}).get('cover_acres', {}); pa = D.get('parcels', {})
     sl = tr.get('slope_classes_acres', {})
     gentle = (sl.get('0-6%') or 0) + (sl.get('6-12%') or 0)
-    main = hero(cfg, D, 'Land Intelligence · Package 1', 'Essentials',
-                'One leaf-off mapping flight%s, combined with the public layers every buyer asks about: parcel lines, floodplain, wetlands, streams, and soils. Built for the listing, readable by anyone.'
+    main = hero(cfg, D, 'Land Intelligence Report', 'Essentials',
+                'One leaf-off mapping flight%s, combined with the public layers every buyer asks about: parcel lines, floodplain, wetlands, streams, and soils.'
                 % (' on %s' % E(D['meta']['flight_dates'].get('mapping')) if D['meta']['flight_dates'].get('mapping') else ''))
     main += stats([(ac(tr.get('relief_ft'), 0) + ' ft', 'Of elevation change, %s to %s ft' % (ac(tr.get('elev_min_ft'), 0), ac(tr.get('elev_max_ft'), 0))),
                    (ac(gentle), 'Acres under 12% slope'),
@@ -220,8 +227,8 @@ def p_due(cfg, D, I):
     pa = D.get('parcels', {}); C = D.get('county_records', {}); R = D.get('records', {}); BS = D.get('build_sites', {}); PD = D.get('ponds', {})
     rr = R.get('contaminated_sites', {}); wl = R.get('wells', {}); pl = R.get('public_land', {}); ht = D.get('historic_topos', {})
     best = BS.get('sites', [None])[0] if BS.get('sites') else None
-    main = hero(cfg, D, 'Land Intelligence · Package 3', 'Buyer Due Diligence',
-                'Everything in Packages 1 and 2, plus the public records a buyer would otherwise chase down one office at a time, candidate build sites with driveway routes, pond screening, and what surrounds the property.')
+    main = hero(cfg, D, 'Land Intelligence Report', 'Buyer Due Diligence',
+                'The public records a buyer would otherwise chase down one office at a time, plus candidate build sites with driveway routes, pond screening, and what surrounds the property.')
     main += stats([(str(len(BS.get('sites', []))), 'Candidate build areas screened'),
                    (('%s ft' % ac(best['driveway_ft'], 0)) if best and best.get('driveway_ft') else 'n/a', 'Driveway to the top-ranked site'),
                    (str(len(PD.get('sites', []))), 'Pond sites screened'),
@@ -293,8 +300,8 @@ def p_due(cfg, D, I):
 
 def p_steward(cfg, D, I):
     S = D.get('stewardship', {}); th = S.get('thermal_baseline', {})
-    main = hero(cfg, D, 'Land Intelligence · Package 4', 'Stewardship',
-                'For the buyer after closing. This flight becomes the baseline, and each repeat flight measures what changed: erosion, canopy, trails, and restoration work.')
+    main = hero(cfg, D, 'Land Intelligence Report', 'Stewardship',
+                'A buyer-paid service for after closing. This flight becomes the baseline, and each repeat flight and deer herd survey measures what changed: herd use, erosion, canopy, trails, and restoration work.')
     main += stats([(str(S.get('erosion_watch_count', 0)), 'Steep drainage paths on erosion watch'), (str(S.get('photo_points', 0)), 'Repeat photo points saved'),
                    (str(sum(th.values())) if th else 'n/a', 'Thermal detections in the baseline'), (str(len(S.get('cover_units', []))), 'Cover types with canopy heights')])
     main += switcher(cfg, '4 Stewardship')
@@ -305,17 +312,26 @@ def p_steward(cfg, D, I):
                 + '<p class="note">%s</p>' % E(S.get('method', '')))
     cu = [[u['cover'], ac(u['acres'], 2), ('%s ft' % ac(u['median_canopy_ft'], 0)) if u.get('median_canopy_ft') is not None else 'n/a'] for u in S.get('cover_units', [])]
     main += '<h3 class="tgh">Cover and Canopy</h3>' + table(['Cover', 'Acres', 'Median canopy height (2024 LiDAR)'], cu)
-    if th:
-        main += '<h3 class="tgh">Thermal Baseline</h3><p class="body">Night thermal survey, %s: %s. Repeat surveys in the same season compare herd use year to year.</p>' % (
-            E(D['meta']['flight_dates'].get('thermal') or ''), E(', '.join('%d %s' % (v, k.lower()) for k, v in th.items())))
     if I.get('landuse_history'):
         main += '<h3 class="tgh">Land-Use History</h3>' + fig(cfg, I['landuse_history'], 'Land use inside the boundary by year', 'County land-use classes inside the boundary, by year (acres).')
     main += '</section>\n'
+    main += ('<section class="sec" id="herd"><h2>Ongoing Deer Herd Surveys</h2>'
+             '<p class="body">%s Each ongoing survey flies the property again after dark, in the same season and on the same flight plan, '
+             'so the owner can compare herd use from one year to the next instead of guessing at it.</p><div class="card-grid">'
+             '<div class="card"><strong>Same Season, Same Route</strong><span>Flown at the same time of year, altitude, and overlap as the baseline, so each count compares fairly.</span></div>'
+             '<div class="card"><strong>Where the Herd Is Using the Land</strong><span>Each survey maps where deer were found, so shifts toward or away from cover, plots, and edges show up over time.</span></div>'
+             '<div class="card"><strong>A Count, Not a Census</strong><span>Each survey is a snapshot of one night, delivered after processing. Deer under heavy cover or off the property that night are not counted, so treat each number as a minimum.</span></div>'
+             '</div>'
+             '<div class="together" style="border-color:var(--edge2);background:var(--panel);margin-top:18px"><h3>Paid for by the Buyer</h3>'
+             '<p>Stewardship is for the buyer after closing. Ongoing deer herd surveys and repeat flights are booked and paid for by the buyer, directly with Novak Geospatial Solutions&trade;. '
+             'They are not part of the listing or the purchase price.</p></div></section>\n'
+             % (('The night thermal survey from %s is the herd baseline: %s.' % (E(', '.join((D['meta']['flight_dates'].get('thermal') or '').split(', ')[:2])), E(join_and(['%d %s' % (v, k.lower()) for k, v in th.items()]))))
+                if th else 'The first night thermal survey becomes the herd baseline.'))
     main += ('<section class="sec" id="repeat"><h2>What Each Repeat Flight Adds</h2><div class="card-grid">'
              '<div class="card"><strong>Erosion and Washouts</strong><span>The same drainage paths re-mapped and compared, so a gully that grew is measured, not guessed.</span></div>'
              '<div class="card"><strong>Canopy and Openings</strong><span>Storm damage, timber work, and regrowth shown against this flight.</span></div>'
              '<div class="card"><strong>Trails and Food Plots</strong><span>New trails, plots, and clearings mapped with acreage on each visit.</span></div>'
-             '<div class="card"><strong>Thermal Herd Use</strong><span>A night thermal survey in the same season, compared to this one.</span></div>'
+             '<div class="card"><strong>Deer Herd Survey</strong><span>A night thermal count in the same season, compared to the baseline.</span></div>'
              '</div></section>\n')
     main += downloads(cfg, D, '4 Stewardship', 'Every file is ready to open on a phone or computer, with no special software for the PDF and Google Earth files.')
     return main
@@ -357,11 +373,11 @@ def main():
     shell = load_shell(rel(cfg['shell']))
     site = rel(cfg.get('site_root', '.'))
     I = prep_images(cfg, os.path.join(site, cfg['base'].strip('/'), 'li-img'))
-    quick = [(cfg['presentation'], 'Presentation')] + [(cfg['pages'][k], 'Package %s: %s' % (k[0], PACK_INFO[k][0])) for k in PACK_ORDER if cfg['pages'].get(k)]
+    quick = [(cfg['pages'][k], PACK_INFO[k][0]) for k in PACK_ORDER if cfg['pages'].get(k)]
     for pack, fn in BUILDERS.items():
         url = cfg['pages'].get(pack)
         if not url: continue
-        nav = [('#downloads', 'Downloads'), (cfg['presentation'], 'Presentation'), ('#contact', 'Contact')]
+        nav = [('#downloads', 'Downloads'), ('#contact', 'Contact')]
         title = '%s: Land Intelligence %s | %s' % (cfg['property_name'], PACK_INFO[pack][0], cfg['client_brand'])
         html_ = page(shell, title, '%s. %s' % (cfg['property_name'], PACK_INFO[pack][1]), nav, quick, fn(cfg, D, I))
         out = os.path.join(site, url.strip('/'), 'index.html'); os.makedirs(os.path.dirname(out), exist_ok=True)
