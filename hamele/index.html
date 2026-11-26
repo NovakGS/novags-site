@@ -193,6 +193,12 @@ h3{margin:0;font-size:19px;font-weight:600}
 .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--edge)}
 @media (max-width:860px){.pkg{grid-template-columns:1fr 1fr}.pilot ul{grid-template-columns:1fr;gap:8px}}
 @media (max-width:560px){.pkg,.fitlist{grid-template-columns:1fr}}
+.p31{margin:4px 0 0;padding:12px 14px;border:1px solid var(--or);border-radius:10px;background:rgba(232,113,26,.08);font-size:16px;line-height:1.55;color:var(--muted)}.p31 b{color:var(--ink);font-weight:600}
+.pkg.pkg5{grid-template-columns:repeat(6,1fr)}.pkg5>.card{grid-column:span 2}.pkg5>.card:nth-child(n+4){grid-column:span 3}
+@media (max-width:860px){.pkg.pkg5{grid-template-columns:1fr 1fr}.pkg5>.card,.pkg5>.card:nth-child(n+4){grid-column:auto}.pkg5>.card:last-child{grid-column:1/-1}}
+@media (max-width:560px){.pkg.pkg5{grid-template-columns:1fr}}
+.fp .fp-pair{--lh:min(72px,calc((100vw - 150px) / 6.3));align-self:center;margin-bottom:4px}
+@media (max-width:600px){.fp .fp-pair{gap:10px}.fp .uch-x{font-size:20px}}
 @media (max-width:760px){.fly{grid-template-columns:1fr}}
 /* live location */
 #zloc[aria-pressed="true"]{background:#e8711a;border-color:#e8711a;color:#12161c}
@@ -359,10 +365,10 @@ html{--band-h:66px}
 <section class="sec" id="packages" style="scroll-margin-top:24px">
 <p class="kick">Land Intelligence &middot; Client Pages</p>
 <h2>Four Packages, One Property</h2>
-<p class="body">The same 33-acre example, built out as four client-facing pages in UC Hunting Properties branding. These are the pages your buyers would see, with your branding and contact details on every one. Each page has working downloads that open on a phone, and each package builds on the one before it.</p>
+<p class="body">The same 33-acre example, built out as four client-facing pages in UC Hunting Properties branding. These are the pages your buyers would see, with your branding and contact details on every one. Each page has working downloads that open on a phone, each package builds on the one before it, and each one is ready to click and explore right now.</p>
 <div class="li-pk2">
-<a class="pk" href="/hamele/essentials/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/essentials.webp" alt="The 33-acre property: leaf-off aerial with elevation shading and 2-ft contours" width="1200" height="997" loading="lazy" decoding="async"><div class="pk-t"><b>Package 1</b><strong>Essentials</strong><span>What the land is, where the water goes, and what&rsquo;s underfoot: the leaf-off aerial, parcel lines, slope and elevation, floodplain, wetlands, streams, and soils.</span><small>Report (PDF), Google Earth file, GIS layers, 2-ft contours, and the leaf-off aerial.</small><em>Open the Essentials Page &rarr;</em></div></a>
-<div class="pk pk-sl"><div class="ba" style="--p:50%"><img src="/hamele/img/pkg/hunting-map.webp" alt="Map view: aerial, terrain, contours, drainage paths, ridgelines, and travel hubs" width="1200" height="997" loading="lazy" decoding="async" draggable="false"><img class="ba-t" src="/hamele/img/pkg/hunting-thermal.webp" alt="Night thermal view with the likely deer circled and counted" width="1200" height="997" loading="lazy" decoding="async" draggable="false"><span class="ba-tag ba-l">Map</span><span class="ba-tag ba-r">Thermal</span><span class="ba-h" role="slider" tabindex="0" aria-label="Drag to compare the map and thermal views" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></i></span></div><a class="pk-t" href="/hamele/map/" target="_blank" rel="noopener"><b>Package 2</b><strong>Hunting &amp; Recreation</strong><span>The interactive map: the terrain read (ridges, draws, benches, and travel hubs), cover and edges, the night thermal deer count, and the full Terrain Guide.</span><small>Two-page property overview, Google Earth file, and GPX and KML files for onX, HuntStand, BaseMap, and Gaia GPS.</small><em>Open the Map Page &rarr;</em></a></div>
+<a class="pk" href="/hamele/essentials/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/essentials.webp" alt="The 33-acre property: leaf-off aerial with elevation shading and 2-ft contours" width="1200" height="997" loading="lazy" decoding="async"><div class="pk-t"><b>Package 1</b><strong>Essentials</strong><span>What the land is, where the water goes, and what&rsquo;s underfoot: the leaf-off aerial, parcel lines, slope and elevation, floodplain, wetlands, streams, and soils.</span><small>Report (PDF), Google Earth file, GIS layers, 2-ft contours, the leaf-off aerial, and listing graphics.</small><em>Open the Essentials Page &rarr;</em></div></a>
+<div class="pk pk-sl"><div class="ba" style="--p:50%"><img src="/hamele/img/pkg/hunting-map.webp" alt="Map view: aerial, terrain, contours, drainage paths, ridgelines, and travel hubs" width="1200" height="997" loading="lazy" decoding="async" draggable="false"><img class="ba-t" src="/hamele/img/pkg/hunting-thermal.webp" alt="Night thermal view with the likely deer circled and counted" width="1200" height="997" loading="lazy" decoding="async" draggable="false"><span class="ba-tag ba-l">Map</span><span class="ba-tag ba-r">Thermal</span><span class="ba-h" role="slider" tabindex="0" aria-label="Drag to compare the map and thermal views" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></i></span></div><a class="pk-t" href="/hamele/map/" target="_blank" rel="noopener"><b>Package 2</b><strong>Hunting &amp; Recreation</strong><span>The interactive map: the terrain read (ridges, draws, benches, and travel hubs), cover and edges, the night thermal deer count, and the full Terrain Guide.</span><small>Two-page property overview, Google Earth file, GPX and KML files for onX, HuntStand, BaseMap, and Gaia GPS, and listing graphics.</small><em>Open the Map Page &rarr;</em></a></div>
 <a class="pk" href="/hamele/due-diligence/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/due-diligence.webp" alt="Candidate build sites and driveway routes on the aerial" width="1200" height="997" loading="lazy" decoding="async"><div class="pk-t"><b>Package 3</b><strong>Buyer Due Diligence</strong><span>Parcels and assessment, zoning and land-use records, candidate build sites with driveway routes, pond screening, geology and wells, what surrounds the property, and USGS maps back to 1907.</span><small>Report (PDF), Google Earth file, GIS layers, records tables, bare-earth LiDAR and drone surface models, and historical USGS maps.</small><em>Open the Due Diligence Page &rarr;</em></div></a>
 <a class="pk" href="/hamele/stewardship/" target="_blank" rel="noopener"><img src="/hamele/img/pkg/stewardship.webp" alt="Erosion watch line and repeat photo points on the aerial" width="1200" height="997" loading="lazy" decoding="async"><div class="pk-t"><b>Package 4</b><strong>Stewardship</strong><span>For the buyer after closing: the baseline for erosion watch, cover and canopy, repeat photo points, and ongoing deer herd surveys.</span><i class="pay">Paid for by the buyer</i><small>Baseline report (PDF), Google Earth file, GIS layers, and repeat photo points (GPX).</small><em>Open the Stewardship Page &rarr;</em></div></a>
 </div>
@@ -370,20 +376,21 @@ html{--band-h:66px}
 <h3>Stewardship as Your Closing Gift to the Buyer</h3>
 <p>Stewardship is the one package that keeps working after the sale, which makes it a natural closing gift.</p>
 <ul>
-<li><b>Your gift:</b> a deer herd survey in the buyer&rsquo;s first season after closing, co-branded with UC Hunting Properties. You buy it at an agent rate and hand it over at the closing table.</li>
+<li><b>Your gift:</b> their first deer herd, canopy, and erosion survey in the buyer&rsquo;s first season after closing, co-branded with UC Hunting Properties. You buy it at an agent rate and hand it over at the closing table.</li>
 <li><b>After that:</b> the buyer takes over ongoing surveys if they want them, booked and paid for directly with Novak Geospatial Solutions&trade;.</li>
 <li><b>What you get:</b> a closing gift no other agent gives, a reason to stay in touch with the buyer, and fresh data on file if they ever resell through you.</li>
-<li><b>Hosting under your own address (optional):</b> I host all four package pages, and they can show a UC Hunting Properties web address instead of mine. The cleanest way is a subdomain such as maps.uchuntingproperties.com: your website admin adds one DNS record that points it to my site, and buyers only ever see UC&rsquo;s address. Your listing pages could also embed the package pages, or a first test could run on a neutral address with no Novak name in it, which needs nothing from your web team.</li>
+<li><b>Hosting under your own address (optional):</b> I host all four package pages, and they show a UC Hunting Properties web address instead of mine. The cleanest way is a subdomain such as maps.uchuntingproperties.com: your website admin adds one DNS record that points it to my site, and buyers only ever see UC&rsquo;s address. Your listing pages could also embed the package pages, or a first test could run on a neutral address with no Novak|GS name in it, which needs nothing from your web team.</li>
 <li><b>Why that helps your team:</b> you don&rsquo;t have to organize or keep the large map, 3D, and thermal files on your servers or use up your storage, and I keep the pages up and running.</li>
 </ul>
+<p class="p31"><b>The 3/1 Package:</b> the three listing packages (Essentials, Hunting &amp; Recreation, and Buyer Due Diligence), plus one round of Stewardship at your agent rate as the closing gift to the buyer. It&rsquo;s the complete set for a listing, and the 3D fly-thru below comes free with it.</p>
 </div>
 <div class="fly" id="fly-thru">
-<a class="fly-v" href="https://www.youtube.com/watch?v=iY8wzHlo9pA" rel="noopener" target="_blank" aria-label="Watch the 3D fly-thru example on YouTube"><img src="/case-studies/real-estate/residential/img/re-01.jpg" alt="High aerial of a 15-acre rural property with two ponds, prairie plantings, and a home" width="1600" height="1199" loading="lazy" decoding="async"><span class="fly-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#12161c"><path d="M6 3.8v16.4L20 12z"/></svg></span><span class="fly-free">Free with the Full Set</span></a>
+<a class="fly-v" href="https://www.youtube.com/watch?v=iY8wzHlo9pA" rel="noopener" target="_blank" aria-label="Watch the 3D fly-thru example on YouTube"><img src="/case-studies/real-estate/residential/img/re-01.jpg" alt="High aerial of a 15-acre rural property with two ponds, prairie plantings, and a home" width="1600" height="1199" loading="lazy" decoding="async"><span class="fly-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#12161c"><path d="M6 3.8v16.4L20 12z"/></svg></span><span class="fly-free">Free with the 3/1 Package</span></a>
 <div class="fly-t">
 <b>Add-On</b>
 <h3>3D Fly-Thru for the Listing</h3>
-<p>A true-to-scale 3D fly-thru of the property, built from more than 1,000 aerial photos, that can be added to any of the four packages.</p>
-<p class="fly-deal"><strong>Included free with the full set:</strong> Essentials, Hunting &amp; Recreation, and Buyer Due Diligence, plus one round of Stewardship at your agent rate as the closing gift to the buyer.</p>
+<p>A true-to-scale 3D fly-thru of the property, built from more than 1,000 aerial photos. It can be added to any package purchase.</p>
+<p class="fly-deal"><strong>Free with the 3/1 Package:</strong> the three listing packages plus one round of Stewardship as your closing gift to the buyer.</p>
 <p class="fly-ex">Example: a 15-acre rural property in Blue Mounds, WI, with the home, two ponds, prairie, wetland, and woods in one 59-second video.</p>
 <a href="https://www.youtube.com/watch?v=iY8wzHlo9pA" rel="noopener" target="_blank">Watch the Fly-Thru on YouTube &rarr;</a>
 <p class="fly-ex">Or see the <a href="/case-studies/real-estate/residential/" style="color:var(--ink);font-weight:400;text-decoration:underline">full listing case study</a>.</p>
@@ -454,13 +461,12 @@ html{--band-h:66px}
 <p class="kick">For You and Your Team</p>
 <h2>Built for Your Team, Seen by Your Buyers</h2>
 <p class="body">The package pages speak to buyers. These pieces are for you and your agents.</p>
-<div class="pkg">
+<div class="pkg pkg5">
 <div class="card"><strong>Your Branding on Every Page</strong><span>UC Hunting Properties branding, the listing agent&rsquo;s name, and a call button on every client page. The mapping credit sits quietly in the footer.</span><em>Buyers call the listing agent straight from the page they&rsquo;re reading.</em></div>
 <div class="card"><strong>Private Links</strong><span>The pages are kept out of search engines, so they reach only the people you share them with.</span><em>Link from the listing, marketing emails, and social posts, and open them at showings.</em></div>
-<div class="card"><strong>Listing Graphics</strong><span>Six 2400 px images sized for a listing gallery, in one ZIP file (9.5 MB). <a href="/hamele/essentials/files/26-239-listing-graphics.zip" download="26-239 Listing Graphics.zip" rel="noopener" style="color:var(--or);font-weight:600">Download the graphics</a></span><em>A ZIP is one download that holds all six images. Open it and they unpack like a folder, ready to upload alongside the property photos in any listing gallery.</em></div>
+<div class="card"><strong>Listing Graphics</strong><span>Six 2400 px images sized for a listing gallery, in one ZIP file (9.5 MB). Each package page also has its own set in its Downloads. <a href="/hamele/essentials/files/26-239-listing-graphics.zip" download="26-239 Listing Graphics.zip" rel="noopener" style="color:var(--or);font-weight:600">Download the graphics</a></span><em>A ZIP is one download that holds all six images. Open it and they unpack like a folder, ready to upload alongside the property photos in any listing gallery.</em></div>
 <div class="card"><strong>Live Location at Showings</strong><span>On a phone at the property, one tap on the interactive map shows the buyer&rsquo;s live location, with their permission. It never leaves their device.</span><em>Help buyers find their way during an authorized showing.</em></div>
 <div class="card"><strong>A Report With Every Package</strong><span>Each package includes its own report (PDF), from the two-page property overview to the full due diligence report.</span><em>Send to interested buyers or include in auction and property-information packets.</em></div>
-<div class="card"><strong>Optional Map Walkthrough</strong><span>A short captioned or narrated tour of the map.</span><em>Use in a listing video or social post.</em></div>
 </div>
 <p class="note">Buyer-facing wording stays careful: "potential movement corridors" and "potential bedding habitat," not confirmed deer travel. Terrain and cover point to where to look; field evidence confirms use.</p>
 </section>
@@ -480,20 +486,20 @@ html{--band-h:66px}
 <p class="kick">The Test</p>
 <h2>One Listing, No Cost, Your Branding</h2>
 <div class="pilot">
-<p>One active southern Wisconsin listing becomes the test ground. Both flights happen the same day, and the results are combined with the public data. Everything comes back as the four client-facing package pages, built for that listing. It stays private for your review until you decide what to do with it.</p>
+<p>One active southern Wisconsin listing becomes the test ground. Both flights happen the same day: one in peak daylight and the other about 2&ndash;3 hours after dark. The results are combined with the public data. Everything comes back to you as the four client-facing package pages, built for that listing. It stays private for your review until you decide what to do with it.</p>
 <ul>
-<li>Your pick of one active listing in southern Wisconsin, ideally around 40 acres</li>
-<li>Mapping flight and thermal flight on the same day</li>
+<li>Your pick of one active listing in southern Wisconsin, ideally around 40&ndash;60 acres</li>
 <li>Combined with public LiDAR, USGS, NRCS soil, FEMA flood, and Wisconsin DNR wetland data</li>
-<li>Four client-facing pages under your branding, with calls to action to you or the listing agent</li>
+<li>A call to action to you or the listing agent on every page</li>
 <li>Flown only with the seller's permission; no cost to you or the seller</li>
 <li><b style="color:var(--ink)">The finished package is yours to keep and use in full, at no cost</b></li>
 <li><b style="color:var(--ink)">In return:</b> permission to feature it as a public Novak|GS case study, your honest feedback, and a testimonial</li>
-<li><b style="color:var(--ink)">After the test:</b> your first paid listing at a discount, before regular pricing</li>
+<li><b style="color:var(--ink)">After the test:</b> a review of everything delivered, to home in on exactly what you want in future deliverables, so the data from this test run is tailored to what UC wants and needs going forward</li>
 </ul>
 </div>
-<div class="note-tv" style="border-left-color:var(--or)">
-<p><b>If the test earns a place in your marketing, I'd like United Country Midwest Lifestyle Properties and UC Hunting Properties to be Founding Partners:</b> priority scheduling during listing season, discounted partner pricing set after the test, and one consistent look across every listing your team runs it on.</p>
+<div class="note-tv fp" style="border-left-color:var(--or)">
+<div class="uch-pair fp-pair" role="img" aria-label="UC Hunting Properties and Novak Geospatial Solutions"><span class="uch-logo"><img class="ucb-w" src="/hamele/map/uc/uch-logo-white.png" alt="" width="295" height="87" loading="lazy" decoding="async"><img class="ucb-d" src="/hamele/map/uc/uch-logo-dark.png" alt="" width="295" height="87" loading="lazy" decoding="async"></span><span class="uch-x" aria-hidden="true">&times;</span><span class="uch-nlogo"><picture><source srcset="/logo-dark-v2.webp" type="image/webp"><img src="/logo-dark-v2.png" alt="" width="1200" height="555" loading="lazy" decoding="async"></picture></span></div>
+<p>If this <b style="color:var(--or)">Land Intelligence</b> earns a place in UC&rsquo;s marketing structure, I&rsquo;d like United Country Midwest Lifestyle Properties and UC Hunting Properties to be Founding Partners: <b>Priority Scheduling for the duration of the partnership, 40% off your first paid listing, and 15% off every listing through the end of 2027, all delivered in one consistent look across every listing, under your brand.</b></p>
 </div>
 </section>
 
