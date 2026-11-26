@@ -6,3 +6,6 @@
 
 /hamele/*
   X-Robots-Tag: noindex, nofollow, noarchive
+
+/exit/*
+  X-Robots-Tag: noindex, nofollow, noarchive

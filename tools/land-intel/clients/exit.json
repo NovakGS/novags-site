@@ -1,0 +1,430 @@
+{
+ "_about": "EXIT Professional Real Estate version of a Land Intelligence job. Run: python3 tools/land-intel/reskin.py tools/land-intel/clients/exit.json",
+ "job": "26-239",
+ "source": {
+  "dir": "hamele",
+  "base": "/hamele",
+  "skin_marker": "/* ===== UC Hunting Properties skin ===== */"
+ },
+ "dest": {
+  "dir": "exit/33-acre-cross-plains",
+  "base": "/exit/33-acre-cross-plains"
+ },
+ "skin": "tools/land-intel/skins/exit",
+ "fonts_css": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&amp;family=Roboto:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap",
+ "brand": {
+  "brand_name": "EXIT Realty",
+  "brand_url": "https://www.exitrealty.com/",
+  "logo_color_png": "/exit/brand/exit-logo-color.png",
+  "logo_color_webp": "/exit/brand/exit-logo-color.webp",
+  "favicon": "/exit/brand/favicon.png",
+  "apple_touch_icon": "/exit/brand/apple-touch-icon.png",
+  "pdf_logo_white": "exit/brand/exit-logo-white.png",
+  "pdf_bar_rgb": [
+   0,
+   0.396078,
+   0.415686
+  ],
+  "pdf_accent_rgb": [
+   0,
+   0.454902,
+   0.509804
+  ],
+  "pdf_tint_rgb": [
+   0.909804,
+   0.952941,
+   0.956863
+  ]
+ },
+ "agent": {
+  "agent_name": "Lexie Benson",
+  "agent_first": "Lexie",
+  "agent_initials": "LB",
+  "agent_role": "Owner &middot; REALTOR&reg;",
+  "agent_phone": "(608) 513-4577",
+  "agent_tel": "+16085134577"
+ },
+ "office": {
+  "office_name": "EXIT Professional Real Estate",
+  "office_towns": "Monroe &middot; New Glarus &middot; Brodhead",
+  "office_phone": "(608) 426-7111",
+  "office_tel": "+16084267111",
+  "office_address": "912 17th Ave, Monroe, WI 53566"
+ },
+ "property": {
+  "property_name": "33-Acre Wooded Parcel",
+  "place": "Cross Plains, WI 53528",
+  "county": "Dane County",
+  "county_short": "Dane County, WI",
+  "acres": "33.3",
+  "flight_pill": "Flown Nov 24, 2026",
+  "badge": "Sample",
+  "crumbs": [
+   [
+    "Wisconsin",
+    "https://www.exitrealty.com/"
+   ],
+   [
+    "Dane County",
+    null
+   ],
+   [
+    "Cross Plains",
+    null
+   ],
+   [
+    "53528",
+    null
+   ]
+  ]
+ },
+ "footer": {
+  "disclaimer": "Maps are produced from drone imagery and public LiDAR for planning and visualization. They are not a land survey and do not establish property boundaries. Thermal results are a snapshot of one flight and are not a real-time locating service.",
+  "copyright": "&copy; 2026 EXIT Professional Real Estate. Each office is independently owned and operated."
+ },
+ "packages": [
+  {
+   "slug": "essentials",
+   "src": "essentials",
+   "num": 1,
+   "name": "Essentials",
+   "tag": "The Land",
+   "desc": "What the land is, where the water goes, and what is underfoot. One mapping flight plus the public layers every buyer asks about.",
+   "tabs": [
+    [
+     "#overview",
+     "Overview"
+    ],
+    [
+     "#slope",
+     "Lay of the Land"
+    ],
+    [
+     "#water",
+     "Water"
+    ]
+   ]
+  },
+  {
+   "slug": "country-property",
+   "src": "map",
+   "num": 2,
+   "name": "Country Property",
+   "tag": "Interactive Map",
+   "desc": "An interactive map of the terrain, cover, and night thermal survey, with files for the outdoor apps buyers already use.",
+   "tabs": [
+    [
+     "#map",
+     "Map"
+    ],
+    [
+     "#deercount",
+     "Wildlife Survey"
+    ],
+    [
+     "#guide",
+     "Terrain Guide"
+    ],
+    [
+     "#home",
+     "Home With Acreage"
+    ]
+   ]
+  },
+  {
+   "slug": "due-diligence",
+   "src": "due-diligence",
+   "num": 3,
+   "name": "Buyer Due Diligence",
+   "tag": "Records &amp; Build Sites",
+   "desc": "Public records, candidate build sites and driveways, pond screening, and what surrounds the property.",
+   "tabs": [
+    [
+     "#build",
+     "Build Sites"
+    ],
+    [
+     "#ground",
+     "Ground"
+    ],
+    [
+     "#zoning",
+     "Zoning"
+    ],
+    [
+     "#ponds",
+     "Ponds"
+    ],
+    [
+     "#soils",
+     "Soils"
+    ],
+    [
+     "#records",
+     "Records"
+    ],
+    [
+     "#around",
+     "Around It"
+    ],
+    [
+     "#history",
+     "History"
+    ]
+   ]
+  },
+  {
+   "slug": "stewardship",
+   "src": "stewardship",
+   "num": 4,
+   "name": "New Owner Stewardship",
+   "tag": "After Closing",
+   "desc": "For the new owner after closing: a first-winter home thermal check as the closing gift, then the acreage baseline, repeat flights, and wildlife surveys.",
+   "tabs": [
+    [
+     "#gift",
+     "Closing Gift"
+    ],
+    [
+     "#herd",
+     "Wildlife Surveys"
+    ],
+    [
+     "#repeat",
+     "Repeat Flights"
+    ],
+    [
+     "#baseline",
+     "Baseline"
+    ]
+   ]
+  }
+ ],
+ "path_map": [
+  [
+   "/hamele/map/files/",
+   "/exit/33-acre-cross-plains/country-property/files/"
+  ],
+  [
+   "/hamele/map/",
+   "/exit/33-acre-cross-plains/country-property/"
+  ],
+  [
+   "/hamele/essentials/",
+   "/exit/33-acre-cross-plains/essentials/"
+  ],
+  [
+   "/hamele/due-diligence/",
+   "/exit/33-acre-cross-plains/due-diligence/"
+  ],
+  [
+   "/hamele/stewardship/",
+   "/exit/33-acre-cross-plains/stewardship/"
+  ],
+  [
+   "/hamele/img/",
+   "/exit/33-acre-cross-plains/img/"
+  ],
+  [
+   "/hamele/li-img/",
+   "/exit/33-acre-cross-plains/li-img/"
+  ]
+ ],
+ "copy_dirs": [
+  [
+   "hamele/img",
+   "img"
+  ],
+  [
+   "hamele/li-img",
+   "li-img"
+  ]
+ ],
+ "copy_files": [
+  [
+   "hamele/essentials/files",
+   "essentials/files"
+  ],
+  [
+   "hamele/map/files",
+   "country-property/files"
+  ],
+  [
+   "hamele/due-diligence/files",
+   "due-diligence/files"
+  ],
+  [
+   "hamele/stewardship/files",
+   "stewardship/files"
+  ]
+ ],
+ "renames": [
+  [
+   "img/pkg/hunting-map.webp",
+   "img/pkg/country-map.webp"
+  ],
+  [
+   "img/pkg/hunting-thermal.webp",
+   "img/pkg/country-thermal.webp"
+  ],
+  [
+   "country-property/files/26-239-hunting-app-files.zip",
+   "country-property/files/26-239-outdoor-app-files.zip"
+  ],
+  [
+   "country-property/files/26-239-hunting-listing-graphics.zip",
+   "country-property/files/26-239-country-listing-graphics.zip"
+  ]
+ ],
+ "zip_folder_renames": {
+  "country-property/files/26-239-outdoor-app-files.zip": [
+   [
+    "Hunting App Files (GPX)/",
+    "Outdoor App Files (GPX)/"
+   ],
+   [
+    "Hunting App Files (KML)/",
+    "Outdoor App Files (KML)/"
+   ]
+  ]
+ },
+ "kmz_text": {
+  "country-property/files/26-239-property-map.kmz": [
+   [
+    "26-239 Hunting Land - 33 ac Property Map",
+    "26-239 Country Property - 33 ac Property Map"
+   ]
+  ]
+ },
+ "pdfs": [
+  {
+   "file": "essentials/files/26-239-essentials-report.pdf",
+   "kind": "report"
+  },
+  {
+   "file": "due-diligence/files/26-239-buyer-due-diligence-report.pdf",
+   "kind": "report"
+  },
+  {
+   "file": "stewardship/files/26-239-stewardship-baseline-report.pdf",
+   "kind": "report"
+  },
+  {
+   "file": "country-property/files/26-239-property-overview.pdf",
+   "kind": "overview",
+   "title": "33-Acre Wooded Parcel · Dane County, WI",
+   "sub": "Property Overview  ·  Prepared for EXIT Professional Real Estate  ·  Page {n} of {N}",
+   "meta_title": "26-239 Property Overview - 33-Acre Wooded Parcel"
+  }
+ ],
+ "pdf_text": [
+  [
+   "33-Acre Hunting Property, Dane County, WI",
+   "33-Acre Wooded Parcel, Dane County, WI"
+  ]
+ ],
+ "drive_links": "tools/land-intel/clients/exit/drive_links.json",
+ "replace_all": [
+  [
+   "/* travis */\n",
+   ""
+  ],
+  [
+   "rgba(104,125,83,",
+   "rgba(0,116,130,"
+  ],
+  [
+   "'Open Sans'",
+   "Roboto"
+  ],
+  [
+   "33-acre hunting property",
+   "33-acre wooded parcel"
+  ],
+  [
+   "33-Acre Hunting Property",
+   "33-Acre Wooded Parcel"
+  ],
+  [
+   "<span>Hunting &amp; Recreation</span>",
+   "<span>Country Property</span>"
+  ],
+  [
+   "<b>After Closing</b><span>Stewardship</span>",
+   "<b>After Closing</b><span>New Owner Stewardship</span>"
+  ],
+  [
+   "download=\"26-239 Hunting Listing Graphics.zip\"",
+   "download=\"26-239 Country Listing Graphics.zip\""
+  ],
+  [
+   "26-239-hunting-listing-graphics.zip",
+   "26-239-country-listing-graphics.zip"
+  ],
+  [
+   "/img/pkg/hunting-map.webp",
+   "/img/pkg/country-map.webp"
+  ],
+  [
+   "/img/pkg/hunting-thermal.webp",
+   "/img/pkg/country-thermal.webp"
+  ]
+ ],
+ "edits": [
+  {
+   "page": "country-property",
+   "find": "<h2>Thermal Deer Count</h2>",
+   "replace": "<h2>Thermal Wildlife Survey</h2>"
+  },
+  {
+   "page": "country-property",
+   "find": "load the terrain features into your hunting app, or print",
+   "replace": "load the terrain features into an outdoor app like onX or Gaia GPS, or print"
+  },
+  {
+   "page": "country-property",
+   "find": "<strong>Hunting App Files</strong>",
+   "replace": "<strong>Outdoor App Files</strong>"
+  },
+  {
+   "page": "country-property",
+   "find": "as GPX and KML for onX, HuntStand, BaseMap, Gaia GPS, and others.",
+   "replace": "as GPX and KML for onX, Gaia GPS, HuntStand, BaseMap, and others."
+  },
+  {
+   "page": "country-property",
+   "find": "in the formats hunting apps import.",
+   "replace": "in the formats outdoor and mapping apps import."
+  },
+  {
+   "page": "country-property",
+   "find": "They are not included in the hunting-app files.",
+   "replace": "They are not included in the outdoor-app files."
+  },
+  {
+   "page": "country-property",
+   "find": "<!-- DOWNLOADS -->",
+   "insert_before": "fragments/country-home.html"
+  },
+  {
+   "page": "stewardship",
+   "find": "<p class=\"lede\">A buyer-paid service for after closing. This flight becomes the baseline, and each repeat flight and deer herd survey measures what changed: herd use, trails and food plots, canopy, erosion, and restoration work.</p>",
+   "replace": "<p class=\"lede\">For the new owner after closing. On a home, it starts with the agent's closing gift: a first-winter thermal check of the roof and walls. On acreage, this flight becomes the baseline, and each repeat flight and deer herd survey measures what changed: herd use, trails and food plots, canopy, erosion, and restoration work.</p>"
+  },
+  {
+   "page": "stewardship",
+   "find": "<section class=\"sec\" id=\"herd\">",
+   "insert_before": "fragments/stewardship-gift.html"
+  },
+  {
+   "page": "stewardship",
+   "find": "<h3>Paid for by the Buyer</h3><p>Stewardship is for the buyer after closing. Ongoing deer herd surveys and repeat flights are booked and paid for by the buyer, directly with Novak Geospatial Solutions&trade;.",
+   "replace": "<h3>Paid for by the New Owner</h3><p>Apart from the closing gift, ongoing deer herd surveys and repeat flights are booked and paid for by the new owner, directly with Novak Geospatial Solutions&trade;."
+  },
+  {
+   "page": "stewardship",
+   "find": "Every Stewardship layer as GeoJSON.",
+   "replace": "Every New Owner Stewardship layer as GeoJSON."
+  }
+ ]
+}
