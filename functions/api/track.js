@@ -12,6 +12,9 @@
 // Without it, events are quietly dropped.
 
 const MAX_BODY = 2000;
+// Link codes that stand in for a name, so the link someone receives doesn't show who it's for.
+// The link carries the code (?r=k7m2); the activity log shows the name.
+const ALIASES = { k7m2: 'Sarina' };
 const BOT_RE = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|headless|lighthouse|pingdom|monitor/i;
 const KINDS = new Set(['view', 'click', 'download', 'folder', 'call', 'text', 'email', 'out', 'faq', 'map', 'time']);
 const PAGES = {
@@ -97,7 +100,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   const kind = KINDS.has(evt.k) ? evt.k : 'click';
   const tag = /^[a-z0-9-]{1,20}$/i.test(String(evt.r || '')) ? String(evt.r).toLowerCase() : '';
-  const who = tag ? tag.charAt(0).toUpperCase() + tag.slice(1) : '';
+  const who = tag ? (ALIASES[tag] || tag.charAt(0).toUpperCase() + tag.slice(1)) : '';
   const secs = kind === 'time' ? Math.max(0, Math.min(86400, Math.round(Number(evt.s) || 0))) : null;
 
   const stmt = env.ACTIVITY_DB.prepare(
