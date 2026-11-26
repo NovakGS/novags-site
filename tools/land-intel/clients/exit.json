@@ -426,5 +426,33 @@
    "find": "Every Stewardship layer as GeoJSON.",
    "replace": "Every New Owner Stewardship layer as GeoJSON."
   }
- ]
+ ],
+ "pitch": {
+  "source": "hamele/index.html",
+  "out": "exit/index.html",
+  "main": "tools/land-intel/skins/exit/pitch-main.html",
+  "css": "tools/land-intel/skins/exit/pitch.css",
+  "title": "Land Intelligence Packages, Prepared for Lexie Benson | Novak Geospatial Solutions&trade;",
+  "description": "Private preview prepared for Lexie Benson, EXIT Professional Real Estate.",
+  "logo_url": "https://www.exitrealty.com/",
+  "logo_label": "EXIT Realty",
+  "logo_alt": "EXIT Realty",
+  "logo_dark_webp": "/exit/brand/exit-logo-dm.webp",
+  "logo_dark_png": "/exit/brand/exit-logo-dm.png",
+  "logo_light_webp": "/exit/brand/exit-logo-color.webp",
+  "logo_light_png": "/exit/brand/exit-logo-color.png",
+  "logo_w": 382,
+  "logo_h": 169,
+  "for_lines": "Prepared specifically for <b>Lexie Benson</b><br>Owner, EXIT Professional Real Estate<br>Monroe, New Glarus, and Brodhead",
+  "mini_line": "<span class=\"uch-pf\">Prepared for </span><b>Lexie Benson</b><span class=\"uch-co\">, EXIT Professional Real Estate</span>",
+  "must_not_contain": [
+   "Travis",
+   "Hamele",
+   "uchunting",
+   "UC Hunting",
+   "United Country",
+   "Realtree",
+   "/hamele/"
+  ]
+ }
 }

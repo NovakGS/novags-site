@@ -1,0 +1,20 @@
+/* ===== EXIT presentation additions ===== */
+.uch-pair .uch-logo img{height:calc(var(--lh)*1.12)}
+.uch-pair .uch-logo picture{display:block}
+.xstats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.xstats>div{padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;gap:4px}
+.xstats b{font-size:36px;font-weight:700;line-height:1.05;color:var(--or);font-variant-numeric:tabular-nums}
+.xstats strong{font-size:17px;font-weight:600}
+.xstats span{font-size:15px;line-height:1.5;color:var(--muted)}
+.xdiff{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.xdiff>div{padding:14px 16px;border:1px solid var(--edge);border-radius:12px;background:var(--panel);display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.xdiff b{font-family:'Roboto Mono',Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.xdiff strong{font-size:16px;font-weight:600}
+.xdiff>div>strong:first-of-type{color:var(--muted);font-weight:500}
+.xdiff span{color:var(--or);font-weight:700;margin:0 2px}
+.xdiff p{flex-basis:100%;margin:6px 0 0;font-size:15px;line-height:1.5;color:var(--muted)}
+.addons{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.addons .card>b{display:block;margin-bottom:6px;font-family:'Roboto Mono',Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
+@media (max-width:860px){.xstats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.xdiff,.addons{grid-template-columns:1fr}}
+@media (max-width:480px){.xstats{grid-template-columns:1fr}.xstats b{font-size:32px}}
