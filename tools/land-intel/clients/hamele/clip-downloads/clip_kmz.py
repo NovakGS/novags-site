@@ -8,7 +8,9 @@ from shapely.ops import unary_union
 Image.MAX_IMAGE_PIXELS = None
 NS = 'http://www.opengis.net/kml/2.2'
 K = '{%s}' % NS
-BND = [(-89.6223568,43.1090920),(-89.6224062,43.1120121),(-89.6273866,43.1120673),(-89.6273946,43.1090316)]
+# the parcel squared into a north-up rectangle of the same 33.3 ac (BR, TR, TL, BL)
+W_, E_, N_, S_ = -89.62739055, -89.62238155, 43.1120397, 43.1090618
+BND = [(E_, S_), (E_, N_), (W_, N_), (W_, S_)]
 BPOLY = Polygon(BND)
 C0 = (-89.6249, 43.1105)
 
@@ -169,6 +171,11 @@ def build(name, kmzdir, out_kmz, clip_folders, line_folders=(), trim_folders=(),
     order = {}
     for i, go in enumerate(gos):
         hrefs += tile_overlay(go, kmzdir, work + '/files', 2*i, swap_fix)
+    # the boundary outline itself becomes the rectangle
+    for f in root.iter(K+'Folder'):
+        if (f.findtext(K+'name') or '') != 'Boundary': continue
+        for co in f.iter(K+'coordinates'):
+            co.text = ' '.join('%.7f,%.7f,0' % c for c in BND+[BND[0]])
     report = {}
     for f in root.iter(K+'Folder'):
         fname = f.findtext(K+'name') or ''
