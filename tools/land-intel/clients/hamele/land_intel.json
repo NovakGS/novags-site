@@ -1,0 +1,1333 @@
+{
+ "property": {
+  "acres": 33.33,
+  "centroid": [
+   -89.624902,
+   43.110548
+  ],
+  "bbox84": [
+   -89.627395,
+   -89.622357,
+   43.109032,
+   43.112067
+  ],
+  "crs": "NAD83(2011) / WISCRS Dane (ftUS)"
+ },
+ "parcels": {
+  "source": {
+   "name": "Wisconsin Statewide Parcel Map (V1200)",
+   "file": "V1200_Wisconsin_Parcels_DANE.shp"
+  },
+  "count": 4,
+  "county": "Dane",
+  "municipality": [
+   "Village of Cross Plains"
+  ],
+  "list": [
+   {
+    "PARCELID": "070702195011",
+    "PLACENAME": "VILLAGE OF CROSS PLAINS",
+    "CONAME": "DANE",
+    "PROPCLASS": null,
+    "AUXCLASS": null,
+    "LNDVALUE": 0.0,
+    "IMPVALUE": 0.0,
+    "NETPRPTA": 0.0,
+    "GRSPRPTA": 0.0,
+    "ASSDACRES": 0.0,
+    "DEEDACRES": 0.0,
+    "GISACRES": 0.0,
+    "PARCELSRC": "DANE",
+    "LOADDATE": "3/09/2026",
+    "acres_in_boundary": 5.44,
+    "acres_calc": 41.0
+   },
+   {
+    "PARCELID": "070702480011",
+    "PLACENAME": "VILLAGE OF CROSS PLAINS",
+    "CONAME": "DANE",
+    "PROPCLASS": null,
+    "AUXCLASS": null,
+    "LNDVALUE": 0.0,
+    "IMPVALUE": 0.0,
+    "NETPRPTA": 0.0,
+    "GRSPRPTA": 0.0,
+    "ASSDACRES": 0.0,
+    "DEEDACRES": 0.0,
+    "GISACRES": 0.0,
+    "PARCELSRC": "DANE",
+    "LOADDATE": "3/09/2026",
+    "acres_in_boundary": 15.08,
+    "acres_calc": 39.91
+   },
+   {
+    "PARCELID": "070702485011",
+    "PLACENAME": "VILLAGE OF CROSS PLAINS",
+    "CONAME": "DANE",
+    "PROPCLASS": null,
+    "AUXCLASS": null,
+    "LNDVALUE": 0.0,
+    "IMPVALUE": 0.0,
+    "NETPRPTA": 0.0,
+    "GRSPRPTA": 0.0,
+    "ASSDACRES": 0.0,
+    "DEEDACRES": 0.0,
+    "GISACRES": 0.0,
+    "PARCELSRC": "DANE",
+    "LOADDATE": "3/09/2026",
+    "acres_in_boundary": 9.37,
+    "acres_calc": 39.62
+   },
+   {
+    "PARCELID": "070702190011",
+    "PLACENAME": "VILLAGE OF CROSS PLAINS",
+    "CONAME": "DANE",
+    "PROPCLASS": null,
+    "AUXCLASS": null,
+    "LNDVALUE": 0.0,
+    "IMPVALUE": 0.0,
+    "NETPRPTA": 0.0,
+    "GRSPRPTA": 0.0,
+    "ASSDACRES": 0.0,
+    "DEEDACRES": 0.0,
+    "GISACRES": 0.0,
+    "PARCELSRC": "DANE",
+    "LOADDATE": "3/09/2026",
+    "acres_in_boundary": 3.45,
+    "acres_calc": 41.14
+   }
+  ],
+  "total_assessed": null,
+  "total_est_fair_market": null,
+  "total_net_tax": null,
+  "tax_roll_year": "",
+  "note": "County tax-parcel lines from the statewide parcel map. Approximate, not a survey. Owner names are not included."
+ },
+ "flood": {
+  "zones_acres": {
+   "X - Area Of Minimal Flood Hazard": 33.33
+  },
+  "sfha_acres": 0.0,
+  "panels": [
+   {
+    "panel": "55025C0357H",
+    "effective": "2016-06-16",
+    "type": "Countywide, Panel Printed"
+   },
+   {
+    "panel": "55025C0376H",
+    "effective": "2016-06-16",
+    "type": "Countywide, Panel Printed"
+   }
+  ],
+  "source": {
+   "name": "FEMA National Flood Hazard Layer",
+   "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
+   "retrieved": "2026-11-25"
+  },
+  "nearest_sfha_ft": null
+ },
+ "wetlands": {
+  "acres_in_boundary": 1.6,
+  "classes_in_boundary": {
+   "Forested": 1.6
+  },
+  "nearest_mapped_wetland_ft": 0.0,
+  "points_within_quarter_mile": 1,
+  "points_in_boundary": 0,
+  "wetland_indicator_acres": 2.93,
+  "source": {
+   "name": "Wisconsin Wetland Inventory (WI DNR)",
+   "url": "https://dnrmaps.wi.gov/arcgis/rest/services/DW_Map_Dynamic/WT_Wisconsin_Wetland_Inventory_NWI_WTM_Ext_Dynamic_L16/MapServer/8",
+   "retrieved": "2026-11-25"
+  },
+  "source_indicators": {
+   "name": "Wetland Indicators - hydric soils (WI DNR)",
+   "url": "https://dnrmaps.wi.gov/arcgis/rest/services/WT_SWDV/WY_WETLAND_INDICATORS/MapServer/21",
+   "retrieved": "2026-11-25"
+  },
+  "note": "Mapped wetlands are a screening layer. Only a field delineation or a WI DNR determination confirms wetland boundaries."
+ },
+ "water": {
+  "nearest_stream": {
+   "name": "Unnamed",
+   "distance_ft": 747.0
+  },
+  "nearest_waterbody": {
+   "name": "Unnamed",
+   "distance_ft": 62.0
+  },
+  "streams_in_boundary_ft": 0.0,
+  "watershed": "Black Earth Creek",
+  "source": {
+   "name": "24K Hydrography streams (WI DNR)",
+   "url": "https://dnrmaps.wi.gov/arcgis/rest/services/WT_SWDV/WY_INLAND_WATER_RESOURCES/MapServer/2",
+   "retrieved": "2026-11-25"
+  }
+ },
+ "soils": {
+  "units": [
+   {
+    "musym": "7961D2",
+    "name": "Kidder soils, 10 to 20 percent slopes, eroded",
+    "acres": 11.53,
+    "drainage": "Well drained",
+    "hydrologic_group": "B",
+    "farmland": "Not prime farmland",
+    "depth_to_bedrock_in_min": null,
+    "water_table_in_min": null,
+    "capability_class": "4",
+    "flooding": "None",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "local_roads": "Very limited",
+    "pond_reservoir": "Very limited",
+    "embankment": "Somewhat limited"
+   },
+   {
+    "musym": "7961E2",
+    "name": "Kidder soils, 20 to 35 percent slopes, eroded",
+    "acres": 10.23,
+    "drainage": "Well drained",
+    "hydrologic_group": "B",
+    "farmland": "Not prime farmland",
+    "depth_to_bedrock_in_min": null,
+    "water_table_in_min": null,
+    "capability_class": "6",
+    "flooding": "None",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "local_roads": "Very limited",
+    "pond_reservoir": "Very limited",
+    "embankment": "Somewhat limited"
+   },
+   {
+    "musym": "7310D2",
+    "name": "McHenry silt loam, 12 to 20 percent slopes, eroded",
+    "acres": 7.22,
+    "drainage": "Well drained",
+    "hydrologic_group": "B",
+    "farmland": "Not prime farmland",
+    "depth_to_bedrock_in_min": null,
+    "water_table_in_min": null,
+    "capability_class": "4",
+    "flooding": "None",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "local_roads": "Very limited",
+    "pond_reservoir": "Very limited",
+    "embankment": "Somewhat limited"
+   },
+   {
+    "musym": "609A",
+    "name": "Otter silt loam",
+    "acres": 2.92,
+    "drainage": "Poorly drained",
+    "hydrologic_group": "B/D",
+    "farmland": "Prime farmland if drained and either protected from flooding or not frequently flooded during the growing season",
+    "depth_to_bedrock_in_min": null,
+    "water_table_in_min": "0",
+    "capability_class": "2",
+    "flooding": "Frequent",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "local_roads": "Very limited",
+    "pond_reservoir": "Somewhat limited",
+    "embankment": "Very limited"
+   },
+   {
+    "musym": "194C2",
+    "name": "Newglarus silt loam, moderately deep, 6 to 12 percent slopes, moderately eroded",
+    "acres": 1.24,
+    "drainage": "Well drained",
+    "hydrologic_group": "C",
+    "farmland": "Farmland of statewide importance",
+    "depth_to_bedrock_in_min": "86",
+    "water_table_in_min": null,
+    "capability_class": "3",
+    "flooding": "None",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "local_roads": "Very limited",
+    "pond_reservoir": "Very limited",
+    "embankment": "Somewhat limited"
+   },
+   {
+    "musym": "7748C2",
+    "name": "Plano silt loam, gravelly substratum, 6 to 12 percent slopes, eroded",
+    "acres": 0.19,
+    "drainage": "Well drained",
+    "hydrologic_group": "B",
+    "farmland": "Farmland of statewide importance",
+    "depth_to_bedrock_in_min": null,
+    "water_table_in_min": null,
+    "capability_class": "3",
+    "flooding": "None",
+    "dwellings_no_basement": "Somewhat limited",
+    "dwellings_basement": "Somewhat limited",
+    "septic": "Very limited",
+    "local_roads": "Very limited",
+    "pond_reservoir": "Very limited",
+    "embankment": "Somewhat limited"
+   }
+  ],
+  "source": {
+   "name": "NRCS Soil Survey (SSURGO) via Soil Data Access",
+   "url": "https://websoilsurvey.nrcs.usda.gov/",
+   "retrieved": "2026-11-25"
+  },
+  "note": "Soil ratings are for the dominant component of each map unit and are for planning only. They do not replace an on-site soil test or a certified soil tester for septic."
+ },
+ "records": {
+  "contaminated_sites": {
+   "within_mi": 1.0,
+   "open": 0,
+   "closed": 6,
+   "on_property": 0,
+   "list": [
+    {
+     "status": "Closed",
+     "name": "BUECHNER PROPERTY",
+     "number": "0213576814",
+     "address": "2504 Military Rd, Cross Plains",
+     "opened": "2016",
+     "closed": "2016",
+     "continuing_obligations": "N",
+     "distance_mi": 0.41,
+     "lookup": "https://apps.dnr.wi.gov/rrbotw/botw-activity-detail?dsn=576814"
+    },
+    {
+     "status": "Closed",
+     "name": "DE PETROLEUM",
+     "number": "0313000391",
+     "address": "2575 Main St, Cross Plains",
+     "opened": "1989",
+     "closed": "1999",
+     "continuing_obligations": "Y",
+     "distance_mi": 0.7,
+     "lookup": "https://apps.dnr.wi.gov/rrbotw/botw-activity-detail?dsn=21931"
+    },
+    {
+     "status": "Closed",
+     "name": "HI WAY SERVICE GARAGE",
+     "number": "0313559229",
+     "address": "2508 Main St, Cross Plains",
+     "opened": "2012",
+     "closed": "2022",
+     "continuing_obligations": "Y",
+     "distance_mi": 0.85,
+     "lookup": "https://apps.dnr.wi.gov/rrbotw/botw-activity-detail?dsn=559229"
+    },
+    {
+     "status": "Closed",
+     "name": "CROSS CORNER CAFE",
+     "number": "0213001412",
+     "address": "2523 Main St, Cross Plains",
+     "opened": "1991",
+     "closed": "1992",
+     "continuing_obligations": "N",
+     "distance_mi": 0.87,
+     "lookup": "https://apps.dnr.wi.gov/rrbotw/botw-activity-detail?dsn=35948"
+    },
+    {
+     "status": "Closed",
+     "name": "FEDELE (JOSEPH) TRUCKING",
+     "number": "0313001878",
+     "address": "8355 Stage Coach Rd, Cross Plains",
+     "opened": "1993",
+     "closed": "2009",
+     "continuing_obligations": "Y",
+     "distance_mi": 0.89,
+     "lookup": "https://apps.dnr.wi.gov/rrbotw/botw-activity-detail?dsn=28383"
+    },
+    {
+     "status": "Closed",
+     "name": "KWIK TRIP 833",
+     "number": "0313000594",
+     "address": "2508 Main St, Cross Plains",
+     "opened": "1990",
+     "closed": "2000",
+     "continuing_obligations": "Y",
+     "distance_mi": 0.9,
+     "lookup": "https://apps.dnr.wi.gov/rrbotw/botw-activity-detail?dsn=22962"
+    }
+   ],
+   "source": {
+    "name": "Contaminated Lands - open (WI DNR BRRTS)",
+    "url": "https://dnrmaps.wi.gov/arcgis/rest/services/RR_Sites_Map/RR_PUBLIC_MAPSERVICES_CORE_EXT/MapServer/101",
+    "retrieved": "2026-11-25"
+   }
+  },
+  "wells": {
+   "within_mi": 1.0,
+   "records_with_bedrock_depth": 51,
+   "bedrock_depth_ft": {
+    "min": 6,
+    "median": 50.0,
+    "max": 190
+   },
+   "well_depth_ft": {
+    "min": 117,
+    "median": 202.0,
+    "max": 360
+   },
+   "historical_well_reports": 75,
+   "source": {
+    "name": "Depth to bedrock from well records (WGNHS / USGS)",
+    "url": "https://data.wgnhs.wisc.edu/arcgis/rest/services/usgs_ndc/depth_to_bedrock/MapServer/1",
+    "retrieved": "2026-11-25"
+   },
+   "source_wcr": {
+    "name": "Historical well construction reports (WGNHS)",
+    "url": "https://data.wgnhs.wisc.edu/arcgis/rest/services/geologic_data/well_construction_reports/MapServer/0",
+    "retrieved": "2026-11-25"
+   },
+   "note": "Nearby wells describe the area, not this property. Depth to water and yield on the property come only from a new well."
+  },
+  "bedrock": {
+   "DescriptionOfMapUnits.Name": "Cambrian, undivided",
+   "DescriptionOfMapUnits.Description": "Sandstone with some dolomite and shale, undivided; includes Trempealeau, Tunnel City, and Elk Mound Groups",
+   "DescriptionOfMapUnits.Age": "Paleozoic"
+  },
+  "surficial": {
+   "DescriptionOfMapUnits.Name": "Low relief hummocky glacial sediment of the Holy Hill Formation",
+   "DescriptionOfMapUnits.Description": "Brown to yellowish-brown sandy till and similar sediment deposited by the Green Bay and Lake Michigan Lobes late in the Wisconsin Glaciation. Similar to Hm but not in moraines and meltwater-stream sediment is common (su and sc).",
+   "DescriptionOfMapUnits.Age": "Late Pleistocene"
+  },
+  "geology_sources": [
+   {
+    "name": "Bedrock geology of Wisconsin, 1:1,000,000 (WGNHS)",
+    "url": "https://data.wgnhs.wisc.edu/arcgis/rest/services/bedrock_maps/1000k_wisconsin_bedrock/MapServer/3",
+    "retrieved": "2026-11-25"
+   },
+   {
+    "name": "Quaternary geology of Wisconsin, 1:500,000 (WGNHS)",
+    "url": "https://data.wgnhs.wisc.edu/arcgis/rest/services/surficial_maps/500k_wisconsin_quaternary/MapServer/3",
+    "retrieved": "2026-11-25"
+   }
+  ],
+  "public_land": {
+   "within_mi": 3.0,
+   "list": [
+    {
+     "name": "Baer Park",
+     "manager": "City Land",
+     "acres": 15.0,
+     "distance_mi": 0.43,
+     "access": "Open access"
+    },
+    {
+     "name": "Westview Park",
+     "manager": "City Land",
+     "acres": 105.0,
+     "distance_mi": 0.47,
+     "access": "Open access"
+    },
+    {
+     "name": "Melody Acres Park",
+     "manager": "City Land",
+     "acres": 1.0,
+     "distance_mi": 0.48,
+     "access": "Open access"
+    },
+    {
+     "name": "State Ice Age Trail Area (SIATA)",
+     "manager": "WI DNR",
+     "acres": 1378.0,
+     "distance_mi": 0.54,
+     "access": "DNR managed land"
+    },
+    {
+     "name": "Ice Age Trail - Sd",
+     "manager": "State Department of Natural Resources",
+     "acres": 843.0,
+     "distance_mi": 0.56,
+     "access": "Open access"
+    },
+    {
+     "name": "Black Earth Creek Fishery Area",
+     "manager": "WI DNR",
+     "acres": 407.0,
+     "distance_mi": 0.66,
+     "access": "DNR managed land"
+    },
+    {
+     "name": "Brewery Creekside Park",
+     "manager": "City Land",
+     "acres": 0.0,
+     "distance_mi": 0.82,
+     "access": "Open access"
+    },
+    {
+     "name": "Raspberry Park",
+     "manager": "City Land",
+     "acres": 6.0,
+     "distance_mi": 0.83,
+     "access": "Open access"
+    },
+    {
+     "name": "Municipal Park",
+     "manager": "City Land",
+     "acres": 573.0,
+     "distance_mi": 0.91,
+     "access": "Open access"
+    },
+    {
+     "name": "Gausewitz Park",
+     "manager": "City Land",
+     "acres": 0.0,
+     "distance_mi": 1.17,
+     "access": "Open access"
+    },
+    {
+     "name": "Hickory Hill Conservation Easement",
+     "manager": "Non-Governmental Organization",
+     "acres": 54.0,
+     "distance_mi": 1.22,
+     "access": "Open access"
+    },
+    {
+     "name": "Glacial Valley Park",
+     "manager": "City Land",
+     "acres": 3.0,
+     "distance_mi": 1.24,
+     "access": "Open access"
+    }
+   ],
+   "adjacent": false,
+   "source": {
+    "name": "DNR Managed Lands (WI DNR)",
+    "url": "https://dnrmaps.wi.gov/arcgis/rest/services/LF_DML/LF_DNR_Managed_Lands_Dissolved_WTM_Ext/MapServer/0",
+    "retrieved": "2026-11-25"
+   },
+   "source2": {
+    "name": "PAD-US Public Access (USGS)",
+    "url": "https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/PADUS_Public_Access/FeatureServer/0",
+    "retrieved": "2026-11-25"
+   }
+  }
+ },
+ "county_records": {
+  "available": true,
+  "county": "Dane",
+  "office": "Dane County Department of Planning & Development, Zoning Division",
+  "lookup": "https://dcimapapps.countyofdane.com/dcmapviewer/",
+  "zoning": {},
+  "zoning_links": [],
+  "shoreland_wetland_floodplain_acres": {
+   "Shoreland district (primary, 300 ft)": 1.66,
+   "Floodplain (1% annual chance) district": 0.0,
+   "Wetland district (75 ft buffer)": 3.71,
+   "Ordinary high water mark (75 ft buffer)": 0.0
+  },
+  "farmland_preservation": [
+   "Not Farmland Preservation"
+  ],
+  "resource_protection_acres": 3.74,
+  "zoning_permits_on_parcels": [],
+  "conditional_use_permits": [],
+  "deed_restrictions": [],
+  "landuse_history": [
+   {
+    "year": 2020,
+    "acres": {
+     "Agriculture": 1.32,
+     "Woodlands": 30.25,
+     "Open Land": 1.76
+    }
+   },
+   {
+    "year": 2015,
+    "acres": {
+     "Agriculture": 1.32,
+     "Woodlands": 30.25,
+     "Open Land": 1.76
+    }
+   },
+   {
+    "year": 2010,
+    "acres": {
+     "Agriculture": 1.32,
+     "Woodlands": 30.25,
+     "Open Land": 1.76
+    }
+   },
+   {
+    "year": 2000,
+    "acres": {
+     "Woodlands": 21.72,
+     "Other Open Land": 9.91,
+     "Agriculture/Silviculture": 1.71
+    }
+   }
+  ],
+  "sources": [
+   {
+    "name": "Dane County rural zoning",
+    "url": "https://dcimapapps.countyofdane.com/arcgissrv/rest/services/Zoning/MapServer/3",
+    "retrieved": "2026-11-25"
+   },
+   {
+    "name": "Shoreland district (primary, 300 ft)",
+    "url": "https://dcimapapps.countyofdane.com/arcgissrv/rest/services/Shoreland_Zone/MapServer/1",
+    "retrieved": "2026-11-25"
+   },
+   {
+    "name": "Wetland district (75 ft buffer)",
+    "url": "https://dcimapapps.countyofdane.com/arcgissrv/rest/services/Shoreland_Zone/MapServer/4",
+    "retrieved": "2026-11-25"
+   },
+   {
+    "name": "Resource protection corridors",
+    "url": "https://dcimapapps.countyofdane.com/arcgissrv/rest/services/Planning/MapServer/1",
+    "retrieved": "2026-11-25"
+   },
+   {
+    "name": "Dane County zoning permits",
+    "url": "https://dcimapapps.countyofdane.com/arcgissrv/rest/services/Zoning/MapServer/4",
+    "retrieved": "2026-11-25"
+   }
+  ]
+ },
+ "access": {
+  "nearest_public_road": "Shady Street",
+  "distance_ft": 848.0,
+  "frontage_ft": 0.0,
+  "source": {
+   "name": "OpenStreetMap contributors (ODbL)",
+   "url": "https://www.openstreetmap.org/copyright",
+   "retrieved": "2026-11-25"
+  },
+  "note": "Physical road location from public road maps. Legal access (easements, frontage rights) is a title question."
+ },
+ "historic_topos": {
+  "count": 20,
+  "years": [
+   1907,
+   1909,
+   1957,
+   1960,
+   1962,
+   1983,
+   1991
+  ],
+  "list": [
+   {
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1907",
+    "year": 1907,
+    "scale": 62500,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_801491_1907_62500_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/62500/WI_Cross%20Plains_801491_1907_62500_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1909",
+    "year": 1909,
+    "scale": 62500,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_801493_1909_62500_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/62500/WI_Cross%20Plains_801493_1909_62500_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1909",
+    "year": 1909,
+    "scale": 62500,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_801139_1909_62500_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/62500/WI_Cross%20Plains_801139_1909_62500_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1909",
+    "year": 1909,
+    "scale": 62500,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_801140_1909_62500_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/62500/WI_Cross%20Plains_801140_1909_62500_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1909",
+    "year": 1909,
+    "scale": 62500,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_801492_1909_62500_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/62500/WI_Cross%20Plains_801492_1909_62500_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:250000-scale Quadrangle for Madison, WI 1957",
+    "year": 1957,
+    "scale": 250000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Madison_802870_1957_250000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/250000/WI_Madison_802870_1957_250000_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:250000-scale Quadrangle for Madison, WI 1957",
+    "year": 1957,
+    "scale": 250000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Madison_802871_1957_250000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/250000/WI_Madison_802871_1957_250000_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:250000-scale Quadrangle for Madison, WI 1957",
+    "year": 1957,
+    "scale": 250000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Madison_503709_1957_250000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/250000/WI_Madison_503709_1957_250000_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:250000-scale Quadrangle for Madison, WI 1960",
+    "year": 1960,
+    "scale": 250000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Madison_802872_1960_250000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/250000/WI_Madison_802872_1960_250000_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:250000-scale Quadrangle for Madison, WI 1960",
+    "year": 1960,
+    "scale": 250000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Madison_503707_1960_250000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/250000/WI_Madison_503707_1960_250000_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:24000-scale Quadrangle for Cross Plains, WI 1962",
+    "year": 1962,
+    "scale": 24000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_700115_1962_24000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/24000/WI_Cross%20Plains_700115_1962_24000_geo.pdf",
+    "covers": false
+   },
+   {
+    "title": "USGS 1:24000-scale Quadrangle for Cross Plains, WI 1962",
+    "year": 1962,
+    "scale": 24000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_500313_1962_24000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/24000/WI_Cross%20Plains_500313_1962_24000_geo.pdf",
+    "covers": false
+   },
+   {
+    "title": "USGS 1:24000-scale Quadrangle for Cross Plains, WI 1962",
+    "year": 1962,
+    "scale": 24000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_800335_1962_24000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/24000/WI_Cross%20Plains_800335_1962_24000_geo.pdf",
+    "covers": false
+   },
+   {
+    "title": "USGS 1:24000-scale Quadrangle for Middleton, WI 1962",
+    "year": 1962,
+    "scale": 24000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Middleton_500906_1962_24000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/24000/WI_Middleton_500906_1962_24000_geo.pdf",
+    "covers": false
+   },
+   {
+    "title": "USGS 1:24000-scale Quadrangle for Middleton, WI 1962",
+    "year": 1962,
+    "scale": 24000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Middleton_500905_1962_24000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/24000/WI_Middleton_500905_1962_24000_geo.pdf",
+    "covers": false
+   },
+   {
+    "title": "USGS 1:24000-scale Quadrangle for Middleton, WI 1962",
+    "year": 1962,
+    "scale": 24000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Middleton_500907_1962_24000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/24000/WI_Middleton_500907_1962_24000_geo.pdf",
+    "covers": false
+   },
+   {
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1962",
+    "year": 1962,
+    "scale": 62500,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_801490_1962_62500_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/62500/WI_Cross%20Plains_801490_1962_62500_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1962",
+    "year": 1962,
+    "scale": 62500,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Cross%20Plains_801489_1962_62500_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/62500/WI_Cross%20Plains_801489_1962_62500_geo.pdf",
+    "covers": true
+   },
+   {
+    "title": "USGS 1:24000-scale Quadrangle for Middleton, WI 1983",
+    "year": 1983,
+    "scale": 24000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Middleton_500904_1983_24000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/24000/WI_Middleton_500904_1983_24000_geo.pdf",
+    "covers": false
+   },
+   {
+    "title": "USGS 1:100000-scale Quadrangle for Madison, WI 1991",
+    "year": 1991,
+    "scale": 100000,
+    "tif": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/WI/WI_Madison_503660_1991_100000_geo.tif",
+    "pdf": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/PDF/WI/100000/WI_Madison_503660_1991_100000_geo.pdf",
+    "covers": true
+   }
+  ],
+  "source": {
+   "name": "USGS Historical Topographic Maps (The National Map)",
+   "url": "https://ngmdb.usgs.gov/topoview/",
+   "retrieved": "2026-11-25"
+  },
+  "crops": [
+   {
+    "year": 1907,
+    "scale": 62500,
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1907",
+    "file": "C:\\NovakGS_Work\\01_Active\\26-239_Internal_Hunting-Land-Case-Study\\04_Deliverables\\Land_Intel\\_work\\historic_topo_1907.tif",
+    "png": "C:\\NovakGS_Work\\01_Active\\26-239_Internal_Hunting-Land-Case-Study\\04_Deliverables\\Land_Intel\\_work\\historic_topo_1907.png"
+   },
+   {
+    "year": 1962,
+    "scale": 62500,
+    "title": "USGS 1:62500-scale Quadrangle for Cross Plains, WI 1962",
+    "file": "C:\\NovakGS_Work\\01_Active\\26-239_Internal_Hunting-Land-Case-Study\\04_Deliverables\\Land_Intel\\_work\\historic_topo_1962.tif",
+    "png": "C:\\NovakGS_Work\\01_Active\\26-239_Internal_Hunting-Land-Case-Study\\04_Deliverables\\Land_Intel\\_work\\historic_topo_1962.png"
+   }
+  ]
+ },
+ "terrain": {
+  "elev_min_ft": 921.0,
+  "elev_max_ft": 1085.0,
+  "relief_ft": 164.0,
+  "slope_classes_acres": {
+   "0-6%": 2.88,
+   "6-12%": 8.13,
+   "12-20%": 11.39,
+   "20-35%": 10.04,
+   "35%+": 1.11
+  },
+  "median_slope_pct": 15.8
+ },
+ "lidar": {
+  "dataset": "Dane County 2024 (USGS 3DEP)",
+  "year": 2024,
+  "vertical": "NAVD88 (GEOID18), US survey feet",
+  "crs": "NAD83(2011) / WISCRS Dane (ftUS)",
+  "drone_minus_lidar_median_ft": 0.089,
+  "drone_minus_lidar_nmad_ft": 3.605,
+  "open_ground_cells": 72544,
+  "canopy_p50_p95_ft": [
+   52.2,
+   78.6
+  ]
+ },
+ "terrain_features": {
+  "run": "2026-11-24T22:01:34",
+  "settings": {
+   "fine_radius_ft": 50.0,
+   "broad_radius_ft": 200.0,
+   "flat_deg": 2.0,
+   "drainage_start_acres": 0.5,
+   "saddle_min_relief_ft": 3.0,
+   "bench_max_slope_deg": 60.0,
+   "bench_hillside_min_slope_deg": 9.0
+  },
+  "aoi_acres": 33.33,
+  "landforms": {
+   "Point / Finger": {
+    "count": 23,
+    "acres": 5.8
+   },
+   "Sidehill": {
+    "count": 14,
+    "acres": 15.34
+   },
+   "Draw / Bowl": {
+    "count": 14,
+    "acres": 5.06
+   },
+   "Bottom / Drainage": {
+    "count": 9,
+    "acres": 4.09
+   },
+   "Ridge": {
+    "count": 4,
+    "acres": 2.96
+   }
+  },
+  "benches": {
+   "count": 18,
+   "acres": 0.57
+  },
+  "saddles": 0,
+  "drainage_ft": 4704.0,
+  "ridgeline_ft": 4469.0,
+  "hubs": {
+   "Draw Hub": 11,
+   "Ridge Hub": 7
+  },
+  "south_facing_acres": 2.81,
+  "log": [
+   "DEM: LiDAR_DEM_2024.tif (974 x 854 cells, 2.00 ft)",
+   "Hillshade, slope and aspect built.",
+   "Landforms: Bottom / Drainage 9 (4.09 ac), Draw / Bowl 14 (5.06 ac), Point / Finger 23 (5.80 ac), Ridge 4 (2.96 ac), Sidehill 14 (15.34 ac)",
+   "Benches: 18 (0.57 ac)",
+   "Saddles: 0 (at least 3.0 ft rise along the ridge and drop to each side)",
+   "Drainage lines: 4704 ft | Ridgelines: 4469 ft | Hubs: Draw Hub 11, Ridge Hub 7",
+   "South / southwest-facing slopes (8-35 deg): 2.81 ac"
+  ]
+ },
+ "cover": {
+  "run": "2026-11-24T22:02:31",
+  "settings": {
+   "open_max_ft": 3.0,
+   "thicket_max_ft": 15.0,
+   "conifer_greenness": 0.045
+  },
+  "aoi_acres": 33.33,
+  "cover_acres": {
+   "Conifer": 0.54,
+   "Thicket / Regrowth": 0.29,
+   "Open / Field": 1.71,
+   "Hardwood": 30.78
+  },
+  "edges_ft": {
+   "Soft Edge": 199.0,
+   "Hard Edge": 2895.0
+  },
+  "inside_corners": 6,
+  "log": [
+   "Ortho resampled to 2.0 ft cells; 61.9% of the grid has imagery + LiDAR.",
+   "Conifer greenness threshold (automatic): 0.045",
+   "Cover: Conifer 0.54 ac, Hardwood 30.78 ac, Open / Field 1.71 ac, Thicket / Regrowth 0.29 ac",
+   "Edges: soft (field to thicket) 199 ft, hard (field to timber) 2895 ft | Inside corners: 6"
+  ]
+ },
+ "access_point": {
+  "road": "Shady Street",
+  "road_to_boundary_ft": 849.0
+ },
+ "build_sites": {
+  "sites": [
+   {
+    "id": "Site A",
+    "acres": 6.46,
+    "acres_under_10_pct": 3.33,
+    "mean_slope_pct": 9.5,
+    "elevation_ft": 991.0,
+    "soil": "7961E2",
+    "soil_name": "Kidder soils, 20 to 35 percent slopes, eroded",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "driveway_ft": 848.0,
+    "driveway_max_grade_pct": 10.7,
+    "driveway_avg_grade_pct": 2.0,
+    "center84": [
+     -89.625134,
+     43.110551
+    ]
+   },
+   {
+    "id": "Site B",
+    "acres": 1.29,
+    "acres_under_10_pct": 0.64,
+    "mean_slope_pct": 9.8,
+    "elevation_ft": 969.0,
+    "soil": "7961D2",
+    "soil_name": "Kidder soils, 10 to 20 percent slopes, eroded",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "driveway_ft": 1231.0,
+    "driveway_max_grade_pct": 10.7,
+    "driveway_avg_grade_pct": 1.2,
+    "center84": [
+     -89.623752,
+     43.110472
+    ]
+   },
+   {
+    "id": "Site C",
+    "acres": 0.29,
+    "acres_under_10_pct": 0.26,
+    "mean_slope_pct": 6.4,
+    "elevation_ft": 968.0,
+    "soil": "7961D2",
+    "soil_name": "Kidder soils, 10 to 20 percent slopes, eroded",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "driveway_ft": 1511.0,
+    "driveway_max_grade_pct": 13.4,
+    "driveway_avg_grade_pct": 0.7,
+    "center84": [
+     -89.623003,
+     43.110412
+    ]
+   },
+   {
+    "id": "Site D",
+    "acres": 0.26,
+    "acres_under_10_pct": 0.05,
+    "mean_slope_pct": 11.5,
+    "elevation_ft": 945.0,
+    "soil": "7310D2",
+    "soil_name": "McHenry silt loam, 12 to 20 percent slopes, eroded",
+    "dwellings_no_basement": "Very limited",
+    "dwellings_basement": "Very limited",
+    "septic": "Very limited",
+    "driveway_ft": 1462.0,
+    "driveway_max_grade_pct": 11.0,
+    "driveway_avg_grade_pct": 0.7,
+    "center84": [
+     -89.624205,
+     43.111535
+    ]
+   }
+  ],
+  "criteria": {
+   "max_slope_pct": 10,
+   "workable_slope_pct": 15,
+   "min_acres": 0.25,
+   "boundary_setback_ft": 50,
+   "wetland_buffer_ft": 75,
+   "drain_buffer_ft": 40
+  },
+  "method": "Ground at or under 10% slope (up to 15% counted as workable), at least 50 ft inside the boundary, outside the FEMA 1% floodplain, at least 75 ft from mapped wetlands, outside county shoreland/wetland/floodplain districts where mapped, and at least 40 ft from modeled drainage paths. Driveway lengths and grades are the gentlest route over the 2024 LiDAR bare earth from the stretch of property line closest to the nearest public road, measured on the property only.",
+  "access_point": {
+   "road": "Shady Street",
+   "road_to_boundary_ft": 849.0
+  },
+  "note": "Screening only. Setbacks, driveway permits, septic suitability, and building approvals are set by the municipality and county. Legal access to the property line is a title question."
+ },
+ "ponds": {
+  "sites": [
+   {
+    "id": "Pond 1",
+    "drainage_acres": 4.3,
+    "catchment_extends_past_map": false,
+    "scenarios": [
+     {
+      "embankment_height_ft": 8,
+      "pool_acres": 0.58,
+      "storage_acre_ft": 2.8,
+      "embankment_length_ft": 376.0
+     },
+     {
+      "embankment_height_ft": 12,
+      "pool_acres": 0.82,
+      "storage_acre_ft": 5.6,
+      "embankment_length_ft": 424.0
+     }
+    ],
+    "soil": "7310D2",
+    "pond_reservoir_rating": "Very limited",
+    "embankment_rating": "Somewhat limited",
+    "hydrologic_group": "B",
+    "center84": [
+     -89.6247,
+     43.111836
+    ]
+   },
+   {
+    "id": "Pond 2",
+    "drainage_acres": 12.9,
+    "catchment_extends_past_map": false,
+    "scenarios": [
+     {
+      "embankment_height_ft": 8,
+      "pool_acres": 0.17,
+      "storage_acre_ft": 0.5,
+      "embankment_length_ft": 80.0
+     },
+     {
+      "embankment_height_ft": 12,
+      "pool_acres": 0.46,
+      "storage_acre_ft": 1.7,
+      "embankment_length_ft": 208.0
+     }
+    ],
+    "soil": "609A",
+    "pond_reservoir_rating": "Somewhat limited",
+    "embankment_rating": "Very limited",
+    "hydrologic_group": "B/D",
+    "center84": [
+     -89.623349,
+     43.110939
+    ]
+   },
+   {
+    "id": "Pond 3",
+    "drainage_acres": 8.1,
+    "catchment_extends_past_map": false,
+    "scenarios": [
+     {
+      "embankment_height_ft": 8,
+      "pool_acres": 0.33,
+      "storage_acre_ft": 1.2,
+      "embankment_length_ft": 236.0
+     },
+     {
+      "embankment_height_ft": 12,
+      "pool_acres": 0.46,
+      "storage_acre_ft": 2.8,
+      "embankment_length_ft": 676.0
+     }
+    ],
+    "soil": "7961D2",
+    "pond_reservoir_rating": "Very limited",
+    "embankment_rating": "Somewhat limited",
+    "hydrologic_group": "B",
+    "center84": [
+     -89.624261,
+     43.110322
+    ]
+   }
+  ],
+  "method": "Every drainage cell inside the boundary that collects 2.0 to 60.0 acres was tested with 8 and 12 ft embankments over the 2024 LiDAR bare earth. Sites are ranked by storage per foot of embankment and kept at least 300 ft apart.",
+  "note": "Pond screening is approximate. A pond needs a site survey, soil borings, an engineered design, and permits (county, and WI DNR where water or wetlands are involved)."
+ },
+ "stewardship": {
+  "erosion_watch": [
+   {
+    "id": "E1",
+    "mean_slope_pct": 18.2,
+    "drainage_acres": 2.8,
+    "length_ft": 113
+   }
+  ],
+  "erosion_watch_count": 1,
+  "cover_units": [
+   {
+    "cover": "Conifer",
+    "acres": 0.54,
+    "median_canopy_ft": 54.0
+   },
+   {
+    "cover": "Thicket / Regrowth",
+    "acres": 0.29,
+    "median_canopy_ft": 12.0
+   },
+   {
+    "cover": "Open / Field",
+    "acres": 1.71,
+    "median_canopy_ft": 0.0
+   },
+   {
+    "cover": "Hardwood",
+    "acres": 30.78,
+    "median_canopy_ft": 57.0
+   }
+  ],
+  "thermal_baseline": {
+   "Likely deer": 7,
+   "Possible": 9
+  },
+  "photo_points": 18,
+  "baseline_date": "November 24, 2026",
+  "method": "Erosion watch: modeled drainage paths that average 15% slope or steeper and collect at least 1 acre of runoff. Canopy heights come from 2024 public LiDAR.",
+  "note": "This flight is the baseline. Change maps (erosion, canopy, trails, restoration) are measured against it on each repeat flight."
+ },
+ "cross_sections": [
+  {
+   "name": "West to East",
+   "length_ft": 1345.0,
+   "relief_ft": 39.0
+  },
+  {
+   "name": "South to North",
+   "length_ft": 1106.0,
+   "relief_ft": 121.0
+  }
+ ],
+ "files": {
+  "1 Essentials": [
+   {
+    "name": "26-239 Listing Graphics.zip",
+    "bytes": 9695246
+   },
+   {
+    "name": "26-239 Leaf-Off Aerial (GeoTIFF).tif",
+    "bytes": 50239888
+   },
+   {
+    "name": "26-239 Elevation 2ft Contours (Shapefile).zip",
+    "bytes": 885927
+   },
+   {
+    "name": "26-239 Essentials Map (Google Earth).kmz",
+    "bytes": 1442882
+   },
+   {
+    "name": "26-239 Essentials GIS Layers (GeoJSON).zip",
+    "bytes": 136174
+   },
+   {
+    "name": "26-239 Essentials Report.pdf",
+    "bytes": 857817
+   }
+  ],
+  "2 Hunting & Recreation": [
+   {
+    "name": "26-239 Property Map (Google Earth).kmz",
+    "bytes": 18488917
+   },
+   {
+    "name": "26-239 Property Overview.pdf",
+    "bytes": 2624458
+   },
+   {
+    "name": "26-239 Hunting App Files (GPX + KML).zip",
+    "bytes": 129955
+   }
+  ],
+  "3 Buyer Due Diligence": [
+   {
+    "name": "26-239 Surface Model (GeoTIFF).tif",
+    "bytes": 15228787
+   },
+   {
+    "name": "26-239 Bare Earth 2024 LiDAR (GeoTIFF).tif",
+    "bytes": 2492048
+   },
+   {
+    "name": "26-239 Historical Topo Maps.zip",
+    "bytes": 14412240
+   },
+   {
+    "name": "26-239 Due Diligence Map (Google Earth).kmz",
+    "bytes": 1475413
+   },
+   {
+    "name": "26-239 Due Diligence GIS Layers (GeoJSON).zip",
+    "bytes": 46303
+   },
+   {
+    "name": "26-239 Public Records (CSV).zip",
+    "bytes": 2967
+   },
+   {
+    "name": "26-239 Buyer Due Diligence Report.pdf",
+    "bytes": 1503420
+   }
+  ],
+  "4 Stewardship": [
+   {
+    "name": "26-239 Stewardship Map (Google Earth).kmz",
+    "bytes": 1430007
+   },
+   {
+    "name": "26-239 Repeat Photo Points.gpx",
+    "bytes": 1446
+   },
+   {
+    "name": "26-239 Stewardship GIS Layers (GeoJSON).zip",
+    "bytes": 1770
+   },
+   {
+    "name": "26-239 Stewardship Baseline Report.pdf",
+    "bytes": 489802
+   }
+  ]
+ },
+ "meta": {
+  "job_id": "26-239",
+  "title": "33-Acre Hunting Property, Dane County, WI",
+  "county": "Dane",
+  "state": "Wisconsin",
+  "built": "2026-11-25 17:23",
+  "engine": "land_intel.py 1.0",
+  "flight_dates": {
+   "mapping": "November 24, 2026",
+   "thermal": "November 24, 2026, 7:19 to 8:40 PM"
+  },
+  "steps": {
+   "boundary": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "parcels": {
+    "status": "ok",
+    "sec": 0.1
+   },
+   "flood": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "wetlands": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "water": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "soils": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "records": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "county": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "roads": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "historic": {
+    "status": "ok",
+    "sec": 0.2
+   },
+   "grids": {
+    "status": "ok",
+    "sec": 1.2
+   },
+   "build_sites": {
+    "status": "ok",
+    "sec": 0.7
+   },
+   "ponds": {
+    "status": "ok",
+    "sec": 0.7
+   },
+   "stewardship": {
+    "status": "ok",
+    "sec": 0.1
+   },
+   "maps": {
+    "status": "ok",
+    "sec": 13.9
+   },
+   "package2": {
+    "status": "ok",
+    "sec": 0.0
+   },
+   "rasters": {
+    "status": "ok",
+    "sec": 23.1
+   },
+   "kmz": {
+    "status": "ok",
+    "sec": 37.9
+   },
+   "gis": {
+    "status": "ok",
+    "sec": 0.1
+   },
+   "pdf": {
+    "status": "ok",
+    "sec": 0.9
+   }
+  }
+ }
+}
