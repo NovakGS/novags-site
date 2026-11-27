@@ -6,3 +6,6 @@
 
 /proposals/*
   X-Robots-Tag: noindex, nofollow
+
+/peoples/*
+  X-Robots-Tag: noindex, nofollow, noarchive

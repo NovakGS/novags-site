@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="icon" href="/favicon.ico">
+<title>Field Data for Peoples Company</title>
+<meta name="description" content="Private preview prepared for Adam Crist, ALC, Peoples Company: thermal wildlife surveys, LiDAR terrain, and flood screens to add to southern Wisconsin land listings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* VOICE  calm, realistic field partner pitch in Gregg's own voice, same family as the Hamele and EXIT pages
+   IDEA   a topo field sheet: dark ground, faint orange contours, data cards with mono labels
+   PICTURE the real thermal map and LiDAR terrain from the Cross Plains sample parcel
+   COLOUR near-black and navy ground, Novak orange #F26812 accent; light theme on white
+   TYPE   Roboto 700/500/400, Roboto Mono for small labels
+   LAYOUT header with prepared-for block, letter box, card grids; stacks to one column under 720px */
+:root{--bg:#0b0e13;--bg2:#10151c;--card:#0f141b;--line:#262d36;--ink:#e8ebef;--ink2:#b9c0c9;--muted:#8a929c;--o:#F26812;--o2:#ff8a3d;--navy:#1F3444;--tint:rgba(242,104,18,.07);--hdr:#0d1218;--shadow:none;color-scheme:dark}
+:root[data-theme=light]{--bg:#f6f7f9;--bg2:#ffffff;--card:#ffffff;--line:#dde1e6;--ink:#16212b;--ink2:#3b4753;--muted:#66717d;--o:#d9580a;--o2:#c24e08;--tint:rgba(242,104,18,.06);--hdr:#ffffff;--shadow:0 1px 2px rgba(16,24,40,.05);color-scheme:light}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Roboto,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-x:clip;position:relative}
+body::before{content:"";position:fixed;inset:0;background:url(img/topo-bg.png) 0 0/900px repeat;opacity:.09;pointer-events:none;z-index:0}
+:root[data-theme=light] body::before{opacity:.12}
+img{max-width:100%;display:block}
+a{color:var(--o)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 max(20px,4vw)}
+header,main,footer{position:relative;z-index:1}
+.hdr{background:var(--hdr);border-bottom:3px solid var(--o)}
+.hdr .wrap{display:flex;align-items:center;gap:24px;padding-top:16px;padding-bottom:16px;max-width:1160px}
+.logo{height:72px;width:auto}
+.logo.l{display:none}
+:root[data-theme=light] .logo.d{display:none}
+:root[data-theme=light] .logo.l{display:block}
+.prep{border-left:1px solid var(--line);padding-left:24px;font-size:15px;line-height:1.5;color:var(--ink2)}
+.prep b{color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--o);border-radius:999px;padding:4px 14px;margin-bottom:8px;font:500 12px/1.4 "Roboto Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--o)}
+.tools{margin-left:auto;display:flex;gap:10px;align-items:center;position:relative}
+.btn-g{height:44px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:0 18px;font:500 15px Roboto,sans-serif;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn-g:hover,.btn-g:focus-visible{border-color:var(--o)}
+.btn-g.sq{width:44px;padding:0;justify-content:center}
+.btn-g svg{width:18px;height:18px}
+.menu{position:absolute;right:0;top:54px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:8px;min-width:230px;box-shadow:0 12px 32px rgba(0,0,0,.35);z-index:20}
+.menu[hidden]{display:none}
+.menu a{display:block;padding:10px 14px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:15px}
+.menu a:hover,.menu a:focus-visible{background:var(--tint);color:var(--o)}
+section{padding:44px 0 8px}
+.eb{font:500 13px/1.2 "Roboto Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin:0 0 6px}
+h1{font-size:clamp(30px,4.6vw,48px);line-height:1.08;letter-spacing:-.02em;margin:34px 0 22px;text-wrap:balance;max-width:28ch}
+h2{font-size:clamp(24px,3vw,31px);line-height:1.15;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+h3{font-size:19px;line-height:1.3;margin:0 0 6px}
+p{margin:0 0 14px}
+.lead{color:var(--ink2);max-width:78ch}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 22px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;font-weight:500;text-decoration:none;border:1px solid var(--o);color:var(--ink)}
+.btn.p{background:var(--o);color:#fff}
+.btn:hover{filter:brightness(1.08)}
+.letter{border:1px solid var(--o);background:var(--tint);border-radius:14px;padding:22px 24px;color:var(--ink2)}
+.letter p:last-child{margin:0}
+.letter b,.need b{color:var(--ink)}
+.need{margin:16px 0 0;color:var(--ink2)}
+.sub{color:var(--ink2);font-size:15.5px;margin:-12px 0 22px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);color:var(--ink2);font-size:16px}
+.card h3{color:var(--ink)}
+.card ul{margin:6px 0 0;padding-left:18px}
+.card li{margin:4px 0}
+.card li::marker{color:var(--o)}
+.use{margin:10px 0 0;font-size:15px;color:var(--ink2)}
+.use span{font:500 12px "Roboto Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--o);margin-right:6px}
+.stat .n{font-size:clamp(30px,3.4vw,38px);font-weight:700;color:var(--o);line-height:1.1;white-space:nowrap}
+.stat h3{margin:4px 0 6px}
+.means{margin-top:14px;border:1px solid var(--o);background:var(--tint);border-radius:12px;padding:18px 22px;color:var(--ink2)}
+.means h3{color:var(--ink)}
+.means p:last-child{margin:0}
+.src{font-size:14px;color:var(--muted);margin-top:12px}
+figure{margin:0}
+.shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.shot img{width:100%;height:auto}
+figcaption{font-size:14px;color:var(--muted);padding:10px 14px;line-height:1.45}
+figcaption b{color:var(--ink)}
+.split{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px;align-items:start}
+.facts{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:10px}
+.facts li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:15.5px;color:var(--ink2)}
+.facts b{display:block;color:var(--ink);font-size:17px}
+.deer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.deer figcaption{padding:8px 12px}
+.tag{position:absolute;left:10px;top:10px;background:rgba(11,14,19,.82);color:#fff;font:500 12px "Roboto Mono",monospace;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:6px}
+.rel{position:relative}
+.note{border-left:3px solid var(--o);background:var(--card);border-radius:0 10px 10px 0;padding:14px 18px;margin-top:16px;font-size:15.5px;color:var(--ink2)}
+.note b{color:var(--ink)}
+.box{border:1px solid var(--o);border-radius:14px;background:var(--card);padding:22px 24px;color:var(--ink2)}
+.ticks{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px}
+.ticks li{position:relative;padding-left:20px}
+.ticks li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:2px;background:var(--o)}
+.ticks b{color:var(--ink)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+summary{cursor:pointer;padding:14px 18px;font-weight:500;color:var(--ink);list-style-position:inside}
+summary:focus-visible,.btn:focus-visible,.btn-g:focus-visible{outline:2px solid var(--o);outline-offset:2px}
+details p{padding:0 18px 4px;color:var(--ink2);font-size:16px}
+.contact{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.contact .card{display:flex;flex-direction:column;gap:8px}
+.contact .who{font-weight:700;color:var(--ink);font-size:18px}
+.lines a{display:block;color:var(--ink);text-decoration:none;padding:2px 0}
+.lines a:hover{color:var(--o)}
+.foot{margin-top:56px;border-top:1px solid var(--line);background:var(--hdr)}
+.foot .wrap{padding-top:26px;padding-bottom:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:24px;font-size:14px;color:var(--muted)}
+.foot .tagline{font:500 13px "Roboto Mono",monospace;letter-spacing:.12em;color:var(--o);text-transform:uppercase;margin-bottom:6px}
+.foot p{margin:0 0 8px}
+@media (max-width:860px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}.g3>.card:last-child:nth-child(odd){grid-column:span 2}.split,.contact{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:720px){.hdr .wrap{flex-wrap:wrap;gap:14px}.logo{height:56px}.prep{order:3;flex-basis:100%;border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:12px}.g2,.ticks,.foot .wrap{grid-template-columns:minmax(0,1fr)}.btn-g .lbl{display:none}.btn-g.menu-b{width:44px;padding:0;justify-content:center}}
+@media (max-width:560px){body{font-size:16px}.g3,.g4{grid-template-columns:minmax(0,1fr)}.deer{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.deer figcaption{font-size:13px;padding:6px 8px;line-height:1.35}.letter,.box{padding:18px}.cta .btn{flex:1 1 100%;justify-content:center}section{padding-top:36px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="wrap">
+    <img class="logo d" src="img/novak-logo-dark.png" alt="Novak Geospatial Solutions" width="520" height="240">
+    <img class="logo l" src="img/novak-logo-light.png" alt="Novak Geospatial Solutions" width="520" height="240">
+    <div class="prep">
+      <div class="pill">Private Preview</div>
+      <div>Prepared specifically for <b>Adam Crist, ALC</b></div>
+      <div>Senior Land Agent, Peoples Company</div>
+      <div>Mineral Point, Wisconsin</div>
+    </div>
+    <div class="tools">
+      <button class="btn-g menu-b" id="menuBtn" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="lbl">Menu</span></button>
+      <button class="btn-g sq" id="themeBtn" aria-label="Switch between dark and light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+      <nav class="menu" id="menu" hidden aria-label="Page sections">
+        <a href="#fit">Where I Fit</a>
+        <a href="#listings">Your Listings</a>
+        <a href="#add">What I Can Add</a>
+        <a href="#thermal">Thermal Sample</a>
+        <a href="#terrain">Terrain Sample</a>
+        <a href="#files">What Your Team Gets Back</a>
+        <a href="#test">The Test</a>
+        <a href="#faq">Questions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Thermal Wildlife, Terrain, and Flood Data for Southern Wisconsin Land Listings</h1>
+  <div class="cta">
+    <a class="btn p" href="#thermal">See the Thermal Sample</a>
+    <a class="btn" href="#test">Choose a Tract for the Free Test</a>
+  </div>
+  <div class="letter">
+    <p>Adam, Lexie Benson pointed me your way, so I put this page together to show you in a few minutes what I could add to a Peoples land listing, using your own Wisconsin listings as the starting point.</p>
+    <p>Peoples already covers the heart of a land sale: valuation, marketing, auctions, soils and productivity, and good drone photos and video. I'm not trying to do any of that. What I bring is a short list of measured, dated data about the ground itself, the things a recreational buyer or a bidder asks before they drive out: what uses the property at night, how the land lays under the trees, and where water sits.</p>
+    <p><b>The approach:</b> a supplement to your team, not a competitor. I don't list, appraise, auction, or manage land. I fly, process, and hand your team finished files to use under Peoples' name.</p>
+    <p><b>The proposal:</b> pick one listing and one question a buyer or bidder is likely to ask. I'll fly it, build one finished exhibit that answers it, and deliver the files at no cost. <a href="#test">The Test</a> section lays it out.</p>
+    <p>The samples on this page come from a 33-acre wooded parcel near Cross Plains that I flew on November 24, 2026.</p>
+  </div>
+  <p class="need"><b>What I need to start:</b> one listing you choose, the seller's OK for a daytime mapping flight (plus a second flight 2 to 3 hours after dark if the exhibit is a wildlife survey), and the question you want it to answer. There's no cost to you or the seller.</p>
+
+  <section id="fit">
+    <p class="eb">Where I Fit</p>
+    <h2>Alongside Your Team, Not in Its Way</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Stays With Peoples</h3><ul><li>Valuation and appraisal</li><li>Listing, marketing, and design</li><li>Auctions and online bidding</li><li>Farm management</li><li>Soils, productivity, and your client maps</li><li>Every buyer and seller relationship</li></ul></div>
+      <div class="card"><h3>What I Add</h3><ul><li>Night thermal wildlife surveys</li><li>LiDAR terrain under the timber</li><li>Flood and wetland screens</li><li>Due diligence screens</li><li>3D fly-thrus</li><li>Dated leaf-off imagery</li></ul></div>
+      <div class="card"><h3>How It Reaches Your Clients</h3><p>As finished files your designers place in the listing, the brochure, the Map Binder, or the bidder packet, under Peoples' branding. Buyers keep calling your team.</p></div>
+    </div>
+  </section>
+
+  <section id="listings">
+    <p class="eb">Your Listings</p>
+    <h2>What I Saw in Your Wisconsin Listings</h2>
+    <p class="lead">Before building anything, I read six of your Wisconsin listings and one Peoples listing in Iowa, along with the Tract 1 Map Binder for #19881. Here's what stood out, and why the list below is shaped the way it is.</p>
+    <div class="grid g4">
+      <div class="card stat"><div class="n">16 to 50</div><h3>Photos per Listing</h3>Mostly drone, with drone video on some. The visual side is well covered.</div>
+      <div class="card stat"><div class="n">10 m</div><h3>Elevation Grid</h3>The Map Binder contours come from the USGS 10-meter elevation model. Public LiDAR for the same ground is 1 meter.</div>
+      <div class="card stat"><div class="n">Trail Cams</div><h3>Wildlife</h3>Hunting comes through the description, trail-cam photos, and food plots.</div>
+      <div class="card stat"><div class="n">0 of 7</div><h3>Listings</h3>carried a thermal survey, LiDAR terrain, a flood or wetland screen, or a 3D fly-thru.</div>
+    </div>
+    <div class="means">
+      <h3>What That Means for a Peoples Listing</h3>
+      <p>Peoples has the market, the buyers, and the presentation. Where I can add something is a handful of measured, dated layers about the ground: <b>what lives on it, how it's shaped under the trees, and where water sits.</b> Those are the questions recreational buyers and bidders ask before they drive out, and none of them asks your team to change how it works.</p>
+    </div>
+    <p class="src">Read on peoplescompany.com on November 26 and 27, 2026: listings #19471, #19473, #19881, #19893, #17747, and #16484 in Wisconsin, #19965 in Iowa, and the #19881 Tract 1 Map Binder.</p>
+  </section>
+
+  <section id="add">
+    <p class="eb">What I Add</p>
+    <h2>Six Things I Can Add to a Peoples Listing</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Thermal Wildlife Survey</h3>A night flight with a thermal camera over the whole tract. Every deer-sized heat signature is checked by eye, then mapped as likely or possible.<p class="use"><span>Where it fits:</span>recreational listings where the hunting sells it. Repeat surveys after closing give a new owner a herd baseline.</p></div>
+      <div class="card"><h3>Terrain Read From LiDAR</h3>Bare-earth LiDAR under the canopy: 2-ft contours, shaded relief, slope, ridges, benches, draws, drainage paths, travel hubs, and canopy height.<p class="use"><span>Where it fits:</span>wooded and hunting tracts, where buyers ask how the ground lays under the timber.</p></div>
+      <div class="card"><h3>Flood and Wetland Screen</h3>FEMA flood zones, Wisconsin DNR wetlands and flood mapping, streams, ponds, and distance to water, drawn on the tract.<p class="use"><span>Where it fits:</span>buyer and bidder questions about wet ground, answered before the showing.</p></div>
+      <div class="card"><h3>Due Diligence Screens</h3>Possible build sites and driveway routes from slope, pond sites, nearby wells and DNR records, and historic topo maps of the same ground.<p class="use"><span>Where it fits:</span>homesite and transitional tracts, and the data room ahead of an auction.</p></div>
+      <div class="card"><h3>3D Fly-Thru</h3>A to-scale 3D model of the tract and a short fly-thru video built from it.<p class="use"><span>Where it fits:</span>out-of-area buyers and auction marketing, next to your drone video.</p></div>
+      <div class="card"><h3>Dated Leaf-Off Imagery</h3>A 1.5-inch, RTK-positioned orthomosaic of the tract with its flight date on it, delivered as a GeoTIFF.<p class="use"><span>Where it fits:</span>a current aerial for the brochure and Map Binder, with a date buyers can see.</p></div>
+    </div>
+  </section>
+
+  <section id="thermal">
+    <p class="eb">Sample 1</p>
+    <h2>Night Thermal Wildlife Survey</h2>
+    <div class="split">
+      <figure class="shot">
+        <img src="img/sample-thermal.jpg" alt="Stitched thermal map of the 33-acre sample parcel with deer detections circled" width="816" height="665" loading="lazy">
+        <figcaption><b>Novak sample: 33-acre wooded parcel near Cross Plains.</b> Stitched thermal map, brighter is warmer. Solid circles are likely deer, dashed circles are possible detections.</figcaption>
+      </figure>
+      <div>
+        <p class="lead">A Matrice 4T flew the whole parcel after dark on November 24, 2026, from 7:19 to 8:40 PM. Every photo was searched on its own, and every detection was confirmed by eye before it was counted.</p>
+        <ul class="facts">
+          <li><b>7 likely sightings, 5 to 7 deer</b>A pair at the south end and five sightings on the east side. Those five came over about five minutes and may repeat the same deer.</li>
+          <li><b>9 possible detections</b>Compact warm spots where the shape couldn't be confirmed. Not counted in the 7.</li>
+          <li><b>3,345 thermal photos checked</b>So a deer that moved between passes is still caught.</li>
+        </ul>
+        <p class="lead">On a Peoples listing this becomes one gallery graphic and one brochure page, with the date on it. It's best flown leaf-off, late fall through winter.</p>
+      </div>
+    </div>
+    <div class="deer">
+      <figure class="shot"><img src="img/deer-1.jpg" alt="Thermal close-up of a deer at the south end" width="446" height="446" loading="lazy"><figcaption><b>7:34 PM</b>, south end, 20 °F warmer than the ground</figcaption></figure>
+      <figure class="shot"><img src="img/deer-3.jpg" alt="Thermal close-up of a deer on the east side" width="446" height="446" loading="lazy"><figcaption><b>8:11 PM</b>, east side, 13 °F warmer than the ground</figcaption></figure>
+      <figure class="shot"><img src="img/deer-4.jpg" alt="Thermal close-up of a second east-side deer" width="446" height="446" loading="lazy"><figcaption><b>8:11 PM</b>, east side, a second deer in the same frame</figcaption></figure>
+    </div>
+    <p class="src">Straight-down thermal close-ups, each about 13 ft across.</p>
+    <div class="note"><b>One night's snapshot.</b> A thermal survey shows what used the property at the moment of the flight. Deer under thick conifer or off the property won't be counted, so the numbers are a minimum. It isn't a real-time locating service.</div>
+  </section>
+
+  <section id="terrain">
+    <p class="eb">Sample 2</p>
+    <h2>The Ground Under the Trees</h2>
+    <p class="lead">The same hillside near Cross Plains, from the same public LiDAR, with 10-ft contours on both. On the left it's averaged to a 10-meter grid, the cell size behind the Map Binder contours. On the right it's the full 1-meter bare-earth model.</p>
+    <div class="grid g2">
+      <figure class="shot rel"><span class="tag">10-meter grid</span><img src="img/terrain-10m.jpg" alt="Shaded relief of a hillside at 10-meter resolution, smooth and blocky" width="1280" height="960" loading="lazy"><figcaption>Ridges and the field road blur into soft, blocky shapes.</figcaption></figure>
+      <figure class="shot rel"><span class="tag">1-meter LiDAR</span><img src="img/terrain-1m.jpg" alt="Shaded relief of the same hillside at 1-meter resolution, showing roads, gullies, and terraces" width="1280" height="960" loading="lazy"><figcaption>The field road, gullies, and small benches show up sharply.</figcaption></figure>
+    </div>
+    <p class="lead" style="margin-top:22px">On the sample parcel, that LiDAR becomes a terrain read: ridgelines, drainage paths, benches, south-facing slopes, and travel hubs traced from the ground model, sitting under a leaf-off aerial flown the same day as the thermal survey.</p>
+    <div class="grid g2">
+      <figure class="shot"><img src="img/sample-aerial-contours.jpg" alt="Leaf-off aerial of the sample parcel with labeled LiDAR contours" width="816" height="665" loading="lazy"><figcaption><b>Leaf-off aerial with LiDAR contours,</b> flown November 24, 2026.</figcaption></figure>
+      <figure class="shot"><img src="img/sample-terrain-read.jpg" alt="Terrain read of the sample parcel over shaded relief, with ridgelines, drainage paths, benches, and slopes" width="816" height="665" loading="lazy"><figcaption><b>Terrain read</b> over shaded relief, from the 2024 USGS LiDAR.</figcaption></figure>
+    </div>
+    <div class="note">On a tract like Barneveld #19473, the same read would show how the ground falls from the timber to the tillable acres, where water moves across it, and where a homesite and driveway could fit.</div>
+  </section>
+
+  <section id="files">
+    <p class="eb">Working Together</p>
+    <h2>What Your Team Gets Back, and When to Call</h2>
+    <div class="grid g2">
+      <div class="card"><h3>Files for Your Designers and Mapping Team</h3><ul><li>A print-ready PDF exhibit</li><li>2400 px JPG graphics for the listing gallery</li><li>A KMZ that opens in Google Earth</li><li>GeoTIFF, SHP, and GeoJSON for your own maps</li><li>Short MP4 clips when there's a fly-thru</li><li>Named by listing number and tract, in a shared folder</li></ul></div>
+      <div class="card"><h3>Good Times to Call</h3><ul><li>A new listing needs current, dated imagery</li><li>A tract needs flying ahead of an auction deadline</li><li>A buyer or bidder asks about a field, access, or a homesite</li><li>A recreational tract where the wildlife sells it</li></ul></div>
+    </div>
+  </section>
+
+  <section id="test">
+    <p class="eb">The Test</p>
+    <h2>Try It on One Tract, at No Cost</h2>
+    <div class="box">
+      <p>Pick one listing and one question a buyer or bidder is likely to ask. I'll fly it, build one finished exhibit that answers it, and deliver the files to your team at no cost. You tell me what worked and what didn't.</p>
+      <ul class="ticks">
+        <li><b>One tract you choose,</b> flown with the seller's OK</li>
+        <li><b>One buyer or bidder question</b> the exhibit answers</li>
+        <li><b>One finished exhibit plus the files,</b> yours to use in full</li>
+        <li><b>A case study only with your OK</b> and Peoples'</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="partner">
+    <p class="eb">If It Works</p>
+    <h2>Founding Partner Terms</h2>
+    <div class="box">
+      <p style="margin:0">If this earns a place in your listings, I'd like you and your team to be a Founding Partner: <b style="color:var(--ink)">priority scheduling ahead of auction deadlines</b>, and <b style="color:var(--ink)">pricing we set together after the test</b>, based on what your team actually uses.</p>
+    </div>
+  </section>
+
+  <section id="made">
+    <p class="eb">How It's Made</p>
+    <h2>Equipment, Data, and Limits</h2>
+    <div class="grid g3">
+      <div class="card"><h3>The Flights</h3>Flown by a Part 107 certified operator based in Cross Plains, with a DJI Matrice 4E for mapping and a Matrice 4T for thermal.</div>
+      <div class="card"><h3>The Data</h3>Public USGS LiDAR, FEMA flood maps, and Wisconsin DNR wetland and water records, combined with the drone flights and checked against them.</div>
+      <div class="card"><h3>The Limits</h3>Exhibits are mapping products, not a land survey, and boundaries are approximate. The mapping workflow was <a href="https://novakgs.com/accuracy/">tested against the ASPRS accuracy standard</a>.</div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <p class="eb">Questions</p>
+    <h2>Questions You Might Have</h2>
+    <details><summary>Does this compete with Peoples?</summary><p>No. I don't list, appraise, auction, or manage land. I fly and process data, and on a Peoples listing it goes to your team to use.</p></details>
+    <details><summary>Does an exhibit replace a survey?</summary><p>No. Exhibits are for marketing and buyer questions. They don't establish property lines, which stay with a licensed surveyor.</p></details>
+    <details><summary>Can your designers use the files with Peoples branding?</summary><p>Yes. The PDF, graphics, KMZ, and GIS files are built to drop into your own layouts, brochures, and Map Binder pages.</p></details>
+    <details><summary>Do I need to give you FarmWorth or any other access?</summary><p>No. I work from public data and my own flights, with the seller's permission to fly.</p></details>
+    <details><summary>Why fly in late fall and winter?</summary><p>With the leaves down, the aerial shows the ground under the timber, and cold nights make deer stand out clearly on thermal.</p></details>
+    <details><summary>Is the deer count exact?</summary><p>No. It's one night's snapshot, so treat it as a minimum. Repeat surveys show how use changes across seasons.</p></details>
+  </section>
+
+  <section id="contact">
+    <p class="eb">Next Step</p>
+    <h2>Let's Pick a Tract</h2>
+    <div class="contact">
+      <div class="card">
+        <p style="margin:0">Fifteen minutes on the phone is enough to choose the listing and the question. Text or call whenever it suits you.</p>
+        <div class="cta" style="margin:8px 0 0">
+          <a class="btn p" href="sms:+16088200224">Text Gregg</a>
+          <a class="btn" href="tel:+16088200224">Call</a>
+          <a class="btn" href="mailto:info@novakgs.com?subject=Peoples%20Company%20test%20tract">Email</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="who">Gregg, Novak Geospatial Solutions™</div>
+        <div class="lines">
+          <a href="tel:+16088200224">(608) 820-0224</a>
+          <a href="mailto:info@novakgs.com">info@novakgs.com</a>
+          <a href="https://novakgs.com/">novakgs.com</a>
+        </div>
+        <div style="font-size:14px;color:var(--muted)">Cross Plains, Wisconsin · FAA Part 107 Certified</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <div class="tagline">Elevated Data | Grounded Truth</div>
+      <p>© 2026 Novak Geospatial Solutions™, a BUCK2NINETY LLC company</p>
+      <p>Cross Plains, Wisconsin · FAA Part 107 Certified</p>
+    </div>
+    <div>
+      <p>Maps are produced from drone imagery and public LiDAR for planning and visualization. They are not a land survey and do not establish property boundaries. Thermal results are a snapshot of one flight and are not a real-time locating service.</p>
+      <p>Sample images are from a Novak survey of a 33-acre wooded parcel near Cross Plains, not a Peoples listing. This page was prepared by Novak Geospatial Solutions™ for Adam Crist and is not a Peoples Company publication.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+{
+  const root = document.documentElement;
+  let saved = null;
+  try { saved = localStorage.getItem("novak-theme"); } catch (e) {}
+  if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+  else if (!root.dataset.theme) root.dataset.theme = "dark";
+  const themeBtn = document.getElementById("themeBtn");
+  themeBtn.addEventListener("click", () => {
+    const next = root.dataset.theme === "light" ? "dark" : "light";
+    root.dataset.theme = next;
+    try { localStorage.setItem("novak-theme", next); } catch (e) {}
+  });
+  const menuBtn = document.getElementById("menuBtn");
+  const menu = document.getElementById("menu");
+  const setMenu = (open) => { menu.hidden = !open; menuBtn.setAttribute("aria-expanded", String(open)); };
+  menuBtn.addEventListener("click", (e) => { e.stopPropagation(); setMenu(menu.hidden); });
+  menu.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("click", (e) => { if (!menu.hidden && !menu.contains(e.target)) setMenu(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+}
+</script>
+<script src="/peoples/track.js?v=1" defer></script>
+</body>
+</html>
