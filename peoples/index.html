@@ -27,7 +27,7 @@ body::before{content:"";position:fixed;inset:0;background:url(img/topo-bg.png) 0
 img{max-width:100%;display:block}
 a{color:var(--o)}
 .wrap{max-width:1040px;margin:0 auto;padding:0 max(20px,4vw)}
-header,main,footer{position:relative;z-index:1}
+header,main,footer{position:relative;z-index:1}header{z-index:10}
 .hdr{background:var(--hdr);border-bottom:3px solid var(--o)}
 .hdr .wrap{display:flex;align-items:center;gap:24px;padding-top:16px;padding-bottom:16px;max-width:1160px}
 .logo{height:72px;width:auto}
@@ -131,8 +131,8 @@ details p{padding:0 18px 4px;color:var(--ink2);font-size:16px}
       <div>Mineral Point, Wisconsin</div>
     </div>
     <div class="tools">
-      <button class="btn-g menu-b" id="menuBtn" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="lbl">Menu</span></button>
-      <button class="btn-g sq" id="themeBtn" aria-label="Switch between dark and light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+      <button class="btn-g menu-b" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="lbl">Menu</span></button>
+      <button class="btn-g sq theme-toggle" id="themeBtn" aria-label="Switch between dark and light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
       <nav class="menu" id="menu" hidden aria-label="Page sections">
         <a href="#fit">Where I Fit</a>
         <a href="#listings">Your Listings</a>
